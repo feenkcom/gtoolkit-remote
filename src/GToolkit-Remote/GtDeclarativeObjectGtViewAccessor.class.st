@@ -10,6 +10,24 @@ GtDeclarativeObjectGtViewAccessor >> asJSONForExport [
 	^(object perform: selector with: GtPhlowEmptyView new) asGtDeclarativeView asJSONForExport
 ]
 
+{ #category : #printing }
+GtDeclarativeObjectGtViewAccessor >> gtDisplayOn: aStream [
+	super gtDisplayOn: aStream.
+	aStream
+		nextPut: $(;
+		nextPutAll: self title;
+		nextPut: $)
+		 
+]
+
+{ #category : #ui }
+GtDeclarativeObjectGtViewAccessor >> gtViewJSONStringFor: aView [
+	<gtView>
+	^ aView textEditor
+		title: 'Json';
+		text: [self asJSONForExport]
+]
+
 { #category : #accessing }
 GtDeclarativeObjectGtViewAccessor >> viewItemAt: anInteger [
 	"Answer the receiver's view item at anInteger.
