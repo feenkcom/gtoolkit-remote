@@ -129,6 +129,42 @@ GtDeclarativeView >> dataTransport: anObject [
 	dataTransport := anObject
 ]
 
+{ #category : #ui }
+GtDeclarativeView >> gtBuildViewActionFor: anAction [ 
+	<gtAction>
+	^ anAction explicit stencil: [
+		|button|
+		button := BrButton new.
+		button
+			look: BrGlamorousButtonWithIconLook;
+			icon: BrGlamorousIcons play asElement;
+			action: [ 
+				button fireEvent: (GtPhlowObjectToSpawn new
+					object: (self viewFor: GtPhlowEmptyView new);
+					sourceElement: button) ] ].
+]
+
+{ #category : #ui }
+GtDeclarativeView >> gtViewJSONStringFor: aView [
+	<gtView>
+	^ aView explicit
+		title: 'Json';
+		stencil: [ | editorElement textEditor text |
+			textEditor := BrTextEditor new.
+			textEditor styler: JSONParser gtStyler.
+			editorElement := BrEditorElement new.
+			editorElement editor: textEditor.
+			text := (STONJSON toStringPretty: (STONJSON fromString: self asJSONForExport)) asRopedText.
+			text glamorousCodeFontDo: #beNotOverwritableByStyler; glamorousCodeSizeDo: #beNotOverwritableByStyler.
+			textEditor text: text.
+			editorElement
+				padding: (BlInsets all: 10);
+				constraintsDo: [ :c | 
+					c horizontal matchParent.
+					c vertical matchParent ].
+			editorElement ]
+]
+
 { #category : #accessing }
 GtDeclarativeView >> priority [
 	^ priority
