@@ -37,7 +37,7 @@ GtDeclarativeObjectGtViewAccessor >> sentItemAt: aKey [
 	"Answer the receiver's transformed item at aKey.
 	This is used by Declarative views to access remote items"
 
-	^self view send value: (self view itemsBuilder value at: aKey) value: nil
+	^self view send cull: (self view itemsBuilder value at: aKey) cull: nil
 ]
 
 { #category : #accessing }

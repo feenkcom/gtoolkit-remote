@@ -44,6 +44,6 @@ GtDeclarativeList >> viewFor: aView [
 		priority: priority;
 		items: [ self items ].
 	list
-		send: [ :arg :event | accessor sentItemAt: event selection from ].
+		send: [ :arg :selection | accessor sentItemAt: selection from ].
 	^list
 ]
