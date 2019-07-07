@@ -93,6 +93,6 @@ GtDeclarativeColumnedList >> viewFor: aView [
 		(columnWidths at: index) ifNotNil: [ :width |
 			column width: width ] ].
 	list
-		send: [ :arg :event | accessor viewItemAt: event selection from ].
+		send: [ :arg :event | accessor sentItemAt: event selection from ].
 	^list
 ]

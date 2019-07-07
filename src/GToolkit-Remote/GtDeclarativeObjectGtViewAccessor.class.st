@@ -1,13 +1,17 @@
 Class {
 	#name : #GtDeclarativeObjectGtViewAccessor,
 	#superclass : #GtDeclarativeObjectViewAccessor,
+	#instVars : [
+		'viewDeclaration',
+		'view'
+	],
 	#category : #'GToolkit-Remote-Declarative Views'
 }
 
 { #category : #converting }
 GtDeclarativeObjectGtViewAccessor >> asJSONForExport [ 
 
-	^(object perform: selector with: GtPhlowEmptyView new) asGtDeclarativeView asJSONForExport
+	^self viewDeclaration asJSONForExport
 ]
 
 { #category : #printing }
@@ -29,9 +33,21 @@ GtDeclarativeObjectGtViewAccessor >> gtViewJSONStringFor: aView [
 ]
 
 { #category : #accessing }
-GtDeclarativeObjectGtViewAccessor >> viewItemAt: anInteger [
-	"Answer the receiver's view item at anInteger.
+GtDeclarativeObjectGtViewAccessor >> sentItemAt: aKey [
+	"Answer the receiver's transformed item at aKey.
 	This is used by Declarative views to access remote items"
 
-	^(object perform: selector with: GtPhlowEmptyView new) itemsBuilder value at: anInteger
+	^self view send value: (self view itemsBuilder value at: aKey) value: nil
+]
+
+{ #category : #accessing }
+GtDeclarativeObjectGtViewAccessor >> view [ 
+
+	^view ifNil: [ view := object perform: selector with: GtPhlowEmptyView new ]
+]
+
+{ #category : #accessing }
+GtDeclarativeObjectGtViewAccessor >> viewDeclaration [
+
+	^viewDeclaration ifNil: [ viewDeclaration := self view asGtDeclarativeView ]
 ]
