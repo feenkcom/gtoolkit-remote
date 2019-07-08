@@ -5,7 +5,7 @@ Class {
 		'object',
 		'selector'
 	],
-	#category : #'GToolkit-Remote-Declarative Views'
+	#category : #'GToolkit-Remote-Inspection'
 }
 
 { #category : #accessing }

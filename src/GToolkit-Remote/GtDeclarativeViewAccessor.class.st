@@ -22,42 +22,52 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'title',
-		'priority'
+		'priority',
+		'id',
+		'declarativeView',
+		'view'
 	],
-	#category : #'GToolkit-Remote-Declarative Views'
+	#category : #'GToolkit-Remote-Inspection'
 }
 
 { #category : #converting }
-GtDeclarativeViewAccessor >> asJSONForExport [ 
-	"Answer the receiver's declaration string"
+GtDeclarativeViewAccessor >> asDictionaryForExport [
 
-	^self subclassResponsibility 
+	^self declarativeView asDictionaryForExport 
+]
+
+{ #category : #accessing }
+GtDeclarativeViewAccessor >> declarativeView [
+	^ self subclassResponsibility 
+]
+
+{ #category : #accessing }
+GtDeclarativeViewAccessor >> id [
+	^ id
+]
+
+{ #category : #accessing }
+GtDeclarativeViewAccessor >> id: anObject [
+	id := anObject
 ]
 
 { #category : #accessing }
 GtDeclarativeViewAccessor >> priority [
-	^ priority
-]
-
-{ #category : #accessing }
-GtDeclarativeViewAccessor >> priority: anObject [
-	priority := anObject
+	^ self view priority
 ]
 
 { #category : #accessing }
 GtDeclarativeViewAccessor >> title [
-	^ title
+	^ self view title
 ]
 
 { #category : #accessing }
-GtDeclarativeViewAccessor >> title: anObject [
-	title := anObject
+GtDeclarativeViewAccessor >> view [
+	^ self subclassResponsibility 
 ]
 
-{ #category : #accessing }
-GtDeclarativeViewAccessor >> viewItemAt: anInteger [
-	"Answer the receiver's view item at anInteger.
-	This is used by Declarative views to access remote items"
+{ #category : #'building - graph' }
+GtDeclarativeViewAccessor >> viewFor: aView [
 
-	^self subclassResponsibility 
+	^view ifNil: [ view := self declarativeView viewFor: aView ]
 ]

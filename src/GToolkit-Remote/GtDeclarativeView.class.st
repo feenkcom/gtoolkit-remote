@@ -192,6 +192,12 @@ GtDeclarativeView >> title: anObject [
 	title := anObject
 ]
 
+{ #category : #accessing }
+GtDeclarativeView >> view [ 
+
+	^self viewFor: GtPhlowEmptyView new
+]
+
 { #category : #'building - graph' }
 GtDeclarativeView >> viewFor: aView [
 	"Answer the GtPhlowView for the receiver"

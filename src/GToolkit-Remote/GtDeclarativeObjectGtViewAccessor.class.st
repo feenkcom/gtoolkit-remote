@@ -2,10 +2,9 @@ Class {
 	#name : #GtDeclarativeObjectGtViewAccessor,
 	#superclass : #GtDeclarativeObjectViewAccessor,
 	#instVars : [
-		'viewDeclaration',
-		'view'
+		'viewDeclaration'
 	],
-	#category : #'GToolkit-Remote-Declarative Views'
+	#category : #'GToolkit-Remote-Inspection'
 }
 
 { #category : #converting }

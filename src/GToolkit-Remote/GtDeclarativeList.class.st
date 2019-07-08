@@ -11,7 +11,8 @@ Class {
 GtDeclarativeList class >> fromJSONDictionary: aDictionary [
 
 	^(super fromJSONDictionary: aDictionary)
-		items: ((aDictionary at: #items) collect: [ :each | each asRopedText ]);
+		items: ((aDictionary at: #items) collect: [ :each | 
+			{ each first asRopedText. each second } ]);
 		yourself
 ]
 
@@ -52,7 +53,7 @@ GtDeclarativeList >> viewFor: aView [
 	list := aView list 
 		title: title;
 		priority: priority;
-		items: [ self ensureItemsLoaded. self items ].
+		items: [ self ensureItemsLoaded. self items collect: [ :each | each first ] ].
 	list
 		send: [ :arg :selection | accessor sentItemAt: selection from ].
 	^list
