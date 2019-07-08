@@ -33,6 +33,13 @@ GtDeclarativeObjectGtViewAccessor >> gtViewJSONStringFor: aView [
 ]
 
 { #category : #accessing }
+GtDeclarativeObjectGtViewAccessor >> retrieve: aSymbol [
+	"Answer the information named by aSymbol"
+
+	^aSymbol value: object
+]
+
+{ #category : #accessing }
 GtDeclarativeObjectGtViewAccessor >> sentItemAt: aKey [
 	"Answer the receiver's transformed item at aKey.
 	This is used by Declarative views to access remote items"

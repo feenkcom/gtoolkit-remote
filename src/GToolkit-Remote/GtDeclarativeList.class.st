@@ -18,9 +18,19 @@ GtDeclarativeList class >> fromJSONDictionary: aDictionary [
 { #category : #converting }
 GtDeclarativeList >> asDictionaryForExport [ 
 
-	^super asDictionaryForExport 
-		at: #items put: items;
-		yourself
+	| dictionary |
+
+	dictionary := super asDictionaryForExport.
+	self dataTransport = self class dataIncluded ifTrue: [ 
+		dictionary at: #items put: items ].
+	^dictionary
+]
+
+{ #category : #private }
+GtDeclarativeList >> ensureItemsLoaded [
+	"Ensure that the receiver has retrieved the items from the remote"
+
+	^items ifNil: [ items := accessor retrieve: #items ]
 ]
 
 { #category : #accessing }
@@ -42,7 +52,7 @@ GtDeclarativeList >> viewFor: aView [
 	list := aView list 
 		title: title;
 		priority: priority;
-		items: [ self items ].
+		items: [ self ensureItemsLoaded. self items ].
 	list
 		send: [ :arg :selection | accessor sentItemAt: selection from ].
 	^list

@@ -49,14 +49,14 @@ GtDeclarativeView class >> accessor: aGtDViewAccessor [
 GtDeclarativeView class >> dataByKey [
 	"Answer the enumerated value for the display data being accessed by reference and key"
 
-	^3
+	^4
 ]
 
 { #category : #'data transport' }
 GtDeclarativeView class >> dataByReference [
 	"Answer the enumerated value for the display data being accessed by reference"
 
-	^2
+	^3
 ]
 
 { #category : #'data transport' }
@@ -64,6 +64,13 @@ GtDeclarativeView class >> dataIncluded [
 	"Answer the enumerated value for the display data being included with the specification"
 
 	^1
+]
+
+{ #category : #'data transport' }
+GtDeclarativeView class >> dataLazy [
+	"Answer the enumerated value for the display data accessor name being included with the specification.  This can then be used to retrieve the data at a later time"
+
+	^2
 ]
 
 { #category : #'instance creation' }
