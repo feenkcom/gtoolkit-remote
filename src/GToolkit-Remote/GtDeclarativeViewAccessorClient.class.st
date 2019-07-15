@@ -17,6 +17,12 @@ GtDeclarativeViewAccessorClient >> declarativeView [
 ]
 
 { #category : #accessing }
+GtDeclarativeViewAccessorClient >> priority [ 
+
+	^priority
+]
+
+{ #category : #accessing }
 GtDeclarativeViewAccessorClient >> priority: aNumber [
 
 	priority := aNumber
@@ -36,6 +42,12 @@ GtDeclarativeViewAccessorClient >> proxy: anObject [
 GtDeclarativeViewAccessorClient >> sentItemAt: anIndex [
 
 	^proxy sentItemAt: (id, '/', anIndex asString)
+]
+
+{ #category : #accessing }
+GtDeclarativeViewAccessorClient >> title [ 
+
+	^title
 ]
 
 { #category : #accessing }
