@@ -13,7 +13,11 @@ GtRemoteInspectorClient >> declarativeViewAt: aString [
 
 	| response |
 
-	response := ZnEasy get: server / aString.
+	"Building views can take a while at the moment (will be better with lazy data retrieval).
+	Set a long timeout for now"
+	ZnConnectionTimeout 
+		value: 120
+		during: [ response := ZnEasy get: server / aString ].
 	self assert: response contentType main equals: 'application'.
 	self assert: response contentType sub equals: 'json'.
 	^GtDeclarativeView fromJSONString: response entity string.
