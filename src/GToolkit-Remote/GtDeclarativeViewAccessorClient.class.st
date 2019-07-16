@@ -8,6 +8,13 @@ Class {
 }
 
 { #category : #accessing }
+GtDeclarativeViewAccessorClient >> data [ 
+	"Answer the data for the receiver's view"
+
+	^proxy dataAt: id
+]
+
+{ #category : #accessing }
 GtDeclarativeViewAccessorClient >> declarativeView [ 
 
 	^declarativeView ifNil: [ declarativeView := 

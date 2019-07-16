@@ -1,21 +1,6 @@
 "
-GtDeclarativeViewAccessor subclasses are responsible for retrieving the view declaration for a given object.  Access to the declaration may be via local object access, remote object access (Seamless), a web server or some other means.
+GtDeclarativeViewAccessors provides management and caching of views between the client and server.  The accessor works with ${class:name=GtRemoteInspectorClient}, ${class:name=GtRemoteInspectorServer} and ${class:name=GtRemoteInspectorProxy} to hide the underlying transport from the views.
 
-All GtDeclarativeViewAccessor know their title and priority.
-
-
-Public API and Key Messages
-
-- message one   
-- message two 
-- (for bonus points) how to create instances.
-
-   One simple example is simply gorgeous.
- 
-Internal Representation and Key Implementation Points.
-
-
-    Implementation Points
 "
 Class {
 	#name : #GtDeclarativeViewAccessor,
@@ -59,11 +44,6 @@ GtDeclarativeViewAccessor >> priority [
 { #category : #accessing }
 GtDeclarativeViewAccessor >> title [
 	^ self view title
-]
-
-{ #category : #accessing }
-GtDeclarativeViewAccessor >> view [
-	^ self subclassResponsibility 
 ]
 
 { #category : #'building - graph' }

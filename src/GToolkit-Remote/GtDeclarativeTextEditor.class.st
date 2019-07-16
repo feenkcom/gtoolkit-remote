@@ -10,22 +10,38 @@ Class {
 { #category : #'instance creation' }
 GtDeclarativeTextEditor class >> fromJSONDictionary: aDictionary [
 
-	^(super fromJSONDictionary: aDictionary)
-		string: (aDictionary at: #string);
-		yourself
+	| editor |
+
+	editor := super fromJSONDictionary: aDictionary.
+	editor dataTransport = self dataIncluded ifTrue:
+		[ editor string: (aDictionary at: #string) ].
+	^editor
 ]
 
 { #category : #converting }
 GtDeclarativeTextEditor >> asDictionaryForExport [ 
 
-	^super asDictionaryForExport 
-		at: #string put: string;
-		yourself
+	| dictionary |
+
+	dictionary := super asDictionaryForExport.
+	self dataTransport = self class dataIncluded ifTrue: [ 
+		dictionary at: #string put: string ].
+	^dictionary
+]
+
+{ #category : #accessing }
+GtDeclarativeTextEditor >> data [ 
+
+	^string
 ]
 
 { #category : #accessing }
 GtDeclarativeTextEditor >> string [
-	^ string
+
+	^ string ifNil: [ 
+		(string isNil and: [ dataTransport = self class dataLazy ]) ifTrue: 
+			[ string := accessor data ] ].
+
 ]
 
 { #category : #accessing }

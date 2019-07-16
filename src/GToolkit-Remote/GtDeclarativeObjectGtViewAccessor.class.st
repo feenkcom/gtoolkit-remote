@@ -1,3 +1,6 @@
+"
+GtDeclarativeObjectGtViewAccessor is a leftover from initial development work on remote object viewing over Seamless.  It will be removed as part of the effort to get Seamless remote object viewing working again.
+"
 Class {
 	#name : #GtDeclarativeObjectGtViewAccessor,
 	#superclass : #GtDeclarativeObjectViewAccessor,

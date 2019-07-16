@@ -9,10 +9,12 @@ Class {
 
 { #category : #'instance creation' }
 GtDeclarativeList class >> fromJSONDictionary: aDictionary [
+	| list |
 
-	^(super fromJSONDictionary: aDictionary)
-		items: (aDictionary at: #items);
-		yourself
+	list := super fromJSONDictionary: aDictionary.
+	list dataTransport = self dataIncluded ifTrue: 
+		[ list items: (aDictionary at: #items) ].
+	^list
 ]
 
 { #category : #converting }
@@ -26,16 +28,19 @@ GtDeclarativeList >> asDictionaryForExport [
 	^dictionary
 ]
 
-{ #category : #private }
-GtDeclarativeList >> ensureItemsLoaded [
-	"Ensure that the receiver has retrieved the items from the remote"
+{ #category : #accessing }
+GtDeclarativeList >> data [ 
 
-	^items ifNil: [ items := accessor retrieve: #items ]
+	^items
 ]
 
 { #category : #accessing }
 GtDeclarativeList >> items [
-	^ items
+
+	^items ifNil: [ 
+		(items isNil and: [ dataTransport = self class dataLazy ]) ifTrue: 
+			[ items := accessor data ] ].
+
 ]
 
 { #category : #accessing }
@@ -52,7 +57,7 @@ GtDeclarativeList >> viewFor: aView [
 	list := aView list 
 		title: title;
 		priority: priority;
-		items: [ self ensureItemsLoaded. self items collect: #asRopedText ].
+		items: [ self items collect: #asRopedText ].
 	list
 		send: [ :arg :selection | accessor sentItemAt: selection from ].
 	^list

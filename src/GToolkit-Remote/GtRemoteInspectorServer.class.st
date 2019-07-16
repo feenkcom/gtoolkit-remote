@@ -36,6 +36,19 @@ GtRemoteInspectorServer >> gtNamedObjectsFor: aView [
 ]
 
 { #category : #'request handling' }
+GtRemoteInspectorServer >> handleDataRequest: request [
+
+	| objectId viewName accessorList accessor |
+
+	5 seconds wait.
+	objectId := (request at: #id) asNumber.
+	viewName := request at: #viewName.
+	accessorList := self accessorListAt: objectId.
+	accessor := accessorList accessorWithTitle: viewName.
+	^accessor declarativeView data
+]
+
+{ #category : #'request handling' }
 GtRemoteInspectorServer >> handleNamedObjectsRequest: request [
 	"Answer the request for the list of named objects"
 
@@ -94,6 +107,7 @@ GtRemoteInspectorServer >> initialize [
 	teapot
 		GET: '/ping' -> [ :req | DateAndTime now printString ];
 		GET: '/namedObjects' -> [ :req | self handleNamedObjectsRequest: req ];
+		GET: '/object/<id>/<viewName>/data' -> [ :req | self handleDataRequest: req ];
 		GET: '/object/<id>/<viewName>/<sentItemKey>' -> [ :req | self handleSentItemRequest: req ];
 		GET: '/object/<id>/<viewName>' -> [ :req | self handleViewRequest: req ];
 		GET: '/object/<id>' -> [ :req | self handleObjectRequest: req ].

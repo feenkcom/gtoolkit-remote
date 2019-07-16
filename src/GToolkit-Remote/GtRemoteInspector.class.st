@@ -1,3 +1,22 @@
+"
+GtRemoteInspector provides a mechanism for remote viewing of objects over a REST/JSON API.
+
+Public API and Key Messages
+
+- message one   
+- message two 
+- (for bonus points) how to create instances.
+
+   One simple example is simply gorgeous.
+ 
+Internal Representation and Key Implementation Points.
+
+    Instance Variables
+	namedObjects:		<Object>
+
+
+    Implementation Points
+"
 Class {
 	#name : #GtRemoteInspector,
 	#superclass : #Object,

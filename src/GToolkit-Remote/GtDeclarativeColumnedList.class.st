@@ -3,7 +3,6 @@ GtDeclarativeColumnedList supports a subset of the possible configurations of ${
 
 Current limitations:
 
-- Selecting an item simply shows the display data
 - Only matchParent and fixed column widths are supported
 
 !!Internal Representation and Key Implementation Points.
@@ -28,21 +27,29 @@ Class {
 { #category : #'instance creation' }
 GtDeclarativeColumnedList class >> fromJSONDictionary: aDictionary [
 
-	^(super fromJSONDictionary: aDictionary)
-		items: (aDictionary at: #items);
+	| list |
+
+	list := super fromJSONDictionary: aDictionary.
+	list
 		columnTitles: (aDictionary at: #columnTitles);
-		columnWidths: (aDictionary at: #columnWidths);
-		yourself
+		columnWidths: (aDictionary at: #columnWidths).
+	list dataTransport = self dataIncluded ifTrue: 
+		[ list items: (aDictionary at: #items) ].
+	^list
 ]
 
 { #category : #converting }
 GtDeclarativeColumnedList >> asDictionaryForExport [ 
 
-	^super asDictionaryForExport 
-		at: #items put: items;
+	| dictionary |
+
+	dictionary := super asDictionaryForExport 
 		at: #columnTitles put: columnTitles;
 		at: #columnWidths put: columnWidths;
-		yourself
+		yourself.
+	self dataTransport = self class dataIncluded ifTrue: [ 
+		dictionary at: #items put: items ].
+	^dictionary
 ]
 
 { #category : #accessing }
@@ -66,8 +73,18 @@ GtDeclarativeColumnedList >> columnWidths: anObject [
 ]
 
 { #category : #accessing }
+GtDeclarativeColumnedList >> data [ 
+
+	^items
+]
+
+{ #category : #accessing }
 GtDeclarativeColumnedList >> items [
-	^ items
+
+	^ items ifNil: [ 
+		(items isNil and: [ dataTransport = self class dataLazy ]) ifTrue: 
+			[ items := accessor data ] ].
+
 ]
 
 { #category : #accessing }

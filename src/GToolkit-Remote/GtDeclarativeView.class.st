@@ -127,6 +127,13 @@ GtDeclarativeView >> asJSONForExport [
 ]
 
 { #category : #accessing }
+GtDeclarativeView >> data [ 
+	"Answer the data appropriate to the receiver's type"
+
+	^self subclassResponsibility 
+]
+
+{ #category : #accessing }
 GtDeclarativeView >> dataTransport [
 	^ dataTransport
 ]

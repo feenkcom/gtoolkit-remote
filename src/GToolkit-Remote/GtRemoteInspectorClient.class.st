@@ -8,6 +8,18 @@ Class {
 }
 
 { #category : #accessing }
+GtRemoteInspectorClient >> dataAt: relativeUrl [
+
+	| response |
+
+	response := ZnEasy get: server / relativeUrl / 'data'.
+	self assert: response contentType main equals: 'application'.
+	self assert: response contentType sub equals: 'json'.
+	^STONJSON fromString: response entity string.
+
+]
+
+{ #category : #accessing }
 GtRemoteInspectorClient >> declarativeViewAt: aString [
 	"Answer the declarative view at the relative URL aString"
 

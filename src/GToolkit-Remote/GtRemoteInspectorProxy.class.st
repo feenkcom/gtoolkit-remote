@@ -1,13 +1,29 @@
+"
+GtRemoteInspectorProxy acts as a proxy for a remote object to display its views (those that are declarative and can be serialised).
+
+It uses the client to make requests to the remote system and the collection of accessors to cache information to minimise client / server communications.
+
+GtRemoteInspectorProxy overrides the normal Gt inspection mechanism to display views from the remote object.  Information about the receiver is available in the 'Proxy' tab.  Information about the views defined by the remote object are available in the 'Proxy Views' tab.
+
+
+!!Internal Representation and Key Implementation Points.
+
+!!!Instance Variables
+
+	accessors:		<Array of GtDeclarativeViewAccessorClient>
+	client:			<GtRemoteInspectorClient>
+	name:				<String>
+
+
+    Implementation Points
+"
 Class {
 	#name : #GtRemoteInspectorProxy,
 	#superclass : #Object,
 	#instVars : [
 		'name',
 		'client',
-		'accessors',
-		'viewDefinitions',
-		'viewDeclarations',
-		'views'
+		'accessors'
 	],
 	#category : #'GToolkit-Remote-Inspection'
 }
@@ -23,6 +39,12 @@ GtRemoteInspectorProxy class >> name: aString client: aClient views: anArray [
 GtRemoteInspectorProxy >> accessors [ 
 
 	^accessors
+]
+
+{ #category : #accessing }
+GtRemoteInspectorProxy >> dataAt: relativeUrl [
+
+	^client dataAt: relativeUrl
 ]
 
 { #category : #accessing }
@@ -130,13 +152,8 @@ GtRemoteInspectorProxy >> sentItemAt: relativeUrl [
 { #category : #accessing }
 GtRemoteInspectorProxy >> viewDeclarations [
 
-	| declarativeView |
-
 	^accessors collect: [ :each | each declarativeView ]
-	"^viewDeclarations ifNil: [ viewDeclarations := viewDefinitions collect: [ :each | 
-		declarativeView := client declarativeViewAt: (each at: 3).
-		declarativeView accessor: self.
-		declarativeView ] ]"
+
 ]
 
 { #category : #accessing }
