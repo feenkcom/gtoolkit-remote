@@ -1,3 +1,39 @@
+"
+GtRemoteInspectorServer provides a REST/JSON server to enable remote viewing of objects.
+
+Typically a limited number of well known named root objects are provided and available for inspection.  From these any number of other objects may be traversed.
+
+!!Public API and Key Messages
+
+- register:name: 	Register the supplied named object
+- port: 				Set the port that the server listens on
+- bindingAddress: 	Set the IPv4 address that the server listens on
+- start 				Start the server
+- stop 				Stop the server
+
+A typical startup script is:
+
+[[[
+GtRemoteInspectorServer new
+	port: 12345;
+	register: rootObject1 name: 'root1';
+	register: rootObject2 name: 'root2';
+	start
+]]]
+
+Default values are specified in ${method:name=GtRemoteInspectorServer>>#initialize}.
+
+Inspecting the result will provide an inspector showing the list of named root objects.
+
+ 
+!!Internal Representation and Key Implementation Points.
+
+!!!Instance Variables
+
+	accessorLists:		<GtDeclarativeViewAccessorList>
+	teapot:				<Teapot>
+
+"
 Class {
 	#name : #GtRemoteInspectorServer,
 	#superclass : #GtRemoteInspector,
@@ -23,6 +59,15 @@ GtRemoteInspectorServer >> akgInspectable [
 				collectionAt: 1 put: AkgInspectable new;
 				yourself) 
 		name: #akg.
+]
+
+{ #category : #configuration }
+GtRemoteInspectorServer >> bindingAddress: anAddress [
+	"Set the IPv4 interface that the server will listen on.
+	The address is a 4 element ByteArray, e.g. [127 0 0 1].
+	Can't be changed after the server has been started"
+
+	teapot server bindingAddress: anAddress
 ]
 
 { #category : #inspecting }
@@ -170,6 +215,14 @@ GtRemoteInspectorServer >> objectViewURLFor: objectId title: title [
 			print: objectId;
 			<< '/';
 			<< title ]
+]
+
+{ #category : #configuration }
+GtRemoteInspectorServer >> port: anInteger [
+	"Set the port that the server listens on.
+	Can't be changed after the server has been started"
+
+	teapot server port: anInteger
 ]
 
 { #category : #accessing }

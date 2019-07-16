@@ -1,3 +1,30 @@
+"
+GtRemoteInspectorClient connects to a matching REST/JSON server to enable inspection / viewing of remote objects.
+
+A typical startup script is:
+
+[[[
+GtRemoteInspectorServer new
+	server: 'http://localhost:8080'
+]]]
+
+Default values are specified in ${method:name=GtRemoteInspectorClient>>#initialize}.
+
+Inspecting the result will provide an inspector showing the list of named root objects.
+
+!!Public API and Key Messages
+
+- server: specify the address of the server (see example above)
+- namedObjectAt: 	Retrieve the proxy for the well known object named
+
+ 
+!!Internal Representation and Key Implementation Points.
+
+!!!Instance Variables
+
+	server:		<ZnUrl>
+
+"
 Class {
 	#name : #GtRemoteInspectorClient,
 	#superclass : #GtRemoteInspector,
@@ -104,4 +131,15 @@ GtRemoteInspectorClient >> sentItemAt: relativeUrl [
 		name: (objectDictionary at: #name) 
 		client: self 
 		views: (objectDictionary at: #accessors)
+]
+
+{ #category : #configuration }
+GtRemoteInspectorClient >> server [
+	^ server
+]
+
+{ #category : #configuration }
+GtRemoteInspectorClient >> server: aString [
+
+	server := aString asZnUrl 
 ]
