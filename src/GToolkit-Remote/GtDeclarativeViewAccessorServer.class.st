@@ -23,6 +23,13 @@ GtDeclarativeViewAccessorServer >> object: anObject [
 ]
 
 { #category : #accessing }
+GtDeclarativeViewAccessorServer >> selector [
+	"Answer the selector name that defines the receiver's view"
+
+	^view definingMethod selector
+]
+
+{ #category : #accessing }
 GtDeclarativeViewAccessorServer >> view [
 
 	^view

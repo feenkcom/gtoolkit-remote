@@ -85,11 +85,11 @@ GtRemoteInspectorServer >> handleDataRequest: request [
 
 	| objectId viewName accessorList accessor |
 
-	5 seconds wait.
+"	5 seconds wait."
 	objectId := (request at: #id) asNumber.
 	viewName := request at: #viewName.
 	accessorList := self accessorListAt: objectId.
-	accessor := accessorList accessorWithTitle: viewName.
+	accessor := accessorList accessorWithSelector: viewName.
 	^accessor declarativeView data
 ]
 
@@ -119,7 +119,7 @@ GtRemoteInspectorServer >> handleSentItemRequest: request [
 	viewName := request at: #viewName.
 	sentItemKey := (request at: #sentItemKey) asNumber.
 	accessorList := self accessorListAt: objectId.
-	accessor := accessorList accessorWithTitle: viewName.
+	accessor := accessorList accessorWithSelector: viewName.
 	sentObject := accessor view itemsBuilder value at: sentItemKey.
 	sentObjectId := self register: sentObject.
 	^self objectDictionaryFor: sentObjectId
@@ -136,7 +136,7 @@ GtRemoteInspectorServer >> handleViewRequest: request [
 	viewName := request at: #viewName.
 	accessorList := self accessorListAt: objectId.
 	^(accessorList accessors detect: [ :each |
-		each title = viewName ]) asDictionaryForExport.
+		each selector = viewName ]) asDictionaryForExport.
 ]
 
 { #category : #initialization }
@@ -192,7 +192,7 @@ GtRemoteInspectorServer >> objectDictionaryFor: objectId [
 	accessors := accessorList accessorsCollect: [ :each |
 		{ each title.
 		each priority.
-		self objectViewURLFor: objectId title: each title. } ].
+		self objectViewURLFor: objectId name: each selector. } ].
 	^Dictionary new
 		at: #name put: (self objectAt: objectId) printString;
 		at: #accessors put: accessors;
@@ -207,14 +207,14 @@ GtRemoteInspectorServer >> objectURLFor: aString [
 ]
 
 { #category : #private }
-GtRemoteInspectorServer >> objectViewURLFor: objectId title: title [
+GtRemoteInspectorServer >> objectViewURLFor: objectId name: viewName [
 
 	^String streamContents: [ :stream |
 		stream
 			<< '/object/';
 			print: objectId;
 			<< '/';
-			<< title ]
+			<< viewName ]
 ]
 
 { #category : #configuration }

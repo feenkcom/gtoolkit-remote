@@ -14,10 +14,10 @@ GtDeclarativeViewAccessorList class >> for: anObject [
 	^self new object: anObject
 ]
 
-{ #category : #'as yet unclassified' }
-GtDeclarativeViewAccessorList >> accessorWithTitle: aString [
+{ #category : #accessing }
+GtDeclarativeViewAccessorList >> accessorWithSelector: aSymbol [
 
-	^accessors detect: [ :each | each title = aString ]
+	^accessors detect: [ :each | each selector = aSymbol ]
 ]
 
 { #category : #accessing }

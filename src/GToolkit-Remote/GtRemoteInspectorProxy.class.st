@@ -36,6 +36,12 @@ GtRemoteInspectorProxy class >> name: aString client: aClient views: anArray [
 ]
 
 { #category : #accessing }
+GtRemoteInspectorProxy >> accessorWithSelector: aSymbol [
+
+	^accessors detect: [ :each | each selector = aSymbol ]
+]
+
+{ #category : #accessing }
 GtRemoteInspectorProxy >> accessors [ 
 
 	^accessors
