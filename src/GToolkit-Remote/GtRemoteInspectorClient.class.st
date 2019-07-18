@@ -79,9 +79,9 @@ GtRemoteInspectorClient >> getNamedObjects [
 GtRemoteInspectorClient >> gtNamedObjectsFor: aView [
 	"<gtView>"
 
-	^aView list 
+	^ aView list
 		title: 'Named Objects';
-		display: [ self namedObjects keys asSortedCollection ];
+		items: [ self namedObjects keys asSortedCollection ];
 		send: [ :name | self namedObjectAt: name ]
 ]
 
