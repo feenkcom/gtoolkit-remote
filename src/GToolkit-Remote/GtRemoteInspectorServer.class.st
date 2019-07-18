@@ -72,12 +72,19 @@ GtRemoteInspectorServer >> bindingAddress: anAddress [
 
 { #category : #inspecting }
 GtRemoteInspectorServer >> gtNamedObjectsFor: aView [
-	<gtView>
-
-	^aView list 
+	
+	^ aView list
 		title: 'Named Objects';
-		display: [ self namedObjects keys asSortedCollection ];
+		items: [ self namedObjects keys asSortedCollection ];
 		send: [ :name | self namedAccessorListAt: name ]
+]
+
+{ #category : #inspecting }
+GtRemoteInspectorServer >> gtPathsViewFor: aView [
+	<gtView>
+	^ teapot 
+		ifNil: [ aView empty ] 
+		ifNotNil: [ teapot gtRoutesFor: aView ]
 ]
 
 { #category : #'request handling' }

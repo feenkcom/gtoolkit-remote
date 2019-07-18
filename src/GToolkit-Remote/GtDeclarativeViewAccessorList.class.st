@@ -43,6 +43,15 @@ GtDeclarativeViewAccessorList >> getAccessors [
 					view: view ) ] ] ]
 ]
 
+{ #category : #inspecting }
+GtDeclarativeViewAccessorList >> gtViewAccessorsListFor: aView [
+	<gtView>
+	accessors ifNil: [ aView empty ].
+	^ aView list 
+		title: 'View accessors';
+		items: [ accessors ]
+]
+
 { #category : #accessing }
 GtDeclarativeViewAccessorList >> object [
 	^ object
