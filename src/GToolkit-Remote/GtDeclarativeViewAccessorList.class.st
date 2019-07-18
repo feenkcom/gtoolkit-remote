@@ -49,7 +49,7 @@ GtDeclarativeViewAccessorList >> gtViewAccessorsListFor: aView [
 	accessors ifNil: [ aView empty ].
 	^ aView list 
 		title: 'View accessors';
-		items: [ accessors ]
+		items: [ self accessors ]
 ]
 
 { #category : #accessing }
