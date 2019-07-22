@@ -71,3 +71,11 @@ GtDeclarativeViewAccessorList >> printOn: aStream [
 		print: object;
 		<< ')'.
 ]
+
+{ #category : #'private - accessing' }
+GtDeclarativeViewAccessorList >> sentItems [
+	"Answer the collection of sent items of the receiver.
+	This method is provided to facilitate the export of serialised view definitions by GtRemoteInspectorExporter and is not a general access method."
+
+	^accessors flatCollect: #sentItems
+]

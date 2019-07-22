@@ -127,7 +127,7 @@ GtRemoteInspectorServer >> handleSentItemRequest: request [
 	sentItemKey := (request at: #sentItemKey) asNumber.
 	accessorList := self accessorListAt: objectId.
 	accessor := accessorList accessorWithSelector: viewName.
-	sentObject := accessor view itemsBuilder value at: sentItemKey.
+	sentObject := accessor sentItemAt: sentItemKey.
 	sentObjectId := self register: sentObject.
 	^self objectDictionaryFor: sentObjectId
 
@@ -238,8 +238,9 @@ GtRemoteInspectorServer >> register: anObject [
 
 	| idHash |
 
+	self assert: (self isLiteralObject: anObject) not.
 	idHash := anObject identityHash.
-	accessorLists at: idHash put: (GtDeclarativeViewAccessorList for: anObject).
+	accessorLists at: idHash ifAbsentPut: (GtDeclarativeViewAccessorList for: anObject).
 	^idHash
 
 ]

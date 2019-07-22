@@ -39,13 +39,22 @@ GtDeclarativeList >> items [
 
 	^items ifNil: [ 
 		(items isNil and: [ dataTransport = self class dataLazy ]) ifTrue: 
-			[ items := accessor data ] ].
+			[ items := accessor data asArray ] ].
 
 ]
 
 { #category : #accessing }
 GtDeclarativeList >> items: anObject [
 	items := anObject
+]
+
+{ #category : #'private - accessing' }
+GtDeclarativeList >> sentItems [
+	"Answer the collection of sent items of the receiver.
+	This method is provided to facilitate the export of serialised view definitions by GtRemoteInspectorExporter and is not a general access method."
+
+	^(1 to: self items size) collect:
+		[ :i | accessor sentItemAt: i ]
 ]
 
 { #category : #'building - graph' }
