@@ -2,7 +2,8 @@ Class {
 	#name : #GtDeclarativeViewAccessorServer,
 	#superclass : #GtDeclarativeViewAccessor,
 	#instVars : [
-		'object'
+		'object',
+		'sentItemsCache'
 	],
 	#category : #'GToolkit-Remote-Inspection'
 }
@@ -67,7 +68,8 @@ GtDeclarativeViewAccessorServer >> sentItemAt: sentItemKey [
 	"Answer the send object at sentItemKey.
 	TODO: This method currently rebuilds the sent item list every time it is called, and probably should be cached"
 
-	^view itemsBuilder value at: sentItemKey
+	^self view send cull: (self sentItemsCache at: sentItemKey) cull: nil
+
 ]
 
 { #category : #'private - accessing' }
@@ -79,6 +81,14 @@ GtDeclarativeViewAccessorServer >> sentItems [
 		(each isKindOf: GTInspectorVariableNode)
 			ifTrue: [ each rawValue ]
 			ifFalse: [ each ]]
+]
+
+{ #category : #private }
+GtDeclarativeViewAccessorServer >> sentItemsCache [
+	"Answer the sentItem at the give key"
+
+	^sentItemsCache ifNil: [ sentItemsCache := self view itemsBuilder value collect: [ :each |
+			self view send cull: each cull: nil ] ]
 ]
 
 { #category : #accessing }
