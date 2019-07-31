@@ -12,7 +12,6 @@ BaselineOfGToolkitRemote >> baseline: spec [
 		do: [
 			spec 
 				baseline: 'GToolkitPhlow' with: [ spec repository: 'github://feenkcom/gtoolkit-phlow/src' ];
-				baseline: 'GToolkitIPC' with: [ spec repository: 'github://feenkcom/gtoolkit-media/src' ];
-				package: 'GToolkit-Remote' with: [ spec requires: #( GToolkitPhlow GToolkitIPC ) ]
+				package: 'GToolkit-Remote' with: [ spec requires: #( GToolkitPhlow ) ]
 		]
 ]
