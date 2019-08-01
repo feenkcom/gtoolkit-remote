@@ -48,6 +48,11 @@ GtRemoteInspectorProxy >> accessors [
 ]
 
 { #category : #accessing }
+GtRemoteInspectorProxy >> client [
+	^ client
+]
+
+{ #category : #accessing }
 GtRemoteInspectorProxy >> dataAt: relativeUrl [
 
 	^client dataAt: relativeUrl
@@ -135,17 +140,30 @@ GtRemoteInspectorProxy >> gtdViewForSelector: aSelector [
 	^ declaration viewFor: GtPhlowEmptyView new
 ]
 
+{ #category : #accessing }
+GtRemoteInspectorProxy >> name [
+	^ name
+]
+
 { #category : #initialize }
-GtRemoteInspectorProxy >> name: aString client: aClient views: anArray [
+GtRemoteInspectorProxy >> name: aString client: aClient accessors: anAccessorsArray [
 
 	name := aString.
 	client := aClient.
-	accessors := anArray collect: [ :each |
-		GtDeclarativeViewAccessorClient new 
-			proxy: self;
-			title: each first;
-			priority: each second;
-			id: each third ].
+	accessors := anAccessorsArray.
+]
+
+{ #category : #initialize }
+GtRemoteInspectorProxy >> name: aString client: aClient views: anArray [
+	self 
+		name: aString 
+		client: aClient 
+		accessors: (anArray collect: [ :each |
+			GtDeclarativeViewAccessorClient new 
+				proxy: self;
+				title: each first;
+				priority: each second;
+				id: each third ]).
 
 ]
 
