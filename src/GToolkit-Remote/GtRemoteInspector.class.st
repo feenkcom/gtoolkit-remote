@@ -44,7 +44,7 @@ GtRemoteInspector >> isLiteralObject: anObject [
 { #category : #accessing }
 GtRemoteInspector >> namedObjectAt: aString [
 
-	^self objectAt: (namedObjects at: aString)
+	^self objectAt: (self namedObjects at: aString)
 ]
 
 { #category : #accessing }
