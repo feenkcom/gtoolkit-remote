@@ -74,6 +74,15 @@ GtDeclarativeView class >> dataLazy [
 ]
 
 { #category : #'instance creation' }
+GtDeclarativeView class >> fromDictionary: viewDictionary [
+	"Answer the view specified by viewDictionary"
+	| viewName |
+
+	viewName := viewDictionary at: #viewName.
+	^(Smalltalk globals at: viewName asSymbol) fromJSONDictionary: viewDictionary.
+]
+
+{ #category : #'instance creation' }
 GtDeclarativeView class >> fromJSONDictionary: aDictionary [
 	"Answer an instance of the receiver from the supplied dictionary.
 	Subclasses will override this to add their specific attributes"
