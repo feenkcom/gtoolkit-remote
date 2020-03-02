@@ -35,10 +35,6 @@ GtDeclarativeColumnedList class >> fromJSONDictionary: aDictionary [
 		columnWidths: (aDictionary at: #columnWidths).
 	list dataTransport = self dataIncluded ifTrue: 
 		[ list items: (aDictionary at: #items) ].
-	aDictionary at: #accessor ifPresent: 
-		[ :accessorClass | 
-			accessorClass ifNotNil:
-				[ list accessor: (accessorClass asClass list: list) ] ].
 	^list
 ]
 
@@ -123,6 +119,6 @@ GtDeclarativeColumnedList >> viewFor: aView [
 		(columnWidths at: index) ifNotNil: [ :width |
 			column width: width ] ].
 	list
-		send: [ :arg :selection | accessor sentItem: arg at: selection from ].
+		send: [ :arg :selection | accessor gtSentItemFor: methodName at: selection from ].
 	^list
 ]
