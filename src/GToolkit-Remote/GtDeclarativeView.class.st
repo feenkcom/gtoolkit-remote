@@ -29,6 +29,7 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'accessor',
+		'methodName',
 		'title',
 		'priority',
 		'dataTransport'
@@ -186,6 +187,16 @@ GtDeclarativeView >> gtViewJSONStringFor: aView [
 					c horizontal matchParent.
 					c vertical matchParent ].
 			editorElement ]
+]
+
+{ #category : #accessing }
+GtDeclarativeView >> methodName [
+	^ methodName
+]
+
+{ #category : #accessing }
+GtDeclarativeView >> methodName: anObject [
+	methodName := anObject
 ]
 
 { #category : #accessing }

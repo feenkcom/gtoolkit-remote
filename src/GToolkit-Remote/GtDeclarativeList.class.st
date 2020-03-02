@@ -68,6 +68,6 @@ GtDeclarativeList >> viewFor: aView [
 		priority: priority;
 		items: [ self items collect: #asRopedText ].
 	list
-		send: [ :arg :selection | accessor sentItemAt: selection from ].
+		send: [ :arg :selection | accessor gtSentItemFor: methodName at: selection from ].
 	^list
 ]
