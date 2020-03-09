@@ -18,5 +18,5 @@ GtPhlowColumnedListView >> asGtDeclarativeView [
 				resizer isExact
 					ifTrue: [resizer size]
 					ifFalse: [nil]]] as: Array);
-		dataTransport: GtDeclarativeView dataLazy.
+		dataTransport: GtDeclarativeView dataIncluded.
 ]

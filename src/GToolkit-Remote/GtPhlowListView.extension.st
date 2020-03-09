@@ -9,6 +9,6 @@ GtPhlowListView >> asGtDeclarativeView [
 		title: self title;
 		priority: self priority;
 		items: (self itemsBuilder value collect: [ :each | (itemStencil value: each) gtDisplayString ]) asArray;
-		dataTransport: GtDeclarativeView dataLazy.
+		dataTransport: GtDeclarativeView dataIncluded.
 
 ]

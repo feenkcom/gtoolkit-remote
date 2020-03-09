@@ -89,7 +89,7 @@ GtRemoteInspectionSimulation >> gtViewsFor: aView inContext: aContext [
 
 	resultingView := self gtLocalViewsFor: aView inContext: aContext.
 	views := resultingView originalView views.
-
+self halt.
 	"Add the explicitly declarative views from the inspected object"
 	views addAll: (object gtDeclarativeViewAccessors collect: [ :each |
 		"Retrieve the JSON string declaration and instantiate the actual declarative view"
