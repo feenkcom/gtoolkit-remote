@@ -79,7 +79,9 @@ GtDeclarativeView class >> fromDictionary: viewDictionary [
 	"Answer the view specified by viewDictionary"
 	| viewName |
 
+	StringSignal emit: 'fromDictionary:'.
 	viewName := viewDictionary at: #viewName.
+	(viewName -> viewDictionary) asBeaconSignal emit.
 	^(Smalltalk globals at: viewName asSymbol) fromJSONDictionary: viewDictionary.
 ]
 
@@ -101,8 +103,10 @@ GtDeclarativeView class >> fromJSONString: aString [
 
 	| viewDictionary viewName |
 
+	StringSignal emit: 'fromJSONString:'.
 	viewDictionary := STONJSON fromString: aString.
 	viewName := viewDictionary at: #viewName.
+	(viewName -> viewDictionary) asBeaconSignal emit.
 	^(Smalltalk globals at: viewName asSymbol) fromJSONDictionary: viewDictionary.
 ]
 
