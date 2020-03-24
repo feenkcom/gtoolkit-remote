@@ -58,6 +58,5 @@ GtDeclarativeTable >> viewFor: aView [
 		forCollectionOfCollection.
 	"table
 		send: [ :arg :selection | accessor gtSentItemFor: methodName at: selection from ]."
-	table inspect.
 	^table
 ]
