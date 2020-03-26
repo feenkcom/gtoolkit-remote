@@ -20,3 +20,10 @@ GtPhlowColumnedListView >> asGtDeclarativeView [
 					ifFalse: [nil]]] as: Array);
 		dataTransport: GtDeclarativeView dataIncluded.
 ]
+
+{ #category : #'*GToolkit-Remote' }
+GtPhlowColumnedListView >> canBeGtDeclarativeView [
+	"Answer a boolean indicating whether the receiver can be represented as a GtDeclarativeView"
+
+	^true
+]
