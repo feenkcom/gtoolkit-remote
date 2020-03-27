@@ -104,12 +104,6 @@ GtRemoteInspectionSimulation >> gtProxyViewsFor: aView [
 ]
 
 { #category : #simulation }
-GtRemoteInspectionSimulation >> gtViewsFor: aView [
-	"this is the default entry method for retrieving the wrapper view containing all views"
-	^ self gtViewsFor: aView inContext: nil
-]
-
-{ #category : #simulation }
 GtRemoteInspectionSimulation >> gtViewsFor: aView inContext: aContext [
 	"Add the declarative views from the inspectors object to the inspectors views"
 
