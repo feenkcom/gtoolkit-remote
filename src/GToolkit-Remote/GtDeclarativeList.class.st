@@ -48,6 +48,12 @@ GtDeclarativeList >> items: anObject [
 	items := anObject
 ]
 
+{ #category : #accessing }
+GtDeclarativeList >> sentItemAt: selection [ 
+
+	^ self items at: selection.
+]
+
 { #category : #'private - accessing' }
 GtDeclarativeList >> sentItems [
 	"Answer the collection of sent items of the receiver.
@@ -68,6 +74,6 @@ GtDeclarativeList >> viewFor: aView [
 		priority: priority;
 		items: [ self items collect: #asRopedText ].
 	list
-		send: [ :arg :selection | accessor gtSentItemFor: methodName at: selection from ].
+		send: [ :arg :selection | accessor gtSentItemFor: methodName at: selection first ].
 	^list
 ]

@@ -213,6 +213,12 @@ GtDeclarativeView >> priority: anObject [
 	priority := anObject
 ]
 
+{ #category : #accessing }
+GtDeclarativeView >> sentItemAt: selection [ 
+
+	^ self sentItems at: selection.
+]
+
 { #category : #'private - accessing' }
 GtDeclarativeView >> sentItems [
 	"Answer the collection of sent items of the receiver.

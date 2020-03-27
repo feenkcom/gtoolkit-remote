@@ -92,6 +92,12 @@ GtDeclarativeColumnedList >> items: anObject [
 	items := anObject
 ]
 
+{ #category : #accessing }
+GtDeclarativeColumnedList >> sentItemAt: selection [ 
+
+	^ self items at: selection.
+]
+
 { #category : #'private - accessing' }
 GtDeclarativeColumnedList >> sentItems [
 	"Answer the collection of sent items of the receiver.

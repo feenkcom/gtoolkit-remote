@@ -55,8 +55,8 @@ GtRemoteInspectorServer >> akgInspectable [
 	"Testing method"
 
 	self register: (
-			AkgInspectable new 
-				collectionAt: 1 put: AkgInspectable new;
+			GtDeclarativeTestInspectable new 
+				collectionAt: 1 put: GtDeclarativeTestInspectable new;
 				yourself) 
 		name: #akg.
 ]
