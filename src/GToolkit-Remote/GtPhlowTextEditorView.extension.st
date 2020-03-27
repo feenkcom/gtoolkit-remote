@@ -12,3 +12,10 @@ GtPhlowTextEditorView >> asGtDeclarativeView [
 		dataTransport: GtDeclarativeView dataIncluded.
 
 ]
+
+{ #category : #'*GToolkit-Remote' }
+GtPhlowTextEditorView >> canBeGtDeclarativeView [
+	"Answer a boolean indicating whether the receiver can be represented as a GtDeclarativeView"
+
+	^true
+]
