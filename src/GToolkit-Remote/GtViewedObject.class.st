@@ -19,7 +19,8 @@ Class {
 	#name : #GtViewedObject,
 	#superclass : #Object,
 	#instVars : [
-		'object'
+		'object',
+		'viewCache'
 	],
 	#category : #'GToolkit-Remote-Server'
 }
@@ -28,6 +29,16 @@ Class {
 GtViewedObject class >> object: anObject [
 
 	^ self new initializeWith: anObject
+]
+
+{ #category : #private }
+GtViewedObject >> declarativeViewWithSelector: viewSelector [
+	"Answer the objects view with the given selector name"
+
+	^ (viewCache
+		at: viewSelector
+		ifAbsentPut: [ GtViewCache viewedObject: self selector: viewSelector ]) 
+			declarativeView
 ]
 
 { #category : #accessing }
@@ -41,17 +52,22 @@ GtViewedObject >> getGtViewMethodNames [
 GtViewedObject >> getViewDeclaration: viewSelector [
 	"Answer the declarative view dictionary for the supplied selector"
 
-	^ (object perform: viewSelector with: GtPhlowEmptyView new) asGtDeclarativeView asDictionaryForExport 
+	^ (self declarativeViewWithSelector: viewSelector) asDictionaryForExport 
 ]
 
 { #category : #'gt inspector' }
-GtViewedObject >> gtSentItemFor: methodName at: selection [ 
+GtViewedObject >> gtSentItemFor: viewSelector at: selection [ 
 	"Answer the value to be sent from the view"
-	| view |
 
-	view := (object perform: methodName with: GtPhlowProtoView new) asGtDeclarativeView.
-	^ view sentItemAt: selection
+	^ (self declarativeViewWithSelector: viewSelector) sentItemAt: selection
 	
+]
+
+{ #category : #initialization }
+GtViewedObject >> initialize [
+
+	super initialize.
+	viewCache := Dictionary new.
 ]
 
 { #category : #initialization }
@@ -84,4 +100,14 @@ GtViewedObject >> rawViewData [
 			value := node rawValue.
 			stream nextPut: { icon. name. value. } ] ].
 
+]
+
+{ #category : #private }
+GtViewedObject >> viewWithSelector: viewSelector [
+	"Answer the objects view with the given selector name"
+
+	^ (viewCache
+		at: viewSelector
+		ifAbsentPut: [ GtViewCache viewedObject: self selector: viewSelector ]) 
+			view
 ]

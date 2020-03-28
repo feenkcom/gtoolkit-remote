@@ -8,9 +8,9 @@ Current limitations:
 !!Internal Representation and Key Implementation Points.
 
 !!!Instance Variables
-	columnTitles:		<Array of String>
-	columnWidths:		<Array of Integer|nil>
-	items:		<Array of Array>
+	columnTitles:	<Array of String>
+	columnWidths:	<Array of Integer|nil>
+	items:				<Array of Array>	These are the formatted values to display, not the raw values to send
 
 "
 Class {
@@ -95,16 +95,7 @@ GtDeclarativeColumnedList >> items: anObject [
 { #category : #accessing }
 GtDeclarativeColumnedList >> sentItemAt: selection [ 
 
-	^ self items at: selection.
-]
-
-{ #category : #'private - accessing' }
-GtDeclarativeColumnedList >> sentItems [
-	"Answer the collection of sent items of the receiver.
-	This method is provided to facilitate the export of serialised view definitions by GtRemoteInspectorExporter and is not a general access method."
-
-	^(1 to: self items size) collect:
-		[ :i | accessor sentItemAt: i ]
+	^ accessor itemsBuilder value at: selection.
 ]
 
 { #category : #'building - graph' }
@@ -125,6 +116,6 @@ GtDeclarativeColumnedList >> viewFor: aView [
 		(columnWidths at: index) ifNotNil: [ :width |
 			column width: width ] ].
 	list
-		send: [ :arg :selection | accessor gtSentItemFor: methodName at: selection from ].
+		send: [ :arg :selection | accessor gtSentItemFor: methodName at: selection first ].
 	^list
 ]
