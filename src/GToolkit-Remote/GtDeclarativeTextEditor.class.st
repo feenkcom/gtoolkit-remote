@@ -36,6 +36,12 @@ GtDeclarativeTextEditor >> data [
 ]
 
 { #category : #accessing }
+GtDeclarativeTextEditor >> sentItemAt: selector [ 
+
+	^ self shouldNotImplement 
+]
+
+{ #category : #accessing }
 GtDeclarativeTextEditor >> string [
 
 	^ string ifNil: [ 

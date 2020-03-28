@@ -213,12 +213,10 @@ GtDeclarativeView >> priority: anObject [
 	priority := anObject
 ]
 
-{ #category : #'private - accessing' }
-GtDeclarativeView >> sentItems [
-	"Answer the collection of sent items of the receiver.
-	This method is provided to facilitate the export of serialised view definitions by GtRemoteInspectorExporter and is not a general access method."
+{ #category : #accessing }
+GtDeclarativeView >> sentItemAt: selection [ 
 
-	^#()
+	^ self subclassResponsibility 
 ]
 
 { #category : #accessing }

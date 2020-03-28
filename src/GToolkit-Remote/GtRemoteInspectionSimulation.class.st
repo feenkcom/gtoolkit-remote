@@ -19,7 +19,8 @@ Class {
 	#name : #GtRemoteInspectionSimulation,
 	#superclass : #Object,
 	#instVars : [
-		'object'
+		'object',
+		'viewProxy'
 	],
 	#category : #'GToolkit-Remote-Development'
 }
@@ -27,7 +28,22 @@ Class {
 { #category : #'instance creation' }
 GtRemoteInspectionSimulation class >> openOn: anObject [
 
-	GtInspector openOn: (self new object: anObject)
+	^ self new object: anObject
+]
+
+{ #category : #'gt inspector' }
+GtRemoteInspectionSimulation >> declarativeViews [
+	"Answer the views for the receiver"
+	| viewMethodNames rawViews viewDictionary |
+
+	viewMethodNames := viewProxy getGtViewMethodNames.
+	rawViews := viewMethodNames collect: [ :viewSelector |
+		viewDictionary := viewProxy getViewDeclaration: viewSelector.
+		((GtDeclarativeView fromDictionary: viewDictionary)
+			accessor: viewProxy;
+			methodName: viewSelector;
+			yourself) ].
+	^ rawViews
 ]
 
 { #category : #simulation }
@@ -45,77 +61,78 @@ GtRemoteInspectionSimulation >> gtLocalViewsFor: aView inContext: aContext [
 
 { #category : #simulation }
 GtRemoteInspectionSimulation >> gtProxyFor: aView [
-	<gtView>
-	^ aView columnedList
+	<gtProxy>
+
+	^(self gtRawFor: aView)
 		title: 'Proxy' translated;
-		priority: 10000;
-		items: [ 
-			{ 'object' -> object. } ];
-		column: 'Icon' do: [:aColumn | 
-			aColumn 
-				itemStencil: [ :aNode |
-					| icon |
-					icon := ([ aNode value gtInspectorIcon ifNil: [ aNode value class systemIcon ] ]
-						on: Error 
-						do: [ :error | aView iconNamed: #smallWarningIcon ]).
-					icon asElement 
-						margin: (BlInsets top: 3 left: 0 bottom: 3 right: 0 ) ];
-				noResize ];
-		column: 'Variable' do: [:aColumn |
-			aColumn 
-				itemFormat: [ :aNode | aNode key asRopedText ];
-				matchParent ];
-		column: 'Value' do: [ :aColumn |
-			aColumn 
-				itemFormat: [ :aNode |
-					[ aNode value gtDisplayString asRopedText ] 
-						on: Error, Halt
-						do: [ aNode errorMessage asRopedText foreground: Color red ] ];
-			matchParent ];
-		send: #value
+		priority: 10000.
 ]
 
-{ #category : #simulation }
-GtRemoteInspectionSimulation >> gtViewsFor: aView [
-	"this is the default entry method for retrieving the wrapper view containing all views"
-	^ self gtViewsFor: aView inContext: nil
+{ #category : #'gt inspector' }
+GtRemoteInspectionSimulation >> gtProxyRawFor: aView [
+
+	^ aView columnedList 
+		title: 'Raw';
+		priority: 5;
+		items: [ viewProxy rawViewData ];
+		column: 'Icon' do: [ :aColumn |
+			aColumn
+				itemStencil: [ :aNode | aNode third iconNamed: aNode first ];
+				noResize ];
+		column: 'Variable' do: [ :aColumn |
+			aColumn
+				itemFormat: [ :aNode | aNode second asRopedText ];
+				matchParent ];
+		column: 'Value' do: [ :aColumn |
+			aColumn
+				itemFormat: [ :aNode | 
+					[ aNode third gtDisplayString asRopedText ]
+						on: Error 
+						do: [ :ex | ex messageText asRopedText foreground: Color red ] ] ];
+		send: [ :aNode | aNode third ]
+]
+
+{ #category : #'gt inspector' }
+GtRemoteInspectionSimulation >> gtProxyViewsFor: aView [
+	<gtView>
+	^ aView list
+		title: 'Proxy views' translated;
+		priority: 10001;
+		items: [ 	self declarativeViews ];
+		itemFormat: [ :view | view title ];
+		send: [ :view | view ]
 ]
 
 { #category : #simulation }
 GtRemoteInspectionSimulation >> gtViewsFor: aView inContext: aContext [
 	"Add the declarative views from the inspectors object to the inspectors views"
 
-	| resultingView views declaration |
+	| resultingView inspectorViews |
 
 	resultingView := self gtLocalViewsFor: aView inContext: aContext.
-	views := resultingView originalView views.
-self halt.
+	inspectorViews := resultingView originalView views.
+
 	"Add the explicitly declarative views from the inspected object"
-	views addAll: (object gtDeclarativeViewAccessors collect: [ :each |
-		"Retrieve the JSON string declaration and instantiate the actual declarative view"
-		declaration := GtDeclarativeView accessor: each.
-		declaration viewFor: aView ]).
+	inspectorViews addAll: (self viewsFor: aView).
 
 	"Re-sort by priority"
-	views := views sorted: [ :a :b | a priority < b priority ].
-	resultingView originalView views: views.
+	inspectorViews := inspectorViews sorted: [ :a :b | a priority < b priority ].
+	resultingView originalView views: inspectorViews.
 	^resultingView
 ]
 
 { #category : #simulation }
 GtRemoteInspectionSimulation >> gtViewsInContext: aContext [
-	"This collects all views for the current object.
-	For a SeamlessProxy we just want the Raw view renamed as 'Proxy'"
-	^ OrderedCollection with: (self gtProxyFor: GtPhlowEmptyView new)
-]
+	"This collects all views for the current object"
+	| emptyView |
 
-{ #category : #simulation }
-GtRemoteInspectionSimulation >> gtdViewForSelector: aSelector [
-	"Answer an accessor for the view created by the given selector."
-	| view  declaration |
-	view := object gtdDeclarativeViewForSelector: aSelector.
-	declaration := GtDeclarativeView accessor: view.
-	^ declaration viewFor: GtPhlowEmptyView new
+	emptyView := GtPhlowEmptyView new.
+	^ OrderedCollection new
+		"The raw view is a special case to easily handle icons"
+		add: (self gtProxyRawFor: emptyView);
+		add: (self gtProxyFor: emptyView);
+		add: (self gtProxyViewsFor: emptyView);
+		yourself
 ]
 
 { #category : #accessing }
@@ -125,5 +142,15 @@ GtRemoteInspectionSimulation >> object [
 
 { #category : #accessing }
 GtRemoteInspectionSimulation >> object: anObject [
-	object := anObject
+
+	object := anObject.
+	viewProxy := GtViewedObject object: anObject
+]
+
+{ #category : #'gt inspector' }
+GtRemoteInspectionSimulation >> viewsFor: aView [
+	"Should be all views, but just get Raw and Print views for now"
+
+	^ self declarativeViews collect: [ :declarativeView | declarativeView viewFor: aView ].
+
 ]

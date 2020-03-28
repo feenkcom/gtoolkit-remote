@@ -1,3 +1,15 @@
+"
+GtDeclarativeList supports a subset of the possible configurations of ${class:name=GtPhlowListView}.
+
+ 
+!!Internal Representation and Key Implementation Points.
+
+!!!Instance Variables
+	items:		<Array> - The formatted items to display (not the raw values held in the list)
+
+
+!!!Implementation Points
+"
 Class {
 	#name : #GtDeclarativeList,
 	#superclass : #GtDeclarativeView,
@@ -48,13 +60,11 @@ GtDeclarativeList >> items: anObject [
 	items := anObject
 ]
 
-{ #category : #'private - accessing' }
-GtDeclarativeList >> sentItems [
-	"Answer the collection of sent items of the receiver.
-	This method is provided to facilitate the export of serialised view definitions by GtRemoteInspectorExporter and is not a general access method."
+{ #category : #accessing }
+GtDeclarativeList >> sentItemAt: selection [ 
+	"Answer the raw value at the supplied index"
 
-	^(1 to: self items size) collect:
-		[ :i | accessor sentItemAt: i ]
+	^ accessor itemsBuilder value at: selection.
 ]
 
 { #category : #'building - graph' }
@@ -68,6 +78,6 @@ GtDeclarativeList >> viewFor: aView [
 		priority: priority;
 		items: [ self items collect: #asRopedText ].
 	list
-		send: [ :arg :selection | accessor gtSentItemFor: methodName at: selection from ].
+		send: [ :arg :selection | accessor gtSentItemFor: methodName at: selection first ].
 	^list
 ]
