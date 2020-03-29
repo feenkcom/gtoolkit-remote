@@ -11,7 +11,7 @@ BaselineOfGt4JSLink >> baseline: spec [
 		for: #common
 		do: [
 			spec 
-				baseline: 'JSLink' with: [
+				baseline: 'JavaScriptLink' with: [
 					spec repository: 'github://feenkcom/JSLink/src' ];
 				package: 'Gt4JSLink' with: [ spec requires: #( JSLink ) ]
 		]
