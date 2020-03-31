@@ -9,7 +9,7 @@ BaselineOfGt4PharoLink >> baseline: spec [
 	<baseline>
 	spec for: #'common' do: [
 		spec baseline: 'PharoLink' with: [
-				spec repository: 'github://feenkcom/PharoLink:v0.6.0/src' ].
+				spec repository: 'github://feenkcom/PharoLink:v0.6.1/src' ].
 		spec package: 'Gt4PharoLink' with: [
 				spec requires: #(#PharoLink ). ]. ].
 
