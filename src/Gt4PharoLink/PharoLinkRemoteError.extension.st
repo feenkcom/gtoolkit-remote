@@ -12,10 +12,15 @@ PharoLinkRemoteError >> formattedText: aString [
 		filenameStart := (regex subBeginning: 2) first asNumber + 1.
 		filenameEnd := (regex subBeginning: 3) first asNumber - 1.
 		filename := fullText from: filenameStart to: filenameEnd.
-		filename foreground: GtDocumentConstants linkColor.
-		filename attribute: (BrTextClickAttribute new 
+		filename attributes:
+					{
+					(BlTextForegroundAttribute new paint: BrGlamorousColors linkColor).
+					(BrTextHoverStylableAttribute new
+						beNotOverwritableByStyler;
+						attribute: (BlTextUnderlineAttribute new paint: BrGlamorousColors linkColor)).
+		(BrTextClickAttribute new 
 			action: [ :text :textElement :textEditor :clickEvent |
-				textElement phlow spawnObject: filename asString asFileReference ])
+				textElement phlow spawnObject: filename asString asFileReference ])}
 		 ].
 	^ fullText
 ]
@@ -26,6 +31,7 @@ PharoLinkRemoteError >> gtMessageTextFor: aView [
 
 	^ aView textEditor
 		title: 'Message';
+		look: BrGlamorousCodeEditorLook;
 		priority: 2;
 		text: [ self formattedText: self messageText ]
 ]
