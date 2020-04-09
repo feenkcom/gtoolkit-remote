@@ -165,7 +165,7 @@ GtDeclarativeView >> gtBuildViewActionFor: anAction [
 		button := BrButton new.
 		button
 			look: BrGlamorousButtonWithIconLook;
-			icon: BrGlamorousIcons play asElement;
+			icon: BrGlamorousVectorIcons play;
 			action: [ 
 				button fireEvent: (GtPhlowObjectToSpawn new
 					object: (self viewFor: GtPhlowEmptyView new);

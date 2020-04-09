@@ -26,7 +26,7 @@ TGtPharoLinkPlayground >> gtPlaygroundFor: aView [
 		priority: 10;
 		text: [ self gtPlaygroundText ];
 		styler: self settings parserClass gtStyler;
-		actionButtonIcon: BrGlamorousIcons playinspect  
+		actionButtonIcon: BrGlamorousVectorIcons playinspect  
 			action: [ :aButton |
 				| statements result |
 				statements := aButton phlow textViewContent asString.
