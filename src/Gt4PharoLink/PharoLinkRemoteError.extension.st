@@ -7,11 +7,13 @@ PharoLinkRemoteError >> formattedText: aString [
 	fullText := aString asRopedText.
 	"The regex also groups the line and column numbers.
 	ToDo: open the file with the error line number highlighted"
-	regex := '\s*at\s[^(]*\(([^:(]+)\:(\d+)\:(\d+)\)' asRegex.
-	regex matchesIn: aString do: [ :match | | filename filenameStart filenameEnd |
+	regex := '\s*at\s[^(]*\(([^:(]+)\:(\d+)\:(\d+)(\))' asRegex.
+	regex matchesIn: aString do: [ :match | | filename filenameStart filenameEnd startLine startColumn |
 		filenameStart := (regex subBeginning: 2) first asNumber + 1.
-		filenameEnd := (regex subBeginning: 3) first asNumber - 1.
-		filename := fullText from: filenameStart to: filenameEnd.
+		filenameEnd := (regex subBeginning: 3) first asNumber.
+		filename := fullText from: filenameStart to: filenameEnd - 1.
+		startLine := (regex subexpression: 3) asNumber.
+		startColumn := (regex subexpression: 4) asNumber.
 		filename attributes:
 					{
 					(BlTextForegroundAttribute new paint: BrGlamorousColors linkColor).
@@ -20,7 +22,12 @@ PharoLinkRemoteError >> formattedText: aString [
 						attribute: (BlTextUnderlineAttribute new paint: BrGlamorousColors linkColor)).
 		(BrTextClickAttribute new 
 			action: [ :text :textElement :textEditor :clickEvent |
-				textElement phlow spawnObject: filename asString asFileReference ])}
+				textElement phlow spawnObject: 
+					(filename asString asFileReference asGtFileReferenceWithRanges
+						addStartLine: startLine
+						startColumn: startColumn 
+						endLine: startLine
+						endColumn: 0) ])}
 		 ].
 	^ fullText
 ]
