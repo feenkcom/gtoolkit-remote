@@ -53,6 +53,8 @@ GtViewedObject >> getViewDeclaration: viewSelector [
 	"Answer the declarative view dictionary for the supplied selector"
 
 	^ (self declarativeViewWithSelector: viewSelector) asDictionaryForExport 
+		at: #'__pharolinkImmediate' put: true;
+		yourself.
 ]
 
 { #category : #'gt inspector' }
