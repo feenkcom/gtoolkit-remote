@@ -1,2 +1,2 @@
-# gtoolkit-remote
-GToolkit tools to work with remote systems, e.g., remote Pharo image.
+# GT Remote
+The engine to work with remote systems such as a remote Pharo image.
