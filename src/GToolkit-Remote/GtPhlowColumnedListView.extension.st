@@ -14,9 +14,9 @@ GtPhlowColumnedListView >> asGtDeclarativeView [
 					cull: (column itemComputation phlowValue: row  withEnoughArguments: { row . index })
 					cull: column) gtDisplayString ] as: Array ]) asArray;
 		columnTitles: (columns collect: [ :each | each title ] as: Array);
-		columnWidths: (columns collect: [ :each | each resizer ifNotNil: [ :resizer |
-				resizer isExact
-					ifTrue: [resizer size]
+		columnWidths: (columns collect: [ :each | each cellWidth ifNotNil: [ :cellWidth |
+				cellWidth class = BrColumnFixedWidth
+					ifTrue: [cellWidth width]
 					ifFalse: [nil]]] as: Array);
 		dataTransport: GtDeclarativeView dataIncluded.
 ]
