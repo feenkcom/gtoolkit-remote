@@ -81,20 +81,12 @@ LanguageLinkProxyObject >> gtProxyRawFor: aView [
 				viewProxy newCommandFactory
 					<< 'self rawViewData';
 					sendAndWait ] ];
-		column: 'Icon' do: [ :aColumn |
-			aColumn
-				itemStencil: [ :aNode | aNode third iconNamed: aNode first ];
-				noResize ];
-		column: 'Variable' do: [ :aColumn |
-			aColumn
-				itemFormat: [ :aNode | aNode second asRopedText ];
-				matchParent ];
-		column: 'Value' do: [ :aColumn |
-			aColumn
-				itemFormat: [ :aNode | 
+		column: 'Icon' icon: [ :aNode | aNode third iconNamed: aNode first ];
+		column: 'Variable' text: [ :aNode | aNode second asRopedText ];
+		column: 'Value' text: [ :aNode | 
 					[ aNode third gtDisplayString asRopedText ]
 						on: Error 
-						do: [ :ex | ex messageText asRopedText foreground: Color red ] ] ];
+						do: [ :ex | ex messageText asRopedText foreground: Color red ] ];
 		send: [ :aNode | aNode third ]
 ]
 
