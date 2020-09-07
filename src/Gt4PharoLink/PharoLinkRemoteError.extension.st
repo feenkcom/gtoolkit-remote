@@ -34,7 +34,7 @@ PharoLinkRemoteError >> formattedText: aString [
 
 { #category : #'*Gt4PharoLink' }
 PharoLinkRemoteError >> gtMessageTextFor: aView [
-	"<gtView>"
+	<gtView>
 
 	^ aView textEditor
 		title: 'Message';
