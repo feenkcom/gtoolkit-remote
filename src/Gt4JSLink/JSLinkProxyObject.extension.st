@@ -7,11 +7,11 @@ JSLinkProxyObject >> declarativeViews [
 
 	self viewProxyDo: [ :viewProxy | 
 		viewMethodNames := viewProxy newCommandFactory
-				<< (viewProxy => #getGtViewMethodNames) call;
+				<< (viewProxy => #getGtViewMethodNames) jsCall;
 				sendAndWait.
 		rawViews := viewMethodNames collect: [ :viewSelector |
 				viewDictionary := viewProxy newCommandFactory
-					<< ((viewProxy => #getViewDeclaration) callWith: { viewSelector });
+					<< ((viewProxy => #getViewDeclaration) jsCallWith: { viewSelector });
 					sendAndWait.
 				((GtDeclarativeView fromDictionary: viewDictionary)
 					accessor: viewProxy;
@@ -34,9 +34,9 @@ JSLinkProxyObject >> getViewProxy [
 	"Answer a GtViewedProxy on the receiver"
 
 	^ self application newCommandFactory
-		<< (#GtViewedObject asJSGIdentifier <- (#require asJSGIdentifier callWith: { '../gtoolkit/gt' })) beLetDeclaration;
+		<< (#GtViewedObject asJSGIdentifier <- (#require asJSGIdentifier jsCallWith: { '../gtoolkit/gt' })) beLetDeclaration;
 		<< (#viewedObject asJSGIdentifier <- self) beLetDeclaration;
-		<< (#GtViewedObject asJSGIdentifier callWith: { #viewedObject asJSGIdentifier }) new;
+		<< (#GtViewedObject asJSGIdentifier jsCallWith: { #viewedObject asJSGIdentifier }) new;
 		sendAndWait.
 
 ]
@@ -61,7 +61,7 @@ JSLinkProxyObject >> gtPlaygroundFor: aView [
 	^ aView textEditor
 		title: 'Playground' translated;
 		priority: 10;
-		text: [ '' asRopedText attributesBuilder attribute: (BlFontGenericFamilyAttribute monospace beNotOverwritableByStyler) ];
+		text: [ '' asRopedText glamorousCodeFont ];
 		styler: application settings parserClass gtStyler;
 		actionButtonIcon: BrGlamorousIcons playinspect  
 			action: [ :aButton |
@@ -89,8 +89,8 @@ JSLinkProxyObject >> gtProxyViewsFor: aView [
 	^ aView list
 		title: 'Proxy views' translated;
 		priority: 10001;
-		items: [ 	self declarativeViews ];
-		itemFormat: [ :view | view title ];
+		items: [ self declarativeViews ];
+		itemText: [ :view | view title ];
 		send: [ :view | view ]
 ]
 
@@ -101,7 +101,7 @@ JSLinkProxyObject >> gtSentItemFor: methodName at: selection [
 	self assert: (PharoLinkRegistry isPrimitive: selection).
 
 	^ application newCommandFactory
-				<< ((self => #sentItem) callWith: { methodName. selection. });
+				<< ((self => #sentItem) jsCallWith: { methodName. selection. });
 					sendAndWait.
 ]
 
