@@ -42,6 +42,17 @@ JSLinkProxyObject >> getViewProxy [
 ]
 
 { #category : #'*Gt4JSLink' }
+JSLinkProxyObject >> gtErrorStatusFor: aView [
+	<gtView>
+
+	self application isRunning ifTrue: [ ^ aView empty ].
+	^ aView textEditor
+		title: 'Status' translated;
+		priority: 10;
+		text: 'Application Server not running'.
+]
+
+{ #category : #'*Gt4JSLink' }
 JSLinkProxyObject >> gtLocalViewsFor: aView inContext: aContext [
 	| title resultingView |
 	title := String streamContents: [ :stream |
@@ -161,6 +172,8 @@ JSLinkProxyObject >> viewProxyDo: aBlock [
 JSLinkProxyObject >> viewsFor: aView [
 	"Should be all views, but just get Raw and Print views for now"
 
-	^ self declarativeViews collect: [ :declarativeView | declarativeView viewFor: aView ].
+	^ [ self declarativeViews collect: [ :declarativeView | declarativeView viewFor: aView ] ]
+		on: LanguageLinkServerNotRunningError
+		do: [ #() ].
 
 ]
