@@ -4,6 +4,14 @@ Class {
 	#category : #Gt4JSLink
 }
 
+{ #category : #testing }
+GtJSLinkDebuggerElement class >> availableAutomatically [
+	"The JS debugger should be displayed automatically when opened
+	as the Pharo stack only shows that the server paused signal has been received."
+	
+	^ true
+]
+
 { #category : #initialization }
 GtJSLinkDebuggerElement class >> defaultTitle [ 
 
@@ -42,6 +50,32 @@ GtJSLinkDebuggerElement >> actOnDebugSessionChanged [
 		addChild: self newToolbar;
 		addChild: self newSourceEditor.
 	self addChild: container.
+]
+
+{ #category : #'private - actions' }
+GtJSLinkDebuggerElement >> jsResume [
+	"Continue execution"
+
+	debuggingSession jsResume.
+	(ResumeDebugAction forDebugger: self) executeAction.
+]
+
+{ #category : #'private - actions' }
+GtJSLinkDebuggerElement >> jsStepInto [
+
+	debuggingSession jsStepInto.
+]
+
+{ #category : #'private - actions' }
+GtJSLinkDebuggerElement >> jsStepOut [
+
+	debuggingSession jsStepOut.
+]
+
+{ #category : #'private - actions' }
+GtJSLinkDebuggerElement >> jsStepOver [
+
+	debuggingSession jsStepOver.
 ]
 
 { #category : #'private - element creation' }
@@ -110,7 +144,7 @@ GtJSLinkDebuggerElement >> newToolbar [
 
 	toolbar := BrHorizontalPane new 
 		vFitContent;
-		background: Color lightGray;
+		background: BrGlamorousColors defaultHeaderBackgroundColor;
 		padding: (BlInsets top: 5 bottom: 5).
 	toolbar
 		addChild: self newInspectButton;
@@ -123,8 +157,7 @@ GtJSLinkDebuggerElement >> newToolbar [
 
 { #category : #'private - accessing' }
 GtJSLinkDebuggerElement >> nodeJSDebugger [
-	"Answer the debugger client to the NodeJS server.
-	See the Law of Demeter."
+	"Answer the debugger client to the NodeJS server"
 
-	^ debuggingSession interruptedContext receiver value debugger
+	^ debuggingSession nodeJSDebugger
 ]
