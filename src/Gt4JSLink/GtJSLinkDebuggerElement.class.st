@@ -1,6 +1,12 @@
 Class {
 	#name : #GtJSLinkDebuggerElement,
 	#superclass : #GtDebuggerElement,
+	#instVars : [
+		'variableList',
+		'callFramesList',
+		'sourceCode',
+		'currentCallFrame'
+	],
 	#category : #Gt4JSLink
 }
 
@@ -39,16 +45,43 @@ GtJSLinkDebuggerElement class >> sessionClass [
 
 { #category : #callbacks }
 GtJSLinkDebuggerElement >> actOnDebugSessionChanged [
-	| container |
 
-	self removeChildren.
+	self nodeJSDebugger announcer 
+		when: CDTDebuggerPaused
+		send: #scheduleUpdateUI
+		to: self.
+	self scheduleUpdateUI.
+]
+
+{ #category : #'private - accessing' }
+GtJSLinkDebuggerElement >> columnNumber [ 
+
+	^ currentCallFrame columnNumber
+]
+
+{ #category : #initialization }
+GtJSLinkDebuggerElement >> initialize [
+	| container mainPane leftPane |
+
+	super initialize.
 	self constraintsDo: [ :c |
 		c vertical matchParent.
 		c horizontal matchParent ].
 	container := BrVerticalPane new.
+	mainPane := BrHorizontalPane new.
+	leftPane := BrVerticalPane new.
+	callFramesList := self newCallFramesList.
+	sourceCode := self newSourceEditor.
+	leftPane
+		addChild: callFramesList;
+		addChild: sourceCode.
+	variableList := self newVariablesList.
+	mainPane
+		addChild: leftPane;
+		addChild: variableList.
 	container 
 		addChild: self newToolbar;
-		addChild: self newSourceEditor.
+		addChild: mainPane.
 	self addChild: container.
 ]
 
@@ -76,6 +109,47 @@ GtJSLinkDebuggerElement >> jsStepOut [
 GtJSLinkDebuggerElement >> jsStepOver [
 
 	debuggingSession jsStepOver.
+
+]
+
+{ #category : #'private - accessing' }
+GtJSLinkDebuggerElement >> lineNumber [ 
+
+	^ currentCallFrame lineNumber
+]
+
+{ #category : #'instance creation' }
+GtJSLinkDebuggerElement >> newCallFramesList [
+	| list |
+
+	list := BrColumnedList new.
+	list margin: (BlInsets top: 10).
+	list addEventHandler: (GtPhlowListToSelectHandler new 
+		transformation: [ :variableNode | variableNode value ]).
+	list rowStencil: (BrGlamorousColumnedListSelectableRowElementStencilBuilder new).
+
+	list column 
+		title: 'Depth';
+		cellStencil: [ 
+			BrLabel new
+				look: (BrGlamorousLabelLook new foreground: Color black);
+				hExact: 30;
+				vFitContent;
+				margin: (BlInsets top: 3 left: 10 bottom: 3 right: 0) ];
+		dataBinder: [ :aCellElement :aCDTCallFrame |
+			aCellElement text: aCDTCallFrame ordinal asString asRopedText ].
+	list column
+		title: 'Frame';
+		cellStencil: [
+			BrLabel new
+				look: BrGlamorousLabelLook new;
+				hMatchParent;
+				vFitContent;
+				margin: (BlInsets top: 3 left: 10 bottom: 3 right: 0) ];
+		dataBinder: [ :aCellElement :aCDTCallFrame |
+			aCellElement text: aCDTCallFrame printString asRopedText ].
+
+	^ list
 ]
 
 { #category : #'private - element creation' }
@@ -101,11 +175,9 @@ GtJSLinkDebuggerElement >> newResumeButton [
 { #category : #'private - element creation' }
 GtJSLinkDebuggerElement >> newSourceEditor [
 
-	^ CDTDebuggerEditor new
-		debugger: self nodeJSDebugger;
+	^ BrEditor new
 		look: BrGlamorousCodeEditorLook new;
-		styler: JSParser gtStyler;
-		yourself
+		styler: JSParser gtStyler.
 ]
 
 { #category : #'private - element creation' }
@@ -145,7 +217,8 @@ GtJSLinkDebuggerElement >> newToolbar [
 	toolbar := BrHorizontalPane new 
 		vFitContent;
 		background: BrGlamorousColors defaultHeaderBackgroundColor;
-		padding: (BlInsets top: 5 bottom: 5).
+		padding: (BlInsets top: 5 bottom: 5);
+		alignCenterRight.
 	toolbar
 		addChild: self newInspectButton;
 		addChild: self newResumeButton;
@@ -155,9 +228,94 @@ GtJSLinkDebuggerElement >> newToolbar [
 	^ toolbar
 ]
 
+{ #category : #'instance creation' }
+GtJSLinkDebuggerElement >> newVariablesList [
+	| list |
+
+	list := BrColumnedList new.
+	list margin: (BlInsets top: 10).
+	list addEventHandler: (GtPhlowListToSelectHandler new 
+		transformation: [ :variableNode | variableNode value ]).
+	list rowStencil: (BrGlamorousColumnedListSelectableRowElementStencilBuilder new).
+
+	list column 
+		title: 'Variable';
+		cellStencil: [ 
+			BrLabel new
+				look: (BrGlamorousLabelLook new foreground: Color black);
+				hMatchParent;
+				vFitContent;
+				margin: (BlInsets top: 3 left: 10 bottom: 3 right: 0) ];
+		dataBinder: [ :aCellElement :aCDTPropertyDescriptor |
+			aCellElement text: aCDTPropertyDescriptor name asRopedText ].
+	list column
+		title: 'Value';
+		cellStencil: [
+			BrLabel new
+				look: BrGlamorousLabelLook new;
+				hMatchParent;
+				vFitContent;
+				margin: (BlInsets top: 3 left: 10 bottom: 3 right: 0) ];
+		dataBinder: [ :aCellElement :aCDTPropertyDescriptor |
+			aCellElement text: (aCDTPropertyDescriptor enumerable
+				ifTrue: [ aCDTPropertyDescriptor value printString ]
+				ifFalse: [ '<not enumerable>' ]) asRopedText ].
+
+	^ list
+]
+
 { #category : #'private - accessing' }
 GtJSLinkDebuggerElement >> nodeJSDebugger [
 	"Answer the debugger client to the NodeJS server"
 
 	^ debuggingSession nodeJSDebugger
+]
+
+{ #category : #private }
+GtJSLinkDebuggerElement >> scheduleUpdateUI [
+
+	self enqueueTask: (BlTaskAction new action: [ self updateUI ]).
+
+]
+
+{ #category : #'private - accessing' }
+GtJSLinkDebuggerElement >> scriptId [ 
+
+	^ currentCallFrame scriptId
+]
+
+{ #category : #'private - accessing' }
+GtJSLinkDebuggerElement >> sourceCode [
+
+	^ self nodeJSDebugger getScriptSource: self scriptId
+]
+
+{ #category : #'private - accessing' }
+GtJSLinkDebuggerElement >> sourceText [ 
+	"Answer the receiver's source code, with the current line highlighted"
+	| source text indexes lineNumber |
+
+	lineNumber := self lineNumber.
+	source := self sourceCode withSqueakLineEndings.
+	text := source asRopedText.
+	lineNumber = 0 ifTrue: [ ^ text ].
+	indexes := source gtIndexOfLineNumber: self lineNumber.
+	indexes ifNotNil: 
+		[ (text from: indexes key + self columnNumber to: indexes value) 
+			attribute: (BlTextHighlightAttribute paint: BrGlamorousColors errorBackgroundColor)
+				beNotOverwritableByStyler  ].
+	^ text
+]
+
+{ #category : #callbacks }
+GtJSLinkDebuggerElement >> updateUI [
+
+	callFramesList items: self nodeJSDebugger callFrames.
+	currentCallFrame := self nodeJSDebugger callFrames first.
+	variableList items: currentCallFrame localScope properties.
+	sourceCode text: self sourceText.
+	self lineNumber > 5 ifTrue:
+		[ StringSignal emit: 'Scrolling to line: ', self lineNumber asString.
+		sourceCode scrollToPosition: self lineNumber + 5 ].
+
 ]
