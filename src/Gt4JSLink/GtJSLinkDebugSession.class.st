@@ -2,6 +2,7 @@ Class {
 	#name : #GtJSLinkDebugSession,
 	#superclass : #DebugSession,
 	#instVars : [
+		'signal',
 		'nodeJSDebugger'
 	],
 	#category : #Gt4JSLink
@@ -10,8 +11,10 @@ Class {
 { #category : #'js - actions' }
 GtJSLinkDebugSession >> jsResume [
 	"Continue execution.
+	Flag the promise to wait again as the value should be returned (or the debugger opened again).
 	This only instructs the NodeJS server to resume.  Control of the Pharo session is up to the owner of the receiver."
 
+	self signal setWaitAgain.
 	self nodeJSDebugger resume.
 
 ]
@@ -39,16 +42,22 @@ GtJSLinkDebugSession >> jsStepOver [
 
 { #category : #'private - accessing' }
 GtJSLinkDebugSession >> nodeJSDebugger [
-	"Answer the debugger client to the NodeJS server.
-	See the Law of Demeter."
-	| receivedValue |
+	"Answer the debugger client to the NodeJS server"
 
-	nodeJSDebugger ifNotNil: [ ^ nodeJSDebugger ].
+	^ nodeJSDebugger ifNil: [ nodeJSDebugger := self signal debugger ].
+
+]
+
+{ #category : #'private - accessing' }
+GtJSLinkDebugSession >> signal [
+	"Answer the signal that triggered the debug session."
+
+	signal ifNotNil: [ ^ signal ].
 
 	"Confirm that the NodeJS server is in fact paused in the debugger"
-	receivedValue := self interruptedContext receiver value.
-	(receivedValue respondsTo: #debugger) ifFalse:
+	signal := self interruptedContext receiver value.
+	(signal respondsTo: #debugger) ifFalse:
 		[ self error: 'Unable to retrieve JS debugger' ].
 
-	^ nodeJSDebugger := receivedValue debugger
+	^ signal
 ]
