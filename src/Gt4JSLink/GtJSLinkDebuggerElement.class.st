@@ -123,7 +123,7 @@ GtJSLinkDebuggerElement >> newCallFramesList [
 	| list |
 
 	list := BrColumnedList new.
-	list margin: (BlInsets top: 10).
+	list margin: (BlInsets all: 10).
 	list addEventHandler: (GtPhlowListToSelectHandler new 
 		transformation: [ :variableNode | variableNode value ]).
 	list rowStencil: (BrGlamorousColumnedListSelectableRowElementStencilBuilder new).
@@ -148,7 +148,11 @@ GtJSLinkDebuggerElement >> newCallFramesList [
 				margin: (BlInsets top: 3 left: 10 bottom: 3 right: 0) ];
 		dataBinder: [ :aCellElement :aCDTCallFrame |
 			aCellElement text: aCDTCallFrame printString asRopedText ].
-
+	
+	list 
+		background: Color white;
+		addLook: BrShadowLook new.
+		
 	^ list
 ]
 
@@ -176,8 +180,10 @@ GtJSLinkDebuggerElement >> newResumeButton [
 GtJSLinkDebuggerElement >> newSourceEditor [
 
 	^ BrEditor new
-		look: BrGlamorousCodeEditorLook new;
-		styler: JSParser gtStyler.
+		look: BrGlamorousCodeEditorLook new + BrShadowLook new ;
+		styler: JSParser gtStyler;
+		background: Color white;
+		margin: (BlInsets top: 0 left: 10 bottom: 10  right: 10).
 ]
 
 { #category : #'private - element creation' }
@@ -233,7 +239,7 @@ GtJSLinkDebuggerElement >> newVariablesList [
 	| list |
 
 	list := BrColumnedList new.
-	list margin: (BlInsets top: 10).
+	list margin: (BlInsets top: 10 left: 0 bottom: 10 right: 10).
 	list addEventHandler: (GtPhlowListToSelectHandler new 
 		transformation: [ :variableNode | variableNode value ]).
 	list rowStencil: (BrGlamorousColumnedListSelectableRowElementStencilBuilder new).
@@ -261,6 +267,9 @@ GtJSLinkDebuggerElement >> newVariablesList [
 				ifTrue: [ aCDTPropertyDescriptor value printString ]
 				ifFalse: [ '<not enumerable>' ]) asRopedText ].
 
+	list 
+		background: Color white;
+		addLook: BrShadowLook new.
 	^ list
 ]
 
