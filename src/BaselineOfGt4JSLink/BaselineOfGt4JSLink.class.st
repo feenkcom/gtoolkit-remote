@@ -13,6 +13,8 @@ BaselineOfGt4JSLink >> baseline: spec [
 			spec 
 				baseline: 'JavaScriptLink' with: [
 					spec repository: 'github://feenkcom/JSLink/src' ];
-				package: 'Gt4JSLink' with: [ spec requires: #( JavaScriptLink ) ]
+				baseline: 'Chrome' with: [ 
+					spec repository: 'github://feenkcom/Pharo-Chrome/repository' ];
+				package: 'Gt4JSLink' with: [ spec requires: #( JavaScriptLink Chrome ) ]
 		]
 ]
