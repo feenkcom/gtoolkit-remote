@@ -11,7 +11,7 @@ BaselineOfGt4JSLink >> baseline: spec [
 		spec postLoadDoIt: #'postLoadSetup:'.
 		spec 
 			baseline: 'JavaScriptLink' with: [
-				spec repository: 'github://feenkcom/JSLink:v0.5.135/src' ];
+				spec repository: 'github://feenkcom/JSLink:v0.5.136/src' ];
 			baseline: 'Chrome' with: [
 				spec repository: 'github://feenkcom/Pharo-Chrome:v0.5.124/repository' ].
 		spec package: 'Gt4JSLink' with: [
