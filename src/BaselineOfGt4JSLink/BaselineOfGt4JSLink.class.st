@@ -10,7 +10,6 @@ BaselineOfGt4JSLink >> baseline: spec [
 	spec
 		for: #common
 		do: [
-			spec postLoadDoIt: #'postLoadSetup:'.
 			spec 
 				baseline: 'JavaScriptLink' with: [
 					spec repository: 'github://feenkcom/JSLink/src' ];
@@ -18,11 +17,4 @@ BaselineOfGt4JSLink >> baseline: spec [
 					spec repository: 'github://feenkcom/Pharo-Chrome/repository' ];
 				package: 'Gt4JSLink' with: [ spec requires: #( JavaScriptLink Chrome ) ]
 		]
-]
-
-{ #category : #'post load' }
-BaselineOfGt4JSLink >> postLoadSetup: spec [
-	"Register the JS debugger"
-
-	GtJSLinkDebuggerElement register
 ]
