@@ -13,6 +13,6 @@ BaselineOfGt4ChromeDevTools >> baseline: spec [
 			spec 
 				baseline: 'Chrome' with: [ 
 					spec repository: 'github://feenkcom/Pharo-Chrome/repository' ];
-				package: 'Gt4ChromeDevtools' with: [ spec requires: #( Chrome ) ]
+				package: 'Gt4ChromeDevTools' with: [ spec requires: #( Chrome ) ]
 		]
 ]
