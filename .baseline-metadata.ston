@@ -1,1 +1,1 @@
-{	"repositories" : {		"github://feenkcom/Pharo-Chrome/repository" : "v0.5.125",		"github://feenkcom/JSLink/src" : "v0.5.138"	}}
+{	"repositories" : {		"github://feenkcom/Pharo-Chrome/repository" : "v0.5.126",		"github://feenkcom/JSLink/src" : "v0.5.139",		"github://feenkcom/PythonBridge/src" : "v0.5.135"	}}
