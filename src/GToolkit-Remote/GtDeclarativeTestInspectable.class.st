@@ -55,7 +55,8 @@ GtDeclarativeTestInspectable >> gtListFor: aView [
 	^aView list
 		title: 'List' translated;
 		priority: 15;
-		items: [ collectionOfObjects ]
+		items: [ collectionOfObjects ];
+		itemText: [ :item | item asString ]
 ]
 
 { #category : #inspecting }

@@ -90,8 +90,8 @@ GtRemoteInspectionSimulation >> gtProxyViewsFor: aView [
 	^ aView list
 		title: 'Proxy views' translated;
 		priority: 10001;
-		items: [ 	self declarativeViews ];
-		itemFormat: [ :view | view title ];
+		items: [ self declarativeViews ];
+		itemText: [ :view | view title ];
 		send: [ :view | view ]
 ]
 
