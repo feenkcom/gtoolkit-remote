@@ -96,8 +96,8 @@ LanguageLinkProxyObject >> gtProxyViewsFor: aView [
 	^ aView list
 		title: 'Proxy views' translated;
 		priority: 10001;
-		items: [ 	self declarativeViews ];
-		itemFormat: [ :aViewAccessor | aViewAccessor title ];
+		items: [ self declarativeViews ];
+		itemText: [ :aViewAccessor | aViewAccessor title ];
 		send: [ :aDeclarativeView | aDeclarativeView ]
 ]
 

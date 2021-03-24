@@ -7,7 +7,7 @@ Class {
 		'view',
 		'declarativeView'
 	],
-	#category : #'GToolkit-Remote-Server'
+	#category : #'GToolkit-RemoteGt-Server'
 }
 
 { #category : #'instance creation' }
