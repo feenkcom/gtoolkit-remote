@@ -22,7 +22,7 @@ Class {
 		'object',
 		'viewProxy'
 	],
-	#category : #'GToolkit-Remote-Development'
+	#category : #'GToolkit-RemoteGt-Development'
 }
 
 { #category : #'instance creation' }
