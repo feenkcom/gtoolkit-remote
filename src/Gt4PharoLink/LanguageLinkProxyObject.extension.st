@@ -142,16 +142,17 @@ LanguageLinkProxyObject >> gtViewsFor: aView inContext: aContext [
 LanguageLinkProxyObject >> gtViewsInContext: aContext [
 	"This collects all views for the current object.
 	For a proxy we just want the Raw view renamed as 'Proxy'"
-	| emptyView |
+	| views proxyRaw |
 
-	emptyView := GtPhlowEmptyView new.
-	^ OrderedCollection new
-		"The raw view is a special case to easily handle icons"
-		add: (self gtProxyRawFor: emptyView);
-		add: (self gtProxyFor: emptyView);
-		add: (self gtProxyViewsFor: emptyView);
-		add: (self gtPlaygroundFor: emptyView);
-		yourself
+	views := super gtViewsInContext: aContext.
+	"Retitle the original Raw view to Proxy and lower priority"
+	proxyRaw := views detect: [ :each | each title = #Raw ].
+	proxyRaw
+		title: #Proxy;
+		priority: 10000.
+	views 
+		add: (self gtProxyRawFor: GtPhlowEmptyView new).
+	^ views.
 ]
 
 { #category : #'*Gt4PharoLink' }
