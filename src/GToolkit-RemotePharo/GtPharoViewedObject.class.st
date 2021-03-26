@@ -16,7 +16,7 @@ Internal Representation and Key Implementation Points.
     Implementation Points
 "
 Class {
-	#name : #GtViewedObject,
+	#name : #GtPharoViewedObject,
 	#superclass : #Object,
 	#instVars : [
 		'object',
@@ -26,30 +26,30 @@ Class {
 }
 
 { #category : #'instance creation' }
-GtViewedObject class >> object: anObject [
+GtPharoViewedObject class >> object: anObject [
 
 	^ self new initializeWith: anObject
 ]
 
 { #category : #private }
-GtViewedObject >> declarativeViewWithSelector: viewSelector [
+GtPharoViewedObject >> declarativeViewWithSelector: viewSelector [
 	"Answer the objects view with the given selector name"
 
 	^ (viewCache
 		at: viewSelector
-		ifAbsentPut: [ GtViewCache viewedObject: self selector: viewSelector ]) 
+		ifAbsentPut: [ GtPharoViewCache viewedObject: self selector: viewSelector ]) 
 			declarativeView
 ]
 
 { #category : #accessing }
-GtViewedObject >> getGtViewMethodNames [
+GtPharoViewedObject >> getGtViewMethodNames [
 	"Answer the set of declarative view selectors provided by the object"
 
 	^ object gtDeclarativeViewSelectors copyWithout: #gtRawFor:
 ]
 
 { #category : #accessing }
-GtViewedObject >> getViewDeclaration: viewSelector [
+GtPharoViewedObject >> getViewDeclaration: viewSelector [
 	"Answer the declarative view dictionary for the supplied selector"
 
 	^ (self declarativeViewWithSelector: viewSelector) asDictionaryForExport 
@@ -58,7 +58,7 @@ GtViewedObject >> getViewDeclaration: viewSelector [
 ]
 
 { #category : #'gt inspector' }
-GtViewedObject >> gtSentItemFor: viewSelector at: selection [ 
+GtPharoViewedObject >> gtSentItemFor: viewSelector at: selection [ 
 	"Answer the value to be sent from the view"
 
 	^ (self declarativeViewWithSelector: viewSelector) sentItemAt: selection
@@ -66,26 +66,26 @@ GtViewedObject >> gtSentItemFor: viewSelector at: selection [
 ]
 
 { #category : #initialization }
-GtViewedObject >> initialize [
+GtPharoViewedObject >> initialize [
 
 	super initialize.
 	viewCache := Dictionary new.
 ]
 
 { #category : #initialization }
-GtViewedObject >> initializeWith: anObject [
+GtPharoViewedObject >> initializeWith: anObject [
 
 	object := anObject
 ]
 
 { #category : #accessing }
-GtViewedObject >> object [
+GtPharoViewedObject >> object [
 
 	^ object
 ]
 
 { #category : #accessing }
-GtViewedObject >> rawViewData [
+GtPharoViewedObject >> rawViewData [
 	"Answer the data for the raw view"
 	| variableNodes icon name value |
 
@@ -105,11 +105,11 @@ GtViewedObject >> rawViewData [
 ]
 
 { #category : #private }
-GtViewedObject >> viewWithSelector: viewSelector [
+GtPharoViewedObject >> viewWithSelector: viewSelector [
 	"Answer the objects view with the given selector name"
 
 	^ (viewCache
 		at: viewSelector
-		ifAbsentPut: [ GtViewCache viewedObject: self selector: viewSelector ]) 
+		ifAbsentPut: [ GtPharoViewCache viewedObject: self selector: viewSelector ]) 
 			view
 ]

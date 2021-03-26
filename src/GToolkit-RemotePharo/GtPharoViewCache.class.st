@@ -1,5 +1,5 @@
 Class {
-	#name : #GtViewCache,
+	#name : #GtPharoViewCache,
 	#superclass : #Object,
 	#instVars : [
 		'viewedObject',
@@ -11,7 +11,7 @@ Class {
 }
 
 { #category : #'instance creation' }
-GtViewCache class >> viewedObject: aGtViewedObject selector: viewSelector [
+GtPharoViewCache class >> viewedObject: aGtViewedObject selector: viewSelector [
 
 	^ self new 
 		viewedObject: aGtViewedObject;
@@ -20,34 +20,34 @@ GtViewCache class >> viewedObject: aGtViewedObject selector: viewSelector [
 ]
 
 { #category : #accessing }
-GtViewCache >> declarativeView [
+GtPharoViewCache >> declarativeView [
 
 	^ declarativeView ifNil: 
-		[ declarativeView := (self object perform: viewSelector with: GtDeclarativeProtoView new) ]
+		[ declarativeView := (self object perform: viewSelector with: GtPharoDeclarativeProtoView new) ]
 ]
 
 { #category : #accessing }
-GtViewCache >> object [
+GtPharoViewCache >> object [
 
 	^ self viewedObject object
 ]
 
 { #category : #accessing }
-GtViewCache >> viewSelector [
+GtPharoViewCache >> viewSelector [
 	^ viewSelector
 ]
 
 { #category : #accessing }
-GtViewCache >> viewSelector: anObject [
+GtPharoViewCache >> viewSelector: anObject [
 	viewSelector := anObject
 ]
 
 { #category : #accessing }
-GtViewCache >> viewedObject [
+GtPharoViewCache >> viewedObject [
 	^ viewedObject
 ]
 
 { #category : #accessing }
-GtViewCache >> viewedObject: anObject [
+GtPharoViewCache >> viewedObject: anObject [
 	viewedObject := anObject
 ]
