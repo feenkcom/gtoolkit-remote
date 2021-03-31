@@ -40,7 +40,7 @@ PharoLinkRemoteError >> gtMessageTextFor: aView [
 
 	^ aView textEditor
 		title: 'Message';
-		look: BrGlamorousCodeEditorLook;
+		aptitude: BrGlamorousCodeEditorAptitude;
 		priority: 2;
 		text: [ self formattedText: self messageText ]
 ]
