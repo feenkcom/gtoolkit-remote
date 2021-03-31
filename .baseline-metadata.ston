@@ -1,1 +1,1 @@
-{	"repositories" : {		"github://feenkcom/Pharo-Chrome/repository" : "v0.5.127",		"github://feenkcom/pharo-debugadapterprotocol/src" : "v0.5.123",		"github://feenkcom/JSLink/src" : "v0.5.139"	}}
+{	"repositories" : {		"github://feenkcom/gtoolkit-phlow/src" : "v0.8.308",		"github://feenkcom/PharoLink/src" : "v0.8.13"	}}
