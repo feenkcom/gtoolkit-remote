@@ -16,7 +16,7 @@ Class {
 	#instVars : [
 		'items'
 	],
-	#category : #'GToolkit-Remote-Declarative Views'
+	#category : #'GToolkit-RemoteGt-Declarative Views'
 }
 
 { #category : #'instance creation' }
