@@ -43,7 +43,7 @@ LanguageLinkProxyObject >> getViewProxy [
 	"Answer a GtViewedProxy on the receiver"
 
 	^ self newCommandFactory
-		<< 'GtViewedObject object: self';
+		<< (self settings gtViewedObjectClassName, ' object: self');
 		sendAndWait.
 
 ]
