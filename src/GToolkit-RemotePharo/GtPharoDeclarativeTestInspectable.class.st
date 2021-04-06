@@ -11,34 +11,34 @@ GtDeclarativeTestInspectable is a simple object that can be used to test the Gt 
 
 "
 Class {
-	#name : #GtDeclarativeTestInspectable,
+	#name : #GtPharoDeclarativeTestInspectable,
 	#superclass : #Object,
 	#instVars : [
 		'string',
 		'collectionOfObjects'
 	],
-	#category : #'GToolkit-Remote-Examples'
+	#category : #'GToolkit-RemotePharo-Examples'
 }
 
 { #category : #accessing }
-GtDeclarativeTestInspectable >> collectionAt: anIndex put: anObject [
+GtPharoDeclarativeTestInspectable >> collectionAt: anIndex put: anObject [
 
 	^collectionOfObjects at: anIndex put: anObject
 ]
 
 { #category : #accessing }
-GtDeclarativeTestInspectable >> collectionOfObjects [
+GtPharoDeclarativeTestInspectable >> collectionOfObjects [
 	^ collectionOfObjects
 ]
 
 { #category : #accessing }
-GtDeclarativeTestInspectable >> collectionOfObjects: anObject [
+GtPharoDeclarativeTestInspectable >> collectionOfObjects: anObject [
 	collectionOfObjects := anObject
 ]
 
 { #category : #inspecting }
-GtDeclarativeTestInspectable >> gtColumnedListFor: aView [
-	<gtView>
+GtPharoDeclarativeTestInspectable >> gtColumnedListFor: aView [
+	"<gtDeclarativeView>"
 
 	^aView columnedList
 		title: 'Columned List' translated;
@@ -49,8 +49,8 @@ GtDeclarativeTestInspectable >> gtColumnedListFor: aView [
 ]
 
 { #category : #inspecting }
-GtDeclarativeTestInspectable >> gtListFor: aView [
-	<gtView>
+GtPharoDeclarativeTestInspectable >> gtListFor: aView [
+	<gtDeclarativeView>
 
 	^aView list
 		title: 'List' translated;
@@ -60,8 +60,8 @@ GtDeclarativeTestInspectable >> gtListFor: aView [
 ]
 
 { #category : #inspecting }
-GtDeclarativeTestInspectable >> gtStringFor: aView [
-	<gtView>
+GtPharoDeclarativeTestInspectable >> gtStringFor: aView [
+	<gtDeclarativeView>
 
 	^aView textEditor
 		title: 'String' translated;
@@ -70,26 +70,29 @@ GtDeclarativeTestInspectable >> gtStringFor: aView [
 ]
 
 { #category : #initialization }
-GtDeclarativeTestInspectable >> initialize [ 
+GtPharoDeclarativeTestInspectable >> initialize [ 
 
 	super initialize.
 	string := 'hello world'.
-	collectionOfObjects := { 42. 'Hello World'. DateAndTime now. }.
+	collectionOfObjects := { 
+		42. 
+		'Hello World'. 
+		DateAndTime readFrom: '2021-04-06T14:43:49.623384+02:00' readStream. }.
 ]
 
 { #category : #accessing }
-GtDeclarativeTestInspectable >> string [
+GtPharoDeclarativeTestInspectable >> string [
 
 	^string
 ]
 
 { #category : #accessing }
-GtDeclarativeTestInspectable >> string: anObject [
+GtPharoDeclarativeTestInspectable >> string: anObject [
 	string := anObject
 ]
 
 { #category : #accessing }
-GtDeclarativeTestInspectable >> text [
+GtPharoDeclarativeTestInspectable >> text [
 
 	^string asRopedText 
 ]
