@@ -43,7 +43,7 @@ LanguageLinkProxyObject >> getViewProxy [
 	"Answer a GtViewedProxy on the receiver"
 
 	^ self newCommandFactory
-		<< 'GtViewedObject object: self';
+		<< (self settings gtViewedObjectClassName, ' object: self');
 		sendAndWait.
 
 ]
@@ -161,7 +161,7 @@ LanguageLinkProxyObject >> viewProxyDo: aBlock [
 
 	| viewProxy |
 
-	viewProxy := remoteClass = #GtViewedObject
+	viewProxy := remoteClass = self settings gtViewedObjectClassName
 		ifTrue: [ self ]
 		ifFalse: [ self getViewProxy ].
 	^ aBlock value: viewProxy.

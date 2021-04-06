@@ -1,14 +1,14 @@
 Class {
-	#name : #GtDeclarativeTable,
-	#superclass : #GtDeclarativeView,
+	#name : #GtPharoDeclarativeTable,
+	#superclass : #GtPharoDeclarativeView,
 	#instVars : [
 		'items'
 	],
-	#category : #'GToolkit-Remote-Declarative Views'
+	#category : #'GToolkit-RemotePharo-Server'
 }
 
 { #category : #'instance creation' }
-GtDeclarativeTable class >> fromJSONDictionary: aDictionary [
+GtPharoDeclarativeTable class >> fromJSONDictionary: aDictionary [
 
 	| table |
 
@@ -19,7 +19,7 @@ GtDeclarativeTable class >> fromJSONDictionary: aDictionary [
 ]
 
 { #category : #converting }
-GtDeclarativeTable >> asDictionaryForExport [ 
+GtPharoDeclarativeTable >> asDictionaryForExport [ 
 
 	| dictionary |
 
@@ -30,23 +30,23 @@ GtDeclarativeTable >> asDictionaryForExport [
 ]
 
 { #category : #accessing }
-GtDeclarativeTable >> data [ 
+GtPharoDeclarativeTable >> data [ 
 
 	^ items
 ]
 
 { #category : #accessing }
-GtDeclarativeTable >> items [
+GtPharoDeclarativeTable >> items [
 	^ items
 ]
 
 { #category : #accessing }
-GtDeclarativeTable >> items: anObject [
+GtPharoDeclarativeTable >> items: anObject [
 	items := anObject
 ]
 
 { #category : #'building - graph' }
-GtDeclarativeTable >> viewFor: aView [
+GtPharoDeclarativeTable >> viewFor: aView [
 	"Answer the GtPhlowView for the receiver"
 
 	| table |
@@ -59,4 +59,10 @@ GtDeclarativeTable >> viewFor: aView [
 	"table
 		send: [ :arg :selection | accessor gtSentItemFor: methodName at: selection from ]."
 	^table
+]
+
+{ #category : #accessing }
+GtPharoDeclarativeTable >> viewName [ 
+
+	^ #GtDeclarativeTable
 ]
