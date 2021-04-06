@@ -2,7 +2,7 @@ Class {
 	#name : #GtPharoDeclarativeTextEditor,
 	#superclass : #GtPharoDeclarativeView,
 	#instVars : [
-		'string'
+		'textBuilder'
 	],
 	#category : #'GToolkit-RemotePharo-Server'
 }
@@ -25,14 +25,14 @@ GtPharoDeclarativeTextEditor >> asDictionaryForExport [
 
 	dictionary := super asDictionaryForExport.
 	self dataTransport = self class dataIncluded ifTrue: [ 
-		dictionary at: #string put: string ].
+		dictionary at: #string put: self data ].
 	^dictionary
 ]
 
 { #category : #accessing }
 GtPharoDeclarativeTextEditor >> data [ 
 
-	^string
+	^ textBuilder value
 ]
 
 { #category : #accessing }
@@ -42,27 +42,11 @@ GtPharoDeclarativeTextEditor >> sentItemAt: selector [
 ]
 
 { #category : #accessing }
-GtPharoDeclarativeTextEditor >> string [
+GtPharoDeclarativeTextEditor >> text: aBlockClosure [
+	"Set the BlockClosure that will generate the string to be displayed.
+	The result of the BlockClosure must be a String (not a BlText)."
 
-	^ string ifNil: [ 
-		(string isNil and: [ dataTransport = self class dataLazy ]) ifTrue: 
-			[ string := accessor data ] ].
-
-]
-
-{ #category : #accessing }
-GtPharoDeclarativeTextEditor >> string: anObject [
-	string := anObject
-]
-
-{ #category : #'building - graph' }
-GtPharoDeclarativeTextEditor >> viewFor: aView [
-	"Answer the GtPhlowView for the receiver"
-
-	^aView textEditor 
-		title: title;
-		priority: priority;
-		text: [ self string asRopedText ]
+	textBuilder := aBlockClosure
 ]
 
 { #category : #accessing }
