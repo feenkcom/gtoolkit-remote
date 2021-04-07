@@ -14,7 +14,7 @@ Class {
 
 { #category : #examples }
 GtRemoteDeclarativeGtExamples >> listView [
-	<gtExamples>
+	<gtExample>
 	| viewProxy viewDictionary view data |
 
 	viewProxy := self viewedObjectProxy.
@@ -39,7 +39,7 @@ GtRemoteDeclarativeGtExamples >> remoteObject [
 		<< 'GtPharoDeclarativeTestInspectable new';
 		sendAndWait.
 
-	localObject := GtDeclarativeTestInspectable new.
+	localObject := GtPharoDeclarativeTestInspectable new.
 	string := proxyObject newCommandFactory
 		<< 'self string';
 		sendAndWait.
@@ -85,7 +85,7 @@ GtRemoteDeclarativeGtExamples >> stopServer [
 
 { #category : #examples }
 GtRemoteDeclarativeGtExamples >> stringView [
-	<gtExamples>
+	<gtExample>
 	| viewProxy viewDictionary view |
 
 	viewProxy := self viewedObjectProxy.
