@@ -107,8 +107,9 @@ GtRemoteDeclarativeExamples >> remoteObject [
 
 { #category : #examples }
 GtRemoteDeclarativeExamples >> runningServer [
-	"Answer a running server
-	<gtExample>"
+	"Answer a running server"
+	<gtExample>
+	<after: #stopServer>
 
 	^ self subclassResponsibility
 ]
