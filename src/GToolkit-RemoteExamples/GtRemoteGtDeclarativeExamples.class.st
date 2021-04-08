@@ -5,13 +5,6 @@ Class {
 }
 
 { #category : #private }
-GtRemoteGtDeclarativeExamples >> declarativeViewNames [
-	"Answer the expected array of declarative views from the remote"
-
-	^ #(gtStringFor: gtListFor: gtColumnedListFor: gtPrintFor:)
-]
-
-{ #category : #private }
 GtRemoteGtDeclarativeExamples >> printForString [
 	"Answer the string returned in the #gtPrintFor: view"
 

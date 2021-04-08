@@ -5,10 +5,10 @@ Class {
 }
 
 { #category : #private }
-GtRemotePharoDeclarativeExamples >> declarativeViewNames [
-	"Answer the expected array of declarative views from the remote"
+GtRemotePharoDeclarativeExamples >> printForString [
+	"Answer the string returned in the #gtPrintFor: view"
 
-	^ #(gtStringFor: gtListFor:)
+	^ 'a GtPharoDeclarativeTestInspectable'
 ]
 
 { #category : #examples }
