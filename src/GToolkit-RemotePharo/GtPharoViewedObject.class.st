@@ -45,7 +45,7 @@ GtPharoViewedObject >> declarativeViewWithSelector: viewSelector [
 GtPharoViewedObject >> getGtViewMethodNames [
 	"Answer the set of declarative view selectors provided by the object"
 
-	^ object gtDeclarativeViewSelectors copyWithout: #gtRawFor:
+	^ object gtPharoDeclarativeViewSelectors
 ]
 
 { #category : #accessing }

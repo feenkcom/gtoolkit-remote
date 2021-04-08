@@ -38,7 +38,7 @@ GtPharoDeclarativeTestInspectable >> collectionOfObjects: anObject [
 
 { #category : #inspecting }
 GtPharoDeclarativeTestInspectable >> gtColumnedListFor: aView [
-	"<gtDeclarativeView>"
+	<gtDeclarativeView>
 
 	^aView columnedList
 		title: 'Columned List' translated;

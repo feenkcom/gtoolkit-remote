@@ -18,6 +18,8 @@ Class {
 	#superclass : #GtPharoDeclarativeView,
 	#instVars : [
 		'items',
+		'itemsBuilder',
+		'columnValues',
 		'columnTitles',
 		'columnWidths'
 	],
@@ -44,12 +46,26 @@ GtPharoDeclarativeColumnedList >> asDictionaryForExport [
 	| dictionary |
 
 	dictionary := super asDictionaryForExport 
-		at: #columnTitles put: columnTitles;
-		at: #columnWidths put: columnWidths;
+		at: #columnTitles put: columnTitles asArray;
+		at: #columnWidths put: columnWidths asArray;
 		yourself.
 	self dataTransport = self class dataIncluded ifTrue: [ 
-		dictionary at: #items put: items ].
+		dictionary at: #items put: self data asArray ].
 	^dictionary
+]
+
+{ #category : #accessing }
+GtPharoDeclarativeColumnedList >> column: columnName item: aBlockClosure [
+
+	^ self column: columnName item: aBlockClosure width: nil
+]
+
+{ #category : #accessing }
+GtPharoDeclarativeColumnedList >> column: columnName item: aBlockClosure width: aNumberOrNil [
+
+	columnTitles add: columnName.
+	columnValues add: aBlockClosure.
+	columnWidths add: aNumberOrNil.
 ]
 
 { #category : #accessing }
@@ -75,27 +91,30 @@ GtPharoDeclarativeColumnedList >> columnWidths: anObject [
 { #category : #accessing }
 GtPharoDeclarativeColumnedList >> data [ 
 
-	^items
+	^ items ifNil: [ items := itemsBuilder value collect: [ :item |
+			columnValues collect: [ :columnValue | columnValue value: item ] as: Array ] as: Array ]
 ]
 
 { #category : #accessing }
-GtPharoDeclarativeColumnedList >> items [
+GtPharoDeclarativeColumnedList >> initialize [
 
-	^ items ifNil: [ 
-		(items isNil and: [ dataTransport = self class dataLazy ]) ifTrue: 
-			[ items := accessor data asArray ] ].
-
+	super initialize.
+	columnValues := OrderedCollection new.
+	columnTitles := OrderedCollection new.
+	columnWidths := OrderedCollection new.
 ]
 
 { #category : #accessing }
-GtPharoDeclarativeColumnedList >> items: anObject [
-	items := anObject
+GtPharoDeclarativeColumnedList >> items: aBlockClosure [
+
+	itemsBuilder := aBlockClosure
 ]
 
 { #category : #accessing }
 GtPharoDeclarativeColumnedList >> sentItemAt: selection [ 
+	"Answer the raw value at the supplied index"
 
-	^ accessor itemsBuilder value at: selection.
+	^ itemsBuilder value at: selection.
 ]
 
 { #category : #'building - graph' }
