@@ -157,7 +157,7 @@ GtRemoteDeclarativeExamples >> viewedObjectProxy [
 		<< 'self getGtViewMethodNames';
 		sendAndWait.
 
-	self assert: declarativeViews equals: self declarativeViewNames.
+	self assert: declarativeViews asSet equals: self declarativeViewNames asSet.
 
 	^ viewedObject
 ]
