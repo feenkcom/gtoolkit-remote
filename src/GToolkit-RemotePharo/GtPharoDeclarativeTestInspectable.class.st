@@ -38,7 +38,7 @@ GtPharoDeclarativeTestInspectable >> collectionOfObjects: anObject [
 
 { #category : #inspecting }
 GtPharoDeclarativeTestInspectable >> gtColumnedListFor: aView [
-	<gtDeclarativeView>
+	<gtView>
 
 	^aView columnedList
 		title: 'Columned List' translated;
@@ -50,7 +50,7 @@ GtPharoDeclarativeTestInspectable >> gtColumnedListFor: aView [
 
 { #category : #inspecting }
 GtPharoDeclarativeTestInspectable >> gtListFor: aView [
-	<gtDeclarativeView>
+	<gtView>
 
 	^aView list
 		title: 'List' translated;
@@ -61,7 +61,7 @@ GtPharoDeclarativeTestInspectable >> gtListFor: aView [
 
 { #category : #inspecting }
 GtPharoDeclarativeTestInspectable >> gtStringFor: aView [
-	<gtDeclarativeView>
+	<gtView>
 
 	^aView textEditor
 		title: 'String' translated;
