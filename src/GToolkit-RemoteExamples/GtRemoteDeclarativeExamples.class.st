@@ -4,7 +4,7 @@ GtRemoteDeclarativeGtExamples demonstrates the use of ${class:name=GtDeclarative
 Note that it starts and stops server images as part of the examples.
 "
 Class {
-	#name : #GtRemoteDeclarativeGtExamples,
+	#name : #GtRemoteDeclarativeExamples,
 	#superclass : #Object,
 	#instVars : [
 		'server'
@@ -12,8 +12,35 @@ Class {
 	#category : #'GToolkit-RemoteExamples'
 }
 
-{ #category : #examples }
-GtRemoteDeclarativeGtExamples >> listView [
+{ #category : #'examples - views' }
+GtRemoteDeclarativeExamples >> columnedListView [
+	<gtExample>
+	| viewProxy viewDictionary view data |
+
+	viewProxy := self viewedObjectProxy.
+	viewDictionary := viewProxy newCommandFactory
+		<< 'self getViewDeclaration: #gtColumnedListFor:';
+		sendAndWait.
+	view := GtDeclarativeView fromDictionary: viewDictionary.
+	self assert: view title equals: 'Columned List'.
+	data := view items.
+	self assert: data size equals: 3.
+	self assert: data first equals: #('42' '42').
+	self assert: data second equals: #('Hello World' 'hello world').
+	self assert: view columnTitles equals: #(Value Lowercase).
+	self assert: view columnWidths equals: #(nil 100).
+	^ view
+]
+
+{ #category : #private }
+GtRemoteDeclarativeExamples >> declarativeViewNames [
+	"Answer the expected array of declarative views from the remote"
+
+	^ self subclassResponsibility 
+]
+
+{ #category : #'examples - views' }
+GtRemoteDeclarativeExamples >> listView [
 	<gtExample>
 	| viewProxy viewDictionary view data |
 
@@ -29,14 +56,36 @@ GtRemoteDeclarativeGtExamples >> listView [
 	^ view
 ]
 
+{ #category : #private }
+GtRemoteDeclarativeExamples >> printForString [
+	"Answer the string returned in the #gtPrintFor: view"
+
+	^ self subclassResponsibility 
+]
+
+{ #category : #'examples - views' }
+GtRemoteDeclarativeExamples >> printView [
+	<gtExample>
+	| viewProxy viewDictionary view |
+
+	viewProxy := self viewedObjectProxy.
+	viewDictionary := viewProxy newCommandFactory
+		<< 'self getViewDeclaration: #gtPrintFor:';
+		sendAndWait.
+	view := GtDeclarativeView fromDictionary: viewDictionary.
+	self assert: view title equals: #Print.
+	self assert: view string equals: self printForString.
+	^ view
+]
+
 { #category : #examples }
-GtRemoteDeclarativeGtExamples >> remoteObject [
+GtRemoteDeclarativeExamples >> remoteObject [
 	"Answer a proxy to a remote GtDeclarativeTestInspectable instance"
 	<gtExample>
 	| proxyObject localObject string collection |
 
 	proxyObject := self runningServer newCommandFactory
-		<< 'GtPharoDeclarativeTestInspectable new';
+		<< (self testInspectableName, ' new');
 		sendAndWait.
 
 	localObject := GtPharoDeclarativeTestInspectable new.
@@ -57,34 +106,23 @@ GtRemoteDeclarativeGtExamples >> remoteObject [
 ]
 
 { #category : #examples }
-GtRemoteDeclarativeGtExamples >> runningServer [
-	"Answer a running server"
-	<gtExample>
-	<after: #stopServer>
-	| settings |
+GtRemoteDeclarativeExamples >> runningServer [
+	"Answer a running server
+	<gtExample>"
 
-	server ifNotNil: [ ^ server ].
-	"Connect to the remote image"
-	settings := LanguageLinkSettings pharoDefaultSettings.
-	settings
-		serverProcessClass: LanguageLinkManualProcess;
-		serverSocketAddress: (LanguageLinkSocketAddress ipOrName: 'localhost' port: 7001);
-		clientSocketAddress: (LanguageLinkSocketAddress ipOrName: 'localhost' port: 7002);
-		gtViewedObjectClassName: #GtPharoViewedObject.
-	server := PharoLinkApplication newWith: settings.
-	^ server start.
+	^ self subclassResponsibility
 ]
 
 { #category : #private }
-GtRemoteDeclarativeGtExamples >> stopServer [ 
+GtRemoteDeclarativeExamples >> stopServer [ 
 
 	server ifNotNil: 
 		[ server stop.
 		server := nil. ]
 ]
 
-{ #category : #examples }
-GtRemoteDeclarativeGtExamples >> stringView [
+{ #category : #'examples - views' }
+GtRemoteDeclarativeExamples >> stringView [
 	<gtExample>
 	| viewProxy viewDictionary view |
 
@@ -98,8 +136,15 @@ GtRemoteDeclarativeGtExamples >> stringView [
 	^ view
 ]
 
+{ #category : #private }
+GtRemoteDeclarativeExamples >> testInspectableName [
+	"Answer the name of the test inspectable class on the remote"
+
+	^ self subclassResponsibility 
+]
+
 { #category : #examples }
-GtRemoteDeclarativeGtExamples >> viewedObjectProxy [
+GtRemoteDeclarativeExamples >> viewedObjectProxy [
 	"Answer the GtViewedObject proxy for the remote object"
 	<gtExample>
 	| viewedObject declarativeViews |
@@ -111,8 +156,7 @@ GtRemoteDeclarativeGtExamples >> viewedObjectProxy [
 		<< 'self getGtViewMethodNames';
 		sendAndWait.
 
-	self assert: declarativeViews size equals: 2.
-	self assert: declarativeViews equals: #(gtStringFor: gtListFor:).
+	self assert: declarativeViews equals: self declarativeViewNames.
 
 	^ viewedObject
 ]
