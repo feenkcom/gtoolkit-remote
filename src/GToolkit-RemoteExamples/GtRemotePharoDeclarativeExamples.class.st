@@ -1,3 +1,21 @@
+"
+Test the operation of Gt Declarative views in a plain Pharo image (i.e. without Gt loaded).
+
+The examples assume that the server is started manually.
+
+To build a Pharo image with the Gt server code loaded:
+
+[[[language=bash
+./pharo Pharo.image eval --save ""Metacello new repository: 'github://feenkcom/gtoolkit-remote/src'; baseline: 'GtPharoRemote'; load""
+]]]
+
+To start the server:
+
+[[[
+./pharo Pharo.image clap pharoLinkServer 7001 7002
+]]]
+
+"
 Class {
 	#name : #GtRemotePharoDeclarativeExamples,
 	#superclass : #GtRemoteDeclarativeStExamples,
