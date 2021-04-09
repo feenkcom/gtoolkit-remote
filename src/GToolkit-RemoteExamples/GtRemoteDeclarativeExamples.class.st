@@ -12,6 +12,13 @@ Class {
 	#category : #'GToolkit-RemoteExamples'
 }
 
+{ #category : #'private - commands' }
+GtRemoteDeclarativeExamples >> collectionOfObjectsCommand [
+	"Answer the command to retrieve the test inspectable's collectionOfObjects"
+
+	^ self subclassResponsibility
+]
+
 { #category : #'examples - views' }
 GtRemoteDeclarativeExamples >> columnedListView [
 	<gtExample>
@@ -19,7 +26,7 @@ GtRemoteDeclarativeExamples >> columnedListView [
 
 	viewProxy := self viewedObjectProxy.
 	viewDictionary := viewProxy newCommandFactory
-		<< 'self getViewDeclaration: #gtColumnedListFor:';
+		<< self columnedListViewDeclarationCommand;
 		sendAndWait.
 	view := GtDeclarativeView fromDictionary: viewDictionary.
 	self assert: view title equals: 'Columned List'.
@@ -30,6 +37,13 @@ GtRemoteDeclarativeExamples >> columnedListView [
 	self assert: view columnTitles equals: #(Value Lowercase).
 	self assert: view columnWidths equals: #(nil 100).
 	^ view
+]
+
+{ #category : #'private - commands' }
+GtRemoteDeclarativeExamples >> columnedListViewDeclarationCommand [
+	"Answer the command to retrieve the test inspectable's list view declaration"
+
+	^ self subclassResponsibility
 ]
 
 { #category : #private }
@@ -46,14 +60,35 @@ GtRemoteDeclarativeExamples >> listView [
 
 	viewProxy := self viewedObjectProxy.
 	viewDictionary := viewProxy newCommandFactory
-		<< 'self getViewDeclaration: #gtListFor:';
+		<< self listViewDeclarationCommand;
 		sendAndWait.
 	view := GtDeclarativeView fromDictionary: viewDictionary.
 	self assert: view title equals: #List.
 	data := view items.
 	self assert: data size equals: 3.
-	self assert: data equals: #('42' 'Hello World' '2021-04-06T14:43:49.623384+02:00').
+	self assert: data equals: self listViewDisplayArray.
 	^ view
+]
+
+{ #category : #'private - commands' }
+GtRemoteDeclarativeExamples >> listViewDeclarationCommand [
+	"Answer the command to retrieve the test inspectable's list view declaration"
+
+	^ self subclassResponsibility
+]
+
+{ #category : #'private - commands' }
+GtRemoteDeclarativeExamples >> listViewDisplayArray [
+	"Answer the command Array returned by the remote's list view"
+
+	^ self subclassResponsibility
+]
+
+{ #category : #'private - commands' }
+GtRemoteDeclarativeExamples >> methodNamesCommand [
+	"Answer the command to retrieve the test inspectable's view method names"
+
+	^ self subclassResponsibility
 ]
 
 { #category : #private }
@@ -70,12 +105,19 @@ GtRemoteDeclarativeExamples >> printView [
 
 	viewProxy := self viewedObjectProxy.
 	viewDictionary := viewProxy newCommandFactory
-		<< 'self getViewDeclaration: #gtPrintFor:';
+		<< self printViewDeclarationCommand;
 		sendAndWait.
 	view := GtDeclarativeView fromDictionary: viewDictionary.
 	self assert: view title equals: #Print.
 	self assert: view string equals: self printForString.
 	^ view
+]
+
+{ #category : #'private - commands' }
+GtRemoteDeclarativeExamples >> printViewDeclarationCommand [
+	"Answer the command to retrieve the test inspectable's print view declaration"
+
+	^ self subclassResponsibility
 ]
 
 { #category : #examples }
@@ -85,17 +127,17 @@ GtRemoteDeclarativeExamples >> remoteObject [
 	| proxyObject localObject string collection |
 
 	proxyObject := self runningServer newCommandFactory
-		<< (self testInspectableName, ' new');
+		<< self remoteObjectCommand;
 		sendAndWait.
 
 	localObject := GtPharoDeclarativeTestInspectable new.
 	string := proxyObject newCommandFactory
-		<< 'self string';
+		<< self stringCommand;
 		sendAndWait.
 	self assert: string equals: localObject string.
 
 	collection := proxyObject newCommandFactory
-		<< 'self collectionOfObjects';
+		<< self collectionOfObjectsCommand;
 		sendAndWait.
 	"Check the size and immediate value objects, but assume that proxies are working correctly"
 	self assert: collection size equals: localObject collectionOfObjects size.
@@ -105,7 +147,14 @@ GtRemoteDeclarativeExamples >> remoteObject [
 	^ proxyObject
 ]
 
-{ #category : #examples }
+{ #category : #'private - commands' }
+GtRemoteDeclarativeExamples >> remoteObjectCommand [
+	"Answer the command to retrieve the test inspectable from the remote"
+
+	^ self subclassResponsibility
+]
+
+{ #category : #private }
 GtRemoteDeclarativeExamples >> runningServer [
 	"Answer a running server"
 	<gtExample>
@@ -122,6 +171,13 @@ GtRemoteDeclarativeExamples >> stopServer [
 		server := nil. ]
 ]
 
+{ #category : #'private - commands' }
+GtRemoteDeclarativeExamples >> stringCommand [
+	"Answer the command to retrieve the test inspectable's string"
+
+	^ self subclassResponsibility
+]
+
 { #category : #'examples - views' }
 GtRemoteDeclarativeExamples >> stringView [
 	<gtExample>
@@ -129,12 +185,19 @@ GtRemoteDeclarativeExamples >> stringView [
 
 	viewProxy := self viewedObjectProxy.
 	viewDictionary := viewProxy newCommandFactory
-		<< 'self getViewDeclaration: #gtStringFor:';
+		<< self stringViewDeclarationCommand;
 		sendAndWait.
 	view := GtDeclarativeView fromDictionary: viewDictionary.
 	self assert: view title equals: #String.
 	self assert: view string equals: 'hello world'.
 	^ view
+]
+
+{ #category : #'private - commands' }
+GtRemoteDeclarativeExamples >> stringViewDeclarationCommand [
+	"Answer the command to retrieve the test inspectable's string view declaration"
+
+	^ self subclassResponsibility
 ]
 
 { #category : #private }
@@ -154,7 +217,7 @@ GtRemoteDeclarativeExamples >> viewedObjectProxy [
 		viewedObject := aProxy ].
 
 	declarativeViews := viewedObject newCommandFactory
-		<< 'self getGtViewMethodNames';
+		<< self methodNamesCommand;
 		sendAndWait.
 
 	self assert: declarativeViews asSet equals: self declarativeViewNames asSet.
