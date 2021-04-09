@@ -1,3 +1,15 @@
+"
+Test the operation of Gt Declarative views in a plain Pharo image (i.e. without Gt loaded).
+
+The examples assume that the server is started manually.
+
+To start the server:
+
+[[[
+./glamoroustoolkit GlamorousToolkit.image clap pharoLinkServer 7003 7004
+]]]
+
+"
 Class {
 	#name : #GtRemoteGtDeclarativeExamples,
 	#superclass : #GtRemoteDeclarativeStExamples,
