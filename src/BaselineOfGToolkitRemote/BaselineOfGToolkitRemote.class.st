@@ -1,3 +1,6 @@
+"
+Load the client and server components for remote Gt access.
+"
 Class {
 	#name : #BaselineOfGToolkitRemote,
 	#superclass : #BaselineOf,
@@ -12,6 +15,6 @@ BaselineOfGToolkitRemote >> baseline: spec [
 		do: [
 			spec 
 				baseline: 'GToolkitPhlow' with: [ spec repository: 'github://feenkcom/gtoolkit-phlow/src' ];
-				package: 'GToolkit-Remote' with: [ spec requires: #( GToolkitPhlow ) ]
+				package: 'GToolkit-RemoteGt' with: [ spec requires: #( GToolkitPhlow ) ]
 		]
 ]
