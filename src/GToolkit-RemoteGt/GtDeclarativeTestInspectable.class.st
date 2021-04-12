@@ -17,7 +17,7 @@ Class {
 		'string',
 		'collectionOfObjects'
 	],
-	#category : #'GToolkit-RemoteGt'
+	#category : #'GToolkit-RemoteGt-Examples'
 }
 
 { #category : #accessing }
