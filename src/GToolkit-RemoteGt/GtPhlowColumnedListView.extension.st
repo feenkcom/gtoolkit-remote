@@ -8,14 +8,14 @@ GtPhlowColumnedListView >> asGtDeclarativeView [
 	^GtDeclarativeColumnedList new 
 		title: self title;
 		priority: self priority;
-		items: (self itemsBuilder value withIndexCollect: [ :row :index | 
-			columns collect: [ :column | 
+		items: (self itemsBuilder value withIndexCollect: [ :row :rowIndex | 
+			(columns withIndexCollect: [ :column :columnIndex | 
 				(column rowStencil ifNil: 
-					[ column itemComputation value: row ]
+					[ column itemComputation value: row value: rowIndex value: columnIndex ]
 				ifNotNil: [ :rowStencil |
 					rowStencil
-						cull: (column itemComputation phlowValue: row  withEnoughArguments: { row . index })
-						cull: column ]) gtDisplayString ] as: Array ]) asArray;
+						cull: (column itemComputation phlowValue: row  withEnoughArguments: { row . rowIndex })
+						cull: column ]) gtDisplayString ]) asArray ]) asArray;
 		columnTitles: (columns collect: [ :each | each title ] as: Array);
 		columnWidths: (columns collect: [ :each | each cellWidth ifNotNil: [ :cellWidth |
 				cellWidth class = BrColumnFixedWidth
