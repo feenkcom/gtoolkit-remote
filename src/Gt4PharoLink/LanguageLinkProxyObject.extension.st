@@ -142,7 +142,7 @@ LanguageLinkProxyObject >> gtViewsFor: aView inContext: aContext [
 LanguageLinkProxyObject >> gtViewsInContext: aContext [
 	"This collects all views for the current object.
 	For a proxy we just want the Raw view renamed as 'Proxy'"
-	| views proxyRaw |
+	| views proxyRaw proxyPrint |
 
 	views := super gtViewsInContext: aContext.
 	"Retitle the original Raw view to Proxy and lower priority"
@@ -150,8 +150,11 @@ LanguageLinkProxyObject >> gtViewsInContext: aContext [
 	proxyRaw
 		title: #Proxy;
 		priority: 10000.
-	views 
-		add: (self gtProxyRawFor: GtPhlowEmptyView new).
+	"Remove the default Print view, the remote can supply it later"
+	proxyPrint := views detect: [ :each | each title = #Print ].
+	views remove: proxyPrint.
+	
+	views add: (self gtProxyRawFor: GtPhlowEmptyView new).
 	^ views.
 ]
 
