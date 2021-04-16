@@ -84,6 +84,13 @@ GtRemoteDeclarativeExamples >> listViewDisplayArray [
 	^ self subclassResponsibility
 ]
 
+{ #category : #private }
+GtRemoteDeclarativeExamples >> localObject [
+	"Answer the object which will be instantiated in the remote (for comparison)"
+
+	^ GtDeclarativeTestInspectable new
+]
+
 { #category : #'private - commands' }
 GtRemoteDeclarativeExamples >> methodNamesCommand [
 	"Answer the command to retrieve the test inspectable's view method names"
@@ -130,7 +137,7 @@ GtRemoteDeclarativeExamples >> remoteObject [
 		<< self remoteObjectCommand;
 		sendAndWait.
 
-	localObject := GtPharoDeclarativeTestInspectable new.
+	localObject := self localObject.
 	string := proxyObject newCommandFactory
 		<< self stringCommand;
 		sendAndWait.
