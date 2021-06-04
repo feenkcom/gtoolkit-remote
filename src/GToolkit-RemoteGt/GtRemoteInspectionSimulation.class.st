@@ -3,16 +3,19 @@ GtRemoteInspectionSimulation provides an environment for developing and testing 
 
 To open a inspector using the declarative views:
 
-[[[
+```
 	GtRemoteInspectionSimulation openOn: anObjectWithDeclarativeViews
-]]]
+```
 
 
-!!Internal Representation and Key Implementation Points.
+1. # Internal Representation and Key Implementation Points.
 
-!!!Instance Variables
+
+1. ## Instance Variables
+
 
 	object:		<Object> the object being inspected.
+
 
 "
 Class {

@@ -2,12 +2,15 @@
 GtDeclarativeTestInspectable is a simple object that can be used to test the Gt declarative views. 
 
  
-!!Internal Representation and Key Implementation Points.
+1. # Internal Representation and Key Implementation Points.
 
-!!!Instance Variables
+
+1. ## Instance Variables
+
 
 	collectionOfObjects:		<Array>  a collection of objects for displaying in lists
 	string:		<String> for displaying in a text view
+
 
 "
 Class {
