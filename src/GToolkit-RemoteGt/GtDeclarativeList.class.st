@@ -2,13 +2,17 @@
 GtDeclarativeList supports a subset of the possible configurations of ${class:name=GtPhlowListView}.
 
  
-!!Internal Representation and Key Implementation Points.
+1. # Internal Representation and Key Implementation Points.
 
-!!!Instance Variables
+
+1. ## Instance Variables
+
 	items:		<Array> - The formatted items to display (not the raw values held in the list)
 
 
-!!!Implementation Points
+1. ## Implementation Points
+
+
 "
 Class {
 	#name : #GtDeclarativeList,
