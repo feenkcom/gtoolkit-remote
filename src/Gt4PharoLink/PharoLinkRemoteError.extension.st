@@ -35,24 +35,39 @@ PharoLinkRemoteError >> formattedText: aString [
 ]
 
 { #category : #'*Gt4PharoLink' }
-PharoLinkRemoteError >> gtMessageTextFor: aView [
+PharoLinkRemoteError >> gtLiveFor: aView [
 	<gtView>
 
+	trace ifNil: [ ^ aView empty ].
 	^ aView textEditor
-		title: 'Message';
-		aptitude: BrGlamorousCodeEditorAptitude;
-		priority: 2;
-		text: [ self formattedText: self messageText ]
+		title: 'Summary';
+		priority: 1;
+		text: [ self summaryText ]
 ]
 
 { #category : #'*Gt4PharoLink' }
 PharoLinkRemoteError >> gtTraceTextFor: aView [
 	<gtView>
 
-	(messageText isNil or: [ messageText isEmpty ]) ifTrue: 
+	(trace isNil or: [ trace isEmpty ]) ifTrue: 
 		[ ^ aView empty ].
 	^ aView textEditor
 		title: 'Trace';
 		priority: 2;
 		text: [ self formattedText: self trace asString ]
+]
+
+{ #category : #'*Gt4PharoLink' }
+PharoLinkRemoteError >> summaryText [
+	"Answer a formatted BlText describing the receiver's error"
+	| text |
+
+	text := errorMessage
+		ifNil: [ '' ]
+		ifNotNil: [ errorMessage ].
+	messageText ifNotNil: 
+		[ text := text, String cr, messageText ].
+	text := text asRopedText, (String cr, String cr) asRopedText, 
+		trace asRopedText glamorousCodeFont.
+	^ text
 ]
