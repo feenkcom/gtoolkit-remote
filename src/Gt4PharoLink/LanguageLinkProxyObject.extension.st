@@ -164,7 +164,7 @@ LanguageLinkProxyObject >> viewProxyDo: aBlock [
 
 	| viewProxy |
 
-	viewProxy := remoteClass = self settings gtViewedObjectClassName
+	viewProxy := (#(GtViewedObject GtPharoViewedObject) includes: remoteClass)
 		ifTrue: [ self ]
 		ifFalse: [ self getViewProxy ].
 	^ aBlock value: viewProxy.
