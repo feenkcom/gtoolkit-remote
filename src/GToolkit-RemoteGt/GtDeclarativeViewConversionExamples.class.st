@@ -28,6 +28,50 @@ GtDeclarativeViewConversionExamples >> convertColumnedList [
 ]
 
 { #category : #examples }
+GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableColumnedList [
+	"Check the conversion to declarative views with data"
+	<gtExample>
+	| declarativeView |
+
+	declarativeView := (GtDeclarativeTestInspectable new gtColumnedListFor: GtPhlowProtoView new) asGtDeclarativeView.
+
+	self assert: declarativeView title equals: 'Columned List'.
+	self assert: declarativeView priority equals: 20.
+	self assert: declarativeView items equals: #(#('42' '42') #('Hello World' 'hello world') #('2021-04-06T14:43:49.623384+02:00' '2021-04-06t14:43:49.623384+02:00')).
+	self assert: declarativeView columnTitles equals: #('Value' 'Lowercase').
+	self assert: declarativeView columnWidths equals: #(nil 100).
+
+]
+
+{ #category : #examples }
+GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableList [
+	"Check the conversion to declarative views with data"
+	<gtExample>
+	| declarativeView |
+
+	declarativeView := (GtDeclarativeTestInspectable new gtListFor: GtPhlowProtoView new) asGtDeclarativeView.
+
+	self assert: declarativeView title equals: 'List'.
+	self assert: declarativeView priority equals: 15.
+	self assert: declarativeView items equals: #('42' 'Hello World' '2021-04-06T14:43:49.623384+02:00').
+
+]
+
+{ #category : #examples }
+GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableText [
+	"Check the conversion to declarative views with data"
+	<gtExample>
+	| declarativeView |
+
+	declarativeView := (GtDeclarativeTestInspectable new gtStringFor: GtPhlowProtoView new) asGtDeclarativeView.
+
+	self assert: declarativeView title equals: 'String'.
+	self assert: declarativeView priority equals: 10.
+	self assert: declarativeView string equals: 'hello world'.
+
+]
+
+{ #category : #examples }
 GtDeclarativeViewConversionExamples >> convertList [
 	"Demonstrate converting a columned list phlow view to a declarative view"
 	<gtExample>
