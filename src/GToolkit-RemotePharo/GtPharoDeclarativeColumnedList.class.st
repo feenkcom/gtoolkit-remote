@@ -21,7 +21,8 @@ Class {
 		'itemsBuilder',
 		'columnValues',
 		'columnTitles',
-		'columnWidths'
+		'columnWidths',
+		'sendBlock'
 	],
 	#category : #'GToolkit-RemotePharo-Server'
 }
@@ -102,6 +103,7 @@ GtPharoDeclarativeColumnedList >> initialize [
 	columnValues := OrderedCollection new.
 	columnTitles := OrderedCollection new.
 	columnWidths := OrderedCollection new.
+	sendBlock := [ :object | object ].
 ]
 
 { #category : #accessing }
@@ -110,11 +112,24 @@ GtPharoDeclarativeColumnedList >> items: aBlockClosure [
 	itemsBuilder := aBlockClosure
 ]
 
+{ #category : #instructions }
+GtPharoDeclarativeColumnedList >> send: aBlock [
+
+	self
+		assert: [ aBlock isNotNil ]
+		description: [ 'Send transformation block must be non-nil'  ].
+	aBlock isSymbol ifTrue: [ 
+		self 
+			assert: [ aBlock isUnary ]
+			description: [ 'Send transformation symbol must be unary' ] ].
+	sendBlock := aBlock.
+]
+
 { #category : #accessing }
 GtPharoDeclarativeColumnedList >> sentItemAt: selection [ 
 	"Answer the raw value at the supplied index"
 
-	^ itemsBuilder value at: selection.
+	^ sendBlock cull: (itemsBuilder value at: selection) cull: selection
 ]
 
 { #category : #'building - graph' }
