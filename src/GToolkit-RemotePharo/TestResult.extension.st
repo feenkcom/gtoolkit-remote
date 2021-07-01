@@ -10,7 +10,7 @@ TestResult >> gtResultsFor: aView [
 		priority: 10;
 		items: [ self gtTestResults ];
 		column: 'Selector' item: [ :assoc | assoc key class asString, '>>', assoc key selector ];
-		column: 'Status' item: [ :assoc | assoc value ];
+		column: 'Status' item: [ :assoc | assoc value ] width: 100;
 		send: [ :assoc | assoc key ]
 ]
 
