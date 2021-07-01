@@ -37,17 +37,6 @@ PlpoClassDescription >> gtDefinitionFor: aView [
 ]
 
 { #category : #ui }
-PlpoClassDescription >> gtMethodsFor: aView [
-	<gtView>
-
-	^ aView columnedList
-		title: 'Methods' translated;
-		priority: 10;
-		items: [ self sortedMethods ];
-		column: 'Selector' text: [ :method | method selector ]
-]
-
-{ #category : #ui }
 PlpoClassDescription >> gtMethodsModelFor: aView [
 
 	^ aView explicit

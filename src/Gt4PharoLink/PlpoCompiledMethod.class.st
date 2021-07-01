@@ -19,17 +19,6 @@ PlpoCompiledMethod >> category [
 	^ (self proxyPerform: #category) asSymbol
 ]
 
-{ #category : #ui }
-PlpoCompiledMethod >> gtSourceCodeFor: aView [
-	<gtView>
-
-	^ aView textEditor
-		title: 'Source';
-		priority: 10;
-		text: [ self sourceCode asRopedText ]
-		"styler: StParser gtStyler"
-]
-
 { #category : #testing }
 PlpoCompiledMethod >> isCompiledMethod [
 
