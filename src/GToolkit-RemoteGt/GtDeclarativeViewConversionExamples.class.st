@@ -28,6 +28,50 @@ GtDeclarativeViewConversionExamples >> convertColumnedList [
 ]
 
 { #category : #examples }
+GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableColumnedList [
+	"Check the conversion to declarative views with data"
+	<gtExample>
+	| declarativeView |
+
+	declarativeView := (GtDeclarativeTestInspectable new gtColumnedListFor: GtPhlowProtoView new) asGtDeclarativeView.
+
+	self assert: declarativeView title equals: 'Columned List'.
+	self assert: declarativeView priority equals: 20.
+	self assert: declarativeView items equals: #(#('42' '42') #('Hello World' 'hello world') #('2021-04-06T14:43:49.623384+02:00' '2021-04-06t14:43:49.623384+02:00')).
+	self assert: declarativeView columnTitles equals: #('Value' 'Lowercase').
+	self assert: declarativeView columnWidths equals: #(nil 100).
+
+]
+
+{ #category : #examples }
+GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableList [
+	"Check the conversion to declarative views with data"
+	<gtExample>
+	| declarativeView |
+
+	declarativeView := (GtDeclarativeTestInspectable new gtListFor: GtPhlowProtoView new) asGtDeclarativeView.
+
+	self assert: declarativeView title equals: 'List'.
+	self assert: declarativeView priority equals: 15.
+	self assert: declarativeView items equals: #('42' 'Hello World' '2021-04-06T14:43:49.623384+02:00').
+
+]
+
+{ #category : #examples }
+GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableText [
+	"Check the conversion to declarative views with data"
+	<gtExample>
+	| declarativeView |
+
+	declarativeView := (GtDeclarativeTestInspectable new gtStringFor: GtPhlowProtoView new) asGtDeclarativeView.
+
+	self assert: declarativeView title equals: 'String'.
+	self assert: declarativeView priority equals: 10.
+	self assert: declarativeView string equals: 'hello world'.
+
+]
+
+{ #category : #examples }
 GtDeclarativeViewConversionExamples >> convertList [
 	"Demonstrate converting a columned list phlow view to a declarative view"
 	<gtExample>
@@ -62,6 +106,32 @@ GtDeclarativeViewConversionExamples >> convertText [
 	self assert: declarativeView title equals: #Test.
 	self assert: declarativeView priority equals: 10.
 	self assert: declarativeView string equals: #HelloWorld.
+
+	^ declarativeView.
+]
+
+{ #category : #examples }
+GtDeclarativeViewConversionExamples >> convertTree [
+	"Demonstrate converting a tree phlow view to a declarative view"
+	<gtExample>
+	| phlowView declarativeView data |
+
+	phlowView := GtPhlowProtoView new tree
+		title: #Test;
+		priority: 10;
+		items: [ 1 to: 4 ];
+		children: [ :aNumber | 
+			aNumber = 0
+				ifTrue: [ #() ]
+				ifFalse: [ 1 to: aNumber // 2 ] ].
+	declarativeView := phlowView asGtDeclarativeView.
+
+	self assert: declarativeView title equals: #Test.
+	self assert: declarativeView priority equals: 10.
+	data := declarativeView data.
+	self assert: data size equals: 4.
+	self assert: data first equals: #('1' #(1) #()).
+	self assert: data last equals:  #('4' #(4) #(#('1' #(4 1) #()) #('2' #(4 2) #(#('1' #(4 2 1) #()))))).
 
 	^ declarativeView.
 ]

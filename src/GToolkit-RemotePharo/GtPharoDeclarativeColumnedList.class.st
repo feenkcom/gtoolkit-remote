@@ -21,7 +21,8 @@ Class {
 		'itemsBuilder',
 		'columnValues',
 		'columnTitles',
-		'columnWidths'
+		'columnWidths',
+		'sendBlock'
 	],
 	#category : #'GToolkit-RemotePharo-Server'
 }
@@ -102,6 +103,7 @@ GtPharoDeclarativeColumnedList >> initialize [
 	columnValues := OrderedCollection new.
 	columnTitles := OrderedCollection new.
 	columnWidths := OrderedCollection new.
+	sendBlock := [ :object | object ].
 ]
 
 { #category : #accessing }
@@ -110,33 +112,24 @@ GtPharoDeclarativeColumnedList >> items: aBlockClosure [
 	itemsBuilder := aBlockClosure
 ]
 
+{ #category : #instructions }
+GtPharoDeclarativeColumnedList >> send: aBlock [
+
+	self
+		assert: [ aBlock isNotNil ]
+		description: [ 'Send transformation block must be non-nil'  ].
+	aBlock isSymbol ifTrue: [ 
+		self 
+			assert: [ aBlock isUnary ]
+			description: [ 'Send transformation symbol must be unary' ] ].
+	sendBlock := aBlock.
+]
+
 { #category : #accessing }
 GtPharoDeclarativeColumnedList >> sentItemAt: selection [ 
 	"Answer the raw value at the supplied index"
 
-	^ itemsBuilder value at: selection.
-]
-
-{ #category : #'building - graph' }
-GtPharoDeclarativeColumnedList >> viewFor: aView [
-	"Answer the GtPhlowView for the receiver"
-
-	| list column |
-
-	list := aView columnedList 
-		title: title;
-		priority: priority;
-		items: [ self items ].
-	columnTitles withIndexDo: [ :cTitle :index |
-		column := list column.
-		column 
-			title: cTitle;
-			item: [ :anArray | anArray at: index ].
-		(columnWidths at: index) ifNotNil: [ :width |
-			column width: width ] ].
-	list
-		send: [ :arg :selection | accessor gtSentItemFor: methodName at: selection first ].
-	^list
+	^ sendBlock cull: (itemsBuilder value at: selection) cull: selection
 ]
 
 { #category : #accessing }

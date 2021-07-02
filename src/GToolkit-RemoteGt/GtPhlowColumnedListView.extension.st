@@ -11,7 +11,9 @@ GtPhlowColumnedListView >> asGtDeclarativeView [
 		items: (self itemsBuilder value withIndexCollect: [ :row :rowIndex | 
 			(columns withIndexCollect: [ :column :columnIndex | 
 				(column rowStencil ifNil: 
-					[ column itemComputation value: row value: rowIndex value: columnIndex ]
+					[ column itemComputation 
+						phlowValue: row 
+						withEnoughArguments: { row. rowIndex. columnIndex. nil. self. } ]
 				ifNotNil: [ :rowStencil |
 					rowStencil
 						cull: (column itemComputation phlowValue: row  withEnoughArguments: { row . rowIndex })

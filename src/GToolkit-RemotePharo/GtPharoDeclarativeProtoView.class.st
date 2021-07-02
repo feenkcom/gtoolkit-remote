@@ -35,3 +35,9 @@ GtPharoDeclarativeProtoView >> textEditor [
 
 	^ self declarativeViewOfType: GtPharoDeclarativeTextEditor
 ]
+
+{ #category : #decorating }
+GtPharoDeclarativeProtoView >> tree [
+
+	^ self declarativeViewOfType: GtPharoDeclarativeTree
+]

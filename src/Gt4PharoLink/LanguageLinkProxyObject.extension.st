@@ -76,7 +76,7 @@ LanguageLinkProxyObject >> gtProxyRawFor: aView [
 
 	^ aView columnedList 
 		title: 'Raw';
-		priority: 5;
+		priority: 15;
 		items: [ self viewProxyDo: [ :viewProxy |
 				viewProxy newCommandFactory
 					<< 'self rawViewData';
