@@ -132,28 +132,6 @@ GtPharoDeclarativeColumnedList >> sentItemAt: selection [
 	^ sendBlock cull: (itemsBuilder value at: selection) cull: selection
 ]
 
-{ #category : #'building - graph' }
-GtPharoDeclarativeColumnedList >> viewFor: aView [
-	"Answer the GtPhlowView for the receiver"
-
-	| list column |
-
-	list := aView columnedList 
-		title: title;
-		priority: priority;
-		items: [ self items ].
-	columnTitles withIndexDo: [ :cTitle :index |
-		column := list column.
-		column 
-			title: cTitle;
-			item: [ :anArray | anArray at: index ].
-		(columnWidths at: index) ifNotNil: [ :width |
-			column width: width ] ].
-	list
-		send: [ :arg :selection | accessor gtSentItemFor: methodName at: selection first ].
-	^list
-]
-
 { #category : #accessing }
 GtPharoDeclarativeColumnedList >> viewName [ 
 
