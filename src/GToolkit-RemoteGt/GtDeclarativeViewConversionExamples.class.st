@@ -109,3 +109,29 @@ GtDeclarativeViewConversionExamples >> convertText [
 
 	^ declarativeView.
 ]
+
+{ #category : #examples }
+GtDeclarativeViewConversionExamples >> convertTree [
+	"Demonstrate converting a tree phlow view to a declarative view"
+	<gtExample>
+	| phlowView declarativeView data |
+
+	phlowView := GtPhlowProtoView new tree
+		title: #Test;
+		priority: 10;
+		items: [ 1 to: 4 ];
+		children: [ :aNumber | 
+			aNumber = 0
+				ifTrue: [ #() ]
+				ifFalse: [ 1 to: aNumber // 2 ] ].
+	declarativeView := phlowView asGtDeclarativeView.
+
+	self assert: declarativeView title equals: #Test.
+	self assert: declarativeView priority equals: 10.
+	data := declarativeView data.
+	self assert: data size equals: 4.
+	self assert: data first equals: #('1' #(1) #()).
+	self assert: data last equals:  #('4' #(4) #(#('1' #(4 1) #()) #('2' #(4 2) #(#('1' #(4 2 1) #()))))).
+
+	^ declarativeView.
+]
