@@ -1,16 +1,16 @@
 Class {
-	#name : #GtViewCache,
-	#superclass : #Object,
+	#name : 'GtViewCache',
+	#superclass : 'Object',
 	#instVars : [
 		'viewedObject',
 		'viewSelector',
 		'view',
 		'declarativeView'
 	],
-	#category : #'GToolkit-RemoteGt-Server'
+	#category : 'GToolkit-RemoteGt-Server'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtViewCache class >> viewedObject: aGtViewedObject selector: viewSelector [
 
 	^ self new 
@@ -19,7 +19,7 @@ GtViewCache class >> viewedObject: aGtViewedObject selector: viewSelector [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtViewCache >> declarativeView [
 
 	^ declarativeView ifNil: 
@@ -28,34 +28,37 @@ GtViewCache >> declarativeView [
 			yourself ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtViewCache >> object [
 
 	^ self viewedObject object
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtViewCache >> view [
 
-	^ view ifNil: [ view := self object perform: viewSelector with: GtPhlowEmptyView new ]
+	^ view ifNil: [ 
+		view := self object 
+			perform: viewSelector 
+			with: GtPhlowEmptyView new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtViewCache >> viewSelector [
 	^ viewSelector
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtViewCache >> viewSelector: anObject [
 	viewSelector := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtViewCache >> viewedObject [
 	^ viewedObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtViewCache >> viewedObject: anObject [
 	viewedObject := anObject
 ]

@@ -18,22 +18,22 @@ Internal Representation and Key Implementation Points.
 
 "
 Class {
-	#name : #GtViewedObject,
-	#superclass : #Object,
+	#name : 'GtViewedObject',
+	#superclass : 'Object',
 	#instVars : [
 		'object',
 		'viewCache'
 	],
-	#category : #'GToolkit-RemoteGt-Server'
+	#category : 'GToolkit-RemoteGt-Server'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtViewedObject class >> object: anObject [
 
 	^ self new initializeWith: anObject
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtViewedObject >> declarativeViewWithSelector: viewSelector [
 	"Answer the objects view with the given selector name"
 
@@ -43,14 +43,14 @@ GtViewedObject >> declarativeViewWithSelector: viewSelector [
 			declarativeView
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtViewedObject >> getGtViewMethodNames [
 	"Answer the set of declarative view selectors provided by the object"
 
 	^ object gtDeclarativeViewSelectors copyWithout: #gtRawFor:
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtViewedObject >> getViewDeclaration: viewSelector [
 	"Answer the declarative view dictionary for the supplied selector"
 
@@ -59,7 +59,7 @@ GtViewedObject >> getViewDeclaration: viewSelector [
 		yourself.
 ]
 
-{ #category : #'gt inspector' }
+{ #category : 'gt inspector' }
 GtViewedObject >> gtSentItemFor: viewSelector at: selection [ 
 	"Answer the value to be sent from the view"
 
@@ -67,26 +67,26 @@ GtViewedObject >> gtSentItemFor: viewSelector at: selection [
 	
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtViewedObject >> initialize [
 
 	super initialize.
 	viewCache := Dictionary new.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtViewedObject >> initializeWith: anObject [
 
 	object := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtViewedObject >> object [
 
 	^ object
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtViewedObject >> rawViewData [
 	"Answer the data for the raw view"
 	| variableNodes icon name value |
@@ -106,7 +106,7 @@ GtViewedObject >> rawViewData [
 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtViewedObject >> viewWithSelector: viewSelector [
 	"Answer the objects view with the given selector name"
 

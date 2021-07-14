@@ -15,15 +15,15 @@ GtDeclarativeList supports a subset of the possible configurations of ${class:na
 
 "
 Class {
-	#name : #GtDeclarativeList,
-	#superclass : #GtDeclarativeView,
+	#name : 'GtDeclarativeList',
+	#superclass : 'GtDeclarativeView',
 	#instVars : [
 		'items'
 	],
-	#category : #'GToolkit-RemoteGt-Declarative Views'
+	#category : 'GToolkit-RemoteGt-Declarative Views'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtDeclarativeList class >> fromJSONDictionary: aDictionary [
 	| list |
 
@@ -33,7 +33,7 @@ GtDeclarativeList class >> fromJSONDictionary: aDictionary [
 	^list
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 GtDeclarativeList >> asDictionaryForExport [ 
 
 	| dictionary |
@@ -44,13 +44,13 @@ GtDeclarativeList >> asDictionaryForExport [
 	^dictionary
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeclarativeList >> data [ 
 
 	^items
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeclarativeList >> items [
 
 	^items ifNil: [ 
@@ -59,19 +59,19 @@ GtDeclarativeList >> items [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeclarativeList >> items: anObject [
 	items := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeclarativeList >> sentItemAt: selection [ 
 	"Answer the raw value at the supplied index"
 
 	^ accessor itemsBuilder value at: selection.
 ]
 
-{ #category : #'building - graph' }
+{ #category : 'building - graph' }
 GtDeclarativeList >> viewFor: aView [
 	"Answer the GtPhlowView for the receiver"
 

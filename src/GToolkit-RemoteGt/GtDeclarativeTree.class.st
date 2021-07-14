@@ -1,15 +1,15 @@
 Class {
-	#name : #GtDeclarativeTree,
-	#superclass : #GtDeclarativeView,
+	#name : 'GtDeclarativeTree',
+	#superclass : 'GtDeclarativeView',
 	#instVars : [
 		'itemTextBlock',
 		'childrenBlock',
 		'items'
 	],
-	#category : #'GToolkit-RemoteGt-Declarative Views'
+	#category : 'GToolkit-RemoteGt-Declarative Views'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtDeclarativeTree class >> fromJSONDictionary: aDictionary [
 	| view |
 
@@ -22,19 +22,19 @@ GtDeclarativeTree class >> fromJSONDictionary: aDictionary [
 	^ view
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeclarativeTree >> children: aBlock [ 
 
 	childrenBlock := aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeclarativeTree >> data [ 
 
 	^ items
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtDeclarativeTree >> initialize [
 
 	super initialize.
@@ -42,32 +42,32 @@ GtDeclarativeTree >> initialize [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeclarativeTree >> itemText: aBlock [ 
 
 	itemTextBlock := aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeclarativeTree >> items [ 
 
 	^ items 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeclarativeTree >> items: aBlock [ 
 
 	items := aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeclarativeTree >> sentItemAt: selection [ 
 	"Answer the raw value at the supplied index"
 
 	^ accessor itemsBuilder value at: selection.
 ]
 
-{ #category : #'building - graph' }
+{ #category : 'building - graph' }
 GtDeclarativeTree >> viewFor: aView [
 	"Answer the GtPhlowView for the receiver"
 

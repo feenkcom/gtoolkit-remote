@@ -17,17 +17,17 @@ Current limitations:
 
 "
 Class {
-	#name : #GtDeclarativeColumnedList,
-	#superclass : #GtDeclarativeView,
+	#name : 'GtDeclarativeColumnedList',
+	#superclass : 'GtDeclarativeView',
 	#instVars : [
 		'items',
 		'columnTitles',
 		'columnWidths'
 	],
-	#category : #'GToolkit-RemoteGt-Declarative Views'
+	#category : 'GToolkit-RemoteGt-Declarative Views'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtDeclarativeColumnedList class >> fromJSONDictionary: aDictionary [
 
 	| list |
@@ -41,7 +41,7 @@ GtDeclarativeColumnedList class >> fromJSONDictionary: aDictionary [
 	^list
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 GtDeclarativeColumnedList >> asDictionaryForExport [ 
 
 	| dictionary |
@@ -55,33 +55,33 @@ GtDeclarativeColumnedList >> asDictionaryForExport [
 	^dictionary
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeclarativeColumnedList >> columnTitles [
 	^ columnTitles
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeclarativeColumnedList >> columnTitles: anObject [
 	columnTitles := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeclarativeColumnedList >> columnWidths [
 	^ columnWidths
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeclarativeColumnedList >> columnWidths: anObject [
 	columnWidths := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeclarativeColumnedList >> data [ 
 
 	^items
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeclarativeColumnedList >> items [
 
 	^ items ifNil: [ 
@@ -90,18 +90,18 @@ GtDeclarativeColumnedList >> items [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeclarativeColumnedList >> items: anObject [
 	items := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeclarativeColumnedList >> sentItemAt: selection [ 
 
 	^ accessor itemsBuilder value at: selection.
 ]
 
-{ #category : #'building - graph' }
+{ #category : 'building - graph' }
 GtDeclarativeColumnedList >> viewFor: aView [
 	"Answer the GtPhlowView for the receiver"
 

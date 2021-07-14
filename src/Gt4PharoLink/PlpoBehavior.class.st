@@ -1,16 +1,16 @@
 Class {
-	#name : #PlpoBehavior,
-	#superclass : #PharoLinkProxyObject,
-	#category : #'Gt4PharoLink-Proxies'
+	#name : 'PlpoBehavior',
+	#superclass : 'PharoLinkProxyObject',
+	#category : 'Gt4PharoLink-Proxies'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PlpoBehavior class >> remoteClassName [
 
 	^ #Behavior
 ]
 
-{ #category : #'private - backend access' }
+{ #category : 'private - backend access' }
 PlpoBehavior >> allClassVarNames [
 	"Answer the names of the receiver's and the receiver's ancestor's class variables."
 
@@ -19,7 +19,7 @@ PlpoBehavior >> allClassVarNames [
 		ifNotNil: [ :sup | sup allClassVarNames , self classVarNames ]
 ]
 
-{ #category : #'queries - other' }
+{ #category : 'queries - other' }
 PlpoBehavior >> allInstVarNames [
 	"Answer an Array of the names of the receiver's instance variables. The 
 	Array ordering is the order in which the variables are stored and 
@@ -30,19 +30,19 @@ PlpoBehavior >> allInstVarNames [
 		ifNotNil: [ :sup | sup allInstVarNames , self instVarNames ]
 ]
 
-{ #category : #'private - backend access' }
+{ #category : 'private - backend access' }
 PlpoBehavior >> classVarNames [
 
 	^ self proxyPerform: #classVarNames
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PlpoBehavior >> instVarNames [
 
 	^ self proxyPerform: #instVarNames
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PlpoBehavior >> methods [ 
 
 	^ self newCommandFactory 
@@ -50,7 +50,7 @@ PlpoBehavior >> methods [
 		sendAndWait
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PlpoBehavior >> superclass [
 
 	^ self proxyPerform: #superclass
