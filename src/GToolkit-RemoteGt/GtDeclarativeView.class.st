@@ -159,6 +159,11 @@ GtDeclarativeView >> dataTransport: anObject [
 	dataTransport := anObject
 ]
 
+{ #category : 'testing' }
+GtDeclarativeView >> isWithLazyLoading [
+	^ self dataTransport = self class dataLazy
+]
+
 { #category : 'accessing' }
 GtDeclarativeView >> methodName [
 	^ methodName

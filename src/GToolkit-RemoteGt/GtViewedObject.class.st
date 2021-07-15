@@ -59,6 +59,22 @@ GtViewedObject >> getViewDeclaration: viewSelector [
 		yourself.
 ]
 
+{ #category : 'accessing' }
+GtViewedObject >> gtCachedViewsFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Cached Views';
+		items: [ 
+			viewCache 
+				ifNil: [ #() ]
+				ifNotNil: [ viewCache associations ] ];
+		column: 'Selector' text: [ :assoc | assoc key ];
+		column: 'Title' text: [ :assoc | assoc value declarativeView title ];
+		column: 'Data Transport' text: [ :assoc | 
+			assoc value declarativeView dataTransport ];
+		send: [ :assoc | assoc value ]
+]
+
 { #category : 'gt inspector' }
 GtViewedObject >> gtSentItemFor: viewSelector at: selection [ 
 	"Answer the value to be sent from the view"
@@ -104,6 +120,13 @@ GtViewedObject >> rawViewData [
 			value := node rawValue.
 			stream nextPut: { icon. name. value. } ] ].
 
+]
+
+{ #category : 'accessing' }
+GtViewedObject >> retriveFormattedItemsForViewSelector: aViewSelector [
+	| declarativeViewCache |
+	declarativeViewCache := viewCache at: aViewSelector.
+	^ declarativeViewCache retriveFormattedItems
 ]
 
 { #category : 'private' }

@@ -18,7 +18,7 @@ Class {
 	#name : 'GtDeclarativeList',
 	#superclass : 'GtDeclarativeView',
 	#instVars : [
-		'items'
+		'formattedItems'
 	],
 	#category : 'GToolkit-RemoteGt-Declarative Views'
 }
@@ -40,28 +40,35 @@ GtDeclarativeList >> asDictionaryForExport [
 
 	dictionary := super asDictionaryForExport.
 	self dataTransport = self class dataIncluded ifTrue: [ 
-		dictionary at: #items put: items ].
+		dictionary at: #items put: formattedItems ].
 	^dictionary
 ]
 
 { #category : 'accessing' }
 GtDeclarativeList >> data [ 
 
-	^items
+	^ formattedItems
 ]
 
 { #category : 'accessing' }
 GtDeclarativeList >> items [
-
-	^items ifNil: [ 
-		(items isNil and: [ dataTransport = self class dataLazy ]) ifTrue: 
-			[ items := accessor data asArray ] ].
+	^ formattedItems ifNil: [ 
+		(formattedItems isNil and: [ 
+			self isWithLazyLoading ]) 
+				ifTrue: [ 
+					formattedItems := self retriveFormattedItems  ] ].
 
 ]
 
 { #category : 'accessing' }
-GtDeclarativeList >> items: anObject [
-	items := anObject
+GtDeclarativeList >> items: aCollection [
+	formattedItems := aCollection
+]
+
+{ #category : 'accessing' }
+GtDeclarativeList >> retriveFormattedItems [
+	^  self accessor 
+			retriveFormattedItemsForViewSelector: self methodName
 ]
 
 { #category : 'accessing' }
@@ -80,8 +87,8 @@ GtDeclarativeList >> viewFor: aView [
 	list := aView list 
 		title: title;
 		priority: priority;
-		items: [ self items collect: #asRopedText ].
-	list
-		send: [ :arg :selection | accessor gtSentItemFor: methodName at: selection first ].
+		items: [ self items ];
+		send: [ :arg :selection | 
+			accessor gtSentItemFor: methodName at: selection first ].
 	^list
 ]
