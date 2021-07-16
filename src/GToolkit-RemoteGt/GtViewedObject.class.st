@@ -80,7 +80,6 @@ GtViewedObject >> gtSentItemFor: viewSelector at: selection [
 	"Answer the value to be sent from the view"
 
 	^ (self declarativeViewWithSelector: viewSelector) sentItemAt: selection
-	
 ]
 
 { #category : 'initialization' }
@@ -127,6 +126,13 @@ GtViewedObject >> retriveFormattedItemsForViewSelector: aViewSelector [
 	| declarativeViewCache |
 	declarativeViewCache := viewCache at: aViewSelector.
 	^ declarativeViewCache retriveFormattedItems
+]
+
+{ #category : 'accessing' }
+GtViewedObject >> retriveSentItemForViewSelector: aViewSelector atIndex: aSelectionIndex [
+	| declarativeViewCache |
+	declarativeViewCache := viewCache at: aViewSelector.
+	^ declarativeViewCache retriveSentItemAtIndex: aSelectionIndex 
 ]
 
 { #category : 'private' }

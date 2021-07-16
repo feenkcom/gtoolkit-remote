@@ -60,6 +60,15 @@ GtViewCache >> retriveFormattedItems [
 ]
 
 { #category : 'accessing' }
+GtViewCache >> retriveSentItemAtIndex: aSelectionIndex [
+	|  viewItems |
+	viewItems := self 
+		catcheAt: #items 
+		ifAbsentPut: [ self view itemsBuilder value ].
+	^ viewItems at: aSelectionIndex
+]
+
+{ #category : 'accessing' }
 GtViewCache >> view [
 
 	^ view ifNil: [ 

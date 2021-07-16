@@ -72,6 +72,13 @@ GtDeclarativeList >> retriveFormattedItems [
 ]
 
 { #category : 'accessing' }
+GtDeclarativeList >> retriveSentItemAt: aSelectionIndex [
+	^  self accessor 
+			retriveSentItemForViewSelector: self methodName
+			atIndex: aSelectionIndex
+]
+
+{ #category : 'accessing' }
 GtDeclarativeList >> sentItemAt: selection [ 
 	"Answer the raw value at the supplied index"
 
@@ -89,6 +96,6 @@ GtDeclarativeList >> viewFor: aView [
 		priority: priority;
 		items: [ self items ];
 		send: [ :arg :selection | 
-			accessor gtSentItemFor: methodName at: selection first ].
+			self retriveSentItemAt: selection first ].
 	^list
 ]

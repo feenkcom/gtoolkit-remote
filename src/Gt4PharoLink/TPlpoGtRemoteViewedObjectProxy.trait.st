@@ -26,3 +26,20 @@ TPlpoGtRemoteViewedObjectProxy >> retriveFormattedItemsForViewSelector: methodNa
 			<< methodName ].
 	^ self evaluateSourceSequence: message
 ]
+
+{ #category : 'accessing' }
+TPlpoGtRemoteViewedObjectProxy >> retriveSentItemForViewSelector: methodName atIndex: selectionIndex [
+	"Pass the #retriveSentItemForViewSelector:atIndex: request on to the receiver's object, which is a GtViewedObject"
+	| message |
+
+	self assert: (PharoLinkRegistry isPrimitive: methodName).
+	self assert: (PharoLinkRegistry isPrimitive: selectionIndex).
+
+	message := String streamContents: [ :stream |
+		stream 
+			<< 'self retriveFormattedItemsForViewSelector: #';
+			<< methodName;
+			<< ' atIndex: ';
+			<< selectionIndex asString ].
+	^ self evaluateSourceSequence: message
+]
