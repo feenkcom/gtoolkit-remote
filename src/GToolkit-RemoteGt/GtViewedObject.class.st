@@ -24,7 +24,7 @@ Class {
 		'object',
 		'viewCache'
 	],
-	#category : #'GToolkit-RemoteGt-Server'
+	#category : 'GToolkit-RemoteGt-Server'
 }
 
 { #category : #'instance creation' }
@@ -59,12 +59,27 @@ GtViewedObject >> getViewDeclaration: viewSelector [
 		yourself.
 ]
 
+{ #category : #accessing }
+GtViewedObject >> gtCachedViewsFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Cached Views';
+		items: [ 
+			viewCache 
+				ifNil: [ #() ]
+				ifNotNil: [ viewCache associations ] ];
+		column: 'Selector' text: [ :assoc | assoc key ];
+		column: 'Title' text: [ :assoc | assoc value declarativeView title ];
+		column: 'Data Transport' text: [ :assoc | 
+			assoc value declarativeView dataTransport ];
+		send: [ :assoc | assoc value ]
+]
+
 { #category : #'gt inspector' }
 GtViewedObject >> gtSentItemFor: viewSelector at: selection [ 
 	"Answer the value to be sent from the view"
 
 	^ (self declarativeViewWithSelector: viewSelector) sentItemAt: selection
-	
 ]
 
 { #category : #initialization }
@@ -104,6 +119,20 @@ GtViewedObject >> rawViewData [
 			value := node rawValue.
 			stream nextPut: { icon. name. value. } ] ].
 
+]
+
+{ #category : #accessing }
+GtViewedObject >> retriveFormattedItemsForViewSelector: aViewSelector [
+	| declarativeViewCache |
+	declarativeViewCache := viewCache at: aViewSelector.
+	^ declarativeViewCache retriveFormattedItems
+]
+
+{ #category : #accessing }
+GtViewedObject >> retriveSentItemForViewSelector: aViewSelector atIndex: aSelectionIndex [
+	| declarativeViewCache |
+	declarativeViewCache := viewCache at: aViewSelector.
+	^ declarativeViewCache retriveSentItemAtIndex: aSelectionIndex 
 ]
 
 { #category : #private }

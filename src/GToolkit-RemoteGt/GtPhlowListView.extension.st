@@ -5,11 +5,12 @@ GtPhlowListView >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
 
-	^GtDeclarativeList new 
+	^ GtDeclarativeList new 
 		title: self title;
 		priority: self priority;
-		items: (self itemsBuilder value collect: [ :each | (self itemText value: each) gtDisplayString ]) asArray;
-		dataTransport: GtDeclarativeView dataIncluded.
+		"items: (self itemsBuilder value 
+			collect: [ :each | (self itemText value: each) gtDisplayString ]) asArray;"
+		dataTransport: GtDeclarativeView dataLazy.
 
 ]
 

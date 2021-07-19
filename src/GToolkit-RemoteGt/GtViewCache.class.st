@@ -5,9 +5,10 @@ Class {
 		'viewedObject',
 		'viewSelector',
 		'view',
-		'declarativeView'
+		'declarativeView',
+		'cachedData'
 	],
-	#category : #'GToolkit-RemoteGt-Server'
+	#category : 'GToolkit-RemoteGt-Server'
 }
 
 { #category : #'instance creation' }
@@ -20,11 +21,25 @@ GtViewCache class >> viewedObject: aGtViewedObject selector: viewSelector [
 ]
 
 { #category : #accessing }
+GtViewCache >> cachedData [
+	^ cachedData ifNil: [ 
+		cachedData := Dictionary new ]
+]
+
+{ #category : #accessing }
+GtViewCache >> catcheAt: aKey	ifAbsentPut: aPutBlock [
+	^ self cachedData 
+		at: aKey ifAbsentPut: aPutBlock
+]
+
+{ #category : #accessing }
 GtViewCache >> declarativeView [
 
-	^ declarativeView ifNil: 
-		[ declarativeView := self view asGtDeclarativeView
-			accessor: self view;
+	^ declarativeView ifNil: [ 
+		| concreteView |
+		concreteView := self view.
+		declarativeView := concreteView asGtDeclarativeView
+			"accessor: concreteView;"
 			yourself ]
 ]
 
@@ -35,9 +50,31 @@ GtViewCache >> object [
 ]
 
 { #category : #accessing }
+GtViewCache >> retriveFormattedItems [
+	|  viewItems |
+	viewItems := self 
+		catcheAt: #items 
+		ifAbsentPut: [ self view itemsBuilder value ].
+	^ (viewItems collect: [ :each | 
+		(self view itemText value: each) gtDisplayString ]) asArray
+]
+
+{ #category : #accessing }
+GtViewCache >> retriveSentItemAtIndex: aSelectionIndex [
+	|  viewItems |
+	viewItems := self 
+		catcheAt: #items 
+		ifAbsentPut: [ self view itemsBuilder value ].
+	^ viewItems at: aSelectionIndex
+]
+
+{ #category : #accessing }
 GtViewCache >> view [
 
-	^ view ifNil: [ view := self object perform: viewSelector with: GtPhlowEmptyView new ]
+	^ view ifNil: [ 
+		view := self object 
+			perform: viewSelector 
+			with: GtPhlowEmptyView new ]
 ]
 
 { #category : #accessing }
