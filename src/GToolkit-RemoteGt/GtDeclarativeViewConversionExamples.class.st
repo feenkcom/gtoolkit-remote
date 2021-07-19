@@ -1,7 +1,7 @@
 Class {
 	#name : #GtDeclarativeViewConversionExamples,
 	#superclass : #Object,
-	#category : #'GToolkit-RemoteGt-Examples'
+	#category : 'GToolkit-RemoteGt-Examples'
 }
 
 { #category : #examples }
@@ -40,6 +40,8 @@ GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableColumn
 	self assert: declarativeView items equals: #(#('42' '42') #('Hello World' 'hello world') #('2021-04-06T14:43:49.623384+02:00' '2021-04-06t14:43:49.623384+02:00')).
 	self assert: declarativeView columnTitles equals: #('Value' 'Lowercase').
 	self assert: declarativeView columnWidths equals: #(nil 100).
+	
+	^ declarativeView
 
 ]
 
@@ -47,14 +49,17 @@ GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableColumn
 GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableList [
 	"Check the conversion to declarative views with data"
 	<gtExample>
-	| declarativeView |
+	| phlowView declarativeView |
 
-	declarativeView := (GtDeclarativeTestInspectable new gtListFor: GtPhlowProtoView new) asGtDeclarativeView.
+	phlowView := GtDeclarativeTestInspectable new gtListFor: GtPhlowProtoView new.
+	declarativeView := phlowView asGtDeclarativeView.
+	declarativeView accessor: (GtMockedViewedObject new view: phlowView).
 
 	self assert: declarativeView title equals: 'List'.
 	self assert: declarativeView priority equals: 15.
 	self assert: declarativeView items equals: #('42' 'Hello World' '2021-04-06T14:43:49.623384+02:00').
 
+	^ declarativeView
 ]
 
 { #category : #examples }
@@ -68,6 +73,8 @@ GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableText [
 	self assert: declarativeView title equals: 'String'.
 	self assert: declarativeView priority equals: 10.
 	self assert: declarativeView string equals: 'hello world'.
+	
+	^ declarativeView
 
 ]
 
@@ -83,6 +90,7 @@ GtDeclarativeViewConversionExamples >> convertList [
 		items: [ #(1 2 3) ];
 		itemText: [ :item | 'Number: ', item asString ].
 	declarativeView := phlowView asGtDeclarativeView.
+	declarativeView accessor: (GtMockedViewedObject new view: phlowView).
 
 	self assert: declarativeView title equals: #Test.
 	self assert: declarativeView priority equals: 10.
@@ -106,6 +114,32 @@ GtDeclarativeViewConversionExamples >> convertText [
 	self assert: declarativeView title equals: #Test.
 	self assert: declarativeView priority equals: 10.
 	self assert: declarativeView string equals: #HelloWorld.
+
+	^ declarativeView.
+]
+
+{ #category : #examples }
+GtDeclarativeViewConversionExamples >> convertTree [
+	"Demonstrate converting a tree phlow view to a declarative view"
+	<gtExample>
+	| phlowView declarativeView data |
+
+	phlowView := GtPhlowProtoView new tree
+		title: #Test;
+		priority: 10;
+		items: [ 1 to: 4 ];
+		children: [ :aNumber | 
+			aNumber = 0
+				ifTrue: [ #() ]
+				ifFalse: [ 1 to: aNumber // 2 ] ].
+	declarativeView := phlowView asGtDeclarativeView.
+
+	self assert: declarativeView title equals: #Test.
+	self assert: declarativeView priority equals: 10.
+	data := declarativeView data.
+	self assert: data size equals: 4.
+	self assert: data first equals: #('1' #(1) #()).
+	self assert: data last equals:  #('4' #(4) #(#('1' #(4 1) #()) #('2' #(4 2) #(#('1' #(4 2 1) #()))))).
 
 	^ declarativeView.
 ]

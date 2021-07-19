@@ -13,13 +13,9 @@ LanguageLinkProxyObject >> declarativeViews [
 	| viewSelectors rawViews viewDictionary |
 
 	self viewProxyDo: [ :viewProxy |
-		viewSelectors := viewProxy newCommandFactory
-				<< 'self getGtViewMethodNames';
-				sendAndWait.
+		viewSelectors := viewProxy getGtViewMethodNames.
 		rawViews := viewSelectors collect: [ :viewSelector |
-			viewDictionary := viewProxy newCommandFactory
-				<< ('self getViewDeclaration: #', viewSelector);
-				sendAndWait.
+			viewDictionary := viewProxy getViewDeclaration: viewSelector.
 			((GtDeclarativeView fromDictionary: viewDictionary)
 					accessor: viewProxy;
 					methodName: viewSelector;
@@ -76,7 +72,7 @@ LanguageLinkProxyObject >> gtProxyRawFor: aView [
 
 	^ aView columnedList 
 		title: 'Raw';
-		priority: 5;
+		priority: 15;
 		items: [ self viewProxyDo: [ :viewProxy |
 				viewProxy newCommandFactory
 					<< 'self rawViewData';

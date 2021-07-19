@@ -36,7 +36,7 @@ Class {
 		'priority',
 		'dataTransport'
 	],
-	#category : #'GToolkit-RemoteGt-Declarative Views'
+	#category : 'GToolkit-RemoteGt-Declarative Views'
 }
 
 { #category : #'instance creation' }
@@ -157,6 +157,11 @@ GtDeclarativeView >> dataTransport [
 { #category : #accessing }
 GtDeclarativeView >> dataTransport: anObject [
 	dataTransport := anObject
+]
+
+{ #category : #testing }
+GtDeclarativeView >> isWithLazyLoading [
+	^ self dataTransport = self class dataLazy
 ]
 
 { #category : #accessing }
