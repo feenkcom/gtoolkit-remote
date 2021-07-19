@@ -95,6 +95,8 @@ Class {
 { #category : #accessing }
 GtPharoLinkCodeSync >> flush [
 	| message |
+	application isRunning
+		ifFalse: [ "nothing to send, if nothing connected" ^ self ].
 	message := String
 		streamContents: [ :stream | 
 			statements
@@ -105,7 +107,7 @@ GtPharoLinkCodeSync >> flush [
 	message ifEmpty: [ "nothing to send, ignore" ^ self ].
 	application newCommandFactory
 		<< message;
-		waitForValue
+		sendAndWait
 ]
 
 { #category : #accessing }
