@@ -1,20 +1,20 @@
 Trait {
-	#name : 'TPlpoGtRemoteViewedObjectProxy',
+	#name : 'TGtPharoLinkRemoteViewedObjectProxy',
 	#category : 'Gt4PharoLink-Proxies'
 }
 
 { #category : 'accessing' }
-TPlpoGtRemoteViewedObjectProxy >> getGtViewMethodNames [
+TGtPharoLinkRemoteViewedObjectProxy >> getGtViewMethodNames [
 	^ self proxyPerform: #getGtViewMethodNames
 ]
 
 { #category : 'accessing' }
-TPlpoGtRemoteViewedObjectProxy >> getViewDeclaration: aViewSelector [ 
+TGtPharoLinkRemoteViewedObjectProxy >> getViewDeclaration: aViewSelector [ 
 	^ self evaluateSourceSequence: 'self getViewDeclaration: #', aViewSelector
 ]
 
 { #category : 'accessing' }
-TPlpoGtRemoteViewedObjectProxy >> retriveFormattedItemsForViewSelector: methodName [
+TGtPharoLinkRemoteViewedObjectProxy >> retriveFormattedItemsForViewSelector: methodName [
 	"Pass the #retriveItemsForViewSelector:  request on to the receiver's object, which is a GtViewedObject"
 	| message |
 
@@ -28,7 +28,7 @@ TPlpoGtRemoteViewedObjectProxy >> retriveFormattedItemsForViewSelector: methodNa
 ]
 
 { #category : 'accessing' }
-TPlpoGtRemoteViewedObjectProxy >> retriveSentItemForViewSelector: methodName atIndex: selectionIndex [
+TGtPharoLinkRemoteViewedObjectProxy >> retriveSentItemForViewSelector: methodName atIndex: selectionIndex [
 	"Pass the #retriveSentItemForViewSelector:atIndex: request on to the receiver's object, which is a GtViewedObject"
 	| message |
 

@@ -12,12 +12,12 @@ LanguageLinkProxyObject >> declarativeViews [
 	"Answer the views for the receiver"
 	| viewSelectors rawViews viewDictionary |
 
-	self viewProxyDo: [ :viewProxy |
-		viewSelectors := viewProxy getGtViewMethodNames.
+	self viewProxyDo: [ :remoteInspectorProxy |
+		viewSelectors := remoteInspectorProxy getGtViewMethodNames.
 		rawViews := viewSelectors collect: [ :viewSelector |
-			viewDictionary := viewProxy getViewDeclaration: viewSelector.
+			viewDictionary := remoteInspectorProxy getViewDeclaration: viewSelector.
 			((GtDeclarativeView fromDictionary: viewDictionary)
-					accessor: viewProxy;
+					accessor: remoteInspectorProxy;
 					methodName: viewSelector;
 					yourself) ] ].
 

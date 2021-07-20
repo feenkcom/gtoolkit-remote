@@ -67,7 +67,7 @@ GtDeclarativeList >> items: aCollection [
 
 { #category : 'accessing' }
 GtDeclarativeList >> retriveFormattedItems [
-	^  self accessor 
+	^ self accessor 
 			retriveFormattedItemsForViewSelector: self methodName
 ]
 
