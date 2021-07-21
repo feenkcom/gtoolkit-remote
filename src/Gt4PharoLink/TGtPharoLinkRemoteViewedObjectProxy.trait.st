@@ -10,36 +10,35 @@ TGtPharoLinkRemoteViewedObjectProxy >> getGtViewMethodNames [
 
 { #category : #accessing }
 TGtPharoLinkRemoteViewedObjectProxy >> getViewDeclaration: aViewSelector [ 
-	^ self evaluateSourceSequence: 'self getViewDeclaration: #', aViewSelector
+	^ self
+		proxyPerform: #getViewDeclaration:
+		withPrimitiveArguments: { aViewSelector asSymbol }
+]
+
+{ #category : #accessing }
+TGtPharoLinkRemoteViewedObjectProxy >> retrieveItemsCount: anItemsCount fromIndex: anIndex forViewSelector: aViewSelector [
+	^ self
+		proxyPerform: #retrieveItemsCount:fromIndex:forViewSelector:
+		withPrimitiveArguments: { anItemsCount . anIndex . aViewSelector }
+]
+
+{ #category : #accessing }
+TGtPharoLinkRemoteViewedObjectProxy >> retrieveTotalItemsCountForViewSelector: methodName [
+	^ self
+		proxyPerform: #retrieveTotalItemsCountForViewSelector: 
+		withPrimitiveArguments: { methodName }
 ]
 
 { #category : #accessing }
 TGtPharoLinkRemoteViewedObjectProxy >> retriveFormattedItemsForViewSelector: methodName [
-	"Pass the #retriveItemsForViewSelector:  request on to the receiver's object, which is a GtViewedObject"
-	| message |
-
-	self assert: (PharoLinkRegistry isPrimitive: methodName).
-
-	message := String streamContents: [ :stream |
-		stream 
-			<< 'self retriveFormattedItemsForViewSelector: #';
-			<< methodName ].
-	^ self evaluateSourceSequence: message
+	^ self
+		proxyPerform: #retriveFormattedItemsForViewSelector: 
+		withPrimitiveArguments: { methodName }
 ]
 
 { #category : #accessing }
 TGtPharoLinkRemoteViewedObjectProxy >> retriveSentItemForViewSelector: methodName atIndex: selectionIndex [
-	"Pass the #retriveSentItemForViewSelector:atIndex: request on to the receiver's object, which is a GtViewedObject"
-	| message |
-
-	self assert: (PharoLinkRegistry isPrimitive: methodName).
-	self assert: (PharoLinkRegistry isPrimitive: selectionIndex).
-
-	message := String streamContents: [ :stream |
-		stream 
-			<< 'self retriveFormattedItemsForViewSelector: #';
-			<< methodName;
-			<< ' atIndex: ';
-			<< selectionIndex asString ].
-	^ self evaluateSourceSequence: message
+	^ self
+		proxyPerform: #retriveSentItemForViewSelector:atIndex:
+		withPrimitiveArguments: { methodName . selectionIndex }
 ]
