@@ -122,6 +122,20 @@ GtViewedObject >> rawViewData [
 ]
 
 { #category : 'accessing' }
+GtViewedObject >> retrieveItemsCount: anItemsCount fromIndex: anIndex forViewSelector: aViewSelector [
+	| declarativeViewCache |
+	declarativeViewCache := viewCache at: aViewSelector.
+	^ declarativeViewCache retrieveItems: anItemsCount fromIndex: anIndex
+]
+
+{ #category : 'accessing' }
+GtViewedObject >> retrieveTotalItemsCountForViewSelector: aViewSelector [
+	| declarativeViewCache |
+	declarativeViewCache := viewCache at: aViewSelector.
+	^ declarativeViewCache retrieveTotalItemsCount
+]
+
+{ #category : 'accessing' }
 GtViewedObject >> retriveFormattedItemsForViewSelector: aViewSelector [
 	| declarativeViewCache |
 	declarativeViewCache := viewCache at: aViewSelector.

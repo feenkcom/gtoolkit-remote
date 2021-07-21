@@ -52,6 +52,17 @@ GtDeclarativeTestInspectable >> gtColumnedListFor: aView [
 ]
 
 { #category : 'inspecting' }
+GtDeclarativeTestInspectable >> gtLargeListFor: aView [
+	<gtView>
+
+	^aView list
+		title: 'Large List' translated;
+		priority: 20;
+		items: [ 1 to: 1022 ];
+		itemText: [ :item | item asString ]
+]
+
+{ #category : 'inspecting' }
 GtDeclarativeTestInspectable >> gtListFor: aView [
 	<gtView>
 

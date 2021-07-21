@@ -18,6 +18,7 @@ Class {
 	#name : 'GtDeclarativeList',
 	#superclass : 'GtDeclarativeView',
 	#instVars : [
+		'totalItemsCount',
 		'formattedItems'
 	],
 	#category : 'GToolkit-RemoteGt-Declarative Views'
@@ -39,15 +40,20 @@ GtDeclarativeList >> asDictionaryForExport [
 	| dictionary |
 
 	dictionary := super asDictionaryForExport.
-	self dataTransport = self class dataIncluded ifTrue: [ 
-		dictionary at: #items put: formattedItems ].
+	"self dataTransport = self class dataIncluded ifTrue: [ 
+		dictionary at: #items put: self retriveFormattedItems ]."
 	^dictionary
 ]
 
-{ #category : 'accessing' }
-GtDeclarativeList >> data [ 
+{ #category : 'api - accessing' }
+GtDeclarativeList >> hasItemsAfterIndex: anIndex [
+	^ anIndex < self totalItemsCount
+]
 
-	^ formattedItems
+{ #category : 'api - accessing' }
+GtDeclarativeList >> initialItems [
+	(self hasItemsAfterIndex: 0) ifFalse: [ ^ #() ].
+	^ self loadNewItemsFromIndex: 1
 ]
 
 { #category : 'accessing' }
@@ -63,6 +69,20 @@ GtDeclarativeList >> items [
 { #category : 'accessing' }
 GtDeclarativeList >> items: aCollection [
 	formattedItems := aCollection
+]
+
+{ #category : 'api - accessing' }
+GtDeclarativeList >> loadNewItemsFromIndex: anIndex [		
+	^ self accessor 
+		retrieveItemsCount: 100
+		fromIndex: anIndex 
+		forViewSelector: self methodName
+]
+
+{ #category : 'accessing' }
+GtDeclarativeList >> retrieveTotalItemsCount [
+	^ self accessor
+		retrieveTotalItemsCountForViewSelector: self methodName
 ]
 
 { #category : 'accessing' }
@@ -85,16 +105,22 @@ GtDeclarativeList >> sentItemAt: selection [
 	^ accessor itemsBuilder value at: selection.
 ]
 
+{ #category : 'accessing' }
+GtDeclarativeList >> totalItemsCount [
+	^ totalItemsCount ifNil: [ 
+		totalItemsCount := self retrieveTotalItemsCount ]
+]
+
 { #category : 'building - graph' }
 GtDeclarativeList >> viewFor: aView [
 	"Answer the GtPhlowView for the receiver"
 
 	| list |
 
-	list := aView list 
+	list := aView lazyList 
 		title: title;
 		priority: priority;
-		items: [ self items ];
+		itemsProvider: [ self ];
 		send: [ :arg :selection | 
 			self retriveSentItemAt: selection first ].
 	^list
