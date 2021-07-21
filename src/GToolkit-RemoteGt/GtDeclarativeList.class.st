@@ -73,6 +73,10 @@ GtDeclarativeList >> items: aCollection [
 
 { #category : 'api - accessing' }
 GtDeclarativeList >> loadNewItemsFromIndex: anIndex [		
+	(GtLoadItemsStackSignal new
+		startIndex: anIndex;
+		chunkSize: 1000) emit.
+	
 	^ self accessor 
 		retrieveItemsCount: 100
 		fromIndex: anIndex 
