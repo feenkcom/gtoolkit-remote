@@ -20,7 +20,7 @@ Class {
 		'string',
 		'collectionOfObjects'
 	],
-	#category : #'GToolkit-RemoteGt-Examples'
+	#category : 'GToolkit-RemoteGt-Examples'
 }
 
 { #category : #accessing }
@@ -49,6 +49,17 @@ GtDeclarativeTestInspectable >> gtColumnedListFor: aView [
 		items: [ collectionOfObjects ];
 		column: 'Value' item: [ :anObject | anObject asString ];
 		column: 'Lowercase' item: [ :anObject | anObject asString asLowercase ] width: 100.
+]
+
+{ #category : #inspecting }
+GtDeclarativeTestInspectable >> gtLargeListFor: aView [
+	<gtView>
+
+	^aView list
+		title: 'Large List' translated;
+		priority: 20;
+		items: [ 1 to: 1022 ];
+		itemText: [ :item | item asString ]
 ]
 
 { #category : #inspecting }

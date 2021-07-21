@@ -50,6 +50,28 @@ GtViewCache >> object [
 ]
 
 { #category : #accessing }
+GtViewCache >> retrieveItems: anItemsCount fromIndex: anIndex [
+	|  viewItems |
+	viewItems := self 
+		catcheAt: #items 
+		ifAbsentPut: [ self view itemsBuilder value ].
+	^ ((viewItems 
+			copyFrom: anIndex
+			to: ((anIndex + anItemsCount - 1) min: viewItems size))
+	 			collect: [ :each | 
+					(self view itemText value: each) gtDisplayString ]) asArray
+]
+
+{ #category : #accessing }
+GtViewCache >> retrieveTotalItemsCount [
+	|  viewItems |
+	viewItems := self 
+		catcheAt: #items 
+		ifAbsentPut: [ self view itemsBuilder value ].
+	^ viewItems size
+]
+
+{ #category : #accessing }
 GtViewCache >> retriveFormattedItems [
 	|  viewItems |
 	viewItems := self 

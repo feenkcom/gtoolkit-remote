@@ -8,10 +8,7 @@ GtPhlowListView >> asGtDeclarativeView [
 	^ GtDeclarativeList new 
 		title: self title;
 		priority: self priority;
-		"items: (self itemsBuilder value 
-			collect: [ :each | (self itemText value: each) gtDisplayString ]) asArray;"
 		dataTransport: GtDeclarativeView dataLazy.
-
 ]
 
 { #category : #'*GToolkit-RemoteGt' }

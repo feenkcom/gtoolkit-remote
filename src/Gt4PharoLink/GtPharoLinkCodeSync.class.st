@@ -87,35 +87,36 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'application',
-		'statements',
-		'promise',
-		'monitor'
+		'statements'
 	],
-	#category : #'Gt4PharoLink-CodeSync'
+	#category : 'Gt4PharoLink-CodeSync'
 }
 
 { #category : #accessing }
 GtPharoLinkCodeSync >> flush [
-	"FIXME remove monitor, not necessary, use AtomicSharedQueue instead
-	BlockClosure>>#forkAt:named: instead of taskit"
-	"FIXME OR waitfreequeue, submit task to process queue, do nothing if empty"
-	monitor
-		critical: [ | message |
-			promise ifNotNil: [ "already waiting for response, ignore" ^ self ].
-			message := String
-				streamContents: [ :stream | 
-					statements
-						flush: [ :statement | 
-							stream
-								nextPutAll: statement;
-								nextPut: Character cr ] ].
-			message ifEmpty: [ "nothing to send, ignore" ^ self ].
-			promise := application newCommandFactory
-				<< message;
-				send.
-			self flag: 'FIXME requires taskit as dependency'.
-			[ promise waitForValue.
-			promise := nil ] schedule ]
+	| message |
+	application isRunning
+		ifFalse: [ "nothing to send, if nothing connected" ^ self ].
+	message := String
+		streamContents: [ :stream | 
+			statements
+				flush: [ :statement | 
+					stream
+						nextPutAll: statement;
+						nextPut: Character cr ] ].
+	message ifEmpty: [ "nothing to send, ignore" ^ self ].
+	application newCommandFactory
+		<< message;
+		sendAndWait
+]
+
+{ #category : #accessing }
+GtPharoLinkCodeSync >> flushAsync [
+	BlTktWorkerProvider nonUISinglePool
+		schedule:
+			([ self flush ] asBlTktCommand
+				name: 'CodeSync flush';
+				yourself)
 ]
 
 { #category : #accessing }
@@ -123,8 +124,7 @@ GtPharoLinkCodeSync >> initialize [
 	super initialize.
 	application := PharoLinkApplication withDefaultSettings.
 	application debugMode: true.
-	statements := WaitfreeQueue new.
-	monitor := Monitor new
+	statements := WaitfreeQueue new
 ]
 
 { #category : #accessing }
@@ -192,7 +192,7 @@ GtPharoLinkCodeSync >> whenCategoryAdded: aCategoryAdded [
 		nextPut:
 			('SystemOrganizer default addCategory: {1}.'
 				format: {aCategoryAdded categoryName storeString}).
-	self flush
+	self flushAsync
 ]
 
 { #category : #accessing }
@@ -201,7 +201,7 @@ GtPharoLinkCodeSync >> whenCategoryRemoved: aCategoryRemoved [
 		nextPut:
 			('SystemOrganizer default removeCategory: {1}.'
 				format: {aCategoryRemoved categoryName storeString}).
-	self flush
+	self flushAsync
 ]
 
 { #category : #accessing }
@@ -212,7 +212,7 @@ GtPharoLinkCodeSync >> whenCategoryRenamed: aCategoryRenamed [
 				format:
 					{aCategoryRenamed oldCategoryName storeString.
 					aCategoryRenamed newCategoryName storeString}).
-	self flush
+	self flushAsync
 ]
 
 { #category : #accessing }
@@ -223,7 +223,7 @@ GtPharoLinkCodeSync >> whenClassAdded: aClassAdded [
 				format:
 					{aClassAdded classAdded definitionSource storeString.
 					aClassAdded classAdded classSide definitionSource storeString}).
-	self flush
+	self flushAsync
 ]
 
 { #category : #accessing }
@@ -235,7 +235,7 @@ GtPharoLinkCodeSync >> whenClassCommented: aClassCommented [
 					{aClassCommented classCommented name.
 					aClassCommented newComment storeString.
 					aClassCommented newStamp storeString}).
-	self flush
+	self flushAsync
 ]
 
 { #category : #accessing }
@@ -248,7 +248,7 @@ GtPharoLinkCodeSync >> whenClassModificationApplied: aClassModificationApplied [
 						storeString.
 					aClassModificationApplied classAffected classSide
 						definitionSource storeString}).
-	self flush
+	self flushAsync
 ]
 
 { #category : #accessing }
@@ -261,7 +261,7 @@ GtPharoLinkCodeSync >> whenClassModifiedClassDefinition: aClassModifiedClassDefi
 						storeString.
 					aClassModifiedClassDefinition newClassDefinition classSide
 						definitionSource storeString}).
-	self flush
+	self flushAsync
 ]
 
 { #category : #accessing }
@@ -272,7 +272,7 @@ GtPharoLinkCodeSync >> whenClassRecategorized: aClassRecategorized [
 				format:
 					{aClassRecategorized classRecategorized name.
 					aClassRecategorized newCategory storeString}).
-	self flush
+	self flushAsync
 ]
 
 { #category : #accessing }
@@ -280,7 +280,7 @@ GtPharoLinkCodeSync >> whenClassRemoved: aClassRemoved [
 	statements
 		nextPut:
 			('{1} removeFromSystem.' format: {aClassRemoved classRemoved name}).
-	self flush
+	self flushAsync
 ]
 
 { #category : #accessing }
@@ -291,7 +291,7 @@ GtPharoLinkCodeSync >> whenClassRenamed: aClassRenamed [
 				format:
 					{aClassRenamed classRenamed name.
 					aClassRenamed newName storeString}).
-	self flush
+	self flushAsync
 ]
 
 { #category : #accessing }
@@ -303,7 +303,7 @@ GtPharoLinkCodeSync >> whenMethodAdded: aMethodAdded [
 					{aMethodAdded methodAdded origin name.
 					aMethodAdded methodAdded sourceCode storeString.
 					aMethodAdded methodAdded protocol storeString}).
-	self flush
+	self flushAsync
 ]
 
 { #category : #accessing }
@@ -315,7 +315,7 @@ GtPharoLinkCodeSync >> whenMethodModified: aMethodModified [
 					{aMethodModified newMethod origin name.
 					aMethodModified newMethod sourceCode storeString.
 					aMethodModified newMethod protocol storeString}).
-	self flush
+	self flushAsync
 ]
 
 { #category : #accessing }
@@ -327,7 +327,7 @@ GtPharoLinkCodeSync >> whenMethodRecategorized: aMethodRecategorized [
 					{aMethodRecategorized methodRecategorized origin name.
 					aMethodRecategorized methodRecategorized selector storeString.
 					aMethodRecategorized newProtocol storeString}).
-	self flush
+	self flushAsync
 ]
 
 { #category : #accessing }
@@ -338,7 +338,7 @@ GtPharoLinkCodeSync >> whenMethodRemoved: aMethodRemoved [
 				format:
 					{aMethodRemoved methodRemoved origin name.
 					aMethodRemoved methodRemoved selector storeString}).
-	self flush
+	self flushAsync
 ]
 
 { #category : #accessing }
@@ -349,7 +349,7 @@ GtPharoLinkCodeSync >> whenProtocolAdded: aProtocolAdded [
 				format:
 					{aProtocolAdded classReorganized name.
 					aProtocolAdded protocol storeString}).
-	self flush
+	self flushAsync
 ]
 
 { #category : #accessing }
@@ -360,7 +360,7 @@ GtPharoLinkCodeSync >> whenProtocolRemoved: aProtocolRemoved [
 				format:
 					{aProtocolRemoved classReorganized name.
 					aProtocolRemoved protocol storeString}).
-	self flush
+	self flushAsync
 ]
 
 { #category : #accessing }
@@ -372,5 +372,5 @@ GtPharoLinkCodeSync >> whenProtocolRenamed: aProtocolRenamed [
 					{aProtocolRenamed classReorganized name.
 					aProtocolRenamed oldProtocolName storeString.
 					aProtocolRenamed newProtocolName storeString}).
-	self flush
+	self flushAsync
 ]
