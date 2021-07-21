@@ -18,8 +18,7 @@ Class {
 	#name : #GtDeclarativeList,
 	#superclass : #GtDeclarativeView,
 	#instVars : [
-		'totalItemsCount',
-		'formattedItems'
+		'totalItemsCount'
 	],
 	#category : 'GToolkit-RemoteGt-Declarative Views'
 }
@@ -46,33 +45,7 @@ GtDeclarativeList >> asDictionaryForExport [
 ]
 
 { #category : #'api - accessing' }
-GtDeclarativeList >> hasItemsAfterIndex: anIndex [
-	^ anIndex < self totalItemsCount
-]
-
-{ #category : #'api - accessing' }
-GtDeclarativeList >> initialItems [
-	(self hasItemsAfterIndex: 0) ifFalse: [ ^ #() ].
-	^ self loadNewItemsFromIndex: 1
-]
-
-{ #category : #accessing }
-GtDeclarativeList >> items [
-	^ formattedItems ifNil: [ 
-		(formattedItems isNil and: [ 
-			self isWithLazyLoading ]) 
-				ifTrue: [ 
-					formattedItems := self retriveFormattedItems  ] ].
-
-]
-
-{ #category : #accessing }
-GtDeclarativeList >> items: aCollection [
-	formattedItems := aCollection
-]
-
-{ #category : #'api - accessing' }
-GtDeclarativeList >> loadNewItemsFromIndex: anIndex [		
+GtDeclarativeList >> retrieveItemsFromIndex: anIndex [		
 	(GtLoadItemsStackSignal new
 		startIndex: anIndex;
 		chunkSize: 1000) emit.
