@@ -1,0 +1,13 @@
+RwSimpleProjectLoadComponentV2 {
+	#name : 'Core',
+	#condition : 'common',
+	#projectNames : [
+	],
+	#componentNames : [
+		'gemstone/Core'
+	],
+	#packageNames : [
+		'GToolkit-RemotePharo'
+	],
+	#comment : ''
+}

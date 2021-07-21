@@ -1,0 +1,25 @@
+	iferr 1 stk
+	iferr 2 stack
+	iferr 3 exit
+
+	expectvalue true
+	run
+| warnings |
+warnings := String new.
+[
+	(Rowan projectFromUrl: 'file:///home/alistair/gemstone/alpha2/gitreps/gtoolkit-remote/rowan/specs/gtoolkit-remote.ston')
+		projectsHome: '/home/alistair/gemstone/alpha2/gitreps';
+		load
+] on: CompileWarning do: [:ex |
+	(ex description includesString: 'not optimized')
+			ifFalse: [ warnings 
+                           addAll: ex asString;
+                           lf ].
+	ex resume ].
+warnings isEmpty
+	ifTrue: [ true ]
+	ifFalse: [ warnings ]
+%
+	abort
+
+	errorCount
