@@ -1,13 +1,13 @@
 Class {
-	#name : 'GtDeclarativeTextEditor',
-	#superclass : 'GtDeclarativeView',
+	#name : #GtDeclarativeTextEditor,
+	#superclass : #GtDeclarativeView,
 	#instVars : [
 		'string'
 	],
 	#category : 'GToolkit-RemoteGt-Declarative Views'
 }
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtDeclarativeTextEditor class >> fromJSONDictionary: aDictionary [
 
 	| editor |
@@ -18,7 +18,7 @@ GtDeclarativeTextEditor class >> fromJSONDictionary: aDictionary [
 	^editor
 ]
 
-{ #category : 'converting' }
+{ #category : #converting }
 GtDeclarativeTextEditor >> asDictionaryForExport [ 
 
 	| dictionary |
@@ -29,19 +29,19 @@ GtDeclarativeTextEditor >> asDictionaryForExport [
 	^dictionary
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtDeclarativeTextEditor >> data [ 
 
 	^string
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtDeclarativeTextEditor >> sentItemAt: selector [ 
 
 	^ self shouldNotImplement 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtDeclarativeTextEditor >> string [
 
 	^ string ifNil: [ 
@@ -50,12 +50,12 @@ GtDeclarativeTextEditor >> string [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtDeclarativeTextEditor >> string: anObject [
 	string := anObject
 ]
 
-{ #category : 'building - graph' }
+{ #category : #'building - graph' }
 GtDeclarativeTextEditor >> viewFor: aView [
 	"Answer the GtPhlowView for the receiver"
 

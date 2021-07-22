@@ -21,6 +21,18 @@ GtRemotePhlowViewCache class >> viewedObject: aGtViewedObject selector: viewSele
 ]
 
 { #category : 'accessing' }
+GtRemotePhlowViewCache >> cachedData [
+	^ cachedData ifNil: [ 
+		cachedData := Dictionary new ]
+]
+
+{ #category : 'accessing' }
+GtRemotePhlowViewCache >> catcheAt: aKey	ifAbsentPut: aPutBlock [
+	^ self cachedData 
+		at: aKey ifAbsentPut: aPutBlock
+]
+
+{ #category : 'accessing' }
 GtRemotePhlowViewCache >> declarativeView [
 
 	^ declarativeView ifNil: 
@@ -36,27 +48,42 @@ GtRemotePhlowViewCache >> object [
 { #category : 'accessing' }
 GtRemotePhlowViewCache >> retrieveItems: anItemsCount fromIndex: anIndex [
 	|  viewItems |
-	viewItems := self declarativeView data.
-	^ (viewItems 
+	viewItems := self 
+		catcheAt: #items 
+		ifAbsentPut: [ self declarativeView itemsBuilder value ].
+	^ ((viewItems 
 			copyFrom: anIndex
-			to: ((anIndex + anItemsCount - 1) min: viewItems size)) asArray
+			to: ((anIndex + anItemsCount - 1) min: viewItems size))
+	 			collect: [ :each | 
+					(self declarativeView itemTextBlock value: each) gtDisplayString ]) asArray
 ]
 
 { #category : 'accessing' }
 GtRemotePhlowViewCache >> retrieveTotalItemsCount [
 	|  viewItems |
-	viewItems := self declarativeView data.
+	viewItems := self 
+		catcheAt: #items 
+		ifAbsentPut: [ self declarativeView itemsBuilder value ].
 	^ viewItems size
 ]
 
 { #category : 'accessing' }
 GtRemotePhlowViewCache >> retriveFormattedItems [
-	^ self declarativeView data
+	|  viewItems |
+	viewItems := self 
+		catcheAt: #items 
+		ifAbsentPut: [ self declarativeView itemsBuilder value ].
+	^ (viewItems collect: [ :each | 
+		(self declarativeView itemTextBlock value: each) gtDisplayString ]) asArray
 ]
 
 { #category : 'accessing' }
 GtRemotePhlowViewCache >> retriveSentItemAtIndex: aSelectionIndex [
-	^ self declarativeView itemsBuilder value at:  aSelectionIndex
+	|  viewItems |
+	viewItems := self 
+		catcheAt: #items 
+		ifAbsentPut: [ self declarativeView itemsBuilder value ].
+	^ viewItems at: aSelectionIndex
 ]
 
 { #category : 'accessing' }

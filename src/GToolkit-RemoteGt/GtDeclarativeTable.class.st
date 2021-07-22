@@ -1,13 +1,13 @@
 Class {
-	#name : 'GtDeclarativeTable',
-	#superclass : 'GtDeclarativeView',
+	#name : #GtDeclarativeTable,
+	#superclass : #GtDeclarativeView,
 	#instVars : [
 		'items'
 	],
 	#category : 'GToolkit-RemoteGt-Declarative Views'
 }
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtDeclarativeTable class >> fromJSONDictionary: aDictionary [
 
 	| table |
@@ -18,7 +18,7 @@ GtDeclarativeTable class >> fromJSONDictionary: aDictionary [
 	^table
 ]
 
-{ #category : 'converting' }
+{ #category : #converting }
 GtDeclarativeTable >> asDictionaryForExport [ 
 
 	| dictionary |
@@ -29,23 +29,23 @@ GtDeclarativeTable >> asDictionaryForExport [
 	^dictionary
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtDeclarativeTable >> data [ 
 
 	^ items
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtDeclarativeTable >> items [
 	^ items
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtDeclarativeTable >> items: anObject [
 	items := anObject
 ]
 
-{ #category : 'building - graph' }
+{ #category : #'building - graph' }
 GtDeclarativeTable >> viewFor: aView [
 	"Answer the GtPhlowView for the receiver"
 

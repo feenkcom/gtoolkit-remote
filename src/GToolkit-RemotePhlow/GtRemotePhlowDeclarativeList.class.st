@@ -83,6 +83,11 @@ GtRemotePhlowDeclarativeList >> items: aBlockClosure [
 ]
 
 { #category : 'accessing' }
+GtRemotePhlowDeclarativeList >> itemsBuilder [
+	^ itemsBuilder
+]
+
+{ #category : 'accessing' }
 GtRemotePhlowDeclarativeList >> retrieveTotalItemsCount [
 	^ self accessor
 		retrieveTotalItemsCountForViewSelector: self methodName

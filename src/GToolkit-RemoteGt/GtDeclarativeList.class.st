@@ -15,15 +15,15 @@ GtDeclarativeList supports a subset of the possible configurations of ${class:na
 
 "
 Class {
-	#name : 'GtDeclarativeList',
-	#superclass : 'GtDeclarativeView',
+	#name : #GtDeclarativeList,
+	#superclass : #GtDeclarativeView,
 	#instVars : [
 		'totalItemsCount'
 	],
 	#category : 'GToolkit-RemoteGt-Declarative Views'
 }
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtDeclarativeList class >> fromJSONDictionary: aDictionary [
 	| list |
 
@@ -33,7 +33,7 @@ GtDeclarativeList class >> fromJSONDictionary: aDictionary [
 	^list
 ]
 
-{ #category : 'converting' }
+{ #category : #converting }
 GtDeclarativeList >> asDictionaryForExport [ 
 
 	| dictionary |
@@ -44,7 +44,7 @@ GtDeclarativeList >> asDictionaryForExport [
 	^dictionary
 ]
 
-{ #category : 'api - accessing' }
+{ #category : #'api - accessing' }
 GtDeclarativeList >> retrieveItemsFromIndex: anIndex [		
 	(GtLoadItemsStackSignal new
 		startIndex: anIndex;
@@ -56,39 +56,39 @@ GtDeclarativeList >> retrieveItemsFromIndex: anIndex [
 		forViewSelector: self methodName
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtDeclarativeList >> retrieveTotalItemsCount [
 	^ self accessor
 		retrieveTotalItemsCountForViewSelector: self methodName
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtDeclarativeList >> retriveFormattedItems [
 	^ self accessor 
 			retriveFormattedItemsForViewSelector: self methodName
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtDeclarativeList >> retriveSentItemAt: aSelectionIndex [
 	^  self accessor 
 			retriveSentItemForViewSelector: self methodName
 			atIndex: aSelectionIndex
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtDeclarativeList >> sentItemAt: selection [ 
 	"Answer the raw value at the supplied index"
 
 	^ accessor itemsBuilder value at: selection.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtDeclarativeList >> totalItemsCount [
 	^ totalItemsCount ifNil: [ 
 		totalItemsCount := self retrieveTotalItemsCount ]
 ]
 
-{ #category : 'building - graph' }
+{ #category : #'building - graph' }
 GtDeclarativeList >> viewFor: aView [
 	"Answer the GtPhlowView for the receiver"
 

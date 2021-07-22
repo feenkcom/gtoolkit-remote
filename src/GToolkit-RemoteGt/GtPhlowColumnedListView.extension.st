@@ -1,6 +1,6 @@
-Extension { #name : 'GtPhlowColumnedListView' }
+Extension { #name : #GtPhlowColumnedListView }
 
-{ #category : '*GToolkit-RemoteGt' }
+{ #category : #'*GToolkit-RemoteGt' }
 GtPhlowColumnedListView >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
@@ -26,7 +26,7 @@ GtPhlowColumnedListView >> asGtDeclarativeView [
 		dataTransport: GtDeclarativeView dataIncluded.
 ]
 
-{ #category : '*GToolkit-RemoteGt' }
+{ #category : #'*GToolkit-RemoteGt' }
 GtPhlowColumnedListView >> canBeGtDeclarativeView [
 	"Answer a boolean indicating whether the receiver can be represented as a GtDeclarativeView"
 

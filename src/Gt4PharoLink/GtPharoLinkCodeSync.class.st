@@ -90,8 +90,30 @@ Class {
 		'events',
 		'log'
 	],
-	#category : 'Gt4PharoLink-CodeSync'
+	#category : #'Gt4PharoLink-CodeSync'
 }
+
+{ #category : #accessing }
+GtPharoLinkCodeSync class >> default [
+	^ default
+		ifNil: [ default := self new
+				application:
+					(PharoLinkApplication withDefaultSettings
+						debugMode: true;
+						yourself);
+				log: EpMonitor current log;
+				yourself ]
+]
+
+{ #category : #accessing }
+GtPharoLinkCodeSync >> application [
+	^ application
+]
+
+{ #category : #accessing }
+GtPharoLinkCodeSync >> application: anPharoLinkApplication [
+	application := anPharoLinkApplication
+]
 
 { #category : #accessing }
 GtPharoLinkCodeSync >> entryAdded: anEntryAddedEvent [
@@ -133,11 +155,17 @@ GtPharoLinkCodeSync >> flushAsync [
 { #category : #accessing }
 GtPharoLinkCodeSync >> initialize [
 	super initialize.
-	application := PharoLinkApplication withDefaultSettings
-		debugMode: true;
-		yourself.
-	log := EpMonitor current log.
 	events := WaitfreeQueue new
+]
+
+{ #category : #accessing }
+GtPharoLinkCodeSync >> log [
+	^ log
+]
+
+{ #category : #accessing }
+GtPharoLinkCodeSync >> log: anEpLog [
+	log := anEpLog
 ]
 
 { #category : #accessing }
