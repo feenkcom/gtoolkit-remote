@@ -160,7 +160,7 @@ LanguageLinkProxyObject >> viewProxyDo: aBlock [
 
 	| viewProxy |
 
-	viewProxy := (#(GtViewedObject GtPharoViewedObject) includes: remoteClass)
+	viewProxy := (#(GtViewedObject GtRemotePhlowViewedObject) includes: remoteClass)
 		ifTrue: [ self ]
 		ifFalse: [ self getViewProxy ].
 	^ aBlock value: viewProxy.
