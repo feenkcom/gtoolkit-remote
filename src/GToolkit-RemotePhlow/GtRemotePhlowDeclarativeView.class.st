@@ -34,7 +34,7 @@ Class {
 		'priority',
 		'dataTransport'
 	],
-	#category : #'GToolkit-RemotePhlow'
+	#category : 'GToolkit-RemotePhlow'
 }
 
 { #category : #'instance creation' }
@@ -79,10 +79,9 @@ GtRemotePhlowDeclarativeView class >> fromDictionary: viewDictionary [
 	"Answer the view specified by viewDictionary"
 	| viewName |
 
-	StringSignal emit: 'fromDictionary:'.
 	viewName := viewDictionary at: #viewName.
 	(viewName -> viewDictionary) asBeaconSignal emit.
-	^(Smalltalk globals at: viewName asSymbol) fromJSONDictionary: viewDictionary.
+	^(self globalsDictionary at: viewName asSymbol) fromJSONDictionary: viewDictionary.
 ]
 
 { #category : #'instance creation' }
@@ -103,11 +102,10 @@ GtRemotePhlowDeclarativeView class >> fromJSONString: aString [
 
 	| viewDictionary viewName |
 
-	StringSignal emit: 'fromJSONString:'.
-	viewDictionary := STONJSON fromString: aString.
+	viewDictionary := self readJsonString: aString.
 	viewName := viewDictionary at: #viewName.
 	(viewName -> viewDictionary) asBeaconSignal emit.
-	^(Smalltalk globals at: viewName asSymbol) fromJSONDictionary: viewDictionary.
+	^(self globalsDictionary at: viewName asSymbol) fromJSONDictionary: viewDictionary.
 ]
 
 { #category : #accessing }
@@ -137,7 +135,7 @@ GtRemotePhlowDeclarativeView >> asDictionaryForExport [
 GtRemotePhlowDeclarativeView >> asJSONForExport [ 
 	"Answer the receiver serialised in JSON format"
 
-	^STONJSON toStringPretty: self asDictionaryForExport
+	^self writeJsonString: self asDictionaryForExport
 ]
 
 { #category : #accessing }
@@ -163,6 +161,16 @@ GtRemotePhlowDeclarativeView >> initialize [
 	super initialize.
 	"The default is to include the data"
 	dataTransport := self class dataIncluded.
+]
+
+{ #category : #accessing }
+GtRemotePhlowDeclarativeView >> methodName [
+	^ methodName
+]
+
+{ #category : #accessing }
+GtRemotePhlowDeclarativeView >> methodName: anObject [
+	methodName := anObject
 ]
 
 { #category : #accessing }

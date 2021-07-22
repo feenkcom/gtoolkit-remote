@@ -90,7 +90,9 @@ GtRemotePhlowViewedObject >> rawViewData [
 	| variableNodes icon name value |
 
 	variableNodes := OrderedCollection new: object class allSlots size.
-	variableNodes add: (GTInspectorSelfNode hostObject: object).
+	"GemStone doesn't have GTInspectorSelfNode.  The call to #addRawSelfNodeTo: will allow the platform specific code to be added.
+	variableNodes add: (GTInspectorSelfNode hostObject: object)."
+	self addRawSelfNodeTo: variableNodes.
 	object gtInspectorVariableNodesIn: variableNodes.
 
 	^ Array streamContents: [ :stream |
