@@ -9,5 +9,5 @@ Class {
 { #category : #accessing }
 GtPharoLinkRemoteViewedObjectProxy class >> remoteClassName [
 
-	^ #GtPharoViewedObject
+	^ #GtViewedObject
 ]

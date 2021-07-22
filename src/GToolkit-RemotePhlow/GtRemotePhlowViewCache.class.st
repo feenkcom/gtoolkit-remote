@@ -5,9 +5,10 @@ Class {
 		'viewedObject',
 		'viewSelector',
 		'view',
-		'declarativeView'
+		'declarativeView',
+		'cachedData'
 	],
-	#category : #'GToolkit-RemotePhlow'
+	#category : 'GToolkit-RemotePhlow'
 }
 
 { #category : #'instance creation' }
@@ -30,6 +31,32 @@ GtRemotePhlowViewCache >> declarativeView [
 GtRemotePhlowViewCache >> object [
 
 	^ self viewedObject object
+]
+
+{ #category : #accessing }
+GtRemotePhlowViewCache >> retrieveItems: anItemsCount fromIndex: anIndex [
+	|  viewItems |
+	viewItems := self declarativeView data.
+	^ (viewItems 
+			copyFrom: anIndex
+			to: ((anIndex + anItemsCount - 1) min: viewItems size)) asArray
+]
+
+{ #category : #accessing }
+GtRemotePhlowViewCache >> retrieveTotalItemsCount [
+	|  viewItems |
+	viewItems := self declarativeView data.
+	^ viewItems size
+]
+
+{ #category : #accessing }
+GtRemotePhlowViewCache >> retriveFormattedItems [
+	^ self declarativeView data
+]
+
+{ #category : #accessing }
+GtRemotePhlowViewCache >> retriveSentItemAtIndex: aSelectionIndex [
+	^ self declarativeView itemsBuilder value at:  aSelectionIndex
 ]
 
 { #category : #accessing }

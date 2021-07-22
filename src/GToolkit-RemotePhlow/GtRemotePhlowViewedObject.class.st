@@ -22,7 +22,7 @@ Class {
 		'object',
 		'viewCache'
 	],
-	#category : #'GToolkit-RemotePhlow'
+	#category : 'GToolkit-RemotePhlow'
 }
 
 { #category : #'instance creation' }
@@ -102,6 +102,34 @@ GtRemotePhlowViewedObject >> rawViewData [
 			value := node rawValue.
 			stream nextPut: { icon. name. value. } ] ].
 
+]
+
+{ #category : #accessing }
+GtRemotePhlowViewedObject >> retrieveItemsCount: anItemsCount fromIndex: anIndex forViewSelector: aViewSelector [
+	| declarativeViewCache |
+	declarativeViewCache := viewCache at: aViewSelector.
+	^ declarativeViewCache retrieveItems: anItemsCount fromIndex: anIndex
+]
+
+{ #category : #accessing }
+GtRemotePhlowViewedObject >> retrieveTotalItemsCountForViewSelector: aViewSelector [
+	| declarativeViewCache |
+	declarativeViewCache := viewCache at: aViewSelector.
+	^ declarativeViewCache retrieveTotalItemsCount
+]
+
+{ #category : #accessing }
+GtRemotePhlowViewedObject >> retriveFormattedItemsForViewSelector: aViewSelector [
+	| declarativeViewCache |
+	declarativeViewCache := viewCache at: aViewSelector.
+	^ declarativeViewCache retriveFormattedItems
+]
+
+{ #category : #accessing }
+GtRemotePhlowViewedObject >> retriveSentItemForViewSelector: aViewSelector atIndex: aSelectionIndex [
+	| declarativeViewCache |
+	declarativeViewCache := viewCache at: aViewSelector.
+	^ declarativeViewCache retriveSentItemAtIndex: aSelectionIndex 
 ]
 
 { #category : #private }

@@ -34,7 +34,7 @@ Class {
 		'priority',
 		'dataTransport'
 	],
-	#category : #'GToolkit-RemotePhlow'
+	#category : 'GToolkit-RemotePhlow'
 }
 
 { #category : #'instance creation' }
@@ -163,6 +163,16 @@ GtRemotePhlowDeclarativeView >> initialize [
 	super initialize.
 	"The default is to include the data"
 	dataTransport := self class dataIncluded.
+]
+
+{ #category : #accessing }
+GtRemotePhlowDeclarativeView >> methodName [
+	^ methodName
+]
+
+{ #category : #accessing }
+GtRemotePhlowDeclarativeView >> methodName: anObject [
+	methodName := anObject
 ]
 
 { #category : #accessing }
