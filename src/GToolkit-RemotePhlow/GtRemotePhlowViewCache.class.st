@@ -60,16 +60,6 @@ GtRemotePhlowViewCache >> retriveSentItemAtIndex: aSelectionIndex [
 ]
 
 { #category : 'accessing' }
-GtRemotePhlowViewCache >> viewedObject [
-	^ viewedObject
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowViewCache >> viewedObject: anObject [
-	viewedObject := anObject
-]
-
-{ #category : 'accessing' }
 GtRemotePhlowViewCache >> viewSelector [
 	^ viewSelector
 ]
@@ -77,4 +67,14 @@ GtRemotePhlowViewCache >> viewSelector [
 { #category : 'accessing' }
 GtRemotePhlowViewCache >> viewSelector: anObject [
 	viewSelector := anObject
+]
+
+{ #category : 'accessing' }
+GtRemotePhlowViewCache >> viewedObject [
+	^ viewedObject
+]
+
+{ #category : 'accessing' }
+GtRemotePhlowViewCache >> viewedObject: anObject [
+	viewedObject := anObject
 ]

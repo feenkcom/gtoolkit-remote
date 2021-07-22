@@ -84,18 +84,6 @@ GtRemotePhlowDeclarativeTree >> initialize [
 ]
 
 { #category : 'accessing' }
-GtRemotePhlowDeclarativeTree >> items [
-
-	^ itemsBuilder
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeTree >> items: aBlock [
-
-	itemsBuilder := aBlock
-]
-
-{ #category : 'accessing' }
 GtRemotePhlowDeclarativeTree >> itemText [
 
 	^ itemTextBlock
@@ -105,6 +93,18 @@ GtRemotePhlowDeclarativeTree >> itemText [
 GtRemotePhlowDeclarativeTree >> itemText: aBlock [
 
 	itemTextBlock := aBlock
+]
+
+{ #category : 'accessing' }
+GtRemotePhlowDeclarativeTree >> items [
+
+	^ itemsBuilder
+]
+
+{ #category : 'accessing' }
+GtRemotePhlowDeclarativeTree >> items: aBlock [
+
+	itemsBuilder := aBlock
 ]
 
 { #category : 'accessing' }
