@@ -18,9 +18,10 @@ Class {
 	#instVars : [
 		'items',
 		'itemsBuilder',
-		'itemTextBlock'
+		'itemTextBlock',
+		'totalItemsCount'
 	],
-	#category : #'GToolkit-RemotePhlow'
+	#category : 'GToolkit-RemotePhlow'
 }
 
 { #category : #'instance creation' }
@@ -82,10 +83,35 @@ GtRemotePhlowDeclarativeList >> items: aBlockClosure [
 ]
 
 { #category : #accessing }
+GtRemotePhlowDeclarativeList >> retrieveTotalItemsCount [
+	^ self accessor
+		retrieveTotalItemsCountForViewSelector: self methodName
+]
+
+{ #category : #accessing }
+GtRemotePhlowDeclarativeList >> retriveFormattedItems [
+	^ self accessor 
+		retriveFormattedItemsForViewSelector: self methodName
+]
+
+{ #category : #accessing }
+GtRemotePhlowDeclarativeList >> retriveSentItemAt: aSelectionIndex [
+	^ self accessor 
+			retriveSentItemForViewSelector: self methodName
+			atIndex: aSelectionIndex
+]
+
+{ #category : #accessing }
 GtRemotePhlowDeclarativeList >> sentItemAt: selection [ 
 	"Answer the raw value at the supplied index"
 
 	^ itemsBuilder value at: selection.
+]
+
+{ #category : #accessing }
+GtRemotePhlowDeclarativeList >> totalItemsCount [
+	^ totalItemsCount ifNil: [ 
+		totalItemsCount := self retrieveTotalItemsCount ]
 ]
 
 { #category : #accessing }
