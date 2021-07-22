@@ -55,7 +55,7 @@ GtRemotePhlowViewCache >> retrieveItems: anItemsCount fromIndex: anIndex [
 			copyFrom: anIndex
 			to: ((anIndex + anItemsCount - 1) min: viewItems size))
 	 			collect: [ :each | 
-					(self declarativeView itemTextBlock value: each) gtDisplayString ]) asArray
+					(self declarativeView itemTextBlock value: each) asString ]) asArray
 ]
 
 { #category : 'accessing' }
@@ -74,7 +74,7 @@ GtRemotePhlowViewCache >> retriveFormattedItems [
 		catcheAt: #items 
 		ifAbsentPut: [ self declarativeView itemsBuilder value ].
 	^ (viewItems collect: [ :each | 
-		(self declarativeView itemTextBlock value: each) gtDisplayString ]) asArray
+		(self declarativeView itemTextBlock value: each) asString ]) asArray
 ]
 
 { #category : 'accessing' }
