@@ -1,10 +1,10 @@
 Class {
-	#name : #GtPharoLinkRemoteErrorExamples,
-	#superclass : #Object,
+	#name : 'GtPharoLinkRemoteErrorExamples',
+	#superclass : 'Object',
 	#category : 'Gt4PharoLink-Examples'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 GtPharoLinkRemoteErrorExamples >> formattedText [ 
 	<gtExample>
 	| errorString remoteError formattedText |

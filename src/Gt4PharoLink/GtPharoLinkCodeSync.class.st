@@ -83,17 +83,20 @@ remoteSyncChange: anEvent
 
 "
 Class {
-	#name : #GtPharoLinkCodeSync,
-	#superclass : #Object,
+	#name : 'GtPharoLinkCodeSync',
+	#superclass : 'Object',
 	#instVars : [
 		'application',
 		'events',
 		'log'
 	],
-	#category : #'Gt4PharoLink-CodeSync'
+	#classInstVars : [
+		'default'
+	],
+	#category : 'Gt4PharoLink-CodeSync'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharoLinkCodeSync class >> default [
 	^ default
 		ifNil: [ default := self new
@@ -105,17 +108,17 @@ GtPharoLinkCodeSync class >> default [
 				yourself ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharoLinkCodeSync >> application [
 	^ application
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharoLinkCodeSync >> application: anPharoLinkApplication [
 	application := anPharoLinkApplication
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharoLinkCodeSync >> entryAdded: anEntryAddedEvent [
 	anEntryAddedEvent entry content isCodeChange
 		ifFalse: [ "only capture code changes" ^ self ].
@@ -123,7 +126,7 @@ GtPharoLinkCodeSync >> entryAdded: anEntryAddedEvent [
 	self flushAsync
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharoLinkCodeSync >> flush [
 	| message |
 	application isRunning
@@ -143,7 +146,7 @@ GtPharoLinkCodeSync >> flush [
 		sendAndWait
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharoLinkCodeSync >> flushAsync [
 	BlTktWorkerProvider nonUISinglePool
 		schedule:
@@ -152,30 +155,30 @@ GtPharoLinkCodeSync >> flushAsync [
 				yourself)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharoLinkCodeSync >> initialize [
 	super initialize.
 	events := WaitfreeQueue new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharoLinkCodeSync >> log [
 	^ log
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharoLinkCodeSync >> log: anEpLog [
 	log := anEpLog
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharoLinkCodeSync >> start [
 	log announcer when: EpEntryAdded send: #entryAdded: to: self.
 	events flush.
 	application start
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharoLinkCodeSync >> stop [
 	log announcer unsubscribe: self.
 	events flush.
