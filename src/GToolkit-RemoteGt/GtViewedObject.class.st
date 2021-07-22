@@ -18,8 +18,8 @@ Internal Representation and Key Implementation Points.
 
 "
 Class {
-	#name : #GtViewedObject,
-	#superclass : #Object,
+	#name : 'GtViewedObject',
+	#superclass : 'Object',
 	#instVars : [
 		'object',
 		'viewCache'
@@ -27,13 +27,13 @@ Class {
 	#category : 'GToolkit-RemoteGt-Server'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtViewedObject class >> object: anObject [
 
 	^ self new initializeWith: anObject
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtViewedObject >> declarativeViewWithSelector: viewSelector [
 	"Answer the objects view with the given selector name"
 
@@ -43,14 +43,14 @@ GtViewedObject >> declarativeViewWithSelector: viewSelector [
 			declarativeView
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtViewedObject >> getGtViewMethodNames [
 	"Answer the set of declarative view selectors provided by the object"
 
 	^ object gtDeclarativeViewSelectors copyWithout: #gtRawFor:
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtViewedObject >> getViewDeclaration: viewSelector [
 	"Answer the declarative view dictionary for the supplied selector"
 
@@ -59,7 +59,7 @@ GtViewedObject >> getViewDeclaration: viewSelector [
 		yourself.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtViewedObject >> gtCachedViewsFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -75,33 +75,33 @@ GtViewedObject >> gtCachedViewsFor: aView [
 		send: [ :assoc | assoc value ]
 ]
 
-{ #category : #'gt inspector' }
+{ #category : 'gt inspector' }
 GtViewedObject >> gtSentItemFor: viewSelector at: selection [ 
 	"Answer the value to be sent from the view"
 
 	^ (self declarativeViewWithSelector: viewSelector) sentItemAt: selection
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtViewedObject >> initialize [
 
 	super initialize.
 	viewCache := Dictionary new.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtViewedObject >> initializeWith: anObject [
 
 	object := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtViewedObject >> object [
 
 	^ object
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtViewedObject >> rawViewData [
 	"Answer the data for the raw view"
 	| variableNodes icon name value |
@@ -121,35 +121,35 @@ GtViewedObject >> rawViewData [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtViewedObject >> retrieveItemsCount: anItemsCount fromIndex: anIndex forViewSelector: aViewSelector [
 	| declarativeViewCache |
 	declarativeViewCache := viewCache at: aViewSelector.
 	^ declarativeViewCache retrieveItems: anItemsCount fromIndex: anIndex
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtViewedObject >> retrieveTotalItemsCountForViewSelector: aViewSelector [
 	| declarativeViewCache |
 	declarativeViewCache := viewCache at: aViewSelector.
 	^ declarativeViewCache retrieveTotalItemsCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtViewedObject >> retriveFormattedItemsForViewSelector: aViewSelector [
 	| declarativeViewCache |
 	declarativeViewCache := viewCache at: aViewSelector.
 	^ declarativeViewCache retriveFormattedItems
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtViewedObject >> retriveSentItemForViewSelector: aViewSelector atIndex: aSelectionIndex [
 	| declarativeViewCache |
 	declarativeViewCache := viewCache at: aViewSelector.
 	^ declarativeViewCache retriveSentItemAtIndex: aSelectionIndex 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtViewedObject >> viewWithSelector: viewSelector [
 	"Answer the objects view with the given selector name"
 

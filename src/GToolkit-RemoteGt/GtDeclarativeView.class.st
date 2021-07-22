@@ -27,8 +27,8 @@ Internal Representation and Key Implementation Points.
 
 "
 Class {
-	#name : #GtDeclarativeView,
-	#superclass : #Object,
+	#name : 'GtDeclarativeView',
+	#superclass : 'Object',
 	#instVars : [
 		'accessor',
 		'methodName',
@@ -39,7 +39,7 @@ Class {
 	#category : 'GToolkit-RemoteGt-Declarative Views'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtDeclarativeView class >> accessor: aGtDViewAccessor [
 	"Answer the view specified by the supplied accessor"
 
@@ -48,35 +48,35 @@ GtDeclarativeView class >> accessor: aGtDViewAccessor [
 		yourself
 ]
 
-{ #category : #'data transport' }
+{ #category : 'data transport' }
 GtDeclarativeView class >> dataByKey [
 	"Answer the enumerated value for the display data being accessed by reference and key"
 
 	^4
 ]
 
-{ #category : #'data transport' }
+{ #category : 'data transport' }
 GtDeclarativeView class >> dataByReference [
 	"Answer the enumerated value for the display data being accessed by reference"
 
 	^3
 ]
 
-{ #category : #'data transport' }
+{ #category : 'data transport' }
 GtDeclarativeView class >> dataIncluded [
 	"Answer the enumerated value for the display data being included with the specification"
 
 	^1
 ]
 
-{ #category : #'data transport' }
+{ #category : 'data transport' }
 GtDeclarativeView class >> dataLazy [
 	"Answer the enumerated value for the display data accessor name being included with the specification.  This can then be used to retrieve the data at a later time"
 
 	^2
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtDeclarativeView class >> fromDictionary: viewDictionary [
 	"Answer the view specified by viewDictionary"
 	| viewName |
@@ -87,7 +87,7 @@ GtDeclarativeView class >> fromDictionary: viewDictionary [
 	^(Smalltalk globals at: viewName asSymbol) fromJSONDictionary: viewDictionary.
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtDeclarativeView class >> fromJSONDictionary: aDictionary [
 	"Answer an instance of the receiver from the supplied dictionary.
 	Subclasses will override this to add their specific attributes"
@@ -99,7 +99,7 @@ GtDeclarativeView class >> fromJSONDictionary: aDictionary [
 		yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtDeclarativeView class >> fromJSONString: aString [
 	"Answer the view specified by aString"
 
@@ -112,17 +112,17 @@ GtDeclarativeView class >> fromJSONString: aString [
 	^(Smalltalk globals at: viewName asSymbol) fromJSONDictionary: viewDictionary.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeclarativeView >> accessor [
 	^ accessor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeclarativeView >> accessor: anObject [
 	accessor := anObject
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 GtDeclarativeView >> asDictionaryForExport [
 	"Answer the receiver as a dictionary ready for JSON serialisation.
 	Subclasses will override and add to the dictionary"
@@ -135,79 +135,79 @@ GtDeclarativeView >> asDictionaryForExport [
 		yourself
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 GtDeclarativeView >> asJSONForExport [ 
 	"Answer the receiver serialised in JSON format"
 
 	^STONJSON toStringPretty: self asDictionaryForExport
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeclarativeView >> data [ 
 	"Answer the data appropriate to the receiver's type"
 
 	^self subclassResponsibility 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeclarativeView >> dataTransport [
 	^ dataTransport
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeclarativeView >> dataTransport: anObject [
 	dataTransport := anObject
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtDeclarativeView >> isWithLazyLoading [
 	^ self dataTransport = self class dataLazy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeclarativeView >> methodName [
 	^ methodName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeclarativeView >> methodName: anObject [
 	methodName := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeclarativeView >> priority [
 	^ priority
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeclarativeView >> priority: anObject [
 	priority := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeclarativeView >> sentItemAt: selection [ 
 
 	^ self subclassResponsibility 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeclarativeView >> title [
 	^ title
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeclarativeView >> title: anObject [
 	title := anObject
 ]
 
-{ #category : #'building - graph' }
+{ #category : 'building - graph' }
 GtDeclarativeView >> viewFor: aView [
 	"Answer the GtPhlowView for the receiver"
 
 	^self subclassResponsibility 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeclarativeView >> viewName [
 	"Answer the name of the receivers view"
 

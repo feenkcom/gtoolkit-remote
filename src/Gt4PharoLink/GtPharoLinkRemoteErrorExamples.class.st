@@ -1,7 +1,7 @@
 Class {
 	#name : #GtPharoLinkRemoteErrorExamples,
 	#superclass : #Object,
-	#category : #'Gt4PharoLink-Examples'
+	#category : 'Gt4PharoLink-Examples'
 }
 
 { #category : #tests }

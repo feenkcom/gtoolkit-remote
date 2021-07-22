@@ -90,7 +90,7 @@ Class {
 		'events',
 		'log'
 	],
-	#category : #'Gt4PharoLink-CodeSync'
+	#category : 'Gt4PharoLink-CodeSync'
 }
 
 { #category : #accessing }
