@@ -82,39 +82,39 @@ GtRemotePhlowDeclarativeList >> itemTextBlock [
 	^ itemTextBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowDeclarativeList >> retrieveTotalItemsCount [
 	^ self accessor
 		retrieveTotalItemsCountForViewSelector: self methodName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowDeclarativeList >> retriveFormattedItems [
 	^ self accessor 
 		retriveFormattedItemsForViewSelector: self methodName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowDeclarativeList >> retriveSentItemAt: aSelectionIndex [
 	^ self accessor 
 			retriveSentItemForViewSelector: self methodName
 			atIndex: aSelectionIndex
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowDeclarativeList >> sentItemAt: selection [ 
 	"Answer the raw value at the supplied index"
 
 	^ itemsBuilder value at: selection.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowDeclarativeList >> totalItemsCount [
 	^ totalItemsCount ifNil: [ 
 		totalItemsCount := self retrieveTotalItemsCount ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowDeclarativeList >> viewName [
 	"Answer the name of the receivers matching view in the Gt image"
 

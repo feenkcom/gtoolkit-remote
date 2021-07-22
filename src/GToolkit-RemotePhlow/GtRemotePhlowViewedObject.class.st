@@ -106,35 +106,35 @@ GtRemotePhlowViewedObject >> rawViewData [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowViewedObject >> retrieveItemsCount: anItemsCount fromIndex: anIndex forViewSelector: aViewSelector [
 	| declarativeViewCache |
 	declarativeViewCache := viewCache at: aViewSelector.
 	^ declarativeViewCache retrieveItems: anItemsCount fromIndex: anIndex
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowViewedObject >> retrieveTotalItemsCountForViewSelector: aViewSelector [
 	| declarativeViewCache |
 	declarativeViewCache := viewCache at: aViewSelector.
 	^ declarativeViewCache retrieveTotalItemsCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowViewedObject >> retriveFormattedItemsForViewSelector: aViewSelector [
 	| declarativeViewCache |
 	declarativeViewCache := viewCache at: aViewSelector.
 	^ declarativeViewCache retriveFormattedItems
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowViewedObject >> retriveSentItemForViewSelector: aViewSelector atIndex: aSelectionIndex [
 	| declarativeViewCache |
 	declarativeViewCache := viewCache at: aViewSelector.
 	^ declarativeViewCache retriveSentItemAtIndex: aSelectionIndex 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtRemotePhlowViewedObject >> viewWithSelector: viewSelector [
 	"Answer the objects view with the given selector name"
 

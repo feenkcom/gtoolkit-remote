@@ -33,7 +33,7 @@ GtRemotePhlowViewCache >> object [
 	^ self viewedObject object
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowViewCache >> retrieveItems: anItemsCount fromIndex: anIndex [
 	|  viewItems |
 	viewItems := self declarativeView data.
@@ -42,39 +42,39 @@ GtRemotePhlowViewCache >> retrieveItems: anItemsCount fromIndex: anIndex [
 			to: ((anIndex + anItemsCount - 1) min: viewItems size)) asArray
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowViewCache >> retrieveTotalItemsCount [
 	|  viewItems |
 	viewItems := self declarativeView data.
 	^ viewItems size
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowViewCache >> retriveFormattedItems [
 	^ self declarativeView data
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowViewCache >> retriveSentItemAtIndex: aSelectionIndex [
 	^ self declarativeView itemsBuilder value at:  aSelectionIndex
 ]
 
-{ #category : #accessing }
-GtRemotePhlowViewCache >> viewSelector [
-	^ viewSelector
-]
-
-{ #category : #accessing }
-GtRemotePhlowViewCache >> viewSelector: anObject [
-	viewSelector := anObject
-]
-
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowViewCache >> viewedObject [
 	^ viewedObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowViewCache >> viewedObject: anObject [
 	viewedObject := anObject
+]
+
+{ #category : 'accessing' }
+GtRemotePhlowViewCache >> viewSelector [
+	^ viewSelector
+]
+
+{ #category : 'accessing' }
+GtRemotePhlowViewCache >> viewSelector: anObject [
+	viewSelector := anObject
 ]

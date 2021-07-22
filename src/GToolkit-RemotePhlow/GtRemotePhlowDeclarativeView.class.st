@@ -163,17 +163,17 @@ GtRemotePhlowDeclarativeView >> initialize [
 	dataTransport := self class dataIncluded.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowDeclarativeView >> methodName [
 	^ methodName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowDeclarativeView >> methodName: anObject [
 	methodName := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowDeclarativeView >> priority [
 	^ priority
 ]
