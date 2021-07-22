@@ -90,6 +90,9 @@ Class {
 		'events',
 		'log'
 	],
+	#classInstVars : [
+		'default'
+	],
 	#category : #'Gt4PharoLink-CodeSync'
 }
 
