@@ -1,6 +1,6 @@
-Extension { #name : 'Object' }
+Extension { #name : #Object }
 
-{ #category : '*GToolkit-RemoteGt' }
+{ #category : #'*GToolkit-RemoteGt' }
 Object >> gtDeclarativeViewSelectors [
 	"Answer a collection of the object's declarative view selectors"
 

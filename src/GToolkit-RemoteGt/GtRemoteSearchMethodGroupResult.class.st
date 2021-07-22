@@ -1,12 +1,12 @@
 Class {
-	#name : 'GtRemoteSearchMethodGroupResult',
-	#superclass : 'GtSearchMethodGroupResult',
-	#category : 'GToolkit-RemoteGt'
+	#name : #GtRemoteSearchMethodGroupResult,
+	#superclass : #GtSearchMethodGroupResult,
+	#category : #'GToolkit-RemoteGt'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemoteSearchMethodGroupResult >> refreshItems [
-	| application message result |
+	| message result |
 	filtered
 		ifTrue: [ ^ self ].
 	items := OrderedCollection new.
@@ -23,14 +23,9 @@ GtRemoteSearchMethodGroupResult >> refreshItems [
 						nextPutAll:
 							')) do: [ :method | descriptors add: method methodClass -> method selector ]).
 								 (FLSerializer serializeToByteArray: descriptors) storeOn: stream ]' ].
-			application := PharoLinkApplication withDefaultSettings
-				debugMode: true;
-				yourself.
-			application start.
-			result := application newCommandFactory
+			result := GtPharoLinkCodeSync default application newCommandFactory
 				<< message;
 				sendAndWait.
-			application stop.
 			items := (FLMaterializer
 				materializeFromByteArray: (self class compiler evaluate: result))
 				collect: [ :e | e key >> e value ] ].

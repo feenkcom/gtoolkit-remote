@@ -1,6 +1,6 @@
 Class {
-	#name : 'GtViewCache',
-	#superclass : 'Object',
+	#name : #GtViewCache,
+	#superclass : #Object,
 	#instVars : [
 		'viewedObject',
 		'viewSelector',
@@ -11,7 +11,7 @@ Class {
 	#category : 'GToolkit-RemoteGt-Server'
 }
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtViewCache class >> viewedObject: aGtViewedObject selector: viewSelector [
 
 	^ self new 
@@ -20,19 +20,19 @@ GtViewCache class >> viewedObject: aGtViewedObject selector: viewSelector [
 		yourself
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtViewCache >> cachedData [
 	^ cachedData ifNil: [ 
 		cachedData := Dictionary new ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtViewCache >> catcheAt: aKey	ifAbsentPut: aPutBlock [
 	^ self cachedData 
 		at: aKey ifAbsentPut: aPutBlock
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtViewCache >> declarativeView [
 
 	^ declarativeView ifNil: [ 
@@ -43,13 +43,13 @@ GtViewCache >> declarativeView [
 			yourself ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtViewCache >> object [
 
 	^ self viewedObject object
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtViewCache >> retrieveItems: anItemsCount fromIndex: anIndex [
 	|  viewItems |
 	viewItems := self 
@@ -62,7 +62,7 @@ GtViewCache >> retrieveItems: anItemsCount fromIndex: anIndex [
 					(self view itemText value: each) gtDisplayString ]) asArray
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtViewCache >> retrieveTotalItemsCount [
 	|  viewItems |
 	viewItems := self 
@@ -71,7 +71,7 @@ GtViewCache >> retrieveTotalItemsCount [
 	^ viewItems size
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtViewCache >> retriveFormattedItems [
 	|  viewItems |
 	viewItems := self 
@@ -81,7 +81,7 @@ GtViewCache >> retriveFormattedItems [
 		(self view itemText value: each) gtDisplayString ]) asArray
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtViewCache >> retriveSentItemAtIndex: aSelectionIndex [
 	|  viewItems |
 	viewItems := self 
@@ -90,7 +90,7 @@ GtViewCache >> retriveSentItemAtIndex: aSelectionIndex [
 	^ viewItems at: aSelectionIndex
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtViewCache >> view [
 
 	^ view ifNil: [ 
@@ -99,22 +99,22 @@ GtViewCache >> view [
 			with: GtPhlowEmptyView new ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtViewCache >> viewSelector [
 	^ viewSelector
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtViewCache >> viewSelector: anObject [
 	viewSelector := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtViewCache >> viewedObject [
 	^ viewedObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtViewCache >> viewedObject: anObject [
 	viewedObject := anObject
 ]

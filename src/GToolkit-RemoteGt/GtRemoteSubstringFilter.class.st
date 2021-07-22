@@ -1,10 +1,10 @@
 Class {
-	#name : 'GtRemoteSubstringFilter',
-	#superclass : 'GtSubstringFilter',
+	#name : #GtRemoteSubstringFilter,
+	#superclass : #GtSubstringFilter,
 	#category : 'GToolkit-RemoteGt-GToolkit-RemoteGt'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemoteSubstringFilter >> resultType [
 	^ GtRemoteSearchMethodGroupResult 
 ]

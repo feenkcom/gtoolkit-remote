@@ -1,6 +1,6 @@
-Extension { #name : 'GtPhlowListView' }
+Extension { #name : #GtPhlowListView }
 
-{ #category : '*GToolkit-RemoteGt' }
+{ #category : #'*GToolkit-RemoteGt' }
 GtPhlowListView >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
@@ -11,7 +11,7 @@ GtPhlowListView >> asGtDeclarativeView [
 		dataTransport: GtDeclarativeView dataLazy.
 ]
 
-{ #category : '*GToolkit-RemoteGt' }
+{ #category : #'*GToolkit-RemoteGt' }
 GtPhlowListView >> canBeGtDeclarativeView [
 	"Answer a boolean indicating whether the receiver can be represented as a GtDeclarativeView"
 

@@ -1,6 +1,6 @@
-Extension { #name : 'String' }
+Extension { #name : #String }
 
-{ #category : '*GToolkit-RemoteGt' }
+{ #category : #'*GToolkit-RemoteGt' }
 String >> gtRemoteSubstringMatch [
 	^ GtRemoteSubstringFilter substring: self
 ]
