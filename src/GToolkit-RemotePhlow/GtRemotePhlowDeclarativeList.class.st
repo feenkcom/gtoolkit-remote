@@ -82,14 +82,6 @@ GtRemotePhlowDeclarativeList >> itemTextBlock [
 	^ itemTextBlock
 ]
 
-{ #category : #'api - scripting' }
-GtRemotePhlowDeclarativeList >> items: aBlockClosure [
-	"Set the block closure that will be used to construct the items.
-	Note that this doesn't set the items instance variable (as one might expect)"
-
-	itemsBuilder := aBlockClosure
-]
-
 { #category : #accessing }
 GtRemotePhlowDeclarativeList >> retrieveTotalItemsCount [
 	^ self accessor
