@@ -8,17 +8,17 @@ When transporting the data, each node in the tree is represented as an Array wit
 
 "
 Class {
-	#name : #GtRemotePhlowDeclarativeTree,
-	#superclass : #GtRemotePhlowDeclarativeView,
+	#name : 'GtRemotePhlowDeclarativeTree',
+	#superclass : 'GtRemotePhlowDeclarativeView',
 	#instVars : [
 		'itemsBuilder',
 		'itemTextBlock',
 		'childrenBlock'
 	],
-	#category : #'GToolkit-RemotePhlow'
+	#category : 'GToolkit-RemotePhlow'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 GtRemotePhlowDeclarativeTree >> add: item index: anArray to: stream [
 	"Add the supplied item, index and the item's children to the stream"
 
@@ -30,7 +30,7 @@ GtRemotePhlowDeclarativeTree >> add: item index: anArray to: stream [
 				self add: child index: anArray, { i } to: childStream ] ] }
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 GtRemotePhlowDeclarativeTree >> asDictionaryForExport [ 
 
 	| dictionary |
@@ -41,19 +41,19 @@ GtRemotePhlowDeclarativeTree >> asDictionaryForExport [
 	^ dictionary
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowDeclarativeTree >> children [
 
 	^ childrenBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowDeclarativeTree >> children: aBlock [
 
 	childrenBlock := aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowDeclarativeTree >> data [
 	"Answer the entire tree as an Array of Arrays.
 	Each array is { item. index. children. }.
@@ -64,7 +64,7 @@ GtRemotePhlowDeclarativeTree >> data [
 			self add: item index: { i } to: stream ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtRemotePhlowDeclarativeTree >> expand: anOrderedCollection to: selection from: aCollection [
 
 	selection <= anOrderedCollection size ifTrue: [ ^ self ].
@@ -76,38 +76,38 @@ GtRemotePhlowDeclarativeTree >> expand: anOrderedCollection to: selection from: 
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtRemotePhlowDeclarativeTree >> initialize [
 
 	super initialize.
 	itemTextBlock := [ :item | item ].
 ]
 
-{ #category : #accessing }
-GtRemotePhlowDeclarativeTree >> itemText [
-
-	^ itemTextBlock
-]
-
-{ #category : #accessing }
-GtRemotePhlowDeclarativeTree >> itemText: aBlock [
-
-	itemTextBlock := aBlock
-]
-
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowDeclarativeTree >> items [
 
 	^ itemsBuilder
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowDeclarativeTree >> items: aBlock [
 
 	itemsBuilder := aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
+GtRemotePhlowDeclarativeTree >> itemText [
+
+	^ itemTextBlock
+]
+
+{ #category : 'accessing' }
+GtRemotePhlowDeclarativeTree >> itemText: aBlock [
+
+	itemTextBlock := aBlock
+]
+
+{ #category : 'accessing' }
 GtRemotePhlowDeclarativeTree >> sentItemAt: anArray [
 	"Answer the item at the supplied index"
 	| value |
@@ -119,7 +119,7 @@ GtRemotePhlowDeclarativeTree >> sentItemAt: anArray [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowDeclarativeTree >> viewName [
 
 	^ #GtDeclarativeTree

@@ -20,6 +20,8 @@ BaselineOfGtRemotePhlow >> baseline: spec [
 					with: [ spec repository: 'github://feenkcom/Pharolink/src' ];
 				package: 'GToolkit-RemotePhlow' 
 					with: [ spec requires: #( PharoLink ) ];
+				package: 'GToolkit-RemotePhlow-Pharo' 
+					with: [ spec requires: #( 'GToolkit-RemotePhlow' ) ];
 				package: 'GToolkit-RemotePhlow-Examples' 
 					with: [ spec requires: #( 'GToolkit-RemotePhlow' ) ]
 		]
