@@ -11,33 +11,33 @@ GtDeclarativeTestInspectable is a simple object that can be used to test the Gt 
 
 "
 Class {
-	#name : #GtPharoDeclarativeTestInspectable,
-	#superclass : #Object,
+	#name : 'GtRemotePhlowDeclarativeTestInspectable',
+	#superclass : 'Object',
 	#instVars : [
 		'string',
 		'collectionOfObjects'
 	],
-	#category : #'GToolkit-RemotePharo-Examples'
+	#category : 'GToolkit-RemotePhlow-Examples'
 }
 
-{ #category : #accessing }
-GtPharoDeclarativeTestInspectable >> collectionAt: anIndex put: anObject [
+{ #category : 'accessing' }
+GtRemotePhlowDeclarativeTestInspectable >> collectionAt: anIndex put: anObject [
 
 	^collectionOfObjects at: anIndex put: anObject
 ]
 
-{ #category : #accessing }
-GtPharoDeclarativeTestInspectable >> collectionOfObjects [
+{ #category : 'accessing' }
+GtRemotePhlowDeclarativeTestInspectable >> collectionOfObjects [
 	^ collectionOfObjects
 ]
 
-{ #category : #accessing }
-GtPharoDeclarativeTestInspectable >> collectionOfObjects: anObject [
+{ #category : 'accessing' }
+GtRemotePhlowDeclarativeTestInspectable >> collectionOfObjects: anObject [
 	collectionOfObjects := anObject
 ]
 
-{ #category : #inspecting }
-GtPharoDeclarativeTestInspectable >> gtColumnedListFor: aView [
+{ #category : 'inspecting' }
+GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListFor: aView [
 	<gtView>
 
 	^aView columnedList
@@ -48,8 +48,8 @@ GtPharoDeclarativeTestInspectable >> gtColumnedListFor: aView [
 		column: 'Lowercase' item: [ :anObject | anObject asString asLowercase ] width: 100.
 ]
 
-{ #category : #inspecting }
-GtPharoDeclarativeTestInspectable >> gtListFor: aView [
+{ #category : 'inspecting' }
+GtRemotePhlowDeclarativeTestInspectable >> gtListFor: aView [
 	<gtView>
 
 	^aView list
@@ -59,8 +59,8 @@ GtPharoDeclarativeTestInspectable >> gtListFor: aView [
 		itemText: [ :item | item asString ]
 ]
 
-{ #category : #inspecting }
-GtPharoDeclarativeTestInspectable >> gtStringFor: aView [
+{ #category : 'inspecting' }
+GtRemotePhlowDeclarativeTestInspectable >> gtStringFor: aView [
 	<gtView>
 
 	^aView textEditor
@@ -69,8 +69,8 @@ GtPharoDeclarativeTestInspectable >> gtStringFor: aView [
 		text: [ self string ]
 ]
 
-{ #category : #initialization }
-GtPharoDeclarativeTestInspectable >> initialize [ 
+{ #category : 'initialization' }
+GtRemotePhlowDeclarativeTestInspectable >> initialize [ 
 
 	super initialize.
 	string := 'hello world'.
@@ -80,19 +80,19 @@ GtPharoDeclarativeTestInspectable >> initialize [
 		DateAndTime readFrom: '2021-04-06T14:43:49.623384+02:00' readStream. }.
 ]
 
-{ #category : #accessing }
-GtPharoDeclarativeTestInspectable >> string [
+{ #category : 'accessing' }
+GtRemotePhlowDeclarativeTestInspectable >> string [
 
 	^string
 ]
 
-{ #category : #accessing }
-GtPharoDeclarativeTestInspectable >> string: anObject [
+{ #category : 'accessing' }
+GtRemotePhlowDeclarativeTestInspectable >> string: anObject [
 	string := anObject
 ]
 
-{ #category : #accessing }
-GtPharoDeclarativeTestInspectable >> text [
+{ #category : 'accessing' }
+GtRemotePhlowDeclarativeTestInspectable >> text [
 
 	^string asRopedText 
 ]
