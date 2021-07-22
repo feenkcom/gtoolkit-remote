@@ -92,8 +92,8 @@ GtRemotePhlowDeclarativeColumnedList >> columnWidths: anObject [
 { #category : 'accessing' }
 GtRemotePhlowDeclarativeColumnedList >> data [ 
 
-	^ items ifNil: [ items := itemsBuilder value collect: [ :item |
-			columnValues collect: [ :columnValue | columnValue value: item ] as: Array ] as: Array ]
+	^ items ifNil: [ items := (itemsBuilder value collect: [ :item |
+			(columnValues collect: [ :columnValue | columnValue value: item ]) asArray ]) asArray ]
 ]
 
 { #category : 'accessing' }

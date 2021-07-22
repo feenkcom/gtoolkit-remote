@@ -41,7 +41,7 @@ GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListFor: aView [
 	<gtView>
 
 	^aView columnedList
-		title: 'Columned List' translated;
+		title: 'Columned List';
 		priority: 20;
 		items: [ collectionOfObjects ];
 		column: 'Value' item: [ :anObject | anObject asString ];
@@ -53,7 +53,7 @@ GtRemotePhlowDeclarativeTestInspectable >> gtLargeListFor: aView [
 	<gtView>
 
 	^aView list
-		title: 'Large List' translated;
+		title: 'Large List';
 		priority: 20;
 		items: [ 1 to: 1022 ];
 		itemText: [ :item | item asString ]
@@ -64,7 +64,7 @@ GtRemotePhlowDeclarativeTestInspectable >> gtListFor: aView [
 	<gtView>
 
 	^aView list
-		title: 'List' translated;
+		title: 'List';
 		priority: 15;
 		items: [ collectionOfObjects ];
 		itemText: [ :item | item asString ]
@@ -75,7 +75,7 @@ GtRemotePhlowDeclarativeTestInspectable >> gtStringFor: aView [
 	<gtView>
 
 	^aView textEditor
-		title: 'String' translated;
+		title: 'String';
 		priority: 10;
 		text: [ self string ]
 ]
@@ -88,7 +88,7 @@ GtRemotePhlowDeclarativeTestInspectable >> initialize [
 	collectionOfObjects := { 
 		42. 
 		'Hello World'. 
-		DateAndTime readFrom: '2021-04-06T14:43:49.623384+02:00' readStream. }.
+		DateAndTime now. "readFrom: '2021-04-06T14:43:49.623384+02:00' readStream." }.
 ]
 
 { #category : 'accessing' }

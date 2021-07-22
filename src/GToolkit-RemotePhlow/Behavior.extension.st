@@ -2,10 +2,10 @@ Extension { #name : 'Behavior' }
 
 { #category : '*GToolkit-RemotePhlow' }
 Behavior >> gtMethodsRemoteFor: aView [
-	<gtView>
+	"<gtView>"
 
 	^ aView columnedList
-		title: 'Methods' translated;
+		title: 'Methods';
 		priority: 10;
 		items: [ self gtSortedMethods ];
 		column: 'Selector' item: [ :method | method selector ];

@@ -8,6 +8,12 @@ GtRemotePhlowDeclarativeView class >> globalsDictionary [
 ]
 
 { #category : '*GToolkit-RemotePhlow-GemStone' }
+GtRemotePhlowDeclarativeView class >> new [
+
+	^ super new initialize
+]
+
+{ #category : '*GToolkit-RemotePhlow-GemStone' }
 GtRemotePhlowDeclarativeView class >> readJsonString: aString [
 
 	self halt.

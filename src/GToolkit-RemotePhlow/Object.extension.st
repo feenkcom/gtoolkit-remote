@@ -7,7 +7,7 @@ Object >> gtPharoDeclarativeViewSelectors [
 	^ ((Pragma 
 		allNamed: #gtView
 		from: self class
-		to: Object) collect: [ :each | each method selector ] as: Set) asArray
+		to: Object) collect: [ :each | each method selector ]) asSet asArray
 ]
 
 { #category : '*GToolkit-RemotePhlow' }
