@@ -1,1 +1,1 @@
-Package { #name : #'GToolkit-RemotePhlow-Pharo' }
+Package { #name : 'GToolkit-RemotePhlow-Pharo' }
