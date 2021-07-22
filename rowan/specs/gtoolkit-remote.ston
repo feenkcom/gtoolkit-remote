@@ -1,0 +1,18 @@
+RwLoadSpecificationV2 {
+	#specName : 'gtoolkit-remote',
+	#projectName : 'gtoolkit-remote',
+	#gitUrl : 'git@github.com:feenkcom/gtoolkit-remote.git',
+	#revision : 'master',
+	#projectSpecFile : 'rowan/project.ston',
+	#componentNames : [
+		'Core'
+	],
+	#platformProperties : {
+		'gemstone' : {
+			'SystemUser' : {
+				#defaultSymbolDictName : 'Globals'
+			}
+		}
+	},
+	#comment : ''
+}

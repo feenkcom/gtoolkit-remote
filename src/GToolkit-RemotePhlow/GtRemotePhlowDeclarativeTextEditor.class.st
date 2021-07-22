@@ -1,13 +1,13 @@
 Class {
-	#name : #GtRemotePhlowDeclarativeTextEditor,
-	#superclass : #GtRemotePhlowDeclarativeView,
+	#name : 'GtRemotePhlowDeclarativeTextEditor',
+	#superclass : 'GtRemotePhlowDeclarativeView',
 	#instVars : [
 		'textBuilder'
 	],
-	#category : #'GToolkit-RemotePhlow'
+	#category : 'GToolkit-RemotePhlow'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtRemotePhlowDeclarativeTextEditor class >> fromJSONDictionary: aDictionary [
 
 	| editor |
@@ -18,7 +18,7 @@ GtRemotePhlowDeclarativeTextEditor class >> fromJSONDictionary: aDictionary [
 	^editor
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 GtRemotePhlowDeclarativeTextEditor >> asDictionaryForExport [ 
 
 	| dictionary |
@@ -29,19 +29,19 @@ GtRemotePhlowDeclarativeTextEditor >> asDictionaryForExport [
 	^dictionary
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowDeclarativeTextEditor >> data [ 
 
 	^ textBuilder value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowDeclarativeTextEditor >> sentItemAt: selector [ 
 
 	^ self shouldNotImplement 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowDeclarativeTextEditor >> text: aBlockClosure [
 	"Set the BlockClosure that will generate the string to be displayed.
 	The result of the BlockClosure must be a String (not a BlText)."
@@ -49,7 +49,7 @@ GtRemotePhlowDeclarativeTextEditor >> text: aBlockClosure [
 	textBuilder := aBlockClosure
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowDeclarativeTextEditor >> viewName [ 
 
 	^ #GtDeclarativeTextEditor
