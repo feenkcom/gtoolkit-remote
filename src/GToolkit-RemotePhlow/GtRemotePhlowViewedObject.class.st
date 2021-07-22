@@ -16,22 +16,22 @@ Internal Representation and Key Implementation Points.
     Implementation Points
 "
 Class {
-	#name : #GtRemotePhlowViewedObject,
-	#superclass : #Object,
+	#name : 'GtRemotePhlowViewedObject',
+	#superclass : 'Object',
 	#instVars : [
 		'object',
 		'viewCache'
 	],
-	#category : #'GToolkit-RemotePhlow'
+	#category : 'GToolkit-RemotePhlow'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtRemotePhlowViewedObject class >> object: anObject [
 
 	^ self new initializeWith: anObject
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtRemotePhlowViewedObject >> declarativeViewWithSelector: viewSelector [
 	"Answer the objects view with the given selector name"
 
@@ -41,14 +41,14 @@ GtRemotePhlowViewedObject >> declarativeViewWithSelector: viewSelector [
 			declarativeView
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowViewedObject >> getGtViewMethodNames [
 	"Answer the set of declarative view selectors provided by the object"
 
 	^ object gtPharoDeclarativeViewSelectors
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowViewedObject >> getViewDeclaration: viewSelector [
 	"Answer the declarative view dictionary for the supplied selector"
 
@@ -57,7 +57,7 @@ GtRemotePhlowViewedObject >> getViewDeclaration: viewSelector [
 		yourself.
 ]
 
-{ #category : #'gt inspector' }
+{ #category : 'gt inspector' }
 GtRemotePhlowViewedObject >> gtSentItemFor: viewSelector at: selection [ 
 	"Answer the value to be sent from the view"
 
@@ -65,26 +65,26 @@ GtRemotePhlowViewedObject >> gtSentItemFor: viewSelector at: selection [
 	
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtRemotePhlowViewedObject >> initialize [
 
 	super initialize.
 	viewCache := Dictionary new.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtRemotePhlowViewedObject >> initializeWith: anObject [
 
 	object := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowViewedObject >> object [
 
 	^ object
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowViewedObject >> rawViewData [
 	"Answer the data for the raw view"
 	| variableNodes icon name value |
@@ -106,7 +106,7 @@ GtRemotePhlowViewedObject >> rawViewData [
 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtRemotePhlowViewedObject >> viewWithSelector: viewSelector [
 	"Answer the objects view with the given selector name"
 
