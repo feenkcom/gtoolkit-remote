@@ -55,7 +55,8 @@ GtRemotePhlowDeclarativeList >> data [
 GtRemotePhlowDeclarativeList >> initialize [ 
 
 	super initialize.
-	itemTextBlock := [ :item | item asString ]
+	itemTextBlock := [ :item | item asString ].
+	dataTransport := self class dataLazy.
 ]
 
 { #category : #'api - scripting' }
