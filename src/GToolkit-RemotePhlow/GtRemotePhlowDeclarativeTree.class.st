@@ -8,18 +8,18 @@ When transporting the data, each node in the tree is represented as an Array wit
 
 "
 Class {
-	#name : #GtPharoDeclarativeTree,
-	#superclass : #GtPharoDeclarativeView,
+	#name : #GtRemotePhlowDeclarativeTree,
+	#superclass : #GtRemotePhlowDeclarativeView,
 	#instVars : [
 		'itemsBuilder',
 		'itemTextBlock',
 		'childrenBlock'
 	],
-	#category : #'GToolkit-RemotePharo-Server'
+	#category : #'GToolkit-RemotePhlow'
 }
 
 { #category : #private }
-GtPharoDeclarativeTree >> add: item index: anArray to: stream [
+GtRemotePhlowDeclarativeTree >> add: item index: anArray to: stream [
 	"Add the supplied item, index and the item's children to the stream"
 
 	stream nextPut: { 
@@ -31,7 +31,7 @@ GtPharoDeclarativeTree >> add: item index: anArray to: stream [
 ]
 
 { #category : #converting }
-GtPharoDeclarativeTree >> asDictionaryForExport [ 
+GtRemotePhlowDeclarativeTree >> asDictionaryForExport [ 
 
 	| dictionary |
 
@@ -42,19 +42,19 @@ GtPharoDeclarativeTree >> asDictionaryForExport [
 ]
 
 { #category : #accessing }
-GtPharoDeclarativeTree >> children [
+GtRemotePhlowDeclarativeTree >> children [
 
 	^ childrenBlock
 ]
 
 { #category : #accessing }
-GtPharoDeclarativeTree >> children: aBlock [
+GtRemotePhlowDeclarativeTree >> children: aBlock [
 
 	childrenBlock := aBlock
 ]
 
 { #category : #accessing }
-GtPharoDeclarativeTree >> data [
+GtRemotePhlowDeclarativeTree >> data [
 	"Answer the entire tree as an Array of Arrays.
 	Each array is { item. index. children. }.
 	index is an Array of the nested indices."
@@ -65,7 +65,7 @@ GtPharoDeclarativeTree >> data [
 ]
 
 { #category : #private }
-GtPharoDeclarativeTree >> expand: anOrderedCollection to: selection from: aCollection [
+GtRemotePhlowDeclarativeTree >> expand: anOrderedCollection to: selection from: aCollection [
 
 	selection <= anOrderedCollection size ifTrue: [ ^ self ].
 	aCollection do: [ :each |
@@ -77,38 +77,38 @@ GtPharoDeclarativeTree >> expand: anOrderedCollection to: selection from: aColle
 ]
 
 { #category : #initialization }
-GtPharoDeclarativeTree >> initialize [
+GtRemotePhlowDeclarativeTree >> initialize [
 
 	super initialize.
 	itemTextBlock := [ :item | item ].
 ]
 
 { #category : #accessing }
-GtPharoDeclarativeTree >> itemText [
+GtRemotePhlowDeclarativeTree >> itemText [
 
 	^ itemTextBlock
 ]
 
 { #category : #accessing }
-GtPharoDeclarativeTree >> itemText: aBlock [
+GtRemotePhlowDeclarativeTree >> itemText: aBlock [
 
 	itemTextBlock := aBlock
 ]
 
 { #category : #accessing }
-GtPharoDeclarativeTree >> items [
+GtRemotePhlowDeclarativeTree >> items [
 
 	^ itemsBuilder
 ]
 
 { #category : #accessing }
-GtPharoDeclarativeTree >> items: aBlock [
+GtRemotePhlowDeclarativeTree >> items: aBlock [
 
 	itemsBuilder := aBlock
 ]
 
 { #category : #accessing }
-GtPharoDeclarativeTree >> sentItemAt: anArray [
+GtRemotePhlowDeclarativeTree >> sentItemAt: anArray [
 	"Answer the item at the supplied index"
 	| value |
 
@@ -120,7 +120,7 @@ GtPharoDeclarativeTree >> sentItemAt: anArray [
 ]
 
 { #category : #accessing }
-GtPharoDeclarativeTree >> viewName [
+GtRemotePhlowDeclarativeTree >> viewName [
 
 	^ #GtDeclarativeTree
 ]
