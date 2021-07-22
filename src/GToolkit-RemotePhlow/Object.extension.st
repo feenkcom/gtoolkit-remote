@@ -1,6 +1,6 @@
-Extension { #name : #Object }
+Extension { #name : 'Object' }
 
-{ #category : #'*GToolkit-RemotePhlow' }
+{ #category : '*GToolkit-RemotePhlow' }
 Object >> gtPharoDeclarativeViewSelectors [
 	"Answer a collection of the object's declarative view selectors"
 
@@ -10,7 +10,7 @@ Object >> gtPharoDeclarativeViewSelectors [
 		to: Object) collect: [ :each | each method selector ] as: Set) asArray
 ]
 
-{ #category : #'*GToolkit-RemotePhlow' }
+{ #category : '*GToolkit-RemotePhlow' }
 Object >> gtPrintFor: aView [
 	<gtView>
 	^ aView textEditor
