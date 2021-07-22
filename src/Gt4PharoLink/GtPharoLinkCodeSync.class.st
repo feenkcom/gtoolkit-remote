@@ -83,8 +83,8 @@ remoteSyncChange: anEvent
 
 "
 Class {
-	#name : #GtPharoLinkCodeSync,
-	#superclass : #Object,
+	#name : 'GtPharoLinkCodeSync',
+	#superclass : 'Object',
 	#instVars : [
 		'application',
 		'events',
@@ -93,7 +93,7 @@ Class {
 	#category : 'Gt4PharoLink-CodeSync'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharoLinkCodeSync >> entryAdded: anEntryAddedEvent [
 	anEntryAddedEvent entry content isCodeChange
 		ifFalse: [ "only capture code changes" ^ self ].
@@ -101,7 +101,7 @@ GtPharoLinkCodeSync >> entryAdded: anEntryAddedEvent [
 	self flushAsync
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharoLinkCodeSync >> flush [
 	| message |
 	application isRunning
@@ -121,7 +121,7 @@ GtPharoLinkCodeSync >> flush [
 		sendAndWait
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharoLinkCodeSync >> flushAsync [
 	BlTktWorkerProvider nonUISinglePool
 		schedule:
@@ -130,7 +130,7 @@ GtPharoLinkCodeSync >> flushAsync [
 				yourself)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharoLinkCodeSync >> initialize [
 	super initialize.
 	application := PharoLinkApplication withDefaultSettings
@@ -140,14 +140,14 @@ GtPharoLinkCodeSync >> initialize [
 	events := WaitfreeQueue new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharoLinkCodeSync >> start [
 	log announcer when: EpEntryAdded send: #entryAdded: to: self.
 	events flush.
 	application start
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPharoLinkCodeSync >> stop [
 	log announcer unsubscribe: self.
 	events flush.
