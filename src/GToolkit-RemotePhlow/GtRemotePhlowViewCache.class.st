@@ -74,17 +74,7 @@ GtRemotePhlowViewCache >> viewedObject [
 	^ viewedObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowViewCache >> viewedObject: anObject [
 	viewedObject := anObject
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowViewCache >> viewSelector [
-	^ viewSelector
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowViewCache >> viewSelector: anObject [
-	viewSelector := anObject
 ]
