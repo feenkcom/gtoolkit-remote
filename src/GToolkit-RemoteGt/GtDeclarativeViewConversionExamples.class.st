@@ -57,7 +57,7 @@ GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableList [
 
 	self assert: declarativeView title equals: 'List'.
 	self assert: declarativeView priority equals: 15.
-	self assert: declarativeView items equals: #('42' 'Hello World' '2021-04-06T14:43:49.623384+02:00').
+	self assert: declarativeView retriveFormattedItems equals: #('42' 'Hello World' '2021-04-06T14:43:49.623384+02:00').
 
 	^ declarativeView
 ]
@@ -94,7 +94,7 @@ GtDeclarativeViewConversionExamples >> convertList [
 
 	self assert: declarativeView title equals: #Test.
 	self assert: declarativeView priority equals: 10.
-	self assert: declarativeView items equals: #('Number: 1' 'Number: 2' 'Number: 3').
+	self assert: declarativeView retriveFormattedItems equals: #('Number: 1' 'Number: 2' 'Number: 3').
 
 	^ declarativeView.
 ]

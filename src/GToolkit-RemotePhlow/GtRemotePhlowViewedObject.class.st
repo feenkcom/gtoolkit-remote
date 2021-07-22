@@ -16,40 +16,40 @@ Internal Representation and Key Implementation Points.
     Implementation Points
 "
 Class {
-	#name : #GtPharoViewedObject,
+	#name : #GtRemotePhlowViewedObject,
 	#superclass : #Object,
 	#instVars : [
 		'object',
 		'viewCache'
 	],
-	#category : #'GToolkit-RemotePharo-Server'
+	#category : #'GToolkit-RemotePhlow'
 }
 
 { #category : #'instance creation' }
-GtPharoViewedObject class >> object: anObject [
+GtRemotePhlowViewedObject class >> object: anObject [
 
 	^ self new initializeWith: anObject
 ]
 
 { #category : #private }
-GtPharoViewedObject >> declarativeViewWithSelector: viewSelector [
+GtRemotePhlowViewedObject >> declarativeViewWithSelector: viewSelector [
 	"Answer the objects view with the given selector name"
 
 	^ (viewCache
 		at: viewSelector
-		ifAbsentPut: [ GtPharoViewCache viewedObject: self selector: viewSelector ]) 
+		ifAbsentPut: [ GtRemotePhlowViewCache viewedObject: self selector: viewSelector ]) 
 			declarativeView
 ]
 
 { #category : #accessing }
-GtPharoViewedObject >> getGtViewMethodNames [
+GtRemotePhlowViewedObject >> getGtViewMethodNames [
 	"Answer the set of declarative view selectors provided by the object"
 
 	^ object gtPharoDeclarativeViewSelectors
 ]
 
 { #category : #accessing }
-GtPharoViewedObject >> getViewDeclaration: viewSelector [
+GtRemotePhlowViewedObject >> getViewDeclaration: viewSelector [
 	"Answer the declarative view dictionary for the supplied selector"
 
 	^ (self declarativeViewWithSelector: viewSelector) asDictionaryForExport 
@@ -58,7 +58,7 @@ GtPharoViewedObject >> getViewDeclaration: viewSelector [
 ]
 
 { #category : #'gt inspector' }
-GtPharoViewedObject >> gtSentItemFor: viewSelector at: selection [ 
+GtRemotePhlowViewedObject >> gtSentItemFor: viewSelector at: selection [ 
 	"Answer the value to be sent from the view"
 
 	^ (self declarativeViewWithSelector: viewSelector) sentItemAt: selection
@@ -66,26 +66,26 @@ GtPharoViewedObject >> gtSentItemFor: viewSelector at: selection [
 ]
 
 { #category : #initialization }
-GtPharoViewedObject >> initialize [
+GtRemotePhlowViewedObject >> initialize [
 
 	super initialize.
 	viewCache := Dictionary new.
 ]
 
 { #category : #initialization }
-GtPharoViewedObject >> initializeWith: anObject [
+GtRemotePhlowViewedObject >> initializeWith: anObject [
 
 	object := anObject
 ]
 
 { #category : #accessing }
-GtPharoViewedObject >> object [
+GtRemotePhlowViewedObject >> object [
 
 	^ object
 ]
 
 { #category : #accessing }
-GtPharoViewedObject >> rawViewData [
+GtRemotePhlowViewedObject >> rawViewData [
 	"Answer the data for the raw view"
 	| variableNodes icon name value |
 
@@ -105,11 +105,11 @@ GtPharoViewedObject >> rawViewData [
 ]
 
 { #category : #private }
-GtPharoViewedObject >> viewWithSelector: viewSelector [
+GtRemotePhlowViewedObject >> viewWithSelector: viewSelector [
 	"Answer the objects view with the given selector name"
 
 	^ (viewCache
 		at: viewSelector
-		ifAbsentPut: [ GtPharoViewCache viewedObject: self selector: viewSelector ]) 
+		ifAbsentPut: [ GtRemotePhlowViewCache viewedObject: self selector: viewSelector ]) 
 			view
 ]
