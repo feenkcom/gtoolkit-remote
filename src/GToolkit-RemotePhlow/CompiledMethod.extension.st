@@ -1,6 +1,6 @@
 Extension { #name : #CompiledMethod }
 
-{ #category : #'*GToolkit-RemotePharo' }
+{ #category : #'*GToolkit-RemotePhlow' }
 CompiledMethod >> gtSourceCodeFor: aView [
 	<gtView>
 

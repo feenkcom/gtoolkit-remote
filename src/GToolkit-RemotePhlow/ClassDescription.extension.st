@@ -1,6 +1,6 @@
 Extension { #name : #ClassDescription }
 
-{ #category : #'*GToolkit-RemotePharo' }
+{ #category : #'*GToolkit-RemotePhlow' }
 ClassDescription >> gtSubclassesFor: aView [
 	<gtView>
 

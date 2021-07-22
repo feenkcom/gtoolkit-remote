@@ -13,18 +13,18 @@ GtDeclarativeList supports a subset of the possible configurations of ${class:na
 !!!Implementation Points
 "
 Class {
-	#name : #GtPharoDeclarativeList,
-	#superclass : #GtPharoDeclarativeView,
+	#name : #GtRemotePhlowDeclarativeList,
+	#superclass : #GtRemotePhlowDeclarativeView,
 	#instVars : [
 		'items',
 		'itemsBuilder',
 		'itemTextBlock'
 	],
-	#category : #'GToolkit-RemotePharo-Server'
+	#category : #'GToolkit-RemotePhlow'
 }
 
 { #category : #'instance creation' }
-GtPharoDeclarativeList class >> fromJSONDictionary: aDictionary [
+GtRemotePhlowDeclarativeList class >> fromJSONDictionary: aDictionary [
 	| list |
 
 	list := super fromJSONDictionary: aDictionary.
@@ -34,7 +34,7 @@ GtPharoDeclarativeList class >> fromJSONDictionary: aDictionary [
 ]
 
 { #category : #converting }
-GtPharoDeclarativeList >> asDictionaryForExport [ 
+GtRemotePhlowDeclarativeList >> asDictionaryForExport [ 
 
 	| dictionary |
 
@@ -45,27 +45,27 @@ GtPharoDeclarativeList >> asDictionaryForExport [
 ]
 
 { #category : #accessing }
-GtPharoDeclarativeList >> data [ 
+GtRemotePhlowDeclarativeList >> data [ 
 	"Answer the list of display strings"
 
 	^ items ifNil: [ items := itemsBuilder value collect: itemTextBlock ]
 ]
 
 { #category : #initialization }
-GtPharoDeclarativeList >> initialize [ 
+GtRemotePhlowDeclarativeList >> initialize [ 
 
 	super initialize.
 	itemTextBlock := [ :item | item asString ]
 ]
 
 { #category : #'api - scripting' }
-GtPharoDeclarativeList >> itemText: aBlockClosure [
+GtRemotePhlowDeclarativeList >> itemText: aBlockClosure [
 
 	itemTextBlock := aBlockClosure
 ]
 
 { #category : #accessing }
-GtPharoDeclarativeList >> itemTextBlock [
+GtRemotePhlowDeclarativeList >> itemTextBlock [
 	"Answer the BlockClosure that will convert each item to its displayed format.
 	The result of the BlockClosure must be a JSON primitive type, effectively a string or number."
 
@@ -73,7 +73,7 @@ GtPharoDeclarativeList >> itemTextBlock [
 ]
 
 { #category : #'api - scripting' }
-GtPharoDeclarativeList >> items: aBlockClosure [
+GtRemotePhlowDeclarativeList >> items: aBlockClosure [
 	"Set the block closure that will be used to construct the items.
 	Note that this doesn't set the items instance variable (as one might expect)"
 
@@ -81,14 +81,14 @@ GtPharoDeclarativeList >> items: aBlockClosure [
 ]
 
 { #category : #accessing }
-GtPharoDeclarativeList >> sentItemAt: selection [ 
+GtRemotePhlowDeclarativeList >> sentItemAt: selection [ 
 	"Answer the raw value at the supplied index"
 
 	^ itemsBuilder value at: selection.
 ]
 
 { #category : #accessing }
-GtPharoDeclarativeList >> viewName [
+GtRemotePhlowDeclarativeList >> viewName [
 	"Answer the name of the receivers matching view in the Gt image"
 
 	^ #GtDeclarativeList

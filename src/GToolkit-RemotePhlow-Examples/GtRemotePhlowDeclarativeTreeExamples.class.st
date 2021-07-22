@@ -1,23 +1,23 @@
 Class {
-	#name : #GtPharoDeclarativeTreeExamples,
+	#name : #GtRemotePhlowDeclarativeTreeExamples,
 	#superclass : #Object,
 	#traits : 'TAssertable',
 	#classTraits : 'TAssertable classTrait',
-	#category : #'GToolkit-RemotePharo-Examples'
+	#category : #'GToolkit-RemotePhlow-Examples'
 }
 
 { #category : #examples }
-GtPharoDeclarativeTreeExamples >> emptyTree [
+GtRemotePhlowDeclarativeTreeExamples >> emptyTree [
 	<gtExample>
 	| view |
 
-	view := GtPharoDeclarativeProtoView new tree.
-	self assert: view class equals: GtPharoDeclarativeTree.
+	view := GtRemotePhlowDeclarativeProtoView new tree.
+	self assert: view class equals: GtRemotePhlowDeclarativeTree.
 	^ view
 ]
 
 { #category : #examples }
-GtPharoDeclarativeTreeExamples >> sentItemAt [
+GtRemotePhlowDeclarativeTreeExamples >> sentItemAt [
 	<gtExample>
 	| treeView sentItem sentItems |
 
@@ -38,7 +38,7 @@ GtPharoDeclarativeTreeExamples >> sentItemAt [
 ]
 
 { #category : #examples }
-GtPharoDeclarativeTreeExamples >> treeViewWithItemsAndChildren [
+GtRemotePhlowDeclarativeTreeExamples >> treeViewWithItemsAndChildren [
 	<gtExample>
 	| aView data |
 

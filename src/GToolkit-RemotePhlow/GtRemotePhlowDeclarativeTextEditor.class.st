@@ -1,14 +1,14 @@
 Class {
-	#name : #GtPharoDeclarativeTextEditor,
-	#superclass : #GtPharoDeclarativeView,
+	#name : #GtRemotePhlowDeclarativeTextEditor,
+	#superclass : #GtRemotePhlowDeclarativeView,
 	#instVars : [
 		'textBuilder'
 	],
-	#category : #'GToolkit-RemotePharo-Server'
+	#category : #'GToolkit-RemotePhlow'
 }
 
 { #category : #'instance creation' }
-GtPharoDeclarativeTextEditor class >> fromJSONDictionary: aDictionary [
+GtRemotePhlowDeclarativeTextEditor class >> fromJSONDictionary: aDictionary [
 
 	| editor |
 
@@ -19,7 +19,7 @@ GtPharoDeclarativeTextEditor class >> fromJSONDictionary: aDictionary [
 ]
 
 { #category : #converting }
-GtPharoDeclarativeTextEditor >> asDictionaryForExport [ 
+GtRemotePhlowDeclarativeTextEditor >> asDictionaryForExport [ 
 
 	| dictionary |
 
@@ -30,19 +30,19 @@ GtPharoDeclarativeTextEditor >> asDictionaryForExport [
 ]
 
 { #category : #accessing }
-GtPharoDeclarativeTextEditor >> data [ 
+GtRemotePhlowDeclarativeTextEditor >> data [ 
 
 	^ textBuilder value
 ]
 
 { #category : #accessing }
-GtPharoDeclarativeTextEditor >> sentItemAt: selector [ 
+GtRemotePhlowDeclarativeTextEditor >> sentItemAt: selector [ 
 
 	^ self shouldNotImplement 
 ]
 
 { #category : #accessing }
-GtPharoDeclarativeTextEditor >> text: aBlockClosure [
+GtRemotePhlowDeclarativeTextEditor >> text: aBlockClosure [
 	"Set the BlockClosure that will generate the string to be displayed.
 	The result of the BlockClosure must be a String (not a BlText)."
 
@@ -50,7 +50,7 @@ GtPharoDeclarativeTextEditor >> text: aBlockClosure [
 ]
 
 { #category : #accessing }
-GtPharoDeclarativeTextEditor >> viewName [ 
+GtRemotePhlowDeclarativeTextEditor >> viewName [ 
 
 	^ #GtDeclarativeTextEditor
 ]
