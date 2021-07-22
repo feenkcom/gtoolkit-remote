@@ -1,6 +1,6 @@
 Extension { #name : #Behavior }
 
-{ #category : #'*GToolkit-RemotePharo' }
+{ #category : #'*GToolkit-RemotePhlow' }
 Behavior >> gtMethodsRemoteFor: aView [
 	<gtView>
 
@@ -12,7 +12,7 @@ Behavior >> gtMethodsRemoteFor: aView [
 		column: 'Instance' item: [ :method | method methodClass isMeta not ] width: 100
 ]
 
-{ #category : #'*GToolkit-RemotePharo' }
+{ #category : #'*GToolkit-RemotePhlow' }
 Behavior >> gtSortedMethods [
 	"Answer the methods sorted by instance/class, selector"
 

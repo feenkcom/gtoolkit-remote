@@ -11,33 +11,33 @@ GtDeclarativeTestInspectable is a simple object that can be used to test the Gt 
 
 "
 Class {
-	#name : #GtPharoDeclarativeTestInspectable,
+	#name : #GtRemotePhlowDeclarativeTestInspectable,
 	#superclass : #Object,
 	#instVars : [
 		'string',
 		'collectionOfObjects'
 	],
-	#category : #'GToolkit-RemotePharo-Examples'
+	#category : #'GToolkit-RemotePhlow-Examples'
 }
 
 { #category : #accessing }
-GtPharoDeclarativeTestInspectable >> collectionAt: anIndex put: anObject [
+GtRemotePhlowDeclarativeTestInspectable >> collectionAt: anIndex put: anObject [
 
 	^collectionOfObjects at: anIndex put: anObject
 ]
 
 { #category : #accessing }
-GtPharoDeclarativeTestInspectable >> collectionOfObjects [
+GtRemotePhlowDeclarativeTestInspectable >> collectionOfObjects [
 	^ collectionOfObjects
 ]
 
 { #category : #accessing }
-GtPharoDeclarativeTestInspectable >> collectionOfObjects: anObject [
+GtRemotePhlowDeclarativeTestInspectable >> collectionOfObjects: anObject [
 	collectionOfObjects := anObject
 ]
 
 { #category : #inspecting }
-GtPharoDeclarativeTestInspectable >> gtColumnedListFor: aView [
+GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListFor: aView [
 	<gtView>
 
 	^aView columnedList
@@ -49,7 +49,7 @@ GtPharoDeclarativeTestInspectable >> gtColumnedListFor: aView [
 ]
 
 { #category : #inspecting }
-GtPharoDeclarativeTestInspectable >> gtListFor: aView [
+GtRemotePhlowDeclarativeTestInspectable >> gtListFor: aView [
 	<gtView>
 
 	^aView list
@@ -60,7 +60,7 @@ GtPharoDeclarativeTestInspectable >> gtListFor: aView [
 ]
 
 { #category : #inspecting }
-GtPharoDeclarativeTestInspectable >> gtStringFor: aView [
+GtRemotePhlowDeclarativeTestInspectable >> gtStringFor: aView [
 	<gtView>
 
 	^aView textEditor
@@ -70,7 +70,7 @@ GtPharoDeclarativeTestInspectable >> gtStringFor: aView [
 ]
 
 { #category : #initialization }
-GtPharoDeclarativeTestInspectable >> initialize [ 
+GtRemotePhlowDeclarativeTestInspectable >> initialize [ 
 
 	super initialize.
 	string := 'hello world'.
@@ -81,18 +81,18 @@ GtPharoDeclarativeTestInspectable >> initialize [
 ]
 
 { #category : #accessing }
-GtPharoDeclarativeTestInspectable >> string [
+GtRemotePhlowDeclarativeTestInspectable >> string [
 
 	^string
 ]
 
 { #category : #accessing }
-GtPharoDeclarativeTestInspectable >> string: anObject [
+GtRemotePhlowDeclarativeTestInspectable >> string: anObject [
 	string := anObject
 ]
 
 { #category : #accessing }
-GtPharoDeclarativeTestInspectable >> text [
+GtRemotePhlowDeclarativeTestInspectable >> text [
 
 	^string asRopedText 
 ]

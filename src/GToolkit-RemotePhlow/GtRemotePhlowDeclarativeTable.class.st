@@ -1,14 +1,14 @@
 Class {
-	#name : #GtPharoDeclarativeTable,
-	#superclass : #GtPharoDeclarativeView,
+	#name : #GtRemotePhlowDeclarativeTable,
+	#superclass : #GtRemotePhlowDeclarativeView,
 	#instVars : [
 		'items'
 	],
-	#category : #'GToolkit-RemotePharo-Server'
+	#category : #'GToolkit-RemotePhlow'
 }
 
 { #category : #'instance creation' }
-GtPharoDeclarativeTable class >> fromJSONDictionary: aDictionary [
+GtRemotePhlowDeclarativeTable class >> fromJSONDictionary: aDictionary [
 
 	| table |
 
@@ -19,7 +19,7 @@ GtPharoDeclarativeTable class >> fromJSONDictionary: aDictionary [
 ]
 
 { #category : #converting }
-GtPharoDeclarativeTable >> asDictionaryForExport [ 
+GtRemotePhlowDeclarativeTable >> asDictionaryForExport [ 
 
 	| dictionary |
 
@@ -30,23 +30,23 @@ GtPharoDeclarativeTable >> asDictionaryForExport [
 ]
 
 { #category : #accessing }
-GtPharoDeclarativeTable >> data [ 
+GtRemotePhlowDeclarativeTable >> data [ 
 
 	^ items
 ]
 
 { #category : #accessing }
-GtPharoDeclarativeTable >> items [
+GtRemotePhlowDeclarativeTable >> items [
 	^ items
 ]
 
 { #category : #accessing }
-GtPharoDeclarativeTable >> items: anObject [
+GtRemotePhlowDeclarativeTable >> items: anObject [
 	items := anObject
 ]
 
 { #category : #accessing }
-GtPharoDeclarativeTable >> viewName [ 
+GtRemotePhlowDeclarativeTable >> viewName [ 
 
 	^ #GtDeclarativeTable
 ]
