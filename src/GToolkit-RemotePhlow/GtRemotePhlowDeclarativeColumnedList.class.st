@@ -14,8 +14,8 @@ Current limitations:
 
 "
 Class {
-	#name : 'GtRemotePhlowDeclarativeColumnedList',
-	#superclass : 'GtRemotePhlowDeclarativeView',
+	#name : #GtRemotePhlowDeclarativeColumnedList,
+	#superclass : #GtRemotePhlowDeclarativeView,
 	#instVars : [
 		'items',
 		'itemsBuilder',
@@ -27,7 +27,7 @@ Class {
 	#category : 'GToolkit-RemotePhlow'
 }
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtRemotePhlowDeclarativeColumnedList class >> fromJSONDictionary: aDictionary [
 
 	| list |
@@ -41,7 +41,7 @@ GtRemotePhlowDeclarativeColumnedList class >> fromJSONDictionary: aDictionary [
 	^list
 ]
 
-{ #category : 'converting' }
+{ #category : #converting }
 GtRemotePhlowDeclarativeColumnedList >> asDictionaryForExport [ 
 
 	| dictionary |
@@ -55,13 +55,13 @@ GtRemotePhlowDeclarativeColumnedList >> asDictionaryForExport [
 	^dictionary
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeColumnedList >> column: columnName item: aBlockClosure [
 
 	^ self column: columnName item: aBlockClosure width: nil
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeColumnedList >> column: columnName item: aBlockClosure width: aNumberOrNil [
 
 	columnTitles add: columnName.
@@ -69,34 +69,34 @@ GtRemotePhlowDeclarativeColumnedList >> column: columnName item: aBlockClosure w
 	columnWidths add: aNumberOrNil.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeColumnedList >> columnTitles [
 	^ columnTitles
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeColumnedList >> columnTitles: anObject [
 	columnTitles := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeColumnedList >> columnWidths [
 	^ columnWidths
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeColumnedList >> columnWidths: anObject [
 	columnWidths := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeColumnedList >> data [ 
 
-	^ items ifNil: [ items := itemsBuilder value collect: [ :item |
-			columnValues collect: [ :columnValue | columnValue value: item ] as: Array ] as: Array ]
+	^ items ifNil: [ items := (itemsBuilder value collect: [ :item |
+			(columnValues collect: [ :columnValue | columnValue value: item ]) asArray ]) asArray ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeColumnedList >> initialize [
 
 	super initialize.
@@ -106,13 +106,13 @@ GtRemotePhlowDeclarativeColumnedList >> initialize [
 	sendBlock := [ :object | object ].
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeColumnedList >> items: aBlockClosure [
 
 	itemsBuilder := aBlockClosure
 ]
 
-{ #category : 'instructions' }
+{ #category : #instructions }
 GtRemotePhlowDeclarativeColumnedList >> send: aBlock [
 
 	self
@@ -125,14 +125,14 @@ GtRemotePhlowDeclarativeColumnedList >> send: aBlock [
 	sendBlock := aBlock.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeColumnedList >> sentItemAt: selection [ 
 	"Answer the raw value at the supplied index"
 
 	^ sendBlock cull: (itemsBuilder value at: selection) cull: selection
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeColumnedList >> viewName [ 
 
 	^ #GtDeclarativeColumnedList

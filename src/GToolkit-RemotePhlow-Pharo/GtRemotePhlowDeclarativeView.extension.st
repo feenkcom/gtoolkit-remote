@@ -1,14 +1,14 @@
 Extension { #name : #GtRemotePhlowDeclarativeView }
 
 { #category : #'*GToolkit-RemotePhlow-Pharo' }
-GtRemotePhlowDeclarativeView class >> globalsDictionary [
+GtRemotePhlowDeclarativeView classSide >> globalsDictionary [
 	"Answer the Smalltalk globals dictionary"
 
 	^ Smalltalk globals
 ]
 
 { #category : #'*GToolkit-RemotePhlow-Pharo' }
-GtRemotePhlowDeclarativeView class >> readJsonString: aString [
+GtRemotePhlowDeclarativeView classSide >> readJsonString: aString [
 
 	^ STONJSON fromString: aString
 ]

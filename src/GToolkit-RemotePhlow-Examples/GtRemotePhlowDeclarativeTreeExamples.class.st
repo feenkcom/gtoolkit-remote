@@ -1,12 +1,12 @@
 Class {
-	#name : 'GtRemotePhlowDeclarativeTreeExamples',
-	#superclass : 'Object',
+	#name : #GtRemotePhlowDeclarativeTreeExamples,
+	#superclass : #Object,
 	#traits : 'TAssertable',
 	#classTraits : 'TAssertable classTrait',
 	#category : 'GToolkit-RemotePhlow-Examples'
 }
 
-{ #category : 'examples' }
+{ #category : #examples }
 GtRemotePhlowDeclarativeTreeExamples >> emptyTree [
 	<gtExample>
 	| view |
@@ -16,7 +16,7 @@ GtRemotePhlowDeclarativeTreeExamples >> emptyTree [
 	^ view
 ]
 
-{ #category : 'examples' }
+{ #category : #examples }
 GtRemotePhlowDeclarativeTreeExamples >> sentItemAt [
 	<gtExample>
 	| treeView sentItem sentItems |
@@ -37,7 +37,7 @@ GtRemotePhlowDeclarativeTreeExamples >> sentItemAt [
 	^ treeView
 ]
 
-{ #category : 'examples' }
+{ #category : #examples }
 GtRemotePhlowDeclarativeTreeExamples >> treeViewWithItemsAndChildren [
 	<gtExample>
 	| aView data |

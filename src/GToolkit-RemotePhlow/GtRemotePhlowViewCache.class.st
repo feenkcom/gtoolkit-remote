@@ -1,6 +1,6 @@
 Class {
-	#name : 'GtRemotePhlowViewCache',
-	#superclass : 'Object',
+	#name : #GtRemotePhlowViewCache,
+	#superclass : #Object,
 	#instVars : [
 		'viewedObject',
 		'viewSelector',
@@ -11,7 +11,7 @@ Class {
 	#category : 'GToolkit-RemotePhlow'
 }
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtRemotePhlowViewCache class >> viewedObject: aGtViewedObject selector: viewSelector [
 
 	^ self new 
@@ -20,61 +20,88 @@ GtRemotePhlowViewCache class >> viewedObject: aGtViewedObject selector: viewSele
 		yourself
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
+GtRemotePhlowViewCache >> cachedData [
+	^ cachedData ifNil: [ 
+		cachedData := Dictionary new ]
+]
+
+{ #category : #accessing }
+GtRemotePhlowViewCache >> catcheAt: aKey	ifAbsentPut: aPutBlock [
+	^ self cachedData 
+		at: aKey ifAbsentPut: aPutBlock
+]
+
+{ #category : #accessing }
 GtRemotePhlowViewCache >> declarativeView [
 
 	^ declarativeView ifNil: 
 		[ declarativeView := (self object perform: viewSelector with: GtRemotePhlowDeclarativeProtoView new) ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowViewCache >> object [
 
 	^ self viewedObject object
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowViewCache >> retrieveItems: anItemsCount fromIndex: anIndex [
 	|  viewItems |
-	viewItems := self declarativeView data.
-	^ (viewItems 
+	viewItems := self 
+		catcheAt: #items 
+		ifAbsentPut: [ self declarativeView itemsBuilder value ].
+	^ ((viewItems 
 			copyFrom: anIndex
-			to: ((anIndex + anItemsCount - 1) min: viewItems size)) asArray
+			to: ((anIndex + anItemsCount - 1) min: viewItems size))
+	 			collect: [ :each | 
+					(self declarativeView itemTextBlock value: each) asString ]) asArray
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowViewCache >> retrieveTotalItemsCount [
 	|  viewItems |
-	viewItems := self declarativeView data.
+	viewItems := self 
+		catcheAt: #items 
+		ifAbsentPut: [ self declarativeView itemsBuilder value ].
 	^ viewItems size
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowViewCache >> retriveFormattedItems [
-	^ self declarativeView data
+	|  viewItems |
+	viewItems := self 
+		catcheAt: #items 
+		ifAbsentPut: [ self declarativeView itemsBuilder value ].
+	^ (viewItems collect: [ :each | 
+		(self declarativeView itemTextBlock value: each) asString ]) asArray
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowViewCache >> retriveSentItemAtIndex: aSelectionIndex [
-	^ self declarativeView itemsBuilder value at:  aSelectionIndex
+	|  viewItems |
+	viewItems := self 
+		catcheAt: #items 
+		ifAbsentPut: [ self declarativeView itemsBuilder value ].
+	^ viewItems at: aSelectionIndex
 ]
 
-{ #category : 'accessing' }
-GtRemotePhlowViewCache >> viewedObject [
-	^ viewedObject
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowViewCache >> viewedObject: anObject [
-	viewedObject := anObject
-]
-
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowViewCache >> viewSelector [
 	^ viewSelector
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowViewCache >> viewSelector: anObject [
 	viewSelector := anObject
+]
+
+{ #category : #accessing }
+GtRemotePhlowViewCache >> viewedObject [
+	^ viewedObject
+]
+
+{ #category : #accessing }
+GtRemotePhlowViewCache >> viewedObject: anObject [
+	viewedObject := anObject
 ]

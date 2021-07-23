@@ -11,8 +11,8 @@ GtDeclarativeTestInspectable is a simple object that can be used to test the Gt 
 
 "
 Class {
-	#name : 'GtRemotePhlowDeclarativeTestInspectable',
-	#superclass : 'Object',
+	#name : #GtRemotePhlowDeclarativeTestInspectable,
+	#superclass : #Object,
 	#instVars : [
 		'string',
 		'collectionOfObjects'
@@ -20,67 +20,67 @@ Class {
 	#category : 'GToolkit-RemotePhlow-Examples'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeTestInspectable >> collectionAt: anIndex put: anObject [
 
 	^collectionOfObjects at: anIndex put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeTestInspectable >> collectionOfObjects [
 	^ collectionOfObjects
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeTestInspectable >> collectionOfObjects: anObject [
 	collectionOfObjects := anObject
 ]
 
-{ #category : 'inspecting' }
+{ #category : #inspecting }
 GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListFor: aView [
 	<gtView>
 
 	^aView columnedList
-		title: 'Columned List' translated;
+		title: 'Columned List';
 		priority: 20;
 		items: [ collectionOfObjects ];
 		column: 'Value' item: [ :anObject | anObject asString ];
 		column: 'Lowercase' item: [ :anObject | anObject asString asLowercase ] width: 100.
 ]
 
-{ #category : 'inspecting' }
+{ #category : #inspecting }
 GtRemotePhlowDeclarativeTestInspectable >> gtLargeListFor: aView [
 	<gtView>
 
 	^aView list
-		title: 'Large List' translated;
+		title: 'Large List';
 		priority: 20;
 		items: [ 1 to: 1022 ];
 		itemText: [ :item | item asString ]
 ]
 
-{ #category : 'inspecting' }
+{ #category : #inspecting }
 GtRemotePhlowDeclarativeTestInspectable >> gtListFor: aView [
 	<gtView>
 
 	^aView list
-		title: 'List' translated;
+		title: 'List';
 		priority: 15;
 		items: [ collectionOfObjects ];
 		itemText: [ :item | item asString ]
 ]
 
-{ #category : 'inspecting' }
+{ #category : #inspecting }
 GtRemotePhlowDeclarativeTestInspectable >> gtStringFor: aView [
 	<gtView>
 
 	^aView textEditor
-		title: 'String' translated;
+		title: 'String';
 		priority: 10;
 		text: [ self string ]
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtRemotePhlowDeclarativeTestInspectable >> initialize [ 
 
 	super initialize.
@@ -88,21 +88,21 @@ GtRemotePhlowDeclarativeTestInspectable >> initialize [
 	collectionOfObjects := { 
 		42. 
 		'Hello World'. 
-		DateAndTime readFrom: '2021-04-06T14:43:49.623384+02:00' readStream. }.
+		DateAndTime now. "readFrom: '2021-04-06T14:43:49.623384+02:00' readStream." }.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeTestInspectable >> string [
 
 	^string
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeTestInspectable >> string: anObject [
 	string := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeTestInspectable >> text [
 
 	^string asRopedText 

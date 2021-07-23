@@ -25,8 +25,8 @@ Internal Representation and Key Implementation Points.
     Implementation Points
 "
 Class {
-	#name : 'GtRemotePhlowDeclarativeView',
-	#superclass : 'Object',
+	#name : #GtRemotePhlowDeclarativeView,
+	#superclass : #Object,
 	#instVars : [
 		'accessor',
 		'methodName',
@@ -37,7 +37,7 @@ Class {
 	#category : 'GToolkit-RemotePhlow'
 }
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtRemotePhlowDeclarativeView class >> accessor: aGtDViewAccessor [
 	"Answer the view specified by the supplied accessor"
 
@@ -46,35 +46,35 @@ GtRemotePhlowDeclarativeView class >> accessor: aGtDViewAccessor [
 		yourself
 ]
 
-{ #category : 'data transport' }
+{ #category : #'data transport' }
 GtRemotePhlowDeclarativeView class >> dataByKey [
 	"Answer the enumerated value for the display data being accessed by reference and key"
 
 	^4
 ]
 
-{ #category : 'data transport' }
+{ #category : #'data transport' }
 GtRemotePhlowDeclarativeView class >> dataByReference [
 	"Answer the enumerated value for the display data being accessed by reference"
 
 	^3
 ]
 
-{ #category : 'data transport' }
+{ #category : #'data transport' }
 GtRemotePhlowDeclarativeView class >> dataIncluded [
 	"Answer the enumerated value for the display data being included with the specification"
 
 	^1
 ]
 
-{ #category : 'data transport' }
+{ #category : #'data transport' }
 GtRemotePhlowDeclarativeView class >> dataLazy [
 	"Answer the enumerated value for the display data accessor name being included with the specification.  This can then be used to retrieve the data at a later time"
 
 	^2
 ]
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtRemotePhlowDeclarativeView class >> fromDictionary: viewDictionary [
 	"Answer the view specified by viewDictionary"
 	| viewName |
@@ -84,7 +84,7 @@ GtRemotePhlowDeclarativeView class >> fromDictionary: viewDictionary [
 	^(self globalsDictionary at: viewName asSymbol) fromJSONDictionary: viewDictionary.
 ]
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtRemotePhlowDeclarativeView class >> fromJSONDictionary: aDictionary [
 	"Answer an instance of the receiver from the supplied dictionary.
 	Subclasses will override this to add their specific attributes"
@@ -96,7 +96,7 @@ GtRemotePhlowDeclarativeView class >> fromJSONDictionary: aDictionary [
 		yourself
 ]
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtRemotePhlowDeclarativeView class >> fromJSONString: aString [
 	"Answer the view specified by aString"
 
@@ -108,17 +108,17 @@ GtRemotePhlowDeclarativeView class >> fromJSONString: aString [
 	^(self globalsDictionary at: viewName asSymbol) fromJSONDictionary: viewDictionary.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeView >> accessor [
 	^ accessor
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeView >> accessor: anObject [
 	accessor := anObject
 ]
 
-{ #category : 'converting' }
+{ #category : #converting }
 GtRemotePhlowDeclarativeView >> asDictionaryForExport [
 	"Answer the receiver as a dictionary ready for JSON serialisation.
 	Subclasses will override and add to the dictionary"
@@ -131,31 +131,31 @@ GtRemotePhlowDeclarativeView >> asDictionaryForExport [
 		yourself
 ]
 
-{ #category : 'serialization' }
+{ #category : #serialization }
 GtRemotePhlowDeclarativeView >> asJSONForExport [ 
 	"Answer the receiver serialised in JSON format"
 
 	^self writeJsonString: self asDictionaryForExport
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeView >> data [ 
 	"Answer the data appropriate to the receiver's type"
 
 	^self subclassResponsibility 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeView >> dataTransport [
 	^ dataTransport
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeView >> dataTransport: anObject [
 	dataTransport := anObject
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtRemotePhlowDeclarativeView >> initialize [
 
 	super initialize.
@@ -163,43 +163,43 @@ GtRemotePhlowDeclarativeView >> initialize [
 	dataTransport := self class dataIncluded.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeView >> methodName [
 	^ methodName
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeView >> methodName: anObject [
 	methodName := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeView >> priority [
 	^ priority
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeView >> priority: anObject [
 	priority := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeView >> sentItemAt: selection [ 
 
 	^ self subclassResponsibility 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeView >> title [
 	^ title
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeView >> title: anObject [
 	title := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeView >> viewName [
 	"Answer the name of the receivers matching view in the Gt image"
 
