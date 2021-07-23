@@ -62,7 +62,6 @@ GtRemotePhlowViewedObject >> gtSentItemFor: viewSelector at: selection [
 	"Answer the value to be sent from the view"
 
 	^ (self declarativeViewWithSelector: viewSelector) sentItemAt: selection
-	
 ]
 
 { #category : #initialization }
@@ -108,8 +107,9 @@ GtRemotePhlowViewedObject >> retriveFormattedItemsForViewSelector: aViewSelector
 { #category : #accessing }
 GtRemotePhlowViewedObject >> retriveSentItemForViewSelector: aViewSelector atIndex: aSelectionIndex [
 	| declarativeViewCache |
+
 	declarativeViewCache := viewCache at: aViewSelector.
-	^ declarativeViewCache retriveSentItemAtIndex: aSelectionIndex 
+	^ declarativeViewCache retriveSentItemAtIndex: aSelectionIndex
 ]
 
 { #category : #private }
