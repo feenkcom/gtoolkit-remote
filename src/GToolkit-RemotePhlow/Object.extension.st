@@ -11,7 +11,7 @@ Object >> gtPharoDeclarativeViewSelectors [
 ]
 
 { #category : #'*GToolkit-RemotePhlow' }
-Object >> gtPrintFor: aView [
+Object >> gtPrintRemoteFor: aView [
 	<gtView>
 	^ aView textEditor
 		title: 'Print';
