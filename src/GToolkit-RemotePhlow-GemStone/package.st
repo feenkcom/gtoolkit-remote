@@ -1,1 +1,1 @@
-Package { #name : #'GToolkit-RemotePhlow-GemStone' }
+Package { #name : 'GToolkit-RemotePhlow-GemStone' }

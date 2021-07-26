@@ -110,7 +110,7 @@ GtRemotePhlowDeclarativeList >> retriveSentItemAt: aSelectionIndex [
 GtRemotePhlowDeclarativeList >> sentItemAt: selection [ 
 	"Answer the raw value at the supplied index"
 
-	^ itemsBuilder value at: selection.
+	^ itemsBuilder value at: selection
 ]
 
 { #category : 'accessing' }
