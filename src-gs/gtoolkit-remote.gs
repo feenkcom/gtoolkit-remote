@@ -921,7 +921,7 @@ method: GtRemotePhlowDeclarativeList
 sentItemAt: selection 
 	"Answer the raw value at the supplied index"
 
-	^ itemsBuilder value at: selection.
+	^ itemsBuilder value at: selection
 %
 
 category: 'accessing'
@@ -1339,7 +1339,6 @@ gtSentItemFor: viewSelector at: selection
 	"Answer the value to be sent from the view"
 
 	^ (self declarativeViewWithSelector: viewSelector) sentItemAt: selection
-	
 %
 
 category: 'initialization'
@@ -1392,8 +1391,9 @@ category: 'accessing'
 method: GtRemotePhlowViewedObject
 retriveSentItemForViewSelector: aViewSelector atIndex: aSelectionIndex
 	| declarativeViewCache |
+
 	declarativeViewCache := viewCache at: aViewSelector.
-	^ declarativeViewCache retriveSentItemAtIndex: aSelectionIndex 
+	^ declarativeViewCache retriveSentItemAtIndex: aSelectionIndex
 %
 
 category: 'private'
@@ -1411,7 +1411,7 @@ viewWithSelector: viewSelector
 
 !		Instance methods for 'Behavior'
 
-category: '*GToolkit-RemotePhlow'
+category: '*GToolkit-RemotePhlow-Gemstone'
 method: Behavior
 gtMethodsListRemoteFor: aView
 	<gtView>
@@ -1419,7 +1419,7 @@ gtMethodsListRemoteFor: aView
 	^ aView list
 		title: 'Methods List';
 		priority: 15;
-		items: [ self methods sorted: [ :a :b | a selector < b selector ] ];
+		items: [ (self methodDictForEnv: 0) values asSortedCollection: [ :a :b | a selector < b selector ] ];
 		itemText: [ :method | method selector ]
 %
 
@@ -1556,7 +1556,7 @@ gtPharoDeclarativeViewSelectors
 
 category: '*GToolkit-RemotePhlow'
 method: Object
-gtPrintFor: aView
+gtPrintRemoteFor: aView
 	<gtView>
 	^ aView textEditor
 		title: 'Print';
