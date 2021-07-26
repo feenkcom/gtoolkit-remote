@@ -7,7 +7,7 @@
 | warnings |
 warnings := String new.
 [
-	(Rowan projectFromUrl: 'file://$ROWAN_PROJECTS_HOME/gtoolkit-remote/rowan/specs/gtoolkit-remote.ston')
+	(Rowan projectFromUrl: 'file:$ROWAN_PROJECTS_HOME/gtoolkit-remote/rowan/specs/gtoolkit-remote.ston')
 		projectsHome: '$ROWAN_PROJECTS_HOME';
 		load
 ] on: CompileWarning do: [:ex |
