@@ -7,8 +7,8 @@
 | warnings |
 warnings := String new.
 [
-	(Rowan projectFromUrl: 'file:///home/alistair/gemstone/alpha2/gitreps/gtoolkit-remote/rowan/specs/gtoolkit-remote.ston')
-		projectsHome: '/home/alistair/gemstone/alpha2/gitreps';
+	(Rowan projectFromUrl: 'file:$ROWAN_PROJECTS_HOME/gtoolkit-remote/rowan/specs/gtoolkit-remote.ston')
+		projectsHome: '$ROWAN_PROJECTS_HOME';
 		load
 ] on: CompileWarning do: [:ex |
 	(ex description includesString: 'not optimized')
@@ -20,6 +20,6 @@ warnings isEmpty
 	ifTrue: [ true ]
 	ifFalse: [ warnings ]
 %
-	abort
+	commit
 
 	errorCount

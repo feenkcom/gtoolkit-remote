@@ -1,15 +1,15 @@
 Extension { #name : 'GtRemotePhlowViewedObject' }
 
-{ #category : '*GToolkit-RemotePhlow-Gemstone' }
-GtRemotePhlowViewedObject class >> new [
-
-	^ super new initialize
-]
-
 { #category : '*GToolkit-RemotePhlow-GemStone' }
 GtRemotePhlowViewedObject >> addRawSelfNodeTo: variableNodes [
 
 	^ self "TBS"
+]
+
+{ #category : '*GToolkit-RemotePhlow-Gemstone' }
+GtRemotePhlowViewedObject class >> new [
+
+	^ super new initialize
 ]
 
 { #category : '*GToolkit-RemotePhlow-GemStone' }

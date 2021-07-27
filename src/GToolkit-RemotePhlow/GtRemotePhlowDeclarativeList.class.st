@@ -61,19 +61,6 @@ GtRemotePhlowDeclarativeList >> initialize [
 ]
 
 { #category : 'api - scripting' }
-GtRemotePhlowDeclarativeList >> items: aBlockClosure [
-	"Set the block closure that will be used to construct the items.
-	Note that this doesn't set the items instance variable (as one might expect)"
-
-	itemsBuilder := aBlockClosure
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeList >> itemsBuilder [
-	^ itemsBuilder
-]
-
-{ #category : 'api - scripting' }
 GtRemotePhlowDeclarativeList >> itemText: aBlockClosure [
 
 	itemTextBlock := aBlockClosure
@@ -85,6 +72,19 @@ GtRemotePhlowDeclarativeList >> itemTextBlock [
 	The result of the BlockClosure must be a JSON primitive type, effectively a string or number."
 
 	^ itemTextBlock
+]
+
+{ #category : 'api - scripting' }
+GtRemotePhlowDeclarativeList >> items: aBlockClosure [
+	"Set the block closure that will be used to construct the items.
+	Note that this doesn't set the items instance variable (as one might expect)"
+
+	itemsBuilder := aBlockClosure
+]
+
+{ #category : 'accessing' }
+GtRemotePhlowDeclarativeList >> itemsBuilder [
+	^ itemsBuilder
 ]
 
 { #category : 'accessing' }
