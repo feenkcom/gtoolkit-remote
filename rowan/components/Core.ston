@@ -7,8 +7,7 @@ RwSimpleProjectLoadComponentV2 {
 	],
 	#packageNames : [
 		'GToolkit-RemotePhlow',
-		'GToolkit-RemotePhlow-Examples',
-		'Gtoolkit-RemoteCoder-GemStone'
+		'GToolkit-RemotePhlow-Examples'
 	],
 	#comment : ''
 }
