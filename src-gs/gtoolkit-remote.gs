@@ -3,6 +3,24 @@
 
 doit
 (Object
+	subclass: 'GtGemStoneRPackage'
+	instVarNames: #( name )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'Gtoolkit-RemoteCoder-GemStone';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtGemStoneRPackage
+removeallclassmethods GtGemStoneRPackage
+
+doit
+(Object
 	subclass: 'GtRemotePhlowDeclarativeProtoView'
 	instVarNames: #(  )
 	classVars: #(  )
@@ -279,6 +297,54 @@ true.
 
 removeallmethods GtRemotePhlowViewedObject
 removeallclassmethods GtRemotePhlowViewedObject
+
+! Class implementation for 'GtGemStoneRPackage'
+
+!		Class methods for 'GtGemStoneRPackage'
+
+category: 'instance creation'
+classmethod: GtGemStoneRPackage
+named: aSymbol
+
+	^ self new name: aSymbol
+%
+
+!		Instance methods for 'GtGemStoneRPackage'
+
+category: 'accessing'
+method: GtGemStoneRPackage
+classes
+	| nameString |
+
+	nameString := name asString.
+	^ self gtAllClasses select: [ :each | each _classCategory = nameString ]
+%
+
+category: 'private'
+method: GtGemStoneRPackage
+gtAllClasses
+	"A hack to figure out all classes"
+	| allClasses |
+
+	allClasses := Array new.
+	System myUserProfile symbolList
+		do: [ :dict | allClasses addAll: (dict select: [ :each | each isBehavior ]) ].
+	^ allClasses
+%
+
+category: 'accessing'
+method: GtGemStoneRPackage
+name
+
+	^ name
+%
+
+category: 'accessing'
+method: GtGemStoneRPackage
+name: aSymbol
+
+	name := aSymbol asSymbol
+%
 
 ! Class implementation for 'GtRemotePhlowDeclarativeProtoView'
 
@@ -1418,31 +1484,47 @@ gtMethodsListRemoteFor: aView
 
 	^ aView list
 		title: 'Methods List';
-		priority: 15;
+		priority: 10;
 		items: [ (self methodDictForEnv: 0) values asSortedCollection: [ :a :b | a selector < b selector ] ];
 		itemText: [ :method | method selector ]
 %
 
-category: '*GToolkit-RemotePhlow'
+category: '*GToolkit-RemotePhlow-Gemstone'
 method: Behavior
-gtMethodsRemoteFor: aView
-	"<gtView>"
+gtSubclasses
+	"A hack to figure out all subclasses since Metaclass3>>_subclasses always answers nil"
+	| allClasses result |
 
-	^ aView columnedList
-		title: 'Methods';
-		priority: 10;
-		items: [ self gtSortedMethods ];
-		column: 'Selector' item: [ :method | method selector ];
-		column: 'Instance' item: [ :method | method methodClass isMeta not ] width: 100
+	allClasses := Array new.
+	System myUserProfile symbolList
+		do: [ :dict | allClasses addAll: (dict select: [ :each | each isBehavior ]) ].
+	result := allClasses select: [ :each | each isBehavior and: [ each superclass = self ] ].
+	^ result
 %
 
-category: '*GToolkit-RemotePhlow'
+category: '*GToolkit-RemotePhlow-Gemstone'
 method: Behavior
-gtSortedMethods
-	"Answer the methods sorted by instance/class, selector"
+gtSubclassesFor: aView
+	<gtView>
 
-	^ (self instanceSide methods sorted: #selector ascending),
-		(self classSide methods sorted: #selector ascending)
+	^ aView tree
+		title: 'Subclasses';
+		priority: 11;
+		items: [ self gtSubclasses ];
+		itemText: [ :cls | cls name ];
+		children: [ :cls | cls gtSubclasses ]
+%
+
+category: '*GToolkit-RemotePhlow-Gemstone'
+method: Behavior
+gtSuperclassesFor: aView
+	<gtView>
+
+	^ aView list
+		title: 'Superclasses';
+		priority: 12;
+		items: [ self allSuperClasses reversed ];
+		itemText: [ :cls | cls name ]
 %
 
 ! Class extensions for 'GtRemotePhlowDeclarativeTestInspectable'
