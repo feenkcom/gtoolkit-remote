@@ -18,10 +18,11 @@ GtRemotePhlowDeclarativeTreeExamples >> emptyTree [
 
 { #category : 'examples' }
 GtRemotePhlowDeclarativeTreeExamples >> sentItemAt [
-	<gtExample>
-	| treeView sentItem sentItems |
+	"<gtExample>"
+	| treeView declarativeView sentItem sentItems |
 
 	treeView := self treeViewWithItemsAndChildren.
+	declarativeView := treeView asGtDeclarativeView.
 	sentItems := (1 to: 4) collect: [ :i | treeView sentItemAt: { i } ].
 	self assert: sentItems equals: #(1 2 3 4).
 	sentItem := treeView sentItemAt: #(2 1).
@@ -49,7 +50,7 @@ GtRemotePhlowDeclarativeTreeExamples >> treeViewWithItemsAndChildren [
 			aNumber = 0
 				ifTrue: [ #() ]
 				ifFalse: [ 1 to: aNumber // 2 ] ].
-	data := aView data.
+	data := aView asGtDeclarativeView items.
 	self assert: data size equals: 4.
 	self assert: data first equals: #('1' #(1) #()).
 	self assert: data last equals:  #('4' #(4) #(#('1' #(4 1) #()) #('2' #(4 2) #(#('1' #(4 2 1) #()))))).

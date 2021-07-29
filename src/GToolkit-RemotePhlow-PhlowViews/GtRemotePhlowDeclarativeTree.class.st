@@ -15,7 +15,7 @@ Class {
 		'itemTextBlock',
 		'childrenBlock'
 	],
-	#category : 'GToolkit-RemotePhlow'
+	#category : 'GToolkit-RemotePhlow-PhlowViews'
 }
 
 { #category : 'private' }
@@ -31,14 +31,18 @@ GtRemotePhlowDeclarativeTree >> add: item index: anArray to: stream [
 ]
 
 { #category : 'converting' }
-GtRemotePhlowDeclarativeTree >> asDictionaryForExport [ 
+GtRemotePhlowDeclarativeTree >> asGtDeclarativeView [
+	"Answer the receiver as a GtDeclarativeView.
+	nil = not supported"
 
-	| dictionary |
+	^ GtDeclarativeTreeView new 
+		title: self title;
+		priority: self priority;
+		items: (Array streamContents: [ :stream |
+			itemsBuilder value doWithIndex: [ :item :i |
+				self add: item index: { i } to: stream ] ]);
+		dataTransport: GtDeclarativeView dataIncluded.
 
-	dictionary := super asDictionaryForExport.
-	self dataTransport = self class dataIncluded ifTrue: [ 
-		dictionary at: #items put: self data ].
-	^ dictionary
 ]
 
 { #category : 'accessing' }
@@ -51,17 +55,6 @@ GtRemotePhlowDeclarativeTree >> children [
 GtRemotePhlowDeclarativeTree >> children: aBlock [
 
 	childrenBlock := aBlock
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeTree >> data [
-	"Answer the entire tree as an Array of Arrays.
-	Each array is { item. index. children. }.
-	index is an Array of the nested indices."
-
-	^ Array streamContents: [ :stream |
-		itemsBuilder value doWithIndex: [ :item :i |
-			self add: item index: { i } to: stream ] ]
 ]
 
 { #category : 'private' }
@@ -105,22 +98,4 @@ GtRemotePhlowDeclarativeTree >> items [
 GtRemotePhlowDeclarativeTree >> items: aBlock [
 
 	itemsBuilder := aBlock
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeTree >> sentItemAt: anArray [
-	"Answer the item at the supplied index"
-	| value |
-
-	value := itemsBuilder value at: anArray first.
-	anArray allButFirstDo: [ :index |
-		value := (childrenBlock value: value) at: index ].
-	^ value
-
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeTree >> viewName [
-
-	^ #GtDeclarativeTree
 ]

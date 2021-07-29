@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'textBuilder'
 	],
-	#category : 'GToolkit-RemotePhlow'
+	#category : 'GToolkit-RemotePhlow-PhlowViews'
 }
 
 { #category : 'instance creation' }
@@ -19,26 +19,16 @@ GtRemotePhlowDeclarativeTextEditor class >> fromJSONDictionary: aDictionary [
 ]
 
 { #category : 'converting' }
-GtRemotePhlowDeclarativeTextEditor >> asDictionaryForExport [ 
+GtRemotePhlowDeclarativeTextEditor >> asGtDeclarativeView [
+	"Answer the receiver as a GtDeclarativeView.
+	nil = not supported"
 
-	| dictionary |
+	^GtDeclarativeTextEditorView new 
+		title: self title;
+		priority: self priority;
+		string: self textBuilder value asString;
+		dataTransport: GtDeclarativeView dataIncluded.
 
-	dictionary := super asDictionaryForExport.
-	self dataTransport = self class dataIncluded ifTrue: [ 
-		dictionary at: #string put: self data ].
-	^dictionary
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeTextEditor >> data [ 
-
-	^ textBuilder value
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeTextEditor >> sentItemAt: selector [ 
-
-	^ self shouldNotImplement 
 ]
 
 { #category : 'accessing' }
@@ -50,7 +40,6 @@ GtRemotePhlowDeclarativeTextEditor >> text: aBlockClosure [
 ]
 
 { #category : 'accessing' }
-GtRemotePhlowDeclarativeTextEditor >> viewName [ 
-
-	^ #GtDeclarativeTextEditor
+GtRemotePhlowDeclarativeTextEditor >> textBuilder [
+	^ textBuilder
 ]

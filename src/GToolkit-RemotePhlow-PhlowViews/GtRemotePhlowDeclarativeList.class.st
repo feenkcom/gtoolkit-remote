@@ -21,7 +21,7 @@ Class {
 		'itemTextBlock',
 		'totalItemsCount'
 	],
-	#category : 'GToolkit-RemotePhlow'
+	#category : 'GToolkit-RemotePhlow-PhlowViews'
 }
 
 { #category : 'instance creation' }
@@ -35,21 +35,15 @@ GtRemotePhlowDeclarativeList class >> fromJSONDictionary: aDictionary [
 ]
 
 { #category : 'converting' }
-GtRemotePhlowDeclarativeList >> asDictionaryForExport [ 
+GtRemotePhlowDeclarativeList >> asGtDeclarativeView [
+	"Answer the receiver as a GtDeclarativeView.
+	nil = not supported"
 
-	| dictionary |
-
-	dictionary := super asDictionaryForExport.
-	self dataTransport = self class dataIncluded ifTrue: [ 
-		dictionary at: #items put: self data ].
-	^dictionary
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeList >> data [ 
-	"Answer the list of display strings"
-
-	^ items ifNil: [ items := itemsBuilder value collect: itemTextBlock ]
+	^ GtDeclarativeListView new 
+		phlowDataSource: (GtPhlowDeclarativeViewListDataSource forPhlowView: self);
+		title: self title;
+		priority: self priority;
+		dataTransport: GtDeclarativeView dataLazy.
 ]
 
 { #category : 'initialization' }
@@ -85,43 +79,4 @@ GtRemotePhlowDeclarativeList >> items: aBlockClosure [
 { #category : 'accessing' }
 GtRemotePhlowDeclarativeList >> itemsBuilder [
 	^ itemsBuilder
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeList >> retrieveTotalItemsCount [
-	^ self accessor
-		retrieveTotalItemsCountForViewSelector: self methodName
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeList >> retriveFormattedItems [
-	^ self accessor 
-		retriveFormattedItemsForViewSelector: self methodName
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeList >> retriveSentItemAt: aSelectionIndex [
-	^ self accessor 
-			retriveSentItemForViewSelector: self methodName
-			atIndex: aSelectionIndex
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeList >> sentItemAt: selection [ 
-	"Answer the raw value at the supplied index"
-
-	^ itemsBuilder value at: selection
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeList >> totalItemsCount [
-	^ totalItemsCount ifNil: [ 
-		totalItemsCount := self retrieveTotalItemsCount ]
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeList >> viewName [
-	"Answer the name of the receivers matching view in the Gt image"
-
-	^ #GtDeclarativeList
 ]

@@ -4,8 +4,15 @@ Trait {
 }
 
 { #category : 'accessing' }
-TGtPharoLinkRemoteViewedObjectProxy >> getGtViewMethodNames [
-	^ self proxyPerform: #getGtViewMethodNames
+TGtPharoLinkRemoteViewedObjectProxy >> getDeclarativeViewFor: aViewSelector [
+	^ self
+		proxyPerform: #getDeclarativeViewFor:
+		withPrimitiveArguments: { aViewSelector asSymbol }
+]
+
+{ #category : 'accessing' }
+TGtPharoLinkRemoteViewedObjectProxy >> getDeclarativeViewMethodNames [
+	^ self proxyPerform: #getDeclarativeViewMethodNames
 ]
 
 { #category : 'accessing' }
@@ -13,32 +20,4 @@ TGtPharoLinkRemoteViewedObjectProxy >> getViewDeclaration: aViewSelector [
 	^ self
 		proxyPerform: #getViewDeclaration:
 		withPrimitiveArguments: { aViewSelector asSymbol }
-]
-
-{ #category : 'accessing' }
-TGtPharoLinkRemoteViewedObjectProxy >> retrieveItemsCount: anItemsCount fromIndex: anIndex forViewSelector: aViewSelector [
-	^ self
-		proxyPerform: #retrieveItemsCount:fromIndex:forViewSelector:
-		withPrimitiveArguments: { anItemsCount . anIndex . aViewSelector }
-]
-
-{ #category : 'accessing' }
-TGtPharoLinkRemoteViewedObjectProxy >> retrieveTotalItemsCountForViewSelector: methodName [
-	^ self
-		proxyPerform: #retrieveTotalItemsCountForViewSelector: 
-		withPrimitiveArguments: { methodName }
-]
-
-{ #category : 'accessing' }
-TGtPharoLinkRemoteViewedObjectProxy >> retriveFormattedItemsForViewSelector: methodName [
-	^ self
-		proxyPerform: #retriveFormattedItemsForViewSelector: 
-		withPrimitiveArguments: { methodName }
-]
-
-{ #category : 'accessing' }
-TGtPharoLinkRemoteViewedObjectProxy >> retriveSentItemForViewSelector: methodName atIndex: selectionIndex [
-	^ self
-		proxyPerform: #retriveSentItemForViewSelector:atIndex:
-		withPrimitiveArguments: { methodName . selectionIndex }
 ]

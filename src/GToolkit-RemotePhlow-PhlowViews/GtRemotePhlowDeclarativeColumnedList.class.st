@@ -24,7 +24,7 @@ Class {
 		'columnWidths',
 		'sendBlock'
 	],
-	#category : 'GToolkit-RemotePhlow'
+	#category : 'GToolkit-RemotePhlow-PhlowViews'
 }
 
 { #category : 'instance creation' }
@@ -42,17 +42,17 @@ GtRemotePhlowDeclarativeColumnedList class >> fromJSONDictionary: aDictionary [
 ]
 
 { #category : 'converting' }
-GtRemotePhlowDeclarativeColumnedList >> asDictionaryForExport [ 
+GtRemotePhlowDeclarativeColumnedList >> asGtDeclarativeView [
+	"Answer the receiver as a GtDeclarativeView.
+	nil = not supported"
 
-	| dictionary |
-
-	dictionary := super asDictionaryForExport 
-		at: #columnTitles put: columnTitles asArray;
-		at: #columnWidths put: columnWidths asArray;
-		yourself.
-	self dataTransport = self class dataIncluded ifTrue: [ 
-		dictionary at: #items put: self data asArray ].
-	^dictionary
+	^GtDeclarativeColumnedListView new 
+		phlowDataSource: (GtPhlowDeclarativeViewColumnedListDataSource forPhlowView: self);
+		title: self title;
+		priority: self priority;
+		columnTitles: self columnTitles asArray;
+		columnWidths: self columnWidths asArray;
+		dataTransport: GtDeclarativeView dataLazy
 ]
 
 { #category : 'accessing' }
@@ -63,10 +63,10 @@ GtRemotePhlowDeclarativeColumnedList >> column: columnName item: aBlockClosure [
 
 { #category : 'accessing' }
 GtRemotePhlowDeclarativeColumnedList >> column: columnName item: aBlockClosure width: aNumberOrNil [
-
+ 
 	columnTitles add: columnName.
 	columnValues add: aBlockClosure.
-	columnWidths add: aNumberOrNil.
+	columnWidths add: aNumberOrNil. 
 ]
 
 { #category : 'accessing' }
@@ -87,13 +87,6 @@ GtRemotePhlowDeclarativeColumnedList >> columnWidths [
 { #category : 'accessing' }
 GtRemotePhlowDeclarativeColumnedList >> columnWidths: anObject [
 	columnWidths := anObject
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeColumnedList >> data [ 
-
-	^ items ifNil: [ items := (itemsBuilder value collect: [ :item |
-			(columnValues collect: [ :columnValue | columnValue value: item ]) asArray ]) asArray ]
 ]
 
 { #category : 'accessing' }
@@ -123,17 +116,4 @@ GtRemotePhlowDeclarativeColumnedList >> send: aBlock [
 			assert: [ aBlock isUnary ]
 			description: [ 'Send transformation symbol must be unary' ] ].
 	sendBlock := aBlock.
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeColumnedList >> sentItemAt: selection [ 
-	"Answer the raw value at the supplied index"
-
-	^ sendBlock cull: (itemsBuilder value at: selection) cull: selection
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeColumnedList >> viewName [ 
-
-	^ #GtDeclarativeColumnedList
 ]
