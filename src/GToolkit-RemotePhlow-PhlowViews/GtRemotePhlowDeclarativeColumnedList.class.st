@@ -17,7 +17,6 @@ Class {
 	#name : 'GtRemotePhlowDeclarativeColumnedList',
 	#superclass : 'GtRemotePhlowDeclarativeView',
 	#instVars : [
-		'items',
 		'itemsBuilder',
 		'columns',
 		'sendBlock'
@@ -34,8 +33,8 @@ GtRemotePhlowDeclarativeColumnedList >> asGtDeclarativeView [
 		phlowDataSource: (GtRemotePhlowDeclarativeViewColumnedListDataSource forPhlowView: self);
 		title: self title;
 		priority: self priority;
-		columnTitles: (columns collect: [ :each | each title ]) asArray;
-		columnWidths: (columns collect: [ :each | each cellWidth ]) asArray;
+		columnTitles: (self columns collect: [ :each | each title ]) asArray;
+		columnWidths: (self columns collect: [ :each | each cellWidth ]) asArray;
 		dataTransport: GtPhlowDeclarativeView dataLazy
 ]
 
@@ -44,8 +43,8 @@ GtRemotePhlowDeclarativeColumnedList >> column [
 	<return: #GtRemotePhlowColumn>
 	| aColumn |
 	
-	aColumn := GtRemotePhlowColumn new index: columns size + 1.
-	columns add: aColumn.
+	aColumn := GtRemotePhlowColumn new index: self columns size + 1.
+	self columns add: aColumn.
 	^ aColumn
 ]
 

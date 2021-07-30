@@ -16,10 +16,8 @@ Class {
 	#name : 'GtRemotePhlowDeclarativeList',
 	#superclass : 'GtRemotePhlowDeclarativeView',
 	#instVars : [
-		'items',
 		'itemsBuilder',
-		'itemTextBlock',
-		'totalItemsCount'
+		'itemTextBlock'
 	],
 	#category : 'GToolkit-RemotePhlow-PhlowViews'
 }
