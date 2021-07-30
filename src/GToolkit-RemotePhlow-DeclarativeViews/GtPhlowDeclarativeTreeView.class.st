@@ -22,6 +22,17 @@ GtPhlowDeclarativeTreeView class >> fromJSONDictionary: aDictionary [
 	^ view
 ]
 
+{ #category : 'converting' }
+GtPhlowDeclarativeTreeView >> asDictionaryForExport [ 
+
+	| dictionary |
+
+	dictionary := super asDictionaryForExport.
+	self dataTransport = self class dataIncluded ifTrue: [ 
+		dictionary at: #items put: items ].
+	^dictionary
+]
+
 { #category : 'accessing' }
 GtPhlowDeclarativeTreeView >> children: aBlock [ 
 
