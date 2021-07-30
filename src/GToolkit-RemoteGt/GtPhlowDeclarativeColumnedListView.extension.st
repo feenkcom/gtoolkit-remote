@@ -9,7 +9,7 @@ GtPhlowDeclarativeColumnedListView >> viewFor: aView [
 	list := aView lazyColumnedList 
 		title: title;
 		priority: priority;
-		itemsProvider: [ self "phlowDataSource" ].
+		itemsProvider: [ self ].
 	columnTitles withIndexDo: [ :cTitle :index |
 		column := list column.
 		column 
@@ -19,6 +19,6 @@ GtPhlowDeclarativeColumnedListView >> viewFor: aView [
 			column width: width ] ].
 	list
 		send: [ :arg :selection | 
-			self "phlowDataSource" retriveSentItemAt: selection first ].
+			self retriveSentItemAt: selection first ].
 	^list
 ]

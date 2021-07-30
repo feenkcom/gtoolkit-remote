@@ -9,8 +9,8 @@ GtPhlowDeclarativeListView >> viewFor: aView [
 	list := aView lazyList 
 		title: title;
 		priority: priority;
-		itemsProvider: [ self "phlowDataSource" ];
+		itemsProvider: [ self ];
 		send: [ :arg :selection | 
-			self "phlowDataSource" retriveSentItemAt: selection first ].
+			self retriveSentItemAt: selection first ].
 	^list
 ]
