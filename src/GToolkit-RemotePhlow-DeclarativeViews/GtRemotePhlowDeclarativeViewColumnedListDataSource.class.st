@@ -5,18 +5,18 @@ Class {
 }
 
 { #category : 'instance creation' }
-GtRemotePhlowDeclarativeViewColumnedListDataSource >> formatItem: anObject [
+GtRemotePhlowDeclarativeViewColumnedListDataSource >> formatItem: anObject atIndex: rowIndex [
 	^ (self phlowView columns 
 		withIndexCollect: [ :column :columnIndex | 
 			(column rowStencil 
 				ifNil: [ 
 					column itemComputation 
 						phlowValue: anObject 
-						withEnoughArguments: { anObject. nil "rowIndex". columnIndex. nil. self. } ]
+						withEnoughArguments: { anObject. rowIndex. columnIndex. nil. self. } ]
 				ifNotNil: [ :rowStencil |
 					rowStencil
 						cull: (column itemComputation 
 							phlowValue: anObject  
-							withEnoughArguments: { anObject . nil "rowIndex" })
+							withEnoughArguments: { anObject . rowIndex })
 						cull: column ]) gtDisplayString ]) asArray 
 ]

@@ -8,19 +8,23 @@ Class {
 }
 
 { #category : 'accessing' }
-GtRemotePhlowDeclarativeViewListingDataSource >> formatItem: anObject [ 
+GtRemotePhlowDeclarativeViewListingDataSource >> formatItem: anObject atIndex: anIndex [
 	self subclassResponsibility
 ]
 
 { #category : 'api' }
 GtRemotePhlowDeclarativeViewListingDataSource >> retrieveItems: anItemsCount fromIndex: anIndex [
-	| viewItems |
+	| viewItems targetItems formattedItems |
 	viewItems := self viewItems.
-	^ ((viewItems 
+	targetItems := (viewItems 
 			copyFrom: anIndex
-			to: ((anIndex + anItemsCount - 1) min: viewItems size))
-	 			collect: [ :each | 
-					self formatItem: each ]) asArray
+			to: ((anIndex + anItemsCount - 1) min: viewItems size)).
+	formattedItems := Array new: targetItems size.
+	targetItems withIndexDo: [ :each :itemIndex | 
+		formattedItems 
+			at: itemIndex
+			put: (self formatItem: each atIndex: anIndex + itemIndex - 1) ].
+	^ formattedItems
 ]
 
 { #category : 'api' }
