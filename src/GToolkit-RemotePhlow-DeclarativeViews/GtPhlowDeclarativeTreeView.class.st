@@ -24,13 +24,12 @@ GtPhlowDeclarativeTreeView class >> fromJSONDictionary: aDictionary [
 
 { #category : 'converting' }
 GtPhlowDeclarativeTreeView >> asDictionaryForExport [ 
-
 	| dictionary |
 
 	dictionary := super asDictionaryForExport.
 	self dataTransport = self class dataIncluded ifTrue: [ 
-		dictionary at: #items put: items ].
-	^dictionary
+		dictionary at: #items put: self items ].
+	^ dictionary
 ]
 
 { #category : 'accessing' }
