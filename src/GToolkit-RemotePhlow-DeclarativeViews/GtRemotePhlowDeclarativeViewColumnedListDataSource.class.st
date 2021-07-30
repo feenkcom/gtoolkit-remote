@@ -6,8 +6,13 @@ Class {
 
 { #category : 'instance creation' }
 GtRemotePhlowDeclarativeViewColumnedListDataSource >> formatItem: anObject atIndex: rowIndex [
-	^ (self phlowView columns 
-		withIndexCollect: [ :column :columnIndex | 
-			(column itemComputation 
-				cull: anObject cull: rowIndex cull: columnIndex) gtDisplayString ]) asArray
+	| phlowColumns formattedColumnItems |
+	phlowColumns := self phlowView columns.
+	formattedColumnItems := Array new: phlowColumns size.
+	phlowColumns withIndexDo: [ :column :columnIndex | 
+		formattedColumnItems 
+			at:columnIndex
+			put: (column itemComputation 
+				cull: anObject cull: rowIndex cull: columnIndex) gtDisplayString ].
+	^ formattedColumnItems
 ]
