@@ -54,16 +54,6 @@ GtPhlowDeclarativeView class >> dataLazy [
 ]
 
 { #category : 'instance creation' }
-GtPhlowDeclarativeView class >> fromDictionary: viewDictionary [
-	"Answer the view specified by viewDictionary"
-	| viewName |
-
-	viewName := viewDictionary at: #viewName.
-	(viewName -> viewDictionary) asBeaconSignal emit.
-	^(Smalltalk globals at: viewName asSymbol) fromJSONDictionary: viewDictionary.
-]
-
-{ #category : 'instance creation' }
 GtPhlowDeclarativeView class >> fromJSONDictionary: aDictionary [
 	"Answer an instance of the receiver from the supplied dictionary.
 	Subclasses will override this to add their specific attributes"
