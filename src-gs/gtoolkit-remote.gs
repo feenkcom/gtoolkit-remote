@@ -622,18 +622,6 @@ dataLazy
 
 category: 'instance creation'
 classmethod: GtPhlowDeclarativeView
-fromDictionary: viewDictionary
-	"Answer the view specified by viewDictionary"
-	| viewName |
-
-	StringSignal emit: 'fromDictionary:'.
-	viewName := viewDictionary at: #viewName.
-	(viewName -> viewDictionary) asBeaconSignal emit.
-	^(Smalltalk globals at: viewName asSymbol) fromJSONDictionary: viewDictionary.
-%
-
-category: 'instance creation'
-classmethod: GtPhlowDeclarativeView
 fromJSONDictionary: aDictionary
 	"Answer an instance of the receiver from the supplied dictionary.
 	Subclasses will override this to add their specific attributes"
@@ -643,20 +631,6 @@ fromJSONDictionary: aDictionary
 		priority: (aDictionary at: #priority);
 		dataTransport: (aDictionary at: #dataTransport);
 		yourself
-%
-
-category: 'instance creation'
-classmethod: GtPhlowDeclarativeView
-fromJSONString: aString
-	"Answer the view specified by aString"
-
-	| viewDictionary viewName |
-
-	StringSignal emit: 'fromJSONString:'.
-	viewDictionary := STONJSON fromString: aString.
-	viewName := viewDictionary at: #viewName.
-	(viewName -> viewDictionary) asBeaconSignal emit.
-	^(Smalltalk globals at: viewName asSymbol) fromJSONDictionary: viewDictionary.
 %
 
 !		Instance methods for 'GtPhlowDeclarativeView'
@@ -673,14 +647,6 @@ asDictionaryForExport
 		at: #priority put: priority;
 		at: #dataTransport put: dataTransport;
 		yourself
-%
-
-category: 'serialization'
-method: GtPhlowDeclarativeView
-asJSONForExport 
-	"Answer the receiver serialised in JSON format"
-
-	^STONJSON toStringPretty: self asDictionaryForExport
 %
 
 category: 'accessing'
@@ -1336,102 +1302,6 @@ treeViewWithItemsAndChildren
 
 ! Class implementation for 'GtRemotePhlowDeclarativeView'
 
-!		Class methods for 'GtRemotePhlowDeclarativeView'
-
-category: 'instance creation'
-classmethod: GtRemotePhlowDeclarativeView
-accessor: aGtDViewAccessor
-	"Answer the view specified by the supplied accessor"
-
-	^(self fromJSONString: aGtDViewAccessor asJSONForExport)
-		accessor: aGtDViewAccessor;
-		yourself
-%
-
-category: 'data transport'
-classmethod: GtRemotePhlowDeclarativeView
-dataByKey
-	"Answer the enumerated value for the display data being accessed by reference and key"
-
-	^4
-%
-
-category: 'data transport'
-classmethod: GtRemotePhlowDeclarativeView
-dataByReference
-	"Answer the enumerated value for the display data being accessed by reference"
-
-	^3
-%
-
-category: 'data transport'
-classmethod: GtRemotePhlowDeclarativeView
-dataIncluded
-	"Answer the enumerated value for the display data being included with the specification"
-
-	^1
-%
-
-category: 'data transport'
-classmethod: GtRemotePhlowDeclarativeView
-dataLazy
-	"Answer the enumerated value for the display data accessor name being included with the specification.  This can then be used to retrieve the data at a later time"
-
-	^2
-%
-
-category: 'instance creation'
-classmethod: GtRemotePhlowDeclarativeView
-fromDictionary: viewDictionary
-	"Answer the view specified by viewDictionary"
-	| viewName |
-
-	viewName := viewDictionary at: #viewName.
-	(viewName -> viewDictionary) asBeaconSignal emit.
-	^(self globalsDictionary at: viewName asSymbol) fromJSONDictionary: viewDictionary.
-%
-
-category: 'instance creation'
-classmethod: GtRemotePhlowDeclarativeView
-fromJSONDictionary: aDictionary
-	"Answer an instance of the receiver from the supplied dictionary.
-	Subclasses will override this to add their specific attributes"
-
-	^self new 
-		title: (aDictionary at: #title);
-		priority: (aDictionary at: #priority);
-		dataTransport: (aDictionary at: #dataTransport);
-		yourself
-%
-
-category: 'instance creation'
-classmethod: GtRemotePhlowDeclarativeView
-fromJSONString: aString
-	"Answer the view specified by aString"
-
-	| viewDictionary viewName |
-
-	viewDictionary := self readJsonString: aString.
-	viewName := viewDictionary at: #viewName.
-	(viewName -> viewDictionary) asBeaconSignal emit.
-	^(self globalsDictionary at: viewName asSymbol) fromJSONDictionary: viewDictionary.
-%
-
-category: 'as yet unclassified'
-classmethod: GtRemotePhlowDeclarativeView
-globalsDictionary
-	"Answer the Smalltalk globals dictionary"
-
-	^ Smalltalk globals
-%
-
-category: 'as yet unclassified'
-classmethod: GtRemotePhlowDeclarativeView
-readJsonString: aString
-
-	^ STONJSON fromString: aString
-%
-
 !		Instance methods for 'GtRemotePhlowDeclarativeView'
 
 category: 'converting'
@@ -1498,23 +1368,6 @@ title: anObject
 %
 
 ! Class implementation for 'GtRemotePhlowDeclarativeColumnedList'
-
-!		Class methods for 'GtRemotePhlowDeclarativeColumnedList'
-
-category: 'instance creation'
-classmethod: GtRemotePhlowDeclarativeColumnedList
-fromJSONDictionary: aDictionary
-
-	| list |
-
-	list := super fromJSONDictionary: aDictionary.
-	list
-		columnTitles: (aDictionary at: #columnTitles);
-		columnWidths: (aDictionary at: #columnWidths).
-	list dataTransport = self dataIncluded ifTrue: 
-		[ list items: (aDictionary at: #items) ].
-	^list
-%
 
 !		Instance methods for 'GtRemotePhlowDeclarativeColumnedList'
 
@@ -1608,19 +1461,6 @@ send: aBlock
 
 ! Class implementation for 'GtRemotePhlowDeclarativeList'
 
-!		Class methods for 'GtRemotePhlowDeclarativeList'
-
-category: 'instance creation'
-classmethod: GtRemotePhlowDeclarativeList
-fromJSONDictionary: aDictionary
-	| list |
-
-	list := super fromJSONDictionary: aDictionary.
-	list dataTransport = self dataIncluded ifTrue: 
-		[ list items: (aDictionary at: #items) ].
-	^list
-%
-
 !		Instance methods for 'GtRemotePhlowDeclarativeList'
 
 category: 'converting'
@@ -1678,20 +1518,6 @@ itemText: aBlockClosure
 
 ! Class implementation for 'GtRemotePhlowDeclarativeTable'
 
-!		Class methods for 'GtRemotePhlowDeclarativeTable'
-
-category: 'instance creation'
-classmethod: GtRemotePhlowDeclarativeTable
-fromJSONDictionary: aDictionary
-
-	| table |
-
-	table := super fromJSONDictionary: aDictionary.
-	table dataTransport = self dataIncluded ifTrue: 
-		[ table items: (aDictionary at: #items) ].
-	^table
-%
-
 !		Instance methods for 'GtRemotePhlowDeclarativeTable'
 
 category: 'accessing'
@@ -1707,20 +1533,6 @@ items: anObject
 %
 
 ! Class implementation for 'GtRemotePhlowDeclarativeTextEditor'
-
-!		Class methods for 'GtRemotePhlowDeclarativeTextEditor'
-
-category: 'instance creation'
-classmethod: GtRemotePhlowDeclarativeTextEditor
-fromJSONDictionary: aDictionary
-
-	| editor |
-
-	editor := super fromJSONDictionary: aDictionary.
-	editor dataTransport = self dataIncluded ifTrue:
-		[ editor string: (aDictionary at: #string) ].
-	^editor
-%
 
 !		Instance methods for 'GtRemotePhlowDeclarativeTextEditor'
 
