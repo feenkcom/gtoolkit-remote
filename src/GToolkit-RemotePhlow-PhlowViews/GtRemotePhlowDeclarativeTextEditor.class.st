@@ -7,17 +7,6 @@ Class {
 	#category : 'GToolkit-RemotePhlow-PhlowViews'
 }
 
-{ #category : 'instance creation' }
-GtRemotePhlowDeclarativeTextEditor class >> fromJSONDictionary: aDictionary [
-
-	| editor |
-
-	editor := super fromJSONDictionary: aDictionary.
-	editor dataTransport = self dataIncluded ifTrue:
-		[ editor string: (aDictionary at: #string) ].
-	^editor
-]
-
 { #category : 'converting' }
 GtRemotePhlowDeclarativeTextEditor >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.

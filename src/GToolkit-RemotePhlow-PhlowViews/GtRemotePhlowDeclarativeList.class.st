@@ -24,16 +24,6 @@ Class {
 	#category : 'GToolkit-RemotePhlow-PhlowViews'
 }
 
-{ #category : 'instance creation' }
-GtRemotePhlowDeclarativeList class >> fromJSONDictionary: aDictionary [
-	| list |
-
-	list := super fromJSONDictionary: aDictionary.
-	list dataTransport = self dataIncluded ifTrue: 
-		[ list items: (aDictionary at: #items) ].
-	^list
-]
-
 { #category : 'converting' }
 GtRemotePhlowDeclarativeList >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
