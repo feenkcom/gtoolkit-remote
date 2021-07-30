@@ -16,11 +16,9 @@ GtRemotePhlowSendObjectTransformation class >> forValuable: aValuable [
 { #category : 'asserting' }
 GtRemotePhlowSendObjectTransformation >> assertValuable: aBlock [
 	self
-		assert: [ aBlock isNotNil ]
-		description: [ 'Send transformation block must be non-nil'  ].
+		assert: [ aBlock isNotNil ].
 	self
-		assert: [ aBlock numArgs <= 2 ]
-		description: [ 'Send transformation block must have two or less arguments'  ].
+		assert: [ aBlock argumentCount <= 2 ].
 ]
 
 { #category : 'private - accessing' }
@@ -35,6 +33,5 @@ GtRemotePhlowSendObjectTransformation >> valuable [
 
 { #category : 'accessing' }
 GtRemotePhlowSendObjectTransformation >> valuable: anObject [
-	self assertValuable: anObject.
 	valuable := anObject
 ]
