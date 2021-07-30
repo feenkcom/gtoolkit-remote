@@ -19,9 +19,7 @@ Class {
 	#instVars : [
 		'items',
 		'itemsBuilder',
-		'columnValues',
-		'columnTitles',
-		'columnWidths',
+		'columns',
 		'sendBlock'
 	],
 	#category : 'GToolkit-RemotePhlow-PhlowViews'
@@ -50,52 +48,44 @@ GtRemotePhlowDeclarativeColumnedList >> asGtDeclarativeView [
 		phlowDataSource: (GtPhlowDeclarativeViewColumnedListDataSource forPhlowView: self);
 		title: self title;
 		priority: self priority;
-		columnTitles: self columnTitles asArray;
-		columnWidths: self columnWidths asArray;
+		columnTitles: (columns collect: [ :each | each title ]) asArray;
+		columnWidths: (columns collect: [ :each | each cellWidth ]) asArray;
 		dataTransport: GtDeclarativeView dataLazy
 ]
 
 { #category : 'accessing' }
-GtRemotePhlowDeclarativeColumnedList >> column: columnName item: aBlockClosure [
+GtRemotePhlowDeclarativeColumnedList >> column [
+	<return: #GtRemotePhlowColumn>
+	| aColumn |
+	
+	aColumn := GtPhlowColumn new index: columns size + 1.
+	columns add: aColumn.
+	^ aColumn
+]
 
-	^ self column: columnName item: aBlockClosure width: nil
+{ #category : 'accessing' }
+GtRemotePhlowDeclarativeColumnedList >> column: columnName item: aBlockClosure [
+	| aColumn |
+	aColumn := self column.
+	aColumn title: columnName.
+	aColumn item: aBlockClosure
 ]
 
 { #category : 'accessing' }
 GtRemotePhlowDeclarativeColumnedList >> column: columnName item: aBlockClosure width: aNumberOrNil [
- 
-	columnTitles add: columnName.
-	columnValues add: aBlockClosure.
-	columnWidths add: aNumberOrNil. 
+ 	| aColumn |
+	aColumn := self column.
+	aColumn title: columnName.
+	aColumn item: aBlockClosure.
+	aColumn weight: aNumberOrNil.
 ]
 
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeColumnedList >> columnTitles [
-	^ columnTitles
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeColumnedList >> columnTitles: anObject [
-	columnTitles := anObject
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeColumnedList >> columnWidths [
-	^ columnWidths
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeColumnedList >> columnWidths: anObject [
-	columnWidths := anObject
-]
-
-{ #category : 'accessing' }
+{ #category : 'initialization' }
 GtRemotePhlowDeclarativeColumnedList >> initialize [
 
 	super initialize.
-	columnValues := OrderedCollection new.
-	columnTitles := OrderedCollection new.
-	columnWidths := OrderedCollection new.
+	columns := OrderedCollection new.
+	itemsBuilder := [ { } ].
 	sendBlock := [ :object | object ].
 ]
 
@@ -103,6 +93,11 @@ GtRemotePhlowDeclarativeColumnedList >> initialize [
 GtRemotePhlowDeclarativeColumnedList >> items: aBlockClosure [
 
 	itemsBuilder := aBlockClosure
+]
+
+{ #category : 'accessing' }
+GtRemotePhlowDeclarativeColumnedList >> itemsBuilder [
+	^ itemsBuilder
 ]
 
 { #category : 'instructions' }

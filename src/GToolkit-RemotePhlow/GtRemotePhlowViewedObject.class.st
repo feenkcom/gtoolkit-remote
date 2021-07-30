@@ -44,7 +44,7 @@ GtRemotePhlowViewedObject >> getDeclarativeViewFor: viewSelector [
 		ifAbsentPut: [
 			(self object 
 				perform: viewSelector 
-				with: GtPhlowEmptyView new) asGtDeclarativeView ]
+				with: GtRemotePhlowDeclarativeProtoView new) asGtDeclarativeView ]
 ]
 
 { #category : 'api - accessing' }
@@ -62,13 +62,6 @@ GtRemotePhlowViewedObject >> getViewDeclaration: viewSelector [
 				at: #'__pharolinkImmediate' put: true;
 				yourself. ])
 		
-]
-
-{ #category : 'gt inspector' }
-GtRemotePhlowViewedObject >> gtSentItemFor: viewSelector at: selection [ 
-	"Answer the value to be sent from the view"
-
-	^ (self declarativeViewWithSelector: viewSelector) sentItemAt: selection
 ]
 
 { #category : 'initialization' }
