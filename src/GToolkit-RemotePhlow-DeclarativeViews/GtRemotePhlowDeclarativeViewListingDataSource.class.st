@@ -29,8 +29,12 @@ GtRemotePhlowDeclarativeViewListingDataSource >> retrieveTotalItemsCount [
 ]
 
 { #category : 'api' }
-GtRemotePhlowDeclarativeViewListingDataSource >> retriveSentItemAtIndex: aSelectionIndex [
-	^ self viewItems at: aSelectionIndex
+GtRemotePhlowDeclarativeViewListingDataSource >> retriveSentItemAt: aSelectionIndex [
+	"Answer the raw value at the supplied index"
+	
+	^ self phlowView transformation 
+		cull: (self viewItems at: aSelectionIndex)
+		cull: aSelectionIndex
 ]
 
 { #category : 'accessing' }
