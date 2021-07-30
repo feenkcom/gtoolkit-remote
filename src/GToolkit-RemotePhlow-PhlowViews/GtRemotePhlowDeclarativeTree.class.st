@@ -89,13 +89,13 @@ GtRemotePhlowDeclarativeTree >> itemText: aBlock [
 ]
 
 { #category : 'accessing' }
-GtRemotePhlowDeclarativeTree >> items [
-
-	^ itemsBuilder
-]
-
-{ #category : 'accessing' }
 GtRemotePhlowDeclarativeTree >> items: aBlock [
 
 	itemsBuilder := aBlock
+]
+
+{ #category : 'accessing' }
+GtRemotePhlowDeclarativeTree >> itemsBuilder [
+	^ itemsBuilder ifNil: [ 
+		itemsBuilder := [ #() ] ]
 ]
