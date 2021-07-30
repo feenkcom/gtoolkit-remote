@@ -5,11 +5,11 @@ GtPhlowListView >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
 
-	^ GtDeclarativeListView new 
+	^ GtPhlowDeclarativeListView new 
 		phlowDataSource: (GtRemotePhlowDeclarativeViewListDataSource forPhlowView: self);
 		title: self title;
 		priority: self priority;
-		dataTransport: GtDeclarativeView dataLazy.
+		dataTransport: GtPhlowDeclarativeView dataLazy.
 ]
 
 { #category : '*GToolkit-RemoteGt' }

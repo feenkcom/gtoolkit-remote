@@ -1,7 +1,7 @@
-Extension { #name : 'GtDeclarativeTreeView' }
+Extension { #name : 'GtPhlowDeclarativeTreeView' }
 
 { #category : '*GToolkit-RemoteGt' }
-GtDeclarativeTreeView >> viewFor: aView [
+GtPhlowDeclarativeTreeView >> viewFor: aView [
 	"Answer the GtPhlowView for the receiver"
 
 	^ aView tree

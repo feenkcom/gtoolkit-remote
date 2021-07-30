@@ -1,6 +1,6 @@
 Class {
-	#name : 'GtDeclarativeTextEditorView',
-	#superclass : 'GtDeclarativeView',
+	#name : 'GtPhlowDeclarativeTextEditorView',
+	#superclass : 'GtPhlowDeclarativeView',
 	#instVars : [
 		'string'
 	],
@@ -8,7 +8,7 @@ Class {
 }
 
 { #category : 'instance creation' }
-GtDeclarativeTextEditorView class >> fromJSONDictionary: aDictionary [
+GtPhlowDeclarativeTextEditorView class >> fromJSONDictionary: aDictionary [
 
 	| editor |
 
@@ -19,7 +19,7 @@ GtDeclarativeTextEditorView class >> fromJSONDictionary: aDictionary [
 ]
 
 { #category : 'converting' }
-GtDeclarativeTextEditorView >> asDictionaryForExport [ 
+GtPhlowDeclarativeTextEditorView >> asDictionaryForExport [ 
 
 	| dictionary |
 
@@ -30,7 +30,7 @@ GtDeclarativeTextEditorView >> asDictionaryForExport [
 ]
 
 { #category : 'accessing' }
-GtDeclarativeTextEditorView >> string [
+GtPhlowDeclarativeTextEditorView >> string [
 
 	^ string "ifNil: [ 
 		(string isNil and: [ dataTransport = self class dataLazy ]) ifTrue: 
@@ -39,6 +39,6 @@ GtDeclarativeTextEditorView >> string [
 ]
 
 { #category : 'accessing' }
-GtDeclarativeTextEditorView >> string: anObject [
+GtPhlowDeclarativeTextEditorView >> string: anObject [
 	string := anObject
 ]

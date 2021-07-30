@@ -1,7 +1,7 @@
-Extension { #name : 'GtDeclarativeTableView' }
+Extension { #name : 'GtPhlowDeclarativeTableView' }
 
 { #category : '*GToolkit-RemoteGt' }
-GtDeclarativeTableView >> viewFor: aView [
+GtPhlowDeclarativeTableView >> viewFor: aView [
 	"Answer the GtPhlowView for the receiver"
 
 	| table |

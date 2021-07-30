@@ -17,8 +17,8 @@ Current limitations:
 
 "
 Class {
-	#name : 'GtDeclarativeColumnedListView',
-	#superclass : 'GtDeclarativeListingView',
+	#name : 'GtPhlowDeclarativeColumnedListView',
+	#superclass : 'GtPhlowDeclarativeListingView',
 	#instVars : [
 		'columnTitles',
 		'columnWidths'
@@ -27,7 +27,7 @@ Class {
 }
 
 { #category : 'instance creation' }
-GtDeclarativeColumnedListView class >> fromJSONDictionary: aDictionary [
+GtPhlowDeclarativeColumnedListView class >> fromJSONDictionary: aDictionary [
 
 	| list |
 
@@ -41,7 +41,7 @@ GtDeclarativeColumnedListView class >> fromJSONDictionary: aDictionary [
 ]
 
 { #category : 'converting' }
-GtDeclarativeColumnedListView >> asDictionaryForExport [ 
+GtPhlowDeclarativeColumnedListView >> asDictionaryForExport [ 
 	| dictionary |
 
 	dictionary := super asDictionaryForExport 
@@ -54,21 +54,21 @@ GtDeclarativeColumnedListView >> asDictionaryForExport [
 ]
 
 { #category : 'accessing' }
-GtDeclarativeColumnedListView >> columnTitles [
+GtPhlowDeclarativeColumnedListView >> columnTitles [
 	^ columnTitles
 ]
 
 { #category : 'accessing' }
-GtDeclarativeColumnedListView >> columnTitles: anObject [
+GtPhlowDeclarativeColumnedListView >> columnTitles: anObject [
 	columnTitles := anObject
 ]
 
 { #category : 'accessing' }
-GtDeclarativeColumnedListView >> columnWidths [
+GtPhlowDeclarativeColumnedListView >> columnWidths [
 	^ columnWidths
 ]
 
 { #category : 'accessing' }
-GtDeclarativeColumnedListView >> columnWidths: anObject [
+GtPhlowDeclarativeColumnedListView >> columnWidths: anObject [
 	columnWidths := anObject
 ]

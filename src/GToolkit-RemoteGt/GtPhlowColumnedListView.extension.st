@@ -5,7 +5,7 @@ GtPhlowColumnedListView >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
 
-	^GtDeclarativeColumnedListView new 
+	^GtPhlowDeclarativeColumnedListView new 
 		phlowDataSource: (GtRemotePhlowDeclarativeViewColumnedListDataSource forPhlowView: self);
 		title: self title;
 		priority: self priority;
@@ -14,7 +14,7 @@ GtPhlowColumnedListView >> asGtDeclarativeView [
 				cellWidth class = BrColumnFixedWidth
 					ifTrue: [cellWidth width]
 					ifFalse: [nil]]] as: Array);
-		dataTransport: GtDeclarativeView dataLazy
+		dataTransport: GtPhlowDeclarativeView dataLazy
 ]
 
 { #category : '*GToolkit-RemoteGt' }

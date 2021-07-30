@@ -18,7 +18,7 @@ LanguageLinkProxyObject >> declarativeViews [
 		rawViews := viewSelectors collect: [ :viewSelector |
 			| viewDictionary declarativeView |
 			viewDictionary := remoteInspectorProxy getViewDeclaration: viewSelector.
-			declarativeView := GtDeclarativeView fromDictionary: viewDictionary.
+			declarativeView := GtPhlowDeclarativeView fromDictionary: viewDictionary.
 			declarativeView
 				methodSelector: viewSelector;
 				initializeFromInspector: remoteInspectorProxy.

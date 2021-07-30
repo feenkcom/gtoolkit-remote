@@ -44,13 +44,13 @@ GtRemotePhlowDeclarativeColumnedList >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
 
-	^GtDeclarativeColumnedListView new 
+	^GtPhlowDeclarativeColumnedListView new 
 		phlowDataSource: (GtRemotePhlowDeclarativeViewColumnedListDataSource forPhlowView: self);
 		title: self title;
 		priority: self priority;
 		columnTitles: (columns collect: [ :each | each title ]) asArray;
 		columnWidths: (columns collect: [ :each | each cellWidth ]) asArray;
-		dataTransport: GtDeclarativeView dataLazy
+		dataTransport: GtPhlowDeclarativeView dataLazy
 ]
 
 { #category : 'accessing' }

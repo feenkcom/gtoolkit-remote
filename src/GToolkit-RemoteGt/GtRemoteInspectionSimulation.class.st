@@ -44,7 +44,7 @@ GtRemoteInspectionSimulation >> declarativeViews [
 		| viewData declarativeView |
 		viewData := inspectorProxy getViewDeclaration: viewSelector.
 		viewData ifNotNil: [
-			declarativeView := GtDeclarativeView fromDictionary: viewData.
+			declarativeView := GtPhlowDeclarativeView fromDictionary: viewData.
 			declarativeView
 				methodSelector: viewSelector;
 				initializeFromInspector: inspectorProxy.

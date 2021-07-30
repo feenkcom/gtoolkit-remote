@@ -23,11 +23,11 @@ GtRemotePhlowDeclarativeTextEditor >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
 
-	^GtDeclarativeTextEditorView new 
+	^GtPhlowDeclarativeTextEditorView new 
 		title: self title;
 		priority: self priority;
 		string: self textBuilder value asString;
-		dataTransport: GtDeclarativeView dataIncluded.
+		dataTransport: GtPhlowDeclarativeView dataIncluded.
 
 ]
 

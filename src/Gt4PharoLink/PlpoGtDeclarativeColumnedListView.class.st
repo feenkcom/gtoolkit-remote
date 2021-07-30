@@ -9,5 +9,5 @@ Class {
 { #category : 'accessing' }
 PlpoGtDeclarativeColumnedListView class >> remoteClassName [
 
-	^ #GtDeclarativeColumnedListView
+	^ #GtPhlowDeclarativeColumnedListView
 ]

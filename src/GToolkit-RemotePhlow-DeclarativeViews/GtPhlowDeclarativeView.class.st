@@ -27,7 +27,7 @@ Internal Representation and Key Implementation Points.
 
 "
 Class {
-	#name : 'GtDeclarativeView',
+	#name : 'GtPhlowDeclarativeView',
 	#superclass : 'Object',
 	#instVars : [
 		'phlowDataSource',
@@ -40,21 +40,21 @@ Class {
 }
 
 { #category : 'data transport' }
-GtDeclarativeView class >> dataIncluded [
+GtPhlowDeclarativeView class >> dataIncluded [
 	"Answer the enumerated value for the display data being included with the specification"
 
 	^1
 ]
 
 { #category : 'data transport' }
-GtDeclarativeView class >> dataLazy [
+GtPhlowDeclarativeView class >> dataLazy [
 	"Answer the enumerated value for the display data accessor name being included with the specification.  This can then be used to retrieve the data at a later time"
 
 	^2
 ]
 
 { #category : 'instance creation' }
-GtDeclarativeView class >> fromDictionary: viewDictionary [
+GtPhlowDeclarativeView class >> fromDictionary: viewDictionary [
 	"Answer the view specified by viewDictionary"
 	| viewName |
 
@@ -65,7 +65,7 @@ GtDeclarativeView class >> fromDictionary: viewDictionary [
 ]
 
 { #category : 'instance creation' }
-GtDeclarativeView class >> fromJSONDictionary: aDictionary [
+GtPhlowDeclarativeView class >> fromJSONDictionary: aDictionary [
 	"Answer an instance of the receiver from the supplied dictionary.
 	Subclasses will override this to add their specific attributes"
 
@@ -77,7 +77,7 @@ GtDeclarativeView class >> fromJSONDictionary: aDictionary [
 ]
 
 { #category : 'instance creation' }
-GtDeclarativeView class >> fromJSONString: aString [
+GtPhlowDeclarativeView class >> fromJSONString: aString [
 	"Answer the view specified by aString"
 
 	| viewDictionary viewName |
@@ -90,7 +90,7 @@ GtDeclarativeView class >> fromJSONString: aString [
 ]
 
 { #category : 'converting' }
-GtDeclarativeView >> asDictionaryForExport [
+GtPhlowDeclarativeView >> asDictionaryForExport [
 	"Answer the receiver as a dictionary ready for JSON serialisation.
 	Subclasses will override and add to the dictionary"
 
@@ -103,73 +103,73 @@ GtDeclarativeView >> asDictionaryForExport [
 ]
 
 { #category : 'serialization' }
-GtDeclarativeView >> asJSONForExport [ 
+GtPhlowDeclarativeView >> asJSONForExport [ 
 	"Answer the receiver serialised in JSON format"
 
 	^STONJSON toStringPretty: self asDictionaryForExport
 ]
 
 { #category : 'accessing' }
-GtDeclarativeView >> dataTransport [
+GtPhlowDeclarativeView >> dataTransport [
 	^ dataTransport
 ]
 
 { #category : 'accessing' }
-GtDeclarativeView >> dataTransport: anObject [
+GtPhlowDeclarativeView >> dataTransport: anObject [
 	dataTransport := anObject
 ]
 
 { #category : 'initialization' }
-GtDeclarativeView >> initializeFromInspector: anInspector [
+GtPhlowDeclarativeView >> initializeFromInspector: anInspector [
 ]
 
 { #category : 'testing' }
-GtDeclarativeView >> isWithLazyLoading [
+GtPhlowDeclarativeView >> isWithLazyLoading [
 	^ self dataTransport = self class dataLazy
 ]
 
 { #category : 'accessing' }
-GtDeclarativeView >> methodSelector [
+GtPhlowDeclarativeView >> methodSelector [
 	^ methodSelector
 ]
 
 { #category : 'accessing' }
-GtDeclarativeView >> methodSelector: aSelector [
+GtPhlowDeclarativeView >> methodSelector: aSelector [
 	methodSelector := aSelector
 ]
 
 { #category : 'accessing' }
-GtDeclarativeView >> phlowDataSource [
+GtPhlowDeclarativeView >> phlowDataSource [
 	^ phlowDataSource
 ]
 
 { #category : 'accessing' }
-GtDeclarativeView >> phlowDataSource: aDataSource [
+GtPhlowDeclarativeView >> phlowDataSource: aDataSource [
 	phlowDataSource := aDataSource
 ]
 
 { #category : 'accessing' }
-GtDeclarativeView >> priority [
+GtPhlowDeclarativeView >> priority [
 	^ priority
 ]
 
 { #category : 'accessing' }
-GtDeclarativeView >> priority: anObject [
+GtPhlowDeclarativeView >> priority: anObject [
 	priority := anObject
 ]
 
 { #category : 'accessing' }
-GtDeclarativeView >> title [
+GtPhlowDeclarativeView >> title [
 	^ title
 ]
 
 { #category : 'accessing' }
-GtDeclarativeView >> title: anObject [
+GtPhlowDeclarativeView >> title: anObject [
 	title := anObject
 ]
 
 { #category : 'accessing' }
-GtDeclarativeView >> viewName [
+GtPhlowDeclarativeView >> viewName [
 	"Answer the name of the receivers view"
 
 	^self class name

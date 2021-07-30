@@ -1,6 +1,6 @@
 Class {
-	#name : 'GtDeclarativeTreeView',
-	#superclass : 'GtDeclarativeView',
+	#name : 'GtPhlowDeclarativeTreeView',
+	#superclass : 'GtPhlowDeclarativeView',
 	#instVars : [
 		'itemTextBlock',
 		'childrenBlock',
@@ -10,7 +10,7 @@ Class {
 }
 
 { #category : 'instance creation' }
-GtDeclarativeTreeView class >> fromJSONDictionary: aDictionary [
+GtPhlowDeclarativeTreeView class >> fromJSONDictionary: aDictionary [
 	| view |
 
 	view := super fromJSONDictionary: aDictionary.
@@ -23,13 +23,13 @@ GtDeclarativeTreeView class >> fromJSONDictionary: aDictionary [
 ]
 
 { #category : 'accessing' }
-GtDeclarativeTreeView >> children: aBlock [ 
+GtPhlowDeclarativeTreeView >> children: aBlock [ 
 
 	childrenBlock := aBlock
 ]
 
 { #category : 'initialization' }
-GtDeclarativeTreeView >> initialize [
+GtPhlowDeclarativeTreeView >> initialize [
 
 	super initialize.
 	itemTextBlock := [ :item | item asString ].
@@ -37,19 +37,19 @@ GtDeclarativeTreeView >> initialize [
 ]
 
 { #category : 'accessing' }
-GtDeclarativeTreeView >> itemText: aBlock [ 
+GtPhlowDeclarativeTreeView >> itemText: aBlock [ 
 
 	itemTextBlock := aBlock
 ]
 
 { #category : 'accessing' }
-GtDeclarativeTreeView >> items [ 
+GtPhlowDeclarativeTreeView >> items [ 
 
 	^ items 
 ]
 
 { #category : 'accessing' }
-GtDeclarativeTreeView >> items: aBlock [ 
+GtPhlowDeclarativeTreeView >> items: aBlock [ 
 
 	items := aBlock
 ]
