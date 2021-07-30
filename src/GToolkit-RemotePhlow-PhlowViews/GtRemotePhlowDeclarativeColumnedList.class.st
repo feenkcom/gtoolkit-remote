@@ -58,7 +58,7 @@ GtRemotePhlowDeclarativeColumnedList >> column [
 	<return: #GtRemotePhlowColumn>
 	| aColumn |
 	
-	aColumn := GtPhlowColumn new index: columns size + 1.
+	aColumn := GtRemotePhlowColumn new index: columns size + 1.
 	columns add: aColumn.
 	^ aColumn
 ]
@@ -77,7 +77,12 @@ GtRemotePhlowDeclarativeColumnedList >> column: columnName item: aBlockClosure w
 	aColumn := self column.
 	aColumn title: columnName.
 	aColumn item: aBlockClosure.
-	aColumn weight: aNumberOrNil.
+	aColumn width: aNumberOrNil.
+]
+
+{ #category : 'accessing' }
+GtRemotePhlowDeclarativeColumnedList >> columns [
+	^ columns
 ]
 
 { #category : 'initialization' }
