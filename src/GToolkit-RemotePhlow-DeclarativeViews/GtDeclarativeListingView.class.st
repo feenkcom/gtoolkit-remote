@@ -20,7 +20,7 @@ GtDeclarativeListingView >> retrieveItems: anItemsCount fromIndex: anIndex [
 
 { #category : 'accessing' }
 GtDeclarativeListingView >> retrieveItemsFromIndex: anIndex [
-	^ self retrieveItems: 1000 fromIndex: anIndex
+	^ self retrieveItems: 100 fromIndex: anIndex
 ]
 
 { #category : 'api - accessing' }
