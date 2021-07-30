@@ -1,11 +1,11 @@
 Class {
-	#name : 'GtPhlowDeclarativeViewColumnedListDataSource',
-	#superclass : 'GtPhlowDeclarativeViewListingDataSource',
+	#name : 'GtRemotePhlowDeclarativeViewColumnedListDataSource',
+	#superclass : 'GtRemotePhlowDeclarativeViewListingDataSource',
 	#category : 'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
 { #category : 'instance creation' }
-GtPhlowDeclarativeViewColumnedListDataSource >> formatItem: anObject [
+GtRemotePhlowDeclarativeViewColumnedListDataSource >> formatItem: anObject [
 	^ (self phlowView columns 
 		withIndexCollect: [ :column :columnIndex | 
 			(column rowStencil 

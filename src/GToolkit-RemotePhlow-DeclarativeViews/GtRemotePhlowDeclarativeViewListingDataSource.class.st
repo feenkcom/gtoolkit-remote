@@ -1,6 +1,6 @@
 Class {
-	#name : 'GtPhlowDeclarativeViewListingDataSource',
-	#superclass : 'GtPhlowDeclarativeViewDataSource',
+	#name : 'GtRemotePhlowDeclarativeViewListingDataSource',
+	#superclass : 'GtRemotePhlowDeclarativeViewDataSource',
 	#instVars : [
 		'cachedItems'
 	],
@@ -8,12 +8,12 @@ Class {
 }
 
 { #category : 'accessing' }
-GtPhlowDeclarativeViewListingDataSource >> formatItem: anObject [ 
+GtRemotePhlowDeclarativeViewListingDataSource >> formatItem: anObject [ 
 	self subclassResponsibility
 ]
 
 { #category : 'api' }
-GtPhlowDeclarativeViewListingDataSource >> retrieveItems: anItemsCount fromIndex: anIndex [
+GtRemotePhlowDeclarativeViewListingDataSource >> retrieveItems: anItemsCount fromIndex: anIndex [
 	| viewItems |
 	viewItems := self viewItems.
 	^ ((viewItems 
@@ -24,17 +24,17 @@ GtPhlowDeclarativeViewListingDataSource >> retrieveItems: anItemsCount fromIndex
 ]
 
 { #category : 'api' }
-GtPhlowDeclarativeViewListingDataSource >> retrieveTotalItemsCount [
+GtRemotePhlowDeclarativeViewListingDataSource >> retrieveTotalItemsCount [
 	^ self viewItems size
 ]
 
 { #category : 'api' }
-GtPhlowDeclarativeViewListingDataSource >> retriveSentItemAtIndex: aSelectionIndex [
+GtRemotePhlowDeclarativeViewListingDataSource >> retriveSentItemAtIndex: aSelectionIndex [
 	^ self viewItems at: aSelectionIndex
 ]
 
 { #category : 'accessing' }
-GtPhlowDeclarativeViewListingDataSource >> viewItems [
+GtRemotePhlowDeclarativeViewListingDataSource >> viewItems [
 	^ cachedItems ifNil: [ 
 		cachedItems := self phlowView itemsBuilder value ]
 ]

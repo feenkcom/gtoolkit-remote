@@ -1,5 +1,5 @@
 Class {
-	#name : 'GtPhlowDeclarativeViewDataSource',
+	#name : 'GtRemotePhlowDeclarativeViewDataSource',
 	#superclass : 'Object',
 	#instVars : [
 		'phlowView'
@@ -8,17 +8,17 @@ Class {
 }
 
 { #category : 'as yet unclassified' }
-GtPhlowDeclarativeViewDataSource class >> forPhlowView: aView [
+GtRemotePhlowDeclarativeViewDataSource class >> forPhlowView: aView [
 	^ self new
 		phlowView: aView
 ]
 
 { #category : 'accessing' }
-GtPhlowDeclarativeViewDataSource >> phlowView [
+GtRemotePhlowDeclarativeViewDataSource >> phlowView [
 	^ phlowView
 ]
 
 { #category : 'accessing' }
-GtPhlowDeclarativeViewDataSource >> phlowView: anObject [
+GtRemotePhlowDeclarativeViewDataSource >> phlowView: anObject [
 	phlowView := anObject
 ]

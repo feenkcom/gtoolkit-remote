@@ -45,7 +45,7 @@ GtRemotePhlowDeclarativeColumnedList >> asGtDeclarativeView [
 	nil = not supported"
 
 	^GtDeclarativeColumnedListView new 
-		phlowDataSource: (GtPhlowDeclarativeViewColumnedListDataSource forPhlowView: self);
+		phlowDataSource: (GtRemotePhlowDeclarativeViewColumnedListDataSource forPhlowView: self);
 		title: self title;
 		priority: self priority;
 		columnTitles: (columns collect: [ :each | each title ]) asArray;
