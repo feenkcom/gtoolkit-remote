@@ -73,13 +73,13 @@ GtRemotePhlowDeclarativeTree >> expand: anOrderedCollection to: selection from: 
 GtRemotePhlowDeclarativeTree >> initialize [
 
 	super initialize.
-	itemTextBlock := [ :item | item ].
 ]
 
 { #category : 'accessing' }
 GtRemotePhlowDeclarativeTree >> itemText [
 
-	^ itemTextBlock
+	^ itemTextBlock ifNil: [ 
+		itemTextBlock := [ :item | item ] ]
 ]
 
 { #category : 'accessing' }

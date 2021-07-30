@@ -36,20 +36,13 @@ GtRemotePhlowDeclarativeList >> asGtDeclarativeView [
 		dataTransport: GtPhlowDeclarativeView dataLazy.
 ]
 
-{ #category : 'initialization' }
-GtRemotePhlowDeclarativeList >> initialize [ 
-
-	super initialize.
-	itemTextBlock := [ :item | item asString ].
-	dataTransport := self class dataLazy.
-]
-
 { #category : 'accessing' }
 GtRemotePhlowDeclarativeList >> itemText [
 	"Answer the BlockClosure that will convert each item to its displayed format.
 	The result of the BlockClosure must be a JSON primitive type, effectively a string or number."
 
-	^ itemTextBlock
+	^ itemTextBlock ifNil: [ 
+		itemTextBlock := [ :item | item ] ] 
 ]
 
 { #category : 'api - scripting' }
@@ -68,5 +61,6 @@ GtRemotePhlowDeclarativeList >> items: aBlockClosure [
 
 { #category : 'accessing' }
 GtRemotePhlowDeclarativeList >> itemsBuilder [
-	^ itemsBuilder
+	^ itemsBuilder ifNil: [ 
+		itemsBuilder := [ { } ] ]
 ]

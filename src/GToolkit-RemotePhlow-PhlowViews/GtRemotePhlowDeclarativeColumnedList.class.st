@@ -68,16 +68,8 @@ GtRemotePhlowDeclarativeColumnedList >> column: columnName item: aBlockClosure w
 
 { #category : 'accessing' }
 GtRemotePhlowDeclarativeColumnedList >> columns [
-	^ columns
-]
-
-{ #category : 'initialization' }
-GtRemotePhlowDeclarativeColumnedList >> initialize [
-
-	super initialize.
-	columns := OrderedCollection new.
-	itemsBuilder := [ { } ].
-	sendBlock := [ :object | object ].
+	^ columns ifNil: [
+		columns := OrderedCollection new ]
 ]
 
 { #category : 'accessing' }
@@ -88,7 +80,8 @@ GtRemotePhlowDeclarativeColumnedList >> items: aBlockClosure [
 
 { #category : 'accessing' }
 GtRemotePhlowDeclarativeColumnedList >> itemsBuilder [
-	^ itemsBuilder
+	^ itemsBuilder ifNil: [ 
+		itemsBuilder := [ { } ] ]
 ]
 
 { #category : 'instructions' }
@@ -102,4 +95,10 @@ GtRemotePhlowDeclarativeColumnedList >> send: aBlock [
 			assert: [ aBlock isUnary ]
 			description: [ 'Send transformation symbol must be unary' ] ].
 	sendBlock := aBlock.
+]
+
+{ #category : 'accessing' }
+GtRemotePhlowDeclarativeColumnedList >> transformation [ 	
+	^ sendBlock ifNil: [ 
+		sendBlock := [ :object | object ] ]
 ]
