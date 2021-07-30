@@ -1,0 +1,40 @@
+Class {
+	#name : 'GtRemotePhlowSendObjectTransformation',
+	#superclass : 'Object',
+	#instVars : [
+		'valuable'
+	],
+	#category : 'GToolkit-RemotePhlow-PhlowViews'
+}
+
+{ #category : 'instance creation' }
+GtRemotePhlowSendObjectTransformation class >> forValuable: aValuable [
+	^ self new
+		valuable: aValuable
+]
+
+{ #category : 'asserting' }
+GtRemotePhlowSendObjectTransformation >> assertValuable: aBlock [
+	self
+		assert: [ aBlock isNotNil ]
+		description: [ 'Send transformation block must be non-nil'  ].
+	self
+		assert: [ aBlock numArgs <= 2 ]
+		description: [ 'Send transformation block must have two or less arguments'  ].
+]
+
+{ #category : 'private - accessing' }
+GtRemotePhlowSendObjectTransformation >> transformedValueFrom: aSelectedObject selection: aSelectionIndices [
+	^ self valuable cull: aSelectedObject cull: aSelectionIndices
+]
+
+{ #category : 'accessing' }
+GtRemotePhlowSendObjectTransformation >> valuable [
+	^ valuable
+]
+
+{ #category : 'accessing' }
+GtRemotePhlowSendObjectTransformation >> valuable: anObject [
+	self assertValuable: anObject.
+	valuable := anObject
+]

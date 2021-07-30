@@ -15,11 +15,9 @@ Current limitations:
 "
 Class {
 	#name : 'GtRemotePhlowDeclarativeColumnedList',
-	#superclass : 'GtRemotePhlowDeclarativeView',
+	#superclass : 'GtRemotePhlowDeclarativeListingView',
 	#instVars : [
-		'itemsBuilder',
-		'columns',
-		'sendBlock'
+		'columns'
 	],
 	#category : 'GToolkit-RemotePhlow-PhlowViews'
 }
@@ -69,35 +67,4 @@ GtRemotePhlowDeclarativeColumnedList >> column: columnName item: aBlockClosure w
 GtRemotePhlowDeclarativeColumnedList >> columns [
 	^ columns ifNil: [
 		columns := OrderedCollection new ]
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeColumnedList >> items: aBlockClosure [
-
-	itemsBuilder := aBlockClosure
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeColumnedList >> itemsBuilder [
-	^ itemsBuilder ifNil: [ 
-		itemsBuilder := [ { } ] ]
-]
-
-{ #category : 'instructions' }
-GtRemotePhlowDeclarativeColumnedList >> send: aBlock [
-
-	self
-		assert: [ aBlock isNotNil ]
-		description: [ 'Send transformation block must be non-nil'  ].
-	aBlock isSymbol ifTrue: [ 
-		self 
-			assert: [ aBlock isUnary ]
-			description: [ 'Send transformation symbol must be unary' ] ].
-	sendBlock := aBlock.
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeColumnedList >> transformation [ 	
-	^ sendBlock ifNil: [ 
-		sendBlock := [ :object | object ] ]
 ]

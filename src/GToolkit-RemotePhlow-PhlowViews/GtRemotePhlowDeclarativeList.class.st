@@ -14,11 +14,9 @@ GtDeclarativeList supports a subset of the possible configurations of ${class:na
 "
 Class {
 	#name : 'GtRemotePhlowDeclarativeList',
-	#superclass : 'GtRemotePhlowDeclarativeView',
+	#superclass : 'GtRemotePhlowDeclarativeListingView',
 	#instVars : [
-		'itemsBuilder',
-		'itemTextBlock',
-		'sendBlock'
+		'itemTextBlock'
 	],
 	#category : 'GToolkit-RemotePhlow-PhlowViews'
 }
@@ -48,37 +46,4 @@ GtRemotePhlowDeclarativeList >> itemText [
 GtRemotePhlowDeclarativeList >> itemText: aBlockClosure [
 
 	itemTextBlock := aBlockClosure
-]
-
-{ #category : 'api - scripting' }
-GtRemotePhlowDeclarativeList >> items: aBlockClosure [
-	"Set the block closure that will be used to construct the items.
-	Note that this doesn't set the items instance variable (as one might expect)"
-
-	itemsBuilder := aBlockClosure
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeList >> itemsBuilder [
-	^ itemsBuilder ifNil: [ 
-		itemsBuilder := [ { } ] ]
-]
-
-{ #category : 'api - scripting' }
-GtRemotePhlowDeclarativeList >> send: aBlock [
-
-	self
-		assert: [ aBlock isNotNil ]
-		description: [ 'Send transformation block must be non-nil'  ].
-	aBlock isSymbol ifTrue: [ 
-		self 
-			assert: [ aBlock isUnary ]
-			description: [ 'Send transformation symbol must be unary' ] ].
-	sendBlock := aBlock.
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeList >> transformation [ 	
-	^ sendBlock ifNil: [ 
-		sendBlock := [ :object | object ] ]
 ]

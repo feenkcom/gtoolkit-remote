@@ -33,8 +33,8 @@ GtRemotePhlowDeclarativeViewListingDataSource >> retriveSentItemAt: aSelectionIn
 	"Answer the raw value at the supplied index"
 	
 	^ self phlowView transformation 
-		cull: (self viewItems at: aSelectionIndex)
-		cull: aSelectionIndex
+		transformedValueFrom: (self viewItems at: aSelectionIndex)
+		selection: aSelectionIndex
 ]
 
 { #category : 'accessing' }
