@@ -5,25 +5,16 @@ GtPhlowColumnedListView >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
 
-	^GtDeclarativeColumnedList new 
+	^GtPhlowDeclarativeColumnedListView new 
+		phlowDataSource: (GtRemotePhlowDeclarativeViewColumnedListDataSource forPhlowView: self);
 		title: self title;
 		priority: self priority;
-		items: (self itemsBuilder value withIndexCollect: [ :row :rowIndex | 
-			(columns withIndexCollect: [ :column :columnIndex | 
-				(column rowStencil ifNil: 
-					[ column itemComputation 
-						phlowValue: row 
-						withEnoughArguments: { row. rowIndex. columnIndex. nil. self. } ]
-				ifNotNil: [ :rowStencil |
-					rowStencil
-						cull: (column itemComputation phlowValue: row  withEnoughArguments: { row . rowIndex })
-						cull: column ]) gtDisplayString ]) asArray ]) asArray;
 		columnTitles: (columns collect: [ :each | each title ] as: Array);
 		columnWidths: (columns collect: [ :each | each cellWidth ifNotNil: [ :cellWidth |
 				cellWidth class = BrColumnFixedWidth
 					ifTrue: [cellWidth width]
 					ifFalse: [nil]]] as: Array);
-		dataTransport: GtDeclarativeView dataIncluded.
+		dataTransport: GtPhlowDeclarativeView dataLazy
 ]
 
 { #category : #'*GToolkit-RemoteGt' }

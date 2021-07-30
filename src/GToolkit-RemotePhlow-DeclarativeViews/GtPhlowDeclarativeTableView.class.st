@@ -1,14 +1,14 @@
 Class {
-	#name : #GtRemotePhlowDeclarativeTable,
-	#superclass : #GtRemotePhlowDeclarativeView,
+	#name : #GtPhlowDeclarativeTableView,
+	#superclass : #GtPhlowDeclarativeView,
 	#instVars : [
 		'items'
 	],
-	#category : 'GToolkit-RemotePhlow'
+	#category : 'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
 { #category : #'instance creation' }
-GtRemotePhlowDeclarativeTable class >> fromJSONDictionary: aDictionary [
+GtPhlowDeclarativeTableView class >> fromJSONDictionary: aDictionary [
 
 	| table |
 
@@ -19,7 +19,7 @@ GtRemotePhlowDeclarativeTable class >> fromJSONDictionary: aDictionary [
 ]
 
 { #category : #converting }
-GtRemotePhlowDeclarativeTable >> asDictionaryForExport [ 
+GtPhlowDeclarativeTableView >> asDictionaryForExport [ 
 
 	| dictionary |
 
@@ -30,23 +30,11 @@ GtRemotePhlowDeclarativeTable >> asDictionaryForExport [
 ]
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeTable >> data [ 
-
+GtPhlowDeclarativeTableView >> items [
 	^ items
 ]
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeTable >> items [
-	^ items
-]
-
-{ #category : #accessing }
-GtRemotePhlowDeclarativeTable >> items: anObject [
+GtPhlowDeclarativeTableView >> items: anObject [
 	items := anObject
-]
-
-{ #category : #accessing }
-GtRemotePhlowDeclarativeTable >> viewName [ 
-
-	^ #GtDeclarativeTable
 ]

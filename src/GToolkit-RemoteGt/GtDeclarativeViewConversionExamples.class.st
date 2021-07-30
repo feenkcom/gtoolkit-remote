@@ -20,7 +20,7 @@ GtDeclarativeViewConversionExamples >> convertColumnedList [
 
 	self assert: declarativeView title equals: #Test.
 	self assert: declarativeView priority equals: 10.
-	self assert: declarativeView items equals: #(#('1' '1') #('2' '2') #('3' '3')).
+	self assert: declarativeView retriveFormattedItems equals: #(#('1' '1') #('2' '2') #('3' '3')).
 	self assert: declarativeView columnTitles equals: #('One' 'Two').
 	self assert: declarativeView columnWidths equals: #(nil 100).
 
@@ -37,7 +37,7 @@ GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableColumn
 
 	self assert: declarativeView title equals: 'Columned List'.
 	self assert: declarativeView priority equals: 20.
-	self assert: declarativeView items equals: #(#('42' '42') #('Hello World' 'hello world') #('2021-04-06T14:43:49.623384+02:00' '2021-04-06t14:43:49.623384+02:00')).
+	self assert: declarativeView retriveFormattedItems equals: #(#('42' '42') #('Hello World' 'hello world') #('2021-04-06T14:43:49.623384+02:00' '2021-04-06t14:43:49.623384+02:00')).
 	self assert: declarativeView columnTitles equals: #('Value' 'Lowercase').
 	self assert: declarativeView columnWidths equals: #(nil 100).
 	
@@ -53,8 +53,7 @@ GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableList [
 
 	phlowView := GtDeclarativeTestInspectable new gtListFor: GtPhlowProtoView new.
 	declarativeView := phlowView asGtDeclarativeView.
-	declarativeView accessor: (GtMockedViewedObject new view: phlowView).
-
+	
 	self assert: declarativeView title equals: 'List'.
 	self assert: declarativeView priority equals: 15.
 	self assert: declarativeView retriveFormattedItems equals: #('42' 'Hello World' '2021-04-06T14:43:49.623384+02:00').
@@ -90,7 +89,6 @@ GtDeclarativeViewConversionExamples >> convertList [
 		items: [ #(1 2 3) ];
 		itemText: [ :item | 'Number: ', item asString ].
 	declarativeView := phlowView asGtDeclarativeView.
-	declarativeView accessor: (GtMockedViewedObject new view: phlowView).
 
 	self assert: declarativeView title equals: #Test.
 	self assert: declarativeView priority equals: 10.
@@ -136,7 +134,7 @@ GtDeclarativeViewConversionExamples >> convertTree [
 
 	self assert: declarativeView title equals: #Test.
 	self assert: declarativeView priority equals: 10.
-	data := declarativeView data.
+	data := declarativeView items.
 	self assert: data size equals: 4.
 	self assert: data first equals: #('1' #(1) #()).
 	self assert: data last equals:  #('4' #(4) #(#('1' #(4 1) #()) #('2' #(4 2) #(#('1' #(4 2 1) #()))))).

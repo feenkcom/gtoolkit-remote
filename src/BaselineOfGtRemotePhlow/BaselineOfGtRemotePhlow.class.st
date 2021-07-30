@@ -6,7 +6,7 @@ Note that this package isn't normally loaded in a Gt image, see ${class:name=Bas
 Class {
 	#name : #BaselineOfGtRemotePhlow,
 	#superclass : #BaselineOf,
-	#category : #BaselineOfGtRemotePhlow
+	#category : 'BaselineOfGtRemotePhlow'
 }
 
 { #category : #baseline }
@@ -20,6 +20,9 @@ BaselineOfGtRemotePhlow >> baseline: spec [
 					with: [ spec repository: 'github://feenkcom/Pharolink/src' ];
 				package: 'GToolkit-RemotePhlow' 
 					with: [ spec requires: #( PharoLink ) ];
+				package: 'GToolkit-RemotePhlow-DeclarativeViews';
+				package: 'GToolkit-RemotePhlow-PhlowViews'
+					with: [ spec requires: #( #'GToolkit-RemotePhlow-DeclarativeViews' ) ];
 				package: 'GToolkit-RemotePhlow-Pharo' 
 					with: [ spec requires: #( 'GToolkit-RemotePhlow' ) ];
 				package: 'GToolkit-RemotePhlow-Examples' 

@@ -20,7 +20,7 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'object',
-		'viewCache'
+		'declarativeViewsBySelector'
 	],
 	#category : 'GToolkit-RemotePhlow'
 }
@@ -31,44 +31,37 @@ GtRemotePhlowViewedObject class >> object: anObject [
 	^ self new initializeWith: anObject
 ]
 
-{ #category : #private }
-GtRemotePhlowViewedObject >> declarativeViewWithSelector: viewSelector [
-	"Answer the objects view with the given selector name"
-
-	^ (viewCache
-		at: viewSelector
-		ifAbsentPut: [ GtRemotePhlowViewCache viewedObject: self selector: viewSelector ]) 
-			declarativeView
+{ #category : #accessing }
+GtRemotePhlowViewedObject >> declarativeViewsBySelector [
+	^ declarativeViewsBySelector ifNil: [ 
+		declarativeViewsBySelector := Dictionary new ]
 ]
 
-{ #category : #accessing }
-GtRemotePhlowViewedObject >> getGtViewMethodNames [
+{ #category : #'api - accessing' }
+GtRemotePhlowViewedObject >> getDeclarativeViewFor: viewSelector [
+	^ self declarativeViewsBySelector 
+		at: viewSelector 
+		ifAbsentPut: [
+			(self object 
+				perform: viewSelector 
+				with: GtRemotePhlowDeclarativeProtoView new) asGtDeclarativeView ]
+]
+
+{ #category : #'api - accessing' }
+GtRemotePhlowViewedObject >> getDeclarativeViewMethodNames [
 	"Answer the set of declarative view selectors provided by the object"
 
 	^ object gtPharoDeclarativeViewSelectors
 ]
 
-{ #category : #accessing }
+{ #category : #'api - accessing' }
 GtRemotePhlowViewedObject >> getViewDeclaration: viewSelector [
-	"Answer the declarative view dictionary for the supplied selector"
-
-	^ (self declarativeViewWithSelector: viewSelector) asDictionaryForExport 
-		at: #'__pharolinkImmediate' put: true;
-		yourself.
-]
-
-{ #category : #'gt inspector' }
-GtRemotePhlowViewedObject >> gtSentItemFor: viewSelector at: selection [ 
-	"Answer the value to be sent from the view"
-
-	^ (self declarativeViewWithSelector: viewSelector) sentItemAt: selection
-]
-
-{ #category : #initialization }
-GtRemotePhlowViewedObject >> initialize [
-
-	super initialize.
-	viewCache := Dictionary new.
+	^ ((self getDeclarativeViewFor: viewSelector) 
+		ifNotNil: [ :view |
+			view asDictionaryForExport
+				at: #'__pharolinkImmediate' put: true;
+				yourself. ])
+		
 ]
 
 { #category : #initialization }
@@ -81,43 +74,4 @@ GtRemotePhlowViewedObject >> initializeWith: anObject [
 GtRemotePhlowViewedObject >> object [
 
 	^ object
-]
-
-{ #category : #accessing }
-GtRemotePhlowViewedObject >> retrieveItemsCount: anItemsCount fromIndex: anIndex forViewSelector: aViewSelector [
-	| declarativeViewCache |
-	declarativeViewCache := viewCache at: aViewSelector.
-	^ declarativeViewCache retrieveItems: anItemsCount fromIndex: anIndex
-]
-
-{ #category : #accessing }
-GtRemotePhlowViewedObject >> retrieveTotalItemsCountForViewSelector: aViewSelector [
-	| declarativeViewCache |
-	declarativeViewCache := viewCache at: aViewSelector.
-	^ declarativeViewCache retrieveTotalItemsCount
-]
-
-{ #category : #accessing }
-GtRemotePhlowViewedObject >> retriveFormattedItemsForViewSelector: aViewSelector [
-	| declarativeViewCache |
-	declarativeViewCache := viewCache at: aViewSelector.
-	^ declarativeViewCache retriveFormattedItems
-]
-
-{ #category : #accessing }
-GtRemotePhlowViewedObject >> retriveSentItemForViewSelector: aViewSelector atIndex: aSelectionIndex [
-	| declarativeViewCache |
-
-	declarativeViewCache := viewCache at: aViewSelector.
-	^ declarativeViewCache retriveSentItemAtIndex: aSelectionIndex
-]
-
-{ #category : #private }
-GtRemotePhlowViewedObject >> viewWithSelector: viewSelector [
-	"Answer the objects view with the given selector name"
-
-	^ (viewCache
-		at: viewSelector
-		ifAbsentPut: [ GtRemotePhlowViewCache viewedObject: self selector: viewSelector ]) 
-			view
 ]

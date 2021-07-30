@@ -52,6 +52,30 @@ GtDeclarativeTestInspectable >> gtColumnedListFor: aView [
 ]
 
 { #category : #inspecting }
+GtDeclarativeTestInspectable >> gtLargeColumnedListFor: aView [
+	<gtView>
+
+	^aView columnedList
+		title: 'Large Columned List' translated;
+		priority: 21;
+		items: [ 1 to: 1022 ];
+		column: 'Value' item: [ :anObject | anObject asString ];
+		column: 'Value * 10' item: [ :anObject | (anObject * 10) asString asLowercase ] width: 100.
+]
+
+{ #category : #inspecting }
+GtDeclarativeTestInspectable >> gtLargeColumnedListWithIndexFor: aView [
+	<gtView>
+
+	^aView columnedList
+		title: 'Large Columned List with Index' translated;
+		priority: 21;
+		items: [ 1 to: 1022 ];
+		column: 'Index' item: [ :anObject  :anIndex | anIndex ];
+		column: 'Value' item: [ :anObject | anObject ].
+]
+
+{ #category : #inspecting }
 GtDeclarativeTestInspectable >> gtLargeListFor: aView [
 	<gtView>
 

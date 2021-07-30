@@ -23,9 +23,9 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'object',
-		'viewProxy'
+		'inspectorProxy'
 	],
-	#category : #'GToolkit-RemoteGt-Development'
+	#category : 'GToolkit-RemoteGt-Development'
 }
 
 { #category : #'instance creation' }
@@ -37,16 +37,19 @@ GtRemoteInspectionSimulation class >> openOn: anObject [
 { #category : #'gt inspector' }
 GtRemoteInspectionSimulation >> declarativeViews [
 	"Answer the views for the receiver"
-	| viewMethodNames rawViews viewDictionary |
+	| viewMethodNames rawViews  |
 
-	viewMethodNames := viewProxy getGtViewMethodNames.
+	viewMethodNames := inspectorProxy getDeclarativeViewMethodNames.
 	rawViews := viewMethodNames collect: [ :viewSelector |
-		viewDictionary := viewProxy getViewDeclaration: viewSelector.
-		((GtDeclarativeView fromDictionary: viewDictionary)
-			accessor: viewProxy;
-			methodName: viewSelector;
-			yourself) ].
-	^ rawViews
+		| viewData declarativeView |
+		viewData := inspectorProxy getViewDeclaration: viewSelector.
+		viewData ifNotNil: [
+			declarativeView := GtPhlowDeclarativeView fromDictionary: viewData.
+			declarativeView
+				methodSelector: viewSelector;
+				initializeFromInspector: inspectorProxy.
+			declarativeView ] ].
+	^ rawViews reject: #isNil
 ]
 
 { #category : #simulation }
@@ -77,7 +80,7 @@ GtRemoteInspectionSimulation >> gtProxyRawFor: aView [
 	^ aView columnedList 
 		title: 'Raw';
 		priority: 5;
-		items: [ viewProxy rawViewData ];
+		items: [ inspectorProxy rawViewData ];
 		column: 'Icon' icon: [ :aNode | aNode third iconNamed: aNode first ];
 		column: 'Variable' text: [ :aNode | aNode second asRopedText ];
 		column: 'Value' text: [ :aNode | 
@@ -139,7 +142,7 @@ GtRemoteInspectionSimulation >> object [
 GtRemoteInspectionSimulation >> object: anObject [
 
 	object := anObject.
-	viewProxy := GtViewedObject object: anObject
+	inspectorProxy := GtViewedObject object: anObject
 ]
 
 { #category : #'gt inspector' }
