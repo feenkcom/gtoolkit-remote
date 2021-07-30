@@ -58,7 +58,6 @@ GtPhlowDeclarativeView class >> fromDictionary: viewDictionary [
 	"Answer the view specified by viewDictionary"
 	| viewName |
 
-	StringSignal emit: 'fromDictionary:'.
 	viewName := viewDictionary at: #viewName.
 	(viewName -> viewDictionary) asBeaconSignal emit.
 	^(Smalltalk globals at: viewName asSymbol) fromJSONDictionary: viewDictionary.
@@ -76,19 +75,6 @@ GtPhlowDeclarativeView class >> fromJSONDictionary: aDictionary [
 		yourself
 ]
 
-{ #category : 'instance creation' }
-GtPhlowDeclarativeView class >> fromJSONString: aString [
-	"Answer the view specified by aString"
-
-	| viewDictionary viewName |
-
-	StringSignal emit: 'fromJSONString:'.
-	viewDictionary := STONJSON fromString: aString.
-	viewName := viewDictionary at: #viewName.
-	(viewName -> viewDictionary) asBeaconSignal emit.
-	^(Smalltalk globals at: viewName asSymbol) fromJSONDictionary: viewDictionary.
-]
-
 { #category : 'converting' }
 GtPhlowDeclarativeView >> asDictionaryForExport [
 	"Answer the receiver as a dictionary ready for JSON serialisation.
@@ -100,13 +86,6 @@ GtPhlowDeclarativeView >> asDictionaryForExport [
 		at: #priority put: priority;
 		at: #dataTransport put: dataTransport;
 		yourself
-]
-
-{ #category : 'serialization' }
-GtPhlowDeclarativeView >> asJSONForExport [ 
-	"Answer the receiver serialised in JSON format"
-
-	^STONJSON toStringPretty: self asDictionaryForExport
 ]
 
 { #category : 'accessing' }
