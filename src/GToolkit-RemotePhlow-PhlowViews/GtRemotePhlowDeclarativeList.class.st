@@ -17,7 +17,8 @@ Class {
 	#superclass : 'GtRemotePhlowDeclarativeView',
 	#instVars : [
 		'itemsBuilder',
-		'itemTextBlock'
+		'itemTextBlock',
+		'sendBlock'
 	],
 	#category : 'GToolkit-RemotePhlow-PhlowViews'
 }
@@ -61,4 +62,23 @@ GtRemotePhlowDeclarativeList >> items: aBlockClosure [
 GtRemotePhlowDeclarativeList >> itemsBuilder [
 	^ itemsBuilder ifNil: [ 
 		itemsBuilder := [ { } ] ]
+]
+
+{ #category : 'api - scripting' }
+GtRemotePhlowDeclarativeList >> send: aBlock [
+
+	self
+		assert: [ aBlock isNotNil ]
+		description: [ 'Send transformation block must be non-nil'  ].
+	aBlock isSymbol ifTrue: [ 
+		self 
+			assert: [ aBlock isUnary ]
+			description: [ 'Send transformation symbol must be unary' ] ].
+	sendBlock := aBlock.
+]
+
+{ #category : 'accessing' }
+GtRemotePhlowDeclarativeList >> transformation [ 	
+	^ sendBlock ifNil: [ 
+		sendBlock := [ :object | object ] ]
 ]
