@@ -8,7 +8,7 @@ RwSimpleProjectLoadComponentV2 {
 	#packageNames : [
 		'GToolkit-RemotePhlow',
 		'GToolkit-RemotePhlow-DeclarativeViews',
-		'GToolkit-RemotePhlow-Pharo',
+		'GToolkit-RemotePhlow-PhlowViews',
 		'GToolkit-RemotePhlow-Examples'
 	],
 	#comment : ''
