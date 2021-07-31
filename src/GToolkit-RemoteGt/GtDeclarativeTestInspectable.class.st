@@ -72,7 +72,7 @@ GtDeclarativeTestInspectable >> gtLargeColumnedListWithIndexFor: aView [
 		priority: 21;
 		items: [ 1 to: 1022 ];
 		column: 'Index' item: [ :anObject  :anIndex | anIndex ];
-		column: 'Value' item: [ :anObject | anObject ].
+		column: 'Value' item: [ :anObject | anObject * 10 ].
 ]
 
 { #category : 'inspecting' }

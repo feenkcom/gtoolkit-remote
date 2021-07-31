@@ -14,12 +14,9 @@ GtDeclarativeList supports a subset of the possible configurations of ${class:na
 "
 Class {
 	#name : 'GtRemotePhlowDeclarativeList',
-	#superclass : 'GtRemotePhlowDeclarativeView',
+	#superclass : 'GtRemotePhlowDeclarativeListingView',
 	#instVars : [
-		'items',
-		'itemsBuilder',
-		'itemTextBlock',
-		'totalItemsCount'
+		'itemTextBlock'
 	],
 	#category : 'GToolkit-RemotePhlow-PhlowViews'
 }
@@ -36,37 +33,17 @@ GtRemotePhlowDeclarativeList >> asGtDeclarativeView [
 		dataTransport: GtPhlowDeclarativeView dataLazy.
 ]
 
-{ #category : 'initialization' }
-GtRemotePhlowDeclarativeList >> initialize [ 
-
-	super initialize.
-	itemTextBlock := [ :item | item asString ].
-	dataTransport := self class dataLazy.
-]
-
 { #category : 'accessing' }
 GtRemotePhlowDeclarativeList >> itemText [
 	"Answer the BlockClosure that will convert each item to its displayed format.
 	The result of the BlockClosure must be a JSON primitive type, effectively a string or number."
 
-	^ itemTextBlock
+	^ itemTextBlock ifNil: [ 
+		itemTextBlock := [ :item | item ] ] 
 ]
 
 { #category : 'api - scripting' }
 GtRemotePhlowDeclarativeList >> itemText: aBlockClosure [
 
 	itemTextBlock := aBlockClosure
-]
-
-{ #category : 'api - scripting' }
-GtRemotePhlowDeclarativeList >> items: aBlockClosure [
-	"Set the block closure that will be used to construct the items.
-	Note that this doesn't set the items instance variable (as one might expect)"
-
-	itemsBuilder := aBlockClosure
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeList >> itemsBuilder [
-	^ itemsBuilder
 ]

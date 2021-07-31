@@ -28,10 +28,8 @@ Class {
 	#name : 'GtRemotePhlowDeclarativeView',
 	#superclass : 'Object',
 	#instVars : [
-		'methodName',
 		'title',
-		'priority',
-		'dataTransport'
+		'priority'
 	],
 	#category : 'GToolkit-RemotePhlow-PhlowViews'
 }
@@ -39,34 +37,6 @@ Class {
 { #category : 'converting' }
 GtRemotePhlowDeclarativeView >> asGtDeclarativeView [
 	^ nil
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeView >> dataTransport [
-	^ dataTransport
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeView >> dataTransport: anObject [
-	dataTransport := anObject
-]
-
-{ #category : 'initialization' }
-GtRemotePhlowDeclarativeView >> initialize [
-
-	super initialize.
-	"The default is to include the data"
-	dataTransport := self class dataIncluded.
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeView >> methodName [
-	^ methodName
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeView >> methodName: anObject [
-	methodName := anObject
 ]
 
 { #category : 'accessing' }
