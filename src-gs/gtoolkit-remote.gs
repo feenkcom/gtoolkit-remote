@@ -570,24 +570,6 @@ true.
 removeallmethods GtRemotePhlowViewedObject
 removeallclassmethods GtRemotePhlowViewedObject
 
-doit
-(RPackage
-	subclass: 'GtGemStoneRPackage'
-	instVarNames: #( gemstoneClient gemstonePackageProxy )
-	classVars: #(  )
-	classInstVars: #(  )
-	poolDictionaries: #()
-	inDictionary: Globals
-	options: #( #logCreation )
-)
-		category: 'Gtoolkit-RemoteCoder-GemStone';
-		immediateInvariant.
-true.
-%
-
-removeallmethods GtGemStoneRPackage
-removeallclassmethods GtGemStoneRPackage
-
 ! Class implementation for 'GtPhlowDeclarativeView'
 
 !		Class methods for 'GtPhlowDeclarativeView'
@@ -1813,71 +1795,6 @@ method: GtRemotePhlowViewedObject
 object
 
 	^ object
-%
-
-! Class implementation for 'GtGemStoneRPackage'
-
-!		Class methods for 'GtGemStoneRPackage'
-
-category: 'instance creation'
-classmethod: GtGemStoneRPackage
-named: aSymbol gemstoneClient: aGtGemStoneClient 
-
-	^ self new
-		name: aSymbol;
-		gemstoneClient: aGtGemStoneClient;
-		getProxy
-%
-
-!		Instance methods for 'GtGemStoneRPackage'
-
-category: 'accessing'
-method: GtGemStoneRPackage
-gemstoneClient
-	^ gemstoneClient
-%
-
-category: 'accessing'
-method: GtGemStoneRPackage
-gemstoneClient: anObject
-	gemstoneClient := anObject
-%
-
-category: 'private'
-method: GtGemStoneRPackage
-getProxy
-	"Get the GemStone proxy object for the receiver's package"
-
-	gemstonePackageProxy := gemstoneClient evaluateAndWait: 
-		'GtGemStoneRPackage named: ', name printString.
-%
-
-category: 'as yet unclassified'
-method: GtGemStoneRPackage
-gtBaselinesFor: aView
-
-	^ aView empty
-%
-
-category: 'as yet unclassified'
-method: GtGemStoneRPackage
-gtDefinedTagsFor: aView context: aPhlowContext
-
-	^ aView empty
-%
-
-category: 'as yet unclassified'
-method: GtGemStoneRPackage
-gtDependencyAnalyzerFor: aView
-
-	^ aView empty
-%
-
-category: 'as yet unclassified'
-method: GtGemStoneRPackage
-gtExamplesFor: aView
-
-	^ aView empty
 %
 
 ! Class extensions for 'Behavior'
