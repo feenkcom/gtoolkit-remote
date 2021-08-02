@@ -21,6 +21,206 @@ removeallclassmethods GtGemStoneRPackage
 
 doit
 (Object
+	subclass: 'GtPhlowDeclarativeView'
+	instVarNames: #( phlowDataSource methodSelector title priority dataTransport )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		comment: 'GtDeclarativeView provides a declarative UI specification for presenting data that can be easily serialised and sent over the wire, including between applications written in different languages.
+
+dataTransport is an emumerated value indicating whether the data to be displayed will be included with the specification or is available via reference or by key.]
+
+- 1: data is included in the response
+- 2: data is available by reference
+- 3: data is available by reference and key (tbc)
+
+
+Public API and Key Messages
+
+- message one   
+- message two 
+- (for bonus points) how to create instances.
+
+   One simple example is simply gorgeous.
+ 
+Internal Representation and Key Implementation Points.
+
+    Instance Variables
+	dataTransport:		<Object>
+
+
+    Implementation Points
+
+';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowDeclarativeView
+removeallclassmethods GtPhlowDeclarativeView
+
+doit
+(GtPhlowDeclarativeView
+	subclass: 'GtPhlowDeclarativeListingView'
+	instVarNames: #( totalItemsCount )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowDeclarativeListingView
+removeallclassmethods GtPhlowDeclarativeListingView
+
+doit
+(GtPhlowDeclarativeListingView
+	subclass: 'GtPhlowDeclarativeColumnedListView'
+	instVarNames: #( columnTitles columnWidths )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		comment: 'GtDeclarativeColumnedList supports a subset of the possible configurations of ${class:name=GtPhlowColumnedListView}.
+
+Current limitations:
+
+- Only matchParent and fixed column widths are supported
+
+1. # Internal Representation and Key Implementation Points.
+
+
+1. ## Instance Variables
+
+	columnTitles:	<Array of String>
+	columnWidths:	<Array of Integer|nil>
+	items:				<Array of Array>	These are the formatted values to display, not the raw values to send
+
+';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowDeclarativeColumnedListView
+removeallclassmethods GtPhlowDeclarativeColumnedListView
+
+doit
+(GtPhlowDeclarativeListingView
+	subclass: 'GtPhlowDeclarativeListView'
+	instVarNames: #(  )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		comment: 'GtDeclarativeList supports a subset of the possible configurations of ${class:name=GtPhlowListView}.
+
+ 
+1. # Internal Representation and Key Implementation Points.
+
+
+1. ## Instance Variables
+
+	items:		<Array> - The formatted items to display (not the raw values held in the list)
+
+
+1. ## Implementation Points
+
+';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowDeclarativeListView
+removeallclassmethods GtPhlowDeclarativeListView
+
+doit
+(GtPhlowDeclarativeView
+	subclass: 'GtPhlowDeclarativeTableView'
+	instVarNames: #( items )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowDeclarativeTableView
+removeallclassmethods GtPhlowDeclarativeTableView
+
+doit
+(GtPhlowDeclarativeView
+	subclass: 'GtPhlowDeclarativeTextEditorView'
+	instVarNames: #( string )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowDeclarativeTextEditorView
+removeallclassmethods GtPhlowDeclarativeTextEditorView
+
+doit
+(GtPhlowDeclarativeView
+	subclass: 'GtPhlowDeclarativeTreeView'
+	instVarNames: #( itemTextBlock childrenBlock items )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowDeclarativeTreeView
+removeallclassmethods GtPhlowDeclarativeTreeView
+
+doit
+(Object
+	subclass: 'GtRemotePhlowColumn'
+	instVarNames: #( index title width itemComputation )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowColumn
+removeallclassmethods GtRemotePhlowColumn
+
+doit
+(Object
 	subclass: 'GtRemotePhlowDeclarativeProtoView'
 	instVarNames: #(  )
 	classVars: #(  )
@@ -29,7 +229,7 @@ doit
 	inDictionary: Globals
 	options: #( #logCreation )
 )
-		category: 'GToolkit-RemotePhlow';
+		category: 'GToolkit-RemotePhlow-PhlowViews';
 		immediateInvariant.
 true.
 %
@@ -86,14 +286,14 @@ removeallclassmethods GtRemotePhlowDeclarativeTreeExamples
 doit
 (Object
 	subclass: 'GtRemotePhlowDeclarativeView'
-	instVarNames: #( accessor methodName title priority dataTransport )
+	instVarNames: #( title priority )
 	classVars: #(  )
 	classInstVars: #(  )
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
 )
-		category: 'GToolkit-RemotePhlow';
+		category: 'GToolkit-RemotePhlow-PhlowViews';
 		comment: 'GtDeclarativeView provides a declarative UI specification for presenting data that can be easily serialised and sent over the wire, including between applications written in different languages.
 
 dataTransport is an emumerated value indicating whether the data to be displayed will be included with the specification or is available via reference or by key.]
@@ -127,15 +327,33 @@ removeallclassmethods GtRemotePhlowDeclarativeView
 
 doit
 (GtRemotePhlowDeclarativeView
-	subclass: 'GtRemotePhlowDeclarativeColumnedList'
-	instVarNames: #( items itemsBuilder columnValues columnTitles columnWidths sendBlock )
+	subclass: 'GtRemotePhlowDeclarativeListingView'
+	instVarNames: #( itemsBuilder transformation )
 	classVars: #(  )
 	classInstVars: #(  )
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
 )
-		category: 'GToolkit-RemotePhlow';
+		category: 'GToolkit-RemotePhlow-PhlowViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowDeclarativeListingView
+removeallclassmethods GtRemotePhlowDeclarativeListingView
+
+doit
+(GtRemotePhlowDeclarativeListingView
+	subclass: 'GtRemotePhlowDeclarativeColumnedList'
+	instVarNames: #( columns )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowViews';
 		comment: 'GtDeclarativeColumnedList supports a subset of the possible configurations of ${class:name=GtPhlowColumnedListView}.
 
 Current limitations:
@@ -157,16 +375,16 @@ removeallmethods GtRemotePhlowDeclarativeColumnedList
 removeallclassmethods GtRemotePhlowDeclarativeColumnedList
 
 doit
-(GtRemotePhlowDeclarativeView
+(GtRemotePhlowDeclarativeListingView
 	subclass: 'GtRemotePhlowDeclarativeList'
-	instVarNames: #( items itemsBuilder itemTextBlock totalItemsCount )
+	instVarNames: #( itemTextBlock )
 	classVars: #(  )
 	classInstVars: #(  )
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
 )
-		category: 'GToolkit-RemotePhlow';
+		category: 'GToolkit-RemotePhlow-PhlowViews';
 		comment: 'GtDeclarativeList supports a subset of the possible configurations of ${class:name=GtPhlowListView}.
 
  
@@ -196,7 +414,7 @@ doit
 	inDictionary: Globals
 	options: #( #logCreation )
 )
-		category: 'GToolkit-RemotePhlow';
+		category: 'GToolkit-RemotePhlow-PhlowViews';
 		immediateInvariant.
 true.
 %
@@ -214,7 +432,7 @@ doit
 	inDictionary: Globals
 	options: #( #logCreation )
 )
-		category: 'GToolkit-RemotePhlow';
+		category: 'GToolkit-RemotePhlow-PhlowViews';
 		immediateInvariant.
 true.
 %
@@ -232,7 +450,7 @@ doit
 	inDictionary: Globals
 	options: #( #logCreation )
 )
-		category: 'GToolkit-RemotePhlow';
+		category: 'GToolkit-RemotePhlow-PhlowViews';
 		comment: 'GtPharoDeclarativeTree maps to GtPhlowTreeView in Gt.
 
 When transporting the data, each node in the tree is represented as an Array with three slots:
@@ -249,26 +467,98 @@ removeallclassmethods GtRemotePhlowDeclarativeTree
 
 doit
 (Object
-	subclass: 'GtRemotePhlowViewCache'
-	instVarNames: #( viewedObject viewSelector view declarativeView cachedData )
+	subclass: 'GtRemotePhlowDeclarativeViewDataSource'
+	instVarNames: #( phlowView )
 	classVars: #(  )
 	classInstVars: #(  )
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
 )
-		category: 'GToolkit-RemotePhlow';
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
 		immediateInvariant.
 true.
 %
 
-removeallmethods GtRemotePhlowViewCache
-removeallclassmethods GtRemotePhlowViewCache
+removeallmethods GtRemotePhlowDeclarativeViewDataSource
+removeallclassmethods GtRemotePhlowDeclarativeViewDataSource
+
+doit
+(GtRemotePhlowDeclarativeViewDataSource
+	subclass: 'GtRemotePhlowDeclarativeViewListingDataSource'
+	instVarNames: #( cachedItems )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowDeclarativeViewListingDataSource
+removeallclassmethods GtRemotePhlowDeclarativeViewListingDataSource
+
+doit
+(GtRemotePhlowDeclarativeViewListingDataSource
+	subclass: 'GtRemotePhlowDeclarativeViewColumnedListDataSource'
+	instVarNames: #(  )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowDeclarativeViewColumnedListDataSource
+removeallclassmethods GtRemotePhlowDeclarativeViewColumnedListDataSource
+
+doit
+(GtRemotePhlowDeclarativeViewListingDataSource
+	subclass: 'GtRemotePhlowDeclarativeViewListDataSource'
+	instVarNames: #(  )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowDeclarativeViewListDataSource
+removeallclassmethods GtRemotePhlowDeclarativeViewListDataSource
+
+doit
+(Object
+	subclass: 'GtRemotePhlowSendObjectTransformation'
+	instVarNames: #( valuable )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowSendObjectTransformation
+removeallclassmethods GtRemotePhlowSendObjectTransformation
 
 doit
 (Object
 	subclass: 'GtRemotePhlowViewedObject'
-	instVarNames: #( object viewCache )
+	instVarNames: #( object declarativeViewsBySelector )
 	classVars: #(  )
 	classInstVars: #(  )
 	poolDictionaries: #()
@@ -344,6 +634,472 @@ method: GtGemStoneRPackage
 name: aSymbol
 
 	name := aSymbol asSymbol
+%
+
+! Class implementation for 'GtPhlowDeclarativeView'
+
+!		Class methods for 'GtPhlowDeclarativeView'
+
+category: 'data transport'
+classmethod: GtPhlowDeclarativeView
+dataIncluded
+	"Answer the enumerated value for the display data being included with the specification"
+
+	^1
+%
+
+category: 'data transport'
+classmethod: GtPhlowDeclarativeView
+dataLazy
+	"Answer the enumerated value for the display data accessor name being included with the specification.  This can then be used to retrieve the data at a later time"
+
+	^2
+%
+
+category: 'instance creation'
+classmethod: GtPhlowDeclarativeView
+fromJSONDictionary: aDictionary
+	"Answer an instance of the receiver from the supplied dictionary.
+	Subclasses will override this to add their specific attributes"
+
+	^self new 
+		title: (aDictionary at: #title);
+		priority: (aDictionary at: #priority);
+		dataTransport: (aDictionary at: #dataTransport);
+		yourself
+%
+
+!		Instance methods for 'GtPhlowDeclarativeView'
+
+category: 'converting'
+method: GtPhlowDeclarativeView
+asDictionaryForExport
+	"Answer the receiver as a dictionary ready for JSON serialisation.
+	Subclasses will override and add to the dictionary"
+
+	^Dictionary new 
+		at: #viewName put: self viewName;
+		at: #title put: title;
+		at: #priority put: priority;
+		at: #dataTransport put: dataTransport;
+		yourself
+%
+
+category: 'accessing'
+method: GtPhlowDeclarativeView
+dataTransport
+	^ dataTransport
+%
+
+category: 'accessing'
+method: GtPhlowDeclarativeView
+dataTransport: anObject
+	dataTransport := anObject
+%
+
+category: 'initialization'
+method: GtPhlowDeclarativeView
+initializeFromInspector: anInspector
+%
+
+category: 'testing'
+method: GtPhlowDeclarativeView
+isWithLazyLoading
+	^ self dataTransport = self class dataLazy
+%
+
+category: 'accessing'
+method: GtPhlowDeclarativeView
+methodSelector
+	^ methodSelector
+%
+
+category: 'accessing'
+method: GtPhlowDeclarativeView
+methodSelector: aSelector
+	methodSelector := aSelector
+%
+
+category: 'accessing'
+method: GtPhlowDeclarativeView
+phlowDataSource
+	^ phlowDataSource
+%
+
+category: 'accessing'
+method: GtPhlowDeclarativeView
+phlowDataSource: aDataSource
+	phlowDataSource := aDataSource
+%
+
+category: 'accessing'
+method: GtPhlowDeclarativeView
+priority
+	^ priority
+%
+
+category: 'accessing'
+method: GtPhlowDeclarativeView
+priority: anObject
+	priority := anObject
+%
+
+category: 'accessing'
+method: GtPhlowDeclarativeView
+title
+	^ title
+%
+
+category: 'accessing'
+method: GtPhlowDeclarativeView
+title: anObject
+	title := anObject
+%
+
+category: 'accessing'
+method: GtPhlowDeclarativeView
+viewName
+	"Answer the name of the receivers view"
+
+	^self class name
+%
+
+! Class implementation for 'GtPhlowDeclarativeListingView'
+
+!		Instance methods for 'GtPhlowDeclarativeListingView'
+
+category: 'initialization'
+method: GtPhlowDeclarativeListingView
+initializeFromInspector: anInspector
+	self phlowDataSource: (anInspector getDeclarativeViewFor: self methodSelector)
+%
+
+category: 'api - accessing'
+method: GtPhlowDeclarativeListingView
+retrieveItems: anItemsCount fromIndex: anIndex
+	^ self phlowDataSource 
+		retrieveItems: anItemsCount fromIndex: anIndex
+%
+
+category: 'accessing'
+method: GtPhlowDeclarativeListingView
+retrieveItemsFromIndex: anIndex
+	^ self retrieveItems: 100 fromIndex: anIndex
+%
+
+category: 'api - accessing'
+method: GtPhlowDeclarativeListingView
+retrieveTotalItemsCount
+	^ self phlowDataSource retrieveTotalItemsCount
+%
+
+category: 'accessing'
+method: GtPhlowDeclarativeListingView
+retriveFormattedItems
+	^ self phlowDataSource 
+		retrieveItems: self totalItemsCount fromIndex: 1
+%
+
+category: 'api - accessing'
+method: GtPhlowDeclarativeListingView
+retriveSentItemAt: aSelectionIndex
+	^ self phlowDataSource retriveSentItemAt: aSelectionIndex
+%
+
+category: 'accessing'
+method: GtPhlowDeclarativeListingView
+totalItemsCount
+	^ totalItemsCount ifNil: [ 
+		totalItemsCount := self phlowDataSource retrieveTotalItemsCount ]
+%
+
+! Class implementation for 'GtPhlowDeclarativeColumnedListView'
+
+!		Class methods for 'GtPhlowDeclarativeColumnedListView'
+
+category: 'instance creation'
+classmethod: GtPhlowDeclarativeColumnedListView
+fromJSONDictionary: aDictionary
+
+	| list |
+
+	list := super fromJSONDictionary: aDictionary.
+	list
+		columnTitles: (aDictionary at: #columnTitles);
+		columnWidths: (aDictionary at: #columnWidths).
+	"list dataTransport = self dataIncluded ifTrue: 
+		[ list items: (aDictionary at: #items) ]."
+	^list
+%
+
+!		Instance methods for 'GtPhlowDeclarativeColumnedListView'
+
+category: 'converting'
+method: GtPhlowDeclarativeColumnedListView
+asDictionaryForExport 
+	| dictionary |
+
+	dictionary := super asDictionaryForExport 
+		at: #columnTitles put: columnTitles;
+		at: #columnWidths put: columnWidths;
+		yourself.
+	"self dataTransport = self class dataIncluded ifTrue: [ 
+		dictionary at: #items put: items ]."
+	^dictionary
+%
+
+category: 'accessing'
+method: GtPhlowDeclarativeColumnedListView
+columnTitles
+	^ columnTitles
+%
+
+category: 'accessing'
+method: GtPhlowDeclarativeColumnedListView
+columnTitles: anObject
+	columnTitles := anObject
+%
+
+category: 'accessing'
+method: GtPhlowDeclarativeColumnedListView
+columnWidths
+	^ columnWidths
+%
+
+category: 'accessing'
+method: GtPhlowDeclarativeColumnedListView
+columnWidths: anObject
+	columnWidths := anObject
+%
+
+! Class implementation for 'GtPhlowDeclarativeListView'
+
+!		Class methods for 'GtPhlowDeclarativeListView'
+
+category: 'instance creation'
+classmethod: GtPhlowDeclarativeListView
+fromJSONDictionary: aDictionary
+	| list |
+
+	list := super fromJSONDictionary: aDictionary.
+	"list dataTransport = self dataIncluded ifTrue: 
+		[ list items: (aDictionary at: #items) ]."
+	^list
+%
+
+!		Instance methods for 'GtPhlowDeclarativeListView'
+
+category: 'converting'
+method: GtPhlowDeclarativeListView
+asDictionaryForExport 
+
+	| dictionary |
+
+	dictionary := super asDictionaryForExport.
+	"self dataTransport = self class dataIncluded ifTrue: [ 
+		dictionary at: #items put: self retriveFormattedItems ]."
+	^dictionary
+%
+
+! Class implementation for 'GtPhlowDeclarativeTableView'
+
+!		Class methods for 'GtPhlowDeclarativeTableView'
+
+category: 'instance creation'
+classmethod: GtPhlowDeclarativeTableView
+fromJSONDictionary: aDictionary
+
+	| table |
+
+	table := super fromJSONDictionary: aDictionary.
+	table dataTransport = self dataIncluded ifTrue: 
+		[ table items: (aDictionary at: #items) ].
+	^table
+%
+
+!		Instance methods for 'GtPhlowDeclarativeTableView'
+
+category: 'converting'
+method: GtPhlowDeclarativeTableView
+asDictionaryForExport 
+
+	| dictionary |
+
+	dictionary := super asDictionaryForExport.
+	self dataTransport = self class dataIncluded ifTrue: [ 
+		dictionary at: #data put: items ].
+	^dictionary
+%
+
+category: 'accessing'
+method: GtPhlowDeclarativeTableView
+items
+	^ items
+%
+
+category: 'accessing'
+method: GtPhlowDeclarativeTableView
+items: anObject
+	items := anObject
+%
+
+! Class implementation for 'GtPhlowDeclarativeTextEditorView'
+
+!		Class methods for 'GtPhlowDeclarativeTextEditorView'
+
+category: 'instance creation'
+classmethod: GtPhlowDeclarativeTextEditorView
+fromJSONDictionary: aDictionary
+
+	| editor |
+
+	editor := super fromJSONDictionary: aDictionary.
+	editor dataTransport = self dataIncluded ifTrue:
+		[ editor string: (aDictionary at: #string) ].
+	^editor
+%
+
+!		Instance methods for 'GtPhlowDeclarativeTextEditorView'
+
+category: 'converting'
+method: GtPhlowDeclarativeTextEditorView
+asDictionaryForExport 
+
+	| dictionary |
+
+	dictionary := super asDictionaryForExport.
+	self dataTransport = self class dataIncluded ifTrue: [ 
+		dictionary at: #string put: string ].
+	^dictionary
+%
+
+category: 'accessing'
+method: GtPhlowDeclarativeTextEditorView
+string
+
+	^ string "ifNil: [ 
+		(string isNil and: [ dataTransport = self class dataLazy ]) ifTrue: 
+			[ string := accessor data ] ]."
+%
+
+category: 'accessing'
+method: GtPhlowDeclarativeTextEditorView
+string: anObject
+	string := anObject
+%
+
+! Class implementation for 'GtPhlowDeclarativeTreeView'
+
+!		Class methods for 'GtPhlowDeclarativeTreeView'
+
+category: 'instance creation'
+classmethod: GtPhlowDeclarativeTreeView
+fromJSONDictionary: aDictionary
+	| view |
+
+	view := super fromJSONDictionary: aDictionary.
+	view dataTransport = self dataIncluded ifTrue: 
+		[ view items: (aDictionary at: #items) ].
+	view 
+		itemText: [ :item | item first ];
+		children: [ :item | item last ].
+	^ view
+%
+
+!		Instance methods for 'GtPhlowDeclarativeTreeView'
+
+category: 'accessing'
+method: GtPhlowDeclarativeTreeView
+children: aBlock 
+
+	childrenBlock := aBlock
+%
+
+category: 'initialization'
+method: GtPhlowDeclarativeTreeView
+initialize
+
+	super initialize.
+	itemTextBlock := [ :item | item asString ].
+%
+
+category: 'accessing'
+method: GtPhlowDeclarativeTreeView
+items 
+
+	^ items 
+%
+
+category: 'accessing'
+method: GtPhlowDeclarativeTreeView
+items: aBlock 
+
+	items := aBlock
+%
+
+category: 'accessing'
+method: GtPhlowDeclarativeTreeView
+itemText: aBlock 
+
+	itemTextBlock := aBlock
+%
+
+! Class implementation for 'GtRemotePhlowColumn'
+
+!		Instance methods for 'GtRemotePhlowColumn'
+
+category: 'accessing'
+method: GtRemotePhlowColumn
+cellWidth
+	^ width
+%
+
+category: 'accessing'
+method: GtRemotePhlowColumn
+index
+	^ index
+%
+
+category: 'accessing'
+method: GtRemotePhlowColumn
+index: aColumnIndex
+	index := aColumnIndex
+%
+
+category: 'accessing'
+method: GtRemotePhlowColumn
+item: aBlockOrSymbol
+	itemComputation := aBlockOrSymbol
+%
+
+category: 'accessing'
+method: GtRemotePhlowColumn
+itemComputation
+	^ itemComputation
+%
+
+category: 'private - accessing'
+method: GtRemotePhlowColumn
+rowStencil
+	^ nil
+%
+
+category: 'accessing'
+method: GtRemotePhlowColumn
+title
+	^ title
+%
+
+category: 'accessing'
+method: GtRemotePhlowColumn
+title: anObject
+	title := anObject
+%
+
+category: 'accessing'
+method: GtRemotePhlowColumn
+width: aCellWidth
+	width := aCellWidth
 %
 
 ! Class implementation for 'GtRemotePhlowDeclarativeProtoView'
@@ -425,8 +1181,34 @@ gtColumnedListFor: aView
 		title: 'Columned List';
 		priority: 20;
 		items: [ collectionOfObjects ];
-		column: 'Value' item: [ :anObject | anObject asString ];
+		column: 'Value' item: [ :anObject | anObject ];
 		column: 'Lowercase' item: [ :anObject | anObject asString asLowercase ] width: 100.
+%
+
+category: 'inspecting'
+method: GtRemotePhlowDeclarativeTestInspectable
+gtLargeColumnedListFor: aView
+	<gtView>
+
+	^aView columnedList
+		title: 'Large Columned List' ;
+		priority: 21;
+		items: [ 1 to: 1022 ];
+		column: 'Value' item: [ :anObject | anObject ];
+		column: 'Value * 10' item: [ :anObject | (anObject * 10) asString asLowercase ] width: 100.
+%
+
+category: 'inspecting'
+method: GtRemotePhlowDeclarativeTestInspectable
+gtLargeColumnedListWithIndexFor: aView
+	<gtView>
+
+	^aView columnedList
+		title: 'Large Columned List with Index';
+		priority: 21;
+		items: [ 1 to: 1022 ];
+		column: 'Index' item: [ :anObject  :anIndex | anIndex ];
+		column: 'Value' item: [ :anObject | anObject ].
 %
 
 category: 'inspecting'
@@ -438,7 +1220,7 @@ gtLargeListFor: aView
 		title: 'Large List';
 		priority: 20;
 		items: [ 1 to: 1022 ];
-		itemText: [ :item | item asString ]
+		itemText: [ :item | item  ]
 %
 
 category: 'inspecting'
@@ -450,7 +1232,7 @@ gtListFor: aView
 		title: 'List';
 		priority: 15;
 		items: [ collectionOfObjects ];
-		itemText: [ :item | item asString ]
+		itemText: [ :item | item ]
 %
 
 category: 'inspecting'
@@ -514,10 +1296,11 @@ emptyTree
 category: 'examples'
 method: GtRemotePhlowDeclarativeTreeExamples
 sentItemAt
-	<gtExample>
-	| treeView sentItem sentItems |
+	"<gtExample>"
+	| treeView declarativeView sentItem sentItems |
 
 	treeView := self treeViewWithItemsAndChildren.
+	declarativeView := treeView asGtDeclarativeView.
 	sentItems := (1 to: 4) collect: [ :i | treeView sentItemAt: { i } ].
 	self assert: sentItems equals: #(1 2 3 4).
 	sentItem := treeView sentItemAt: #(2 1).
@@ -546,7 +1329,7 @@ treeViewWithItemsAndChildren
 			aNumber = 0
 				ifTrue: [ #() ]
 				ifFalse: [ 1 to: aNumber // 2 ] ].
-	data := aView data.
+	data := aView asGtDeclarativeView items.
 	self assert: data size equals: 4.
 	self assert: data first equals: #('1' #(1) #()).
 	self assert: data last equals:  #('4' #(4) #(#('1' #(4 1) #()) #('2' #(4 2) #(#('1' #(4 2 1) #()))))).
@@ -555,162 +1338,12 @@ treeViewWithItemsAndChildren
 
 ! Class implementation for 'GtRemotePhlowDeclarativeView'
 
-!		Class methods for 'GtRemotePhlowDeclarativeView'
-
-category: 'instance creation'
-classmethod: GtRemotePhlowDeclarativeView
-accessor: aGtDViewAccessor
-	"Answer the view specified by the supplied accessor"
-
-	^(self fromJSONString: aGtDViewAccessor asJSONForExport)
-		accessor: aGtDViewAccessor;
-		yourself
-%
-
-category: 'data transport'
-classmethod: GtRemotePhlowDeclarativeView
-dataByKey
-	"Answer the enumerated value for the display data being accessed by reference and key"
-
-	^4
-%
-
-category: 'data transport'
-classmethod: GtRemotePhlowDeclarativeView
-dataByReference
-	"Answer the enumerated value for the display data being accessed by reference"
-
-	^3
-%
-
-category: 'data transport'
-classmethod: GtRemotePhlowDeclarativeView
-dataIncluded
-	"Answer the enumerated value for the display data being included with the specification"
-
-	^1
-%
-
-category: 'data transport'
-classmethod: GtRemotePhlowDeclarativeView
-dataLazy
-	"Answer the enumerated value for the display data accessor name being included with the specification.  This can then be used to retrieve the data at a later time"
-
-	^2
-%
-
-category: 'instance creation'
-classmethod: GtRemotePhlowDeclarativeView
-fromDictionary: viewDictionary
-	"Answer the view specified by viewDictionary"
-	| viewName |
-
-	viewName := viewDictionary at: #viewName.
-	(viewName -> viewDictionary) asBeaconSignal emit.
-	^(self globalsDictionary at: viewName asSymbol) fromJSONDictionary: viewDictionary.
-%
-
-category: 'instance creation'
-classmethod: GtRemotePhlowDeclarativeView
-fromJSONDictionary: aDictionary
-	"Answer an instance of the receiver from the supplied dictionary.
-	Subclasses will override this to add their specific attributes"
-
-	^self new 
-		title: (aDictionary at: #title);
-		priority: (aDictionary at: #priority);
-		dataTransport: (aDictionary at: #dataTransport);
-		yourself
-%
-
-category: 'instance creation'
-classmethod: GtRemotePhlowDeclarativeView
-fromJSONString: aString
-	"Answer the view specified by aString"
-
-	| viewDictionary viewName |
-
-	viewDictionary := self readJsonString: aString.
-	viewName := viewDictionary at: #viewName.
-	(viewName -> viewDictionary) asBeaconSignal emit.
-	^(self globalsDictionary at: viewName asSymbol) fromJSONDictionary: viewDictionary.
-%
-
 !		Instance methods for 'GtRemotePhlowDeclarativeView'
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeView
-accessor
-	^ accessor
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeView
-accessor: anObject
-	accessor := anObject
-%
 
 category: 'converting'
 method: GtRemotePhlowDeclarativeView
-asDictionaryForExport
-	"Answer the receiver as a dictionary ready for JSON serialisation.
-	Subclasses will override and add to the dictionary"
-
-	^Dictionary new 
-		at: #viewName put: self viewName;
-		at: #title put: title;
-		at: #priority put: priority;
-		at: #dataTransport put: dataTransport;
-		yourself
-%
-
-category: 'serialization'
-method: GtRemotePhlowDeclarativeView
-asJSONForExport 
-	"Answer the receiver serialised in JSON format"
-
-	^self writeJsonString: self asDictionaryForExport
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeView
-data 
-	"Answer the data appropriate to the receiver's type"
-
-	^self subclassResponsibility 
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeView
-dataTransport
-	^ dataTransport
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeView
-dataTransport: anObject
-	dataTransport := anObject
-%
-
-category: 'initialization'
-method: GtRemotePhlowDeclarativeView
-initialize
-
-	super initialize.
-	"The default is to include the data"
-	dataTransport := self class dataIncluded.
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeView
-methodName
-	^ methodName
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeView
-methodName: anObject
-	methodName := anObject
+asGtDeclarativeView
+	^ nil
 %
 
 category: 'accessing'
@@ -727,13 +1360,6 @@ priority: anObject
 
 category: 'accessing'
 method: GtRemotePhlowDeclarativeView
-sentItemAt: selection 
-
-	^ self subclassResponsibility 
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeView
 title
 	^ title
 %
@@ -744,204 +1370,144 @@ title: anObject
 	title := anObject
 %
 
+! Class implementation for 'GtRemotePhlowDeclarativeListingView'
+
+!		Instance methods for 'GtRemotePhlowDeclarativeListingView'
+
 category: 'accessing'
-method: GtRemotePhlowDeclarativeView
-viewName
-	"Answer the name of the receivers matching view in the Gt image"
-
-	^ self subclassResponsibility
-%
-
-! Class implementation for 'GtRemotePhlowDeclarativeColumnedList'
-
-!		Class methods for 'GtRemotePhlowDeclarativeColumnedList'
-
-category: 'instance creation'
-classmethod: GtRemotePhlowDeclarativeColumnedList
-fromJSONDictionary: aDictionary
-
-	| list |
-
-	list := super fromJSONDictionary: aDictionary.
-	list
-		columnTitles: (aDictionary at: #columnTitles);
-		columnWidths: (aDictionary at: #columnWidths).
-	list dataTransport = self dataIncluded ifTrue: 
-		[ list items: (aDictionary at: #items) ].
-	^list
-%
-
-!		Instance methods for 'GtRemotePhlowDeclarativeColumnedList'
-
-category: 'converting'
-method: GtRemotePhlowDeclarativeColumnedList
-asDictionaryForExport 
-
-	| dictionary |
-
-	dictionary := super asDictionaryForExport 
-		at: #columnTitles put: columnTitles asArray;
-		at: #columnWidths put: columnWidths asArray;
-		yourself.
-	self dataTransport = self class dataIncluded ifTrue: [ 
-		dictionary at: #items put: self data asArray ].
-	^dictionary
+method: GtRemotePhlowDeclarativeListingView
+defaultTransformation
+	^ GtRemotePhlowSendObjectTransformation forValuable: [ :anObject | anObject ]
 %
 
 category: 'accessing'
-method: GtRemotePhlowDeclarativeColumnedList
-column: columnName item: aBlockClosure
-
-	^ self column: columnName item: aBlockClosure width: nil
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeColumnedList
-column: columnName item: aBlockClosure width: aNumberOrNil
-
-	columnTitles add: columnName.
-	columnValues add: aBlockClosure.
-	columnWidths add: aNumberOrNil.
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeColumnedList
-columnTitles
-	^ columnTitles
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeColumnedList
-columnTitles: anObject
-	columnTitles := anObject
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeColumnedList
-columnWidths
-	^ columnWidths
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeColumnedList
-columnWidths: anObject
-	columnWidths := anObject
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeColumnedList
-data 
-
-	^ items ifNil: [ items := (itemsBuilder value collect: [ :item |
-			(columnValues collect: [ :columnValue | columnValue value: item ]) asArray ]) asArray ]
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeColumnedList
-initialize
-
-	super initialize.
-	columnValues := OrderedCollection new.
-	columnTitles := OrderedCollection new.
-	columnWidths := OrderedCollection new.
-	sendBlock := [ :object | object ].
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeColumnedList
+method: GtRemotePhlowDeclarativeListingView
 items: aBlockClosure
 
 	itemsBuilder := aBlockClosure
 %
 
-category: 'instructions'
-method: GtRemotePhlowDeclarativeColumnedList
-send: aBlock
+category: 'accessing'
+method: GtRemotePhlowDeclarativeListingView
+itemsBuilder
+	^ itemsBuilder ifNil: [ 
+		itemsBuilder := [ { } ] ]
+%
 
+category: 'api - scripting'
+method: GtRemotePhlowDeclarativeListingView
+send: aBlock
+	"Define what object should be displayed on selection and fire select or spawn item requests"
 	self
 		assert: [ aBlock isNotNil ]
 		description: [ 'Send transformation block must be non-nil'  ].
 	aBlock isSymbol ifTrue: [ 
 		self 
 			assert: [ aBlock isUnary ]
-			description: [ 'Send transformation symbol must be unary' ] ].
-	sendBlock := aBlock.
+			description: [ 'Send transformation symbol must be unary' ].
+		self transformation: (GtRemotePhlowSendObjectTransformation 
+			forValuable: [ :obj | aBlock value: obj ]).
+		^ self ].
+	self
+		assert: [ aBlock numArgs <= 2 ]
+		description: [ 'Send transformation block must have two or less arguments'  ].
+	self transformation: (GtRemotePhlowSendObjectTransformation forValuable: aBlock)
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeListingView
+transformation 	
+	^ transformation ifNil: [ 
+		transformation := self defaultTransformation ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeListingView
+transformation: aGtPhlowSendTransformation
+	transformation := aGtPhlowSendTransformation.
+%
+
+! Class implementation for 'GtRemotePhlowDeclarativeColumnedList'
+
+!		Instance methods for 'GtRemotePhlowDeclarativeColumnedList'
+
+category: 'converting'
+method: GtRemotePhlowDeclarativeColumnedList
+asGtDeclarativeView
+	"Answer the receiver as a GtDeclarativeView.
+	nil = not supported"
+
+	^GtPhlowDeclarativeColumnedListView new 
+		phlowDataSource: (GtRemotePhlowDeclarativeViewColumnedListDataSource forPhlowView: self);
+		title: self title;
+		priority: self priority;
+		columnTitles: (self columns collect: [ :each | each title ]) asArray;
+		columnWidths: (self columns collect: [ :each | each cellWidth ]) asArray;
+		dataTransport: GtPhlowDeclarativeView dataLazy
 %
 
 category: 'accessing'
 method: GtRemotePhlowDeclarativeColumnedList
-sentItemAt: selection 
-	"Answer the raw value at the supplied index"
-
-	^ sendBlock cull: (itemsBuilder value at: selection) cull: selection
+column
+	<return: #GtRemotePhlowColumn>
+	| aColumn |
+	
+	aColumn := GtRemotePhlowColumn new index: self columns size + 1.
+	self columns add: aColumn.
+	^ aColumn
 %
 
 category: 'accessing'
 method: GtRemotePhlowDeclarativeColumnedList
-viewName 
+column: columnName item: aBlockClosure
+	| aColumn |
+	aColumn := self column.
+	aColumn title: columnName.
+	aColumn item: aBlockClosure
+%
 
-	^ #GtDeclarativeColumnedList
+category: 'accessing'
+method: GtRemotePhlowDeclarativeColumnedList
+column: columnName item: aBlockClosure width: aNumberOrNil
+ 	| aColumn |
+	aColumn := self column.
+	aColumn title: columnName.
+	aColumn item: aBlockClosure.
+	aColumn width: aNumberOrNil.
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeColumnedList
+columns
+	^ columns ifNil: [
+		columns := OrderedCollection new ]
 %
 
 ! Class implementation for 'GtRemotePhlowDeclarativeList'
-
-!		Class methods for 'GtRemotePhlowDeclarativeList'
-
-category: 'instance creation'
-classmethod: GtRemotePhlowDeclarativeList
-fromJSONDictionary: aDictionary
-	| list |
-
-	list := super fromJSONDictionary: aDictionary.
-	list dataTransport = self dataIncluded ifTrue: 
-		[ list items: (aDictionary at: #items) ].
-	^list
-%
 
 !		Instance methods for 'GtRemotePhlowDeclarativeList'
 
 category: 'converting'
 method: GtRemotePhlowDeclarativeList
-asDictionaryForExport 
+asGtDeclarativeView
+	"Answer the receiver as a GtDeclarativeView.
+	nil = not supported"
 
-	| dictionary |
-
-	dictionary := super asDictionaryForExport.
-	self dataTransport = self class dataIncluded ifTrue: [ 
-		dictionary at: #items put: self data ].
-	^dictionary
+	^ GtPhlowDeclarativeListView new 
+		phlowDataSource: (GtRemotePhlowDeclarativeViewListDataSource forPhlowView: self);
+		title: self title;
+		priority: self priority;
+		dataTransport: GtPhlowDeclarativeView dataLazy.
 %
 
 category: 'accessing'
 method: GtRemotePhlowDeclarativeList
-data 
-	"Answer the list of display strings"
+itemText
+	"Answer the BlockClosure that will convert each item to its displayed format.
+	The result of the BlockClosure must be a JSON primitive type, effectively a string or number."
 
-	^ items ifNil: [ items := itemsBuilder value collect: itemTextBlock ]
-%
-
-category: 'initialization'
-method: GtRemotePhlowDeclarativeList
-initialize 
-
-	super initialize.
-	itemTextBlock := [ :item | item asString ].
-	dataTransport := self class dataLazy.
-%
-
-category: 'api - scripting'
-method: GtRemotePhlowDeclarativeList
-items: aBlockClosure
-	"Set the block closure that will be used to construct the items.
-	Note that this doesn't set the items instance variable (as one might expect)"
-
-	itemsBuilder := aBlockClosure
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeList
-itemsBuilder
-	^ itemsBuilder
+	^ itemTextBlock ifNil: [ 
+		itemTextBlock := [ :item | item ] ] 
 %
 
 category: 'api - scripting'
@@ -951,96 +1517,9 @@ itemText: aBlockClosure
 	itemTextBlock := aBlockClosure
 %
 
-category: 'accessing'
-method: GtRemotePhlowDeclarativeList
-itemTextBlock
-	"Answer the BlockClosure that will convert each item to its displayed format.
-	The result of the BlockClosure must be a JSON primitive type, effectively a string or number."
-
-	^ itemTextBlock
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeList
-retrieveTotalItemsCount
-	^ self accessor
-		retrieveTotalItemsCountForViewSelector: self methodName
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeList
-retriveFormattedItems
-	^ self accessor 
-		retriveFormattedItemsForViewSelector: self methodName
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeList
-retriveSentItemAt: aSelectionIndex
-	^ self accessor 
-			retriveSentItemForViewSelector: self methodName
-			atIndex: aSelectionIndex
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeList
-sentItemAt: selection 
-	"Answer the raw value at the supplied index"
-
-	^ itemsBuilder value at: selection
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeList
-totalItemsCount
-	^ totalItemsCount ifNil: [ 
-		totalItemsCount := self retrieveTotalItemsCount ]
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeList
-viewName
-	"Answer the name of the receivers matching view in the Gt image"
-
-	^ #GtDeclarativeList
-%
-
 ! Class implementation for 'GtRemotePhlowDeclarativeTable'
 
-!		Class methods for 'GtRemotePhlowDeclarativeTable'
-
-category: 'instance creation'
-classmethod: GtRemotePhlowDeclarativeTable
-fromJSONDictionary: aDictionary
-
-	| table |
-
-	table := super fromJSONDictionary: aDictionary.
-	table dataTransport = self dataIncluded ifTrue: 
-		[ table items: (aDictionary at: #items) ].
-	^table
-%
-
 !		Instance methods for 'GtRemotePhlowDeclarativeTable'
-
-category: 'converting'
-method: GtRemotePhlowDeclarativeTable
-asDictionaryForExport 
-
-	| dictionary |
-
-	dictionary := super asDictionaryForExport.
-	self dataTransport = self class dataIncluded ifTrue: [ 
-		dictionary at: #data put: items ].
-	^dictionary
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeTable
-data 
-
-	^ items
-%
 
 category: 'accessing'
 method: GtRemotePhlowDeclarativeTable
@@ -1054,55 +1533,21 @@ items: anObject
 	items := anObject
 %
 
-category: 'accessing'
-method: GtRemotePhlowDeclarativeTable
-viewName 
-
-	^ #GtDeclarativeTable
-%
-
 ! Class implementation for 'GtRemotePhlowDeclarativeTextEditor'
-
-!		Class methods for 'GtRemotePhlowDeclarativeTextEditor'
-
-category: 'instance creation'
-classmethod: GtRemotePhlowDeclarativeTextEditor
-fromJSONDictionary: aDictionary
-
-	| editor |
-
-	editor := super fromJSONDictionary: aDictionary.
-	editor dataTransport = self dataIncluded ifTrue:
-		[ editor string: (aDictionary at: #string) ].
-	^editor
-%
 
 !		Instance methods for 'GtRemotePhlowDeclarativeTextEditor'
 
 category: 'converting'
 method: GtRemotePhlowDeclarativeTextEditor
-asDictionaryForExport 
+asGtDeclarativeView
+	"Answer the receiver as a GtDeclarativeView.
+	nil = not supported"
 
-	| dictionary |
-
-	dictionary := super asDictionaryForExport.
-	self dataTransport = self class dataIncluded ifTrue: [ 
-		dictionary at: #string put: self data ].
-	^dictionary
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeTextEditor
-data 
-
-	^ textBuilder value
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeTextEditor
-sentItemAt: selector 
-
-	^ self shouldNotImplement 
+	^GtPhlowDeclarativeTextEditorView new 
+		title: self title;
+		priority: self priority;
+		string: self textBuilder value asString;
+		dataTransport: GtPhlowDeclarativeView dataIncluded.
 %
 
 category: 'accessing'
@@ -1116,9 +1561,8 @@ text: aBlockClosure
 
 category: 'accessing'
 method: GtRemotePhlowDeclarativeTextEditor
-viewName 
-
-	^ #GtDeclarativeTextEditor
+textBuilder
+	^ textBuilder
 %
 
 ! Class implementation for 'GtRemotePhlowDeclarativeTree'
@@ -1131,7 +1575,7 @@ add: item index: anArray to: stream
 	"Add the supplied item, index and the item's children to the stream"
 
 	stream nextPut: { 
-		(itemTextBlock value: item) asString. 
+		(self itemText value: item) asString. 
 		anArray.
 		Array streamContents: [ :childStream | 
 			(childrenBlock value: item) doWithIndex: [ :child :i |
@@ -1140,14 +1584,17 @@ add: item index: anArray to: stream
 
 category: 'converting'
 method: GtRemotePhlowDeclarativeTree
-asDictionaryForExport 
+asGtDeclarativeView
+	"Answer the receiver as a GtDeclarativeView.
+	nil = not supported"
 
-	| dictionary |
-
-	dictionary := super asDictionaryForExport.
-	self dataTransport = self class dataIncluded ifTrue: [ 
-		dictionary at: #items put: self data ].
-	^ dictionary
+	^ GtPhlowDeclarativeTreeView new 
+		title: self title;
+		priority: self priority;
+		items: (Array streamContents: [ :stream |
+			self itemsBuilder value doWithIndex: [ :item :i |
+				self add: item index: { i } to: stream ] ]);
+		dataTransport: GtPhlowDeclarativeView dataIncluded.
 %
 
 category: 'accessing'
@@ -1162,18 +1609,6 @@ method: GtRemotePhlowDeclarativeTree
 children: aBlock
 
 	childrenBlock := aBlock
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeTree
-data
-	"Answer the entire tree as an Array of Arrays.
-	Each array is { item. index. children. }.
-	index is an Array of the nested indices."
-
-	^ Array streamContents: [ :stream |
-		itemsBuilder value doWithIndex: [ :item :i |
-			self add: item index: { i } to: stream ] ]
 %
 
 category: 'private'
@@ -1193,7 +1628,6 @@ method: GtRemotePhlowDeclarativeTree
 initialize
 
 	super initialize.
-	itemTextBlock := [ :item | item ].
 %
 
 category: 'accessing'
@@ -1214,7 +1648,8 @@ category: 'accessing'
 method: GtRemotePhlowDeclarativeTree
 itemText
 
-	^ itemTextBlock
+	^ itemTextBlock ifNil: [ 
+		itemTextBlock := [ :item | item ] ]
 %
 
 category: 'accessing'
@@ -1224,137 +1659,149 @@ itemText: aBlock
 	itemTextBlock := aBlock
 %
 
-category: 'accessing'
-method: GtRemotePhlowDeclarativeTree
-sentItemAt: anArray
-	"Answer the item at the supplied index"
-	| value |
+! Class implementation for 'GtRemotePhlowDeclarativeViewDataSource'
 
-	value := itemsBuilder value at: anArray first.
-	anArray allButFirstDo: [ :index |
-		value := (childrenBlock value: value) at: index ].
-	^ value
+!		Class methods for 'GtRemotePhlowDeclarativeViewDataSource'
+
+category: 'as yet unclassified'
+classmethod: GtRemotePhlowDeclarativeViewDataSource
+forPhlowView: aView
+	^ self new
+		phlowView: aView
+%
+
+!		Instance methods for 'GtRemotePhlowDeclarativeViewDataSource'
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeViewDataSource
+phlowView
+	^ phlowView
 %
 
 category: 'accessing'
-method: GtRemotePhlowDeclarativeTree
-viewName
-
-	^ #GtDeclarativeTree
+method: GtRemotePhlowDeclarativeViewDataSource
+phlowView: anObject
+	phlowView := anObject
 %
 
-! Class implementation for 'GtRemotePhlowViewCache'
+! Class implementation for 'GtRemotePhlowDeclarativeViewListingDataSource'
 
-!		Class methods for 'GtRemotePhlowViewCache'
+!		Instance methods for 'GtRemotePhlowDeclarativeViewListingDataSource'
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeViewListingDataSource
+formatItem: anObject atIndex: anIndex
+	self subclassResponsibility
+%
+
+category: 'api'
+method: GtRemotePhlowDeclarativeViewListingDataSource
+retrieveItems: anItemsCount fromIndex: anIndex
+	| viewItems targetItems formattedItems |
+	viewItems := self viewItems.
+	targetItems := (viewItems 
+			copyFrom: anIndex
+			to: ((anIndex + anItemsCount - 1) min: viewItems size)).
+	formattedItems := Array new: targetItems size.
+	targetItems withIndexDo: [ :each :itemIndex | 
+		formattedItems 
+			at: itemIndex
+			put: (self formatItem: each atIndex: anIndex + itemIndex - 1) ].
+	^ formattedItems
+%
+
+category: 'api'
+method: GtRemotePhlowDeclarativeViewListingDataSource
+retrieveTotalItemsCount
+	^ self viewItems size
+%
+
+category: 'api'
+method: GtRemotePhlowDeclarativeViewListingDataSource
+retriveSentItemAt: aSelectionIndex
+	"Answer the raw value at the supplied index"
+	
+	^ self phlowView transformation 
+		transformedValueFrom: (self viewItems at: aSelectionIndex)
+		selection: aSelectionIndex
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeViewListingDataSource
+viewItems
+	^ cachedItems ifNil: [ 
+		cachedItems := self phlowView itemsBuilder value ]
+%
+
+! Class implementation for 'GtRemotePhlowDeclarativeViewColumnedListDataSource'
+
+!		Instance methods for 'GtRemotePhlowDeclarativeViewColumnedListDataSource'
 
 category: 'instance creation'
-classmethod: GtRemotePhlowViewCache
-viewedObject: aGtViewedObject selector: viewSelector
-
-	^ self new 
-		viewedObject: aGtViewedObject;
-		viewSelector: viewSelector;
-		yourself
+method: GtRemotePhlowDeclarativeViewColumnedListDataSource
+formatItem: anObject atIndex: rowIndex
+	| phlowColumns formattedColumnItems |
+	phlowColumns := self phlowView columns.
+	formattedColumnItems := Array new: phlowColumns size.
+	phlowColumns withIndexDo: [ :column :columnIndex | 
+		formattedColumnItems 
+			at:columnIndex
+			put: (column itemComputation 
+				cull: anObject cull: rowIndex cull: columnIndex) gtDisplayString ].
+	^ formattedColumnItems
 %
 
-!		Instance methods for 'GtRemotePhlowViewCache'
+! Class implementation for 'GtRemotePhlowDeclarativeViewListDataSource'
 
-category: 'accessing'
-method: GtRemotePhlowViewCache
-cachedData
-	^ cachedData ifNil: [ 
-		cachedData := Dictionary new ]
+!		Instance methods for 'GtRemotePhlowDeclarativeViewListDataSource'
+
+category: 'api'
+method: GtRemotePhlowDeclarativeViewListDataSource
+formatItem: anObject atIndex: rowIndex
+	^ (self phlowView itemText value: anObject) gtDisplayString
 %
 
-category: 'accessing'
-method: GtRemotePhlowViewCache
-catcheAt: aKey	ifAbsentPut: aPutBlock
-	^ self cachedData 
-		at: aKey ifAbsentPut: aPutBlock
+! Class implementation for 'GtRemotePhlowSendObjectTransformation'
+
+!		Class methods for 'GtRemotePhlowSendObjectTransformation'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowSendObjectTransformation
+forValuable: aValuable
+	^ self new
+		valuable: aValuable
 %
 
-category: 'accessing'
-method: GtRemotePhlowViewCache
-declarativeView
+!		Instance methods for 'GtRemotePhlowSendObjectTransformation'
 
-	^ declarativeView ifNil: 
-		[ declarativeView := (self object perform: viewSelector with: GtRemotePhlowDeclarativeProtoView new) ]
+category: 'asserting'
+method: GtRemotePhlowSendObjectTransformation
+assertValuable: aBlock
+	self
+		assert: [ aBlock isNotNil ]
+		description: [ 'Send transformation block must be non-nil'  ].
+	self
+		assert: [ aBlock numArgs <= 2 ]
+		description: [ 'Send transformation block must have two or less arguments'  ].
 %
 
-category: 'accessing'
-method: GtRemotePhlowViewCache
-object
-
-	^ self viewedObject object
-%
-
-category: 'accessing'
-method: GtRemotePhlowViewCache
-retrieveItems: anItemsCount fromIndex: anIndex
-	|  viewItems |
-	viewItems := self 
-		catcheAt: #items 
-		ifAbsentPut: [ self declarativeView itemsBuilder value ].
-	^ ((viewItems 
-			copyFrom: anIndex
-			to: ((anIndex + anItemsCount - 1) min: viewItems size))
-	 			collect: [ :each | 
-					(self declarativeView itemTextBlock value: each) asString ]) asArray
-%
-
-category: 'accessing'
-method: GtRemotePhlowViewCache
-retrieveTotalItemsCount
-	|  viewItems |
-	viewItems := self 
-		catcheAt: #items 
-		ifAbsentPut: [ self declarativeView itemsBuilder value ].
-	^ viewItems size
+category: 'private - accessing'
+method: GtRemotePhlowSendObjectTransformation
+transformedValueFrom: aSelectedObject selection: aSelectionIndices
+	^ self valuable cull: aSelectedObject cull: aSelectionIndices
 %
 
 category: 'accessing'
-method: GtRemotePhlowViewCache
-retriveFormattedItems
-	|  viewItems |
-	viewItems := self 
-		catcheAt: #items 
-		ifAbsentPut: [ self declarativeView itemsBuilder value ].
-	^ (viewItems collect: [ :each | 
-		(self declarativeView itemTextBlock value: each) asString ]) asArray
+method: GtRemotePhlowSendObjectTransformation
+valuable
+	^ valuable
 %
 
 category: 'accessing'
-method: GtRemotePhlowViewCache
-retriveSentItemAtIndex: aSelectionIndex
-	|  viewItems |
-	viewItems := self 
-		catcheAt: #items 
-		ifAbsentPut: [ self declarativeView itemsBuilder value ].
-	^ viewItems at: aSelectionIndex
-%
-
-category: 'accessing'
-method: GtRemotePhlowViewCache
-viewedObject
-	^ viewedObject
-%
-
-category: 'accessing'
-method: GtRemotePhlowViewCache
-viewedObject: anObject
-	viewedObject := anObject
-%
-
-category: 'accessing'
-method: GtRemotePhlowViewCache
-viewSelector
-	^ viewSelector
-%
-
-category: 'accessing'
-method: GtRemotePhlowViewCache
-viewSelector: anObject
-	viewSelector := anObject
+method: GtRemotePhlowSendObjectTransformation
+valuable: anObject
+	self assertValuable: anObject.
+	valuable := anObject
 %
 
 ! Class implementation for 'GtRemotePhlowViewedObject'
@@ -1370,49 +1817,41 @@ object: anObject
 
 !		Instance methods for 'GtRemotePhlowViewedObject'
 
-category: 'private'
-method: GtRemotePhlowViewedObject
-declarativeViewWithSelector: viewSelector
-	"Answer the objects view with the given selector name"
-
-	^ (viewCache
-		at: viewSelector
-		ifAbsentPut: [ GtRemotePhlowViewCache viewedObject: self selector: viewSelector ]) 
-			declarativeView
-%
-
 category: 'accessing'
 method: GtRemotePhlowViewedObject
-getGtViewMethodNames
+declarativeViewsBySelector
+	^ declarativeViewsBySelector ifNil: [ 
+		declarativeViewsBySelector := Dictionary new ]
+%
+
+category: 'api - accessing'
+method: GtRemotePhlowViewedObject
+getDeclarativeViewFor: viewSelector
+	^ self declarativeViewsBySelector 
+		at: viewSelector 
+		ifAbsentPut: [
+			(self object 
+				perform: viewSelector 
+				with: GtRemotePhlowDeclarativeProtoView new) asGtDeclarativeView ]
+%
+
+category: 'api - accessing'
+method: GtRemotePhlowViewedObject
+getDeclarativeViewMethodNames
 	"Answer the set of declarative view selectors provided by the object"
 
 	^ object gtPharoDeclarativeViewSelectors
 %
 
-category: 'accessing'
+category: 'api - accessing'
 method: GtRemotePhlowViewedObject
 getViewDeclaration: viewSelector
-	"Answer the declarative view dictionary for the supplied selector"
-
-	^ (self declarativeViewWithSelector: viewSelector) asDictionaryForExport 
-		at: #'__pharolinkImmediate' put: true;
-		yourself.
-%
-
-category: 'gt inspector'
-method: GtRemotePhlowViewedObject
-gtSentItemFor: viewSelector at: selection 
-	"Answer the value to be sent from the view"
-
-	^ (self declarativeViewWithSelector: viewSelector) sentItemAt: selection
-%
-
-category: 'initialization'
-method: GtRemotePhlowViewedObject
-initialize
-
-	super initialize.
-	viewCache := Dictionary new.
+	^ ((self getDeclarativeViewFor: viewSelector) 
+		ifNotNil: [ :view |
+			view asDictionaryForExport
+				at: #'__pharolinkImmediate' put: true;
+				yourself. ])
+		
 %
 
 category: 'initialization'
@@ -1427,50 +1866,6 @@ method: GtRemotePhlowViewedObject
 object
 
 	^ object
-%
-
-category: 'accessing'
-method: GtRemotePhlowViewedObject
-retrieveItemsCount: anItemsCount fromIndex: anIndex forViewSelector: aViewSelector
-	| declarativeViewCache |
-	declarativeViewCache := viewCache at: aViewSelector.
-	^ declarativeViewCache retrieveItems: anItemsCount fromIndex: anIndex
-%
-
-category: 'accessing'
-method: GtRemotePhlowViewedObject
-retrieveTotalItemsCountForViewSelector: aViewSelector
-	| declarativeViewCache |
-	declarativeViewCache := viewCache at: aViewSelector.
-	^ declarativeViewCache retrieveTotalItemsCount
-%
-
-category: 'accessing'
-method: GtRemotePhlowViewedObject
-retriveFormattedItemsForViewSelector: aViewSelector
-	| declarativeViewCache |
-	declarativeViewCache := viewCache at: aViewSelector.
-	^ declarativeViewCache retriveFormattedItems
-%
-
-category: 'accessing'
-method: GtRemotePhlowViewedObject
-retriveSentItemForViewSelector: aViewSelector atIndex: aSelectionIndex
-	| declarativeViewCache |
-
-	declarativeViewCache := viewCache at: aViewSelector.
-	^ declarativeViewCache retriveSentItemAtIndex: aSelectionIndex
-%
-
-category: 'private'
-method: GtRemotePhlowViewedObject
-viewWithSelector: viewSelector
-	"Answer the objects view with the given selector name"
-
-	^ (viewCache
-		at: viewSelector
-		ifAbsentPut: [ GtRemotePhlowViewCache viewedObject: self selector: viewSelector ]) 
-			view
 %
 
 ! Class extensions for 'Behavior'

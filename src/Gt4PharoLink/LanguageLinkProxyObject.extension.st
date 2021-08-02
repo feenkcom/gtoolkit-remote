@@ -10,16 +10,19 @@ LanguageLinkProxyObject >> addPlaygroundBindingsTo: aCommandFactory [
 { #category : '*Gt4PharoLink' }
 LanguageLinkProxyObject >> declarativeViews [
 	"Answer the views for the receiver"
-	| viewSelectors rawViews viewDictionary |
+	| rawViews  |
 
 	self viewProxyDo: [ :remoteInspectorProxy |
-		viewSelectors := remoteInspectorProxy getGtViewMethodNames.
+		| viewSelectors |
+		viewSelectors := remoteInspectorProxy getDeclarativeViewMethodNames.
 		rawViews := viewSelectors collect: [ :viewSelector |
+			| viewDictionary declarativeView |
 			viewDictionary := remoteInspectorProxy getViewDeclaration: viewSelector.
-			((GtDeclarativeView fromDictionary: viewDictionary)
-					accessor: remoteInspectorProxy;
-					methodName: viewSelector;
-					yourself) ] ].
+			declarativeView := GtPhlowDeclarativeView fromDictionary: viewDictionary.
+			declarativeView
+				methodSelector: viewSelector;
+				initializeFromInspector: remoteInspectorProxy.
+			declarativeView ] ].
 
 	^ rawViews
 ]
@@ -95,25 +98,6 @@ LanguageLinkProxyObject >> gtProxyViewsFor: aView [
 		items: [ self declarativeViews ];
 		itemText: [ :aViewAccessor | aViewAccessor title ];
 		send: [ :aDeclarativeView | aDeclarativeView ]
-]
-
-{ #category : '*Gt4PharoLink' }
-LanguageLinkProxyObject >> gtSentItemFor: methodName at: selection [ 
-	"Pass the #gtSentItemFor:at: request on to the receiver's object, which is a GtViewedObject"
-	| message |
-
-	self assert: (PharoLinkRegistry isPrimitive: methodName).
-	self assert: (PharoLinkRegistry isPrimitive: selection).
-
-	message := String streamContents: [ :stream |
-		stream 
-			<< 'self gtSentItemFor: #';
-			<< methodName;
-			<< ' at: ';
-			print: selection ].
-	^ self newCommandFactory
-		<< message;
-		sendAndWait.
 ]
 
 { #category : '*Gt4PharoLink' }

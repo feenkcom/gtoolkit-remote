@@ -15,7 +15,7 @@ Class {
 		'itemTextBlock',
 		'childrenBlock'
 	],
-	#category : 'GToolkit-RemotePhlow'
+	#category : 'GToolkit-RemotePhlow-PhlowViews'
 }
 
 { #category : 'private' }
@@ -23,7 +23,7 @@ GtRemotePhlowDeclarativeTree >> add: item index: anArray to: stream [
 	"Add the supplied item, index and the item's children to the stream"
 
 	stream nextPut: { 
-		(itemTextBlock value: item) asString. 
+		(self itemText value: item) asString. 
 		anArray.
 		Array streamContents: [ :childStream | 
 			(childrenBlock value: item) doWithIndex: [ :child :i |
@@ -31,14 +31,18 @@ GtRemotePhlowDeclarativeTree >> add: item index: anArray to: stream [
 ]
 
 { #category : 'converting' }
-GtRemotePhlowDeclarativeTree >> asDictionaryForExport [ 
+GtRemotePhlowDeclarativeTree >> asGtDeclarativeView [
+	"Answer the receiver as a GtDeclarativeView.
+	nil = not supported"
 
-	| dictionary |
+	^ GtPhlowDeclarativeTreeView new 
+		title: self title;
+		priority: self priority;
+		items: (Array streamContents: [ :stream |
+			self itemsBuilder value doWithIndex: [ :item :i |
+				self add: item index: { i } to: stream ] ]);
+		dataTransport: GtPhlowDeclarativeView dataIncluded.
 
-	dictionary := super asDictionaryForExport.
-	self dataTransport = self class dataIncluded ifTrue: [ 
-		dictionary at: #items put: self data ].
-	^ dictionary
 ]
 
 { #category : 'accessing' }
@@ -51,17 +55,6 @@ GtRemotePhlowDeclarativeTree >> children [
 GtRemotePhlowDeclarativeTree >> children: aBlock [
 
 	childrenBlock := aBlock
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeTree >> data [
-	"Answer the entire tree as an Array of Arrays.
-	Each array is { item. index. children. }.
-	index is an Array of the nested indices."
-
-	^ Array streamContents: [ :stream |
-		itemsBuilder value doWithIndex: [ :item :i |
-			self add: item index: { i } to: stream ] ]
 ]
 
 { #category : 'private' }
@@ -80,13 +73,13 @@ GtRemotePhlowDeclarativeTree >> expand: anOrderedCollection to: selection from: 
 GtRemotePhlowDeclarativeTree >> initialize [
 
 	super initialize.
-	itemTextBlock := [ :item | item ].
 ]
 
 { #category : 'accessing' }
 GtRemotePhlowDeclarativeTree >> itemText [
 
-	^ itemTextBlock
+	^ itemTextBlock ifNil: [ 
+		itemTextBlock := [ :item | item ] ]
 ]
 
 { #category : 'accessing' }
@@ -96,31 +89,13 @@ GtRemotePhlowDeclarativeTree >> itemText: aBlock [
 ]
 
 { #category : 'accessing' }
-GtRemotePhlowDeclarativeTree >> items [
-
-	^ itemsBuilder
-]
-
-{ #category : 'accessing' }
 GtRemotePhlowDeclarativeTree >> items: aBlock [
 
 	itemsBuilder := aBlock
 ]
 
 { #category : 'accessing' }
-GtRemotePhlowDeclarativeTree >> sentItemAt: anArray [
-	"Answer the item at the supplied index"
-	| value |
-
-	value := itemsBuilder value at: anArray first.
-	anArray allButFirstDo: [ :index |
-		value := (childrenBlock value: value) at: index ].
-	^ value
-
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeTree >> viewName [
-
-	^ #GtDeclarativeTree
+GtRemotePhlowDeclarativeTree >> itemsBuilder [
+	^ itemsBuilder ifNil: [ 
+		itemsBuilder := [ #() ] ]
 ]

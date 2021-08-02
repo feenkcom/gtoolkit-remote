@@ -1,6 +1,6 @@
 Class {
-	#name : #GtLoadItemsStackSignal,
-	#superclass : #ContextStackSignal,
+	#name : 'GtLoadItemsStackSignal',
+	#superclass : 'ContextStackSignal',
 	#instVars : [
 		'startIndex',
 		'chunkSize'
@@ -8,17 +8,17 @@ Class {
 	#category : 'GToolkit-RemoteGt-Declarative Views'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtLoadItemsStackSignal >> chunkSize [
 	^ chunkSize
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtLoadItemsStackSignal >> chunkSize: anObject [
 	chunkSize := anObject
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 GtLoadItemsStackSignal >> printOneLineContentsOn: stream [ 
 	super printOneLineContentsOn: stream.
 	stream 
@@ -27,12 +27,12 @@ GtLoadItemsStackSignal >> printOneLineContentsOn: stream [
 		nextPutAll: ')'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtLoadItemsStackSignal >> startIndex [
 	^ startIndex
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtLoadItemsStackSignal >> startIndex: anObject [
 	startIndex := anObject
 ]

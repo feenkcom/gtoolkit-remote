@@ -1,7 +1,7 @@
 Class {
 	#name : 'GtRemotePhlowDeclarativeProtoView',
 	#superclass : 'Object',
-	#category : 'GToolkit-RemotePhlow'
+	#category : 'GToolkit-RemotePhlow-PhlowViews'
 }
 
 { #category : 'decorating' }

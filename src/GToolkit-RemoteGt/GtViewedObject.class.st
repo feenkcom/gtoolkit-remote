@@ -18,90 +18,83 @@ Internal Representation and Key Implementation Points.
 
 "
 Class {
-	#name : #GtViewedObject,
-	#superclass : #Object,
+	#name : 'GtViewedObject',
+	#superclass : 'Object',
 	#instVars : [
 		'object',
-		'viewCache'
+		'declarativeViewsBySelector'
 	],
 	#category : 'GToolkit-RemoteGt-Server'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtViewedObject class >> object: anObject [
 
 	^ self new initializeWith: anObject
 ]
 
-{ #category : #private }
-GtViewedObject >> declarativeViewWithSelector: viewSelector [
-	"Answer the objects view with the given selector name"
-
-	^ (viewCache
-		at: viewSelector
-		ifAbsentPut: [ GtViewCache viewedObject: self selector: viewSelector ]) 
-			declarativeView
+{ #category : 'accessing' }
+GtViewedObject >> declarativeViewsBySelector [
+	^ declarativeViewsBySelector ifNil: [ 
+		declarativeViewsBySelector := Dictionary new ]
 ]
 
-{ #category : #accessing }
-GtViewedObject >> getGtViewMethodNames [
+{ #category : 'api - accessing' }
+GtViewedObject >> getDeclarativeViewFor: viewSelector [
+	^ self declarativeViewsBySelector 
+		at: viewSelector 
+		ifAbsentPut: [
+			(self object 
+				perform: viewSelector 
+				with: GtPhlowEmptyView new) asGtDeclarativeView ]
+]
+
+{ #category : 'api - accessing' }
+GtViewedObject >> getDeclarativeViewMethodNames [
 	"Answer the set of declarative view selectors provided by the object"
 
 	^ object gtDeclarativeViewSelectors copyWithout: #gtRawFor:
 ]
 
-{ #category : #accessing }
+{ #category : 'api - accessing' }
 GtViewedObject >> getViewDeclaration: viewSelector [
-	"Answer the declarative view dictionary for the supplied selector"
-
-	^ (self declarativeViewWithSelector: viewSelector) asDictionaryForExport 
-		at: #'__pharolinkImmediate' put: true;
-		yourself.
+	^ ((self getDeclarativeViewFor: viewSelector) 
+		ifNotNil: [ :view |
+			view asDictionaryForExport
+				at: #'__pharolinkImmediate' put: true;
+				yourself. ])
+		
 ]
 
-{ #category : #accessing }
-GtViewedObject >> gtCachedViewsFor: aView [
+{ #category : 'gt - extensions' }
+GtViewedObject >> gtDeclarativeViewsFor: aView [
 	<gtView>
 	^ aView columnedList
-		title: 'Cached Views';
+		title: 'Declarative Views';
 		items: [ 
-			viewCache 
+			declarativeViewsBySelector 
 				ifNil: [ #() ]
-				ifNotNil: [ viewCache associations ] ];
+				ifNotNil: [ declarativeViewsBySelector associations ] ];
 		column: 'Selector' text: [ :assoc | assoc key ];
-		column: 'Title' text: [ :assoc | assoc value declarativeView title ];
+		column: 'Title' text: [ :assoc | assoc value title ];
 		column: 'Data Transport' text: [ :assoc | 
-			assoc value declarativeView dataTransport ];
+			assoc value dataTransport ];
 		send: [ :assoc | assoc value ]
 ]
 
-{ #category : #'gt inspector' }
-GtViewedObject >> gtSentItemFor: viewSelector at: selection [ 
-	"Answer the value to be sent from the view"
-
-	^ (self declarativeViewWithSelector: viewSelector) sentItemAt: selection
-]
-
-{ #category : #initialization }
-GtViewedObject >> initialize [
-
-	super initialize.
-	viewCache := Dictionary new.
-]
-
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtViewedObject >> initializeWith: anObject [
 
 	object := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtViewedObject >> object [
 
 	^ object
 ]
 
-{ #category : #accessing }
+{ #category : 'api - accessing' }
 GtViewedObject >> rawViewData [
 	"Answer the data for the raw view"
 	| variableNodes icon name value |
@@ -119,42 +112,4 @@ GtViewedObject >> rawViewData [
 			value := node rawValue.
 			stream nextPut: { icon. name. value. } ] ].
 
-]
-
-{ #category : #accessing }
-GtViewedObject >> retrieveItemsCount: anItemsCount fromIndex: anIndex forViewSelector: aViewSelector [
-	| declarativeViewCache |
-	declarativeViewCache := viewCache at: aViewSelector.
-	^ declarativeViewCache retrieveItems: anItemsCount fromIndex: anIndex
-]
-
-{ #category : #accessing }
-GtViewedObject >> retrieveTotalItemsCountForViewSelector: aViewSelector [
-	| declarativeViewCache |
-	declarativeViewCache := viewCache at: aViewSelector.
-	^ declarativeViewCache retrieveTotalItemsCount
-]
-
-{ #category : #accessing }
-GtViewedObject >> retriveFormattedItemsForViewSelector: aViewSelector [
-	| declarativeViewCache |
-	declarativeViewCache := viewCache at: aViewSelector.
-	^ declarativeViewCache retriveFormattedItems
-]
-
-{ #category : #accessing }
-GtViewedObject >> retriveSentItemForViewSelector: aViewSelector atIndex: aSelectionIndex [
-	| declarativeViewCache |
-	declarativeViewCache := viewCache at: aViewSelector.
-	^ declarativeViewCache retriveSentItemAtIndex: aSelectionIndex 
-]
-
-{ #category : #private }
-GtViewedObject >> viewWithSelector: viewSelector [
-	"Answer the objects view with the given selector name"
-
-	^ (viewCache
-		at: viewSelector
-		ifAbsentPut: [ GtViewCache viewedObject: self selector: viewSelector ]) 
-			view
 ]
