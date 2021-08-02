@@ -3,24 +3,6 @@
 
 doit
 (Object
-	subclass: 'GtGemStoneRPackage'
-	instVarNames: #( name )
-	classVars: #(  )
-	classInstVars: #(  )
-	poolDictionaries: #()
-	inDictionary: Globals
-	options: #( #logCreation )
-)
-		category: 'Gtoolkit-RemoteCoder-GemStone';
-		immediateInvariant.
-true.
-%
-
-removeallmethods GtGemStoneRPackage
-removeallclassmethods GtGemStoneRPackage
-
-doit
-(Object
 	subclass: 'GtPhlowDeclarativeView'
 	instVarNames: #( phlowDataSource methodSelector title priority dataTransport )
 	classVars: #(  )
@@ -588,53 +570,23 @@ true.
 removeallmethods GtRemotePhlowViewedObject
 removeallclassmethods GtRemotePhlowViewedObject
 
-! Class implementation for 'GtGemStoneRPackage'
-
-!		Class methods for 'GtGemStoneRPackage'
-
-category: 'instance creation'
-classmethod: GtGemStoneRPackage
-named: aSymbol
-
-	^ self new name: aSymbol
+doit
+(RPackage
+	subclass: 'GtGemStoneRPackage'
+	instVarNames: #( gemstoneClient gemstonePackageProxy )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'Gtoolkit-RemoteCoder-GemStone';
+		immediateInvariant.
+true.
 %
 
-!		Instance methods for 'GtGemStoneRPackage'
-
-category: 'accessing'
-method: GtGemStoneRPackage
-classes
-	| nameString |
-
-	nameString := name asString.
-	^ self gtAllClasses select: [ :each | each _classCategory = nameString ]
-%
-
-category: 'private'
-method: GtGemStoneRPackage
-gtAllClasses
-	"A hack to figure out all classes"
-	| allClasses |
-
-	allClasses := Array new.
-	System myUserProfile symbolList
-		do: [ :dict | allClasses addAll: (dict select: [ :each | each isBehavior ]) ].
-	^ allClasses
-%
-
-category: 'accessing'
-method: GtGemStoneRPackage
-name
-
-	^ name
-%
-
-category: 'accessing'
-method: GtGemStoneRPackage
-name: aSymbol
-
-	name := aSymbol asSymbol
-%
+removeallmethods GtGemStoneRPackage
+removeallclassmethods GtGemStoneRPackage
 
 ! Class implementation for 'GtPhlowDeclarativeView'
 
@@ -1007,6 +959,17 @@ fromJSONDictionary: aDictionary
 %
 
 !		Instance methods for 'GtPhlowDeclarativeTreeView'
+
+category: 'converting'
+method: GtPhlowDeclarativeTreeView
+asDictionaryForExport 
+	| dictionary |
+
+	dictionary := super asDictionaryForExport.
+	self dataTransport = self class dataIncluded ifTrue: [ 
+		dictionary at: #items put: self items ].
+	^ dictionary
+%
 
 category: 'accessing'
 method: GtPhlowDeclarativeTreeView
@@ -1398,19 +1361,6 @@ category: 'api - scripting'
 method: GtRemotePhlowDeclarativeListingView
 send: aBlock
 	"Define what object should be displayed on selection and fire select or spawn item requests"
-	self
-		assert: [ aBlock isNotNil ]
-		description: [ 'Send transformation block must be non-nil'  ].
-	aBlock isSymbol ifTrue: [ 
-		self 
-			assert: [ aBlock isUnary ]
-			description: [ 'Send transformation symbol must be unary' ].
-		self transformation: (GtRemotePhlowSendObjectTransformation 
-			forValuable: [ :obj | aBlock value: obj ]).
-		^ self ].
-	self
-		assert: [ aBlock numArgs <= 2 ]
-		description: [ 'Send transformation block must have two or less arguments'  ].
 	self transformation: (GtRemotePhlowSendObjectTransformation forValuable: aBlock)
 %
 
@@ -1632,16 +1582,16 @@ initialize
 
 category: 'accessing'
 method: GtRemotePhlowDeclarativeTree
-items
+items: aBlock
 
-	^ itemsBuilder
+	itemsBuilder := aBlock
 %
 
 category: 'accessing'
 method: GtRemotePhlowDeclarativeTree
-items: aBlock
-
-	itemsBuilder := aBlock
+itemsBuilder
+	^ itemsBuilder ifNil: [ 
+		itemsBuilder := [ #() ] ]
 %
 
 category: 'accessing'
@@ -1778,11 +1728,9 @@ category: 'asserting'
 method: GtRemotePhlowSendObjectTransformation
 assertValuable: aBlock
 	self
-		assert: [ aBlock isNotNil ]
-		description: [ 'Send transformation block must be non-nil'  ].
+		assert: [ aBlock isNotNil ].
 	self
-		assert: [ aBlock numArgs <= 2 ]
-		description: [ 'Send transformation block must have two or less arguments'  ].
+		assert: [ aBlock argumentCount <= 2 ].
 %
 
 category: 'private - accessing'
@@ -1800,7 +1748,6 @@ valuable
 category: 'accessing'
 method: GtRemotePhlowSendObjectTransformation
 valuable: anObject
-	self assertValuable: anObject.
 	valuable := anObject
 %
 
@@ -1866,6 +1813,71 @@ method: GtRemotePhlowViewedObject
 object
 
 	^ object
+%
+
+! Class implementation for 'GtGemStoneRPackage'
+
+!		Class methods for 'GtGemStoneRPackage'
+
+category: 'instance creation'
+classmethod: GtGemStoneRPackage
+named: aSymbol gemstoneClient: aGtGemStoneClient 
+
+	^ self new
+		name: aSymbol;
+		gemstoneClient: aGtGemStoneClient;
+		getProxy
+%
+
+!		Instance methods for 'GtGemStoneRPackage'
+
+category: 'accessing'
+method: GtGemStoneRPackage
+gemstoneClient
+	^ gemstoneClient
+%
+
+category: 'accessing'
+method: GtGemStoneRPackage
+gemstoneClient: anObject
+	gemstoneClient := anObject
+%
+
+category: 'private'
+method: GtGemStoneRPackage
+getProxy
+	"Get the GemStone proxy object for the receiver's package"
+
+	gemstonePackageProxy := gemstoneClient evaluateAndWait: 
+		'GtGemStoneRPackage named: ', name printString.
+%
+
+category: 'as yet unclassified'
+method: GtGemStoneRPackage
+gtBaselinesFor: aView
+
+	^ aView empty
+%
+
+category: 'as yet unclassified'
+method: GtGemStoneRPackage
+gtDefinedTagsFor: aView context: aPhlowContext
+
+	^ aView empty
+%
+
+category: 'as yet unclassified'
+method: GtGemStoneRPackage
+gtDependencyAnalyzerFor: aView
+
+	^ aView empty
+%
+
+category: 'as yet unclassified'
+method: GtGemStoneRPackage
+gtExamplesFor: aView
+
+	^ aView empty
 %
 
 ! Class extensions for 'Behavior'
