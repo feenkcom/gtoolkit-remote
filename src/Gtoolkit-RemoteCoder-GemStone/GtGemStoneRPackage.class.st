@@ -1,45 +1,60 @@
 Class {
 	#name : 'GtGemStoneRPackage',
-	#superclass : 'Object',
+	#superclass : 'RPackage',
 	#instVars : [
-		'name'
+		'gemstoneClient',
+		'gemstonePackageProxy'
 	],
 	#category : 'Gtoolkit-RemoteCoder-GemStone'
 }
 
 { #category : 'instance creation' }
-GtGemStoneRPackage class >> named: aSymbol [
+GtGemStoneRPackage class >> named: aSymbol gemstoneClient: aGtGemStoneClient [ 
 
-	^ self new name: aSymbol
+	^ self new
+		name: aSymbol;
+		gemstoneClient: aGtGemStoneClient;
+		getProxy
 ]
 
 { #category : 'accessing' }
-GtGemStoneRPackage >> classes [
-	| nameString |
+GtGemStoneRPackage >> gemstoneClient [
+	^ gemstoneClient
+]
 
-	nameString := name asString.
-	^ self gtAllClasses select: [ :each | each _classCategory = nameString ]
+{ #category : 'accessing' }
+GtGemStoneRPackage >> gemstoneClient: anObject [
+	gemstoneClient := anObject
 ]
 
 { #category : 'private' }
-GtGemStoneRPackage >> gtAllClasses [
-	"A hack to figure out all classes"
-	| allClasses |
+GtGemStoneRPackage >> getProxy [
+	"Get the GemStone proxy object for the receiver's package"
 
-	allClasses := Array new.
-	System myUserProfile symbolList
-		do: [ :dict | allClasses addAll: (dict select: [ :each | each isBehavior ]) ].
-	^ allClasses
+	gemstonePackageProxy := gemstoneClient evaluateAndWait: 
+		'GtGemStoneRPackage named: ', name printString.
 ]
 
-{ #category : 'accessing' }
-GtGemStoneRPackage >> name [
+{ #category : 'as yet unclassified' }
+GtGemStoneRPackage >> gtBaselinesFor: aView [
 
-	^ name
+	^ aView empty
 ]
 
-{ #category : 'accessing' }
-GtGemStoneRPackage >> name: aSymbol [
+{ #category : 'as yet unclassified' }
+GtGemStoneRPackage >> gtDefinedTagsFor: aView context: aPhlowContext [
 
-	name := aSymbol asSymbol
+	^ aView empty
+]
+
+{ #category : 'as yet unclassified' }
+GtGemStoneRPackage >> gtDependencyAnalyzerFor: aView [
+
+	^ aView empty
+]
+
+{ #category : 'as yet unclassified' }
+GtGemStoneRPackage >> gtExamplesFor: aView [
+
+	^ aView empty
 ]
