@@ -15,12 +15,9 @@ Current limitations:
 "
 Class {
 	#name : 'GtRemotePhlowDeclarativeColumnedList',
-	#superclass : 'GtRemotePhlowDeclarativeView',
+	#superclass : 'GtRemotePhlowDeclarativeListingView',
 	#instVars : [
-		'items',
-		'itemsBuilder',
-		'columns',
-		'sendBlock'
+		'columns'
 	],
 	#category : 'GToolkit-RemotePhlow-PhlowViews'
 }
@@ -34,8 +31,8 @@ GtRemotePhlowDeclarativeColumnedList >> asGtDeclarativeView [
 		phlowDataSource: (GtRemotePhlowDeclarativeViewColumnedListDataSource forPhlowView: self);
 		title: self title;
 		priority: self priority;
-		columnTitles: (columns collect: [ :each | each title ]) asArray;
-		columnWidths: (columns collect: [ :each | each cellWidth ]) asArray;
+		columnTitles: (self columns collect: [ :each | each title ]) asArray;
+		columnWidths: (self columns collect: [ :each | each cellWidth ]) asArray;
 		dataTransport: GtPhlowDeclarativeView dataLazy
 ]
 
@@ -44,8 +41,8 @@ GtRemotePhlowDeclarativeColumnedList >> column [
 	<return: #GtRemotePhlowColumn>
 	| aColumn |
 	
-	aColumn := GtRemotePhlowColumn new index: columns size + 1.
-	columns add: aColumn.
+	aColumn := GtRemotePhlowColumn new index: self columns size + 1.
+	self columns add: aColumn.
 	^ aColumn
 ]
 
@@ -68,38 +65,6 @@ GtRemotePhlowDeclarativeColumnedList >> column: columnName item: aBlockClosure w
 
 { #category : 'accessing' }
 GtRemotePhlowDeclarativeColumnedList >> columns [
-	^ columns
-]
-
-{ #category : 'initialization' }
-GtRemotePhlowDeclarativeColumnedList >> initialize [
-
-	super initialize.
-	columns := OrderedCollection new.
-	itemsBuilder := [ { } ].
-	sendBlock := [ :object | object ].
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeColumnedList >> items: aBlockClosure [
-
-	itemsBuilder := aBlockClosure
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowDeclarativeColumnedList >> itemsBuilder [
-	^ itemsBuilder
-]
-
-{ #category : 'instructions' }
-GtRemotePhlowDeclarativeColumnedList >> send: aBlock [
-
-	self
-		assert: [ aBlock isNotNil ]
-		description: [ 'Send transformation block must be non-nil'  ].
-	aBlock isSymbol ifTrue: [ 
-		self 
-			assert: [ aBlock isUnary ]
-			description: [ 'Send transformation symbol must be unary' ] ].
-	sendBlock := aBlock.
+	^ columns ifNil: [
+		columns := OrderedCollection new ]
 ]

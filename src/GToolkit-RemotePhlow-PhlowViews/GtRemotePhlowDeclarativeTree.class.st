@@ -23,7 +23,7 @@ GtRemotePhlowDeclarativeTree >> add: item index: anArray to: stream [
 	"Add the supplied item, index and the item's children to the stream"
 
 	stream nextPut: { 
-		(itemTextBlock value: item) asString. 
+		(self itemText value: item) asString. 
 		anArray.
 		Array streamContents: [ :childStream | 
 			(childrenBlock value: item) doWithIndex: [ :child :i |
@@ -39,7 +39,7 @@ GtRemotePhlowDeclarativeTree >> asGtDeclarativeView [
 		title: self title;
 		priority: self priority;
 		items: (Array streamContents: [ :stream |
-			itemsBuilder value doWithIndex: [ :item :i |
+			self itemsBuilder value doWithIndex: [ :item :i |
 				self add: item index: { i } to: stream ] ]);
 		dataTransport: GtPhlowDeclarativeView dataIncluded.
 
@@ -73,13 +73,13 @@ GtRemotePhlowDeclarativeTree >> expand: anOrderedCollection to: selection from: 
 GtRemotePhlowDeclarativeTree >> initialize [
 
 	super initialize.
-	itemTextBlock := [ :item | item ].
 ]
 
 { #category : 'accessing' }
 GtRemotePhlowDeclarativeTree >> itemText [
 
-	^ itemTextBlock
+	^ itemTextBlock ifNil: [ 
+		itemTextBlock := [ :item | item ] ]
 ]
 
 { #category : 'accessing' }
@@ -89,13 +89,13 @@ GtRemotePhlowDeclarativeTree >> itemText: aBlock [
 ]
 
 { #category : 'accessing' }
-GtRemotePhlowDeclarativeTree >> items [
-
-	^ itemsBuilder
-]
-
-{ #category : 'accessing' }
 GtRemotePhlowDeclarativeTree >> items: aBlock [
 
 	itemsBuilder := aBlock
+]
+
+{ #category : 'accessing' }
+GtRemotePhlowDeclarativeTree >> itemsBuilder [
+	^ itemsBuilder ifNil: [ 
+		itemsBuilder := [ #() ] ]
 ]

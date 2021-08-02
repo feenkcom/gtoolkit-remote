@@ -8,7 +8,7 @@ GtPhlowDeclarativeView >> asJSONForExport [
 ]
 
 { #category : '*GToolkit-RemoteGt' }
-GtPhlowDeclarativeView class >> fromDictionary: viewDictionary [
+GtPhlowDeclarativeView classSide >> fromDictionary: viewDictionary [
 	"Answer the view specified by viewDictionary"
 	| viewName |
 
@@ -18,7 +18,7 @@ GtPhlowDeclarativeView class >> fromDictionary: viewDictionary [
 ]
 
 { #category : '*GToolkit-RemoteGt' }
-GtPhlowDeclarativeView class >> fromJSONString: aString [
+GtPhlowDeclarativeView classSide >> fromJSONString: aString [
 	"Answer the view specified by aString"
 
 	| viewDictionary viewName |

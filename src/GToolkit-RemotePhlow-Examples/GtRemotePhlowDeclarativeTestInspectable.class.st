@@ -44,7 +44,7 @@ GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListFor: aView [
 		title: 'Columned List';
 		priority: 20;
 		items: [ collectionOfObjects ];
-		column: 'Value' item: [ :anObject | anObject asString ];
+		column: 'Value' item: [ :anObject | anObject ];
 		column: 'Lowercase' item: [ :anObject | anObject asString asLowercase ] width: 100.
 ]
 
@@ -53,10 +53,10 @@ GtRemotePhlowDeclarativeTestInspectable >> gtLargeColumnedListFor: aView [
 	<gtView>
 
 	^aView columnedList
-		title: 'Large Columned List' translated;
+		title: 'Large Columned List' ;
 		priority: 21;
 		items: [ 1 to: 1022 ];
-		column: 'Value' item: [ :anObject | anObject asString ];
+		column: 'Value' item: [ :anObject | anObject ];
 		column: 'Value * 10' item: [ :anObject | (anObject * 10) asString asLowercase ] width: 100.
 ]
 
@@ -65,7 +65,7 @@ GtRemotePhlowDeclarativeTestInspectable >> gtLargeColumnedListWithIndexFor: aVie
 	<gtView>
 
 	^aView columnedList
-		title: 'Large Columned List with Index' translated;
+		title: 'Large Columned List with Index';
 		priority: 21;
 		items: [ 1 to: 1022 ];
 		column: 'Index' item: [ :anObject  :anIndex | anIndex ];
@@ -80,7 +80,7 @@ GtRemotePhlowDeclarativeTestInspectable >> gtLargeListFor: aView [
 		title: 'Large List';
 		priority: 20;
 		items: [ 1 to: 1022 ];
-		itemText: [ :item | item asString ]
+		itemText: [ :item | item  ]
 ]
 
 { #category : 'inspecting' }
@@ -91,7 +91,7 @@ GtRemotePhlowDeclarativeTestInspectable >> gtListFor: aView [
 		title: 'List';
 		priority: 15;
 		items: [ collectionOfObjects ];
-		itemText: [ :item | item asString ]
+		itemText: [ :item | item ]
 ]
 
 { #category : 'inspecting' }
