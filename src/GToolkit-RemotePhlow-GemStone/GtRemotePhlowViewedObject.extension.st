@@ -22,11 +22,12 @@ GtRemotePhlowViewedObject >> rawViewData [
 	^ Array streamContents: [ :stream |
 		variableBindings do: [ :binding |
 			| icon name value |
-			icon :=  #classicon.
-			"icon := ([ node rawValue class systemIconName ]
-					on: Error 
-					do: [ :error | #smallWarningIcon ])."
 			name := binding key.
 			value := binding value.
+
+			icon := ([ value class gtGsInspectorIconName ]
+					on: Error 
+					do: [ :error | #smallWarningIcon ]).
+			
 			stream nextPut: { icon. name. value } ] ].
 ]

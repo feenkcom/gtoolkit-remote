@@ -1,6 +1,11 @@
 Extension { #name : 'Object' }
 
 { #category : '*GToolkit-RemotePhlow-GemStone' }
+Object >> gtGsInspectorIconName [
+	^ #classIcon
+]
+
+{ #category : '*GToolkit-RemotePhlow-GemStone' }
 Object >> gtGsVariableValuePairsWithSelfIf: aBoolean [
 	| instVarNames bindings indexedVarsSize |
 	instVarNames := self class allInstVarNames.
