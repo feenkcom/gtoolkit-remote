@@ -3,24 +3,6 @@
 
 doit
 (Object
-	subclass: 'GtGemStoneRPackage'
-	instVarNames: #( name )
-	classVars: #(  )
-	classInstVars: #(  )
-	poolDictionaries: #()
-	inDictionary: Globals
-	options: #( #logCreation )
-)
-		category: 'Gtoolkit-RemoteCoder-GemStone';
-		immediateInvariant.
-true.
-%
-
-removeallmethods GtGemStoneRPackage
-removeallclassmethods GtGemStoneRPackage
-
-doit
-(Object
 	subclass: 'GtPhlowDeclarativeView'
 	instVarNames: #( phlowDataSource methodSelector title priority dataTransport )
 	classVars: #(  )
@@ -588,54 +570,6 @@ true.
 removeallmethods GtRemotePhlowViewedObject
 removeallclassmethods GtRemotePhlowViewedObject
 
-! Class implementation for 'GtGemStoneRPackage'
-
-!		Class methods for 'GtGemStoneRPackage'
-
-category: 'instance creation'
-classmethod: GtGemStoneRPackage
-named: aSymbol
-
-	^ self new name: aSymbol
-%
-
-!		Instance methods for 'GtGemStoneRPackage'
-
-category: 'accessing'
-method: GtGemStoneRPackage
-classes
-	| nameString |
-
-	nameString := name asString.
-	^ self gtAllClasses select: [ :each | each _classCategory = nameString ]
-%
-
-category: 'private'
-method: GtGemStoneRPackage
-gtAllClasses
-	"A hack to figure out all classes"
-	| allClasses |
-
-	allClasses := Array new.
-	System myUserProfile symbolList
-		do: [ :dict | allClasses addAll: (dict select: [ :each | each isBehavior ]) ].
-	^ allClasses
-%
-
-category: 'accessing'
-method: GtGemStoneRPackage
-name
-
-	^ name
-%
-
-category: 'accessing'
-method: GtGemStoneRPackage
-name: aSymbol
-
-	name := aSymbol asSymbol
-%
-
 ! Class implementation for 'GtPhlowDeclarativeView'
 
 !		Class methods for 'GtPhlowDeclarativeView'
@@ -1007,6 +941,17 @@ fromJSONDictionary: aDictionary
 %
 
 !		Instance methods for 'GtPhlowDeclarativeTreeView'
+
+category: 'converting'
+method: GtPhlowDeclarativeTreeView
+asDictionaryForExport 
+	| dictionary |
+
+	dictionary := super asDictionaryForExport.
+	self dataTransport = self class dataIncluded ifTrue: [ 
+		dictionary at: #items put: self items ].
+	^ dictionary
+%
 
 category: 'accessing'
 method: GtPhlowDeclarativeTreeView
@@ -1398,19 +1343,6 @@ category: 'api - scripting'
 method: GtRemotePhlowDeclarativeListingView
 send: aBlock
 	"Define what object should be displayed on selection and fire select or spawn item requests"
-	self
-		assert: [ aBlock isNotNil ]
-		description: [ 'Send transformation block must be non-nil'  ].
-	aBlock isSymbol ifTrue: [ 
-		self 
-			assert: [ aBlock isUnary ]
-			description: [ 'Send transformation symbol must be unary' ].
-		self transformation: (GtRemotePhlowSendObjectTransformation 
-			forValuable: [ :obj | aBlock value: obj ]).
-		^ self ].
-	self
-		assert: [ aBlock numArgs <= 2 ]
-		description: [ 'Send transformation block must have two or less arguments'  ].
 	self transformation: (GtRemotePhlowSendObjectTransformation forValuable: aBlock)
 %
 
@@ -1632,16 +1564,16 @@ initialize
 
 category: 'accessing'
 method: GtRemotePhlowDeclarativeTree
-items
+items: aBlock
 
-	^ itemsBuilder
+	itemsBuilder := aBlock
 %
 
 category: 'accessing'
 method: GtRemotePhlowDeclarativeTree
-items: aBlock
-
-	itemsBuilder := aBlock
+itemsBuilder
+	^ itemsBuilder ifNil: [ 
+		itemsBuilder := [ #() ] ]
 %
 
 category: 'accessing'
@@ -1778,11 +1710,9 @@ category: 'asserting'
 method: GtRemotePhlowSendObjectTransformation
 assertValuable: aBlock
 	self
-		assert: [ aBlock isNotNil ]
-		description: [ 'Send transformation block must be non-nil'  ].
+		assert: [ aBlock isNotNil ].
 	self
-		assert: [ aBlock numArgs <= 2 ]
-		description: [ 'Send transformation block must have two or less arguments'  ].
+		assert: [ aBlock argumentCount <= 2 ].
 %
 
 category: 'private - accessing'
@@ -1800,7 +1730,6 @@ valuable
 category: 'accessing'
 method: GtRemotePhlowSendObjectTransformation
 valuable: anObject
-	self assertValuable: anObject.
 	valuable := anObject
 %
 
@@ -1922,6 +1851,16 @@ gtSuperclassesFor: aView
 		itemText: [ :cls | cls name ]
 %
 
+! Class extensions for 'Collection'
+
+!		Class methods for 'Collection'
+
+category: '*GToolkit-RemotePhlow-GemStone'
+classmethod: Collection
+gtGsInspectorIconName
+	^ #collectionIcon
+%
+
 ! Class extensions for 'GtRemotePhlowDeclarativeTestInspectable'
 
 !		Class methods for 'GtRemotePhlowDeclarativeTestInspectable'
@@ -1993,32 +1932,64 @@ category: '*GToolkit-RemotePhlow-GemStone'
 method: GtRemotePhlowViewedObject
 rawViewData
 	"Answer the data for the raw view"
-	| "icon name value" instVarNames indexedVarsSize |
+	| variableBindings |
 
-
-	"GemStone doesn't have GTInspectorSelfNode.  The call to #addRawSelfNodeTo: will allow the platform specific code to be added.
-	variableNodes add: (GTInspectorSelfNode hostObject: object)."
-
-    instVarNames := object class allInstVarNames.
-    indexedVarsSize := object basicSize - instVarNames size.
-    
+	variableBindings := object gtGsVariableValuePairsWithSelfIf: true.
 
 	^ Array streamContents: [ :stream |
-		stream nextPut: { #classicon. 'self'. object printString. }.
+		variableBindings do: [ :binding |
+			| icon name value |
+			name := binding key.
+			value := binding value.
 
-        instVarNames doWithIndex: [ :each :index | 
-			stream nextPut: { #classicon. each. (object instVarAt: index) printString. } ].
-    
-		1 to: (indexedVarsSize min: 21) do: [ :index | 
-			stream nextPut: { #classicon. index asString. (object _at: index) printString. } ].
-    
-		((indexedVarsSize - 20) max: 22) to: indexedVarsSize do: [ :index | 
-			stream nextPut: { #classicon. index asString. (object _at: index) printString. } ] ].
+			icon := ([ value class gtGsInspectorIconName ]
+					on: Error 
+					do: [ :error | #smallWarningIcon ]).
+			
+			stream nextPut: { icon. name. value } ] ].
+%
+
+! Class extensions for 'Magnitude'
+
+!		Class methods for 'Magnitude'
+
+category: '*GToolkit-RemotePhlow-GemStone'
+classmethod: Magnitude
+gtGsInspectorIconName
+	^ #magnitudeIcon
 %
 
 ! Class extensions for 'Object'
 
 !		Instance methods for 'Object'
+
+category: '*GToolkit-RemotePhlow-GemStone'
+method: Object
+gtGsInspectorIconName
+	^ #classIcon
+%
+
+category: '*GToolkit-RemotePhlow-GemStone'
+method: Object
+gtGsVariableValuePairsWithSelfIf: aBoolean
+	| instVarNames bindings indexedVarsSize |
+	instVarNames := self class allInstVarNames.
+	indexedVarsSize := self basicSize - instVarNames size.
+	bindings := OrderedCollection new: instVarNames size + 1.
+	
+	aBoolean ifTrue: [ bindings add: 'self' -> self ].
+	
+	instVarNames doWithIndex: [ :each :index | 
+		bindings add: (each -> (self instVarAt: index))].
+	
+	1 to: (indexedVarsSize min: 21) do: [ :index | 
+		bindings add: (index asString -> (self _at: index)) ].
+	
+	((indexedVarsSize - 20) max: 22) to: indexedVarsSize do: [ :index | 
+		bindings add: (index asString -> (self _at: index)) ].
+	
+	^ bindings
+%
 
 category: '*GToolkit-RemotePhlow'
 method: Object
@@ -2039,6 +2010,16 @@ gtPrintRemoteFor: aView
 		title: 'Print';
 		priority: 110;
 		text: [ self printString ]
+%
+
+! Class extensions for 'String'
+
+!		Class methods for 'String'
+
+category: '*GToolkit-RemotePhlow-GemStone'
+classmethod: String
+gtGsInspectorIconName
+	^ #stringIcon
 %
 
 ! Class extensions for 'TestResult'

@@ -97,7 +97,7 @@ GtViewedObject >> object [
 { #category : #'api - accessing' }
 GtViewedObject >> rawViewData [
 	"Answer the data for the raw view"
-	| variableNodes icon name value |
+	| variableNodes |
 
 	variableNodes := OrderedCollection new: object class allSlots size.
 	variableNodes add: (GTInspectorSelfNode hostObject: object).
@@ -105,6 +105,7 @@ GtViewedObject >> rawViewData [
 
 	^ Array streamContents: [ :stream |
 		variableNodes do: [ :node |
+			| icon name value |
 			icon := ([ node rawValue class systemIconName ]
 					on: Error 
 					do: [ :error | #smallWarningIcon ]).
