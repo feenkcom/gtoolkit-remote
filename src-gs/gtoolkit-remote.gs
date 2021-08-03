@@ -1801,7 +1801,7 @@ valuable: anObject
 
 !		Class methods for 'GtRemotePhlowViewedObject'
 
-category: #'instance creation'
+category: 'instance creation'
 classmethod: GtRemotePhlowViewedObject
 object: anObject
 
@@ -1810,14 +1810,14 @@ object: anObject
 
 !		Instance methods for 'GtRemotePhlowViewedObject'
 
-category: #'accessing'
+category: 'accessing'
 method: GtRemotePhlowViewedObject
 declarativeViewsBySelector
 	^ declarativeViewsBySelector ifNil: [ 
 		declarativeViewsBySelector := Dictionary new ]
 %
 
-category: #'api - accessing'
+category: 'api - accessing'
 method: GtRemotePhlowViewedObject
 getDeclarativeViewFor: viewSelector
 	^ self declarativeViewsBySelector 
@@ -1828,7 +1828,7 @@ getDeclarativeViewFor: viewSelector
 				with: GtRemotePhlowDeclarativeProtoView new) asGtDeclarativeView ]
 %
 
-category: #'api - accessing'
+category: 'api - accessing'
 method: GtRemotePhlowViewedObject
 getDeclarativeViewMethodNames
 	"Answer the set of declarative view selectors provided by the object"
@@ -1838,7 +1838,7 @@ getDeclarativeViewMethodNames
 		copyWithout: #gtPrintFor:
 %
 
-category: #'api - accessing'
+category: 'api - accessing'
 method: GtRemotePhlowViewedObject
 getViewDeclaration: viewSelector
 	^ ((self getDeclarativeViewFor: viewSelector) 
@@ -1849,14 +1849,14 @@ getViewDeclaration: viewSelector
 		
 %
 
-category: #'initialization'
+category: 'initialization'
 method: GtRemotePhlowViewedObject
 initializeWith: anObject
 
 	object := anObject
 %
 
-category: #'accessing'
+category: 'accessing'
 method: GtRemotePhlowViewedObject
 object
 
@@ -2031,6 +2031,28 @@ gtGsInspectorIconName
 
 category: '*GToolkit-RemotePhlow-GemStone'
 method: Object
+gtDisplayOn: writeStream
+	self printOn: writeStream
+%
+
+category: '*GToolkit-RemotePhlow-GemStone'
+method: Object
+gtDisplayString
+  | ws contents |
+  ws := PrintStream printingOn: String new "maxSize: 100".
+
+  [ self gtDisplayOn: ws ] 
+	on: Error 
+	do: [ :error | ^ '<error printing>' ].
+  contents := ws _collection.
+
+  ^ contents size > 200
+    ifTrue: [ (contents copyFrom: 1 to: 200) , '...' ]
+    ifFalse: [ contents ]
+%
+
+category: '*GToolkit-RemotePhlow-GemStone'
+method: Object
 gtGsInspectorIconName
 	^ #classIcon
 %
@@ -2057,36 +2079,6 @@ gtGsVariableValuePairsWithSelfIf: aBoolean
 	^ bindings
 %
 
-! Class extensions for #'Object'
-
-!		Instance methods for #'Object'
-
-category: #'*GToolkit-RemotePhlow-InspectorExtensions'
-method: Object
-gRemoteRawFor: aView
-	<gtView>
-	^ aView columnedList
-		title: 'Raw';
-		priority: 50;
-		items: [ self gtRemoteVariableValuePairsWithSelfIf: true ];
-		column: 'Icon' 
-			iconName: [ :anAssociation | anAssociation value class gtSystemIconName ]
-			width: 36;
-		column: 'Variable' item: [ :anAssociation | anAssociation key ];
-		column: 'Value' item: [ :anAssociation | anAssociation value gtDisplayString ];
-		send: [ :anAssociation | anAssociation value ]
-%
-
-category: #'*GToolkit-RemotePhlow-InspectorExtensions'
-method: Object
-gtRemotePrintFor: aView
-	<gtView>
-	^ aView textEditor
-		title: 'Print';
-		priority: 110;
-		text: [ self printString ]
-%
-
 ! Class extensions for 'String'
 
 !		Class methods for 'String'
@@ -2097,35 +2089,11 @@ gtGsInspectorIconName
 	^ #stringIcon
 %
 
-! Class extensions for #'TestResult'
+!		Instance methods for 'String'
 
-!		Instance methods for #'TestResult'
-
-category: #'*GToolkit-RemotePhlow-InspectorExtensions'
-method: TestResult
-gtResultsFor: aView
-	<gtView>
-
-	self runCount isZero ifTrue: [ ^ aView empty ].
-	^ aView columnedList 
-		title: 'Results';
-		priority: 10;
-		items: [ self gtTestResults ];
-		column: 'Selector' item: [ :assoc | assoc key class asString, '>>', assoc key selector ];
-		column: 'Status' item: [ :assoc | assoc value ] width: 100;
-		send: [ :assoc | assoc key ]
-%
-
-category: #'*GToolkit-RemotePhlow-InspectorExtensions'
-method: TestResult
-gtTestResults
-	"Answer a collection of result -> label associations"
-
-	^ OrderedCollection new
-		addAll: (self passed collect: [ :each | each -> #passed ]);
-		addAll: (self failures collect: [ :each | each -> #failure ]);
-		addAll: (self errors collect: [ :each | each -> #error ]);
-		addAll: (self skipped collect: [ :each | each -> #skipped ]);
-		yourself
+category: '*GToolkit-RemotePhlow-GemStone'
+method: String
+gtDisplayOn: writeStream
+	writeStream nextPutAll: self
 %
 
