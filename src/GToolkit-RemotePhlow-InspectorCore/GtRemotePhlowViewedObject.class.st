@@ -16,28 +16,28 @@ Internal Representation and Key Implementation Points.
     Implementation Points
 "
 Class {
-	#name : 'GtRemotePhlowViewedObject',
-	#superclass : 'Object',
+	#name : #GtRemotePhlowViewedObject,
+	#superclass : #Object,
 	#instVars : [
 		'object',
 		'declarativeViewsBySelector'
 	],
-	#category : 'GToolkit-RemotePhlow-InspectorCore'
+	#category : #'GToolkit-RemotePhlow-InspectorCore'
 }
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtRemotePhlowViewedObject class >> object: anObject [
 
 	^ self new initializeWith: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowViewedObject >> declarativeViewsBySelector [
 	^ declarativeViewsBySelector ifNil: [ 
 		declarativeViewsBySelector := Dictionary new ]
 ]
 
-{ #category : 'api - accessing' }
+{ #category : #'api - accessing' }
 GtRemotePhlowViewedObject >> getDeclarativeViewFor: viewSelector [
 	^ self declarativeViewsBySelector 
 		at: viewSelector 
@@ -47,16 +47,16 @@ GtRemotePhlowViewedObject >> getDeclarativeViewFor: viewSelector [
 				with: GtRemotePhlowDeclarativeProtoView new) asGtDeclarativeView ]
 ]
 
-{ #category : 'api - accessing' }
+{ #category : #'api - accessing' }
 GtRemotePhlowViewedObject >> getDeclarativeViewMethodNames [
 	"Answer the set of declarative view selectors provided by the object"
 
-	^ (object gtPharoDeclarativeViewSelectors 
+	^ (object gtDeclarativeViewSelectors 
 		copyWithout: #gtRawFor:)
 		copyWithout: #gtPrintFor:
 ]
 
-{ #category : 'api - accessing' }
+{ #category : #'api - accessing' }
 GtRemotePhlowViewedObject >> getViewDeclaration: viewSelector [
 	^ ((self getDeclarativeViewFor: viewSelector) 
 		ifNotNil: [ :view |
@@ -66,13 +66,13 @@ GtRemotePhlowViewedObject >> getViewDeclaration: viewSelector [
 		
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtRemotePhlowViewedObject >> initializeWith: anObject [
 
 	object := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowViewedObject >> object [
 
 	^ object

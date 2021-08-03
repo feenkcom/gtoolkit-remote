@@ -1,6 +1,6 @@
-Extension { #name : 'Object' }
+Extension { #name : #Object }
 
-{ #category : '*GToolkit-RemotePhlow-InspectorExtensions' }
+{ #category : #'*GToolkit-RemotePhlow-InspectorExtensions' }
 Object >> gRemoteRawFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -11,22 +11,12 @@ Object >> gRemoteRawFor: aView [
 			iconName: [ :anAssociation | anAssociation value class gtSystemIconName ]
 			width: 36;
 		column: 'Variable' item: [ :anAssociation | anAssociation key ];
-		column: 'Value' item: [ :anAssociation | anAssociation value gtRemoteDisplayString ];
+		column: 'Value' item: [ :anAssociation | anAssociation value gtDisplayString ];
 		send: [ :anAssociation | anAssociation value ]
 ]
 
-{ #category : '*GToolkit-RemotePhlow-InspectorExtensions' }
-Object >> gtPharoDeclarativeViewSelectors [
-	"Answer a collection of the object's declarative view selectors"
-
-	^ ((Pragma 
-		allNamed: #gtView
-		from: self class
-		to: Object) collect: [ :each | each method selector ]) asSet asArray
-]
-
-{ #category : '*GToolkit-RemotePhlow-InspectorExtensions' }
-Object >> gtPrintRemoteFor: aView [
+{ #category : #'*GToolkit-RemotePhlow-InspectorExtensions' }
+Object >> gtRemotePrintFor: aView [
 	<gtView>
 	^ aView textEditor
 		title: 'Print';

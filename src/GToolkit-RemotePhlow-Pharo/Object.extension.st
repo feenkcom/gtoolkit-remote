@@ -1,11 +1,11 @@
-Extension { #name : 'Object' }
+Extension { #name : #Object }
 
-{ #category : '*GToolkit-RemotePhlow-Pharo' }
-Object >> gtRemoteDisplayString [
+{ #category : #'*GToolkit-RemotePhlow-Pharo' }
+Object >> gtDisplayString [
 	^ self printString
 ]
 
-{ #category : '*GToolkit-RemotePhlow-Pharo' }
+{ #category : #'*GToolkit-RemotePhlow-Pharo' }
 Object >> gtRemoteVariableValuePairsIn: aCollection [
 	| variableNodes |
 	variableNodes := OrderedCollection new: self class allSlots size.
@@ -15,7 +15,7 @@ Object >> gtRemoteVariableValuePairsIn: aCollection [
 		aCollection add: aVariableNode label -> aVariableNode rawValue ]
 ]
 
-{ #category : '*GToolkit-RemotePhlow-Pharo' }
+{ #category : #'*GToolkit-RemotePhlow-Pharo' }
 Object >> gtRemoteVariableValuePairsWithSelfIf: aBoolean [
 	| variableBindings |
 	variableBindings := OrderedCollection new: self class allSlots size + 1.
@@ -23,4 +23,9 @@ Object >> gtRemoteVariableValuePairsWithSelfIf: aBoolean [
 		variableBindings add: ('self' -> self) ].
 	self gtRemoteVariableValuePairsIn: variableBindings.
 	^ variableBindings
+]
+
+{ #category : #'*GToolkit-RemotePhlow-Pharo' }
+Object >> gtSystemIconName [
+	^ self systemIconName
 ]
