@@ -1946,7 +1946,7 @@ rawViewData
 					on: Error 
 					do: [ :error | #smallWarningIcon ]).
 			
-			stream nextPut: { icon. name. value gtGsDisplayString } ] ].
+			stream nextPut: { icon. name. value } ] ].
 %
 
 ! Class extensions for 'Magnitude'
