@@ -1,6 +1,26 @@
 Extension { #name : 'Object' }
 
 { #category : '*GToolkit-RemotePhlow-GemStone' }
+Object >> gtDisplayOn: writeStream [
+	self printOn: writeStream
+]
+
+{ #category : '*GToolkit-RemotePhlow-GemStone' }
+Object >> gtDisplayString [
+  | ws contents |
+  ws := PrintStream printingOn: String new "maxSize: 100".
+
+  [ self gtDisplayOn: ws ] 
+	on: Error 
+	do: [ :error | ^ '<error printing>' ].
+  contents := ws _collection.
+
+  ^ contents size > 200
+    ifTrue: [ (contents copyFrom: 1 to: 200) , '...' ]
+    ifFalse: [ contents ]
+]
+
+{ #category : '*GToolkit-RemotePhlow-GemStone' }
 Object >> gtGsInspectorIconName [
 	^ #classIcon
 ]

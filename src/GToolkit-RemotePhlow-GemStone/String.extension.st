@@ -4,3 +4,8 @@ Extension { #name : 'String' }
 String class >> gtGsInspectorIconName [
 	^ #stringIcon
 ]
+
+{ #category : '*GToolkit-RemotePhlow-GemStone' }
+String >> gtDisplayOn: writeStream [
+	writeStream nextPutAll: self
+]
