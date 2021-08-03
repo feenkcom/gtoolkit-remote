@@ -45,15 +45,17 @@ GtViewedObject >> getDeclarativeViewFor: viewSelector [
 		at: viewSelector 
 		ifAbsentPut: [
 			(self object 
-				perform: viewSelector 
-				with: GtPhlowEmptyView new) asGtDeclarativeView ]
+				perform: viewSelector
+				with: GtRemotePhlowDeclarativeProtoView new) asGtDeclarativeView ]
 ]
 
 { #category : 'api - accessing' }
 GtViewedObject >> getDeclarativeViewMethodNames [
 	"Answer the set of declarative view selectors provided by the object"
 
-	^ object gtDeclarativeViewSelectors copyWithout: #gtRawFor:
+	^ (object gtDeclarativeViewSelectors 
+		copyWithout: #gtRawFor:)
+		copyWithout: #gtPrintFor:
 ]
 
 { #category : 'api - accessing' }

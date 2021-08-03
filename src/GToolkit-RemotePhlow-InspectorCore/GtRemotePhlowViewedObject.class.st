@@ -22,7 +22,7 @@ Class {
 		'object',
 		'declarativeViewsBySelector'
 	],
-	#category : 'GToolkit-RemotePhlow'
+	#category : 'GToolkit-RemotePhlow-InspectorCore'
 }
 
 { #category : 'instance creation' }
@@ -51,7 +51,9 @@ GtRemotePhlowViewedObject >> getDeclarativeViewFor: viewSelector [
 GtRemotePhlowViewedObject >> getDeclarativeViewMethodNames [
 	"Answer the set of declarative view selectors provided by the object"
 
-	^ object gtPharoDeclarativeViewSelectors
+	^ (object gtPharoDeclarativeViewSelectors 
+		copyWithout: #gtRawFor:)
+		copyWithout: #gtPrintFor:
 ]
 
 { #category : 'api - accessing' }

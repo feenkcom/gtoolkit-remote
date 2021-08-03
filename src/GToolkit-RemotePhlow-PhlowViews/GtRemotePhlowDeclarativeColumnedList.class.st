@@ -33,6 +33,7 @@ GtRemotePhlowDeclarativeColumnedList >> asGtDeclarativeView [
 		priority: self priority;
 		columnTitles: (self columns collect: [ :each | each title ]) asArray;
 		columnWidths: (self columns collect: [ :each | each cellWidth ]) asArray;
+		columnTypes: (self columns collect: [ :each | each columnDataType ]) asArray;
 		dataTransport: GtPhlowDeclarativeView dataLazy
 ]
 
@@ -46,7 +47,24 @@ GtRemotePhlowDeclarativeColumnedList >> column [
 	^ aColumn
 ]
 
-{ #category : 'accessing' }
+{ #category : 'api - scripting column' }
+GtRemotePhlowDeclarativeColumnedList >> column: columnName iconName: anIconNameComputation [
+	| aColumn |
+	aColumn := self column.
+	aColumn title: columnName.
+	aColumn iconName: anIconNameComputation
+]
+
+{ #category : 'api - scripting column' }
+GtRemotePhlowDeclarativeColumnedList >> column: columnName iconName: anIconNameComputation width: aNumberOrNil [
+	| aColumn |
+	aColumn := self column.
+	aColumn title: columnName.
+	aColumn iconName: anIconNameComputation.
+	aColumn width: aNumberOrNil.
+]
+
+{ #category : 'api - scripting column' }
 GtRemotePhlowDeclarativeColumnedList >> column: columnName item: aBlockClosure [
 	| aColumn |
 	aColumn := self column.
@@ -54,7 +72,7 @@ GtRemotePhlowDeclarativeColumnedList >> column: columnName item: aBlockClosure [
 	aColumn item: aBlockClosure
 ]
 
-{ #category : 'accessing' }
+{ #category : 'api - scripting column' }
 GtRemotePhlowDeclarativeColumnedList >> column: columnName item: aBlockClosure width: aNumberOrNil [
  	| aColumn |
 	aColumn := self column.

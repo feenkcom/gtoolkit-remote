@@ -127,7 +127,7 @@ GtRemoteInspectionSimulation >> gtViewsInContext: aContext [
 	emptyView := GtPhlowEmptyView new.
 	^ OrderedCollection new
 		"The raw view is a special case to easily handle icons"
-		add: (self gtProxyRawFor: emptyView);
+		"add: (self gtProxyRawFor: emptyView);"
 		add: (self gtProxyFor: emptyView);
 		add: (self gtProxyViewsFor: emptyView);
 		yourself

@@ -21,7 +21,8 @@ Class {
 	#superclass : 'GtPhlowDeclarativeListingView',
 	#instVars : [
 		'columnTitles',
-		'columnWidths'
+		'columnWidths',
+		'columnTypes'
 	],
 	#category : 'GToolkit-RemotePhlow-DeclarativeViews'
 }
@@ -34,7 +35,8 @@ GtPhlowDeclarativeColumnedListView class >> fromJSONDictionary: aDictionary [
 	list := super fromJSONDictionary: aDictionary.
 	list
 		columnTitles: (aDictionary at: #columnTitles);
-		columnWidths: (aDictionary at: #columnWidths).
+		columnWidths: (aDictionary at: #columnWidths);
+		columnTypes: (aDictionary at: #columnTypes).
 	"list dataTransport = self dataIncluded ifTrue: 
 		[ list items: (aDictionary at: #items) ]."
 	^list
@@ -47,6 +49,7 @@ GtPhlowDeclarativeColumnedListView >> asDictionaryForExport [
 	dictionary := super asDictionaryForExport 
 		at: #columnTitles put: columnTitles;
 		at: #columnWidths put: columnWidths;
+		at: #columnTypes put: columnTypes;
 		yourself.
 	"self dataTransport = self class dataIncluded ifTrue: [ 
 		dictionary at: #items put: items ]."
@@ -61,6 +64,16 @@ GtPhlowDeclarativeColumnedListView >> columnTitles [
 { #category : 'accessing' }
 GtPhlowDeclarativeColumnedListView >> columnTitles: anObject [
 	columnTitles := anObject
+]
+
+{ #category : 'accessing' }
+GtPhlowDeclarativeColumnedListView >> columnTypes [
+	^ columnTypes
+]
+
+{ #category : 'accessing' }
+GtPhlowDeclarativeColumnedListView >> columnTypes: anObject [
+	columnTypes := anObject
 ]
 
 { #category : 'accessing' }

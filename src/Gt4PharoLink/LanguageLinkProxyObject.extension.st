@@ -134,7 +134,7 @@ LanguageLinkProxyObject >> gtViewsInContext: aContext [
 	proxyPrint := views detect: [ :each | each title = #Print ].
 	views remove: proxyPrint.
 	
-	views add: (self gtProxyRawFor: GtPhlowEmptyView new).
+	"views add: (self gtProxyRawFor: GtPhlowEmptyView new)."
 	^ views.
 ]
 

@@ -5,7 +5,8 @@ Class {
 		'index',
 		'title',
 		'width',
-		'itemComputation'
+		'itemComputation',
+		'iconNameComputation'
 	],
 	#category : 'GToolkit-RemotePhlow-PhlowViews'
 }
@@ -13,6 +14,23 @@ Class {
 { #category : 'accessing' }
 GtRemotePhlowColumn >> cellWidth [
 	^ width
+]
+
+{ #category : 'accessing' }
+GtRemotePhlowColumn >> columnDataType [
+	^ self isWithIcon
+		ifTrue: [ #icon ]
+		ifFalse: [ #text ]
+]
+
+{ #category : 'accessing' }
+GtRemotePhlowColumn >> iconName: aBlock [
+	iconNameComputation := aBlock
+]
+
+{ #category : 'accessing' }
+GtRemotePhlowColumn >> iconNameComputation [
+	^ iconNameComputation
 ]
 
 { #category : 'accessing' }
@@ -25,9 +43,14 @@ GtRemotePhlowColumn >> index: aColumnIndex [
 	index := aColumnIndex
 ]
 
+{ #category : 'testing' }
+GtRemotePhlowColumn >> isWithIcon [
+	^ iconNameComputation notNil
+]
+
 { #category : 'accessing' }
-GtRemotePhlowColumn >> item: aBlockOrSymbol [
-	itemComputation := aBlockOrSymbol
+GtRemotePhlowColumn >> item: aBlock [
+	itemComputation := aBlock
 ]
 
 { #category : 'accessing' }
