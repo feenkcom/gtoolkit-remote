@@ -2029,6 +2029,33 @@ gtGsInspectorIconName
 
 !		Instance methods for 'Object'
 
+category: '*GToolkit-RemotePhlow-InspectorExtensions'
+method: Object
+gRemoteRawFor: aView
+	<gtView>
+	^ aView columnedList
+		title: 'Raw';
+		priority: 50;
+		items: [ self gtRemoteVariableValuePairsWithSelfIf: true ];
+		column: 'Icon' 
+			iconName: [ :anAssociation | anAssociation value class gtSystemIconName ]
+			width: 36;
+		column: 'Variable' item: [ :anAssociation | anAssociation key ];
+		column: 'Value' item: [ :anAssociation | anAssociation value gtDisplayString ];
+		send: [ :anAssociation | anAssociation value ]
+%
+
+category: '*GToolkit-RemotePhlow-GemStone'
+method: Object
+gtDeclarativeViewSelectors
+	"Answer a collection of the object's declarative view selectors"
+
+	^ ((Pragma 
+		allNamed: #gtView
+		from: self class
+		to: Object) collect: [ :each | each method selector ]) asSet asArray
+%
+
 category: '*GToolkit-RemotePhlow-GemStone'
 method: Object
 gtDisplayOn: writeStream
@@ -2079,6 +2106,16 @@ gtGsVariableValuePairsWithSelfIf: aBoolean
 	^ bindings
 %
 
+category: '*GToolkit-RemotePhlow-InspectorExtensions'
+method: Object
+gtRemotePrintFor: aView
+	<gtView>
+	^ aView textEditor
+		title: 'Print';
+		priority: 110;
+		text: [ self printString ]
+%
+
 ! Class extensions for 'String'
 
 !		Class methods for 'String'
@@ -2095,5 +2132,37 @@ category: '*GToolkit-RemotePhlow-GemStone'
 method: String
 gtDisplayOn: writeStream
 	writeStream nextPutAll: self
+%
+
+! Class extensions for 'TestResult'
+
+!		Instance methods for 'TestResult'
+
+category: '*GToolkit-RemotePhlow-InspectorExtensions'
+method: TestResult
+gtResultsFor: aView
+	<gtView>
+
+	self runCount isZero ifTrue: [ ^ aView empty ].
+	^ aView columnedList 
+		title: 'Results';
+		priority: 10;
+		items: [ self gtTestResults ];
+		column: 'Selector' item: [ :assoc | assoc key class asString, '>>', assoc key selector ];
+		column: 'Status' item: [ :assoc | assoc value ] width: 100;
+		send: [ :assoc | assoc key ]
+%
+
+category: '*GToolkit-RemotePhlow-InspectorExtensions'
+method: TestResult
+gtTestResults
+	"Answer a collection of result -> label associations"
+
+	^ OrderedCollection new
+		addAll: (self passed collect: [ :each | each -> #passed ]);
+		addAll: (self failures collect: [ :each | each -> #failure ]);
+		addAll: (self errors collect: [ :each | each -> #error ]);
+		addAll: (self skipped collect: [ :each | each -> #skipped ]);
+		yourself
 %
 
