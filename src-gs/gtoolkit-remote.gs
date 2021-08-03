@@ -1851,6 +1851,16 @@ gtSuperclassesFor: aView
 		itemText: [ :cls | cls name ]
 %
 
+! Class extensions for 'Collection'
+
+!		Class methods for 'Collection'
+
+category: '*GToolkit-RemotePhlow-GemStone'
+classmethod: Collection
+gtGsInspectorIconName
+	^ #collectionIcon
+%
+
 ! Class extensions for 'GtRemotePhlowDeclarativeTestInspectable'
 
 !		Class methods for 'GtRemotePhlowDeclarativeTestInspectable'
@@ -1922,32 +1932,64 @@ category: '*GToolkit-RemotePhlow-GemStone'
 method: GtRemotePhlowViewedObject
 rawViewData
 	"Answer the data for the raw view"
-	| "icon name value" instVarNames indexedVarsSize |
+	| variableBindings |
 
-
-	"GemStone doesn't have GTInspectorSelfNode.  The call to #addRawSelfNodeTo: will allow the platform specific code to be added.
-	variableNodes add: (GTInspectorSelfNode hostObject: object)."
-
-    instVarNames := object class allInstVarNames.
-    indexedVarsSize := object basicSize - instVarNames size.
-    
+	variableBindings := object gtGsVariableValuePairsWithSelfIf: true.
 
 	^ Array streamContents: [ :stream |
-		stream nextPut: { #classicon. 'self'. object printString. }.
+		variableBindings do: [ :binding |
+			| icon name value |
+			name := binding key.
+			value := binding value.
 
-        instVarNames doWithIndex: [ :each :index | 
-			stream nextPut: { #classicon. each. (object instVarAt: index) printString. } ].
-    
-		1 to: (indexedVarsSize min: 21) do: [ :index | 
-			stream nextPut: { #classicon. index asString. (object _at: index) printString. } ].
-    
-		((indexedVarsSize - 20) max: 22) to: indexedVarsSize do: [ :index | 
-			stream nextPut: { #classicon. index asString. (object _at: index) printString. } ] ].
+			icon := ([ value class gtGsInspectorIconName ]
+					on: Error 
+					do: [ :error | #smallWarningIcon ]).
+			
+			stream nextPut: { icon. name. value } ] ].
+%
+
+! Class extensions for 'Magnitude'
+
+!		Class methods for 'Magnitude'
+
+category: '*GToolkit-RemotePhlow-GemStone'
+classmethod: Magnitude
+gtGsInspectorIconName
+	^ #magnitudeIcon
 %
 
 ! Class extensions for 'Object'
 
 !		Instance methods for 'Object'
+
+category: '*GToolkit-RemotePhlow-GemStone'
+method: Object
+gtGsInspectorIconName
+	^ #classIcon
+%
+
+category: '*GToolkit-RemotePhlow-GemStone'
+method: Object
+gtGsVariableValuePairsWithSelfIf: aBoolean
+	| instVarNames bindings indexedVarsSize |
+	instVarNames := self class allInstVarNames.
+	indexedVarsSize := self basicSize - instVarNames size.
+	bindings := OrderedCollection new: instVarNames size + 1.
+	
+	aBoolean ifTrue: [ bindings add: 'self' -> self ].
+	
+	instVarNames doWithIndex: [ :each :index | 
+		bindings add: (each -> (self instVarAt: index))].
+	
+	1 to: (indexedVarsSize min: 21) do: [ :index | 
+		bindings add: (index asString -> (self _at: index)) ].
+	
+	((indexedVarsSize - 20) max: 22) to: indexedVarsSize do: [ :index | 
+		bindings add: (index asString -> (self _at: index)) ].
+	
+	^ bindings
+%
 
 category: '*GToolkit-RemotePhlow'
 method: Object
@@ -1968,6 +2010,16 @@ gtPrintRemoteFor: aView
 		title: 'Print';
 		priority: 110;
 		text: [ self printString ]
+%
+
+! Class extensions for 'String'
+
+!		Class methods for 'String'
+
+category: '*GToolkit-RemotePhlow-GemStone'
+classmethod: String
+gtGsInspectorIconName
+	^ #stringIcon
 %
 
 ! Class extensions for 'TestResult'
