@@ -11,11 +11,6 @@ Object >> gtDeclarativeViewSelectors [
 ]
 
 { #category : #'*GToolkit-RemotePhlow-Pharo' }
-Object >> gtDisplayString [
-	^ self printString
-]
-
-{ #category : #'*GToolkit-RemotePhlow-Pharo' }
 Object >> gtRemoteVariableValuePairsIn: aCollection [
 	| variableNodes |
 	variableNodes := OrderedCollection new: self class allSlots size.
