@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfGToolkitRemote }
+Package { #name : 'BaselineOfGToolkitRemote' }
