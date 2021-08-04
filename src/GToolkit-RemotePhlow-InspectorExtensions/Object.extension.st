@@ -5,7 +5,7 @@ Object >> gRemoteRawFor: aView [
 	<gtView>
 	^ aView columnedList
 		title: 'Raw';
-		priority: 50;
+		priority: 100;
 		items: [ self gtRemoteVariableValuePairsWithSelfIf: true ];
 		column: 'Icon' 
 			iconName: [ :anAssociation | anAssociation value class gtSystemIconName ]
