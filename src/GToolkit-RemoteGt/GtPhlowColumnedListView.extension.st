@@ -21,5 +21,5 @@ GtPhlowColumnedListView >> asGtDeclarativeView [
 GtPhlowColumnedListView >> canBeGtDeclarativeView [
 	"Answer a boolean indicating whether the receiver can be represented as a GtDeclarativeView"
 
-	^true
+	^ self columns allSatisfy: [ :aColumn | aColumn isWithIcon not ]
 ]
