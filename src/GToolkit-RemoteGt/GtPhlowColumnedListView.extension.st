@@ -14,6 +14,7 @@ GtPhlowColumnedListView >> asGtDeclarativeView [
 				cellWidth class = BrColumnFixedWidth
 					ifTrue: [cellWidth width]
 					ifFalse: [nil]]] as: Array);
+		columnTypes: (self columns collect: [ :each | each columnDataType ]) asArray;
 		dataTransport: GtPhlowDeclarativeView dataLazy
 ]
 
