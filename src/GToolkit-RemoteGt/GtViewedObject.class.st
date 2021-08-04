@@ -46,7 +46,7 @@ GtViewedObject >> getDeclarativeViewFor: viewSelector [
 		ifAbsentPut: [
 			(self object 
 				perform: viewSelector
-				with: GtRemotePhlowDeclarativeProtoView new) asGtDeclarativeView ]
+				with: GtPhlowEmptyView new) asGtDeclarativeView ]
 ]
 
 { #category : 'api - accessing' }
@@ -94,25 +94,4 @@ GtViewedObject >> initializeWith: anObject [
 GtViewedObject >> object [
 
 	^ object
-]
-
-{ #category : 'api - accessing' }
-GtViewedObject >> rawViewData [
-	"Answer the data for the raw view"
-	| variableNodes |
-
-	variableNodes := OrderedCollection new: object class allSlots size.
-	variableNodes add: (GTInspectorSelfNode hostObject: object).
-	object gtInspectorVariableNodesIn: variableNodes.
-
-	^ Array streamContents: [ :stream |
-		variableNodes do: [ :node |
-			| icon name value |
-			icon := ([ node rawValue class systemIconName ]
-					on: Error 
-					do: [ :error | #smallWarningIcon ]).
-			name := node label.
-			value := node rawValue.
-			stream nextPut: { icon. name. value. } ] ].
-
 ]
