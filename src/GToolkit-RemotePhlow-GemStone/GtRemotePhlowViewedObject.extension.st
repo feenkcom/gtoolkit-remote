@@ -1,11 +1,5 @@
 Extension { #name : 'GtRemotePhlowViewedObject' }
 
-{ #category : '*GToolkit-RemotePhlow-GemStone' }
-GtRemotePhlowViewedObject >> addRawSelfNodeTo: variableNodes [
-
-	^ self "TBS"
-]
-
 { #category : '*GToolkit-RemotePhlow-Gemstone' }
 GtRemotePhlowViewedObject class >> new [
 
@@ -13,11 +7,17 @@ GtRemotePhlowViewedObject class >> new [
 ]
 
 { #category : '*GToolkit-RemotePhlow-GemStone' }
+GtRemotePhlowViewedObject >> addRawSelfNodeTo: variableNodes [
+
+	^ self "TBS"
+]
+
+{ #category : '*GToolkit-RemotePhlow-GemStone' }
 GtRemotePhlowViewedObject >> rawViewData [
 	"Answer the data for the raw view"
 	| variableBindings |
 
-	variableBindings := object gtGsVariableValuePairsWithSelfIf: true.
+	variableBindings := object gtRemoteVariableValuePairsWithSelfIf: true.
 
 	^ Array streamContents: [ :stream |
 		variableBindings do: [ :binding |

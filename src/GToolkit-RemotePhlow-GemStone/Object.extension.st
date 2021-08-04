@@ -36,7 +36,7 @@ Object >> gtGsInspectorIconName [
 ]
 
 { #category : '*GToolkit-RemotePhlow-GemStone' }
-Object >> gtGsVariableValuePairsWithSelfIf: aBoolean [
+Object >> gtRemoteVariableValuePairsWithSelfIf: aBoolean [
 	| instVarNames bindings indexedVarsSize |
 	instVarNames := self class allInstVarNames.
 	indexedVarsSize := self basicSize - instVarNames size.
@@ -54,4 +54,9 @@ Object >> gtGsVariableValuePairsWithSelfIf: aBoolean [
 		bindings add: (index asString -> (self _at: index)) ].
 	
 	^ bindings
+]
+
+{ #category : '*GToolkit-RemotePhlow-GemStone' }
+Object >> gtSystemIconName [
+	^ self gtGsInspectorIconName
 ]
