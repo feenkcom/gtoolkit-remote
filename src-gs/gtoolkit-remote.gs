@@ -2000,7 +2000,7 @@ rawViewData
 	"Answer the data for the raw view"
 	| variableBindings |
 
-	variableBindings := object gtGsVariableValuePairsWithSelfIf: true.
+	variableBindings := object gtRemoteVariableValuePairsWithSelfIf: true.
 
 	^ Array streamContents: [ :stream |
 		variableBindings do: [ :binding |
@@ -2084,9 +2084,19 @@ gtGsInspectorIconName
 	^ #classIcon
 %
 
+category: '*GToolkit-RemotePhlow-InspectorExtensions'
+method: Object
+gtRemotePrintFor: aView
+	<gtView>
+	^ aView textEditor
+		title: 'Print';
+		priority: 110;
+		text: [ self printString ]
+%
+
 category: '*GToolkit-RemotePhlow-GemStone'
 method: Object
-gtGsVariableValuePairsWithSelfIf: aBoolean
+gtRemoteVariableValuePairsWithSelfIf: aBoolean
 	| instVarNames bindings indexedVarsSize |
 	instVarNames := self class allInstVarNames.
 	indexedVarsSize := self basicSize - instVarNames size.
@@ -2106,14 +2116,10 @@ gtGsVariableValuePairsWithSelfIf: aBoolean
 	^ bindings
 %
 
-category: '*GToolkit-RemotePhlow-InspectorExtensions'
+category: '*GToolkit-RemotePhlow-GemStone'
 method: Object
-gtRemotePrintFor: aView
-	<gtView>
-	^ aView textEditor
-		title: 'Print';
-		priority: 110;
-		text: [ self printString ]
+gtSystemIconName
+	^ self gtGsInspectorIconName
 %
 
 ! Class extensions for 'String'
