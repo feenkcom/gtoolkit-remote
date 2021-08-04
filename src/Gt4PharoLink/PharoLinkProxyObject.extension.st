@@ -5,16 +5,15 @@ PharoLinkProxyObject >> declarativeViews [
 	"Answer the views for the receiver"
 	| rawViews |
 
-	rawViews := #().
 	self viewProxyDo: [ :remoteInspectorProxy |
-		| viewSelectors |
-		viewSelectors := remoteInspectorProxy getDeclarativeViewMethodNames.
-		rawViews := viewSelectors collect: [ :viewSelector |
-			| viewDictionary declarativeView |
-			viewDictionary := remoteInspectorProxy getViewDeclaration: viewSelector.
-			declarativeView := GtPhlowDeclarativeView fromDictionary: viewDictionary.
+		| declarativeData declarativeViewDeclarations |
+		declarativeData := remoteInspectorProxy getViewsDeclarations.
+		declarativeViewDeclarations := declarativeData at: 'views' ifAbsent: [ #() ].
+		declarativeViewDeclarations := remoteInspectorProxy getViewsDeclarations.
+		rawViews := declarativeViewDeclarations collect: [ :declarativeViewData |
+			| declarativeView |
+			declarativeView := GtPhlowDeclarativeView fromDictionary: declarativeViewData.
 			declarativeView
-				methodSelector: viewSelector;
 				initializeFromInspector: remoteInspectorProxy.
 			declarativeView ] ].
 
