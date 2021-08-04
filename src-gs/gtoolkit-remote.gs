@@ -600,6 +600,7 @@ fromJSONDictionary: aDictionary
 		title: (aDictionary at: #title);
 		priority: (aDictionary at: #priority);
 		dataTransport: (aDictionary at: #dataTransport);
+		methodSelector: (aDictionary at: #methodSelector);
 		yourself
 %
 
@@ -616,6 +617,7 @@ asDictionaryForExport
 		at: #title put: title;
 		at: #priority put: priority;
 		at: #dataTransport put: dataTransport;
+		at: #methodSelector put: methodSelector;
 		yourself
 %
 
@@ -1849,6 +1851,28 @@ getViewDeclaration: viewSelector
 		
 %
 
+category: 'api - accessing'
+method: GtRemotePhlowViewedObject
+getViewsDeclarations
+	| viewSelectors declarativeViews viewsDictionaries |
+	viewSelectors := self getDeclarativeViewMethodNames.
+	declarativeViews := (viewSelectors 
+		collect: [ :viewSelector |
+			| declarativeView |
+			declarativeView := self getDeclarativeViewFor: viewSelector.
+			declarativeView ifNotNil: [
+				declarativeView methodSelector: viewSelector ].
+			declarativeView ])
+		reject: [ :aDeclarativeView | aDeclarativeView isNil ].
+	viewsDictionaries := declarativeViews collect: [ :aDeclarativeView |
+		aDeclarativeView asDictionaryForExport ].
+	
+	^ Dictionary new
+		at: #'__pharolinkImmediate' put: true;
+		at: 'views' put: viewsDictionaries;
+		yourself
+%
+
 category: 'initialization'
 method: GtRemotePhlowViewedObject
 initializeWith: anObject
@@ -2035,7 +2059,7 @@ gRemoteRawFor: aView
 	<gtView>
 	^ aView columnedList
 		title: 'Raw';
-		priority: 50;
+		priority: 100;
 		items: [ self gtRemoteVariableValuePairsWithSelfIf: true ];
 		column: 'Icon' 
 			iconName: [ :anAssociation | anAssociation value class gtSystemIconName ]
@@ -2120,6 +2144,25 @@ category: '*GToolkit-RemotePhlow-GemStone'
 method: Object
 gtSystemIconName
 	^ self gtGsInspectorIconName
+%
+
+! Class extensions for 'SequenceableCollection'
+
+!		Instance methods for 'SequenceableCollection'
+
+category: '*GToolkit-RemotePhlow-InspectorExtensions'
+method: SequenceableCollection
+gtRemoteItemsFor: aView
+	<gtView>
+	^ aView columnedList
+		title: 'Items';
+		priority: 50;
+		items: [ self ];
+		column: 'Index' 
+			item: [ :eachItem :eachIndex | eachIndex  ]
+			width: 45;
+		column: 'Item' 
+			item: [ :eachItem | eachItem gtDisplayString ].
 %
 
 ! Class extensions for 'String'
