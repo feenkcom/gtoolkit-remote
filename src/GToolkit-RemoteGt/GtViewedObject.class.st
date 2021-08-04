@@ -68,6 +68,27 @@ GtViewedObject >> getViewDeclaration: viewSelector [
 		
 ]
 
+{ #category : 'api - accessing' }
+GtViewedObject >> getViewsDeclarations [
+	| viewSelectors declarativeViews viewsDictionaries |
+	viewSelectors := self getDeclarativeViewMethodNames.
+	declarativeViews := (viewSelectors 
+		collect: [ :viewSelector |
+			| declarativeView |
+			declarativeView := self getDeclarativeViewFor: viewSelector.
+			declarativeView ifNotNil: [
+				declarativeView methodSelector: viewSelector ].
+			declarativeView ])
+		reject: [ :aDeclarativeView | aDeclarativeView isNil ].
+	viewsDictionaries := declarativeViews collect: [ :aDeclarativeView |
+		aDeclarativeView asDictionaryForExport ].
+	
+	^ Dictionary new
+		at: #'__pharolinkImmediate' put: true;
+		at: 'views' put: viewsDictionaries;
+		yourself
+]
+
 { #category : 'gt - extensions' }
 GtViewedObject >> gtDeclarativeViewsFor: aView [
 	<gtView>
