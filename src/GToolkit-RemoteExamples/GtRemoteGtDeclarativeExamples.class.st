@@ -11,19 +11,19 @@ To start the server:
 
 "
 Class {
-	#name : #GtRemoteGtDeclarativeExamples,
-	#superclass : #GtRemoteDeclarativeStExamples,
-	#category : #'GToolkit-RemoteExamples'
+	#name : 'GtRemoteGtDeclarativeExamples',
+	#superclass : 'GtRemoteDeclarativeStExamples',
+	#category : 'GToolkit-RemoteExamples'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 GtRemoteGtDeclarativeExamples >> printForString [
 	"Answer the string returned in the #gtPrintFor: view"
 
 	^ 'a GtDeclarativeTestInspectable'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 GtRemoteGtDeclarativeExamples >> runningServer [
 	"Answer a running server"
 	<gtExample>
@@ -42,7 +42,7 @@ GtRemoteGtDeclarativeExamples >> runningServer [
 	^ server start.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtRemoteGtDeclarativeExamples >> testInspectableName [
 	"Answer the name of the test inspectable class on the remote"
 

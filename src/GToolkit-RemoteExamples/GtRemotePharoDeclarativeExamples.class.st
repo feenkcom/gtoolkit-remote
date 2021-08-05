@@ -6,7 +6,7 @@ The examples assume that the server is started manually.
 To build a Pharo image with the Gt server code loaded:
 
 [[[language=bash
-./pharo Pharo.image eval --save ""Metacello new repository: 'github://feenkcom/gtoolkit-remote/src'; baseline: 'GtPharoRemote'; load""
+./pharo Pharo.image eval --save ""Metacello new repository: 'github://feenkcom/gtoolkit-remote/src'; baseline: 'GtRemotePhlow'; load""
 ]]]
 
 To start the server:
@@ -17,19 +17,19 @@ To start the server:
 
 "
 Class {
-	#name : #GtRemotePharoDeclarativeExamples,
-	#superclass : #GtRemoteDeclarativeStExamples,
-	#category : #'GToolkit-RemoteExamples'
+	#name : 'GtRemotePharoDeclarativeExamples',
+	#superclass : 'GtRemoteDeclarativeStExamples',
+	#category : 'GToolkit-RemoteExamples'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 GtRemotePharoDeclarativeExamples >> printForString [
 	"Answer the string returned in the #gtPrintFor: view"
 
 	^ 'a GtPharoDeclarativeTestInspectable'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 GtRemotePharoDeclarativeExamples >> runningServer [
 	"Answer a running server"
 	<gtExample>
@@ -48,7 +48,7 @@ GtRemotePharoDeclarativeExamples >> runningServer [
 	^ server start.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtRemotePharoDeclarativeExamples >> testInspectableName [
 	"Answer the name of the test inspectable class on the remote"
 

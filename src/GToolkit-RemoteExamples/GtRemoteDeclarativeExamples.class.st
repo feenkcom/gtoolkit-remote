@@ -4,22 +4,22 @@ GtRemoteDeclarativeGtExamples demonstrates the use of ${class:name=GtDeclarative
 Note that it starts and stops server images as part of the examples.
 "
 Class {
-	#name : #GtRemoteDeclarativeExamples,
-	#superclass : #Object,
+	#name : 'GtRemoteDeclarativeExamples',
+	#superclass : 'Object',
 	#instVars : [
 		'server'
 	],
-	#category : #'GToolkit-RemoteExamples'
+	#category : 'GToolkit-RemoteExamples'
 }
 
-{ #category : #'private - commands' }
+{ #category : 'private - commands' }
 GtRemoteDeclarativeExamples >> collectionOfObjectsCommand [
 	"Answer the command to retrieve the test inspectable's collectionOfObjects"
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #'examples - views' }
+{ #category : 'examples - views' }
 GtRemoteDeclarativeExamples >> columnedListView [
 	<gtExample>
 	| viewProxy viewDictionary view data |
@@ -39,21 +39,21 @@ GtRemoteDeclarativeExamples >> columnedListView [
 	^ view
 ]
 
-{ #category : #'private - commands' }
+{ #category : 'private - commands' }
 GtRemoteDeclarativeExamples >> columnedListViewDeclarationCommand [
 	"Answer the command to retrieve the test inspectable's list view declaration"
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtRemoteDeclarativeExamples >> declarativeViewNames [
 	"Answer the expected array of declarative views from the remote"
 
 	^ self subclassResponsibility 
 ]
 
-{ #category : #'examples - views' }
+{ #category : 'examples - views' }
 GtRemoteDeclarativeExamples >> listView [
 	<gtExample>
 	| viewProxy viewDictionary view data |
@@ -70,42 +70,42 @@ GtRemoteDeclarativeExamples >> listView [
 	^ view
 ]
 
-{ #category : #'private - commands' }
+{ #category : 'private - commands' }
 GtRemoteDeclarativeExamples >> listViewDeclarationCommand [
 	"Answer the command to retrieve the test inspectable's list view declaration"
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #'private - commands' }
+{ #category : 'private - commands' }
 GtRemoteDeclarativeExamples >> listViewDisplayArray [
 	"Answer the command Array returned by the remote's list view"
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtRemoteDeclarativeExamples >> localObject [
 	"Answer the object which will be instantiated in the remote (for comparison)"
 
 	^ GtDeclarativeTestInspectable new
 ]
 
-{ #category : #'private - commands' }
+{ #category : 'private - commands' }
 GtRemoteDeclarativeExamples >> methodNamesCommand [
 	"Answer the command to retrieve the test inspectable's view method names"
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtRemoteDeclarativeExamples >> printForString [
 	"Answer the string returned in the #gtPrintFor: view"
 
 	^ self subclassResponsibility 
 ]
 
-{ #category : #'examples - views' }
+{ #category : 'examples - views' }
 GtRemoteDeclarativeExamples >> printView [
 	<gtExample>
 	| viewProxy viewDictionary view |
@@ -120,14 +120,14 @@ GtRemoteDeclarativeExamples >> printView [
 	^ view
 ]
 
-{ #category : #'private - commands' }
+{ #category : 'private - commands' }
 GtRemoteDeclarativeExamples >> printViewDeclarationCommand [
 	"Answer the command to retrieve the test inspectable's print view declaration"
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 GtRemoteDeclarativeExamples >> remoteObject [
 	"Answer a proxy to a remote GtDeclarativeTestInspectable instance"
 	<gtExample>
@@ -154,14 +154,14 @@ GtRemoteDeclarativeExamples >> remoteObject [
 	^ proxyObject
 ]
 
-{ #category : #'private - commands' }
+{ #category : 'private - commands' }
 GtRemoteDeclarativeExamples >> remoteObjectCommand [
 	"Answer the command to retrieve the test inspectable from the remote"
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtRemoteDeclarativeExamples >> runningServer [
 	"Answer a running server"
 	<gtExample>
@@ -170,7 +170,7 @@ GtRemoteDeclarativeExamples >> runningServer [
 	^ self subclassResponsibility
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtRemoteDeclarativeExamples >> stopServer [ 
 
 	server ifNotNil: 
@@ -178,14 +178,14 @@ GtRemoteDeclarativeExamples >> stopServer [
 		server := nil. ]
 ]
 
-{ #category : #'private - commands' }
+{ #category : 'private - commands' }
 GtRemoteDeclarativeExamples >> stringCommand [
 	"Answer the command to retrieve the test inspectable's string"
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #'examples - views' }
+{ #category : 'examples - views' }
 GtRemoteDeclarativeExamples >> stringView [
 	<gtExample>
 	| viewProxy viewDictionary view |
@@ -200,21 +200,21 @@ GtRemoteDeclarativeExamples >> stringView [
 	^ view
 ]
 
-{ #category : #'private - commands' }
+{ #category : 'private - commands' }
 GtRemoteDeclarativeExamples >> stringViewDeclarationCommand [
 	"Answer the command to retrieve the test inspectable's string view declaration"
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtRemoteDeclarativeExamples >> testInspectableName [
 	"Answer the name of the test inspectable class on the remote"
 
 	^ self subclassResponsibility 
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 GtRemoteDeclarativeExamples >> viewedObjectProxy [
 	"Answer the GtViewedObject proxy for the remote object"
 	<gtExample>
