@@ -6,7 +6,7 @@ The examples assume that the server is started manually.
 To build a Pharo image with the Gt server code loaded:
 
 ```bash
-./pharo Pharo.image eval --save ""Metacello new repository: 'github://feenkcom/gtoolkit-remote/src'; baseline: 'GtPharoRemote'; load""
+./pharo Pharo.image eval --save ""Metacello new repository: 'github://feenkcom/gtoolkit-remote:main/src'; baseline: 'GtPharoRemote'; load""
 ```
 
 To start the server:
@@ -35,7 +35,7 @@ Class {
 GtRemotePharoDeclarativeExamples >> printForString [
 	"Answer the string returned in the #gtPrintFor: view"
 
-	^ 'a GtPharoDeclarativeTestInspectable'
+	^ 'a GtRemotePhlowDeclarativeTestInspectable'
 ]
 
 { #category : 'examples' }

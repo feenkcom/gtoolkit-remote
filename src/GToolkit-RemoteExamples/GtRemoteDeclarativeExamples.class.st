@@ -30,12 +30,16 @@ GtRemoteDeclarativeExamples >> columnedListView [
 		sendAndWait.
 	view := GtPhlowDeclarativeView fromDictionary: viewDictionary.
 	self assert: view title equals: 'Columned List'.
-	data := view items.
-	self assert: data size equals: 3.
-	self assert: data first equals: #('42' '42').
-	self assert: data second equals: #('Hello World' 'hello world').
 	self assert: view columnTitles equals: #(Value Lowercase).
 	self assert: view columnWidths equals: #(nil 100).
+	self assert: view columnTypes equals: #(text text).
+	view dataTransport = GtPhlowDeclarativeView dataIncluded ifTrue:
+		[ data := view items.
+		self assert: data size equals: 3.
+		self assert: data first equals: #('42' '42').
+		self assert: data second equals: #('Hello World' 'hello world') ].
+	view dataTransport = GtPhlowDeclarativeView dataLazy ifTrue:
+		[ self columnedListViewLazyCheck: viewProxy ].
 	^ view
 ]
 
@@ -44,6 +48,15 @@ GtRemoteDeclarativeExamples >> columnedListViewDeclarationCommand [
 	"Answer the command to retrieve the test inspectable's list view declaration"
 
 	^ self subclassResponsibility
+]
+
+{ #category : 'private' }
+GtRemoteDeclarativeExamples >> columnedListViewLazyCheck: viewProxy [
+	| declarativeView |
+
+	declarativeView := viewProxy getDeclarativeViewFor: #gtColumnedListFor:.
+	self assert: declarativeView retrieveTotalItemsCount equals: 3.
+
 ]
 
 { #category : 'private' }
@@ -64,9 +77,13 @@ GtRemoteDeclarativeExamples >> listView [
 		sendAndWait.
 	view := GtPhlowDeclarativeView fromDictionary: viewDictionary.
 	self assert: view title equals: #List.
-	data := view items.
-	self assert: data size equals: 3.
-	self assert: data equals: self listViewDisplayArray.
+	self assert: view priority equals: 15.
+	view dataTransport = GtPhlowDeclarativeView dataIncluded ifTrue:
+		[ data := view items.
+		self assert: data size equals: 3.
+		self assert: data equals: self listViewDisplayArray ].
+	view dataTransport = GtPhlowDeclarativeView dataLazy ifTrue:
+		[ self listViewLazyCheck: viewProxy ].
 	^ view
 ]
 
@@ -82,6 +99,15 @@ GtRemoteDeclarativeExamples >> listViewDisplayArray [
 	"Answer the command Array returned by the remote's list view"
 
 	^ self subclassResponsibility
+]
+
+{ #category : 'private' }
+GtRemoteDeclarativeExamples >> listViewLazyCheck: viewProxy [
+	| declarativeView |
+
+	declarativeView := viewProxy getDeclarativeViewFor: #gtListFor:.
+	self assert: declarativeView retrieveTotalItemsCount equals: 3.
+
 ]
 
 { #category : 'private' }

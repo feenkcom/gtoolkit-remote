@@ -22,7 +22,7 @@ GtRemoteDeclarativeStExamples >> columnedListViewDeclarationCommand [
 GtRemoteDeclarativeStExamples >> declarativeViewNames [
 	"Answer the expected array of declarative views from the remote"
 
-	^ #(gtStringFor: gtListFor: gtColumnedListFor: gtPrintFor:)
+	^ #('gtLargeListFor:' 'gtStringFor:' 'gtListFor:' 'gtLargeColumnedListWithIndexFor:' 'gtColumnedListFor:' 'gtLargeColumnedListFor:' 'gtRemotePrintFor:' 'gRemoteRawFor:')
 ]
 
 { #category : 'private - commands' }
@@ -43,14 +43,14 @@ GtRemoteDeclarativeStExamples >> listViewDisplayArray [
 GtRemoteDeclarativeStExamples >> methodNamesCommand [
 	"Answer the command to retrieve the test inspectable's view method names"
 
-	^ 'self getGtViewMethodNames'
+	^ 'self getDeclarativeViewMethodNames'
 ]
 
 { #category : 'private - commands' }
 GtRemoteDeclarativeStExamples >> printViewDeclarationCommand [
 	"Answer the command to retrieve the test inspectable's print view declaration"
 
-	^ 'self getViewDeclaration: #gtPrintFor:'
+	^ 'self getViewDeclaration: #gtRemotePrintFor:'
 ]
 
 { #category : 'private - commands' }
