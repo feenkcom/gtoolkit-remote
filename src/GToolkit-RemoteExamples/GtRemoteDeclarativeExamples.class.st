@@ -28,7 +28,7 @@ GtRemoteDeclarativeExamples >> columnedListView [
 	viewDictionary := viewProxy newCommandFactory
 		<< self columnedListViewDeclarationCommand;
 		sendAndWait.
-	view := GtDeclarativeView fromDictionary: viewDictionary.
+	view := GtPhlowDeclarativeView fromDictionary: viewDictionary.
 	self assert: view title equals: 'Columned List'.
 	data := view items.
 	self assert: data size equals: 3.
@@ -62,7 +62,7 @@ GtRemoteDeclarativeExamples >> listView [
 	viewDictionary := viewProxy newCommandFactory
 		<< self listViewDeclarationCommand;
 		sendAndWait.
-	view := GtDeclarativeView fromDictionary: viewDictionary.
+	view := GtPhlowDeclarativeView fromDictionary: viewDictionary.
 	self assert: view title equals: #List.
 	data := view items.
 	self assert: data size equals: 3.
@@ -114,7 +114,7 @@ GtRemoteDeclarativeExamples >> printView [
 	viewDictionary := viewProxy newCommandFactory
 		<< self printViewDeclarationCommand;
 		sendAndWait.
-	view := GtDeclarativeView fromDictionary: viewDictionary.
+	view := GtPhlowDeclarativeView fromDictionary: viewDictionary.
 	self assert: view title equals: #Print.
 	self assert: view string equals: self printForString.
 	^ view
@@ -194,7 +194,7 @@ GtRemoteDeclarativeExamples >> stringView [
 	viewDictionary := viewProxy newCommandFactory
 		<< self stringViewDeclarationCommand;
 		sendAndWait.
-	view := GtDeclarativeView fromDictionary: viewDictionary.
+	view := GtPhlowDeclarativeView fromDictionary: viewDictionary.
 	self assert: view title equals: #String.
 	self assert: view string equals: 'hello world'.
 	^ view

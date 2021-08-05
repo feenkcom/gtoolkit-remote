@@ -5,10 +5,10 @@ The examples assume that the server is started manually.
 
 To start the server:
 
-[[[language=bash
+```bash
 cd <js directory>
 nodejs src/app.js 7005 7006
-]]]
+```
 
 "
 Class {
@@ -94,8 +94,7 @@ GtRemoteDeclarativeJavaScriptExamples >> runningServer [
 	settings
 		serverProcessClass: LanguageLinkManualProcess;
 		serverSocketAddress: (LanguageLinkSocketAddress ipOrName: 'localhost' port: 7005);
-		clientSocketAddress: (LanguageLinkSocketAddress ipOrName: 'localhost' port: 7006);
-		gtViewedObjectClassName: #GtViewedObject.
+		clientSocketAddress: (LanguageLinkSocketAddress ipOrName: 'localhost' port: 7006).
 	server := JSLinkApplication newWith: settings.
 	^ server start.
 

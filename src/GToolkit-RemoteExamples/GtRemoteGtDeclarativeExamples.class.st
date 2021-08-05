@@ -36,8 +36,7 @@ GtRemoteGtDeclarativeExamples >> runningServer [
 	settings
 		serverProcessClass: LanguageLinkManualProcess;
 		serverSocketAddress: (LanguageLinkSocketAddress ipOrName: 'localhost' port: 7003);
-		clientSocketAddress: (LanguageLinkSocketAddress ipOrName: 'localhost' port: 7004);
-		gtViewedObjectClassName: #GtViewedObject.
+		clientSocketAddress: (LanguageLinkSocketAddress ipOrName: 'localhost' port: 7004).
 	server := PharoLinkApplication newWith: settings.
 	^ server start.
 ]

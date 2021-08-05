@@ -5,15 +5,24 @@ The examples assume that the server is started manually.
 
 To build a Pharo image with the Gt server code loaded:
 
-[[[language=bash
-./pharo Pharo.image eval --save ""Metacello new repository: 'github://feenkcom/gtoolkit-remote/src'; baseline: 'GtRemotePhlow'; load""
-]]]
+```bash
+./pharo Pharo.image eval --save ""Metacello new repository: 'github://feenkcom/gtoolkit-remote/src'; baseline: 'GtPharoRemote'; load""
+```
 
 To start the server:
 
-[[[
+```bash
 ./pharo Pharo.image clap pharoLinkServer 7001 7002
-]]]
+```
+
+To run the server from a Playground:
+
+```
+PharoLinkServer new 
+	listenPort: 7001;
+	responsePort: 7002;
+	start
+```
 
 "
 Class {
@@ -42,8 +51,7 @@ GtRemotePharoDeclarativeExamples >> runningServer [
 	settings
 		serverProcessClass: LanguageLinkManualProcess;
 		serverSocketAddress: (LanguageLinkSocketAddress ipOrName: 'localhost' port: 7001);
-		clientSocketAddress: (LanguageLinkSocketAddress ipOrName: 'localhost' port: 7002);
-		gtViewedObjectClassName: #GtPharoViewedObject.
+		clientSocketAddress: (LanguageLinkSocketAddress ipOrName: 'localhost' port: 7002).
 	server := PharoLinkApplication newWith: settings.
 	^ server start.
 ]
@@ -52,5 +60,5 @@ GtRemotePharoDeclarativeExamples >> runningServer [
 GtRemotePharoDeclarativeExamples >> testInspectableName [
 	"Answer the name of the test inspectable class on the remote"
 
-	^ #GtPharoDeclarativeTestInspectable
+	^ #GtRemotePhlowDeclarativeTestInspectable
 ]
