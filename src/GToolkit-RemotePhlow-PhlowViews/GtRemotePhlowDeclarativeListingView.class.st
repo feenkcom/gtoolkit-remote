@@ -2,7 +2,7 @@ Class {
 	#name : 'GtRemotePhlowDeclarativeListingView',
 	#superclass : 'GtRemotePhlowDeclarativeView',
 	#instVars : [
-		'itemsBuilder',
+		'itemsProviderBuilder',
 		'transformation'
 	],
 	#category : 'GToolkit-RemotePhlow-PhlowViews'
@@ -13,16 +13,22 @@ GtRemotePhlowDeclarativeListingView >> defaultTransformation [
 	^ GtRemotePhlowSendObjectTransformation forValuable: [ :anObject | anObject ]
 ]
 
-{ #category : 'accessing' }
+{ #category : 'api - scripting' }
 GtRemotePhlowDeclarativeListingView >> items: aBlockClosure [
+	self itemsProvider: [ GtRemotePhlowSequenceableCollectionIterator new
+		targetCollection: aBlockClosure value ]
+]
 
-	itemsBuilder := aBlockClosure
+{ #category : 'api - scripting' }
+GtRemotePhlowDeclarativeListingView >> itemsProvider: aBlockClosure [
+	itemsProviderBuilder := aBlockClosure
 ]
 
 { #category : 'accessing' }
-GtRemotePhlowDeclarativeListingView >> itemsBuilder [
-	^ itemsBuilder ifNil: [ 
-		itemsBuilder := [ { } ] ]
+GtRemotePhlowDeclarativeListingView >> itemsProviderBuilder [
+	^ itemsProviderBuilder ifNil: [ 
+		itemsProviderBuilder := GtRemotePhlowSequenceableCollectionIterator new
+			targetCollection: #() ]
 ]
 
 { #category : 'api - scripting' }
