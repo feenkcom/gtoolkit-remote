@@ -1,10 +1,10 @@
 Class {
-	#name : 'GtRemoteSearchMethodGroupResult',
-	#superclass : 'GtSearchMethodGroupResult',
+	#name : #GtRemoteSearchMethodGroupResult,
+	#superclass : #GtSearchMethodGroupResult,
 	#category : 'GToolkit-RemoteGt'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemoteSearchMethodGroupResult >> refreshItems [
 	| message result |
 	filtered

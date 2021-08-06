@@ -18,8 +18,8 @@ Internal Representation and Key Implementation Points.
 
 "
 Class {
-	#name : 'GtViewedObject',
-	#superclass : 'Object',
+	#name : #GtViewedObject,
+	#superclass : #Object,
 	#instVars : [
 		'object',
 		'declarativeViewsBySelector'
@@ -27,19 +27,19 @@ Class {
 	#category : 'GToolkit-RemoteGt-Server'
 }
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtViewedObject class >> object: anObject [
 
 	^ self new initializeWith: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtViewedObject >> declarativeViewsBySelector [
 	^ declarativeViewsBySelector ifNil: [ 
 		declarativeViewsBySelector := Dictionary new ]
 ]
 
-{ #category : 'api - accessing' }
+{ #category : #'api - accessing' }
 GtViewedObject >> getDeclarativeViewFor: viewSelector [
 	^ self declarativeViewsBySelector 
 		at: viewSelector 
@@ -49,7 +49,7 @@ GtViewedObject >> getDeclarativeViewFor: viewSelector [
 				with: GtPhlowEmptyView new) asGtDeclarativeView ]
 ]
 
-{ #category : 'api - accessing' }
+{ #category : #'api - accessing' }
 GtViewedObject >> getDeclarativeViewMethodNames [
 	"Answer the set of declarative view selectors provided by the object"
 
@@ -58,7 +58,7 @@ GtViewedObject >> getDeclarativeViewMethodNames [
 		copyWithout: #gtPrintFor:
 ]
 
-{ #category : 'api - accessing' }
+{ #category : #'api - accessing' }
 GtViewedObject >> getViewDeclaration: viewSelector [
 	^ ((self getDeclarativeViewFor: viewSelector) 
 		ifNotNil: [ :view |
@@ -68,7 +68,7 @@ GtViewedObject >> getViewDeclaration: viewSelector [
 		
 ]
 
-{ #category : 'api - accessing' }
+{ #category : #'api - accessing' }
 GtViewedObject >> getViewsDeclarations [
 	| viewSelectors declarativeViews viewsDictionaries |
 	viewSelectors := self getDeclarativeViewMethodNames.
@@ -89,7 +89,7 @@ GtViewedObject >> getViewsDeclarations [
 		yourself
 ]
 
-{ #category : 'gt - extensions' }
+{ #category : #'gt - extensions' }
 GtViewedObject >> gtDeclarativeViewsFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -105,13 +105,13 @@ GtViewedObject >> gtDeclarativeViewsFor: aView [
 		send: [ :assoc | assoc value ]
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtViewedObject >> initializeWith: anObject [
 
 	object := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtViewedObject >> object [
 
 	^ object

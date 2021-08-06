@@ -1,7 +1,16 @@
-Extension { #name : 'Object' }
+Extension { #name : #Object }
 
-{ #category : '*GToolkit-RemotePhlow-InspectorExtensions' }
-Object >> gRemoteRawFor: aView [
+{ #category : #'*GToolkit-RemotePhlow-InspectorExtensions' }
+Object >> gtRemotePrintFor: aView [
+	<gtView>
+	^ aView textEditor
+		title: 'Print';
+		priority: 110;
+		text: [ self printString ]
+]
+
+{ #category : #'*GToolkit-RemotePhlow-InspectorExtensions' }
+Object >> gtRemoteRawFor: aView [
 	<gtView>
 	^ aView columnedList
 		title: 'Raw';
@@ -13,13 +22,4 @@ Object >> gRemoteRawFor: aView [
 		column: 'Variable' item: [ :anAssociation | anAssociation key ];
 		column: 'Value' item: [ :anAssociation | anAssociation value gtDisplayString ];
 		send: [ :anAssociation | anAssociation value ]
-]
-
-{ #category : '*GToolkit-RemotePhlow-InspectorExtensions' }
-Object >> gtRemotePrintFor: aView [
-	<gtView>
-	^ aView textEditor
-		title: 'Print';
-		priority: 110;
-		text: [ self printString ]
 ]
