@@ -13,8 +13,12 @@ GtPhlowDeclarativeColumnedListView >> viewFor: aView [
 	columnTitles withIndexDo: [ :cTitle :index |
 		column := list column.
 		column 
-			title: cTitle;
-			item: [ :anArray | anArray at: index ].
+			title: cTitle.
+		(columnTypes at: index) = #icon 
+			ifTrue: [
+				column iconName: [ :anArray | anArray at: index ] ]
+			ifFalse: [ 
+				column item: [ :anArray | anArray at: index ] ].
 		(columnWidths at: index) ifNotNil: [ :width |
 			column width: width ] ].
 	list

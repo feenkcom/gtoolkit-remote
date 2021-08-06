@@ -45,7 +45,7 @@ GtViewedObject >> getDeclarativeViewFor: viewSelector [
 		at: viewSelector 
 		ifAbsentPut: [
 			(self object 
-				perform: viewSelector 
+				perform: viewSelector
 				with: GtPhlowEmptyView new) asGtDeclarativeView ]
 ]
 
@@ -53,7 +53,9 @@ GtViewedObject >> getDeclarativeViewFor: viewSelector [
 GtViewedObject >> getDeclarativeViewMethodNames [
 	"Answer the set of declarative view selectors provided by the object"
 
-	^ object gtDeclarativeViewSelectors copyWithout: #gtRawFor:
+	^ (object gtDeclarativeViewSelectors 
+		copyWithout: #gtRawFor:)
+		copyWithout: #gtPrintFor:
 ]
 
 { #category : #'api - accessing' }
@@ -64,6 +66,27 @@ GtViewedObject >> getViewDeclaration: viewSelector [
 				at: #'__pharolinkImmediate' put: true;
 				yourself. ])
 		
+]
+
+{ #category : #'api - accessing' }
+GtViewedObject >> getViewsDeclarations [
+	| viewSelectors declarativeViews viewsDictionaries |
+	viewSelectors := self getDeclarativeViewMethodNames.
+	declarativeViews := (viewSelectors 
+		collect: [ :viewSelector |
+			| declarativeView |
+			declarativeView := self getDeclarativeViewFor: viewSelector.
+			declarativeView ifNotNil: [
+				declarativeView methodSelector: viewSelector ].
+			declarativeView ])
+		reject: [ :aDeclarativeView | aDeclarativeView isNil ].
+	viewsDictionaries := declarativeViews collect: [ :aDeclarativeView |
+		aDeclarativeView asDictionaryForExport ].
+	
+	^ Dictionary new
+		at: #'__pharolinkImmediate' put: true;
+		at: 'views' put: viewsDictionaries;
+		yourself
 ]
 
 { #category : #'gt - extensions' }
@@ -92,24 +115,4 @@ GtViewedObject >> initializeWith: anObject [
 GtViewedObject >> object [
 
 	^ object
-]
-
-{ #category : #'api - accessing' }
-GtViewedObject >> rawViewData [
-	"Answer the data for the raw view"
-	| variableNodes icon name value |
-
-	variableNodes := OrderedCollection new: object class allSlots size.
-	variableNodes add: (GTInspectorSelfNode hostObject: object).
-	object gtInspectorVariableNodesIn: variableNodes.
-
-	^ Array streamContents: [ :stream |
-		variableNodes do: [ :node |
-			icon := ([ node rawValue class systemIconName ]
-					on: Error 
-					do: [ :error | #smallWarningIcon ]).
-			name := node label.
-			value := node rawValue.
-			stream nextPut: { icon. name. value. } ] ].
-
 ]

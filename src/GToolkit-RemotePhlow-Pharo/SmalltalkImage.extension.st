@@ -1,6 +1,6 @@
-Extension { #name : 'SmalltalkImage' }
+Extension { #name : #SmalltalkImage }
 
-{ #category : '*GToolkit-RemotePhlow-Pharo' }
+{ #category : #'*GToolkit-RemotePhlow-Pharo' }
 SmalltalkImage >> gtClassesListRemoteFor: aView [
 	<gtView>
 

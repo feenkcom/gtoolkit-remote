@@ -37,18 +37,16 @@ GtRemoteInspectionSimulation class >> openOn: anObject [
 { #category : #'gt inspector' }
 GtRemoteInspectionSimulation >> declarativeViews [
 	"Answer the views for the receiver"
-	| viewMethodNames rawViews  |
+	| declarativeData declarativeViewDeclarations rawViews  |
 
-	viewMethodNames := inspectorProxy getDeclarativeViewMethodNames.
-	rawViews := viewMethodNames collect: [ :viewSelector |
-		| viewData declarativeView |
-		viewData := inspectorProxy getViewDeclaration: viewSelector.
-		viewData ifNotNil: [
-			declarativeView := GtPhlowDeclarativeView fromDictionary: viewData.
-			declarativeView
-				methodSelector: viewSelector;
-				initializeFromInspector: inspectorProxy.
-			declarativeView ] ].
+	declarativeData := inspectorProxy getViewsDeclarations.
+	declarativeViewDeclarations := declarativeData at: 'views' ifAbsent: [ #() ].
+	rawViews := declarativeViewDeclarations collect: [ :declarativeViewData |
+		| declarativeView |
+		declarativeView := GtPhlowDeclarativeView fromDictionary: declarativeViewData.
+		declarativeView
+			initializeFromInspector: inspectorProxy.
+		declarativeView ].
 	^ rawViews reject: #isNil
 ]
 
@@ -127,7 +125,7 @@ GtRemoteInspectionSimulation >> gtViewsInContext: aContext [
 	emptyView := GtPhlowEmptyView new.
 	^ OrderedCollection new
 		"The raw view is a special case to easily handle icons"
-		add: (self gtProxyRawFor: emptyView);
+		"add: (self gtProxyRawFor: emptyView);"
 		add: (self gtProxyFor: emptyView);
 		add: (self gtProxyViewsFor: emptyView);
 		yourself

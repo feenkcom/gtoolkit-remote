@@ -1,1 +1,1 @@
-Package { #name : 'BaselineOfGtRemotePhlow' }
+Package { #name : #BaselineOfGtRemotePhlow }

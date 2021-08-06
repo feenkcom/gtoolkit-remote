@@ -66,7 +66,7 @@ removeallclassmethods GtPhlowDeclarativeListingView
 doit
 (GtPhlowDeclarativeListingView
 	subclass: 'GtPhlowDeclarativeColumnedListView'
-	instVarNames: #( columnTitles columnWidths )
+	instVarNames: #( columnTitles columnWidths columnTypes )
 	classVars: #(  )
 	classInstVars: #(  )
 	poolDictionaries: #()
@@ -186,7 +186,7 @@ removeallclassmethods GtPhlowDeclarativeTreeView
 doit
 (Object
 	subclass: 'GtRemotePhlowColumn'
-	instVarNames: #( index title width itemComputation )
+	instVarNames: #( index title width itemComputation iconNameComputation )
 	classVars: #(  )
 	classInstVars: #(  )
 	poolDictionaries: #()
@@ -547,7 +547,7 @@ doit
 	inDictionary: Globals
 	options: #( #logCreation )
 )
-		category: 'GToolkit-RemotePhlow';
+		category: 'GToolkit-RemotePhlow-InspectorCore';
 		comment: 'GtViewedObject is responsible for serving declarative views to the client inspector.
 
 
@@ -600,6 +600,7 @@ fromJSONDictionary: aDictionary
 		title: (aDictionary at: #title);
 		priority: (aDictionary at: #priority);
 		dataTransport: (aDictionary at: #dataTransport);
+		methodSelector: (aDictionary at: #methodSelector);
 		yourself
 %
 
@@ -616,6 +617,7 @@ asDictionaryForExport
 		at: #title put: title;
 		at: #priority put: priority;
 		at: #dataTransport put: dataTransport;
+		at: #methodSelector put: methodSelector;
 		yourself
 %
 
@@ -760,7 +762,8 @@ fromJSONDictionary: aDictionary
 	list := super fromJSONDictionary: aDictionary.
 	list
 		columnTitles: (aDictionary at: #columnTitles);
-		columnWidths: (aDictionary at: #columnWidths).
+		columnWidths: (aDictionary at: #columnWidths);
+		columnTypes: (aDictionary at: #columnTypes).
 	"list dataTransport = self dataIncluded ifTrue: 
 		[ list items: (aDictionary at: #items) ]."
 	^list
@@ -776,6 +779,7 @@ asDictionaryForExport
 	dictionary := super asDictionaryForExport 
 		at: #columnTitles put: columnTitles;
 		at: #columnWidths put: columnWidths;
+		at: #columnTypes put: columnTypes;
 		yourself.
 	"self dataTransport = self class dataIncluded ifTrue: [ 
 		dictionary at: #items put: items ]."
@@ -792,6 +796,18 @@ category: 'accessing'
 method: GtPhlowDeclarativeColumnedListView
 columnTitles: anObject
 	columnTitles := anObject
+%
+
+category: 'accessing'
+method: GtPhlowDeclarativeColumnedListView
+columnTypes
+	^ columnTypes
+%
+
+category: 'accessing'
+method: GtPhlowDeclarativeColumnedListView
+columnTypes: anObject
+	columnTypes := anObject
 %
 
 category: 'accessing'
@@ -1001,6 +1017,26 @@ cellWidth
 
 category: 'accessing'
 method: GtRemotePhlowColumn
+columnDataType
+	^ self isWithIcon
+		ifTrue: [ #icon ]
+		ifFalse: [ #text ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowColumn
+iconName: aBlock
+	iconNameComputation := aBlock
+%
+
+category: 'accessing'
+method: GtRemotePhlowColumn
+iconNameComputation
+	^ iconNameComputation
+%
+
+category: 'accessing'
+method: GtRemotePhlowColumn
 index
 	^ index
 %
@@ -1011,10 +1047,16 @@ index: aColumnIndex
 	index := aColumnIndex
 %
 
+category: 'testing'
+method: GtRemotePhlowColumn
+isWithIcon
+	^ iconNameComputation notNil
+%
+
 category: 'accessing'
 method: GtRemotePhlowColumn
-item: aBlockOrSymbol
-	itemComputation := aBlockOrSymbol
+item: aBlock
+	itemComputation := aBlock
 %
 
 category: 'accessing'
@@ -1375,6 +1417,7 @@ asGtDeclarativeView
 		priority: self priority;
 		columnTitles: (self columns collect: [ :each | each title ]) asArray;
 		columnWidths: (self columns collect: [ :each | each cellWidth ]) asArray;
+		columnTypes: (self columns collect: [ :each | each columnDataType ]) asArray;
 		dataTransport: GtPhlowDeclarativeView dataLazy
 %
 
@@ -1389,7 +1432,26 @@ column
 	^ aColumn
 %
 
-category: 'accessing'
+category: 'api - scripting column'
+method: GtRemotePhlowDeclarativeColumnedList
+column: columnName iconName: anIconNameComputation
+	| aColumn |
+	aColumn := self column.
+	aColumn title: columnName.
+	aColumn iconName: anIconNameComputation
+%
+
+category: 'api - scripting column'
+method: GtRemotePhlowDeclarativeColumnedList
+column: columnName iconName: anIconNameComputation width: aNumberOrNil
+	| aColumn |
+	aColumn := self column.
+	aColumn title: columnName.
+	aColumn iconName: anIconNameComputation.
+	aColumn width: aNumberOrNil.
+%
+
+category: 'api - scripting column'
 method: GtRemotePhlowDeclarativeColumnedList
 column: columnName item: aBlockClosure
 	| aColumn |
@@ -1398,7 +1460,7 @@ column: columnName item: aBlockClosure
 	aColumn item: aBlockClosure
 %
 
-category: 'accessing'
+category: 'api - scripting column'
 method: GtRemotePhlowDeclarativeColumnedList
 column: columnName item: aBlockClosure width: aNumberOrNil
  	| aColumn |
@@ -1676,10 +1738,14 @@ formatItem: anObject atIndex: rowIndex
 	phlowColumns := self phlowView columns.
 	formattedColumnItems := Array new: phlowColumns size.
 	phlowColumns withIndexDo: [ :column :columnIndex | 
+		| valueComputation |
+		valueComputation := column isWithIcon 
+			ifTrue: [ column iconNameComputation ]
+			ifFalse: [ column itemComputation ].
 		formattedColumnItems 
-			at:columnIndex
-			put: (column itemComputation 
-				cull: anObject cull: rowIndex cull: columnIndex) gtDisplayString ].
+			at: columnIndex
+			put:  (valueComputation
+				cull: anObject cull: rowIndex cull: columnIndex) gtDisplayString].
 	^ formattedColumnItems
 %
 
@@ -1769,7 +1835,9 @@ method: GtRemotePhlowViewedObject
 getDeclarativeViewMethodNames
 	"Answer the set of declarative view selectors provided by the object"
 
-	^ object gtPharoDeclarativeViewSelectors
+	^ (object gtDeclarativeViewSelectors 
+		copyWithout: #gtRawFor:)
+		copyWithout: #gtPrintFor:
 %
 
 category: 'api - accessing'
@@ -1781,6 +1849,28 @@ getViewDeclaration: viewSelector
 				at: #'__pharolinkImmediate' put: true;
 				yourself. ])
 		
+%
+
+category: 'api - accessing'
+method: GtRemotePhlowViewedObject
+getViewsDeclarations
+	| viewSelectors declarativeViews viewsDictionaries |
+	viewSelectors := self getDeclarativeViewMethodNames.
+	declarativeViews := (viewSelectors 
+		collect: [ :viewSelector |
+			| declarativeView |
+			declarativeView := self getDeclarativeViewFor: viewSelector.
+			declarativeView ifNotNil: [
+				declarativeView methodSelector: viewSelector ].
+			declarativeView ])
+		reject: [ :aDeclarativeView | aDeclarativeView isNil ].
+	viewsDictionaries := declarativeViews collect: [ :aDeclarativeView |
+		aDeclarativeView asDictionaryForExport ].
+	
+	^ Dictionary new
+		at: #'__pharolinkImmediate' put: true;
+		at: 'views' put: viewsDictionaries;
+		yourself
 %
 
 category: 'initialization'
@@ -1849,6 +1939,16 @@ gtSuperclassesFor: aView
 		priority: 12;
 		items: [ self allSuperClasses reversed ];
 		itemText: [ :cls | cls name ]
+%
+
+! Class extensions for 'Collection'
+
+!		Class methods for 'Collection'
+
+category: '*GToolkit-RemotePhlow-GemStone'
+classmethod: Collection
+gtGsInspectorIconName
+	^ #collectionIcon
 %
 
 ! Class extensions for 'GtRemotePhlowDeclarativeTestInspectable'
@@ -1922,36 +2022,56 @@ category: '*GToolkit-RemotePhlow-GemStone'
 method: GtRemotePhlowViewedObject
 rawViewData
 	"Answer the data for the raw view"
-	| "icon name value" instVarNames indexedVarsSize |
+	| variableBindings |
 
-
-	"GemStone doesn't have GTInspectorSelfNode.  The call to #addRawSelfNodeTo: will allow the platform specific code to be added.
-	variableNodes add: (GTInspectorSelfNode hostObject: object)."
-
-    instVarNames := object class allInstVarNames.
-    indexedVarsSize := object basicSize - instVarNames size.
-    
+	variableBindings := object gtRemoteVariableValuePairsWithSelfIf: true.
 
 	^ Array streamContents: [ :stream |
-		stream nextPut: { #classicon. 'self'. object printString. }.
+		variableBindings do: [ :binding |
+			| icon name value |
+			name := binding key.
+			value := binding value.
 
-        instVarNames doWithIndex: [ :each :index | 
-			stream nextPut: { #classicon. each. (object instVarAt: index) printString. } ].
-    
-		1 to: (indexedVarsSize min: 21) do: [ :index | 
-			stream nextPut: { #classicon. index asString. (object _at: index) printString. } ].
-    
-		((indexedVarsSize - 20) max: 22) to: indexedVarsSize do: [ :index | 
-			stream nextPut: { #classicon. index asString. (object _at: index) printString. } ] ].
+			icon := ([ value class gtGsInspectorIconName ]
+					on: Error 
+					do: [ :error | #smallWarningIcon ]).
+			
+			stream nextPut: { icon. name. value } ] ].
+%
+
+! Class extensions for 'Magnitude'
+
+!		Class methods for 'Magnitude'
+
+category: '*GToolkit-RemotePhlow-GemStone'
+classmethod: Magnitude
+gtGsInspectorIconName
+	^ #magnitudeIcon
 %
 
 ! Class extensions for 'Object'
 
 !		Instance methods for 'Object'
 
-category: '*GToolkit-RemotePhlow'
+category: '*GToolkit-RemotePhlow-InspectorExtensions'
 method: Object
-gtPharoDeclarativeViewSelectors
+gRemoteRawFor: aView
+	<gtView>
+	^ aView columnedList
+		title: 'Raw';
+		priority: 100;
+		items: [ self gtRemoteVariableValuePairsWithSelfIf: true ];
+		column: 'Icon' 
+			iconName: [ :anAssociation | anAssociation value class gtSystemIconName ]
+			width: 36;
+		column: 'Variable' item: [ :anAssociation | anAssociation key ];
+		column: 'Value' item: [ :anAssociation | anAssociation value gtDisplayString ];
+		send: [ :anAssociation | anAssociation value ]
+%
+
+category: '*GToolkit-RemotePhlow-GemStone'
+method: Object
+gtDeclarativeViewSelectors
 	"Answer a collection of the object's declarative view selectors"
 
 	^ ((Pragma 
@@ -1960,9 +2080,37 @@ gtPharoDeclarativeViewSelectors
 		to: Object) collect: [ :each | each method selector ]) asSet asArray
 %
 
-category: '*GToolkit-RemotePhlow'
+category: '*GToolkit-RemotePhlow-GemStone'
 method: Object
-gtPrintRemoteFor: aView
+gtDisplayOn: writeStream
+	self printOn: writeStream
+%
+
+category: '*GToolkit-RemotePhlow-GemStone'
+method: Object
+gtDisplayString
+  | ws contents |
+  ws := PrintStream printingOn: String new "maxSize: 100".
+
+  [ self gtDisplayOn: ws ] 
+	on: Error 
+	do: [ :error | ^ '<error printing>' ].
+  contents := ws _collection.
+
+  ^ contents size > 200
+    ifTrue: [ (contents copyFrom: 1 to: 200) , '...' ]
+    ifFalse: [ contents ]
+%
+
+category: '*GToolkit-RemotePhlow-GemStone'
+method: Object
+gtGsInspectorIconName
+	^ #classIcon
+%
+
+category: '*GToolkit-RemotePhlow-InspectorExtensions'
+method: Object
+gtRemotePrintFor: aView
 	<gtView>
 	^ aView textEditor
 		title: 'Print';
@@ -1970,11 +2118,76 @@ gtPrintRemoteFor: aView
 		text: [ self printString ]
 %
 
+category: '*GToolkit-RemotePhlow-GemStone'
+method: Object
+gtRemoteVariableValuePairsWithSelfIf: aBoolean
+	| instVarNames bindings indexedVarsSize |
+	instVarNames := self class allInstVarNames.
+	indexedVarsSize := self basicSize - instVarNames size.
+	bindings := OrderedCollection new: instVarNames size + 1.
+	
+	aBoolean ifTrue: [ bindings add: 'self' -> self ].
+	
+	instVarNames doWithIndex: [ :each :index | 
+		bindings add: (each -> (self instVarAt: index))].
+	
+	1 to: (indexedVarsSize min: 21) do: [ :index | 
+		bindings add: (index asString -> (self _at: index)) ].
+	
+	((indexedVarsSize - 20) max: 22) to: indexedVarsSize do: [ :index | 
+		bindings add: (index asString -> (self _at: index)) ].
+	
+	^ bindings
+%
+
+category: '*GToolkit-RemotePhlow-GemStone'
+method: Object
+gtSystemIconName
+	^ self gtGsInspectorIconName
+%
+
+! Class extensions for 'SequenceableCollection'
+
+!		Instance methods for 'SequenceableCollection'
+
+category: '*GToolkit-RemotePhlow-InspectorExtensions'
+method: SequenceableCollection
+gtRemoteItemsFor: aView
+	<gtView>
+	^ aView columnedList
+		title: 'Items';
+		priority: 50;
+		items: [ self ];
+		column: 'Index' 
+			item: [ :eachItem :eachIndex | eachIndex  ]
+			width: 45;
+		column: 'Item' 
+			item: [ :eachItem | eachItem gtDisplayString ].
+%
+
+! Class extensions for 'String'
+
+!		Class methods for 'String'
+
+category: '*GToolkit-RemotePhlow-GemStone'
+classmethod: String
+gtGsInspectorIconName
+	^ #stringIcon
+%
+
+!		Instance methods for 'String'
+
+category: '*GToolkit-RemotePhlow-GemStone'
+method: String
+gtDisplayOn: writeStream
+	writeStream nextPutAll: self
+%
+
 ! Class extensions for 'TestResult'
 
 !		Instance methods for 'TestResult'
 
-category: '*GToolkit-RemotePhlow'
+category: '*GToolkit-RemotePhlow-InspectorExtensions'
 method: TestResult
 gtResultsFor: aView
 	<gtView>
@@ -1989,7 +2202,7 @@ gtResultsFor: aView
 		send: [ :assoc | assoc key ]
 %
 
-category: '*GToolkit-RemotePhlow'
+category: '*GToolkit-RemotePhlow-InspectorExtensions'
 method: TestResult
 gtTestResults
 	"Answer a collection of result -> label associations"

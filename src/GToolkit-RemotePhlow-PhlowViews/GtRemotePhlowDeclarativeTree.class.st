@@ -8,8 +8,8 @@ When transporting the data, each node in the tree is represented as an Array wit
 
 "
 Class {
-	#name : 'GtRemotePhlowDeclarativeTree',
-	#superclass : 'GtRemotePhlowDeclarativeView',
+	#name : #GtRemotePhlowDeclarativeTree,
+	#superclass : #GtRemotePhlowDeclarativeView,
 	#instVars : [
 		'itemsBuilder',
 		'itemTextBlock',
@@ -18,7 +18,7 @@ Class {
 	#category : 'GToolkit-RemotePhlow-PhlowViews'
 }
 
-{ #category : 'private' }
+{ #category : #private }
 GtRemotePhlowDeclarativeTree >> add: item index: anArray to: stream [
 	"Add the supplied item, index and the item's children to the stream"
 
@@ -30,7 +30,7 @@ GtRemotePhlowDeclarativeTree >> add: item index: anArray to: stream [
 				self add: child index: anArray, { i } to: childStream ] ] }
 ]
 
-{ #category : 'converting' }
+{ #category : #converting }
 GtRemotePhlowDeclarativeTree >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
@@ -45,19 +45,19 @@ GtRemotePhlowDeclarativeTree >> asGtDeclarativeView [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeTree >> children [
 
 	^ childrenBlock
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeTree >> children: aBlock [
 
 	childrenBlock := aBlock
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 GtRemotePhlowDeclarativeTree >> expand: anOrderedCollection to: selection from: aCollection [
 
 	selection <= anOrderedCollection size ifTrue: [ ^ self ].
@@ -69,32 +69,32 @@ GtRemotePhlowDeclarativeTree >> expand: anOrderedCollection to: selection from: 
 
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtRemotePhlowDeclarativeTree >> initialize [
 
 	super initialize.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeTree >> itemText [
 
 	^ itemTextBlock ifNil: [ 
 		itemTextBlock := [ :item | item ] ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeTree >> itemText: aBlock [
 
 	itemTextBlock := aBlock
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeTree >> items: aBlock [
 
 	itemsBuilder := aBlock
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeTree >> itemsBuilder [
 	^ itemsBuilder ifNil: [ 
 		itemsBuilder := [ #() ] ]

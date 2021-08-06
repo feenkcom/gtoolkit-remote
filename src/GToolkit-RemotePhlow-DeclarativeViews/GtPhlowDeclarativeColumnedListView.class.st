@@ -17,16 +17,17 @@ Current limitations:
 
 "
 Class {
-	#name : 'GtPhlowDeclarativeColumnedListView',
-	#superclass : 'GtPhlowDeclarativeListingView',
+	#name : #GtPhlowDeclarativeColumnedListView,
+	#superclass : #GtPhlowDeclarativeListingView,
 	#instVars : [
 		'columnTitles',
-		'columnWidths'
+		'columnWidths',
+		'columnTypes'
 	],
 	#category : 'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtPhlowDeclarativeColumnedListView class >> fromJSONDictionary: aDictionary [
 
 	| list |
@@ -34,41 +35,53 @@ GtPhlowDeclarativeColumnedListView class >> fromJSONDictionary: aDictionary [
 	list := super fromJSONDictionary: aDictionary.
 	list
 		columnTitles: (aDictionary at: #columnTitles);
-		columnWidths: (aDictionary at: #columnWidths).
+		columnWidths: (aDictionary at: #columnWidths);
+		columnTypes: (aDictionary at: #columnTypes).
 	"list dataTransport = self dataIncluded ifTrue: 
 		[ list items: (aDictionary at: #items) ]."
 	^list
 ]
 
-{ #category : 'converting' }
+{ #category : #converting }
 GtPhlowDeclarativeColumnedListView >> asDictionaryForExport [ 
 	| dictionary |
 
 	dictionary := super asDictionaryForExport 
 		at: #columnTitles put: columnTitles;
 		at: #columnWidths put: columnWidths;
+		at: #columnTypes put: columnTypes;
 		yourself.
 	"self dataTransport = self class dataIncluded ifTrue: [ 
 		dictionary at: #items put: items ]."
 	^dictionary
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPhlowDeclarativeColumnedListView >> columnTitles [
 	^ columnTitles
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPhlowDeclarativeColumnedListView >> columnTitles: anObject [
 	columnTitles := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
+GtPhlowDeclarativeColumnedListView >> columnTypes [
+	^ columnTypes
+]
+
+{ #category : #accessing }
+GtPhlowDeclarativeColumnedListView >> columnTypes: anObject [
+	columnTypes := anObject
+]
+
+{ #category : #accessing }
 GtPhlowDeclarativeColumnedListView >> columnWidths [
 	^ columnWidths
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPhlowDeclarativeColumnedListView >> columnWidths: anObject [
 	columnWidths := anObject
 ]

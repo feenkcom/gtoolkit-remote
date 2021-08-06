@@ -1,6 +1,6 @@
-Extension { #name : 'Behavior' }
+Extension { #name : #Behavior }
 
-{ #category : '*GToolkit-RemotePhlow-Gemstone' }
+{ #category : #'*GToolkit-RemotePhlow-Gemstone' }
 Behavior >> gtMethodsListRemoteFor: aView [
 	<gtView>
 
@@ -11,7 +11,7 @@ Behavior >> gtMethodsListRemoteFor: aView [
 		itemText: [ :method | method selector ]
 ]
 
-{ #category : '*GToolkit-RemotePhlow-Gemstone' }
+{ #category : #'*GToolkit-RemotePhlow-Gemstone' }
 Behavior >> gtSubclasses [
 	"A hack to figure out all subclasses since Metaclass3>>_subclasses always answers nil"
 	| allClasses result |
@@ -23,7 +23,7 @@ Behavior >> gtSubclasses [
 	^ result
 ]
 
-{ #category : '*GToolkit-RemotePhlow-Gemstone' }
+{ #category : #'*GToolkit-RemotePhlow-Gemstone' }
 Behavior >> gtSubclassesFor: aView [
 	<gtView>
 
@@ -35,7 +35,7 @@ Behavior >> gtSubclassesFor: aView [
 		children: [ :cls | cls gtSubclasses ]
 ]
 
-{ #category : '*GToolkit-RemotePhlow-Gemstone' }
+{ #category : #'*GToolkit-RemotePhlow-Gemstone' }
 Behavior >> gtSuperclassesFor: aView [
 	<gtView>
 

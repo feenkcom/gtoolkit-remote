@@ -11,8 +11,8 @@ GtDeclarativeTestInspectable is a simple object that can be used to test the Gt 
 
 "
 Class {
-	#name : 'GtRemotePhlowDeclarativeTestInspectable',
-	#superclass : 'Object',
+	#name : #GtRemotePhlowDeclarativeTestInspectable,
+	#superclass : #Object,
 	#instVars : [
 		'string',
 		'collectionOfObjects'
@@ -20,23 +20,23 @@ Class {
 	#category : 'GToolkit-RemotePhlow-Examples'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeTestInspectable >> collectionAt: anIndex put: anObject [
 
 	^collectionOfObjects at: anIndex put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeTestInspectable >> collectionOfObjects [
 	^ collectionOfObjects
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeTestInspectable >> collectionOfObjects: anObject [
 	collectionOfObjects := anObject
 ]
 
-{ #category : 'inspecting' }
+{ #category : #inspecting }
 GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListFor: aView [
 	<gtView>
 
@@ -48,7 +48,7 @@ GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListFor: aView [
 		column: 'Lowercase' item: [ :anObject | anObject asString asLowercase ] width: 100.
 ]
 
-{ #category : 'inspecting' }
+{ #category : #inspecting }
 GtRemotePhlowDeclarativeTestInspectable >> gtLargeColumnedListFor: aView [
 	<gtView>
 
@@ -60,7 +60,7 @@ GtRemotePhlowDeclarativeTestInspectable >> gtLargeColumnedListFor: aView [
 		column: 'Value * 10' item: [ :anObject | (anObject * 10) asString asLowercase ] width: 100.
 ]
 
-{ #category : 'inspecting' }
+{ #category : #inspecting }
 GtRemotePhlowDeclarativeTestInspectable >> gtLargeColumnedListWithIndexFor: aView [
 	<gtView>
 
@@ -72,7 +72,7 @@ GtRemotePhlowDeclarativeTestInspectable >> gtLargeColumnedListWithIndexFor: aVie
 		column: 'Value' item: [ :anObject | anObject ].
 ]
 
-{ #category : 'inspecting' }
+{ #category : #inspecting }
 GtRemotePhlowDeclarativeTestInspectable >> gtLargeListFor: aView [
 	<gtView>
 
@@ -83,7 +83,7 @@ GtRemotePhlowDeclarativeTestInspectable >> gtLargeListFor: aView [
 		itemText: [ :item | item  ]
 ]
 
-{ #category : 'inspecting' }
+{ #category : #inspecting }
 GtRemotePhlowDeclarativeTestInspectable >> gtListFor: aView [
 	<gtView>
 
@@ -94,7 +94,7 @@ GtRemotePhlowDeclarativeTestInspectable >> gtListFor: aView [
 		itemText: [ :item | item ]
 ]
 
-{ #category : 'inspecting' }
+{ #category : #inspecting }
 GtRemotePhlowDeclarativeTestInspectable >> gtStringFor: aView [
 	<gtView>
 
@@ -104,7 +104,7 @@ GtRemotePhlowDeclarativeTestInspectable >> gtStringFor: aView [
 		text: [ self string ]
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtRemotePhlowDeclarativeTestInspectable >> initialize [ 
 
 	super initialize.
@@ -115,18 +115,18 @@ GtRemotePhlowDeclarativeTestInspectable >> initialize [
 		DateAndTime now. "readFrom: '2021-04-06T14:43:49.623384+02:00' readStream." }.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeTestInspectable >> string [
 
 	^string
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeTestInspectable >> string: anObject [
 	string := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeTestInspectable >> text [
 
 	^string asRopedText 

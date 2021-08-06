@@ -1,18 +1,18 @@
 Class {
-	#name : 'GtRemotePhlowDeclarativeViewListingDataSource',
-	#superclass : 'GtRemotePhlowDeclarativeViewDataSource',
+	#name : #GtRemotePhlowDeclarativeViewListingDataSource,
+	#superclass : #GtRemotePhlowDeclarativeViewDataSource,
 	#instVars : [
 		'cachedItems'
 	],
 	#category : 'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeViewListingDataSource >> formatItem: anObject atIndex: anIndex [
 	self subclassResponsibility
 ]
 
-{ #category : 'api' }
+{ #category : #api }
 GtRemotePhlowDeclarativeViewListingDataSource >> retrieveItems: anItemsCount fromIndex: anIndex [
 	| viewItems targetItems formattedItems |
 	viewItems := self viewItems.
@@ -27,12 +27,12 @@ GtRemotePhlowDeclarativeViewListingDataSource >> retrieveItems: anItemsCount fro
 	^ formattedItems
 ]
 
-{ #category : 'api' }
+{ #category : #api }
 GtRemotePhlowDeclarativeViewListingDataSource >> retrieveTotalItemsCount [
 	^ self viewItems size
 ]
 
-{ #category : 'api' }
+{ #category : #api }
 GtRemotePhlowDeclarativeViewListingDataSource >> retriveSentItemAt: aSelectionIndex [
 	"Answer the raw value at the supplied index"
 	
@@ -41,7 +41,7 @@ GtRemotePhlowDeclarativeViewListingDataSource >> retriveSentItemAt: aSelectionIn
 		selection: aSelectionIndex
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeViewListingDataSource >> viewItems [
 	^ cachedItems ifNil: [ 
 		cachedItems := self phlowView itemsBuilder value ]

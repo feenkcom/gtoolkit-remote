@@ -25,8 +25,8 @@ Internal Representation and Key Implementation Points.
     Implementation Points
 "
 Class {
-	#name : 'GtRemotePhlowDeclarativeView',
-	#superclass : 'Object',
+	#name : #GtRemotePhlowDeclarativeView,
+	#superclass : #Object,
 	#instVars : [
 		'title',
 		'priority'
@@ -34,27 +34,27 @@ Class {
 	#category : 'GToolkit-RemotePhlow-PhlowViews'
 }
 
-{ #category : 'converting' }
+{ #category : #converting }
 GtRemotePhlowDeclarativeView >> asGtDeclarativeView [
 	^ nil
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeView >> priority [
 	^ priority
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeView >> priority: anObject [
 	priority := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeView >> title [
 	^ title
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeView >> title: anObject [
 	title := anObject
 ]

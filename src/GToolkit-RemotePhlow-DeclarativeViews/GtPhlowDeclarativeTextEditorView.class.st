@@ -1,13 +1,13 @@
 Class {
-	#name : 'GtPhlowDeclarativeTextEditorView',
-	#superclass : 'GtPhlowDeclarativeView',
+	#name : #GtPhlowDeclarativeTextEditorView,
+	#superclass : #GtPhlowDeclarativeView,
 	#instVars : [
 		'string'
 	],
 	#category : 'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtPhlowDeclarativeTextEditorView class >> fromJSONDictionary: aDictionary [
 
 	| editor |
@@ -18,7 +18,7 @@ GtPhlowDeclarativeTextEditorView class >> fromJSONDictionary: aDictionary [
 	^editor
 ]
 
-{ #category : 'converting' }
+{ #category : #converting }
 GtPhlowDeclarativeTextEditorView >> asDictionaryForExport [ 
 
 	| dictionary |
@@ -29,7 +29,7 @@ GtPhlowDeclarativeTextEditorView >> asDictionaryForExport [
 	^dictionary
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPhlowDeclarativeTextEditorView >> string [
 
 	^ string "ifNil: [ 
@@ -38,7 +38,7 @@ GtPhlowDeclarativeTextEditorView >> string [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPhlowDeclarativeTextEditorView >> string: anObject [
 	string := anObject
 ]
