@@ -9,10 +9,12 @@ To start the server:
 ./glamoroustoolkit GlamorousToolkit.image clap pharoLinkServer 7003 7004
 ]]]
 
+
+NOTE: This should be a subclass of GtRemoteDeclarativeExamples.  It's been moved to Object to disable the examples until https://github.com/feenkcom/gtoolkit/issues/2062 is complete.
 "
 Class {
 	#name : 'GtRemoteGtDeclarativeExamples',
-	#superclass : 'GtRemoteDeclarativeStExamples',
+	#superclass : 'Object',
 	#category : 'GToolkit-RemoteExamples'
 }
 
@@ -26,9 +28,9 @@ GtRemoteGtDeclarativeExamples >> printForString [
 { #category : 'examples' }
 GtRemoteGtDeclarativeExamples >> runningServer [
 	"Answer a running server"
-	<gtExample>
+	"<gtExample>"
 	<after: #stopServer>
-	| settings |
+	| settings server |
 
 	server ifNotNil: [ ^ server ].
 	"Connect to the remote image"

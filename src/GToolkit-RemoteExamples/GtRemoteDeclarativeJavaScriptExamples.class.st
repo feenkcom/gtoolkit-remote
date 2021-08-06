@@ -10,10 +10,11 @@ cd <js directory>
 nodejs src/app.js 7005 7006
 ```
 
+NOTE: This should be a subclass of GtRemoteDeclarativeExamples.  It's been moved to Object to disable the examples until https://github.com/feenkcom/gtoolkit/issues/2062 is complete.
 "
 Class {
 	#name : 'GtRemoteDeclarativeJavaScriptExamples',
-	#superclass : 'GtRemoteDeclarativeExamples',
+	#superclass : 'Object',
 	#category : 'GToolkit-RemoteExamples'
 }
 
@@ -86,9 +87,9 @@ ti'
 { #category : 'private' }
 GtRemoteDeclarativeJavaScriptExamples >> runningServer [
 	"Answer a running server"
-	<gtExample>
+	"<gtExample>"
 	<after: #stopServer>
-	| settings |
+	| settings server |
 
 	settings := JSLinkApplication defaultSettings.
 	settings

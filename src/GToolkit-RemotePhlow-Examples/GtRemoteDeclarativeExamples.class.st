@@ -57,9 +57,18 @@ GtRemoteDeclarativeExamples >> getRemoteObject [
 	^ GtRemotePhlowDeclarativeTestInspectable new
 ]
 
+{ #category : 'private' }
+GtRemoteDeclarativeExamples >> getViewedObjectProxy [
+	"Answer the GtViewedObject proxy for the remote object"
+
+	^ GtViewedObject object: self remoteObject.
+
+]
+
 { #category : 'examples - views' }
 GtRemoteDeclarativeExamples >> listView [
 	<gtExample>
+	<after: #stopServer>
 	| viewProxy viewDictionary view data |
 
 	viewProxy := self viewedObjectProxy.
@@ -103,6 +112,7 @@ GtRemoteDeclarativeExamples >> printForString [
 { #category : 'examples - views' }
 GtRemoteDeclarativeExamples >> printView [
 	<gtExample>
+	<after: #stopServer>
 	| viewProxy viewDictionary view |
 
 	viewProxy := self viewedObjectProxy.
@@ -118,6 +128,7 @@ GtRemoteDeclarativeExamples >> remoteObject [
 	"Answer the remote GtDeclarativeTestInspectable instance.
 	This will be a proxy with a remote server."
 	<gtExample>
+	<after: #stopServer>
 	| remoteObject collection |
 
 	remoteObject :=  self getRemoteObject.
@@ -148,12 +159,13 @@ GtRemoteDeclarativeExamples >> stopServer [
 
 	server ifNotNil: 
 		[ server stop.
-		server := nil. ]
+		server := nil ]
 ]
 
 { #category : 'examples - views' }
 GtRemoteDeclarativeExamples >> stringView [
 	<gtExample>
+	<after: #stopServer>
 	| viewProxy viewDictionary view |
 
 	viewProxy := self viewedObjectProxy.
@@ -168,9 +180,10 @@ GtRemoteDeclarativeExamples >> stringView [
 GtRemoteDeclarativeExamples >> viewedObjectProxy [
 	"Answer the GtViewedObject proxy for the remote object"
 	<gtExample>
+	<after: #stopServer>
 	| viewedObject declarativeViews |
 
-	viewedObject :=  GtViewedObject object: self remoteObject.
+	viewedObject :=  self getViewedObjectProxy.
 
 	declarativeViews :=  viewedObject getDeclarativeViewMethodNames.
 	self assert: declarativeViews asSet equals: self declarativeViewNames asSet.
