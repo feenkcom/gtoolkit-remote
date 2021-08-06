@@ -124,7 +124,7 @@ GtRemoteInspectionSimulation >> object [
 GtRemoteInspectionSimulation >> object: anObject [
 
 	object := anObject.
-	inspectorProxy := GtViewedObject object: anObject
+	inspectorProxy := GtRemotePhlowViewedObject object: anObject
 ]
 
 { #category : 'gt inspector' }

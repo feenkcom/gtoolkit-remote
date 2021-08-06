@@ -180,7 +180,7 @@ GtRemoteDeclarativeExamples >> stringView [
 
 { #category : 'examples' }
 GtRemoteDeclarativeExamples >> viewedObjectProxy [
-	"Answer the GtViewedObject proxy for the remote object"
+	"Answer the GtRemotePhlowViewedObject proxy for the remote object"
 	<gtExample>
 	<after: #stopServer>
 	| viewedObject declarativeViews |

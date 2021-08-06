@@ -1,5 +1,5 @@
 "
-GtViewedObject is responsible for serving declarative views to the client inspector.
+GtRemotePhlowViewedObject is responsible for serving declarative views to the client inspector.
 
 
 Public API and Key Messages
@@ -47,15 +47,7 @@ GtRemotePhlowViewedObject >> getDeclarativeOriginalPhlowViews [
 
 { #category : 'api - accessing' }
 GtRemotePhlowViewedObject >> getDeclarativeViewFor: viewSelector [
-	^ self declarativeViewsBySelector at: viewSelector 
-		"ifAbsentPut: [
-			| declarativeView |
-			declarativeView := (self object 
-				perform: viewSelector
-				with: GtRemotePhlowDeclarativeProtoView new) asGtDeclarativeView.
-			declarativeView ifNotNil: [
-				declarativeView methodSelector: viewSelector ].
-			declarativeView ]"
+	^ self declarativeViewsBySelector at: viewSelector
 ]
 
 { #category : 'api - accessing' }
