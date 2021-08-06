@@ -79,7 +79,9 @@ GtRemotePhlowViewedObject >> getViewsDeclarations [
 			declarativeView ])
 		reject: [ :aDeclarativeView | aDeclarativeView isNil ].
 	viewsDictionaries := declarativeViews collect: [ :aDeclarativeView |
-		aDeclarativeView asDictionaryForExport ].
+		aDeclarativeView asDictionaryForExport
+			at: #'__pharolinkImmediate' put: true;
+			yourself ].
 	
 	^ Dictionary new
 		at: #'__pharolinkImmediate' put: true;
