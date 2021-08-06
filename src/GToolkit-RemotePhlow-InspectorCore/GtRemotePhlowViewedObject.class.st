@@ -34,30 +34,35 @@ GtRemotePhlowViewedObject class >> object: anObject [
 { #category : 'accessing' }
 GtRemotePhlowViewedObject >> declarativeViewsBySelector [
 	^ declarativeViewsBySelector ifNil: [ 
-		declarativeViewsBySelector := Dictionary new ]
+		self initializeDeclarativeViews ]
+]
+
+{ #category : 'accessing' }
+GtRemotePhlowViewedObject >> getDeclarativeOriginalPhlowViews [
+	^ object gtDeclarativePhlowViews 
+		"reject: [ :aView |
+			aView definingSelector = #gtRawFor: or: [ 
+				aView definingSelector = #gtPrintFor: ] ]"
 ]
 
 { #category : 'api - accessing' }
 GtRemotePhlowViewedObject >> getDeclarativeViewFor: viewSelector [
-	^ self declarativeViewsBySelector 
-		at: viewSelector 
-		ifAbsentPut: [
+	^ self declarativeViewsBySelector at: viewSelector 
+		"ifAbsentPut: [
 			| declarativeView |
 			declarativeView := (self object 
 				perform: viewSelector
 				with: GtRemotePhlowDeclarativeProtoView new) asGtDeclarativeView.
 			declarativeView ifNotNil: [
 				declarativeView methodSelector: viewSelector ].
-			declarativeView ]
+			declarativeView ]"
 ]
 
 { #category : 'api - accessing' }
 GtRemotePhlowViewedObject >> getDeclarativeViewMethodNames [
 	"Answer the set of declarative view selectors provided by the object"
 
-	^ (object gtDeclarativeViewSelectors 
-		copyWithout: #gtRawFor:)
-		copyWithout: #gtPrintFor:
+	^ self declarativeViewsBySelector keys
 ]
 
 { #category : 'api - accessing' }
@@ -86,8 +91,23 @@ GtRemotePhlowViewedObject >> getViewsDeclarations [
 ]
 
 { #category : 'initialization' }
-GtRemotePhlowViewedObject >> initializeWith: anObject [
+GtRemotePhlowViewedObject >> initializeDeclarativeViews [
+	| phlowViews |
+	declarativeViewsBySelector := Dictionary new.
+	
+	phlowViews := self getDeclarativeOriginalPhlowViews.
+	phlowViews do: [ :aPhlowView | 
+		| declarativeView |
+		declarativeView := aPhlowView asGtDeclarativeView.
+		declarativeView ifNotNil: [
+			declarativeView methodSelector: aPhlowView definingSelector.
+			declarativeViewsBySelector 
+				at: aPhlowView definingSelector 
+				put: declarativeView ] ]
+]
 
+{ #category : 'initialization' }
+GtRemotePhlowViewedObject >> initializeWith: anObject [
 	object := anObject
 ]
 

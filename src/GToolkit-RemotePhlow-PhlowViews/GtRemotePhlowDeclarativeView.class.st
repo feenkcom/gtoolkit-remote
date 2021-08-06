@@ -29,7 +29,8 @@ Class {
 	#superclass : 'Object',
 	#instVars : [
 		'title',
-		'priority'
+		'priority',
+		'definingSelector'
 	],
 	#category : 'GToolkit-RemotePhlow-PhlowViews'
 }
@@ -37,6 +38,23 @@ Class {
 { #category : 'converting' }
 GtRemotePhlowDeclarativeView >> asGtDeclarativeView [
 	^ nil
+]
+
+{ #category : 'testing' }
+GtRemotePhlowDeclarativeView >> canBeGtDeclarativeView [
+	^ true
+]
+
+{ #category : 'accessing' }
+GtRemotePhlowDeclarativeView >> definingSelector [
+
+	^ definingSelector
+]
+
+{ #category : 'accessing' }
+GtRemotePhlowDeclarativeView >> definingSelector: aSelector [
+
+	definingSelector := aSelector
 ]
 
 { #category : 'accessing' }
