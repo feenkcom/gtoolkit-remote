@@ -17,7 +17,7 @@ BaselineOfGtRemotePhlow >> baseline: spec [
 		do: [
 			spec 
 				baseline: 'PharoLink' 
-					with: [ spec repository: 'github://feenkcom/Pharolink/src' ];
+					with: [ spec repository: 'github://feenkcom/PharoLink:main/src' ];
 				package: 'GToolkit-RemotePhlow' 
 					with: [ spec requires: #( PharoLink ) ];
 				package: 'GToolkit-RemotePhlow-InspectorCore' 
