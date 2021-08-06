@@ -44,9 +44,13 @@ GtViewedObject >> getDeclarativeViewFor: viewSelector [
 	^ self declarativeViewsBySelector 
 		at: viewSelector 
 		ifAbsentPut: [
-			(self object 
+			| declarativeView |
+			declarativeView := (self object 
 				perform: viewSelector
-				with: GtPhlowEmptyView new) asGtDeclarativeView ]
+				with: GtPhlowEmptyView new) asGtDeclarativeView.
+			declarativeView ifNotNil: [
+				declarativeView methodSelector: viewSelector ].
+			declarativeView ]
 ]
 
 { #category : 'api - accessing' }
@@ -60,7 +64,7 @@ GtViewedObject >> getDeclarativeViewMethodNames [
 
 { #category : 'api - accessing' }
 GtViewedObject >> getViewDeclaration: viewSelector [
-	^ ((self getDeclarativeViewFor: viewSelector) 
+	^ ((self getDeclarativeViewFor: viewSelector)
 		ifNotNil: [ :view |
 			view asDictionaryForExport
 				at: #'__pharolinkImmediate' put: true;
@@ -70,24 +74,16 @@ GtViewedObject >> getViewDeclaration: viewSelector [
 
 { #category : 'api - accessing' }
 GtViewedObject >> getViewsDeclarations [
-	| viewSelectors declarativeViews viewsDictionaries |
+	| viewSelectors viewDeclarations |
 	viewSelectors := self getDeclarativeViewMethodNames.
-	declarativeViews := (viewSelectors 
+	viewDeclarations := (viewSelectors 
 		collect: [ :viewSelector |
-			| declarativeView |
-			declarativeView := self getDeclarativeViewFor: viewSelector.
-			declarativeView ifNotNil: [
-				declarativeView methodSelector: viewSelector ].
-			declarativeView ])
-		reject: [ :aDeclarativeView | aDeclarativeView isNil ].
-	viewsDictionaries := declarativeViews collect: [ :aDeclarativeView |
-		aDeclarativeView asDictionaryForExport
-			at: #'__pharolinkImmediate' put: true;
-			yourself ].
+			self getViewDeclaration: viewSelector ])
+		reject: [ :aViewDeclaration | aViewDeclaration isNil ].
 	
 	^ Dictionary new
 		at: #'__pharolinkImmediate' put: true;
-		at: 'views' put: viewsDictionaries;
+		at: 'views' put: viewDeclarations asArray;
 		yourself
 ]
 

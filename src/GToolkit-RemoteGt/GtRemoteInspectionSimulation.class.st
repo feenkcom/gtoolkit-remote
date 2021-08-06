@@ -73,22 +73,6 @@ GtRemoteInspectionSimulation >> gtProxyFor: aView [
 ]
 
 { #category : 'gt inspector' }
-GtRemoteInspectionSimulation >> gtProxyRawFor: aView [
-
-	^ aView columnedList 
-		title: 'Raw';
-		priority: 5;
-		items: [ inspectorProxy rawViewData ];
-		column: 'Icon' icon: [ :aNode | aNode third iconNamed: aNode first ];
-		column: 'Variable' text: [ :aNode | aNode second asRopedText ];
-		column: 'Value' text: [ :aNode | 
-			[ aNode third gtDisplayString asRopedText ]
-				on: Error 
-				do: [ :ex | ex messageText asRopedText foreground: Color red ] ];
-		send: [ :aNode | aNode third ]
-]
-
-{ #category : 'gt inspector' }
 GtRemoteInspectionSimulation >> gtProxyViewsFor: aView [
 	<gtView>
 	^ aView list
