@@ -111,7 +111,9 @@ GtRemoteDeclarativeExamples >> printForString [
 
 { #category : 'examples - views' }
 GtRemoteDeclarativeExamples >> printView [
-	<gtExample>
+	"Disable since this relies on having GToolkit-RemotePhlow-InspectorExtensions,
+	which is currently not the case in the CI"
+	"<gtExample>"
 	<after: #stopServer>
 	| viewProxy viewDictionary view |
 
