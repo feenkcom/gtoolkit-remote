@@ -6,7 +6,6 @@ Collection >> gtRemoteItemsFor: aView [
 	^ aView list
 		title: 'Items';
 		priority: 50;
-		itemsProvider: [  
-			GtRemotePhlowGenericCollectionIterator forCollection: self ];
+		items: [ self ];
 		itemText: [ :eachItem | eachItem gtDisplayString ]
 ]

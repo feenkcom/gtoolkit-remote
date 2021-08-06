@@ -15,7 +15,7 @@ GtRemotePhlowDeclarativeViewListingDataSource >> formatItem: anObject atIndex: a
 { #category : 'accessing' }
 GtRemotePhlowDeclarativeViewListingDataSource >> itemsIterator [
 	^ itemsIterator ifNil: [ 
-		itemsIterator := self phlowView itemsProviderBuilder value ]
+		itemsIterator := self phlowView itemsProviderBuilder value asGPhlowItemsIterator ]
 ]
 
 { #category : 'api' }

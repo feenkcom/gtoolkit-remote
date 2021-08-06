@@ -15,20 +15,13 @@ GtRemotePhlowDeclarativeListingView >> defaultTransformation [
 
 { #category : 'api - scripting' }
 GtRemotePhlowDeclarativeListingView >> items: aBlockClosure [
-	self itemsProvider: [ GtRemotePhlowSequenceableCollectionIterator new
-		targetCollection: aBlockClosure value ]
-]
-
-{ #category : 'api - scripting' }
-GtRemotePhlowDeclarativeListingView >> itemsProvider: aBlockClosure [
 	itemsProviderBuilder := aBlockClosure
 ]
 
 { #category : 'accessing' }
 GtRemotePhlowDeclarativeListingView >> itemsProviderBuilder [
 	^ itemsProviderBuilder ifNil: [ 
-		itemsProviderBuilder := GtRemotePhlowSequenceableCollectionIterator new
-			targetCollection: #() ]
+		itemsProviderBuilder := #() asGPhlowItemsIterator ]
 ]
 
 { #category : 'api - scripting' }

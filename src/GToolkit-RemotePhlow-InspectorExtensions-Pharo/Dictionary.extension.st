@@ -6,8 +6,7 @@ Dictionary >> gtRemoteItemsFor: aView [
 	^ aView columnedList
 		title: 'Items';
 		priority: 1;
-		itemsProvider: [  
-			GtRemotePhlowDictionaryAssociationsIterator forCollection: self ];
+		items: [ self asGPhlowAssociationsIterator ];
 		column: 'Key' text: [ :assoc | assoc key ];
 		column: 'Value' text: [ :assoc | assoc value ];
 		send: [ :assoc | assoc value ]
@@ -19,6 +18,5 @@ Dictionary >> gtRemoteKeysFor: aView [
 	^ aView list
 		title: 'Keys';
 		priority: 5;
-		itemsProvider: [  
-			GtRemotePhlowDictionaryKeysIterator forCollection: self ]
+		items: [ self asGPhlowKeysIterator ]
 ]

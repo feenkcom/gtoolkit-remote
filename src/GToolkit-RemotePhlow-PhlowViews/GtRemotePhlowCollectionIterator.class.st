@@ -13,6 +13,11 @@ GtRemotePhlowCollectionIterator class >> forCollection: aCollection [
 		targetCollection: aCollection
 ]
 
+{ #category : 'converting' }
+GtRemotePhlowCollectionIterator >> asGPhlowItemsIterator [
+	^ self
+]
+
 { #category : 'iterating' }
 GtRemotePhlowCollectionIterator >> forElementsFrom: startIndex to: endIndex withIndexDo: aBlock [
 	self subclassResponsibility
