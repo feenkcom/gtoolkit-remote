@@ -33,7 +33,8 @@ GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableColumn
 	<gtExample>
 	| declarativeView |
 
-	declarativeView := (GtDeclarativeTestInspectable new gtColumnedListFor: GtPhlowProtoView new) asGtDeclarativeView.
+	declarativeView := (GtRemotePhlowDeclarativeTestInspectable new 
+		gtColumnedListFor: GtPhlowProtoView new) asGtDeclarativeView.
 
 	self assert: declarativeView title equals: 'Columned List'.
 	self assert: declarativeView priority equals: 20.
@@ -51,7 +52,7 @@ GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableList [
 	<gtExample>
 	| phlowView declarativeView |
 
-	phlowView := GtDeclarativeTestInspectable new gtListFor: GtPhlowProtoView new.
+	phlowView := GtRemotePhlowDeclarativeTestInspectable new gtListFor: GtPhlowProtoView new.
 	declarativeView := phlowView asGtDeclarativeView.
 	
 	self assert: declarativeView title equals: 'List'.
@@ -67,7 +68,8 @@ GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableText [
 	<gtExample>
 	| declarativeView |
 
-	declarativeView := (GtDeclarativeTestInspectable new gtStringFor: GtPhlowProtoView new) asGtDeclarativeView.
+	declarativeView := (GtRemotePhlowDeclarativeTestInspectable new 
+		gtStringFor: GtPhlowProtoView new) asGtDeclarativeView.
 
 	self assert: declarativeView title equals: 'String'.
 	self assert: declarativeView priority equals: 10.
