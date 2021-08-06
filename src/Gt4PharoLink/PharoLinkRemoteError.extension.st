@@ -1,6 +1,6 @@
-Extension { #name : 'PharoLinkRemoteError' }
+Extension { #name : #PharoLinkRemoteError }
 
-{ #category : '*Gt4PharoLink' }
+{ #category : #'*Gt4PharoLink' }
 PharoLinkRemoteError >> formattedText: aString [
 	| fullText regex |
 	fullText := aString asRopedText.
@@ -34,7 +34,7 @@ PharoLinkRemoteError >> formattedText: aString [
 	^ fullText
 ]
 
-{ #category : '*Gt4PharoLink' }
+{ #category : #'*Gt4PharoLink' }
 PharoLinkRemoteError >> gtLiveFor: aView [
 	<gtView>
 
@@ -45,7 +45,7 @@ PharoLinkRemoteError >> gtLiveFor: aView [
 		text: [ self summaryText ]
 ]
 
-{ #category : '*Gt4PharoLink' }
+{ #category : #'*Gt4PharoLink' }
 PharoLinkRemoteError >> gtTraceTextFor: aView [
 	<gtView>
 
@@ -57,7 +57,7 @@ PharoLinkRemoteError >> gtTraceTextFor: aView [
 		text: [ self formattedText: self trace asString ]
 ]
 
-{ #category : '*Gt4PharoLink' }
+{ #category : #'*Gt4PharoLink' }
 PharoLinkRemoteError >> summaryText [
 	"Answer a formatted BlText describing the receiver's error"
 	| text |

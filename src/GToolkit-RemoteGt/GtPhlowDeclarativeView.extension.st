@@ -1,14 +1,14 @@
-Extension { #name : 'GtPhlowDeclarativeView' }
+Extension { #name : #GtPhlowDeclarativeView }
 
-{ #category : '*GToolkit-RemoteGt' }
+{ #category : #'*GToolkit-RemoteGt' }
 GtPhlowDeclarativeView >> asJSONForExport [ 
 	"Answer the receiver serialised in JSON format"
 
 	^STONJSON toStringPretty: self asDictionaryForExport
 ]
 
-{ #category : '*GToolkit-RemoteGt' }
-GtPhlowDeclarativeView classSide >> fromDictionary: viewDictionary [
+{ #category : #'*GToolkit-RemoteGt' }
+GtPhlowDeclarativeView class >> fromDictionary: viewDictionary [
 	"Answer the view specified by viewDictionary"
 	| viewName |
 
@@ -17,8 +17,8 @@ GtPhlowDeclarativeView classSide >> fromDictionary: viewDictionary [
 	^(Smalltalk globals at: viewName asSymbol) fromJSONDictionary: viewDictionary.
 ]
 
-{ #category : '*GToolkit-RemoteGt' }
-GtPhlowDeclarativeView classSide >> fromJSONString: aString [
+{ #category : #'*GToolkit-RemoteGt' }
+GtPhlowDeclarativeView class >> fromJSONString: aString [
 	"Answer the view specified by aString"
 
 	| viewDictionary viewName |

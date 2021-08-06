@@ -1,6 +1,6 @@
-Extension { #name : 'PharoLinkProxyObject' }
+Extension { #name : #PharoLinkProxyObject }
 
-{ #category : '*Gt4PharoLink' }
+{ #category : #'*Gt4PharoLink' }
 PharoLinkProxyObject >> getViewProxy [
 	"Answer a GtViewedProxy on the receiver"
 

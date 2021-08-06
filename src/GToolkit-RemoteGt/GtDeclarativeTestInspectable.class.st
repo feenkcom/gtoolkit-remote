@@ -14,8 +14,8 @@ GtDeclarativeTestInspectable is a simple object that can be used to test the Gt 
 
 "
 Class {
-	#name : 'GtDeclarativeTestInspectable',
-	#superclass : 'Object',
+	#name : #GtDeclarativeTestInspectable,
+	#superclass : #Object,
 	#instVars : [
 		'string',
 		'collectionOfObjects'
@@ -23,23 +23,23 @@ Class {
 	#category : 'GToolkit-RemoteGt-Examples'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtDeclarativeTestInspectable >> collectionAt: anIndex put: anObject [
 
 	^collectionOfObjects at: anIndex put: anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtDeclarativeTestInspectable >> collectionOfObjects [
 	^ collectionOfObjects
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtDeclarativeTestInspectable >> collectionOfObjects: anObject [
 	collectionOfObjects := anObject
 ]
 
-{ #category : 'inspecting' }
+{ #category : #inspecting }
 GtDeclarativeTestInspectable >> gtColumnedListFor: aView [
 	<gtView>
 
@@ -51,7 +51,7 @@ GtDeclarativeTestInspectable >> gtColumnedListFor: aView [
 		column: 'Lowercase' item: [ :anObject | anObject asString asLowercase ] width: 100.
 ]
 
-{ #category : 'inspecting' }
+{ #category : #inspecting }
 GtDeclarativeTestInspectable >> gtLargeColumnedListFor: aView [
 	<gtView>
 
@@ -63,7 +63,7 @@ GtDeclarativeTestInspectable >> gtLargeColumnedListFor: aView [
 		column: 'Value * 10' item: [ :anObject | (anObject * 10) asString asLowercase ] width: 100.
 ]
 
-{ #category : 'inspecting' }
+{ #category : #inspecting }
 GtDeclarativeTestInspectable >> gtLargeColumnedListWithIndexFor: aView [
 	<gtView>
 
@@ -75,7 +75,7 @@ GtDeclarativeTestInspectable >> gtLargeColumnedListWithIndexFor: aView [
 		column: 'Value' item: [ :anObject | anObject * 10 ].
 ]
 
-{ #category : 'inspecting' }
+{ #category : #inspecting }
 GtDeclarativeTestInspectable >> gtLargeListFor: aView [
 	<gtView>
 
@@ -86,7 +86,7 @@ GtDeclarativeTestInspectable >> gtLargeListFor: aView [
 		itemText: [ :item | item asString ]
 ]
 
-{ #category : 'inspecting' }
+{ #category : #inspecting }
 GtDeclarativeTestInspectable >> gtListFor: aView [
 	<gtView>
 
@@ -97,7 +97,7 @@ GtDeclarativeTestInspectable >> gtListFor: aView [
 		itemText: [ :item | item asString ]
 ]
 
-{ #category : 'inspecting' }
+{ #category : #inspecting }
 GtDeclarativeTestInspectable >> gtStringFor: aView [
 	<gtView>
 
@@ -107,7 +107,7 @@ GtDeclarativeTestInspectable >> gtStringFor: aView [
 		text: [ self string ]
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtDeclarativeTestInspectable >> initialize [ 
 
 	super initialize.
@@ -118,18 +118,18 @@ GtDeclarativeTestInspectable >> initialize [
 		DateAndTime readFrom: '2021-04-06T14:43:49.623384+02:00' readStream. }.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtDeclarativeTestInspectable >> string [
 
 	^string
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtDeclarativeTestInspectable >> string: anObject [
 	string := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtDeclarativeTestInspectable >> text [
 
 	^string asRopedText 
