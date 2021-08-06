@@ -1,13 +1,13 @@
 Extension { #name : #Object }
 
 { #category : #'*GToolkit-RemotePhlow-Pharo' }
-Object >> gtDeclarativeViewSelectors [
+Object >> gtDeclarativeViewPragms [
 	"Answer a collection of the object's declarative view selectors"
 
-	^ ((Pragma 
+	^ Pragma 
 		allNamed: #gtView
 		from: self class
-		to: Object) collect: [ :each | each method selector ]) asSet asArray
+		to: Object
 ]
 
 { #category : #'*GToolkit-RemotePhlow-Pharo' }
@@ -33,4 +33,14 @@ Object >> gtRemoteVariableValuePairsWithSelfIf: aBoolean [
 { #category : #'*GToolkit-RemotePhlow-Pharo' }
 Object >> gtSystemIconName [
 	^ self systemIconName
+]
+
+{ #category : #'*GToolkit-RemotePhlow-Pharo' }
+Object >> gtViewsInCurrentContext [
+	"Answer a collection of the object's declarative views"
+
+	^ self gtDeclarativeViewPragms collect: [ :aPragma |
+		self  
+			perform: aPragma selector 
+			with: GtRemotePhlowDeclarativeProtoView new ]
 ]
