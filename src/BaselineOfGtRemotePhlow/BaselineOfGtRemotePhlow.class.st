@@ -26,6 +26,8 @@ BaselineOfGtRemotePhlow >> baseline: spec [
 					with: [ spec requires: #( #'GToolkit-RemotePhlow-InspectorCore'  ) ];
 				package: 'GToolkit-RemotePhlow-InspectorExtensions-Pharo'
 					with: [ spec requires: #( #'GToolkit-RemotePhlow-InspectorCore'  ) ];
+				package: 'GToolkit-RemotePhlow-InspectorExtensions-GtAndPharo'
+					with: [ spec requires: #( #'GToolkit-RemotePhlow-InspectorCore'  ) ];
 				package: 'GToolkit-RemotePhlow-DeclarativeViews';
 				package: 'GToolkit-RemotePhlow-PhlowViews'
 					with: [ spec requires: #( #'GToolkit-RemotePhlow-DeclarativeViews' ) ];

@@ -18,6 +18,8 @@ BaselineOfGToolkitRemote >> baseline: spec [
 		spec 
 			package: 'GToolkit-RemotePhlow-DeclarativeViews';
 			package: 'GToolkit-RemotePhlow-PhlowViews';
+			package: 'GToolkit-RemotePhlow-InspectorExtensions-GtAndPharo' with: [
+				spec requires: #(#'GToolkit-RemotePhlow-PhlowViews') ];
 			"GToolkit-RemotePhlow-Examples all run in the local image, 
 			i.e. don't require external servers, so can be part of the standard test suite"
 			package: 'GToolkit-RemotePhlow-Examples';
