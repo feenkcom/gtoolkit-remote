@@ -185,8 +185,10 @@ GtRemoteDeclarativeExamples >> viewedObjectProxy [
 
 	viewedObject :=  self getViewedObjectProxy.
 
+	"The set of views can vary depending on configuration,
+	just check that a common view is present."
 	declarativeViews :=  viewedObject getDeclarativeViewMethodNames.
-	self assert: declarativeViews asSet equals: self declarativeViewNames asSet.
+	self assert: (declarativeViews includes: #gtListFor:).
 
 	^ viewedObject
 ]
