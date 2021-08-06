@@ -9,26 +9,28 @@ To start the server:
 ./glamoroustoolkit GlamorousToolkit.image clap pharoLinkServer 7003 7004
 ]]]
 
+
+NOTE: This should be a subclass of GtRemoteDeclarativeExamples.  It's been moved to Object to disable the examples until https://github.com/feenkcom/gtoolkit/issues/2062 is complete.
 "
 Class {
-	#name : #GtRemoteGtDeclarativeExamples,
-	#superclass : #GtRemoteDeclarativeStExamples,
-	#category : #'GToolkit-RemoteExamples'
+	#name : 'GtRemoteGtDeclarativeExamples',
+	#superclass : 'Object',
+	#category : 'GToolkit-RemoteExamples'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 GtRemoteGtDeclarativeExamples >> printForString [
 	"Answer the string returned in the #gtPrintFor: view"
 
 	^ 'a GtDeclarativeTestInspectable'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 GtRemoteGtDeclarativeExamples >> runningServer [
 	"Answer a running server"
-	<gtExample>
+	"<gtExample>"
 	<after: #stopServer>
-	| settings |
+	| settings server |
 
 	server ifNotNil: [ ^ server ].
 	"Connect to the remote image"
@@ -36,13 +38,12 @@ GtRemoteGtDeclarativeExamples >> runningServer [
 	settings
 		serverProcessClass: LanguageLinkManualProcess;
 		serverSocketAddress: (LanguageLinkSocketAddress ipOrName: 'localhost' port: 7003);
-		clientSocketAddress: (LanguageLinkSocketAddress ipOrName: 'localhost' port: 7004);
-		gtViewedObjectClassName: #GtViewedObject.
+		clientSocketAddress: (LanguageLinkSocketAddress ipOrName: 'localhost' port: 7004).
 	server := PharoLinkApplication newWith: settings.
 	^ server start.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtRemoteGtDeclarativeExamples >> testInspectableName [
 	"Answer the name of the test inspectable class on the remote"
 
