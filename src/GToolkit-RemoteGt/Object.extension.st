@@ -19,3 +19,8 @@ Object >> gtRemoteVariableValuePairsWithSelfIf: aBoolean [
 	self gtRemoteVariableValuePairsIn: variableBindings.
 	^ variableBindings
 ]
+
+{ #category : '*GToolkit-RemoteGt' }
+Object >> gtViewsInCurrentContext [
+	^ self gtViewsInContext: GtPhlowContext null
+]

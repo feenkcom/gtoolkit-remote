@@ -4,6 +4,6 @@ Extension { #name : 'Object' }
 Object >> gtDeclarativePhlowViews [
 	"Answer a collection of the object's declarative phlow view"
 	
-	^ (self gtViewsInContext: GtPhlowContext null)
+	^ self gtViewsInCurrentContext
 		select: [ :view | view canBeGtDeclarativeView ]
 ]
