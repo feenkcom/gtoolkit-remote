@@ -4,7 +4,6 @@ Extension { #name : 'Object' }
 Object >> gtDeclarativePhlowViews [
 	"Answer a collection of the object's declarative phlow view"
 	
-	^Array streamContents: [ :stream |
-		(self gtViewsInContext: GtPhlowContext null)
-			select: [ :view | view canBeGtDeclarativeView ] ].
+	^ (self gtViewsInContext: GtPhlowContext null)
+		select: [ :view | view canBeGtDeclarativeView ]
 ]

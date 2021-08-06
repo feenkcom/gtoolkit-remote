@@ -33,8 +33,9 @@ GtRemotePhlowViewedObject class >> object: anObject [
 
 { #category : 'accessing' }
 GtRemotePhlowViewedObject >> declarativeViewsBySelector [
-	^ declarativeViewsBySelector ifNil: [ 
-		self initializeDeclarativeViews ]
+	declarativeViewsBySelector ifNil: [ 
+		self initializeDeclarativeViews ].
+	^ declarativeViewsBySelector
 ]
 
 { #category : 'accessing' }
@@ -59,22 +60,24 @@ GtRemotePhlowViewedObject >> getDeclarativeViewMethodNames [
 
 { #category : 'api - accessing' }
 GtRemotePhlowViewedObject >> getViewDeclaration: viewSelector [
-	^ ((self getDeclarativeViewFor: viewSelector) 
-		ifNotNil: [ :view |
-			view asDictionaryForExport
-				at: #'__pharolinkImmediate' put: true;
-				yourself. ])
-		
+	| declarativeView |
+	declarativeView := self getDeclarativeViewFor: viewSelector.
+	^ self getViewDeclarationForView: declarativeView
+]
+
+{ #category : 'api - accessing' }
+GtRemotePhlowViewedObject >> getViewDeclarationForView: aDeclarativeView [
+	^ aDeclarativeView asDictionaryForExport
+		at: #'__pharolinkImmediate' put: true;
+		yourself.	
 ]
 
 { #category : 'api - accessing' }
 GtRemotePhlowViewedObject >> getViewsDeclarations [
-	| viewSelectors viewDeclarations |
-	viewSelectors := self getDeclarativeViewMethodNames.
-	viewDeclarations := (viewSelectors 
-		collect: [ :viewSelector |
-			self getViewDeclaration: viewSelector ])
-		reject: [ :aViewDeclaration | aViewDeclaration isNil ].
+	| viewDeclarations |
+	viewDeclarations := (self declarativeViewsBySelector 
+		collect: [ :declarativeView |
+			self getViewDeclarationForView: declarativeView ]).
 	
 	^ Dictionary new
 		at: #'__pharolinkImmediate' put: true;

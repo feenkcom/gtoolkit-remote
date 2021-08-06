@@ -119,6 +119,17 @@ GtPhlowDeclarativeView >> phlowDataSource: aDataSource [
 	phlowDataSource := aDataSource
 ]
 
+{ #category : 'printing' }
+GtPhlowDeclarativeView >> printOn: aStream [
+	super printOn: aStream.
+	aStream
+		nextPutAll: ' (';
+		nextPutAll: self title;
+		nextPutAll: ', ';
+		nextPutAll: self priority asString;
+		nextPutAll: ')'
+]
+
 { #category : 'accessing' }
 GtPhlowDeclarativeView >> priority [
 	^ priority

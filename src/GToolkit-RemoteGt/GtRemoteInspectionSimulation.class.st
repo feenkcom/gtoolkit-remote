@@ -47,7 +47,7 @@ GtRemoteInspectionSimulation >> declarativeViews [
 		declarativeView
 			initializeFromInspector: inspectorProxy.
 		declarativeView ].
-	^ rawViews reject: #isNil
+	^ rawViews
 ]
 
 { #category : 'simulation' }
