@@ -8,8 +8,8 @@ SequenceableCollection >> gtRemoteItemsFor: aView [
 		priority: 50;
 		items: [ self ];
 		column: 'Index' 
-			item: [ :eachItem :eachIndex | eachIndex  ]
+			text: [ :eachItem :eachIndex | eachIndex  ]
 			width: 45;
 		column: 'Item' 
-			item: [ :eachItem | eachItem gtDisplayString ].
+			text: [ :eachItem | eachItem gtDisplayString ].
 ]

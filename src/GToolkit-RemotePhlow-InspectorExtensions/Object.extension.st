@@ -19,7 +19,7 @@ Object >> gtRemoteRawFor: aView [
 		column: 'Icon' 
 			iconName: [ :anAssociation | anAssociation value class gtSystemIconName ]
 			width: 36;
-		column: 'Variable' item: [ :anAssociation | anAssociation key ];
-		column: 'Value' item: [ :anAssociation | anAssociation value gtDisplayString ];
+		column: 'Variable' text: [ :anAssociation | anAssociation key ];
+		column: 'Value' text: [ :anAssociation | anAssociation value gtDisplayString ];
 		send: [ :anAssociation | anAssociation value ]
 ]

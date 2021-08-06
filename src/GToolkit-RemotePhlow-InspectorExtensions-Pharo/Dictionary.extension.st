@@ -8,8 +8,8 @@ Dictionary >> gtRemoteItemsFor: aView [
 		priority: 1;
 		itemsProvider: [  
 			GtRemotePhlowDictionaryAssociationsIterator forCollection: self ];
-		column: 'Key' item: [ :assoc | assoc key ];
-		column: 'Value' item: [ :assoc | assoc value ];
+		column: 'Key' text: [ :assoc | assoc key ];
+		column: 'Value' text: [ :assoc | assoc value ];
 		send: [ :assoc | assoc value ]
 ]
 

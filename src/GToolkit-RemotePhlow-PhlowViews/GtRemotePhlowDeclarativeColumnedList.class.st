@@ -65,19 +65,19 @@ GtRemotePhlowDeclarativeColumnedList >> column: columnName iconName: anIconNameC
 ]
 
 { #category : 'api - scripting column' }
-GtRemotePhlowDeclarativeColumnedList >> column: columnName item: aBlockClosure [
+GtRemotePhlowDeclarativeColumnedList >> column: columnName text: aBlockClosure [
 	| aColumn |
 	aColumn := self column.
 	aColumn title: columnName.
-	aColumn item: aBlockClosure
+	aColumn text: aBlockClosure
 ]
 
 { #category : 'api - scripting column' }
-GtRemotePhlowDeclarativeColumnedList >> column: columnName item: aBlockClosure width: aNumberOrNil [
+GtRemotePhlowDeclarativeColumnedList >> column: columnName text: aBlockClosure width: aNumberOrNil [
  	| aColumn |
 	aColumn := self column.
 	aColumn title: columnName.
-	aColumn item: aBlockClosure.
+	aColumn text: aBlockClosure.
 	aColumn width: aNumberOrNil.
 ]
 
