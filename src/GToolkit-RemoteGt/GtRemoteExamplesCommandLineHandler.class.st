@@ -36,5 +36,5 @@ GtRemoteExamplesCommandLineHandler >> ensureRemoteExamplesLoaded [
 GtRemoteExamplesCommandLineHandler >> packages [ 
 
 	self ensureRemoteExamplesLoaded.
-	^ { 'GToolkit-RemoteExamples' }
+	^ #('GToolkit-RemotePhlow-Examples' 'GToolkit-RemoteExamples')
 ]
