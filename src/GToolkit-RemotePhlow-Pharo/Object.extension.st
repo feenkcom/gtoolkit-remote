@@ -1,16 +1,6 @@
 Extension { #name : #Object }
 
 { #category : #'*GToolkit-RemotePhlow-Pharo' }
-Object >> gtDeclarativeViewPragms [
-	"Answer a collection of the object's declarative view selectors"
-
-	^ Pragma 
-		allNamed: #gtView
-		from: self class
-		to: Object
-]
-
-{ #category : #'*GToolkit-RemotePhlow-Pharo' }
 Object >> gtRemoteVariableValuePairsIn: aCollection [
 	| variableNodes |
 	variableNodes := OrderedCollection new: self class allSlots size.
@@ -33,17 +23,4 @@ Object >> gtRemoteVariableValuePairsWithSelfIf: aBoolean [
 { #category : #'*GToolkit-RemotePhlow-Pharo' }
 Object >> gtSystemIconName [
 	^ self systemIconName
-]
-
-{ #category : #'*GToolkit-RemotePhlow-Pharo' }
-Object >> gtViewsInCurrentContext [
-	"Answer a collection of the object's declarative views"
-
-	^ self gtDeclarativeViewPragms collect: [ :aPragma |
-		| phlowView |
-		phlowView := self  
-			perform: aPragma methodSelector 
-			with: GtRemotePhlowDeclarativeProtoView new.
-		phlowView definingSelector: aPragma methodSelector.
-		phlowView ]
 ]

@@ -1,6 +1,6 @@
-Extension { #name : 'Collection' }
+Extension { #name : #Collection }
 
-{ #category : '*GToolkit-RemotePhlow-InspectorExtensions' }
+{ #category : #'*GToolkit-RemotePhlow-InspectorExtensions-Remote' }
 Collection >> gtRemoteItemsFor: aView [
 	<gtView>
 	^ aView list
