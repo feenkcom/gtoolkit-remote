@@ -1,1 +1,1 @@
-Package { #name : 'GToolkit-RemotePhlow-InspectorExtensions-Pharo' }
+Package { #name : #'GToolkit-RemotePhlow-InspectorExtensions-Pharo' }

@@ -1,8 +1,7 @@
-Extension { #name : 'Dictionary' }
+Extension { #name : #Dictionary }
 
-{ #category : '*GToolkit-RemotePhlow-InspectorExtensions-Pharo' }
+{ #category : #'*GToolkit-RemotePhlow-InspectorExtensions-Pharo' }
 Dictionary >> gtRemoteItemsFor: aView [
-	<gtView>
 	^ aView columnedList
 		title: 'Items';
 		priority: 1;
@@ -12,7 +11,7 @@ Dictionary >> gtRemoteItemsFor: aView [
 		send: [ :assoc | assoc value ]
 ]
 
-{ #category : '*GToolkit-RemotePhlow-InspectorExtensions-Pharo' }
+{ #category : #'*GToolkit-RemotePhlow-InspectorExtensions-Pharo' }
 Dictionary >> gtRemoteKeysFor: aView [
 	<gtView>
 	^ aView list

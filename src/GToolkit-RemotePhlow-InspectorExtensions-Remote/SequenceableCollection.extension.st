@@ -2,7 +2,6 @@ Extension { #name : #SequenceableCollection }
 
 { #category : #'*GToolkit-RemotePhlow-InspectorExtensions-Remote' }
 SequenceableCollection >> gtRemoteItemsFor: aView [
-	<gtView>
 	^ aView columnedList
 		title: 'Items';
 		priority: 50;

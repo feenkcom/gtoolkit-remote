@@ -1,6 +1,6 @@
-Extension { #name : 'TestResult' }
+Extension { #name : #TestResult }
 
-{ #category : '*GToolkit-RemotePhlow-InspectorExtensions-Pharo' }
+{ #category : #'*GToolkit-RemotePhlow-InspectorExtensions-Pharo' }
 TestResult >> gtResultsFor: aView [
 	<gtView>
 
@@ -14,7 +14,7 @@ TestResult >> gtResultsFor: aView [
 		send: [ :assoc | assoc key ]
 ]
 
-{ #category : '*GToolkit-RemotePhlow-InspectorExtensions-Pharo' }
+{ #category : #'*GToolkit-RemotePhlow-InspectorExtensions-Pharo' }
 TestResult >> gtTestResults [
 	"Answer a collection of result -> label associations"
 
