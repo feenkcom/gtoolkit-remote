@@ -10,7 +10,7 @@ RwSimpleProjectLoadComponentV2 {
 		'GToolkit-RemotePhlow-PhlowViews',
 		'GToolkit-RemotePhlow-InspectorCore',
 		'GToolkit-RemotePhlow-InspectorExtensions-Remote',
-		'GToolkit-RemotePhlow-InspectorExtensions-GemStone',
+		'GToolkit-RemotePhlow-Remote',
 		'GToolkit-RemotePhlow-Examples'
 	],
 	#comment : ''
