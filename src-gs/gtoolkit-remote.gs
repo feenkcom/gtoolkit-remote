@@ -415,7 +415,7 @@ removeallclassmethods GtRemotePhlowDeclarativeTreeExamples
 doit
 (Object
 	subclass: 'GtRemotePhlowDeclarativeView'
-	instVarNames: #( title priority )
+	instVarNames: #( title priority definingSelector )
 	classVars: #(  )
 	classInstVars: #(  )
 	poolDictionaries: #()
@@ -695,7 +695,7 @@ doit
 	options: #( #logCreation )
 )
 		category: 'GToolkit-RemotePhlow-InspectorCore';
-		comment: 'GtViewedObject is responsible for serving declarative views to the client inspector.
+		comment: 'GtRemotePhlowViewedObject is responsible for serving declarative views to the client inspector.
 
 
 Public API and Key Messages
@@ -813,6 +813,18 @@ category: 'accessing'
 method: GtPhlowDeclarativeView
 phlowDataSource: aDataSource
 	phlowDataSource := aDataSource
+%
+
+category: 'printing'
+method: GtPhlowDeclarativeView
+printOn: aStream
+	super printOn: aStream.
+	aStream
+		nextPutAll: ' (';
+		nextPutAll: self title;
+		nextPutAll: ', ';
+		nextPutAll: self priority asString;
+		nextPutAll: ')'
 %
 
 category: 'accessing'
@@ -1207,9 +1219,9 @@ getRemoteObject
 category: 'private'
 method: GtRemoteDeclarativeExamples
 getViewedObjectProxy
-	"Answer the GtViewedObject proxy for the remote object"
+	"Answer the GtRemotePhlowViewedObject proxy for the remote object"
 
-	^ GtViewedObject object: self remoteObject.
+	^ GtRemotePhlowViewedObject object: self remoteObject.
 %
 
 category: 'examples - views'
@@ -1335,7 +1347,7 @@ stringView
 category: 'examples'
 method: GtRemoteDeclarativeExamples
 viewedObjectProxy
-	"Answer the GtViewedObject proxy for the remote object"
+	"Answer the GtRemotePhlowViewedObject proxy for the remote object"
 	<gtExample>
 	<after: #stopServer>
 	| viewedObject declarativeViews |
@@ -1812,6 +1824,26 @@ category: 'converting'
 method: GtRemotePhlowDeclarativeView
 asGtDeclarativeView
 	^ nil
+%
+
+category: 'testing'
+method: GtRemotePhlowDeclarativeView
+canBeGtDeclarativeView
+	^ true
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeView
+definingSelector
+
+	^ definingSelector
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeView
+definingSelector: aSelector
+
+	definingSelector := aSelector
 %
 
 category: 'accessing'
@@ -2303,23 +2335,15 @@ object: anObject
 category: 'accessing'
 method: GtRemotePhlowViewedObject
 declarativeViewsBySelector
-	^ declarativeViewsBySelector ifNil: [ 
-		declarativeViewsBySelector := Dictionary new ]
+	declarativeViewsBySelector ifNil: [ 
+		self initializeDeclarativeViews ].
+	^ declarativeViewsBySelector
 %
 
 category: 'api - accessing'
 method: GtRemotePhlowViewedObject
 getDeclarativeViewFor: viewSelector
-	^ self declarativeViewsBySelector 
-		at: viewSelector 
-		ifAbsentPut: [
-			| declarativeView |
-			declarativeView := (self object 
-				perform: viewSelector
-				with: GtRemotePhlowDeclarativeProtoView new) asGtDeclarativeView.
-			declarativeView ifNotNil: [
-				declarativeView methodSelector: viewSelector ].
-			declarativeView ]
+	^ self declarativeViewsBySelector at: viewSelector
 %
 
 category: 'api - accessing'
@@ -2327,31 +2351,32 @@ method: GtRemotePhlowViewedObject
 getDeclarativeViewMethodNames
 	"Answer the set of declarative view selectors provided by the object"
 
-	^ (object gtDeclarativeViewSelectors 
-		copyWithout: #gtRawFor:)
-		copyWithout: #gtPrintFor:
+	^ self declarativeViewsBySelector keys
 %
 
 category: 'api - accessing'
 method: GtRemotePhlowViewedObject
 getViewDeclaration: viewSelector
-	^ ((self getDeclarativeViewFor: viewSelector) 
-		ifNotNil: [ :view |
-			view asDictionaryForExport
-				at: #'__pharolinkImmediate' put: true;
-				yourself. ])
-		
+	| declarativeView |
+	declarativeView := self getDeclarativeViewFor: viewSelector.
+	^ self getViewDeclarationForView: declarativeView
+%
+
+category: 'api - accessing'
+method: GtRemotePhlowViewedObject
+getViewDeclarationForView: aDeclarativeView
+	^ aDeclarativeView asDictionaryForExport
+		at: #'__pharolinkImmediate' put: true;
+		yourself.	
 %
 
 category: 'api - accessing'
 method: GtRemotePhlowViewedObject
 getViewsDeclarations
-	| viewSelectors viewDeclarations |
-	viewSelectors := self getDeclarativeViewMethodNames.
-	viewDeclarations := (viewSelectors 
-		collect: [ :viewSelector |
-			self getViewDeclaration: viewSelector ])
-		reject: [ :aViewDeclaration | aViewDeclaration isNil ].
+	| viewDeclarations |
+	viewDeclarations := (self declarativeViewsBySelector 
+		collect: [ :declarativeView |
+			self getViewDeclarationForView: declarativeView ]).
 	
 	^ Dictionary new
 		at: #'__pharolinkImmediate' put: true;
@@ -2361,8 +2386,24 @@ getViewsDeclarations
 
 category: 'initialization'
 method: GtRemotePhlowViewedObject
-initializeWith: anObject
+initializeDeclarativeViews
+	| phlowViews |
+	declarativeViewsBySelector := Dictionary new.
+	
+	phlowViews := self phlowDeclarativeViews.
+	phlowViews do: [ :aPhlowView | 
+		| declarativeView |
+		declarativeView := aPhlowView asGtDeclarativeView.
+		declarativeView ifNotNil: [
+			declarativeView methodSelector: aPhlowView definingSelector.
+			declarativeViewsBySelector 
+				at: aPhlowView definingSelector 
+				put: declarativeView ] ]
+%
 
+category: 'initialization'
+method: GtRemotePhlowViewedObject
+initializeWith: anObject
 	object := anObject
 %
 
@@ -2371,6 +2412,12 @@ method: GtRemotePhlowViewedObject
 object
 
 	^ object
+%
+
+category: 'initialization'
+method: GtRemotePhlowViewedObject
+phlowDeclarativeViews
+	^ object gtDeclarativePhlowViews
 %
 
 ! Class extensions for 'AbstractDictionary'
@@ -2392,7 +2439,6 @@ asGPhlowKeysIterator
 category: '*GToolkit-RemotePhlow-InspectorExtensions-GemStone'
 method: AbstractDictionary
 gtRemoteItemsFor: aView
-	<gtView>
 	^ aView columnedList
 		title: 'Items';
 		priority: 1;
@@ -2482,17 +2528,6 @@ category: '*GToolkit-RemotePhlow-PhlowViews'
 method: Collection
 asGPhlowItemsIterator
 	^ GtRemotePhlowGenericCollectionIterator forCollection: self
-%
-
-category: '*GToolkit-RemotePhlow-InspectorExtensions'
-method: Collection
-gtRemoteItemsFor: aView
-	<gtView>
-	^ aView list
-		title: 'Items';
-		priority: 50;
-		items: [ self ];
-		itemText: [ :eachItem | eachItem gtDisplayString ]
 %
 
 ! Class extensions for 'GtRemotePhlowDeclarativeTestInspectable'
@@ -2597,6 +2632,15 @@ gtGsInspectorIconName
 
 !		Instance methods for 'Object'
 
+category: '*GToolkit-RemotePhlow-InspectorCore'
+method: Object
+gtDeclarativePhlowViews
+	"Answer a collection of the object's declarative phlow view"
+	
+	^ self gtViewsInCurrentContext
+		select: [ :view | view canBeGtDeclarativeView ]
+%
+
 category: '*GToolkit-RemotePhlow-GemStone'
 method: Object
 gtDeclarativeViewSelectors
@@ -2636,32 +2680,6 @@ gtGsInspectorIconName
 	^ #classIcon
 %
 
-category: '*GToolkit-RemotePhlow-InspectorExtensions'
-method: Object
-gtRemotePrintFor: aView
-	<gtView>
-	^ aView textEditor
-		title: 'Print';
-		priority: 110;
-		text: [ self printString ]
-%
-
-category: '*GToolkit-RemotePhlow-InspectorExtensions'
-method: Object
-gtRemoteRawFor: aView
-	<gtView>
-	^ aView columnedList
-		title: 'Raw';
-		priority: 100;
-		items: [ self gtRemoteVariableValuePairsWithSelfIf: true ];
-		column: 'Icon' 
-			iconName: [ :anAssociation | anAssociation value class gtSystemIconName ]
-			width: 36;
-		column: 'Variable' text: [ :anAssociation | anAssociation key ];
-		column: 'Value' text: [ :anAssociation | anAssociation value gtDisplayString ];
-		send: [ :anAssociation | anAssociation value ]
-%
-
 category: '*GToolkit-RemotePhlow-GemStone'
 method: Object
 gtRemoteVariableValuePairsWithSelfIf: aBoolean
@@ -2698,21 +2716,6 @@ category: '*GToolkit-RemotePhlow-PhlowViews'
 method: SequenceableCollection
 asGPhlowItemsIterator
 	^ GtRemotePhlowSequenceableCollectionIterator forCollection: self
-%
-
-category: '*GToolkit-RemotePhlow-InspectorExtensions'
-method: SequenceableCollection
-gtRemoteItemsFor: aView
-	<gtView>
-	^ aView columnedList
-		title: 'Items';
-		priority: 50;
-		items: [ self ];
-		column: 'Index' 
-			text: [ :eachItem :eachIndex | eachIndex  ]
-			width: 45;
-		column: 'Item' 
-			text: [ :eachItem | eachItem gtDisplayString ].
 %
 
 ! Class extensions for 'String'
