@@ -2647,6 +2647,17 @@ gtGsInspectorIconName
 
 !		Instance methods for #'Object'
 
+category: #'*GToolkit-RemotePhlow-Remote'
+method: Object
+gtDeclarativeViewPragms
+	"Answer a collection of the object's declarative view selectors"
+
+	^ Pragma 
+		allNamed: #gtView
+		from: self class
+		to: Object
+%
+
 category: #'*GToolkit-RemotePhlow-InspectorExtensions-Remote'
 method: Object
 gtRemotePrintFor: aView
@@ -2671,6 +2682,21 @@ gtRemoteRawFor: aView
 		column: 'Variable' text: [ :anAssociation | anAssociation key ];
 		column: 'Value' text: [ :anAssociation | anAssociation value gtDisplayString ];
 		send: [ :anAssociation | anAssociation value ]
+%
+
+category: #'*GToolkit-RemotePhlow-Remote'
+method: Object
+gtViewsInCurrentContext
+	"Answer a collection of the object's declarative views"
+
+	^ self gtDeclarativeViewPragms collect: [ :aPragma |
+		| methodSelector phlowView |
+		methodSelector := aPragma method selector.
+		phlowView := self  
+			perform: methodSelector
+			with: GtRemotePhlowDeclarativeProtoView new.
+		phlowView definingSelector: methodSelector.
+		phlowView ]
 %
 
 ! Class extensions for 'Object'
