@@ -2512,6 +2512,21 @@ gtSuperclassesFor: aView
 		itemText: [ :cls | cls name ]
 %
 
+! Class extensions for #'Collection'
+
+!		Instance methods for #'Collection'
+
+category: #'*GToolkit-RemotePhlow-InspectorExtensions-Remote'
+method: Collection
+gtRemoteItemsFor: aView
+	<gtView>
+	^ aView list
+		title: 'Items';
+		priority: 50;
+		items: [ self ];
+		itemText: [ :eachItem | eachItem gtDisplayString ]
+%
+
 ! Class extensions for 'Collection'
 
 !		Class methods for 'Collection'
@@ -2628,6 +2643,36 @@ gtGsInspectorIconName
 	^ #magnitudeIcon
 %
 
+! Class extensions for #'Object'
+
+!		Instance methods for #'Object'
+
+category: #'*GToolkit-RemotePhlow-InspectorExtensions-Remote'
+method: Object
+gtRemotePrintFor: aView
+	<gtView>
+	^ aView textEditor
+		title: 'Print';
+		priority: 110;
+		text: [ self printString ]
+%
+
+category: #'*GToolkit-RemotePhlow-InspectorExtensions-Remote'
+method: Object
+gtRemoteRawFor: aView
+	<gtView>
+	^ aView columnedList
+		title: 'Raw';
+		priority: 100;
+		items: [ self gtRemoteVariableValuePairsWithSelfIf: true ];
+		column: 'Icon' 
+			iconName: [ :anAssociation | anAssociation value class gtSystemIconName ]
+			width: 36;
+		column: 'Variable' text: [ :anAssociation | anAssociation key ];
+		column: 'Value' text: [ :anAssociation | anAssociation value gtDisplayString ];
+		send: [ :anAssociation | anAssociation value ]
+%
+
 ! Class extensions for 'Object'
 
 !		Instance methods for 'Object'
@@ -2716,6 +2761,24 @@ category: '*GToolkit-RemotePhlow-PhlowViews'
 method: SequenceableCollection
 asGPhlowItemsIterator
 	^ GtRemotePhlowSequenceableCollectionIterator forCollection: self
+%
+
+! Class extensions for #'SequenceableCollection'
+
+!		Instance methods for #'SequenceableCollection'
+
+category: #'*GToolkit-RemotePhlow-InspectorExtensions-Remote'
+method: SequenceableCollection
+gtRemoteItemsFor: aView
+	^ aView columnedList
+		title: 'Items';
+		priority: 50;
+		items: [ self ];
+		column: 'Index' 
+			text: [ :eachItem :eachIndex | eachIndex  ]
+			width: 45;
+		column: 'Item' 
+			text: [ :eachItem | eachItem gtDisplayString ].
 %
 
 ! Class extensions for 'String'
