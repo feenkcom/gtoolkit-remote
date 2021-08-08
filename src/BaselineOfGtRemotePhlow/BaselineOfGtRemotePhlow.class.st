@@ -4,12 +4,12 @@ Load the server for remote Gt access to a Pharo image.
 Note that this package isn't normally loaded in a Gt image, see ${class:name=BaselineOfGToolkitRemote}$.
 "
 Class {
-	#name : 'BaselineOfGtRemotePhlow',
-	#superclass : 'BaselineOf',
-	#category : 'BaselineOfGtRemotePhlow'
+	#name : #BaselineOfGtRemotePhlow,
+	#superclass : #BaselineOf,
+	#category : #BaselineOfGtRemotePhlow
 }
 
-{ #category : 'baseline' }
+{ #category : #baseline }
 BaselineOfGtRemotePhlow >> baseline: spec [
 	<baseline>
 	spec
@@ -20,11 +20,9 @@ BaselineOfGtRemotePhlow >> baseline: spec [
 					with: [ spec repository: 'github://feenkcom/PharoLink:main/src' ];
 				package: 'GToolkit-RemotePhlow-InspectorCore' 
 					with: [ spec requires: #( PharoLink ) ];
-				package: 'GToolkit-RemotePhlow-InspectorExtensions' 
+				package: 'GToolkit-RemotePhlow-InspectorExtensions-Pharo' 
 					with: [ spec requires: #( #'GToolkit-RemotePhlow-InspectorCore'  ) ];
-				package: 'GToolkit-RemotePhlow-InspectorExtensions-Pharo'
-					with: [ spec requires: #( #'GToolkit-RemotePhlow-InspectorCore'  ) ];
-				package: 'GToolkit-RemotePhlow-InspectorExtensions-GtAndPharo'
+				package: 'GToolkit-RemotePhlow-InspectorExtensions-Remote'
 					with: [ spec requires: #( #'GToolkit-RemotePhlow-InspectorCore'  ) ];
 				package: 'GToolkit-RemotePhlow-DeclarativeViews';
 				package: 'GToolkit-RemotePhlow-PhlowViews'
