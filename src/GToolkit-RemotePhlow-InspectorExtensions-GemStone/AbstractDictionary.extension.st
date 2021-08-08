@@ -12,7 +12,6 @@ AbstractDictionary >> asGPhlowKeysIterator [
 
 { #category : '*GToolkit-RemotePhlow-InspectorExtensions-GemStone' }
 AbstractDictionary >> gtRemoteItemsFor: aView [
-	<gtView>
 	^ aView columnedList
 		title: 'Items';
 		priority: 1;
