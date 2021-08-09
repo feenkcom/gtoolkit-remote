@@ -2512,6 +2512,21 @@ gtSuperclassesFor: aView
 		itemText: [ :cls | cls name ]
 %
 
+! Class extensions for #'Collection'
+
+!		Instance methods for #'Collection'
+
+category: #'*GToolkit-RemotePhlow-InspectorExtensions-Remote'
+method: Collection
+gtRemoteItemsFor: aView
+	<gtView>
+	^ aView list
+		title: 'Items';
+		priority: 50;
+		items: [ self ];
+		itemText: [ :eachItem | eachItem gtDisplayString ]
+%
+
 ! Class extensions for 'Collection'
 
 !		Class methods for 'Collection'
@@ -2528,21 +2543,6 @@ category: '*GToolkit-RemotePhlow-PhlowViews'
 method: Collection
 asGPhlowItemsIterator
 	^ GtRemotePhlowGenericCollectionIterator forCollection: self
-%
-
-! Class extensions for #'Collection'
-
-!		Instance methods for #'Collection'
-
-category: #'*GToolkit-RemotePhlow-InspectorExtensions-Remote'
-method: Collection
-gtRemoteItemsFor: aView
-	<gtView>
-	^ aView list
-		title: 'Items';
-		priority: 50;
-		items: [ self ];
-		itemText: [ :eachItem | eachItem gtDisplayString ]
 %
 
 ! Class extensions for 'GtRemotePhlowDeclarativeTestInspectable'
