@@ -1735,7 +1735,7 @@ initialize
 	collectionOfObjects := { 
 		42. 
 		'Hello World'. 
-		DateAndTime now. "readFrom: '2021-04-06T14:43:49.623384+02:00' readStream." }.
+		DateAndTime readFrom: '2021-04-06T14:43:49.623384+02:00' readStream }.
 %
 
 category: 'accessing'
@@ -2512,21 +2512,6 @@ gtSuperclassesFor: aView
 		itemText: [ :cls | cls name ]
 %
 
-! Class extensions for #'Collection'
-
-!		Instance methods for #'Collection'
-
-category: #'*GToolkit-RemotePhlow-InspectorExtensions-Remote'
-method: Collection
-gtRemoteItemsFor: aView
-	<gtView>
-	^ aView list
-		title: 'Items';
-		priority: 50;
-		items: [ self ];
-		itemText: [ :eachItem | eachItem gtDisplayString ]
-%
-
 ! Class extensions for 'Collection'
 
 !		Class methods for 'Collection'
@@ -2543,6 +2528,21 @@ category: '*GToolkit-RemotePhlow-PhlowViews'
 method: Collection
 asGPhlowItemsIterator
 	^ GtRemotePhlowGenericCollectionIterator forCollection: self
+%
+
+! Class extensions for #'Collection'
+
+!		Instance methods for #'Collection'
+
+category: #'*GToolkit-RemotePhlow-InspectorExtensions-Remote'
+method: Collection
+gtRemoteItemsFor: aView
+	<gtView>
+	^ aView list
+		title: 'Items';
+		priority: 50;
+		items: [ self ];
+		itemText: [ :eachItem | eachItem gtDisplayString ]
 %
 
 ! Class extensions for 'GtRemotePhlowDeclarativeTestInspectable'
