@@ -34,8 +34,8 @@ unzip ../GemStone64Bit3.7.0-x86_64.Linux.zip
 unzip ../GemStoneClientLibs3.7.0-x86_64.Linux.zip
 mkdir rowan-projects
 cd rowan-projects
-ln -s ../pharo-local/iceberg/feenkcom/gtoolkit-gemstone
-ln -s ../pharo-local/iceberg/feenkcom/gtoolkit-remote
+ln -s ../../pharo-local/iceberg/feenkcom/gtoolkit-gemstone
+ln -s ../../pharo-local/iceberg/feenkcom/gtoolkit-remote
 git clone git@github.com:GemTalk/Sparkle.git
 cd ..
 cd ..
