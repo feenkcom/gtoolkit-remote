@@ -34,7 +34,14 @@ GtRemoteExamplesCommandLineHandler >> ensureRemoteExamplesLoaded [
 
 { #category : 'accessing' }
 GtRemoteExamplesCommandLineHandler >> packages [ 
+	"Answer the list of packages to be run.
+	If --package is provided, answer only the specified package"
+	| arguments index |
 
 	self ensureRemoteExamplesLoaded.
-	^ #('GToolkit-RemotePhlow-Examples' 'GToolkit-RemoteExamples')
+	arguments := self arguments.
+	index := arguments indexOf: '--package'.
+	index = 0 ifTrue:
+		[ ^ #('GToolkit-RemotePhlow-Examples' 'GToolkit-RemoteExamples' 'GToolkit-RemoteExamples-GemStone') ].
+	^ { arguments at: index+1 }
 ]
