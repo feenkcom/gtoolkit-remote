@@ -13,12 +13,14 @@ then
 	$SCRIPTS/setup-remote-gemstone.sh
 fi
 
+source ./pharo-local/iceberg/feenkcom/gtoolkit-remote/scripts/remote-gemstone-env.sh
+
 # Start the remote server
 startnetldi -g
 startstone
 sleep 1
 # Run the remote examples
-./glamoroustoolkit GlamorousToolkit.image gtRemoteServerExamples --junit-xml-output --verbose
+./bin/GlamorousToolkit-cli GlamorousToolkit.image gtRemoteServerExamples --junit-xml-output --verbose --package GToolkit-RemoteExamples-GemStone
 
 # Shutdown the GemStone servers
 stopstone gs64stone DataCurator swordfish
