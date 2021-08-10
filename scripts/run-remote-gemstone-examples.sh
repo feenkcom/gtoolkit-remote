@@ -6,6 +6,15 @@
 # working directory, which is typically the image directory.
 #
 set -e
+trap stop_servers EXIT
+
+function stop_servers()
+{
+	# Shutdown the GemStone servers
+	stopstone -i gs64stone DataCurator swordfish
+	stopnetldi
+}
+
 
 # Install the remote environment, if required
 if [ ! -d remote-gemstone ]
@@ -22,7 +31,4 @@ sleep 1
 # Run the remote examples
 ./bin/GlamorousToolkit-cli GlamorousToolkit.image gtRemoteServerExamples --junit-xml-output --verbose --package GToolkit-RemoteExamples-GemStone
 
-# Shutdown the GemStone servers
-stopstone gs64stone DataCurator swordfish
-stopnetldi
-
+exit 0
