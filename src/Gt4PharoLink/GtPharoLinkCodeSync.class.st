@@ -173,9 +173,20 @@ GtPharoLinkCodeSync >> log: anEpLog [
 
 { #category : #accessing }
 GtPharoLinkCodeSync >> start [
+
 	log announcer when: EpEntryAdded send: #entryAdded: to: self.
 	events flush.
-	application start
+	application start.
+	"detach file log"
+	application newCommandFactory
+		<< 'SourceFiles changesFileStream close.
+			SourceFiles changesFileStream: SourceFiles changesFileStream readOnlyCopy.
+			EpMonitor current log initializeWith: OmMemoryStore new.
+			(CodeImporter fileNamed: SourceFiles changesFileStream path)
+				gtReduceToUnsavedChunks;
+				evaluate.
+			true';
+		sendAndWait
 ]
 
 { #category : #accessing }

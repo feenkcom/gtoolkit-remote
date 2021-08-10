@@ -1,7 +1,7 @@
 Extension { #name : #GtRemotePhlowDeclarativeTestInspectable }
 
 { #category : #'*GToolkit-RemotePhlow-GemStone' }
-GtRemotePhlowDeclarativeTestInspectable classSide >> new [
+GtRemotePhlowDeclarativeTestInspectable class >> new [
 
 	^ super new initialize
 ]

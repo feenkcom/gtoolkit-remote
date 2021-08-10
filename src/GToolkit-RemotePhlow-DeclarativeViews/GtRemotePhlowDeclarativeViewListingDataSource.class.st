@@ -2,7 +2,7 @@ Class {
 	#name : #GtRemotePhlowDeclarativeViewListingDataSource,
 	#superclass : #GtRemotePhlowDeclarativeViewDataSource,
 	#instVars : [
-		'cachedItems'
+		'itemsIterator'
 	],
 	#category : 'GToolkit-RemotePhlow-DeclarativeViews'
 }
@@ -12,37 +12,43 @@ GtRemotePhlowDeclarativeViewListingDataSource >> formatItem: anObject atIndex: a
 	self subclassResponsibility
 ]
 
+{ #category : #accessing }
+GtRemotePhlowDeclarativeViewListingDataSource >> itemsIterator [
+	^ itemsIterator ifNil: [ 
+		itemsIterator := self phlowView itemsProviderBuilder value asGPhlowItemsIterator ]
+]
+
 { #category : #api }
-GtRemotePhlowDeclarativeViewListingDataSource >> retrieveItems: anItemsCount fromIndex: anIndex [
-	| viewItems targetItems formattedItems |
-	viewItems := self viewItems.
-	targetItems := (viewItems 
-			copyFrom: anIndex
-			to: ((anIndex + anItemsCount - 1) min: viewItems size)).
-	formattedItems := Array new: targetItems size.
-	targetItems withIndexDo: [ :each :itemIndex | 
-		formattedItems 
-			at: itemIndex
-			put: (self formatItem: each atIndex: anIndex + itemIndex - 1) ].
-	^ formattedItems
+GtRemotePhlowDeclarativeViewListingDataSource >> retrieveItems: anItemsCount fromIndex: startIndex [
+	| formatterValues endIndex |
+
+	formatterValues := OrderedCollection new: anItemsCount.
+	endIndex := startIndex + anItemsCount - 1.
+	
+	self itemsIterator 
+		forElementsFrom: startIndex 
+		to: endIndex 
+		withIndexDo: [ :anObject :anItemIndex |
+			formatterValues add: (self 
+				formatItem: anObject atIndex: anItemIndex)].
+	^ formatterValues asArray
 ]
 
 { #category : #api }
 GtRemotePhlowDeclarativeViewListingDataSource >> retrieveTotalItemsCount [
-	^ self viewItems size
+	^ self itemsIterator totalItemsCount
 ]
 
 { #category : #api }
 GtRemotePhlowDeclarativeViewListingDataSource >> retriveSentItemAt: aSelectionIndex [
 	"Answer the raw value at the supplied index"
 	
-	^ self phlowView transformation 
-		transformedValueFrom: (self viewItems at: aSelectionIndex)
-		selection: aSelectionIndex
-]
-
-{ #category : #accessing }
-GtRemotePhlowDeclarativeViewListingDataSource >> viewItems [
-	^ cachedItems ifNil: [ 
-		cachedItems := self phlowView itemsBuilder value ]
+	self itemsIterator 
+		forElementsFrom: aSelectionIndex 
+		to: aSelectionIndex 
+		withIndexDo: [ :anObject :anItemIndex |
+			^ self phlowView transformation 
+				transformedValueFrom: anObject
+				selection: aSelectionIndex ].
+	^ nil
 ]

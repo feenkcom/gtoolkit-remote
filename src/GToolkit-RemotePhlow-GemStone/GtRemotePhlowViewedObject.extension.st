@@ -7,7 +7,7 @@ GtRemotePhlowViewedObject >> addRawSelfNodeTo: variableNodes [
 ]
 
 { #category : #'*GToolkit-RemotePhlow-Gemstone' }
-GtRemotePhlowViewedObject classSide >> new [
+GtRemotePhlowViewedObject class >> new [
 
 	^ super new initialize
 ]
@@ -17,7 +17,7 @@ GtRemotePhlowViewedObject >> rawViewData [
 	"Answer the data for the raw view"
 	| variableBindings |
 
-	variableBindings := object gtGsVariableValuePairsWithSelfIf: true.
+	variableBindings := object gtRemoteVariableValuePairsWithSelfIf: true.
 
 	^ Array streamContents: [ :stream |
 		variableBindings do: [ :binding |

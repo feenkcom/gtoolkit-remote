@@ -14,6 +14,7 @@ GtPhlowColumnedListView >> asGtDeclarativeView [
 				cellWidth class = BrColumnFixedWidth
 					ifTrue: [cellWidth width]
 					ifFalse: [nil]]] as: Array);
+		columnTypes: (self columns collect: [ :each | each columnDataType ]) asArray;
 		dataTransport: GtPhlowDeclarativeView dataLazy
 ]
 
@@ -21,5 +22,5 @@ GtPhlowColumnedListView >> asGtDeclarativeView [
 GtPhlowColumnedListView >> canBeGtDeclarativeView [
 	"Answer a boolean indicating whether the receiver can be represented as a GtDeclarativeView"
 
-	^true
+	^ self columns allSatisfy: [ :aColumn | aColumn isWithIcon not ]
 ]

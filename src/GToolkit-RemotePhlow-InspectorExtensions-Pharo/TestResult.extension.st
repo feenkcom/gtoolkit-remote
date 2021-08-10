@@ -1,6 +1,6 @@
 Extension { #name : #TestResult }
 
-{ #category : #'*GToolkit-RemotePhlow' }
+{ #category : #'*GToolkit-RemotePhlow-InspectorExtensions-Pharo' }
 TestResult >> gtResultsFor: aView [
 	<gtView>
 
@@ -9,12 +9,12 @@ TestResult >> gtResultsFor: aView [
 		title: 'Results';
 		priority: 10;
 		items: [ self gtTestResults ];
-		column: 'Selector' item: [ :assoc | assoc key class asString, '>>', assoc key selector ];
-		column: 'Status' item: [ :assoc | assoc value ] width: 100;
+		column: 'Selector' text: [ :assoc | assoc key class asString, '>>', assoc key selector ];
+		column: 'Status' text: [ :assoc | assoc value ] width: 100;
 		send: [ :assoc | assoc key ]
 ]
 
-{ #category : #'*GToolkit-RemotePhlow' }
+{ #category : #'*GToolkit-RemotePhlow-InspectorExtensions-Pharo' }
 TestResult >> gtTestResults [
 	"Answer a collection of result -> label associations"
 

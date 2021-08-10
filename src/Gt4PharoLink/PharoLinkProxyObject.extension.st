@@ -1,11 +1,20 @@
 Extension { #name : #PharoLinkProxyObject }
 
 { #category : #'*Gt4PharoLink' }
-PharoLinkProxyObject >> getViewProxy [
-	"Answer a GtViewedProxy on the receiver"
+PharoLinkProxyObject >> declarativeViews [
+	"Answer the views for the receiver"
+	| rawViews |
 
-	^ self newCommandFactory
-		<< 'llCommand gtViewedObjectClass object: self';
-		sendAndWait.
+	self viewProxyDo: [ :remoteInspectorProxy |
+		| declarativeData declarativeViewDeclarations |
+		declarativeData := remoteInspectorProxy getViewsDeclarations.
+		declarativeViewDeclarations := declarativeData at: 'views' ifAbsent: [ #() ].
+		rawViews := declarativeViewDeclarations collect: [ :declarativeViewData |
+			| declarativeView |
+			declarativeView := GtPhlowDeclarativeView fromDictionary: declarativeViewData.
+			declarativeView
+				initializeFromInspector: remoteInspectorProxy.
+			declarativeView ] ].
 
+	^ rawViews
 ]

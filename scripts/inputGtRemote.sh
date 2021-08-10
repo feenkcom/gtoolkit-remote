@@ -4,7 +4,7 @@
 
 gtRemoteHome=${ROWAN_PROJECTS_HOME}/gtoolkit-remote
 ## Topaz refuses to exit from script if input is stdin, so redirect from /dev/zero
-topaz -l -I ${gtRemoteHome}/rowan/scripts/loginSystemUser.topaz  -S ${gtRemoteHome}/rowan/scripts/inputGtoolkit-remote.topaz < /dev/zero
+topaz -l -I ${gtRemoteHome}/scripts/loginSystemUser.topaz  -S ${gtRemoteHome}/scripts/inputGtoolkit-remote.topaz < /dev/zero
 if [ $? = 0 ]
     then
         exit 0

@@ -62,6 +62,7 @@ GtPhlowDeclarativeView class >> fromJSONDictionary: aDictionary [
 		title: (aDictionary at: #title);
 		priority: (aDictionary at: #priority);
 		dataTransport: (aDictionary at: #dataTransport);
+		methodSelector: (aDictionary at: #methodSelector);
 		yourself
 ]
 
@@ -75,6 +76,7 @@ GtPhlowDeclarativeView >> asDictionaryForExport [
 		at: #title put: title;
 		at: #priority put: priority;
 		at: #dataTransport put: dataTransport;
+		at: #methodSelector put: methodSelector;
 		yourself
 ]
 
@@ -115,6 +117,17 @@ GtPhlowDeclarativeView >> phlowDataSource [
 { #category : #accessing }
 GtPhlowDeclarativeView >> phlowDataSource: aDataSource [
 	phlowDataSource := aDataSource
+]
+
+{ #category : #printing }
+GtPhlowDeclarativeView >> printOn: aStream [
+	super printOn: aStream.
+	aStream
+		nextPutAll: ' (';
+		nextPutAll: self title;
+		nextPutAll: ', ';
+		nextPutAll: self priority asString;
+		nextPutAll: ')'
 ]
 
 { #category : #accessing }

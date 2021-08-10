@@ -4,7 +4,7 @@
 
 gt4GemstoneHome=${ROWAN_PROJECTS_HOME}/gtoolkit-remote
 ## Topaz refuses to exit from script if input is stdin, so redirect from /dev/zero
-topaz -l -I ${gt4GemstoneHome}/rowan/scripts/loginSystemUser.topaz  -S ${gt4GemstoneHome}/rowan/scripts/installGtoolkit-remote.topaz < /dev/zero
+topaz -l -I ${gt4GemstoneHome}/scripts/loginSystemUser.topaz  -S ${gt4GemstoneHome}/scripts/installGtoolkit-remote.topaz < /dev/zero
 if [ $? = 0 ]
     then
         exit 0

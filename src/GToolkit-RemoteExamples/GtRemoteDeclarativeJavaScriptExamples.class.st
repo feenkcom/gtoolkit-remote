@@ -5,16 +5,17 @@ The examples assume that the server is started manually.
 
 To start the server:
 
-[[[language=bash
+```bash
 cd <js directory>
 nodejs src/app.js 7005 7006
-]]]
+```
 
+NOTE: This should be a subclass of GtRemoteDeclarativeExamples.  It's been moved to Object to disable the examples until https://github.com/feenkcom/gtoolkit/issues/2062 is complete.
 "
 Class {
 	#name : #GtRemoteDeclarativeJavaScriptExamples,
-	#superclass : #GtRemoteDeclarativeExamples,
-	#category : #'GToolkit-RemoteExamples'
+	#superclass : #Object,
+	#category : 'GToolkit-RemoteExamples'
 }
 
 { #category : #'private - commands' }
@@ -86,16 +87,15 @@ ti'
 { #category : #private }
 GtRemoteDeclarativeJavaScriptExamples >> runningServer [
 	"Answer a running server"
-	<gtExample>
+	"<gtExample>"
 	<after: #stopServer>
-	| settings |
+	| settings server |
 
 	settings := JSLinkApplication defaultSettings.
 	settings
 		serverProcessClass: LanguageLinkManualProcess;
 		serverSocketAddress: (LanguageLinkSocketAddress ipOrName: 'localhost' port: 7005);
-		clientSocketAddress: (LanguageLinkSocketAddress ipOrName: 'localhost' port: 7006);
-		gtViewedObjectClassName: #GtViewedObject.
+		clientSocketAddress: (LanguageLinkSocketAddress ipOrName: 'localhost' port: 7006).
 	server := JSLinkApplication newWith: settings.
 	^ server start.
 

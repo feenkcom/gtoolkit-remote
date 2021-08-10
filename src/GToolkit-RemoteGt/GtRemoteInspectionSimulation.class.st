@@ -37,19 +37,17 @@ GtRemoteInspectionSimulation class >> openOn: anObject [
 { #category : #'gt inspector' }
 GtRemoteInspectionSimulation >> declarativeViews [
 	"Answer the views for the receiver"
-	| viewMethodNames rawViews  |
+	| declarativeData declarativeViewDeclarations rawViews  |
 
-	viewMethodNames := inspectorProxy getDeclarativeViewMethodNames.
-	rawViews := viewMethodNames collect: [ :viewSelector |
-		| viewData declarativeView |
-		viewData := inspectorProxy getViewDeclaration: viewSelector.
-		viewData ifNotNil: [
-			declarativeView := GtPhlowDeclarativeView fromDictionary: viewData.
-			declarativeView
-				methodSelector: viewSelector;
-				initializeFromInspector: inspectorProxy.
-			declarativeView ] ].
-	^ rawViews reject: #isNil
+	declarativeData := inspectorProxy getViewsDeclarations.
+	declarativeViewDeclarations := declarativeData at: 'views' ifAbsent: [ #() ].
+	rawViews := declarativeViewDeclarations collect: [ :declarativeViewData |
+		| declarativeView |
+		declarativeView := GtPhlowDeclarativeView fromDictionary: declarativeViewData.
+		declarativeView
+			initializeFromInspector: inspectorProxy.
+		declarativeView ].
+	^ rawViews
 ]
 
 { #category : #simulation }
@@ -72,22 +70,6 @@ GtRemoteInspectionSimulation >> gtProxyFor: aView [
 	^(self gtRawFor: aView)
 		title: 'Proxy' translated;
 		priority: 10000.
-]
-
-{ #category : #'gt inspector' }
-GtRemoteInspectionSimulation >> gtProxyRawFor: aView [
-
-	^ aView columnedList 
-		title: 'Raw';
-		priority: 5;
-		items: [ inspectorProxy rawViewData ];
-		column: 'Icon' icon: [ :aNode | aNode third iconNamed: aNode first ];
-		column: 'Variable' text: [ :aNode | aNode second asRopedText ];
-		column: 'Value' text: [ :aNode | 
-			[ aNode third gtDisplayString asRopedText ]
-				on: Error 
-				do: [ :ex | ex messageText asRopedText foreground: Color red ] ];
-		send: [ :aNode | aNode third ]
 ]
 
 { #category : #'gt inspector' }
@@ -127,7 +109,7 @@ GtRemoteInspectionSimulation >> gtViewsInContext: aContext [
 	emptyView := GtPhlowEmptyView new.
 	^ OrderedCollection new
 		"The raw view is a special case to easily handle icons"
-		add: (self gtProxyRawFor: emptyView);
+		"add: (self gtProxyRawFor: emptyView);"
 		add: (self gtProxyFor: emptyView);
 		add: (self gtProxyViewsFor: emptyView);
 		yourself
@@ -142,7 +124,7 @@ GtRemoteInspectionSimulation >> object [
 GtRemoteInspectionSimulation >> object: anObject [
 
 	object := anObject.
-	inspectorProxy := GtViewedObject object: anObject
+	inspectorProxy := GtRemotePhlowViewedObject object: anObject
 ]
 
 { #category : #'gt inspector' }
