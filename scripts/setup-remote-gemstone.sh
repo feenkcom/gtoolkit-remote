@@ -34,7 +34,7 @@ unzip ../GemStone64Bit3.7.0-x86_64.Linux.zip
 unzip ../GemStoneClientLibs3.7.0-x86_64.Linux.zip
 mkdir rowan-projects
 cd rowan-projects
-ln -s ../../pharo-local/iceberg/feenkcom/gtoolkit-gemstone
+ln -s ../../pharo-local/iceberg/feenkcom/gt4gemstone
 ln -s ../../pharo-local/iceberg/feenkcom/gtoolkit-remote
 git clone git@github.com:GemTalk/Sparkle.git
 cd ..
@@ -53,7 +53,7 @@ startstone
 sleep 1
 
 $ROWAN_PROJECTS_HOME/Sparkle/src-gs/bootstrapSparkle.sh
-$ROWAN_PROJECTS_HOME/gtoolkit-gemstone/rowan/scripts/inputGt4gemstone.sh
+$ROWAN_PROJECTS_HOME/gt4gemstone/rowan/scripts/inputGt4gemstone.sh
 $ROWAN_PROJECTS_HOME/gtoolkit-remote/scripts/inputGtRemote.sh
 
 stopstone gs64stone DataCurator swordfish
