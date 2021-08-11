@@ -8,6 +8,14 @@
 #
 set -e
 set -x
+trap stop_servers EXIT
+
+function stop_servers()
+{
+        # Shutdown the GemStone servers
+        stopstone -i gs64stone DataCurator swordfish
+        stopnetldi
+}
 
 export SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -56,6 +64,4 @@ $ROWAN_PROJECTS_HOME/Sparkle/src-gs/bootstrapSparkle.sh
 $ROWAN_PROJECTS_HOME/gt4gemstone/rowan/scripts/inputGt4gemstone.sh
 $ROWAN_PROJECTS_HOME/gtoolkit-remote/scripts/inputGtRemote.sh
 
-stopstone gs64stone DataCurator swordfish
-stopnetldi
-
+exit 0
