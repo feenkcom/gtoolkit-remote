@@ -29,6 +29,6 @@ fi
 remote-pharo/pharo remote-pharo/Pharo.image clap pharoLinkServer 7001 7002 &
 sleep 1
 # Run the remote examples
-./glamoroustoolkit GlamorousToolkit.image gtRemoteServerExamples --junit-xml-output --verbose
+./bin/GlamorousToolkit-cli GlamorousToolkit.image gtRemoteServerExamples --junit-xml-output --verbose --package GToolkit-RemoteExamples-Pharo
 
 exit 0
