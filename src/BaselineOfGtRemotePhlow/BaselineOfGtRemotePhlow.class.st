@@ -6,7 +6,7 @@ Note that this package isn't normally loaded in a Gt image, see ${class:name=Bas
 Class {
 	#name : #BaselineOfGtRemotePhlow,
 	#superclass : #BaselineOf,
-	#category : #BaselineOfGtRemotePhlow
+	#category : 'BaselineOfGtRemotePhlow'
 }
 
 { #category : #baseline }
@@ -33,8 +33,8 @@ BaselineOfGtRemotePhlow >> baseline: spec [
 				package: 'GToolkit-RemotePhlow-Remote'
 					with: [ spec requires: #( #'GToolkit-RemotePhlow-InspectorCore' ) ];
 				package: 'GToolkit-RemotePhlow-Pharo' 
-					with: [ spec requires: #( 'GToolkit-RemotePhlow-InspectorExtensions' ) ];
+					with: [ spec requires: #( 'GToolkit-RemotePhlow-InspectorExtensions-Pharo' ) ];
 				package: 'GToolkit-RemotePhlow-Examples' 
-					with: [ spec requires: #( 'GToolkit-RemotePhlow-InspectorExtensions' ) ]
+					with: [ spec requires: #( 'GToolkit-RemotePhlow-InspectorExtensions-Remote' ) ]
 		]
 ]

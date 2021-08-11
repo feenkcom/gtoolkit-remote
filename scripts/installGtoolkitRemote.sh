@@ -1,5 +1,5 @@
 #! /bin/bash
-### Install gtoolkit-gemstone from Tonel files into a Rowan-enabled stone
+### Install gtoolkit-remote from Tonel files into a Rowan-enabled stone
 ### Exits with 0 if success, 1 if failed
 
 gt4GemstoneHome=${ROWAN_PROJECTS_HOME}/gtoolkit-remote

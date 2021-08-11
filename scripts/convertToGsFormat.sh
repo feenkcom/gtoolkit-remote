@@ -1,5 +1,5 @@
 #! /bin/bash
-### Export gtoolkit-remote and gtoolkit-gemstone to .gs files.
+### Export gtoolkit-remote to a .gs file.
 ### Requires loginSystemUser.topaz be configured with the correct credentials.
 ### Exits with 0 if success, topaz status if failed.
 
