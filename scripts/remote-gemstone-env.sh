@@ -12,6 +12,7 @@ then
 	echo "ERROR: $GEMSTONE doesn't exist"
 	exit 1
 fi
+export GEMSTONE_GLOBAL_DIR=$GtGEMSTONE_PARENT/opt
 export MANPATH=$GEMSTONE/doc
 export PATH=$GEMSTONE/bin:$PATH
 export ROWAN_PROJECTS_HOME=$GtGEMSTONE_PARENT/rowan-projects

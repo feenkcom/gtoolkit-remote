@@ -37,6 +37,7 @@ then
 fi
 
 mkdir remote-gemstone
+mkdir remote-gemstone/opt
 cd remote-gemstone
 unzip ../GemStone64Bit3.7.0-x86_64.Linux.zip
 unzip ../GemStoneClientLibs3.7.0-x86_64.Linux.zip

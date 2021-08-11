@@ -42,6 +42,16 @@ echo "By running this, the GemStone license has been accepted"
 # Setup some general environmental stuff.  File Descriptor limtis, etc
 . $GEMSTONE/bin/misc.sh
 
+#
+# Gt: Use $GEMSTONE_GLOBAL_DIR as GEMSTONE_LOCKBASE.
+# Assume that $GEMSTONE_GLOBAL_DIR is already defined
+#
+if [ -z "$GEMSTONE_GLOBAL_DIR" ]
+then
+    echo "ERROR: GEMSTONE_GLOBAL_DIR isn't defined"
+    exit 1
+fi
+GEMSTONE_LOCKBASE=$GEMSTONE_GLOBAL_DIR
 
 #---------------------------------------------------------------------------
 #
