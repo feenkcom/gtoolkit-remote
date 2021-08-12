@@ -6,6 +6,7 @@ Class {
 		'title',
 		'width',
 		'itemComputation',
+		'textComputation',
 		'iconNameComputation'
 	],
 	#category : 'GToolkit-RemotePhlow-PhlowViews'
@@ -49,18 +50,25 @@ GtRemotePhlowColumn >> isWithIcon [
 ]
 
 { #category : #accessing }
-GtRemotePhlowColumn >> item: aBlock [
-	itemComputation := aBlock
-]
-
-{ #category : #accessing }
 GtRemotePhlowColumn >> itemComputation [
-	^ itemComputation
+	^ itemComputation ifNil: [ 
+		itemComputation := [ :item | item ] ]
 ]
 
 { #category : #'private - accessing' }
 GtRemotePhlowColumn >> rowStencil [
 	^ nil
+]
+
+{ #category : #accessing }
+GtRemotePhlowColumn >> text: aBlock [
+	textComputation := aBlock
+]
+
+{ #category : #accessing }
+GtRemotePhlowColumn >> textComputation [
+	^ textComputation ifNil: [ 
+		textComputation := [ :item | item ] ]
 ]
 
 { #category : #accessing }

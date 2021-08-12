@@ -1,6 +1,6 @@
 Extension { #name : #Object }
 
-{ #category : #'*GToolkit-RemotePhlow-InspectorExtensions' }
+{ #category : #'*GToolkit-RemotePhlow-InspectorExtensions-Remote' }
 Object >> gtRemotePrintFor: aView [
 	<gtView>
 	^ aView textEditor
@@ -9,7 +9,7 @@ Object >> gtRemotePrintFor: aView [
 		text: [ self printString ]
 ]
 
-{ #category : #'*GToolkit-RemotePhlow-InspectorExtensions' }
+{ #category : #'*GToolkit-RemotePhlow-InspectorExtensions-Remote' }
 Object >> gtRemoteRawFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -19,7 +19,7 @@ Object >> gtRemoteRawFor: aView [
 		column: 'Icon' 
 			iconName: [ :anAssociation | anAssociation value class gtSystemIconName ]
 			width: 36;
-		column: 'Variable' item: [ :anAssociation | anAssociation key ];
-		column: 'Value' item: [ :anAssociation | anAssociation value gtDisplayString ];
+		column: 'Variable' text: [ :anAssociation | anAssociation key ];
+		column: 'Value' text: [ :anAssociation | anAssociation value gtDisplayString ];
 		send: [ :anAssociation | anAssociation value ]
 ]

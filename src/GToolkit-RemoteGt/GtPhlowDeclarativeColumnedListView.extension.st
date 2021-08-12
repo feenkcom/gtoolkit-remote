@@ -18,7 +18,7 @@ GtPhlowDeclarativeColumnedListView >> viewFor: aView [
 			ifTrue: [
 				column iconName: [ :anArray | anArray at: index ] ]
 			ifFalse: [ 
-				column item: [ :anArray | anArray at: index ] ].
+				column text: [ :anArray | anArray at: index ] ].
 		(columnWidths at: index) ifNotNil: [ :width |
 			column width: width ] ].
 	list

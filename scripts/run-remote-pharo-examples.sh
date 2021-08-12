@@ -6,6 +6,18 @@
 # working directory, which is typically the image directory.
 #
 set -e
+trap stop_servers EXIT
+
+function stop_servers()
+{
+	# Shutdown all the remote servers
+	# WARNING: This will kill every server on this machine, 
+	# not just those associated with the current job
+	pgrep -f pharoLinkServer > pkill.$$
+	cat pkill.$$ | xargs kill
+	rm pkill.$$
+}
+
 
 # Install the remote environment, if required
 if [ ! -d remote-pharo ]
@@ -17,10 +29,6 @@ fi
 remote-pharo/pharo remote-pharo/Pharo.image clap pharoLinkServer 7001 7002 &
 sleep 1
 # Run the remote examples
-./glamoroustoolkit GlamorousToolkit.image gtRemoteServerExamples --junit-xml-output --verbose
+./bin/GlamorousToolkit-cli GlamorousToolkit.image gtRemoteServerExamples --junit-xml-output --verbose --package GToolkit-RemoteExamples-Pharo
 
-# Shutdown all the remote servers
-# WARNING: This will kill every server on this machine, not just those associated with the current job
-pgrep -f pharoLinkServer > pkill.$$
-cat pkill.$$ | xargs kill
-rm pkill.$$
+exit 0

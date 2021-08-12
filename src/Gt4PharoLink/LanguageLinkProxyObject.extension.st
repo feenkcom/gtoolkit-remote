@@ -42,7 +42,7 @@ LanguageLinkProxyObject >> getViewProxy [
 	"Answer a GtViewedProxy on the receiver"
 
 	^ self newCommandFactory
-		<< 'GtViewedObject object: self';
+		<< 'GtRemotePhlowViewedObject object: self';
 		sendAndWait.
 
 ]
@@ -140,11 +140,11 @@ LanguageLinkProxyObject >> gtViewsInContext: aContext [
 
 { #category : #'*Gt4PharoLink' }
 LanguageLinkProxyObject >> viewProxyDo: aBlock [
-	"Evaluate the supplied block ensuring that the receiver is a GtViewedObject"
+	"Evaluate the supplied block ensuring that the receiver is a GtRemotePhlowViewedObject"
 
 	| viewProxy |
 
-	viewProxy := (#(GtViewedObject GtRemotePhlowViewedObject) includes: remoteClass)
+	viewProxy := (#(GtRemotePhlowViewedObject) includes: remoteClass)
 		ifTrue: [ self ]
 		ifFalse: [ self getViewProxy ].
 	^ aBlock value: viewProxy.

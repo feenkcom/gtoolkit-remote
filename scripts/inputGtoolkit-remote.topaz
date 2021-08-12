@@ -1,8 +1,9 @@
-	iferr 1 stk
-	iferr 2 stack
-	iferr 3 exit
+iferr 1 stk
+iferr 2 stack
+iferr 3 exit
 
-	input $ROWAN_PROJECTS_HOME/gtoolkit-remote/src-gs/gtoolkit-remote.gs
-	commit
+input $ROWAN_PROJECTS_HOME/gtoolkit-remote/src-gs/gtoolkit-remote.gs
+commit
 
-	errorCount
+errorCount
+exit

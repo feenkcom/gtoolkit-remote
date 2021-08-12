@@ -28,7 +28,7 @@ PharoLinkServer new
 Class {
 	#name : #GtRemotePharoDeclarativeExamples,
 	#superclass : #GtRemoteDeclarativeExamples,
-	#category : 'GToolkit-RemoteExamples'
+	#category : 'GToolkit-RemoteExamples-Pharo'
 }
 
 { #category : #private }

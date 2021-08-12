@@ -9,7 +9,6 @@ PharoLinkProxyObject >> declarativeViews [
 		| declarativeData declarativeViewDeclarations |
 		declarativeData := remoteInspectorProxy getViewsDeclarations.
 		declarativeViewDeclarations := declarativeData at: 'views' ifAbsent: [ #() ].
-		declarativeViewDeclarations := remoteInspectorProxy getViewsDeclarations.
 		rawViews := declarativeViewDeclarations collect: [ :declarativeViewData |
 			| declarativeView |
 			declarativeView := GtPhlowDeclarativeView fromDictionary: declarativeViewData.
@@ -18,14 +17,4 @@ PharoLinkProxyObject >> declarativeViews [
 			declarativeView ] ].
 
 	^ rawViews
-]
-
-{ #category : #'*Gt4PharoLink' }
-PharoLinkProxyObject >> getViewProxy [
-	"Answer a GtViewedProxy on the receiver"
-
-	^ self newCommandFactory
-		<< 'llCommand gtViewedObjectClass object: self';
-		sendAndWait.
-
 ]

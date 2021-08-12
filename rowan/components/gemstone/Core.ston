@@ -4,7 +4,8 @@ RwPlatformNestedProjectLoadComponentV2 {
 		'gemstone'
 	],
 	#packageNames : [
-		'GToolkit-RemotePhlow-GemStone'
+		'GToolkit-RemotePhlow-GemStone',
+		'GToolkit-RemotePhlow-InspectorExtensions-GemStone'
 	],
 	#comment : ''
 }

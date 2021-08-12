@@ -23,9 +23,9 @@ GtRemoteExamplesCommandLineHandler class >> description [
 GtRemoteExamplesCommandLineHandler >> ensureRemoteExamplesLoaded [
 	| repository remoteExamples |
 
-	remoteExamples := 'GToolkit-RemoteExamples'.
+	remoteExamples := 'GToolkit-RemoteExamples-GemStone'.
 	repository := IceRepository registeredRepositoryIncludingPackage: 'GToolkit-RemotePhlow-Examples' asPackage.
-	self assert: (repository includesPackageNamed: remoteExamples).
+	self assert: (repository workingCopy packageNames includes: remoteExamples).
 	repository loadedPackages 
 		detect: [ :package | package name = remoteExamples ]
 		ifFound: [ :package | ^ self ].
@@ -34,7 +34,14 @@ GtRemoteExamplesCommandLineHandler >> ensureRemoteExamplesLoaded [
 
 { #category : #accessing }
 GtRemoteExamplesCommandLineHandler >> packages [ 
+	"Answer the list of packages to be run.
+	If --package is provided, answer only the specified package"
+	| arguments index |
 
 	self ensureRemoteExamplesLoaded.
-	^ #('GToolkit-RemotePhlow-Examples' 'GToolkit-RemoteExamples')
+	arguments := self arguments.
+	index := arguments indexOf: '--package'.
+	index = 0 ifTrue:
+		[ ^ #('GToolkit-RemotePhlow-Examples' 'GToolkit-RemoteExamples' 'GToolkit-RemoteExamples-GemStone') ].
+	^ { arguments at: index+1 }
 ]

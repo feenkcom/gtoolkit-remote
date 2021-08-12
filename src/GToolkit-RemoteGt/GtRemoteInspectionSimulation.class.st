@@ -47,7 +47,7 @@ GtRemoteInspectionSimulation >> declarativeViews [
 		declarativeView
 			initializeFromInspector: inspectorProxy.
 		declarativeView ].
-	^ rawViews reject: #isNil
+	^ rawViews
 ]
 
 { #category : #simulation }
@@ -70,22 +70,6 @@ GtRemoteInspectionSimulation >> gtProxyFor: aView [
 	^(self gtRawFor: aView)
 		title: 'Proxy' translated;
 		priority: 10000.
-]
-
-{ #category : #'gt inspector' }
-GtRemoteInspectionSimulation >> gtProxyRawFor: aView [
-
-	^ aView columnedList 
-		title: 'Raw';
-		priority: 5;
-		items: [ inspectorProxy rawViewData ];
-		column: 'Icon' icon: [ :aNode | aNode third iconNamed: aNode first ];
-		column: 'Variable' text: [ :aNode | aNode second asRopedText ];
-		column: 'Value' text: [ :aNode | 
-			[ aNode third gtDisplayString asRopedText ]
-				on: Error 
-				do: [ :ex | ex messageText asRopedText foreground: Color red ] ];
-		send: [ :aNode | aNode third ]
 ]
 
 { #category : #'gt inspector' }
@@ -140,7 +124,7 @@ GtRemoteInspectionSimulation >> object [
 GtRemoteInspectionSimulation >> object: anObject [
 
 	object := anObject.
-	inspectorProxy := GtViewedObject object: anObject
+	inspectorProxy := GtRemotePhlowViewedObject object: anObject
 ]
 
 { #category : #'gt inspector' }

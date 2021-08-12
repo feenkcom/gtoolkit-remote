@@ -1,7 +1,7 @@
 Class {
 	#name : #PlpoGtRemotePhlowDeclarativeTestInspectable,
 	#superclass : #PharoLinkProxyObject,
-	#category : 'GToolkit-RemoteExamples'
+	#category : 'GToolkit-RemoteExamples-Pharo'
 }
 
 { #category : #accessing }

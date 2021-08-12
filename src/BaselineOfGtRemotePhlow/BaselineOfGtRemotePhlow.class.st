@@ -18,18 +18,23 @@ BaselineOfGtRemotePhlow >> baseline: spec [
 			spec 
 				baseline: 'PharoLink' 
 					with: [ spec repository: 'github://feenkcom/PharoLink:main/src' ];
-				package: 'GToolkit-RemotePhlow' 
-					with: [ spec requires: #( PharoLink ) ];
-				package: 'GToolkit-RemotePhlow-InspectorCore' 
-					with: [ spec requires: #( PharoLink ) ];
-				package: 'GToolkit-RemotePhlow-InspectorExtensions' 
-					with: [ spec requires: #( #'GToolkit-RemotePhlow-InspectorCore'  ) ];
-				package: 'GToolkit-RemotePhlow-DeclarativeViews';
+				
+				package: 'GToolkit-RemotePhlow-DeclarativeViews'; 
 				package: 'GToolkit-RemotePhlow-PhlowViews'
 					with: [ spec requires: #( #'GToolkit-RemotePhlow-DeclarativeViews' ) ];
+				
+				package: 'GToolkit-RemotePhlow-InspectorCore' 
+					with: [ spec requires: #( PharoLink #'GToolkit-RemotePhlow-PhlowViews' ) ];
+				package: 'GToolkit-RemotePhlow-InspectorExtensions-Pharo' 
+					with: [ spec requires: #( #'GToolkit-RemotePhlow-InspectorCore'  ) ];
+				package: 'GToolkit-RemotePhlow-InspectorExtensions-Remote'
+					with: [ spec requires: #( #'GToolkit-RemotePhlow-InspectorCore'  ) ];
+				
+				package: 'GToolkit-RemotePhlow-Remote'
+					with: [ spec requires: #( #'GToolkit-RemotePhlow-InspectorCore' ) ];
 				package: 'GToolkit-RemotePhlow-Pharo' 
-					with: [ spec requires: #( 'GToolkit-RemotePhlow-InspectorExtensions' ) ];
+					with: [ spec requires: #( 'GToolkit-RemotePhlow-InspectorExtensions-Pharo' ) ];
 				package: 'GToolkit-RemotePhlow-Examples' 
-					with: [ spec requires: #( 'GToolkit-RemotePhlow-InspectorExtensions' ) ]
+					with: [ spec requires: #( 'GToolkit-RemotePhlow-InspectorExtensions-Remote' ) ]
 		]
 ]
