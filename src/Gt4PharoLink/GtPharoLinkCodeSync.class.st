@@ -93,7 +93,7 @@ Class {
 	#classInstVars : [
 		'default'
 	],
-	#category : 'Gt4PharoLink-CodeSync'
+	#category : #'Gt4PharoLink-CodeSync'
 }
 
 { #category : #accessing }
@@ -179,13 +179,28 @@ GtPharoLinkCodeSync >> start [
 	application start.
 	"detach file log"
 	application newCommandFactory
-		<< 'SourceFiles changesFileStream close.
-			SourceFiles changesFileStream: SourceFiles changesFileStream readOnlyCopy.
-			EpMonitor current log initializeWith: OmMemoryStore new.
-			(CodeImporter fileNamed: SourceFiles changesFileStream path)
-				gtReduceToUnsavedChunks;
-				evaluate.
-			true';
+		<< '
+	realChanges := SourceFiles changesFileStream path asFileReference.
+	realSources := SourceFiles sourcesFileStream path asFileReference.
+	virtualFs := FileSystem memory.
+	virtualChanges := virtualFs workingDirectory / realChanges basename.
+	realChanges copyTo: virtualChanges.
+	SourceFiles close.
+	SourceFiles changesFileStream: ((SourceFile
+			  on: virtualChanges
+			  potentialLocations: { virtualChanges parent })
+			 tryOpenReadOnly: false;
+			 yourself).
+	SourceFiles sourcesFileStream: ((SourceFile
+			  on: realSources
+			  potentialLocations: { realSources parent })
+			 tryOpenReadOnly: true;
+			 yourself).
+	EpMonitor current log initializeWith: OmMemoryStore new.
+	(CodeImporter fileStream: virtualChanges readStream)
+		gtReduceToUnsavedChunks;
+		evaluate.
+	true';
 		sendAndWait
 ]
 
