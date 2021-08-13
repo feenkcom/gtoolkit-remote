@@ -6,6 +6,7 @@
 # working directory, which is typically the image directory.
 #
 set -e
+set -x
 trap stop_servers EXIT
 export SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
