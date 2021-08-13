@@ -1,7 +1,7 @@
-Extension { #name : 'GtRemotePhlowDeclarativeTestInspectable' }
+Extension { #name : #GtRemotePhlowDeclarativeTestInspectable }
 
-{ #category : '*GToolkit-RemotePhlow-GemStone' }
-GtRemotePhlowDeclarativeTestInspectable class >> new [
+{ #category : #'*GToolkit-RemotePhlow-GemStone' }
+GtRemotePhlowDeclarativeTestInspectable classSide >> new [
 
 	^ super new initialize
 ]

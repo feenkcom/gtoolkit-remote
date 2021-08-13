@@ -1,1 +1,1 @@
-Package { #name : 'GToolkit-RemotePhlow-InspectorCore' }
+Package { #name : #'GToolkit-RemotePhlow-InspectorCore' }

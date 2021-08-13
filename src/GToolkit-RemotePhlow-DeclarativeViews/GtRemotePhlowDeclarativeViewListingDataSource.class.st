@@ -1,24 +1,24 @@
 Class {
-	#name : 'GtRemotePhlowDeclarativeViewListingDataSource',
-	#superclass : 'GtRemotePhlowDeclarativeViewDataSource',
+	#name : #GtRemotePhlowDeclarativeViewListingDataSource,
+	#superclass : #GtRemotePhlowDeclarativeViewDataSource,
 	#instVars : [
 		'itemsIterator'
 	],
 	#category : 'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeViewListingDataSource >> formatItem: anObject atIndex: anIndex [
 	self subclassResponsibility
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeViewListingDataSource >> itemsIterator [
 	^ itemsIterator ifNil: [ 
 		itemsIterator := self phlowView itemsProviderBuilder value asGPhlowItemsIterator ]
 ]
 
-{ #category : 'api' }
+{ #category : #api }
 GtRemotePhlowDeclarativeViewListingDataSource >> retrieveItems: anItemsCount fromIndex: startIndex [
 	| formatterValues endIndex |
 
@@ -34,12 +34,12 @@ GtRemotePhlowDeclarativeViewListingDataSource >> retrieveItems: anItemsCount fro
 	^ formatterValues asArray
 ]
 
-{ #category : 'api' }
+{ #category : #api }
 GtRemotePhlowDeclarativeViewListingDataSource >> retrieveTotalItemsCount [
 	^ self itemsIterator totalItemsCount
 ]
 
-{ #category : 'api' }
+{ #category : #api }
 GtRemotePhlowDeclarativeViewListingDataSource >> retriveSentItemAt: aSelectionIndex [
 	"Answer the raw value at the supplied index"
 	

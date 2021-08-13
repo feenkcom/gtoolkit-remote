@@ -26,25 +26,25 @@ PharoLinkServer new
 
 "
 Class {
-	#name : 'GtRemotePharoDeclarativeExamples',
-	#superclass : 'GtRemoteDeclarativeExamples',
+	#name : #GtRemotePharoDeclarativeExamples,
+	#superclass : #GtRemoteDeclarativeExamples,
 	#category : 'GToolkit-RemoteExamples-Pharo'
 }
 
-{ #category : 'private' }
+{ #category : #private }
 GtRemotePharoDeclarativeExamples >> declarativeViewNames [
 	"Answer the expected array of declarative views from the remote"
 
 	^ #('gtLargeListFor:' 'gtStringFor:' 'gtListFor:' 'gtLargeColumnedListWithIndexFor:' 'gtColumnedListFor:' 'gtLargeColumnedListFor:' 'gtRemotePrintFor:' 'gRemoteRawFor:')
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 GtRemotePharoDeclarativeExamples >> getRemoteObject [
 
 	^ self runningServer evaluateAndWait: self remoteObjectCommand
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 GtRemotePharoDeclarativeExamples >> getViewedObjectProxy [
 	"Answer the GtViewedObject proxy for the remote object"
 	
@@ -52,21 +52,21 @@ GtRemotePharoDeclarativeExamples >> getViewedObjectProxy [
 
 ]
 
-{ #category : 'private - commands' }
+{ #category : #'private - commands' }
 GtRemotePharoDeclarativeExamples >> listViewDisplayArray [
 	"Answer the command Array returned by the remote's list view"
 
 	^ #('42' 'Hello World' '2021-04-06T14:43:49.623384+02:00')
 ]
 
-{ #category : 'private - commands' }
+{ #category : #'private - commands' }
 GtRemotePharoDeclarativeExamples >> remoteObjectCommand [
 	"Answer the command to retrieve the test inspectable from the remote"
 
 	^ self testInspectableName, ' new'
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 GtRemotePharoDeclarativeExamples >> runningServer [
 	"Answer a running server"
 	<gtExample>
@@ -84,7 +84,7 @@ GtRemotePharoDeclarativeExamples >> runningServer [
 	^ server start.
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 GtRemotePharoDeclarativeExamples >> testInspectableName [
 	"Answer the name of the test inspectable class on the remote"
 

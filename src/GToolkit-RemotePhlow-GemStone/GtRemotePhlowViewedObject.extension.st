@@ -1,18 +1,18 @@
-Extension { #name : 'GtRemotePhlowViewedObject' }
+Extension { #name : #GtRemotePhlowViewedObject }
 
-{ #category : '*GToolkit-RemotePhlow-Gemstone' }
-GtRemotePhlowViewedObject class >> new [
-
-	^ super new initialize
-]
-
-{ #category : '*GToolkit-RemotePhlow-GemStone' }
+{ #category : #'*GToolkit-RemotePhlow-GemStone' }
 GtRemotePhlowViewedObject >> addRawSelfNodeTo: variableNodes [
 
 	^ self "TBS"
 ]
 
-{ #category : '*GToolkit-RemotePhlow-GemStone' }
+{ #category : #'*GToolkit-RemotePhlow-Gemstone' }
+GtRemotePhlowViewedObject classSide >> new [
+
+	^ super new initialize
+]
+
+{ #category : #'*GToolkit-RemotePhlow-GemStone' }
 GtRemotePhlowViewedObject >> rawViewData [
 	"Answer the data for the raw view"
 	| variableBindings |

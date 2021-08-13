@@ -1,6 +1,6 @@
-Extension { #name : 'Object' }
+Extension { #name : #Object }
 
-{ #category : '*GToolkit-RemoteGt' }
+{ #category : #'*GToolkit-RemoteGt' }
 Object >> gtRemoteVariableValuePairsIn: aCollection [
 	| variableNodes |
 	variableNodes := OrderedCollection new: self class allSlots size.
@@ -10,7 +10,7 @@ Object >> gtRemoteVariableValuePairsIn: aCollection [
 		aCollection add: aVariableNode label -> aVariableNode rawValue ]
 ]
 
-{ #category : '*GToolkit-RemoteGt' }
+{ #category : #'*GToolkit-RemoteGt' }
 Object >> gtRemoteVariableValuePairsWithSelfIf: aBoolean [
 	| variableBindings |
 	variableBindings := OrderedCollection new: self class allSlots size + 1.
@@ -20,7 +20,7 @@ Object >> gtRemoteVariableValuePairsWithSelfIf: aBoolean [
 	^ variableBindings
 ]
 
-{ #category : '*GToolkit-RemoteGt' }
+{ #category : #'*GToolkit-RemoteGt' }
 Object >> gtViewsInCurrentContext [
 	^ self gtViewsInContext: GtPhlowContext null
 ]

@@ -1,10 +1,10 @@
 Class {
-	#name : 'GtRemotePhlowDeclarativeViewColumnedListDataSource',
-	#superclass : 'GtRemotePhlowDeclarativeViewListingDataSource',
+	#name : #GtRemotePhlowDeclarativeViewColumnedListDataSource,
+	#superclass : #GtRemotePhlowDeclarativeViewListingDataSource,
 	#category : 'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtRemotePhlowDeclarativeViewColumnedListDataSource >> formatItem: anObject atIndex: rowIndex [
 	| phlowColumns formattedColumnItems |
 	phlowColumns := self phlowView columns.

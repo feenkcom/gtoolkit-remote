@@ -1,1 +1,1 @@
-Package { #name : 'GToolkit-RemoteExamples-Pharo' }
+Package { #name : #'GToolkit-RemoteExamples-Pharo' }

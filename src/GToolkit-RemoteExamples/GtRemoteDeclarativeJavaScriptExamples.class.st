@@ -13,68 +13,68 @@ nodejs src/app.js 7005 7006
 NOTE: This should be a subclass of GtRemoteDeclarativeExamples.  It's been moved to Object to disable the examples until https://github.com/feenkcom/gtoolkit/issues/2062 is complete.
 "
 Class {
-	#name : 'GtRemoteDeclarativeJavaScriptExamples',
-	#superclass : 'Object',
+	#name : #GtRemoteDeclarativeJavaScriptExamples,
+	#superclass : #Object,
 	#category : 'GToolkit-RemoteExamples'
 }
 
-{ #category : 'private - commands' }
+{ #category : #'private - commands' }
 GtRemoteDeclarativeJavaScriptExamples >> collectionOfObjectsCommand [
 	"Answer the command to retrieve the test inspectable's collectionOfObjects"
 
 	^ 'this.collectionOfObjects'
 ]
 
-{ #category : 'private - commands' }
+{ #category : #'private - commands' }
 GtRemoteDeclarativeJavaScriptExamples >> columnedListViewDeclarationCommand [
 	"Answer the command to retrieve the test inspectable's list view declaration"
 
 	^ 'this.getViewDeclaration(''gtViewColumnedList'')'
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 GtRemoteDeclarativeJavaScriptExamples >> declarativeViewNames [
 	"Answer the expected array of declarative views from the remote"
 
 	^ #('gtViewList' 'gtViewColumnedList' 'gtViewString' 'gtViewRaw' 'gtViewPrint')
 ]
 
-{ #category : 'private - commands' }
+{ #category : #'private - commands' }
 GtRemoteDeclarativeJavaScriptExamples >> listViewDeclarationCommand [
 	"Answer the command to retrieve the test inspectable's list view declaration"
 
 	^ 'this.getViewDeclaration(''gtViewList'')'
 ]
 
-{ #category : 'private - commands' }
+{ #category : #'private - commands' }
 GtRemoteDeclarativeJavaScriptExamples >> listViewDisplayArray [
 	"Answer the command Array returned by the remote's list view"
 
 	^ #('42' 'Hello World' '2021-04-06T12:43:49.623Z')
 ]
 
-{ #category : 'private - commands' }
+{ #category : #'private - commands' }
 GtRemoteDeclarativeJavaScriptExamples >> methodNamesCommand [
 	"Answer the command to retrieve the test inspectable's view method names"
 
 	^ 'this.getGtViewMethodNames()'
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 GtRemoteDeclarativeJavaScriptExamples >> printForString [
 	"Answer the string returned in the #gtPrintFor: view"
 
 	^ 'a(n) GtDeclarativeTestInspectable'
 ]
 
-{ #category : 'private - commands' }
+{ #category : #'private - commands' }
 GtRemoteDeclarativeJavaScriptExamples >> printViewDeclarationCommand [
 	"Answer the command to retrieve the test inspectable's print view declaration"
 
 	^ 'this.getViewDeclaration(''gtViewPrint'')'
 ]
 
-{ #category : 'private - commands' }
+{ #category : #'private - commands' }
 GtRemoteDeclarativeJavaScriptExamples >> remoteObjectCommand [
 	"Answer the command to retrieve the test inspectable from the remote"
 
@@ -84,7 +84,7 @@ var ti = new GtDTI();
 ti'
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 GtRemoteDeclarativeJavaScriptExamples >> runningServer [
 	"Answer a running server"
 	"<gtExample>"
@@ -101,21 +101,21 @@ GtRemoteDeclarativeJavaScriptExamples >> runningServer [
 
 ]
 
-{ #category : 'private - commands' }
+{ #category : #'private - commands' }
 GtRemoteDeclarativeJavaScriptExamples >> stringCommand [
 	"Answer the command to retrieve the test inspectable's string"
 
 	^ 'this.string'
 ]
 
-{ #category : 'private - commands' }
+{ #category : #'private - commands' }
 GtRemoteDeclarativeJavaScriptExamples >> stringViewDeclarationCommand [
 	"Answer the command to retrieve the test inspectable's string view declaration"
 
 	^ 'this.getViewDeclaration(''gtViewString'')'
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 GtRemoteDeclarativeJavaScriptExamples >> testInspectableName [
 	"Answer the name of the test inspectable class on the remote"
 

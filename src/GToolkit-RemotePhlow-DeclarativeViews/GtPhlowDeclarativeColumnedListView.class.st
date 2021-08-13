@@ -17,8 +17,8 @@ Current limitations:
 
 "
 Class {
-	#name : 'GtPhlowDeclarativeColumnedListView',
-	#superclass : 'GtPhlowDeclarativeListingView',
+	#name : #GtPhlowDeclarativeColumnedListView,
+	#superclass : #GtPhlowDeclarativeListingView,
 	#instVars : [
 		'columnTitles',
 		'columnWidths',
@@ -27,7 +27,7 @@ Class {
 	#category : 'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtPhlowDeclarativeColumnedListView class >> fromJSONDictionary: aDictionary [
 
 	| list |
@@ -42,7 +42,7 @@ GtPhlowDeclarativeColumnedListView class >> fromJSONDictionary: aDictionary [
 	^list
 ]
 
-{ #category : 'converting' }
+{ #category : #converting }
 GtPhlowDeclarativeColumnedListView >> asDictionaryForExport [ 
 	| dictionary |
 
@@ -56,32 +56,32 @@ GtPhlowDeclarativeColumnedListView >> asDictionaryForExport [
 	^dictionary
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPhlowDeclarativeColumnedListView >> columnTitles [
 	^ columnTitles
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPhlowDeclarativeColumnedListView >> columnTitles: anObject [
 	columnTitles := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPhlowDeclarativeColumnedListView >> columnTypes [
 	^ columnTypes
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPhlowDeclarativeColumnedListView >> columnTypes: anObject [
 	columnTypes := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPhlowDeclarativeColumnedListView >> columnWidths [
 	^ columnWidths
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPhlowDeclarativeColumnedListView >> columnWidths: anObject [
 	columnWidths := anObject
 ]

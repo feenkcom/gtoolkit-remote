@@ -83,8 +83,8 @@ remoteSyncChange: anEvent
 
 "
 Class {
-	#name : 'GtPharoLinkCodeSync',
-	#superclass : 'Object',
+	#name : #GtPharoLinkCodeSync,
+	#superclass : #Object,
 	#instVars : [
 		'application',
 		'events',
@@ -93,10 +93,10 @@ Class {
 	#classInstVars : [
 		'default'
 	],
-	#category : 'Gt4PharoLink-CodeSync'
+	#category : #'Gt4PharoLink-CodeSync'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkCodeSync class >> default [
 	^ default
 		ifNil: [ default := self new
@@ -108,17 +108,17 @@ GtPharoLinkCodeSync class >> default [
 				yourself ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkCodeSync >> application [
 	^ application
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkCodeSync >> application: anPharoLinkApplication [
 	application := anPharoLinkApplication
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkCodeSync >> entryAdded: anEntryAddedEvent [
 	anEntryAddedEvent entry content isCodeChange
 		ifFalse: [ "only capture code changes" ^ self ].
@@ -126,7 +126,7 @@ GtPharoLinkCodeSync >> entryAdded: anEntryAddedEvent [
 	self flushAsync
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkCodeSync >> flush [
 	| message |
 	application isRunning
@@ -146,7 +146,7 @@ GtPharoLinkCodeSync >> flush [
 		sendAndWait
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkCodeSync >> flushAsync [
 	BlTktWorkerProvider nonUISinglePool
 		schedule:
@@ -155,23 +155,23 @@ GtPharoLinkCodeSync >> flushAsync [
 				yourself)
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkCodeSync >> initialize [
 	super initialize.
 	events := WaitfreeQueue new
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkCodeSync >> log [
 	^ log
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkCodeSync >> log: anEpLog [
 	log := anEpLog
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkCodeSync >> start [
 
 	log announcer when: EpEntryAdded send: #entryAdded: to: self.
@@ -179,17 +179,32 @@ GtPharoLinkCodeSync >> start [
 	application start.
 	"detach file log"
 	application newCommandFactory
-		<< 'SourceFiles changesFileStream close.
-			SourceFiles changesFileStream: SourceFiles changesFileStream readOnlyCopy.
-			EpMonitor current log initializeWith: OmMemoryStore new.
-			(CodeImporter fileNamed: SourceFiles changesFileStream path)
-				gtReduceToUnsavedChunks;
-				evaluate.
-			true';
+		<< '
+	realChanges := SourceFiles changesFileStream path asFileReference.
+	realSources := SourceFiles sourcesFileStream path asFileReference.
+	virtualFs := FileSystem memory.
+	virtualChanges := virtualFs workingDirectory / realChanges basename.
+	realChanges copyTo: virtualChanges.
+	SourceFiles close.
+	SourceFiles changesFileStream: ((SourceFile
+			  on: virtualChanges
+			  potentialLocations: { virtualChanges parent })
+			 tryOpenReadOnly: false;
+			 yourself).
+	SourceFiles sourcesFileStream: ((SourceFile
+			  on: realSources
+			  potentialLocations: { realSources parent })
+			 tryOpenReadOnly: true;
+			 yourself).
+	EpMonitor current log initializeWith: OmMemoryStore new.
+	(CodeImporter fileStream: virtualChanges readStream)
+		gtReduceToUnsavedChunks;
+		evaluate.
+	true';
 		sendAndWait
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkCodeSync >> stop [
 	log announcer unsubscribe: self.
 	events flush.

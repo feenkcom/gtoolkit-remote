@@ -1,16 +1,16 @@
-Extension { #name : 'AbstractDictionary' }
+Extension { #name : #AbstractDictionary }
 
-{ #category : '*GToolkit-RemotePhlow-InspectorExtensions-GemStone' }
+{ #category : #'*GToolkit-RemotePhlow-InspectorExtensions-GemStone' }
 AbstractDictionary >> asGPhlowAssociationsIterator [
 	^ GtRemotePhlowDictionaryAssociationsIterator forCollection: self
 ]
 
-{ #category : '*GToolkit-RemotePhlow-InspectorExtensions-GemStone' }
+{ #category : #'*GToolkit-RemotePhlow-InspectorExtensions-GemStone' }
 AbstractDictionary >> asGPhlowKeysIterator [
 	^ GtRemotePhlowDictionaryKeysIterator forCollection: self
 ]
 
-{ #category : '*GToolkit-RemotePhlow-InspectorExtensions-GemStone' }
+{ #category : #'*GToolkit-RemotePhlow-InspectorExtensions-GemStone' }
 AbstractDictionary >> gtRemoteItemsFor: aView [
 	^ aView columnedList
 		title: 'Items';
@@ -21,7 +21,7 @@ AbstractDictionary >> gtRemoteItemsFor: aView [
 		send: [ :assoc | assoc value ]
 ]
 
-{ #category : '*GToolkit-RemotePhlow-InspectorExtensions-GemStone' }
+{ #category : #'*GToolkit-RemotePhlow-InspectorExtensions-GemStone' }
 AbstractDictionary >> gtRemoteKeysFor: aView [
 	<gtView>
 	^ aView list

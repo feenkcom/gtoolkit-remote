@@ -1,6 +1,6 @@
 Class {
-	#name : 'GtRemotePhlowColumn',
-	#superclass : 'Object',
+	#name : #GtRemotePhlowColumn,
+	#superclass : #Object,
 	#instVars : [
 		'index',
 		'title',
@@ -12,76 +12,76 @@ Class {
 	#category : 'GToolkit-RemotePhlow-PhlowViews'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowColumn >> cellWidth [
 	^ width
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowColumn >> columnDataType [
 	^ self isWithIcon
 		ifTrue: [ #icon ]
 		ifFalse: [ #text ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowColumn >> iconName: aBlock [
 	iconNameComputation := aBlock
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowColumn >> iconNameComputation [
 	^ iconNameComputation
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowColumn >> index [
 	^ index
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowColumn >> index: aColumnIndex [
 	index := aColumnIndex
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 GtRemotePhlowColumn >> isWithIcon [
 	^ iconNameComputation notNil
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowColumn >> itemComputation [
 	^ itemComputation ifNil: [ 
 		itemComputation := [ :item | item ] ]
 ]
 
-{ #category : 'private - accessing' }
+{ #category : #'private - accessing' }
 GtRemotePhlowColumn >> rowStencil [
 	^ nil
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowColumn >> text: aBlock [
 	textComputation := aBlock
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowColumn >> textComputation [
 	^ textComputation ifNil: [ 
 		textComputation := [ :item | item ] ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowColumn >> title [
 	^ title
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowColumn >> title: anObject [
 	title := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowColumn >> width: aCellWidth [
 	width := aCellWidth
 ]

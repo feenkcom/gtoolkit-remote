@@ -1,6 +1,6 @@
-Extension { #name : 'LanguageLinkCommandFactory' }
+Extension { #name : #LanguageLinkCommandFactory }
 
-{ #category : '*Gt4PharoLink' }
+{ #category : #'*Gt4PharoLink' }
 LanguageLinkCommandFactory >> evaluateSourceSequence: aString [
 
 	"self addPlaygroundBindings."

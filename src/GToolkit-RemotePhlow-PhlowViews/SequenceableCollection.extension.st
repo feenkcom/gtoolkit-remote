@@ -1,6 +1,6 @@
-Extension { #name : 'SequenceableCollection' }
+Extension { #name : #SequenceableCollection }
 
-{ #category : '*GToolkit-RemotePhlow-PhlowViews' }
+{ #category : #'*GToolkit-RemotePhlow-PhlowViews' }
 SequenceableCollection >> asGPhlowItemsIterator [
 	^ GtRemotePhlowSequenceableCollectionIterator forCollection: self
 ]

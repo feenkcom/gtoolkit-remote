@@ -1,6 +1,6 @@
-Extension { #name : 'Magnitude' }
+Extension { #name : #Magnitude }
 
-{ #category : '*GToolkit-RemotePhlow-GemStone' }
+{ #category : #'*GToolkit-RemotePhlow-GemStone' }
 Magnitude class >> gtGsInspectorIconName [
 	^ #magnitudeIcon
 ]

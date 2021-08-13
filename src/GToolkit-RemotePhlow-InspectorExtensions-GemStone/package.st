@@ -1,1 +1,1 @@
-Package { #name : 'GToolkit-RemotePhlow-InspectorExtensions-GemStone' }
+Package { #name : #'GToolkit-RemotePhlow-InspectorExtensions-GemStone' }

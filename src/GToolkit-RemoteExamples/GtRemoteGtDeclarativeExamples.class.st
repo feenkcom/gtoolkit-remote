@@ -13,19 +13,19 @@ To start the server:
 NOTE: This should be a subclass of GtRemoteDeclarativeExamples.  It's been moved to Object to disable the examples until https://github.com/feenkcom/gtoolkit/issues/2062 is complete.
 "
 Class {
-	#name : 'GtRemoteGtDeclarativeExamples',
-	#superclass : 'Object',
+	#name : #GtRemoteGtDeclarativeExamples,
+	#superclass : #Object,
 	#category : 'GToolkit-RemoteExamples'
 }
 
-{ #category : 'private' }
+{ #category : #private }
 GtRemoteGtDeclarativeExamples >> printForString [
 	"Answer the string returned in the #gtPrintFor: view"
 
 	^ 'a GtDeclarativeTestInspectable'
 ]
 
-{ #category : 'examples' }
+{ #category : #examples }
 GtRemoteGtDeclarativeExamples >> runningServer [
 	"Answer a running server"
 	"<gtExample>"
@@ -43,7 +43,7 @@ GtRemoteGtDeclarativeExamples >> runningServer [
 	^ server start.
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 GtRemoteGtDeclarativeExamples >> testInspectableName [
 	"Answer the name of the test inspectable class on the remote"
 

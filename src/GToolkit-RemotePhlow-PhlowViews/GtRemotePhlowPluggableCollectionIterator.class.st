@@ -1,15 +1,15 @@
 Class {
-	#name : 'GtRemotePhlowPluggableCollectionIterator',
-	#superclass : 'GtRemotePhlowUnindexedCollectionIterator',
+	#name : #GtRemotePhlowPluggableCollectionIterator,
+	#superclass : #GtRemotePhlowUnindexedCollectionIterator,
 	#category : 'GToolkit-RemotePhlow-PhlowViews'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowPluggableCollectionIterator >> iterationSelector [
 	^ iterationSelector
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowPluggableCollectionIterator >> iterationSelector: aSelector [
 	iterationSelector := aSelector
 ]

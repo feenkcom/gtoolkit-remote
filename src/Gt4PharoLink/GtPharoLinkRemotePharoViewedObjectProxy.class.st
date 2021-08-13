@@ -1,12 +1,12 @@
 Class {
-	#name : 'GtPharoLinkRemotePharoViewedObjectProxy',
-	#superclass : 'PharoLinkProxyObject',
+	#name : #GtPharoLinkRemotePharoViewedObjectProxy,
+	#superclass : #PharoLinkProxyObject,
 	#traits : 'TGtPharoLinkRemoteViewedObjectProxy',
 	#classTraits : 'TGtPharoLinkRemoteViewedObjectProxy classTrait',
 	#category : 'Gt4PharoLink-Proxies'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkRemotePharoViewedObjectProxy class >> remoteClassName [
 
 	^ #GtRemotePhlowViewedObject

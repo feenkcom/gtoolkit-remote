@@ -1,6 +1,6 @@
-Extension { #name : 'Object' }
+Extension { #name : #Object }
 
-{ #category : '*GToolkit-RemotePhlow-GemStone' }
+{ #category : #'*GToolkit-RemotePhlow-GemStone' }
 Object >> gtDeclarativeViewSelectors [
 	"Answer a collection of the object's declarative view selectors"
 
@@ -10,12 +10,12 @@ Object >> gtDeclarativeViewSelectors [
 		to: Object) collect: [ :each | each method selector ]) asSet asArray
 ]
 
-{ #category : '*GToolkit-RemotePhlow-GemStone' }
+{ #category : #'*GToolkit-RemotePhlow-GemStone' }
 Object >> gtDisplayOn: writeStream [
 	self printOn: writeStream
 ]
 
-{ #category : '*GToolkit-RemotePhlow-GemStone' }
+{ #category : #'*GToolkit-RemotePhlow-GemStone' }
 Object >> gtDisplayString [
   | ws contents |
   ws := PrintStream printingOn: String new "maxSize: 100".
@@ -30,12 +30,12 @@ Object >> gtDisplayString [
     ifFalse: [ contents ]
 ]
 
-{ #category : '*GToolkit-RemotePhlow-GemStone' }
+{ #category : #'*GToolkit-RemotePhlow-GemStone' }
 Object >> gtGsInspectorIconName [
 	^ #classIcon
 ]
 
-{ #category : '*GToolkit-RemotePhlow-GemStone' }
+{ #category : #'*GToolkit-RemotePhlow-GemStone' }
 Object >> gtRemoteVariableValuePairsWithSelfIf: aBoolean [
 	| instVarNames bindings indexedVarsSize |
 	instVarNames := self class allInstVarNames.
@@ -56,7 +56,7 @@ Object >> gtRemoteVariableValuePairsWithSelfIf: aBoolean [
 	^ bindings
 ]
 
-{ #category : '*GToolkit-RemotePhlow-GemStone' }
+{ #category : #'*GToolkit-RemotePhlow-GemStone' }
 Object >> gtSystemIconName [
 	^ self gtGsInspectorIconName
 ]

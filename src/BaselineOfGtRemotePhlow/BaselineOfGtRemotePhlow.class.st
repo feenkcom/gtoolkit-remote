@@ -4,12 +4,12 @@ Load the server for remote Gt access to a Pharo image.
 Note that this package isn't normally loaded in a Gt image, see ${class:name=BaselineOfGToolkitRemote}$.
 "
 Class {
-	#name : 'BaselineOfGtRemotePhlow',
-	#superclass : 'BaselineOf',
+	#name : #BaselineOfGtRemotePhlow,
+	#superclass : #BaselineOf,
 	#category : 'BaselineOfGtRemotePhlow'
 }
 
-{ #category : 'baseline' }
+{ #category : #baseline }
 BaselineOfGtRemotePhlow >> baseline: spec [
 	<baseline>
 	spec

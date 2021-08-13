@@ -1,1 +1,1 @@
-Package { #name : 'GToolkit-RemoteGt' }
+Package { #name : #'GToolkit-RemoteGt' }

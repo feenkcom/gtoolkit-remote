@@ -1,6 +1,6 @@
-Extension { #name : 'Collection' }
+Extension { #name : #Collection }
 
-{ #category : '*GToolkit-RemotePhlow-GemStone' }
+{ #category : #'*GToolkit-RemotePhlow-GemStone' }
 Collection class >> gtGsInspectorIconName [
 	^ #collectionIcon
 ]
