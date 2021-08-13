@@ -17,6 +17,7 @@ fi
 ./bin/GlamorousToolkit-cli GlamorousToolkit.image eval --save "Metacello new \
 	repository: 'github://feenkcom/gtoolkit-remote:main/src'; \
 	baseline: 'GtRemotePharoExamples'; \
+	onConflictUseIncoming;
 	load."
 echo "GtRemotePharoExamples loaded"
 
