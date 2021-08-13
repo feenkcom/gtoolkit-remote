@@ -6,6 +6,7 @@
 # working directory, which is typically the image directory.
 #
 set -e
+set -x
 
 if [ -e remote-pharo ]
 then
