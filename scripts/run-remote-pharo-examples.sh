@@ -7,13 +7,16 @@
 #
 set -e
 trap stop_servers EXIT
+export SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 function stop_servers()
 {
 	# Shutdown all the remote servers
 	# WARNING: This will kill every server on this machine, 
 	# not just those associated with the current job
+	echo "Stopping Pharo Servers:"
 	pgrep -f pharoLinkServer > pkill.$$
+    cat pkill.$$
 	cat pkill.$$ | xargs kill
 	rm pkill.$$
 }
@@ -22,13 +25,15 @@ function stop_servers()
 # Install the remote environment, if required
 if [ ! -d remote-pharo ]
 then
-	$SCRIPTS/setup-remote-pharo.sh
+	$SCRIPT_DIR/setup-remote-pharo.sh
 fi
 
 # Start the remote server
 remote-pharo/pharo remote-pharo/Pharo.image clap pharoLinkServer 7001 7002 &
 sleep 1
 # Run the remote examples
-./bin/GlamorousToolkit-cli GlamorousToolkit.image gtRemoteServerExamples --junit-xml-output --verbose --package GToolkit-RemoteExamples-Pharo
+imageDirectory=`pwd`
+cd ..
+./gt-installer --verbose --workspace ${imageDirectory} test --packages "GToolkit-RemoteExamples-Pharo"
 
 exit 0
