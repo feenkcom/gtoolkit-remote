@@ -13,6 +13,13 @@ then
 	exit 1
 fi
 
+# Install GGToolkit-RemoteExamples-Pharo
+./bin/GlamorousToolkit-cli GlamorousToolkit.image eval --save "Metacello new \
+	repository: 'github://feenkcom/gtoolkit-remote:main/src'; \
+	baseline: 'GtRemotePharoExamples'; \
+	load."
+echo "GtRemotePharoExamples loaded"
+
 mkdir remote-pharo
 cd remote-pharo
 curl get.pharo.org/64/90+vm | bash
