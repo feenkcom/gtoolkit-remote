@@ -15,6 +15,8 @@ BaselineOfGToolkitRemote >> baseline: spec [
 	spec for: #'common' do: [
 		spec baseline: 'GToolkitPhlow' with: [
 				spec repository: 'github://feenkcom/gtoolkit-phlow:main/src' ].
+		spec baseline: 'Gt4PharoLink' with: [
+				spec repository: 'github://feenkcom/gtoolkit-remote:main/src' ].
 		spec 
 			package: 'GToolkit-RemotePhlow-DeclarativeViews';
 			package: 'GToolkit-RemotePhlow-PhlowViews';
@@ -25,6 +27,7 @@ BaselineOfGToolkitRemote >> baseline: spec [
 			package: 'GToolkit-RemotePhlow-Examples';
 			package: 'GToolkit-RemoteGt' with: [
 				spec requires: #('GToolkitPhlow' #'GToolkit-RemotePhlow-DeclarativeViews' #'GToolkit-RemotePhlow-PhlowViews' 'GToolkit-RemotePhlow-Examples'). ];
-			package: 'GToolkit-RemoteExamples-Pharo'. ].
+			package: 'GToolkit-RemoteExamples-Pharo' with: [
+				spec requires: #('Gt4PharoLink') ] ].
 
 ]
