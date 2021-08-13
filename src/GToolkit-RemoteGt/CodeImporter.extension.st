@@ -1,6 +1,6 @@
-Extension { #name : #CodeImporter }
+Extension { #name : 'CodeImporter' }
 
-{ #category : #'*GToolkit-RemoteGt' }
+{ #category : '*GToolkit-RemoteGt' }
 CodeImporter >> gtReduceToUnsavedChunks [
 
 	| i break stack |

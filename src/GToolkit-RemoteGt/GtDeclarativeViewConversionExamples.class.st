@@ -1,10 +1,10 @@
 Class {
-	#name : #GtDeclarativeViewConversionExamples,
-	#superclass : #Object,
+	#name : 'GtDeclarativeViewConversionExamples',
+	#superclass : 'Object',
 	#category : 'GToolkit-RemoteGt-Examples'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 GtDeclarativeViewConversionExamples >> convertColumnedList [
 	"Demonstrate converting a columned list phlow view to a declarative view"
 	<gtExample>
@@ -27,7 +27,7 @@ GtDeclarativeViewConversionExamples >> convertColumnedList [
 	^ declarativeView.
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableColumnedList [
 	"Check the conversion to declarative views with data"
 	<gtExample>
@@ -46,7 +46,7 @@ GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableColumn
 
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableList [
 	"Check the conversion to declarative views with data"
 	<gtExample>
@@ -62,7 +62,7 @@ GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableList [
 	^ declarativeView
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableText [
 	"Check the conversion to declarative views with data"
 	<gtExample>
@@ -79,7 +79,7 @@ GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableText [
 
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 GtDeclarativeViewConversionExamples >> convertList [
 	"Demonstrate converting a columned list phlow view to a declarative view"
 	<gtExample>
@@ -99,7 +99,7 @@ GtDeclarativeViewConversionExamples >> convertList [
 	^ declarativeView.
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 GtDeclarativeViewConversionExamples >> convertText [
 	"Demonstrate converting a columned list phlow view to a declarative view"
 	<gtExample>
@@ -118,7 +118,7 @@ GtDeclarativeViewConversionExamples >> convertText [
 	^ declarativeView.
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 GtDeclarativeViewConversionExamples >> convertTree [
 	"Demonstrate converting a tree phlow view to a declarative view"
 	<gtExample>
