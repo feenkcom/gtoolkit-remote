@@ -6,12 +6,21 @@
 # working directory, which is typically the image directory.
 #
 set -e
+set -x
 
 if [ -e remote-pharo ]
 then
 	echo "ERROR: remote-pharo subdirectory already exists"
 	exit 1
 fi
+
+# Install GGToolkit-RemoteExamples-Pharo
+./bin/GlamorousToolkit-cli GlamorousToolkit.image eval --save "Metacello new \
+	repository: 'github://feenkcom/gtoolkit-remote:main/src'; \
+	baseline: 'GtRemotePharoExamples'; \
+	onConflictUseIncoming;
+	load."
+echo "GtRemotePharoExamples loaded"
 
 mkdir remote-pharo
 cd remote-pharo
