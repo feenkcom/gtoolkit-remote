@@ -14,7 +14,9 @@ function stop_servers()
 	# Shutdown all the remote servers
 	# WARNING: This will kill every server on this machine, 
 	# not just those associated with the current job
+	echo "Stopping Pharo Servers:"
 	pgrep -f pharoLinkServer > pkill.$$
+    cat pkill.$$
 	cat pkill.$$ | xargs kill
 	rm pkill.$$
 }
@@ -30,8 +32,8 @@ fi
 remote-pharo/pharo remote-pharo/Pharo.image clap pharoLinkServer 7001 7002 &
 sleep 1
 # Run the remote examples
-cd ..
 imageDirectory=`pwd`
+cd ..
 ./gt-installer --verbose --workspace ${imageDirectory} test --packages "GToolkit-RemoteExamples-Pharo"
 
 exit 0
