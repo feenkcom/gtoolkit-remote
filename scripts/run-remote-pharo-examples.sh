@@ -7,6 +7,7 @@
 #
 set -e
 trap stop_servers EXIT
+export SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 function stop_servers()
 {
@@ -22,7 +23,7 @@ function stop_servers()
 # Install the remote environment, if required
 if [ ! -d remote-pharo ]
 then
-	$SCRIPTS/setup-remote-pharo.sh
+	$SCRIPT_DIR/setup-remote-pharo.sh
 fi
 
 # Start the remote server
