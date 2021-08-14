@@ -35,6 +35,6 @@ sleep 1
 # Run the remote examples
 imageDirectory=`pwd`
 cd ..
-./gt-installer --verbose --workspace ${imageDirectory} test --packages "GToolkit-RemoteExamples-Pharo"
+./gt-installer --verbose --workspace ${imageDirectory} test --disable-deprecation-rewrites --packages "GToolkit-RemoteExamples-Pharo"
 
 exit 0
