@@ -1,6 +1,6 @@
-Extension { #name : #GtPhlowTreeView }
+Extension { #name : 'GtPhlowTreeView' }
 
-{ #category : #'*GToolkit-RemoteGt' }
+{ #category : '*GToolkit-RemoteGt' }
 GtPhlowTreeView >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
@@ -15,7 +15,7 @@ GtPhlowTreeView >> asGtDeclarativeView [
 
 ]
 
-{ #category : #'*GToolkit-RemoteGt' }
+{ #category : '*GToolkit-RemoteGt' }
 GtPhlowTreeView >> gtDeclarativeViewAdd: item index: anArray to: stream [
 	"Add the supplied item and its children to the stream"
 

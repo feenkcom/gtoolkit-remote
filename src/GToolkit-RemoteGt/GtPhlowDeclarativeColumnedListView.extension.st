@@ -1,6 +1,6 @@
-Extension { #name : #GtPhlowDeclarativeColumnedListView }
+Extension { #name : 'GtPhlowDeclarativeColumnedListView' }
 
-{ #category : #'*GToolkit-RemoteGt' }
+{ #category : '*GToolkit-RemoteGt' }
 GtPhlowDeclarativeColumnedListView >> viewFor: aView [
 	"Answer the GtPhlowView for the receiver"
 
