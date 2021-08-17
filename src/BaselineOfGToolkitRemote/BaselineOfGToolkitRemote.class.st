@@ -4,24 +4,25 @@ Load the client and server components for remote Gt access.
 
 "
 Class {
-	#name : #BaselineOfGToolkitRemote,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfGToolkitRemote
+	#name : 'BaselineOfGToolkitRemote',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfGToolkitRemote'
 }
 
-{ #category : #baseline }
+{ #category : 'baseline' }
 BaselineOfGToolkitRemote >> baseline: spec [
 	<baseline>
 	spec for: #'common' do: [
-		spec baseline: 'GToolkitPhlow' with: [
+		spec
+			baseline: 'GToolkitPhlow' with: [
 				spec repository: 'github://feenkcom/gtoolkit-phlow:v0.8.395/src' ].
-		spec 
-			package: 'GToolkit-RemotePhlow-DeclarativeViews';
-			package: 'GToolkit-RemotePhlow-PhlowViews';
-			package: 'GToolkit-RemotePhlow-InspectorCore' with: [
-				spec requires: #('GToolkit-RemotePhlow-PhlowViews' ). ];
-			package: 'GToolkit-RemotePhlow-Examples';
-			package: 'GToolkit-RemoteGt' with: [
-				spec requires: #('GToolkitPhlow' 'GToolkit-RemotePhlow-DeclarativeViews' 'GToolkit-RemotePhlow-PhlowViews' 'GToolkit-RemotePhlow-Examples' ). ]. ].
 
+		spec package: 'GToolkit-RemotePhlow-DeclarativeViews'.
+		spec package: 'GToolkit-RemotePhlow-PhlowViews'.
+		spec package: 'GToolkit-RemotePhlow-InspectorCore' with: [
+			spec requires: #('GToolkit-RemotePhlow-PhlowViews') ].
+		spec package: 'GToolkit-RemotePhlow-Examples'.
+		spec package: 'GToolkit-RemoteGt' with: [
+			spec requires: #('GToolkitPhlow' 'GToolkit-RemotePhlow-DeclarativeViews' 'GToolkit-RemotePhlow-PhlowViews' 'GToolkit-RemotePhlow-Examples') ].
+	]
 ]
