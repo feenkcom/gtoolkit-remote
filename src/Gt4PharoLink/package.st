@@ -1,1 +1,1 @@
-Package { #name : #Gt4PharoLink }
+Package { #name : 'Gt4PharoLink' }
