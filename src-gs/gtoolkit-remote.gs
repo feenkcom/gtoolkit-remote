@@ -1168,7 +1168,7 @@ itemText: aBlock
 
 !		Instance methods for 'GtRemoteDeclarativeExamples'
 
-category: #'examples - views'
+category: 'examples - views'
 method: GtRemoteDeclarativeExamples
 columnedListView
 	<gtExample>
@@ -1191,7 +1191,7 @@ columnedListView
 	^ view
 %
 
-category: #'private'
+category: 'private'
 method: GtRemoteDeclarativeExamples
 columnedListViewLazyCheck: viewProxy
 	| declarativeView |
@@ -1200,7 +1200,7 @@ columnedListViewLazyCheck: viewProxy
 	self assert: declarativeView retrieveTotalItemsCount equals: 3.
 %
 
-category: #'private'
+category: 'private'
 method: GtRemoteDeclarativeExamples
 declarativeViewNames
 	"Answer the expected array of declarative views from the remote.
@@ -1209,14 +1209,14 @@ declarativeViewNames
 	^ #('gtLargeListFor:' 'gtStringFor:' 'gtListFor:' 'gtLargeColumnedListWithIndexFor:' 'gtColumnedListFor:' 'gtLargeColumnedListFor:' 'gtRemotePrintFor:')
 %
 
-category: #'private'
+category: 'private'
 method: GtRemoteDeclarativeExamples
 getRemoteObject
 
 	^ GtRemotePhlowDeclarativeTestInspectable new
 %
 
-category: #'private'
+category: 'private'
 method: GtRemoteDeclarativeExamples
 getViewedObjectProxy
 	"Answer the GtRemotePhlowViewedObject proxy for the remote object"
@@ -1224,7 +1224,7 @@ getViewedObjectProxy
 	^ GtRemotePhlowViewedObject object: self remoteObject.
 %
 
-category: #'examples - views'
+category: 'examples - views'
 method: GtRemoteDeclarativeExamples
 listView
 	<gtExample>
@@ -1245,7 +1245,7 @@ listView
 	^ view
 %
 
-category: #'private - commands'
+category: 'private - commands'
 method: GtRemoteDeclarativeExamples
 listViewDisplayArray
 	"Answer the command Array returned by the remote's list view"
@@ -1253,7 +1253,7 @@ listViewDisplayArray
 	^ #('42' 'Hello World' '2021-04-06T14:43:49.623384+02:00')
 %
 
-category: #'private'
+category: 'private'
 method: GtRemoteDeclarativeExamples
 listViewLazyCheck: viewProxy
 	| declarativeView |
@@ -1262,7 +1262,7 @@ listViewLazyCheck: viewProxy
 	self assert: declarativeView retrieveTotalItemsCount equals: 3.
 %
 
-category: #'private'
+category: 'private'
 method: GtRemoteDeclarativeExamples
 printForString
 	"Answer the string returned in the #gtPrintFor: view.
@@ -1271,7 +1271,7 @@ printForString
 	^ 'a GtRemotePhlowDeclarativeTestInspectable'
 %
 
-category: #'examples - views'
+category: 'examples - views'
 method: GtRemoteDeclarativeExamples
 printView
 	"Disable since this relies on having GToolkit-RemotePhlow-InspectorExtensions,
@@ -1288,7 +1288,7 @@ printView
 	^ view
 %
 
-category: #'examples'
+category: 'examples'
 method: GtRemoteDeclarativeExamples
 remoteObject
 	"Answer the remote GtDeclarativeTestInspectable instance.
@@ -1310,7 +1310,7 @@ remoteObject
 	^ remoteObject
 %
 
-category: #'private'
+category: 'private'
 method: GtRemoteDeclarativeExamples
 runningServer
 	"Answer a running server.
@@ -1320,7 +1320,7 @@ runningServer
 	<after: #stopServer>
 %
 
-category: #'private'
+category: 'private'
 method: GtRemoteDeclarativeExamples
 stopServer 
 
@@ -1329,7 +1329,7 @@ stopServer
 		server := nil ]
 %
 
-category: #'examples - views'
+category: 'examples - views'
 method: GtRemoteDeclarativeExamples
 stringView
 	<gtExample>
@@ -1344,7 +1344,7 @@ stringView
 	^ view
 %
 
-category: #'examples'
+category: 'examples'
 method: GtRemoteDeclarativeExamples
 viewedObjectProxy
 	"Answer the GtRemotePhlowViewedObject proxy for the remote object"
@@ -1633,26 +1633,26 @@ tree
 
 !		Instance methods for 'GtRemotePhlowDeclarativeTestInspectable'
 
-category: #'accessing'
+category: 'accessing'
 method: GtRemotePhlowDeclarativeTestInspectable
 collectionAt: anIndex put: anObject
 
 	^collectionOfObjects at: anIndex put: anObject
 %
 
-category: #'accessing'
+category: 'accessing'
 method: GtRemotePhlowDeclarativeTestInspectable
 collectionOfObjects
 	^ collectionOfObjects
 %
 
-category: #'accessing'
+category: 'accessing'
 method: GtRemotePhlowDeclarativeTestInspectable
 collectionOfObjects: anObject
 	collectionOfObjects := anObject
 %
 
-category: #'inspecting'
+category: 'inspecting'
 method: GtRemotePhlowDeclarativeTestInspectable
 gtColumnedListFor: aView
 	<gtView>
@@ -1665,7 +1665,7 @@ gtColumnedListFor: aView
 		column: 'Lowercase' text: [ :anObject | anObject asString asLowercase ] width: 100.
 %
 
-category: #'inspecting'
+category: 'inspecting'
 method: GtRemotePhlowDeclarativeTestInspectable
 gtLargeColumnedListFor: aView
 	<gtView>
@@ -1678,7 +1678,7 @@ gtLargeColumnedListFor: aView
 		column: 'Value * 10' text: [ :anObject | (anObject * 10) asString asLowercase ] width: 100.
 %
 
-category: #'inspecting'
+category: 'inspecting'
 method: GtRemotePhlowDeclarativeTestInspectable
 gtLargeColumnedListWithIndexFor: aView
 	<gtView>
@@ -1691,7 +1691,7 @@ gtLargeColumnedListWithIndexFor: aView
 		column: 'Value' text: [ :anObject | anObject ].
 %
 
-category: #'inspecting'
+category: 'inspecting'
 method: GtRemotePhlowDeclarativeTestInspectable
 gtLargeListFor: aView
 	<gtView>
@@ -1703,7 +1703,7 @@ gtLargeListFor: aView
 		itemText: [ :item | item  ]
 %
 
-category: #'inspecting'
+category: 'inspecting'
 method: GtRemotePhlowDeclarativeTestInspectable
 gtListFor: aView
 	<gtView>
@@ -1715,7 +1715,7 @@ gtListFor: aView
 		itemText: [ :item | item ]
 %
 
-category: #'inspecting'
+category: 'inspecting'
 method: GtRemotePhlowDeclarativeTestInspectable
 gtStringFor: aView
 	<gtView>
@@ -1726,7 +1726,7 @@ gtStringFor: aView
 		text: [ self string ]
 %
 
-category: #'initialization'
+category: 'initialization'
 method: GtRemotePhlowDeclarativeTestInspectable
 initialize 
 
@@ -1738,20 +1738,26 @@ initialize
 		DateAndTime readFrom: '2021-04-06T14:43:49.623384+02:00' readStream }.
 %
 
-category: #'accessing'
+category: 'accessing'
+method: GtRemotePhlowDeclarativeTestInspectable
+printStringFor: anObject
+	^ anObject printString
+%
+
+category: 'accessing'
 method: GtRemotePhlowDeclarativeTestInspectable
 string
 
 	^string
 %
 
-category: #'accessing'
+category: 'accessing'
 method: GtRemotePhlowDeclarativeTestInspectable
 string: anObject
 	string := anObject
 %
 
-category: #'accessing'
+category: 'accessing'
 method: GtRemotePhlowDeclarativeTestInspectable
 text
 
@@ -1762,7 +1768,7 @@ text
 
 !		Instance methods for 'GtRemotePhlowDeclarativeTreeExamples'
 
-category: #'examples'
+category: 'examples'
 method: GtRemotePhlowDeclarativeTreeExamples
 emptyTree
 	<gtExample>
@@ -1773,7 +1779,7 @@ emptyTree
 	^ view
 %
 
-category: #'examples'
+category: 'examples'
 method: GtRemotePhlowDeclarativeTreeExamples
 sentItemAt
 	"<gtExample>"
@@ -1796,7 +1802,7 @@ sentItemAt
 	^ treeView
 %
 
-category: #'examples'
+category: 'examples'
 method: GtRemotePhlowDeclarativeTreeExamples
 treeViewWithItemsAndChildren
 	<gtExample>
