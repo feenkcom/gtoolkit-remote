@@ -1,1 +1,1 @@
-Package { #name : #'GToolkit-RemotePhlow-Examples' }
+Package { #name : 'GToolkit-RemotePhlow-Examples' }
