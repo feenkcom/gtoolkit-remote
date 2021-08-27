@@ -2210,7 +2210,7 @@ category: #'accessing'
 method: GtRemotePhlowDeclarativeViewListingDataSource
 itemsIterator
 	^ itemsIterator ifNil: [ 
-		itemsIterator := self phlowView itemsProviderBuilder value asGPhlowItemsIterator ]
+		itemsIterator := self phlowView itemsProviderComputation value asGPhlowItemsIterator ]
 %
 
 category: #'api'
