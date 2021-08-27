@@ -2,7 +2,7 @@ Class {
 	#name : #GtRemotePhlowDeclarativeListingView,
 	#superclass : #GtRemotePhlowDeclarativeView,
 	#instVars : [
-		'itemsProviderBuilder',
+		'itemsProviderComputation',
 		'transformation'
 	],
 	#category : 'GToolkit-RemotePhlow-PhlowViews'
@@ -15,13 +15,13 @@ GtRemotePhlowDeclarativeListingView >> defaultTransformation [
 
 { #category : #'api - scripting' }
 GtRemotePhlowDeclarativeListingView >> items: aBlockClosure [
-	itemsProviderBuilder := aBlockClosure
+	itemsProviderComputation := aBlockClosure
 ]
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeListingView >> itemsProviderBuilder [
-	^ itemsProviderBuilder ifNil: [ 
-		itemsProviderBuilder := #() asGPhlowItemsIterator ]
+GtRemotePhlowDeclarativeListingView >> itemsProviderComputation [
+	^ itemsProviderComputation ifNil: [ 
+		itemsProviderComputation := #() asGPhlowItemsIterator ]
 ]
 
 { #category : #'api - scripting' }
