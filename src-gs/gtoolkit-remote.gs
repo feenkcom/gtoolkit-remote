@@ -457,7 +457,7 @@ removeallclassmethods GtRemotePhlowDeclarativeView
 doit
 (GtRemotePhlowDeclarativeView
 	subclass: 'GtRemotePhlowDeclarativeListingView'
-	instVarNames: #( itemsProviderBuilder transformation )
+	instVarNames: #( itemsProviderComputation transformation )
 	classVars: #(  )
 	classInstVars: #(  )
 	poolDictionaries: #()
@@ -1889,14 +1889,14 @@ defaultTransformation
 category: #'api - scripting'
 method: GtRemotePhlowDeclarativeListingView
 items: aBlockClosure
-	itemsProviderBuilder := aBlockClosure
+	itemsProviderComputation := aBlockClosure
 %
 
 category: #'accessing'
 method: GtRemotePhlowDeclarativeListingView
-itemsProviderBuilder
-	^ itemsProviderBuilder ifNil: [ 
-		itemsProviderBuilder := #() asGPhlowItemsIterator ]
+itemsProviderComputation
+	^ itemsProviderComputation ifNil: [ 
+		itemsProviderComputation := #() asGPhlowItemsIterator ]
 %
 
 category: #'api - scripting'
@@ -2210,7 +2210,7 @@ category: #'accessing'
 method: GtRemotePhlowDeclarativeViewListingDataSource
 itemsIterator
 	^ itemsIterator ifNil: [ 
-		itemsIterator := self phlowView itemsProviderBuilder value asGPhlowItemsIterator ]
+		itemsIterator := self phlowView itemsProviderComputation value asGPhlowItemsIterator ]
 %
 
 category: #'api'

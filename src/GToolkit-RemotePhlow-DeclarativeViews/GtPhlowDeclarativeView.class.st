@@ -27,8 +27,8 @@ Internal Representation and Key Implementation Points.
 
 "
 Class {
-	#name : #GtPhlowDeclarativeView,
-	#superclass : #Object,
+	#name : 'GtPhlowDeclarativeView',
+	#superclass : 'Object',
 	#instVars : [
 		'phlowDataSource',
 		'methodSelector',
@@ -39,21 +39,21 @@ Class {
 	#category : 'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
-{ #category : #'data transport' }
+{ #category : 'data transport' }
 GtPhlowDeclarativeView class >> dataIncluded [
 	"Answer the enumerated value for the display data being included with the specification"
 
 	^1
 ]
 
-{ #category : #'data transport' }
+{ #category : 'data transport' }
 GtPhlowDeclarativeView class >> dataLazy [
 	"Answer the enumerated value for the display data accessor name being included with the specification.  This can then be used to retrieve the data at a later time"
 
 	^2
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtPhlowDeclarativeView class >> fromJSONDictionary: aDictionary [
 	"Answer an instance of the receiver from the supplied dictionary.
 	Subclasses will override this to add their specific attributes"
@@ -66,7 +66,7 @@ GtPhlowDeclarativeView class >> fromJSONDictionary: aDictionary [
 		yourself
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 GtPhlowDeclarativeView >> asDictionaryForExport [
 	"Answer the receiver as a dictionary ready for JSON serialisation.
 	Subclasses will override and add to the dictionary"
@@ -80,46 +80,46 @@ GtPhlowDeclarativeView >> asDictionaryForExport [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPhlowDeclarativeView >> dataTransport [
 	^ dataTransport
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPhlowDeclarativeView >> dataTransport: anObject [
 	dataTransport := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtPhlowDeclarativeView >> initializeFromInspector: anInspector [
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtPhlowDeclarativeView >> isWithLazyLoading [
 	^ self dataTransport = self class dataLazy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPhlowDeclarativeView >> methodSelector [
 	^ methodSelector
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPhlowDeclarativeView >> methodSelector: aSelector [
 	methodSelector := aSelector
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPhlowDeclarativeView >> phlowDataSource [
 	^ phlowDataSource
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPhlowDeclarativeView >> phlowDataSource: aDataSource [
 	phlowDataSource := aDataSource
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 GtPhlowDeclarativeView >> printOn: aStream [
 	super printOn: aStream.
 	aStream
@@ -130,27 +130,27 @@ GtPhlowDeclarativeView >> printOn: aStream [
 		nextPutAll: ')'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPhlowDeclarativeView >> priority [
 	^ priority
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPhlowDeclarativeView >> priority: anObject [
 	priority := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPhlowDeclarativeView >> title [
 	^ title
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPhlowDeclarativeView >> title: anObject [
 	title := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPhlowDeclarativeView >> viewName [
 	"Answer the name of the receivers view"
 

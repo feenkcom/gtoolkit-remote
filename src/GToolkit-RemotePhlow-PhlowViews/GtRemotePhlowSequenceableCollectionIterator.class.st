@@ -1,10 +1,10 @@
 Class {
-	#name : #GtRemotePhlowSequenceableCollectionIterator,
-	#superclass : #GtRemotePhlowCollectionIterator,
+	#name : 'GtRemotePhlowSequenceableCollectionIterator',
+	#superclass : 'GtRemotePhlowCollectionIterator',
 	#category : 'GToolkit-RemotePhlow-PhlowViews'
 }
 
-{ #category : #iterating }
+{ #category : 'iterating' }
 GtRemotePhlowSequenceableCollectionIterator >> forElementsFrom: startIndex to: endIndex withIndexDo: aBlock [
 	| limitedStartIndex limitedEndIndex |
 	

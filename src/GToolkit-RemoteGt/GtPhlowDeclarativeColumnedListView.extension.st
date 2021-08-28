@@ -6,10 +6,10 @@ GtPhlowDeclarativeColumnedListView >> viewFor: aView [
 
 	| list column |
 
-	list := aView lazyColumnedList 
+	list := aView columnedList 
 		title: title;
 		priority: priority;
-		itemsProvider: [ self ].
+		items: [ GtRemoteInspectorListingBufferedStream declarativeView: self ].
 	columnTitles withIndexDo: [ :cTitle :index |
 		column := list column.
 		column 
