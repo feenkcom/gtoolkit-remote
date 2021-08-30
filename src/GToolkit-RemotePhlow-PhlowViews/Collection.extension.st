@@ -1,6 +1,6 @@
-Extension { #name : #Collection }
+Extension { #name : 'Collection' }
 
-{ #category : #'*GToolkit-RemotePhlow-PhlowViews' }
+{ #category : '*GToolkit-RemotePhlow-PhlowViews' }
 Collection >> asGPhlowItemsIterator [
 	^ GtRemotePhlowGenericCollectionIterator forCollection: self
 ]

@@ -6,10 +6,10 @@ GtPhlowDeclarativeListView >> viewFor: aView [
 
 	| list |
 
-	list := aView lazyList 
+	list := aView list 
 		title: title;
 		priority: priority;
-		itemsProvider: [ self ];
+		items: [ GtRemoteInspectorListingBufferedStream declarativeView: self ];
 		send: [ :arg :selection | 
 			self retriveSentItemAt: selection first ].
 	^list

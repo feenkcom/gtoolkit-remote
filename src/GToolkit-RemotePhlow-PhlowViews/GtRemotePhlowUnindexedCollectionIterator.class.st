@@ -1,13 +1,13 @@
 Class {
-	#name : #GtRemotePhlowUnindexedCollectionIterator,
-	#superclass : #GtRemotePhlowCollectionIterator,
+	#name : 'GtRemotePhlowUnindexedCollectionIterator',
+	#superclass : 'GtRemotePhlowCollectionIterator',
 	#instVars : [
 		'iterationSelector'
 	],
 	#category : 'GToolkit-RemotePhlow-PhlowViews'
 }
 
-{ #category : #iterating }
+{ #category : 'iterating' }
 GtRemotePhlowUnindexedCollectionIterator >> forElementsFrom: startIndex to: endIndex withIndexDo: aBlock [
 	| limitedStartIndex limitedEndIndex iterationIndex|
 	
@@ -24,7 +24,7 @@ GtRemotePhlowUnindexedCollectionIterator >> forElementsFrom: startIndex to: endI
 		iterationIndex := iterationIndex + 1 ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowUnindexedCollectionIterator >> iterationSelector [
 	self subclassResponsibility
 ]

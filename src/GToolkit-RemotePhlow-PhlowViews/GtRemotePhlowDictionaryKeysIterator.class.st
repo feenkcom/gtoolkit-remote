@@ -1,10 +1,10 @@
 Class {
-	#name : #GtRemotePhlowDictionaryKeysIterator,
-	#superclass : #GtRemotePhlowUnindexedCollectionIterator,
+	#name : 'GtRemotePhlowDictionaryKeysIterator',
+	#superclass : 'GtRemotePhlowUnindexedCollectionIterator',
 	#category : 'GToolkit-RemotePhlow-PhlowViews'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowDictionaryKeysIterator >> iterationSelector [
 	^ #keysDo:
 ]
