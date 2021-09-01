@@ -71,7 +71,7 @@ GtPhlowDeclarativeView >> asDictionaryForExport [
 	"Answer the receiver as a dictionary ready for JSON serialisation.
 	Subclasses will override and add to the dictionary"
 
-	^Dictionary new 
+	^ Dictionary new 
 		at: #viewName put: self viewName;
 		at: #title put: title;
 		at: #priority put: priority;

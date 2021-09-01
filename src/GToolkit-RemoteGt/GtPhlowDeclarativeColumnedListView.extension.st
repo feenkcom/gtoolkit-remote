@@ -5,6 +5,9 @@ GtPhlowDeclarativeColumnedListView >> viewFor: aView [
 	"Answer the GtPhlowView for the receiver"
 
 	| list column |
+	
+	"Handle columnSpawnsObjects"
+	self flag: #TODO.
 
 	list := aView columnedList 
 		title: title;
@@ -24,5 +27,5 @@ GtPhlowDeclarativeColumnedListView >> viewFor: aView [
 	list
 		send: [ :arg :selection | 
 			self retriveSentItemAt: selection first ].
-	^list
+	^ list
 ]

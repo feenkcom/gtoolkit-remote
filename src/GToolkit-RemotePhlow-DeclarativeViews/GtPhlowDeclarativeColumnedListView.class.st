@@ -22,7 +22,8 @@ Class {
 	#instVars : [
 		'columnTitles',
 		'columnWidths',
-		'columnTypes'
+		'columnTypes',
+		'columnSpawnsObjects'
 	],
 	#category : 'GToolkit-RemotePhlow-DeclarativeViews'
 }
@@ -54,6 +55,18 @@ GtPhlowDeclarativeColumnedListView >> asDictionaryForExport [
 	"self dataTransport = self class dataIncluded ifTrue: [ 
 		dictionary at: #items put: items ]."
 	^dictionary
+]
+
+{ #category : 'accessing' }
+GtPhlowDeclarativeColumnedListView >> columnSpawnsObjects [
+
+	^ columnSpawnsObjects
+]
+
+{ #category : 'accessing' }
+GtPhlowDeclarativeColumnedListView >> columnSpawnsObjects: anObject [
+
+	columnSpawnsObjects := anObject
 ]
 
 { #category : 'accessing' }
