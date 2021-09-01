@@ -97,28 +97,6 @@ Class {
 }
 
 { #category : 'accessing' }
-GtPharoLinkCodeSync class >> base64Decode: aCharacterStream [
-
-	| fuelStream |
-	fuelStream := ReadWriteStream on: (ByteArray new: 100).
-	Base64MimeConverter new
-		mimeStream: aCharacterStream;
-		dataStream: fuelStream;
-		mimeDecodeToByteArray.
-	^ FLMaterializer materializeFromByteArray: fuelStream contents
-]
-
-{ #category : 'accessing' }
-GtPharoLinkCodeSync class >> base64Encode: anObject to: aCharacterStream [
-
-	| fuelStream |
-	fuelStream := ReadWriteStream on: (ByteArray new: 100).
-	FLSerializer serialize: anObject on: fuelStream.
-	fuelStream reset.
-	Base64MimeConverter mimeEncode: fuelStream to: aCharacterStream
-]
-
-{ #category : 'accessing' }
 GtPharoLinkCodeSync class >> default [
 	^ default
 		ifNil: [ default := self new
@@ -131,27 +109,6 @@ GtPharoLinkCodeSync class >> default [
 ]
 
 { #category : 'accessing' }
-GtPharoLinkCodeSync class >> remoteDo: aBlock on: anObject [
-
-	| message result |
-	message := String streamContents: [ :stream | 
-		           stream nextPutAll: '
-						object := GtPharoLinkCodeSync base64Decode: '''.
-		           self base64Encode: anObject to: stream.
-		           stream nextPutAll: ''' readStream.
-						block := GtPharoLinkCodeSync base64Decode: '''.
-		           self base64Encode: aBlock to: stream.
-		           stream nextPutAll: ''' readStream.
-						result := block value: object.
-						String streamContents: [ :stream |
-							GtPharoLinkCodeSync base64Encode: result to: stream ]' ].
-	result := self default application newCommandFactory
-		          << message;
-		          sendAndWait.
-	^ self base64Decode: result readStream
-]
-
-{ #category : 'accessing' }
 GtPharoLinkCodeSync >> application [
 	^ application
 ]
@@ -159,6 +116,49 @@ GtPharoLinkCodeSync >> application [
 { #category : 'accessing' }
 GtPharoLinkCodeSync >> application: anPharoLinkApplication [
 	application := anPharoLinkApplication
+]
+
+{ #category : 'accessing' }
+GtPharoLinkCodeSync >> base64Decode: aCharacterStream [
+
+	| fuelStream |
+	fuelStream := ReadWriteStream on: (ByteArray new: 100).
+	Base64MimeConverter new
+		mimeStream: aCharacterStream;
+		dataStream: fuelStream;
+		mimeDecodeToByteArray.
+	^ FLMaterializer materializeFromByteArray: fuelStream contents
+]
+
+{ #category : 'accessing' }
+GtPharoLinkCodeSync >> base64Encode: anObject to: aCharacterStream [
+
+	| fuelStream |
+	fuelStream := ReadWriteStream on: (ByteArray new: 100).
+	FLSerializer serialize: anObject on: fuelStream.
+	fuelStream reset.
+	Base64MimeConverter mimeEncode: fuelStream to: aCharacterStream
+]
+
+{ #category : 'accessing' }
+GtPharoLinkCodeSync >> do: aBlock with: anObject [
+
+	| message result |
+	message := String streamContents: [ :stream | 
+		           stream nextPutAll: '
+						object := GtPharoLinkCodeSync base64Decode: '''.
+		           self base64Encode: anObject to: stream.
+		           stream nextPutAll: ''' readStream.
+						block := '.
+		           aBlock printOn: stream.
+		           stream nextPutAll: '.
+						result := block value: object.
+						String streamContents: [ :stream |
+							GtPharoLinkCodeSync base64Encode: result to: stream ]' ].
+	result := application newCommandFactory
+		          << message;
+		          sendAndWait.
+	^ self base64Decode: result readStream
 ]
 
 { #category : 'accessing' }
