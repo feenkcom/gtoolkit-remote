@@ -5,9 +5,6 @@ GtPhlowDeclarativeColumnedListView >> viewFor: aView [
 	"Answer the GtPhlowView for the receiver"
 	| list column |
 
-	"Handle columnSpawnsObjects"
-	self flag: #TODO.
-
 	list := aView columnedList 
 		title: title;
 		priority: priority;

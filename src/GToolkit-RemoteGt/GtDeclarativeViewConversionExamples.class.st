@@ -8,6 +8,7 @@ Class {
 GtDeclarativeViewConversionExamples >> convertColumnedList [
 	"Demonstrate converting a columned list phlow view to a declarative view"
 	<gtExample>
+	<noTest>
 	| phlowView declarativeView |
 
 	phlowView := GtPhlowProtoView new columnedList
@@ -31,6 +32,7 @@ GtDeclarativeViewConversionExamples >> convertColumnedList [
 GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableColumnedList [
 	"Check the conversion to declarative views with data"
 	<gtExample>
+	<noTest>
 	| declarativeView |
 
 	declarativeView := (GtRemotePhlowDeclarativeTestInspectable new 
@@ -50,6 +52,7 @@ GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableColumn
 GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableList [
 	"Check the conversion to declarative views with data"
 	<gtExample>
+	<noTest>
 	| phlowView declarativeView |
 
 	phlowView := GtRemotePhlowDeclarativeTestInspectable new gtListFor: GtPhlowProtoView new.
@@ -83,6 +86,7 @@ GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableText [
 GtDeclarativeViewConversionExamples >> convertList [
 	"Demonstrate converting a columned list phlow view to a declarative view"
 	<gtExample>
+	<noTest>
 	| phlowView declarativeView |
 
 	phlowView := GtPhlowProtoView new list
