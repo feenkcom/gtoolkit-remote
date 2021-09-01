@@ -98,3 +98,8 @@ GtPhlowDeclarativeColumnedListView >> columnWidths [
 GtPhlowDeclarativeColumnedListView >> columnWidths: anObject [
 	columnWidths := anObject
 ]
+
+{ #category : 'api - accessing' }
+GtPhlowDeclarativeColumnedListView >> retriveSpawnedObjectAtRow: aRowIndex column: aColumnIndex [	
+	^ self phlowDataSource retriveSpawnedObjectAtRow: aRowIndex column: aColumnIndex
+]

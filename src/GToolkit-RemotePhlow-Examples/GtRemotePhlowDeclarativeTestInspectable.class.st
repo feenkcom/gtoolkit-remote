@@ -49,6 +49,18 @@ GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListFor: aView [
 ]
 
 { #category : 'inspecting' }
+GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListSpawnTextFor: aView [
+	<gtView>
+
+	^aView columnedList
+		title: 'Spawn Text Columned List';
+		priority: 20;
+		items: [ collectionOfObjects ];
+		column: 'Value' text: [ :anObject | anObject ];
+		column: 'Lowercase' text: [ :anObject | anObject asString asLowercase ] spawn: [ :anObject | anObject class ]
+]
+
+{ #category : 'inspecting' }
 GtRemotePhlowDeclarativeTestInspectable >> gtLargeColumnedListFor: aView [
 	<gtView>
 
