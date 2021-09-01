@@ -7,7 +7,8 @@ Class {
 		'width',
 		'itemComputation',
 		'textComputation',
-		'iconNameComputation'
+		'iconNameComputation',
+		'spawnObjectComputation'
 	],
 	#category : 'GToolkit-RemotePhlow-PhlowViews'
 }
@@ -45,6 +46,11 @@ GtRemotePhlowColumn >> index: aColumnIndex [
 ]
 
 { #category : 'testing' }
+GtRemotePhlowColumn >> isSpawningObject [
+	^ spawnObjectComputation notNil
+]
+
+{ #category : 'testing' }
 GtRemotePhlowColumn >> isWithIcon [
 	^ iconNameComputation notNil
 ]
@@ -58,6 +64,22 @@ GtRemotePhlowColumn >> itemComputation [
 { #category : 'private - accessing' }
 GtRemotePhlowColumn >> rowStencil [
 	^ nil
+]
+
+{ #category : 'accessing' }
+GtRemotePhlowColumn >> spawnObject: aBlock [
+	"aBlock should return an Object that should be spawned when clicked on:
+		- a link button if the column data type is #text
+		- a link icon if the column data type is #icon.
+
+	Setting a spawnObject influences how a cell is rendered"
+
+	spawnObjectComputation := aBlock
+]
+
+{ #category : 'accessing' }
+GtRemotePhlowColumn >> spawnObjectComputation [
+	^ spawnObjectComputation
 ]
 
 { #category : 'accessing' }

@@ -27,13 +27,14 @@ GtRemotePhlowDeclarativeColumnedList >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
 
-	^GtPhlowDeclarativeColumnedListView new 
+	^ GtPhlowDeclarativeColumnedListView new 
 		phlowDataSource: (GtRemotePhlowDeclarativeViewColumnedListDataSource forPhlowView: self);
 		title: self title;
 		priority: self priority;
 		columnTitles: (self columns collect: [ :each | each title ]) asArray;
 		columnWidths: (self columns collect: [ :each | each cellWidth ]) asArray;
 		columnTypes: (self columns collect: [ :each | each columnDataType ]) asArray;
+		columnSpawnsObjects: (self columns collect: [ :each | each isSpawningObject ]) asArray;
 		dataTransport: GtPhlowDeclarativeView dataLazy
 ]
 
@@ -56,6 +57,16 @@ GtRemotePhlowDeclarativeColumnedList >> column: columnName iconName: anIconNameC
 ]
 
 { #category : 'api - scripting column' }
+GtRemotePhlowDeclarativeColumnedList >> column: columnName iconName: anIconNameComputation spawn: aSpawnBlock width: aNumberOrNil [
+	| aColumn |
+	aColumn := self column.
+	aColumn title: columnName.
+	aColumn iconName: anIconNameComputation.
+	aColumn spawnObject: aSpawnBlock.
+	aColumn width: aNumberOrNil.
+]
+
+{ #category : 'api - scripting column' }
 GtRemotePhlowDeclarativeColumnedList >> column: columnName iconName: anIconNameComputation width: aNumberOrNil [
 	| aColumn |
 	aColumn := self column.
@@ -70,6 +81,16 @@ GtRemotePhlowDeclarativeColumnedList >> column: columnName text: aBlockClosure [
 	aColumn := self column.
 	aColumn title: columnName.
 	aColumn text: aBlockClosure
+]
+
+{ #category : 'api - scripting column' }
+GtRemotePhlowDeclarativeColumnedList >> column: columnName text: aBlockClosure spawn: aSpawnBlock width: aNumberOrNil [
+	| aColumn |
+	aColumn := self column.
+	aColumn title: columnName.
+	aColumn text: aBlockClosure.
+	aColumn spawnObject: aSpawnBlock.
+	aColumn width: aNumberOrNil.
 ]
 
 { #category : 'api - scripting column' }
