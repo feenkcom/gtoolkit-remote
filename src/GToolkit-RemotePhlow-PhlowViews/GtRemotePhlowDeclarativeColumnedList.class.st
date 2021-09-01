@@ -57,6 +57,15 @@ GtRemotePhlowDeclarativeColumnedList >> column: columnName iconName: anIconNameC
 ]
 
 { #category : 'api - scripting column' }
+GtRemotePhlowDeclarativeColumnedList >> column: columnName iconName: anIconNameComputation spawn: aSpawnBlock [
+	| aColumn |
+	aColumn := self column.
+	aColumn title: columnName.
+	aColumn iconName: anIconNameComputation.
+	aColumn spawnObject: aSpawnBlock.
+]
+
+{ #category : 'api - scripting column' }
 GtRemotePhlowDeclarativeColumnedList >> column: columnName iconName: anIconNameComputation spawn: aSpawnBlock width: aNumberOrNil [
 	| aColumn |
 	aColumn := self column.
@@ -81,6 +90,15 @@ GtRemotePhlowDeclarativeColumnedList >> column: columnName text: aBlockClosure [
 	aColumn := self column.
 	aColumn title: columnName.
 	aColumn text: aBlockClosure
+]
+
+{ #category : 'api - scripting column' }
+GtRemotePhlowDeclarativeColumnedList >> column: columnName text: aBlockClosure spawn: aSpawnBlock [
+	| aColumn |
+	aColumn := self column.
+	aColumn title: columnName.
+	aColumn text: aBlockClosure.
+	aColumn spawnObject: aSpawnBlock.
 ]
 
 { #category : 'api - scripting column' }
