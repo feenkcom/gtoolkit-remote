@@ -37,7 +37,8 @@ GtPhlowDeclarativeColumnedListView class >> fromJSONDictionary: aDictionary [
 	list
 		columnTitles: (aDictionary at: #columnTitles);
 		columnWidths: (aDictionary at: #columnWidths);
-		columnTypes: (aDictionary at: #columnTypes).
+		columnTypes: (aDictionary at: #columnTypes);
+		columnSpawnsObjects: (aDictionary at: #columnSpawnsObjects).
 	"list dataTransport = self dataIncluded ifTrue: 
 		[ list items: (aDictionary at: #items) ]."
 	^list
@@ -51,6 +52,7 @@ GtPhlowDeclarativeColumnedListView >> asDictionaryForExport [
 		at: #columnTitles put: columnTitles;
 		at: #columnWidths put: columnWidths;
 		at: #columnTypes put: columnTypes;
+		at: #columnSpawnsObjects put: columnSpawnsObjects;
 		yourself.
 	"self dataTransport = self class dataIncluded ifTrue: [ 
 		dictionary at: #items put: items ]."
@@ -97,4 +99,9 @@ GtPhlowDeclarativeColumnedListView >> columnWidths [
 { #category : 'accessing' }
 GtPhlowDeclarativeColumnedListView >> columnWidths: anObject [
 	columnWidths := anObject
+]
+
+{ #category : 'api - accessing' }
+GtPhlowDeclarativeColumnedListView >> retriveSpawnedObjectAtRow: aRowIndex column: aColumnIndex [	
+	^ self phlowDataSource retriveSpawnedObjectAtRow: aRowIndex column: aColumnIndex
 ]

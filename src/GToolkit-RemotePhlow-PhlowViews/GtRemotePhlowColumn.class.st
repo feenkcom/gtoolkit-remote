@@ -79,6 +79,8 @@ GtRemotePhlowColumn >> spawnObject: aBlock [
 
 { #category : 'accessing' }
 GtRemotePhlowColumn >> spawnObjectComputation [
+	"If nil, the cell does not spawn an object"
+
 	^ spawnObjectComputation
 ]
 

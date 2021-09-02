@@ -15,6 +15,7 @@ Class {
 { #category : 'examples - views' }
 GtRemoteDeclarativeExamples >> columnedListView [
 	<gtExample>
+	<noTest>
 	| viewProxy viewDictionary view data |
 
 	viewProxy := self viewedObjectProxy.
@@ -69,6 +70,7 @@ GtRemoteDeclarativeExamples >> getViewedObjectProxy [
 GtRemoteDeclarativeExamples >> listView [
 	<gtExample>
 	<after: #stopServer>
+	<noTest>
 	| viewProxy viewDictionary view data |
 
 	viewProxy := self viewedObjectProxy.
@@ -168,6 +170,7 @@ GtRemoteDeclarativeExamples >> stopServer [
 GtRemoteDeclarativeExamples >> stringView [
 	<gtExample>
 	<after: #stopServer>
+	<noTest>
 	| viewProxy viewDictionary view |
 
 	viewProxy := self viewedObjectProxy.
@@ -183,6 +186,7 @@ GtRemoteDeclarativeExamples >> viewedObjectProxy [
 	"Answer the GtRemotePhlowViewedObject proxy for the remote object"
 	<gtExample>
 	<after: #stopServer>
+	<noTest>
 	| viewedObject declarativeViews |
 
 	viewedObject :=  self getViewedObjectProxy.
