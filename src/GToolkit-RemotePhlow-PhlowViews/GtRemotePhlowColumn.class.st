@@ -13,26 +13,38 @@ Class {
 	#category : 'GToolkit-RemotePhlow-PhlowViews'
 }
 
+{ #category : 'converting' }
+GtRemotePhlowColumn >> asGtDeclarativeColumnDataType [
+	^ self isWithIcon
+		ifTrue: [ self isSpawningObject
+			ifTrue: [ GtPhlowDeclarativeListingType new beIconLink ]
+			ifFalse: [ GtPhlowDeclarativeListingType new beIcon ] ]
+		ifFalse: [ self isSpawningObject
+			ifTrue: [ GtPhlowDeclarativeListingType new beTextLink ]
+			ifFalse: [ GtPhlowDeclarativeListingType new beText ] ]
+]
+
+{ #category : 'converting' }
+GtRemotePhlowColumn >> asRemotePhlowDeclarativeValueComputationFor: anItemObject index: anItemIndex [
+	| aValueComputation |
+	
+	aValueComputation := self isWithIcon
+		ifTrue: [ iconNameComputation ]
+		ifFalse: [ textComputation ifNil: [ [ :item | item ] ] ].
+	
+	^ GtPhlowDeclarativeListingValueComputation new
+		computation: aValueComputation
+		arguments: { anItemObject . anItemIndex }
+]
+
 { #category : 'accessing' }
 GtRemotePhlowColumn >> cellWidth [
 	^ width
 ]
 
 { #category : 'accessing' }
-GtRemotePhlowColumn >> columnDataType [
-	^ self isWithIcon
-		ifTrue: [ #icon ]
-		ifFalse: [ #text ]
-]
-
-{ #category : 'accessing' }
 GtRemotePhlowColumn >> iconName: aBlock [
 	iconNameComputation := aBlock
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowColumn >> iconNameComputation [
-	^ iconNameComputation
 ]
 
 { #category : 'accessing' }
@@ -87,12 +99,6 @@ GtRemotePhlowColumn >> spawnObjectComputation [
 { #category : 'accessing' }
 GtRemotePhlowColumn >> text: aBlock [
 	textComputation := aBlock
-]
-
-{ #category : 'accessing' }
-GtRemotePhlowColumn >> textComputation [
-	^ textComputation ifNil: [ 
-		textComputation := [ :item | item ] ]
 ]
 
 { #category : 'accessing' }

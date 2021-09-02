@@ -13,8 +13,22 @@ GtPhlowListView >> asGtDeclarativeView [
 ]
 
 { #category : '*GToolkit-RemoteGt' }
+GtPhlowListView >> asRemotePhlowDeclarativeListingType [
+	^ [ itemDataBinder asRemotePhlowDeclarativeListingType ]
+		on: MessageNotUnderstood
+		do: [ :anError | GtPhlowDeclarativeListingType new beUnknown ]
+]
+
+{ #category : '*GToolkit-RemoteGt' }
+GtPhlowListView >> asRemotePhlowDeclarativeValueComputationFor: anItemObject index: anItemIndex [
+	^ itemDataBinder
+		asRemotePhlowDeclarativeValueComputationFor: anItemObject
+		index: anItemIndex
+]
+
+{ #category : '*GToolkit-RemoteGt' }
 GtPhlowListView >> canBeGtDeclarativeView [
 	"Answer a boolean indicating whether the receiver can be represented as a GtDeclarativeView"
 
-	^true
+	^ self asRemotePhlowDeclarativeListingType isUnknown not
 ]

@@ -33,7 +33,7 @@ GtRemotePhlowDeclarativeColumnedList >> asGtDeclarativeView [
 		priority: self priority;
 		columnTitles: (self columns collect: [ :each | each title ]) asArray;
 		columnWidths: (self columns collect: [ :each | each cellWidth ]) asArray;
-		columnTypes: (self columns collect: [ :each | each columnDataType ]) asArray;
+		columnTypes: (self columns collect: [ :each | each asGtDeclarativeColumnDataType asString ]) asArray;
 		columnSpawnsObjects: (self columns collect: [ :each | each isSpawningObject ]) asArray;
 		dataTransport: GtPhlowDeclarativeView dataLazy
 ]

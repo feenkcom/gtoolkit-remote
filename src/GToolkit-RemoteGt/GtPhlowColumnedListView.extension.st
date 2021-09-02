@@ -5,7 +5,7 @@ GtPhlowColumnedListView >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
 
-	^GtPhlowDeclarativeColumnedListView new 
+	^ GtPhlowDeclarativeColumnedListView new 
 		phlowDataSource: (GtRemotePhlowDeclarativeViewColumnedListDataSource forPhlowView: self);
 		title: self title;
 		priority: self priority;
@@ -14,7 +14,7 @@ GtPhlowColumnedListView >> asGtDeclarativeView [
 				cellWidth class = BrColumnFixedWidth
 					ifTrue: [cellWidth width]
 					ifFalse: [nil]]] as: Array);
-		columnTypes: (self columns collect: [ :each | each columnDataType ]) asArray;
+		columnTypes: (self columns collect: [ :each | each asGtDeclarativeColumnDataType asString ]) asArray;
 		dataTransport: GtPhlowDeclarativeView dataLazy
 ]
 
@@ -22,5 +22,5 @@ GtPhlowColumnedListView >> asGtDeclarativeView [
 GtPhlowColumnedListView >> canBeGtDeclarativeView [
 	"Answer a boolean indicating whether the receiver can be represented as a GtDeclarativeView"
 
-	^ self columns allSatisfy: [ :aColumn | aColumn isWithIcon not ]
+	^ self columns allSatisfy: [ :aColumn | aColumn canBeForGtDeclarativeView ]
 ]
