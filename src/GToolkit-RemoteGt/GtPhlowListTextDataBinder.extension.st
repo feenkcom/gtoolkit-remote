@@ -4,10 +4,3 @@ Extension { #name : 'GtPhlowListTextDataBinder' }
 GtPhlowListTextDataBinder >> asRemotePhlowDeclarativeListingType [
 	^ GtPhlowDeclarativeListingType new beText
 ]
-
-{ #category : '*GToolkit-RemoteGt' }
-GtPhlowListTextDataBinder >> asRemotePhlowDeclarativeValueComputationFor: anItemObject index: anItemIndex [
-	^ GtPhlowDeclarativeListingValueComputation new
-		computation: textComputation
-		arguments: { anItemObject . anItemIndex }
-]

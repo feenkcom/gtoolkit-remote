@@ -8,13 +8,6 @@ GtPhlowColumn >> asGtDeclarativeColumnDataType [
 ]
 
 { #category : '*GToolkit-RemoteGt' }
-GtPhlowColumn >> asRemotePhlowDeclarativeValueComputationFor: anItemObject index: anItemIndex [
-	^ dataBinder
-		asRemotePhlowDeclarativeValueComputationFor: anItemObject
-		index: anItemIndex
-]
-
-{ #category : '*GToolkit-RemoteGt' }
 GtPhlowColumn >> canBeForGtDeclarativeView [
 	^ self asGtDeclarativeColumnDataType isUnknown not
 ]

@@ -18,9 +18,7 @@ GtRemotePhlowDeclarativeViewColumnedListDataSource >> formatItem: anObject atInd
 		computedObject := column itemComputation 
 			cull: anObject cull: rowIndex cull: columnIndex.
 	
-		aValueString := (column
-			asRemotePhlowDeclarativeValueComputationFor: computedObject
-			index: rowIndex) computeValue gtDisplayString.
+		aValueString := computedObject gtDisplayString.
 	
 		formattedColumnItems 
 			at: columnIndex

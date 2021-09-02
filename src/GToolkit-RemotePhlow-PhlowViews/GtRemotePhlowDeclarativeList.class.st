@@ -33,13 +33,6 @@ GtRemotePhlowDeclarativeList >> asGtDeclarativeView [
 		dataTransport: GtPhlowDeclarativeView dataLazy.
 ]
 
-{ #category : 'converting' }
-GtRemotePhlowDeclarativeList >> asRemotePhlowDeclarativeValueComputationFor: anItemObject index: anItemIndex [
-	^ GtPhlowDeclarativeListingValueComputation new
-		computation: itemTextBlock
-		arguments: { anItemObject . anItemIndex }
-]
-
 { #category : 'accessing' }
 GtRemotePhlowDeclarativeList >> itemText [
 	"Answer the BlockClosure that will convert each item to its displayed format.
