@@ -1,12 +1,6 @@
 Extension { #name : 'Object' }
 
 { #category : '*GToolkit-RemoteGt' }
-Object >> gtRemoteStoreOn: aStream [
-
-	^ self storeOn: aStream
-]
-
-{ #category : '*GToolkit-RemoteGt' }
 Object >> gtRemoteVariableValuePairsIn: aCollection [
 	| variableNodes |
 	variableNodes := OrderedCollection new: self class allSlots size.
