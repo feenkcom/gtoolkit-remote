@@ -6,5 +6,5 @@ Class {
 
 { #category : 'api' }
 GtRemotePhlowDeclarativeViewListDataSource >> formatItem: anObject atIndex: rowIndex [
-	^ (self phlowView itemText value: anObject) gtDisplayString
+	^ (self phlowView itemComputation cull: anObject cull: rowIndex) gtDisplayString
 ]
