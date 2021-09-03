@@ -97,6 +97,28 @@ Class {
 }
 
 { #category : 'accessing' }
+GtPharoLinkCodeSync class >> base64Decode: aCharacterStream [
+
+	| fuelStream |
+	fuelStream := ReadWriteStream on: (ByteArray new: 100).
+	Base64MimeConverter new
+		mimeStream: aCharacterStream;
+		dataStream: fuelStream;
+		mimeDecodeToByteArray.
+	^ FLMaterializer materializeFromByteArray: fuelStream contents
+]
+
+{ #category : 'accessing' }
+GtPharoLinkCodeSync class >> base64Encode: anObject to: aCharacterStream [
+
+	| fuelStream |
+	fuelStream := ReadWriteStream on: (ByteArray new: 100).
+	FLSerializer serialize: anObject on: fuelStream.
+	fuelStream reset.
+	Base64MimeConverter mimeEncode: fuelStream to: aCharacterStream
+]
+
+{ #category : 'accessing' }
 GtPharoLinkCodeSync class >> default [
 	^ default
 		ifNil: [ default := self new
@@ -119,35 +141,13 @@ GtPharoLinkCodeSync >> application: anPharoLinkApplication [
 ]
 
 { #category : 'accessing' }
-GtPharoLinkCodeSync >> base64Decode: aCharacterStream [
-
-	| fuelStream |
-	fuelStream := ReadWriteStream on: (ByteArray new: 100).
-	Base64MimeConverter new
-		mimeStream: aCharacterStream;
-		dataStream: fuelStream;
-		mimeDecodeToByteArray.
-	^ FLMaterializer materializeFromByteArray: fuelStream contents
-]
-
-{ #category : 'accessing' }
-GtPharoLinkCodeSync >> base64Encode: anObject to: aCharacterStream [
-
-	| fuelStream |
-	fuelStream := ReadWriteStream on: (ByteArray new: 100).
-	FLSerializer serialize: anObject on: fuelStream.
-	fuelStream reset.
-	Base64MimeConverter mimeEncode: fuelStream to: aCharacterStream
-]
-
-{ #category : 'accessing' }
 GtPharoLinkCodeSync >> do: aBlock with: anObject [
 
 	| message result |
 	message := String streamContents: [ :stream | 
 		           stream nextPutAll: '
 						object := GtPharoLinkCodeSync base64Decode: '''.
-		           self base64Encode: anObject to: stream.
+		           self class base64Encode: anObject to: stream.
 		           stream nextPutAll: ''' readStream.
 						block := '.
 		           aBlock printOn: stream.
@@ -158,7 +158,7 @@ GtPharoLinkCodeSync >> do: aBlock with: anObject [
 	result := application newCommandFactory
 		          << message;
 		          sendAndWait.
-	^ self base64Decode: result readStream
+	^ self class base64Decode: result readStream
 ]
 
 { #category : 'accessing' }
