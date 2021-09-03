@@ -229,8 +229,8 @@ GtPharoLinkCodeSync >> gtRemoteProperties: aView [
 					  (application newCommandFactory
 						   << 'EpMonitor current log store asString';
 						   sendAndWait) } } ];
-		  column: 'Name' item: #first width: 100;
-		  column: 'Value' item: #second
+		  column: 'Name' text: #first width: 100;
+		  column: 'Value' text: #second
 ]
 
 { #category : 'accessing' }
