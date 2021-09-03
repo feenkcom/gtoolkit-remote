@@ -45,7 +45,7 @@ GtPhlowDeclarativeListingType >> beText [
 
 { #category : 'accessing' }
 GtPhlowDeclarativeListingType >> beTextLink [
-	type := TextLink
+	type := TextualLink
 ]
 
 { #category : 'accessing' }
