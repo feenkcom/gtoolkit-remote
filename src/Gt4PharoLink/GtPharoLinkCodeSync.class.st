@@ -141,20 +141,21 @@ GtPharoLinkCodeSync >> application: anPharoLinkApplication [
 ]
 
 { #category : 'accessing' }
-GtPharoLinkCodeSync >> do: aBlock with: anObject [
+GtPharoLinkCodeSync >> do: aBlockString with: anObject [
 
 	| message result |
 	message := String streamContents: [ :stream | 
 		           stream nextPutAll: '
 						object := GtPharoLinkCodeSync base64Decode: '''.
 		           self class base64Encode: anObject to: stream.
-		           stream nextPutAll: ''' readStream.
-						block := '.
-		           aBlock printOn: stream.
-		           stream nextPutAll: '.
-						result := block value: object.
-						String streamContents: [ :stream |
-							GtPharoLinkCodeSync base64Encode: result to: stream ]' ].
+		           stream
+			           nextPutAll: ''' readStream.
+						block := ';
+			           nextPutAll: aBlockString;
+			           nextPutAll: '.
+						result := String streamContents: [ :stream |
+							GtPharoLinkCodeSync base64Encode: (block value: object) to: stream ].
+						result' ].
 	result := application newCommandFactory
 		          << message;
 		          sendAndWait.
@@ -171,22 +172,18 @@ GtPharoLinkCodeSync >> entryAdded: anEntryAddedEvent [
 
 { #category : 'accessing' }
 GtPharoLinkCodeSync >> flush [
-	| message |
-	application isRunning
-		ifFalse: [ "nothing to send, if nothing connected" ^ self ].
-	message := String
-		streamContents: [ :stream | 
-			events
-				flush: [ :event | 
-					stream nextPutAll: '(FLMaterializer materializeFromByteArray: '.
-					(FLSerializer serializeToByteArray: event) storeOn: stream.
-					stream
-						nextPutAll: ') applyCodeChange.';
-						nextPut: Character cr ] ].
-	message ifEmpty: [ "nothing to send, ignore" ^ self ].
-	application newCommandFactory
-		<< message;
-		sendAndWait
+
+	| buffer |
+	application isRunning ifFalse: [ "nothing to send, if nothing connected" 
+		^ self ].
+	buffer := OrderedCollection new.
+	events flush: [ :event | buffer add: event ].
+	buffer ifEmpty: [ "nothing to send, ignore" ^ self ].
+	self
+		do: '[ :b | 
+			b do: #applyCodeChange.
+			true ]'
+		with: buffer
 ]
 
 { #category : 'accessing' }
@@ -266,7 +263,7 @@ GtPharoLinkCodeSync >> start [
 	log announcer when: EpEntryAdded send: #entryAdded: to: self.
 	events flush.
 	application start.
-	"detach file log"
+	"detach file log and changes"
 	application newCommandFactory
 		<< '
 	realChanges := SourceFiles changesFileStream path asFileReference.
@@ -286,9 +283,9 @@ GtPharoLinkCodeSync >> start [
 			 tryOpenReadOnly: true;
 			 yourself).
 	EpMonitor current log initializeWith: OmMemoryStore new.
-	"FIXME catchup seems to cause problems (CodeImporter fileStream: virtualChanges readStream)
+	(CodeImporter fileStream: virtualChanges readStream)
 		gtReduceToUnsavedChunks;
-		evaluate."
+		evaluate.
 	true';
 		sendAndWait
 ]

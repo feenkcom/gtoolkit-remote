@@ -26,7 +26,7 @@ GtRemoteSearchGroupResult >> refreshItems [
 	filter ifNotNil: [ 
 		| result |
 		result := GtPharoLinkCodeSync default
-			          do: [ :f | f result refreshItems ]
+			          do: '[ :f | f result refreshItems ]'
 			          with: filter filter.
 		items := result instVarNamed: #items ].
 	filtered := true
