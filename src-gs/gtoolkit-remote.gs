@@ -778,7 +778,7 @@ beText
 category: 'accessing'
 method: GtPhlowDeclarativeListingType
 beTextLink
-	type := TextLink
+	type := TextualLink
 %
 
 category: 'accessing'
@@ -2753,16 +2753,6 @@ gtSuperclassesFor: aView
 		itemText: [ :cls | cls name ]
 %
 
-! Class extensions for 'Collection'
-
-!		Instance methods for 'Collection'
-
-category: '*GToolkit-RemotePhlow-PhlowViews'
-method: Collection
-asGPhlowItemsIterator
-	^ GtRemotePhlowGenericCollectionIterator forCollection: self
-%
-
 ! Class extensions for #'Collection'
 
 !		Class methods for #'Collection'
@@ -2784,6 +2774,16 @@ gtRemoteItemsFor: aView
 		priority: 50;
 		items: [ self ];
 		itemText: [ :eachItem | eachItem gtDisplayString ]
+%
+
+! Class extensions for 'Collection'
+
+!		Instance methods for 'Collection'
+
+category: '*GToolkit-RemotePhlow-PhlowViews'
+method: Collection
+asGPhlowItemsIterator
+	^ GtRemotePhlowGenericCollectionIterator forCollection: self
 %
 
 ! Class extensions for #'GtRemotePhlowDeclarativeTestInspectable'
