@@ -131,6 +131,13 @@ GtPharoLinkCodeSync class >> default [
 ]
 
 { #category : 'accessing' }
+GtPharoLinkCodeSync class >> reset [
+
+	default ifNotNil: #stop.
+	default := nil
+]
+
+{ #category : 'accessing' }
 GtPharoLinkCodeSync >> application [
 	^ application
 ]
@@ -283,9 +290,9 @@ GtPharoLinkCodeSync >> start [
 			 tryOpenReadOnly: true;
 			 yourself).
 	EpMonitor current log initializeWith: OmMemoryStore new.
-	(CodeImporter fileStream: virtualChanges readStream)
+	"(CodeImporter fileStream: virtualChanges readStream)
 		gtReduceToUnsavedChunks;
-		evaluate.
+		evaluate."
 	true';
 		sendAndWait
 ]
