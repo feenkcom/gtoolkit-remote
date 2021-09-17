@@ -120,14 +120,12 @@ GtPharoLinkCodeSync class >> base64Encode: anObject to: aCharacterStream [
 
 { #category : 'accessing' }
 GtPharoLinkCodeSync class >> default [
-	^ default
-		ifNil: [ default := self new
-				application:
-					(PharoLinkApplication withDefaultSettings
-						debugMode: true;
-						yourself);
-				log: EpMonitor current log;
-				yourself ]
+
+	^ default ifNil: [ 
+		  default := self new
+			             application: PharoLinkApplication withDefaultSettings;
+			             log: EpMonitor current log;
+			             yourself ]
 ]
 
 { #category : 'accessing' }
@@ -176,7 +174,7 @@ GtPharoLinkCodeSync >> application: anPharoLinkApplication [
 { #category : 'accessing' }
 GtPharoLinkCodeSync >> do: aBlockString with: anObject [
 
-	| message result |
+	| message promise |
 	message := String streamContents: [ :stream | 
 		           stream nextPutAll: '
 						object := GtPharoLinkCodeSync base64Decode: '''.
@@ -189,10 +187,9 @@ GtPharoLinkCodeSync >> do: aBlockString with: anObject [
 						result := String streamContents: [ :stream |
 							GtPharoLinkCodeSync base64Encode: (block value: object) to: stream ].
 						result' ].
-	result := application newCommandFactory
-		          << message;
-		          sendAndWait.
-	^ self class base64Decode: result readStream
+	promise := application newCommandFactory send: message.
+	promise transformBlock: [ :r | self class base64Decode: r readStream ].
+	^ promise "waitForValue"
 ]
 
 { #category : 'accessing' }
@@ -291,7 +288,7 @@ GtPharoLinkCodeSync >> log: anEpLog [
 ]
 
 { #category : 'accessing' }
-GtPharoLinkCodeSync >> runExamples: aCollection [
+GtPharoLinkCodeSync >> runExamples: anExampleGroup [
 
 	^ self
 		  do: '[ :e |
@@ -299,11 +296,17 @@ GtPharoLinkCodeSync >> runExamples: aCollection [
 					e examples do: [ :f | f hasResult
 						ifTrue: [ f result returnValue: nil ] ].
 					e ]'
-		  with: (GtExampleGroup withAll: aCollection)
+		  with: anExampleGroup
 ]
 
 { #category : 'accessing' }
-GtPharoLinkCodeSync >> runTestSuite: aSuite [
+GtPharoLinkCodeSync >> runSearch: aFilter [
+
+	^ self do: '[ :f | f result refreshItems ]' with: aFilter
+]
+
+{ #category : 'accessing' }
+GtPharoLinkCodeSync >> runTests: aSuite [
 
 	^ self do: '[ :e | e run ]' with: aSuite
 ]
