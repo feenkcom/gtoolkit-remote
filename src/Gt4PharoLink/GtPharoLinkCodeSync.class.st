@@ -131,6 +131,32 @@ GtPharoLinkCodeSync class >> default [
 ]
 
 { #category : 'accessing' }
+GtPharoLinkCodeSync class >> initializeRemote [
+
+	| realChanges realSources virtualFs virtualChanges |
+	realChanges := SourceFiles changesFileStream path asFileReference.
+	realSources := SourceFiles sourcesFileStream path asFileReference.
+	virtualFs := FileSystem memory.
+	virtualChanges := virtualFs workingDirectory / realChanges basename.
+	realChanges copyTo: virtualChanges.
+	SourceFiles close.
+	SourceFiles changesFileStream: ((SourceFile
+			  on: virtualChanges
+			  potentialLocations: { virtualChanges parent })
+			 tryOpenReadOnly: false;
+			 yourself).
+	SourceFiles sourcesFileStream: ((SourceFile
+			  on: realSources
+			  potentialLocations: { realSources parent })
+			 tryOpenReadOnly: true;
+			 yourself).
+	EpMonitor current log initializeWith: OmMemoryStore new
+	"(CodeImporter fileStream: virtualChanges readStream)
+		gtReduceToUnsavedChunks;
+		evaluate."
+]
+
+{ #category : 'accessing' }
 GtPharoLinkCodeSync class >> reset [
 
 	default ifNotNil: #stop.
@@ -265,6 +291,24 @@ GtPharoLinkCodeSync >> log: anEpLog [
 ]
 
 { #category : 'accessing' }
+GtPharoLinkCodeSync >> runExamples: aCollection [
+
+	^ self
+		  do: '[ :e |
+					e runAll.
+					e examples do: [ :f | f hasResult
+						ifTrue: [ f result returnValue: nil ] ].
+					e ]'
+		  with: (GtExampleGroup withAll: aCollection)
+]
+
+{ #category : 'accessing' }
+GtPharoLinkCodeSync >> runTestSuite: aSuite [
+
+	^ self do: '[ :e | e run ]' with: aSuite
+]
+
+{ #category : 'accessing' }
 GtPharoLinkCodeSync >> start [
 
 	log announcer when: EpEntryAdded send: #entryAdded: to: self.
@@ -272,28 +316,7 @@ GtPharoLinkCodeSync >> start [
 	application start.
 	"detach file log and changes"
 	application newCommandFactory
-		<< '
-	realChanges := SourceFiles changesFileStream path asFileReference.
-	realSources := SourceFiles sourcesFileStream path asFileReference.
-	virtualFs := FileSystem memory.
-	virtualChanges := virtualFs workingDirectory / realChanges basename.
-	realChanges copyTo: virtualChanges.
-	SourceFiles close.
-	SourceFiles changesFileStream: ((SourceFile
-			  on: virtualChanges
-			  potentialLocations: { virtualChanges parent })
-			 tryOpenReadOnly: false;
-			 yourself).
-	SourceFiles sourcesFileStream: ((SourceFile
-			  on: realSources
-			  potentialLocations: { realSources parent })
-			 tryOpenReadOnly: true;
-			 yourself).
-	EpMonitor current log initializeWith: OmMemoryStore new.
-	"(CodeImporter fileStream: virtualChanges readStream)
-		gtReduceToUnsavedChunks;
-		evaluate."
-	true';
+		<< 'GtPharoLinkCodeSync initializeRemote';
 		sendAndWait
 ]
 
