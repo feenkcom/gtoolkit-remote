@@ -1,6 +1,6 @@
 Extension { #name : 'LanguageLinkPromise' }
 
-{ #category : '*GToolkit-RemoteGt' }
+{ #category : '*Gt4PharoLink' }
 LanguageLinkPromise >> gtValueFor: aView [
 
 	<gtView>
