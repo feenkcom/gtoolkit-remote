@@ -120,14 +120,38 @@ GtPharoLinkCodeSync class >> base64Encode: anObject to: aCharacterStream [
 
 { #category : 'accessing' }
 GtPharoLinkCodeSync class >> default [
-	^ default
-		ifNil: [ default := self new
-				application:
-					(PharoLinkApplication withDefaultSettings
-						debugMode: true;
-						yourself);
-				log: EpMonitor current log;
-				yourself ]
+
+	^ default ifNil: [ 
+		  default := self new
+			             application: PharoLinkApplication withDefaultSettings;
+			             log: EpMonitor current log;
+			             yourself ]
+]
+
+{ #category : 'accessing' }
+GtPharoLinkCodeSync class >> initializeRemote [
+
+	| realChanges realSources virtualFs virtualChanges |
+	realChanges := SourceFiles changesFileStream path asFileReference.
+	realSources := SourceFiles sourcesFileStream path asFileReference.
+	virtualFs := FileSystem memory.
+	virtualChanges := virtualFs workingDirectory / realChanges basename.
+	realChanges copyTo: virtualChanges.
+	SourceFiles close.
+	SourceFiles changesFileStream: ((SourceFile
+			  on: virtualChanges
+			  potentialLocations: { virtualChanges parent })
+			 tryOpenReadOnly: false;
+			 yourself).
+	SourceFiles sourcesFileStream: ((SourceFile
+			  on: realSources
+			  potentialLocations: { realSources parent })
+			 tryOpenReadOnly: true;
+			 yourself).
+	EpMonitor current log initializeWith: OmMemoryStore new
+	"(CodeImporter fileStream: virtualChanges readStream)
+		gtReduceToUnsavedChunks;
+		evaluate."
 ]
 
 { #category : 'accessing' }
@@ -150,7 +174,7 @@ GtPharoLinkCodeSync >> application: anPharoLinkApplication [
 { #category : 'accessing' }
 GtPharoLinkCodeSync >> do: aBlockString with: anObject [
 
-	| message result |
+	| message promise |
 	message := String streamContents: [ :stream | 
 		           stream nextPutAll: '
 						object := GtPharoLinkCodeSync base64Decode: '''.
@@ -163,10 +187,9 @@ GtPharoLinkCodeSync >> do: aBlockString with: anObject [
 						result := String streamContents: [ :stream |
 							GtPharoLinkCodeSync base64Encode: (block value: object) to: stream ].
 						result' ].
-	result := application newCommandFactory
-		          << message;
-		          sendAndWait.
-	^ self class base64Decode: result readStream
+	promise := application newCommandFactory send: message.
+	promise transformBlock: [ :r | self class base64Decode: r readStream ].
+	^ promise "waitForValue"
 ]
 
 { #category : 'accessing' }
@@ -265,6 +288,30 @@ GtPharoLinkCodeSync >> log: anEpLog [
 ]
 
 { #category : 'accessing' }
+GtPharoLinkCodeSync >> runExamples: anExampleGroup [
+
+	^ self
+		  do: '[ :e |
+					e runAll.
+					e examples do: [ :f | f hasResult
+						ifTrue: [ f result returnValue: nil ] ].
+					e ]'
+		  with: anExampleGroup
+]
+
+{ #category : 'accessing' }
+GtPharoLinkCodeSync >> runSearch: aFilter [
+
+	^ self do: '[ :f | f result refreshItems ]' with: aFilter
+]
+
+{ #category : 'accessing' }
+GtPharoLinkCodeSync >> runTests: aSuite [
+
+	^ self do: '[ :e | e run ]' with: aSuite
+]
+
+{ #category : 'accessing' }
 GtPharoLinkCodeSync >> start [
 
 	log announcer when: EpEntryAdded send: #entryAdded: to: self.
@@ -272,28 +319,7 @@ GtPharoLinkCodeSync >> start [
 	application start.
 	"detach file log and changes"
 	application newCommandFactory
-		<< '
-	realChanges := SourceFiles changesFileStream path asFileReference.
-	realSources := SourceFiles sourcesFileStream path asFileReference.
-	virtualFs := FileSystem memory.
-	virtualChanges := virtualFs workingDirectory / realChanges basename.
-	realChanges copyTo: virtualChanges.
-	SourceFiles close.
-	SourceFiles changesFileStream: ((SourceFile
-			  on: virtualChanges
-			  potentialLocations: { virtualChanges parent })
-			 tryOpenReadOnly: false;
-			 yourself).
-	SourceFiles sourcesFileStream: ((SourceFile
-			  on: realSources
-			  potentialLocations: { realSources parent })
-			 tryOpenReadOnly: true;
-			 yourself).
-	EpMonitor current log initializeWith: OmMemoryStore new.
-	"(CodeImporter fileStream: virtualChanges readStream)
-		gtReduceToUnsavedChunks;
-		evaluate."
-	true';
+		<< 'GtPharoLinkCodeSync initializeRemote';
 		sendAndWait
 ]
 
