@@ -2225,6 +2225,13 @@ asGtDeclarativeView
 		dataTransport: GtPhlowDeclarativeView dataLazy.
 %
 
+category: 'private - accessing'
+method: GtRemotePhlowDeclarativeList
+itemComputation
+
+	^ self itemText
+%
+
 category: 'accessing'
 method: GtRemotePhlowDeclarativeList
 itemText
@@ -2753,6 +2760,16 @@ gtSuperclassesFor: aView
 		itemText: [ :cls | cls name ]
 %
 
+! Class extensions for 'Collection'
+
+!		Instance methods for 'Collection'
+
+category: '*GToolkit-RemotePhlow-PhlowViews'
+method: Collection
+asGPhlowItemsIterator
+	^ GtRemotePhlowGenericCollectionIterator forCollection: self
+%
+
 ! Class extensions for #'Collection'
 
 !		Class methods for #'Collection'
@@ -2774,16 +2791,6 @@ gtRemoteItemsFor: aView
 		priority: 50;
 		items: [ self ];
 		itemText: [ :eachItem | eachItem gtDisplayString ]
-%
-
-! Class extensions for 'Collection'
-
-!		Instance methods for 'Collection'
-
-category: '*GToolkit-RemotePhlow-PhlowViews'
-method: Collection
-asGPhlowItemsIterator
-	^ GtRemotePhlowGenericCollectionIterator forCollection: self
 %
 
 ! Class extensions for #'GtRemotePhlowDeclarativeTestInspectable'
