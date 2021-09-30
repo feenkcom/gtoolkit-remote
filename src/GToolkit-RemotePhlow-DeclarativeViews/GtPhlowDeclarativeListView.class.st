@@ -15,12 +15,12 @@ GtDeclarativeList supports a subset of the possible configurations of ${class:na
 
 "
 Class {
-	#name : 'GtPhlowDeclarativeListView',
-	#superclass : 'GtPhlowDeclarativeListingView',
+	#name : #GtPhlowDeclarativeListView,
+	#superclass : #GtPhlowDeclarativeListingView,
 	#category : 'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtPhlowDeclarativeListView class >> fromJSONDictionary: aDictionary [
 	| list |
 
@@ -30,7 +30,7 @@ GtPhlowDeclarativeListView class >> fromJSONDictionary: aDictionary [
 	^list
 ]
 
-{ #category : 'converting' }
+{ #category : #converting }
 GtPhlowDeclarativeListView >> asDictionaryForExport [ 
 
 	| dictionary |

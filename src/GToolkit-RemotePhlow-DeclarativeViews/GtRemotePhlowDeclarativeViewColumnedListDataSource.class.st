@@ -1,10 +1,10 @@
 Class {
-	#name : 'GtRemotePhlowDeclarativeViewColumnedListDataSource',
-	#superclass : 'GtRemotePhlowDeclarativeViewListingDataSource',
-	#category : 'GToolkit-RemotePhlow-DeclarativeViews'
+	#name : #GtRemotePhlowDeclarativeViewColumnedListDataSource,
+	#superclass : #GtRemotePhlowDeclarativeViewListingDataSource,
+	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtRemotePhlowDeclarativeViewColumnedListDataSource >> formatItem: anObject atIndex: rowIndex [
 	| phlowColumns formattedColumnItems |
 
@@ -27,19 +27,18 @@ GtRemotePhlowDeclarativeViewColumnedListDataSource >> formatItem: anObject atInd
 	^ formattedColumnItems
 ]
 
-{ #category : 'api' }
+{ #category : #api }
 GtRemotePhlowDeclarativeViewColumnedListDataSource >> retriveSpawnedObjectAtRow: aRowIndex column: aColumnIndex [	
 	self itemsIterator 
 		forElementsFrom: aRowIndex 
 		to: aRowIndex 
 		withIndexDo: [ :aRowObject :anItemIndex |
-			| aColumn aCellObject aSpawnedObject |
+			| aColumn aSpawnedObject |
 			
 			aColumn := self phlowView columns at: aColumnIndex.
-			aCellObject := aColumn itemComputation value: aRowObject.
 			aSpawnedObject := aColumn isSpawningObject
-				ifTrue: [ aColumn spawnObjectComputation cull: aCellObject cull: anItemIndex  ]
-				ifFalse: [ aCellObject ].
+				ifTrue: [ aColumn spawnObjectComputation cull: aRowObject cull: anItemIndex  ]
+				ifFalse: [ aRowObject ].
 			^ aSpawnedObject ].
 	^ nil
 ]
