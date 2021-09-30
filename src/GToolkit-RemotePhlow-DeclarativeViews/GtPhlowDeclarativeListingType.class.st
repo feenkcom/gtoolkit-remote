@@ -1,6 +1,6 @@
 Class {
-	#name : 'GtPhlowDeclarativeListingType',
-	#superclass : 'Object',
+	#name : #GtPhlowDeclarativeListingType,
+	#superclass : #Object,
 	#instVars : [
 		'type'
 	],
@@ -14,7 +14,7 @@ Class {
 	#category : 'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtPhlowDeclarativeListingType class >> initialize [	
 	Icon := #icon.
 	IconifiedLink := #iconLink.
@@ -23,37 +23,37 @@ GtPhlowDeclarativeListingType class >> initialize [
 	Unknown := #unknown
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPhlowDeclarativeListingType >> asString [
 	^ type
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPhlowDeclarativeListingType >> beIcon [
 	type := Icon
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPhlowDeclarativeListingType >> beIconLink [
 	type := IconifiedLink
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPhlowDeclarativeListingType >> beText [
 	type := Text
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPhlowDeclarativeListingType >> beTextLink [
 	type := TextualLink
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPhlowDeclarativeListingType >> beUnknown [
 	type := Unknown
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPhlowDeclarativeListingType >> ifIcon: anIconBlock ifIconLink: anIconLinkBlock ifText: aTextBlock ifTextLink: aTextLinkBlock ifUnknown: anUnknownBlock [
 	type = Icon
 		ifTrue: [ ^ anIconBlock value ].
@@ -73,14 +73,14 @@ GtPhlowDeclarativeListingType >> ifIcon: anIconBlock ifIconLink: anIconLinkBlock
 	self error: ('Unsupported listing view type: {1}' format: { type })
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtPhlowDeclarativeListingType >> initialize [
 	super initialize.
 	
 	type := Unknown
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 GtPhlowDeclarativeListingType >> isUnknown [
 	^ type = Unknown
 ]

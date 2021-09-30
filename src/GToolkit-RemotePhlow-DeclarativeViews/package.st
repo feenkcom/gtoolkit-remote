@@ -1,1 +1,1 @@
-Package { #name : 'GToolkit-RemotePhlow-DeclarativeViews' }
+Package { #name : #'GToolkit-RemotePhlow-DeclarativeViews' }
