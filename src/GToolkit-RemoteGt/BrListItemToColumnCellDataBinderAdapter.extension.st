@@ -1,6 +1,6 @@
-Extension { #name : 'BrListItemToColumnCellDataBinderAdapter' }
+Extension { #name : #BrListItemToColumnCellDataBinderAdapter }
 
-{ #category : '*GToolkit-RemoteGt' }
+{ #category : #'*GToolkit-RemoteGt' }
 BrListItemToColumnCellDataBinderAdapter >> asRemotePhlowDeclarativeListingType [
 	^ listItemDataBinder asRemotePhlowDeclarativeListingType
 ]

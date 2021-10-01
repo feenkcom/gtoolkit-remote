@@ -1,6 +1,6 @@
-Extension { #name : 'GtSearchGroupResult' }
+Extension { #name : #GtSearchGroupResult }
 
-{ #category : '*GToolkit-RemoteGt' }
+{ #category : #'*GToolkit-RemoteGt' }
 GtSearchGroupResult >> gtRemoteItems: aCollection [
 
 	items := aCollection.

@@ -1,6 +1,6 @@
-Extension { #name : 'GtSearchFilter' }
+Extension { #name : #GtSearchFilter }
 
-{ #category : '*GToolkit-RemoteGt' }
+{ #category : #'*GToolkit-RemoteGt' }
 GtSearchFilter >> runRemotely [
 
 	^ GtPharoLinkCodeSync default runSearch: self

@@ -1,6 +1,6 @@
-Extension { #name : 'GtExampleGroup' }
+Extension { #name : #GtExampleGroup }
 
-{ #category : '*GToolkit-RemoteGt' }
+{ #category : #'*GToolkit-RemoteGt' }
 GtExampleGroup >> runRemotely [
 
 	^ GtPharoLinkCodeSync default runExamples: self

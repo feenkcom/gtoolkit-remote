@@ -19,22 +19,22 @@ To open a inspector using the declarative views:
 
 "
 Class {
-	#name : 'GtRemoteInspectionSimulation',
-	#superclass : 'Object',
+	#name : #GtRemoteInspectionSimulation,
+	#superclass : #Object,
 	#instVars : [
 		'object',
 		'inspectorProxy'
 	],
-	#category : 'GToolkit-RemoteGt-Development'
+	#category : #'GToolkit-RemoteGt-Development'
 }
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtRemoteInspectionSimulation class >> openOn: anObject [
 
 	^ self new object: anObject
 ]
 
-{ #category : 'gt inspector' }
+{ #category : #'gt inspector' }
 GtRemoteInspectionSimulation >> declarativeViews [
 	"Answer the views for the receiver"
 	| declarativeData declarativeViewDeclarations rawViews  |
@@ -50,7 +50,15 @@ GtRemoteInspectionSimulation >> declarativeViews [
 	^ rawViews
 ]
 
-{ #category : 'simulation' }
+{ #category : #simulation }
+GtRemoteInspectionSimulation >> gtInspectorTitleString [
+	^ String streamContents: [ :stream |
+			stream
+				<< 'RemoteSimulation to: ';
+				<< object class name ]
+]
+
+{ #category : #simulation }
 GtRemoteInspectionSimulation >> gtLocalViewsFor: aView inContext: aContext [
 	| title resultingView |
 	title := String streamContents: [ :stream |
@@ -63,7 +71,7 @@ GtRemoteInspectionSimulation >> gtLocalViewsFor: aView inContext: aContext [
 	^ resultingView
 ]
 
-{ #category : 'simulation' }
+{ #category : #simulation }
 GtRemoteInspectionSimulation >> gtProxyFor: aView [
 	<gtProxy>
 
@@ -72,7 +80,7 @@ GtRemoteInspectionSimulation >> gtProxyFor: aView [
 		priority: 10000.
 ]
 
-{ #category : 'gt inspector' }
+{ #category : #'gt inspector' }
 GtRemoteInspectionSimulation >> gtProxyViewsFor: aView [
 	<gtView>
 	^ aView list
@@ -83,7 +91,7 @@ GtRemoteInspectionSimulation >> gtProxyViewsFor: aView [
 		send: [ :view | view ]
 ]
 
-{ #category : 'simulation' }
+{ #category : #simulation }
 GtRemoteInspectionSimulation >> gtViewsFor: aView inContext: aContext [
 	"Add the declarative views from the inspectors object to the inspectors views"
 
@@ -101,7 +109,7 @@ GtRemoteInspectionSimulation >> gtViewsFor: aView inContext: aContext [
 	^resultingView
 ]
 
-{ #category : 'simulation' }
+{ #category : #simulation }
 GtRemoteInspectionSimulation >> gtViewsInContext: aContext [
 	"This collects all views for the current object"
 	| emptyView |
@@ -115,19 +123,19 @@ GtRemoteInspectionSimulation >> gtViewsInContext: aContext [
 		yourself
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemoteInspectionSimulation >> object [
 	^ object
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemoteInspectionSimulation >> object: anObject [
 
 	object := anObject.
 	inspectorProxy := GtRemotePhlowViewedObject object: anObject
 ]
 
-{ #category : 'gt inspector' }
+{ #category : #'gt inspector' }
 GtRemoteInspectionSimulation >> viewsFor: aView [
 	"Should be all views, but just get Raw and Print views for now"
 

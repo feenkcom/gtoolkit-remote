@@ -1,29 +1,29 @@
 Class {
-	#name : 'PlpoClassDescription',
-	#superclass : 'PlpoBehavior',
+	#name : #PlpoClassDescription,
+	#superclass : #PlpoBehavior,
 	#category : 'Gt4PharoLink-Proxies'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 PlpoClassDescription class >> remoteClassName [
 
 	^ #ClassDescription
 ]
 
-{ #category : 'accessing - parallel hierarchy' }
+{ #category : #'accessing - parallel hierarchy' }
 PlpoClassDescription >> classSide [
 	"Return the metaclass of the couple class/metaclass. Useful to avoid explicit test."
 	
 	^ self subclassResponsibility
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 PlpoClassDescription >> definition [ 
 
 	^ self proxyPerform: #definition
 ]
 
-{ #category : 'ui' }
+{ #category : #ui }
 PlpoClassDescription >> gtDefinitionFor: aView [
 	<gtView>
 	^ aView textEditor  
@@ -36,7 +36,7 @@ PlpoClassDescription >> gtDefinitionFor: aView [
 		text: [ self definition asRopedText ].
 ]
 
-{ #category : 'ui' }
+{ #category : #ui }
 PlpoClassDescription >> gtMethodsModelFor: aView [
 
 	^ aView explicit
@@ -45,19 +45,19 @@ PlpoClassDescription >> gtMethodsModelFor: aView [
 		stencil: [ (GtClassMethodsCoder forClass: self) asElement ]
 ]
 
-{ #category : 'accessing - parallel hierarchy' }
+{ #category : #'accessing - parallel hierarchy' }
 PlpoClassDescription >> instanceSide [
 	
 	^ self subclassResponsibility
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 PlpoClassDescription >> isMeta [ 
 
 	^ false
 ]
 
-{ #category : 'ui' }
+{ #category : #ui }
 PlpoClassDescription >> sortedMethods [
 	"Answer the methods sorted by instance/class, selector"
 
