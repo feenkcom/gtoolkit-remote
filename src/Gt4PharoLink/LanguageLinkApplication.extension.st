@@ -1,6 +1,6 @@
-Extension { #name : 'LanguageLinkApplication' }
+Extension { #name : #LanguageLinkApplication }
 
-{ #category : '*Gt4PharoLink' }
+{ #category : #'*Gt4PharoLink' }
 LanguageLinkApplication >> evaluateSourceSequence: aString [
 	| cf |
 

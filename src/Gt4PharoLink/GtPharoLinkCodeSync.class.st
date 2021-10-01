@@ -83,8 +83,8 @@ remoteSyncChange: anEvent
 
 "
 Class {
-	#name : 'GtPharoLinkCodeSync',
-	#superclass : 'Object',
+	#name : #GtPharoLinkCodeSync,
+	#superclass : #Object,
 	#instVars : [
 		'application',
 		'events',
@@ -96,7 +96,7 @@ Class {
 	#category : 'Gt4PharoLink-CodeSync'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkCodeSync class >> base64Decode: aCharacterStream [
 
 	| fuelStream |
@@ -108,7 +108,7 @@ GtPharoLinkCodeSync class >> base64Decode: aCharacterStream [
 	^ FLMaterializer materializeFromByteArray: fuelStream contents
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkCodeSync class >> base64Encode: anObject to: aCharacterStream [
 
 	| fuelStream |
@@ -118,7 +118,7 @@ GtPharoLinkCodeSync class >> base64Encode: anObject to: aCharacterStream [
 	Base64MimeConverter mimeEncode: fuelStream to: aCharacterStream
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkCodeSync class >> default [
 
 	^ default ifNil: [ 
@@ -128,7 +128,7 @@ GtPharoLinkCodeSync class >> default [
 			             yourself ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkCodeSync class >> initializeRemote [
 
 	| realChanges realSources virtualFs virtualChanges |
@@ -154,24 +154,24 @@ GtPharoLinkCodeSync class >> initializeRemote [
 		evaluate."
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkCodeSync class >> reset [
 
 	default ifNotNil: #stop.
 	default := nil
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkCodeSync >> application [
 	^ application
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkCodeSync >> application: anPharoLinkApplication [
 	application := anPharoLinkApplication
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkCodeSync >> do: aBlockString with: anObject [
 
 	| message promise |
@@ -192,7 +192,7 @@ GtPharoLinkCodeSync >> do: aBlockString with: anObject [
 	^ promise "waitForValue"
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkCodeSync >> entryAdded: anEntryAddedEvent [
 	anEntryAddedEvent entry content isCodeChange
 		ifFalse: [ "only capture code changes" ^ self ].
@@ -200,7 +200,7 @@ GtPharoLinkCodeSync >> entryAdded: anEntryAddedEvent [
 	self flushAsync
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkCodeSync >> flush [
 
 	| buffer |
@@ -216,7 +216,7 @@ GtPharoLinkCodeSync >> flush [
 		with: buffer
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkCodeSync >> flushAsync [
 	BlTktWorkerProvider nonUISinglePool
 		schedule:
@@ -225,7 +225,7 @@ GtPharoLinkCodeSync >> flushAsync [
 				yourself)
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkCodeSync >> gtRemotePlayground: aView [
 
 	<gtView>
@@ -236,7 +236,7 @@ GtPharoLinkCodeSync >> gtRemotePlayground: aView [
 		  view: #gtPlaygroundFor:
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkCodeSync >> gtRemoteProperties: aView [
 
 	<gtView>
@@ -260,7 +260,7 @@ GtPharoLinkCodeSync >> gtRemoteProperties: aView [
 		  column: 'Value' text: #second
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkCodeSync >> gtRemoteStatus: aView [
 
 	<gtView>
@@ -271,23 +271,23 @@ GtPharoLinkCodeSync >> gtRemoteStatus: aView [
 		  view: #gtStatusFor:
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkCodeSync >> initialize [
 	super initialize.
 	events := WaitfreeQueue new
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkCodeSync >> log [
 	^ log
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkCodeSync >> log: anEpLog [
 	log := anEpLog
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkCodeSync >> runExamples: anExampleGroup [
 
 	^ self
@@ -299,19 +299,19 @@ GtPharoLinkCodeSync >> runExamples: anExampleGroup [
 		  with: anExampleGroup
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkCodeSync >> runSearch: aFilter [
 
 	^ self do: '[ :f | f result refreshItems ]' with: aFilter
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkCodeSync >> runTests: aSuite [
 
 	^ self do: '[ :e | e run ]' with: aSuite
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkCodeSync >> start [
 
 	log announcer when: EpEntryAdded send: #entryAdded: to: self.
@@ -323,7 +323,7 @@ GtPharoLinkCodeSync >> start [
 		sendAndWait
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPharoLinkCodeSync >> stop [
 	log announcer unsubscribe: self.
 	events flush.

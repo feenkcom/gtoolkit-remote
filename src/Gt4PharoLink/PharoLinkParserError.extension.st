@@ -1,6 +1,6 @@
-Extension { #name : 'PharoLinkParserError' }
+Extension { #name : #PharoLinkParserError }
 
-{ #category : '*Gt4PharoLink' }
+{ #category : #'*Gt4PharoLink' }
 PharoLinkParserError >> gtSourceFor: aView [
 	<gtView>
 
@@ -10,7 +10,7 @@ PharoLinkParserError >> gtSourceFor: aView [
 		text: [ self highlightedSourceText ]
 ]
 
-{ #category : '*Gt4PharoLink' }
+{ #category : #'*Gt4PharoLink' }
 PharoLinkParserError >> highlightedSourceText [
 	"Answer the source as text, highlighting the start of the error"
 	| text |

@@ -1,6 +1,6 @@
-Extension { #name : 'DoItChunk' }
+Extension { #name : #DoItChunk }
 
-{ #category : '*GToolkit-RemoteGt' }
+{ #category : #'*GToolkit-RemoteGt' }
 DoItChunk >> gtIsQuit [
 
 	| sanitized |
@@ -9,7 +9,7 @@ DoItChunk >> gtIsQuit [
 	^ sanitized beginsWith: '----QUIT'
 ]
 
-{ #category : '*GToolkit-RemoteGt' }
+{ #category : #'*GToolkit-RemoteGt' }
 DoItChunk >> gtIsSnapshot [
 
 	| sanitized |

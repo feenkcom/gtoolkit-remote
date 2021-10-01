@@ -1,6 +1,6 @@
-Extension { #name : 'MemoryFileWriteStream' }
+Extension { #name : #MemoryFileWriteStream }
 
-{ #category : '*GToolkit-RemoteGt' }
+{ #category : #'*GToolkit-RemoteGt' }
 MemoryFileWriteStream >> readInto: collection startingAt: offset count: requestedCount [
 
 	^ file

@@ -1,6 +1,6 @@
-Extension { #name : 'IdentitySet' }
+Extension { #name : #IdentitySet }
 
-{ #category : '*GToolkit-RemoteGt' }
+{ #category : #'*GToolkit-RemoteGt' }
 IdentitySet >> identityIncludes: anObject [
 
 	^ self includes: anObject
