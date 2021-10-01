@@ -85,7 +85,7 @@ LanguageLinkProxyObject >> gtViewsFor: aView inContext: aContext [
 	inspectorViews := resultingView originalView views.
 
 	"Add the explicitly declarative views from the inspected object"
-	inspectorViews addAll: (self viewsFor: aView).
+	inspectorViews addAll: (self remoteViewsFor: aView).
 
 	"Re-sort by priority"
 	inspectorViews := inspectorViews sorted: [ :a :b | a priority < b priority ].
@@ -112,6 +112,14 @@ LanguageLinkProxyObject >> gtViewsInContext: aContext [
 ]
 
 { #category : #'*Gt4PharoLink' }
+LanguageLinkProxyObject >> remoteViewsFor: aView [
+	"Should be all views, but just get Raw and Print views for now"
+
+	^ self declarativeViews collect: [ :declarativeView | declarativeView viewFor: aView ].
+
+]
+
+{ #category : #'*Gt4PharoLink' }
 LanguageLinkProxyObject >> viewProxyDo: aBlock [
 	"Evaluate the supplied block ensuring that the receiver is a GtRemotePhlowViewedObject"
 
@@ -121,13 +129,5 @@ LanguageLinkProxyObject >> viewProxyDo: aBlock [
 		ifTrue: [ self ]
 		ifFalse: [ self getViewProxy ].
 	^ aBlock value: viewProxy.
-
-]
-
-{ #category : #'*Gt4PharoLink' }
-LanguageLinkProxyObject >> viewsFor: aView [
-	"Should be all views, but just get Raw and Print views for now"
-
-	^ self declarativeViews collect: [ :declarativeView | declarativeView viewFor: aView ].
 
 ]
