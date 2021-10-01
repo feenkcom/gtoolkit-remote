@@ -65,25 +65,6 @@ LanguageLinkProxyObject >> gtProxyFor: aView [
 ]
 
 { #category : #'*Gt4PharoLink' }
-LanguageLinkProxyObject >> gtProxyRawFor: aView [
-
-	^ aView columnedList 
-		title: 'Raw';
-		priority: 15;
-		items: [ self viewProxyDo: [ :viewProxy |
-				viewProxy newCommandFactory
-					<< 'self rawViewData';
-					sendAndWait ] ];
-		column: 'Icon' icon: [ :aNode | aNode third iconNamed: aNode first ];
-		column: 'Variable' text: [ :aNode | aNode second asRopedText ];
-		column: 'Value' text: [ :aNode | 
-					[ aNode third gtDisplayString asRopedText ]
-						on: Error 
-						do: [ :ex | ex messageText asRopedText foreground: Color red ] ];
-		send: [ :aNode | aNode third ]
-]
-
-{ #category : #'*Gt4PharoLink' }
 LanguageLinkProxyObject >> gtProxyViewsFor: aView [
 	<gtView>
 	^ aView list
@@ -127,8 +108,6 @@ LanguageLinkProxyObject >> gtViewsInContext: aContext [
 	"Remove the default Print view, the remote can supply it later"
 	proxyPrint := views detect: [ :each | each title = #Print ].
 	views remove: proxyPrint.
-	
-	"views add: (self gtProxyRawFor: GtPhlowEmptyView new)."
 	^ views.
 ]
 
