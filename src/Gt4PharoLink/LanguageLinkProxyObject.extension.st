@@ -56,20 +56,6 @@ LanguageLinkProxyObject >> gtInspectorTitleString [
 ]
 
 { #category : #'*Gt4PharoLink' }
-LanguageLinkProxyObject >> gtLocalViewsFor: aView inContext: aContext [
-	| title resultingView |
-
-	title := String streamContents: [ :stream |
-				stream
-					<< 'Proxy to a(n): ';
-					<< (remoteClass ifNil: [ '<None>' ]) ].
-	resultingView := ((aView composite
-		views: (self gtViewsInContext: aContext))
-		labelled: title).
-	^ resultingView
-]
-
-{ #category : #'*Gt4PharoLink' }
 LanguageLinkProxyObject >> gtProxyFor: aView [
 	<gtProxy>
 
@@ -114,7 +100,7 @@ LanguageLinkProxyObject >> gtViewsFor: aView inContext: aContext [
 
 	| resultingView inspectorViews |
 
-	resultingView := self gtLocalViewsFor: aView inContext: aContext.
+	resultingView := super gtViewsFor: aView inContext: aContext.
 	inspectorViews := resultingView originalView views.
 
 	"Add the explicitly declarative views from the inspected object"

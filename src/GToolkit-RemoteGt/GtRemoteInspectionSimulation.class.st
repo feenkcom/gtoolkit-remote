@@ -59,19 +59,6 @@ GtRemoteInspectionSimulation >> gtInspectorTitleString [
 ]
 
 { #category : #simulation }
-GtRemoteInspectionSimulation >> gtLocalViewsFor: aView inContext: aContext [
-	| title resultingView |
-	title := String streamContents: [ :stream |
-				stream
-					<< 'RemoteSimulation to: ';
-					<< object class name ].
-	resultingView := ((aView composite
-		views: (self gtViewsInContext: aContext))
-		labelled: title).
-	^ resultingView
-]
-
-{ #category : #simulation }
 GtRemoteInspectionSimulation >> gtProxyFor: aView [
 	<gtProxy>
 
@@ -97,7 +84,7 @@ GtRemoteInspectionSimulation >> gtViewsFor: aView inContext: aContext [
 
 	| resultingView inspectorViews |
 
-	resultingView := self gtLocalViewsFor: aView inContext: aContext.
+	resultingView := self gtViewsFor: aView inContext: aContext.
 	inspectorViews := resultingView originalView views.
 
 	"Add the explicitly declarative views from the inspected object"
