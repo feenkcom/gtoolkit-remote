@@ -131,23 +131,7 @@ GtPharoLinkCodeSync class >> default [
 { #category : #accessing }
 GtPharoLinkCodeSync class >> initializeRemote [
 
-	| realChanges realSources virtualFs virtualChanges |
-	realChanges := SourceFiles changesFileStream path asFileReference.
-	realSources := SourceFiles sourcesFileStream path asFileReference.
-	virtualFs := FileSystem memory.
-	virtualChanges := virtualFs workingDirectory / realChanges basename.
-	realChanges copyTo: virtualChanges.
-	SourceFiles close.
-	SourceFiles changesFileStream: ((SourceFile
-			  on: virtualChanges
-			  potentialLocations: { virtualChanges parent })
-			 tryOpenReadOnly: false;
-			 yourself).
-	SourceFiles sourcesFileStream: ((SourceFile
-			  on: realSources
-			  potentialLocations: { realSources parent })
-			 tryOpenReadOnly: true;
-			 yourself).
+	SourceFiles gtPharoLinkEnsureReadFileWriteMemoryOpen.
 	EpMonitor current log initializeWith: OmMemoryStore new
 	"(CodeImporter fileStream: virtualChanges readStream)
 		gtReduceToUnsavedChunks;
