@@ -2571,7 +2571,7 @@ valuable: anObject
 
 !		Class methods for 'GtRemotePhlowViewedObject'
 
-category: #'instance creation'
+category: 'instance creation'
 classmethod: GtRemotePhlowViewedObject
 object: anObject
 
@@ -2580,7 +2580,7 @@ object: anObject
 
 !		Instance methods for 'GtRemotePhlowViewedObject'
 
-category: #'accessing'
+category: 'accessing'
 method: GtRemotePhlowViewedObject
 declarativeViewsBySelector
 	declarativeViewsBySelector ifNil: [ 
@@ -2588,13 +2588,13 @@ declarativeViewsBySelector
 	^ declarativeViewsBySelector
 %
 
-category: #'api - accessing'
+category: 'api - accessing'
 method: GtRemotePhlowViewedObject
 getDeclarativeViewFor: viewSelector
 	^ self declarativeViewsBySelector at: viewSelector
 %
 
-category: #'api - accessing'
+category: 'api - accessing'
 method: GtRemotePhlowViewedObject
 getDeclarativeViewMethodNames
 	"Answer the set of declarative view selectors provided by the object"
@@ -2602,7 +2602,7 @@ getDeclarativeViewMethodNames
 	^ self declarativeViewsBySelector keys
 %
 
-category: #'api - accessing'
+category: 'api - accessing'
 method: GtRemotePhlowViewedObject
 getViewDeclaration: viewSelector
 	| declarativeView |
@@ -2610,7 +2610,7 @@ getViewDeclaration: viewSelector
 	^ self getViewDeclarationForView: declarativeView
 %
 
-category: #'api - accessing'
+category: 'api - accessing'
 method: GtRemotePhlowViewedObject
 getViewDeclarationForView: aDeclarativeView
 	^ aDeclarativeView asDictionaryForExport
@@ -2618,7 +2618,7 @@ getViewDeclarationForView: aDeclarativeView
 		yourself.	
 %
 
-category: #'api - accessing'
+category: 'api - accessing'
 method: GtRemotePhlowViewedObject
 getViewsDeclarations
 	| viewDeclarations |
@@ -2632,7 +2632,7 @@ getViewsDeclarations
 		yourself
 %
 
-category: #'initialization'
+category: 'initialization'
 method: GtRemotePhlowViewedObject
 initializeDeclarativeViews
 	| phlowViews |
@@ -2649,20 +2649,20 @@ initializeDeclarativeViews
 				put: declarativeView ] ]
 %
 
-category: #'initialization'
+category: 'initialization'
 method: GtRemotePhlowViewedObject
 initializeWith: anObject
 	object := anObject
 %
 
-category: #'accessing'
+category: 'accessing'
 method: GtRemotePhlowViewedObject
 object
 
 	^ object
 %
 
-category: #'initialization'
+category: 'initialization'
 method: GtRemotePhlowViewedObject
 phlowDeclarativeViews
 	^ object gtDeclarativePhlowViews
@@ -2672,19 +2672,19 @@ phlowDeclarativeViews
 
 !		Instance methods for #'AbstractDictionary'
 
-category: #'*GToolkit-RemotePhlow-InspectorExtensions-GemStone'
+category: '*GToolkit-RemotePhlow-InspectorExtensions-GemStone'
 method: AbstractDictionary
 asGPhlowAssociationsIterator
 	^ GtRemotePhlowDictionaryAssociationsIterator forCollection: self
 %
 
-category: #'*GToolkit-RemotePhlow-InspectorExtensions-GemStone'
+category: '*GToolkit-RemotePhlow-InspectorExtensions-GemStone'
 method: AbstractDictionary
 asGPhlowKeysIterator
 	^ GtRemotePhlowDictionaryKeysIterator forCollection: self
 %
 
-category: #'*GToolkit-RemotePhlow-InspectorExtensions-GemStone'
+category: '*GToolkit-RemotePhlow-InspectorExtensions-GemStone'
 method: AbstractDictionary
 gtRemoteItemsFor: aView
 	^ aView columnedList
@@ -2696,7 +2696,7 @@ gtRemoteItemsFor: aView
 		send: [ :assoc | assoc value ]
 %
 
-category: #'*GToolkit-RemotePhlow-InspectorExtensions-GemStone'
+category: '*GToolkit-RemotePhlow-InspectorExtensions-GemStone'
 method: AbstractDictionary
 gtRemoteKeysFor: aView
 	<gtView>
@@ -2710,7 +2710,7 @@ gtRemoteKeysFor: aView
 
 !		Instance methods for #'Behavior'
 
-category: #'*GToolkit-RemotePhlow-Gemstone'
+category: '*GToolkit-RemotePhlow-Gemstone'
 method: Behavior
 gtMethodsListRemoteFor: aView
 	<gtView>
@@ -2722,7 +2722,7 @@ gtMethodsListRemoteFor: aView
 		itemText: [ :method | method selector ]
 %
 
-category: #'*GToolkit-RemotePhlow-Gemstone'
+category: '*GToolkit-RemotePhlow-Gemstone'
 method: Behavior
 gtSubclasses
 	"A hack to figure out all subclasses since Metaclass3>>_subclasses always answers nil"
@@ -2735,7 +2735,7 @@ gtSubclasses
 	^ result
 %
 
-category: #'*GToolkit-RemotePhlow-Gemstone'
+category: '*GToolkit-RemotePhlow-Gemstone'
 method: Behavior
 gtSubclassesFor: aView
 	<gtView>
@@ -2748,7 +2748,7 @@ gtSubclassesFor: aView
 		children: [ :cls | cls gtSubclasses ]
 %
 
-category: #'*GToolkit-RemotePhlow-Gemstone'
+category: '*GToolkit-RemotePhlow-Gemstone'
 method: Behavior
 gtSuperclassesFor: aView
 	<gtView>
@@ -2774,7 +2774,7 @@ asGPhlowItemsIterator
 
 !		Class methods for #'Collection'
 
-category: #'*GToolkit-RemotePhlow-GemStone'
+category: '*GToolkit-RemotePhlow-GemStone'
 classmethod: Collection
 gtGsInspectorIconName
 	^ #collectionIcon
@@ -2782,7 +2782,7 @@ gtGsInspectorIconName
 
 !		Instance methods for #'Collection'
 
-category: #'*GToolkit-RemotePhlow-InspectorExtensions-Remote'
+category: '*GToolkit-RemotePhlow-InspectorExtensions-Remote'
 method: Collection
 gtRemoteItemsFor: aView
 	<gtView>
@@ -2797,7 +2797,7 @@ gtRemoteItemsFor: aView
 
 !		Class methods for #'GtRemotePhlowDeclarativeTestInspectable'
 
-category: #'*GToolkit-RemotePhlow-GemStone'
+category: '*GToolkit-RemotePhlow-GemStone'
 classmethod: GtRemotePhlowDeclarativeTestInspectable
 new
 
@@ -2808,7 +2808,7 @@ new
 
 !		Class methods for #'GtRemotePhlowDeclarativeView'
 
-category: #'*GToolkit-RemotePhlow-GemStone'
+category: '*GToolkit-RemotePhlow-GemStone'
 classmethod: GtRemotePhlowDeclarativeView
 globalsDictionary
 
@@ -2816,14 +2816,14 @@ globalsDictionary
 	^ GsCurrentSession currentSession symbolList
 %
 
-category: #'*GToolkit-RemotePhlow-GemStone'
+category: '*GToolkit-RemotePhlow-GemStone'
 classmethod: GtRemotePhlowDeclarativeView
 new
 
 	^ super new initialize
 %
 
-category: #'*GToolkit-RemotePhlow-GemStone'
+category: '*GToolkit-RemotePhlow-GemStone'
 classmethod: GtRemotePhlowDeclarativeView
 readJsonString: aString
 
@@ -2833,7 +2833,7 @@ readJsonString: aString
 
 !		Instance methods for #'GtRemotePhlowDeclarativeView'
 
-category: #'*GToolkit-RemotePhlow-GemStone'
+category: '*GToolkit-RemotePhlow-GemStone'
 method: GtRemotePhlowDeclarativeView
 writeJsonString: aJsonObject
 
@@ -2844,7 +2844,7 @@ writeJsonString: aJsonObject
 
 !		Class methods for #'GtRemotePhlowViewedObject'
 
-category: #'*GToolkit-RemotePhlow-Gemstone'
+category: '*GToolkit-RemotePhlow-Gemstone'
 classmethod: GtRemotePhlowViewedObject
 new
 
@@ -2853,14 +2853,14 @@ new
 
 !		Instance methods for #'GtRemotePhlowViewedObject'
 
-category: #'*GToolkit-RemotePhlow-GemStone'
+category: '*GToolkit-RemotePhlow-GemStone'
 method: GtRemotePhlowViewedObject
 addRawSelfNodeTo: variableNodes
 
 	^ self "TBS"
 %
 
-category: #'*GToolkit-RemotePhlow-GemStone'
+category: '*GToolkit-RemotePhlow-GemStone'
 method: GtRemotePhlowViewedObject
 rawViewData
 	"Answer the data for the raw view"
@@ -2885,7 +2885,7 @@ rawViewData
 
 !		Class methods for #'Magnitude'
 
-category: #'*GToolkit-RemotePhlow-GemStone'
+category: '*GToolkit-RemotePhlow-GemStone'
 classmethod: Magnitude
 gtGsInspectorIconName
 	^ #magnitudeIcon
@@ -2895,7 +2895,7 @@ gtGsInspectorIconName
 
 !		Instance methods for #'Object'
 
-category: #'*GToolkit-RemotePhlow-InspectorCore'
+category: '*GToolkit-RemotePhlow-InspectorCore'
 method: Object
 gtDeclarativePhlowViews
 	"Answer a collection of the object's declarative phlow view"
@@ -2904,7 +2904,7 @@ gtDeclarativePhlowViews
 		select: [ :view | view canBeGtDeclarativeView ]
 %
 
-category: #'*GToolkit-RemotePhlow-Remote'
+category: '*GToolkit-RemotePhlow-Remote'
 method: Object
 gtDeclarativeViewPragms
 	"Answer a collection of the object's declarative view selectors"
@@ -2915,7 +2915,7 @@ gtDeclarativeViewPragms
 		to: Object
 %
 
-category: #'*GToolkit-RemotePhlow-GemStone'
+category: '*GToolkit-RemotePhlow-GemStone'
 method: Object
 gtDeclarativeViewSelectors
 	"Answer a collection of the object's declarative view selectors"
@@ -2926,13 +2926,13 @@ gtDeclarativeViewSelectors
 		to: Object) collect: [ :each | each method selector ]) asSet asArray
 %
 
-category: #'*GToolkit-RemotePhlow-GemStone'
+category: '*GToolkit-RemotePhlow-GemStone'
 method: Object
 gtDisplayOn: writeStream
 	self printOn: writeStream
 %
 
-category: #'*GToolkit-RemotePhlow-GemStone'
+category: '*GToolkit-RemotePhlow-GemStone'
 method: Object
 gtDisplayString
   | ws contents |
@@ -2948,13 +2948,13 @@ gtDisplayString
     ifFalse: [ contents ]
 %
 
-category: #'*GToolkit-RemotePhlow-GemStone'
+category: '*GToolkit-RemotePhlow-GemStone'
 method: Object
 gtGsInspectorIconName
 	^ #classIcon
 %
 
-category: #'*GToolkit-RemotePhlow-InspectorExtensions-Remote'
+category: '*GToolkit-RemotePhlow-InspectorExtensions-Remote'
 method: Object
 gtRemotePrintFor: aView
 	<gtView>
@@ -2964,7 +2964,7 @@ gtRemotePrintFor: aView
 		text: [ self printString ]
 %
 
-category: #'*GToolkit-RemotePhlow-InspectorExtensions-Remote'
+category: '*GToolkit-RemotePhlow-InspectorExtensions-Remote'
 method: Object
 gtRemoteRawFor: aView
 	<gtView>
@@ -2980,7 +2980,7 @@ gtRemoteRawFor: aView
 		send: [ :anAssociation | anAssociation value ]
 %
 
-category: #'*GToolkit-RemotePhlow-GemStone'
+category: '*GToolkit-RemotePhlow-GemStone'
 method: Object
 gtRemoteVariableValuePairsWithSelfIf: aBoolean
 	| instVarNames bindings indexedVarsSize |
@@ -3002,13 +3002,13 @@ gtRemoteVariableValuePairsWithSelfIf: aBoolean
 	^ bindings
 %
 
-category: #'*GToolkit-RemotePhlow-GemStone'
+category: '*GToolkit-RemotePhlow-GemStone'
 method: Object
 gtSystemIconName
 	^ self gtGsInspectorIconName
 %
 
-category: #'*GToolkit-RemotePhlow-Remote'
+category: '*GToolkit-RemotePhlow-Remote'
 method: Object
 gtViewsInCurrentContext
 	"Answer a collection of the object's declarative views"
@@ -3023,21 +3023,11 @@ gtViewsInCurrentContext
 		phlowView ]
 %
 
-! Class extensions for 'SequenceableCollection'
-
-!		Instance methods for 'SequenceableCollection'
-
-category: '*GToolkit-RemotePhlow-PhlowViews'
-method: SequenceableCollection
-asGPhlowItemsIterator
-	^ GtRemotePhlowSequenceableCollectionIterator forCollection: self
-%
-
 ! Class extensions for #'SequenceableCollection'
 
 !		Instance methods for #'SequenceableCollection'
 
-category: #'*GToolkit-RemotePhlow-InspectorExtensions-Remote'
+category: '*GToolkit-RemotePhlow-InspectorExtensions-Remote'
 method: SequenceableCollection
 gtRemoteItemsFor: aView
 	^ aView columnedList
@@ -3051,11 +3041,21 @@ gtRemoteItemsFor: aView
 			text: [ :eachItem | eachItem gtDisplayString ].
 %
 
+! Class extensions for 'SequenceableCollection'
+
+!		Instance methods for 'SequenceableCollection'
+
+category: '*GToolkit-RemotePhlow-PhlowViews'
+method: SequenceableCollection
+asGPhlowItemsIterator
+	^ GtRemotePhlowSequenceableCollectionIterator forCollection: self
+%
+
 ! Class extensions for #'String'
 
 !		Class methods for #'String'
 
-category: #'*GToolkit-RemotePhlow-GemStone'
+category: '*GToolkit-RemotePhlow-GemStone'
 classmethod: String
 gtGsInspectorIconName
 	^ #stringIcon
@@ -3063,7 +3063,7 @@ gtGsInspectorIconName
 
 !		Instance methods for #'String'
 
-category: #'*GToolkit-RemotePhlow-GemStone'
+category: '*GToolkit-RemotePhlow-GemStone'
 method: String
 gtDisplayOn: writeStream
 	writeStream nextPutAll: self
