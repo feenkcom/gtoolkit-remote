@@ -1,6 +1,6 @@
-Extension { #name : 'GtPhlowTextEditorView' }
+Extension { #name : #GtPhlowTextEditorView }
 
-{ #category : '*GToolkit-RemoteGt' }
+{ #category : #'*GToolkit-RemoteGt' }
 GtPhlowTextEditorView >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
@@ -13,7 +13,7 @@ GtPhlowTextEditorView >> asGtDeclarativeView [
 
 ]
 
-{ #category : '*GToolkit-RemoteGt' }
+{ #category : #'*GToolkit-RemoteGt' }
 GtPhlowTextEditorView >> canBeGtDeclarativeView [
 	"Answer a boolean indicating whether the receiver can be represented as a GtDeclarativeView"
 

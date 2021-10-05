@@ -1,6 +1,6 @@
-Extension { #name : 'TestSuite' }
+Extension { #name : #TestSuite }
 
-{ #category : '*GToolkit-RemoteGt' }
+{ #category : #'*GToolkit-RemoteGt' }
 TestSuite >> gtRunRemotely [
 
 	^ GtPharoLinkCodeSync default runTests: self

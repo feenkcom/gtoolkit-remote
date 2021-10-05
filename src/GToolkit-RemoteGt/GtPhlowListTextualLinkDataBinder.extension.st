@@ -1,6 +1,6 @@
-Extension { #name : 'GtPhlowListTextualLinkDataBinder' }
+Extension { #name : #GtPhlowListTextualLinkDataBinder }
 
-{ #category : '*GToolkit-RemoteGt' }
+{ #category : #'*GToolkit-RemoteGt' }
 GtPhlowListTextualLinkDataBinder >> asRemotePhlowDeclarativeListingType [
 	^ GtPhlowDeclarativeListingType new beTextLink
 ]

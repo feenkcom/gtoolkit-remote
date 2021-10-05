@@ -1,6 +1,6 @@
 Class {
-	#name : 'GtRemoteInspectorListingBufferedStream',
-	#superclass : 'Object',
+	#name : #GtRemoteInspectorListingBufferedStream,
+	#superclass : #Object,
 	#traits : 'TAsyncStream',
 	#classTraits : 'TAsyncStream classTrait',
 	#instVars : [
@@ -10,25 +10,25 @@ Class {
 		'buffer',
 		'bufferFuture'
 	],
-	#category : 'GToolkit-RemoteGt'
+	#category : #'GToolkit-RemoteGt'
 }
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtRemoteInspectorListingBufferedStream class >> declarativeView: aDeclarativeView [
 	^ self new declarativeView: aDeclarativeView
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemoteInspectorListingBufferedStream >> bufferSize [
 	^ 100
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtRemoteInspectorListingBufferedStream >> declarativeView: aDeclarativeView [
 	declarativeView := aDeclarativeView
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtRemoteInspectorListingBufferedStream >> initialize [
 	super initialize.
 	
@@ -38,7 +38,7 @@ GtRemoteInspectorListingBufferedStream >> initialize [
 	bufferFuture := nil
 ]
 
-{ #category : 'api - stream' }
+{ #category : #'api - stream' }
 GtRemoteInspectorListingBufferedStream >> pollNext: anAsynchronousContext [
 	"Attempt to pull out the next value of this stream, registering the current task for wakeup if the value is not yet available, and returning None if the stream is exhausted.
 	There are several possible return values, each indicating a distinct stream state:
@@ -69,7 +69,7 @@ GtRemoteInspectorListingBufferedStream >> pollNext: anAsynchronousContext [
 		ifNil: [
 			bufferFuture
 				ifNil: [
-					bufferFuture := [ declarativeView retrieveItems: self bufferSize fromIndex: index ] asFuture ]
+					bufferFuture := [ declarativeView retrieveItems: self bufferSize fromIndex: index ] asAsyncFuture ]
 				ifNotNil: [
 					(bufferFuture poll: anAsynchronousContext)
 						ifReady: [ :aReadyPoll | buffer := LinkedList newFrom: aReadyPoll value ]

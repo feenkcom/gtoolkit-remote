@@ -1,6 +1,6 @@
-Extension { #name : 'GtPhlowListIconNamedDataBinder' }
+Extension { #name : #GtPhlowListIconNamedDataBinder }
 
-{ #category : '*GToolkit-RemoteGt' }
+{ #category : #'*GToolkit-RemoteGt' }
 GtPhlowListIconNamedDataBinder >> asRemotePhlowDeclarativeListingType [
 	^ GtPhlowDeclarativeListingType new beIcon
 ]

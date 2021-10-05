@@ -4,22 +4,22 @@ GtRemoteExamplesCommandLineHandler runs examples that require external servers t
 As these tests require the external environment to be set up and configured, they're not part of the standard test suite.
 "
 Class {
-	#name : 'GtRemoteExamplesCommandLineHandler',
-	#superclass : 'GtExamplesCommandLineHandler',
+	#name : #GtRemoteExamplesCommandLineHandler,
+	#superclass : #GtExamplesCommandLineHandler,
 	#category : 'GToolkit-RemoteGt'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemoteExamplesCommandLineHandler class >> commandName [
 	^ 'gtRemoteServerExamples'
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemoteExamplesCommandLineHandler class >> description [
 	^ 'Run Gtoolkit examples that are dependent on external servers'.
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 GtRemoteExamplesCommandLineHandler >> ensureRemoteExamplesLoaded [
 	| repository remoteExamples |
 
@@ -32,7 +32,7 @@ GtRemoteExamplesCommandLineHandler >> ensureRemoteExamplesLoaded [
 	repository workingCopy loadPackageNamed: remoteExamples.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemoteExamplesCommandLineHandler >> packages [ 
 	"Answer the list of packages to be run.
 	If --package is provided, answer only the specified package"
