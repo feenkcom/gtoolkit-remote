@@ -1,6 +1,6 @@
-Extension { #name : 'PharoLinkProxyObject' }
+Extension { #name : #PharoLinkProxyObject }
 
-{ #category : '*Gt4PharoLink' }
+{ #category : #'*Gt4PharoLink' }
 PharoLinkProxyObject >> declarativeViews [
 	"Answer the views for the receiver"
 	| rawViews |

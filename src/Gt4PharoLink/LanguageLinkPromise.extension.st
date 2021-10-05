@@ -1,6 +1,6 @@
-Extension { #name : 'LanguageLinkPromise' }
+Extension { #name : #LanguageLinkPromise }
 
-{ #category : '*Gt4PharoLink' }
+{ #category : #'*Gt4PharoLink' }
 LanguageLinkPromise >> gtValueFor: aView [
 
 	<gtView>

@@ -1,28 +1,28 @@
 Trait {
-	#name : 'TGtPharoLinkRemoteViewedObjectProxy',
+	#name : #TGtPharoLinkRemoteViewedObjectProxy,
 	#category : 'Gt4PharoLink-Proxies'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 TGtPharoLinkRemoteViewedObjectProxy >> getDeclarativeViewFor: aViewSelector [
 	^ self
 		proxyPerform: #getDeclarativeViewFor:
 		withPrimitiveArguments: { aViewSelector asSymbol }
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 TGtPharoLinkRemoteViewedObjectProxy >> getDeclarativeViewMethodNames [
 	^ self proxyPerform: #getDeclarativeViewMethodNames
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 TGtPharoLinkRemoteViewedObjectProxy >> getViewDeclaration: aViewSelector [ 
 	^ self
 		proxyPerform: #getViewDeclaration:
 		withPrimitiveArguments: { aViewSelector asSymbol }
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 TGtPharoLinkRemoteViewedObjectProxy >> getViewsDeclarations [
 	^ self proxyPerform: #getViewsDeclarations
 ]
