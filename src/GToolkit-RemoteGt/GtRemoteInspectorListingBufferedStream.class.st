@@ -10,7 +10,7 @@ Class {
 		'buffer',
 		'bufferFuture'
 	],
-	#category : 'GToolkit-RemoteGt'
+	#category : #'GToolkit-RemoteGt'
 }
 
 { #category : #'instance creation' }
@@ -69,7 +69,7 @@ GtRemoteInspectorListingBufferedStream >> pollNext: anAsynchronousContext [
 		ifNil: [
 			bufferFuture
 				ifNil: [
-					bufferFuture := [ declarativeView retrieveItems: self bufferSize fromIndex: index ] asFuture ]
+					bufferFuture := [ declarativeView retrieveItems: self bufferSize fromIndex: index ] asAsyncFuture ]
 				ifNotNil: [
 					(bufferFuture poll: anAsynchronousContext)
 						ifReady: [ :aReadyPoll | buffer := LinkedList newFrom: aReadyPoll value ]
