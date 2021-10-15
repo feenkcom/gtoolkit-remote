@@ -58,12 +58,15 @@ GtRemoteInspectorListingBufferedStream >> pollNext: anAsynchronousContext [
 				ifEmpty: [
 					done := true.
 					buffer := nil.
+					bufferFuture := nil.
 
 					^ AsyncPoll ready: AsyncOptionalValue none ].
 
 			aNextItem := aBuffer removeFirst.
 			index := index + 1.
-			aBuffer ifEmpty: [ buffer := nil ].
+			aBuffer ifEmpty: [ 
+				buffer := nil.
+				bufferFuture := nil ].
 
 			^ AsyncPoll ready: (AsyncOptionalValue some: aNextItem) ]
 		ifNil: [
