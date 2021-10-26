@@ -93,30 +93,8 @@ Class {
 	#classInstVars : [
 		'default'
 	],
-	#category : 'Gt4PharoLink-CodeSync'
+	#category : #'Gt4PharoLink-CodeSync'
 }
-
-{ #category : #accessing }
-GtPharoLinkCodeSync class >> base64Decode: aCharacterStream [
-
-	| fuelStream |
-	fuelStream := ReadWriteStream on: (ByteArray new: 100).
-	Base64MimeConverter new
-		mimeStream: aCharacterStream;
-		dataStream: fuelStream;
-		mimeDecodeToByteArray.
-	^ FLMaterializer materializeFromByteArray: fuelStream contents
-]
-
-{ #category : #accessing }
-GtPharoLinkCodeSync class >> base64Encode: anObject to: aCharacterStream [
-
-	| fuelStream |
-	fuelStream := ReadWriteStream on: (ByteArray new: 100).
-	FLSerializer serialize: anObject on: fuelStream.
-	fuelStream reset.
-	Base64MimeConverter mimeEncode: fuelStream to: aCharacterStream
-]
 
 { #category : #accessing }
 GtPharoLinkCodeSync class >> default [
@@ -161,18 +139,18 @@ GtPharoLinkCodeSync >> do: aBlockString with: anObject [
 	| message promise |
 	message := String streamContents: [ :stream | 
 		           stream nextPutAll: '
-						object := GtPharoLinkCodeSync base64Decode: '''.
-		           self class base64Encode: anObject to: stream.
+						object := LanguageLinkUtils base64Decode: '''.
+		           LanguageLinkUtils base64Encode: anObject to: stream.
 		           stream
 			           nextPutAll: ''' readStream.
 						block := ';
 			           nextPutAll: aBlockString;
 			           nextPutAll: '.
 						result := String streamContents: [ :stream |
-							GtPharoLinkCodeSync base64Encode: (block value: object) to: stream ].
+							LanguageLinkUtils base64Encode: (block value: object) to: stream ].
 						result' ].
 	promise := application newCommandFactory send: message.
-	promise transformBlock: [ :r | self class base64Decode: r readStream ].
+	promise transformBlock: [ :r | LanguageLinkUtils base64Decode: r readStream ].
 	^ promise "waitForValue"
 ]
 
