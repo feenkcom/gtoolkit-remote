@@ -22,7 +22,7 @@ Class {
 		'object',
 		'declarativeViewsBySelector'
 	],
-	#category : 'GToolkit-RemotePhlow-InspectorCore'
+	#category : #'GToolkit-RemotePhlow-InspectorCore'
 }
 
 { #category : #'instance creation' }
@@ -106,5 +106,14 @@ GtRemotePhlowViewedObject >> object [
 
 { #category : #initialization }
 GtRemotePhlowViewedObject >> phlowDeclarativeViews [
-	^ object gtDeclarativePhlowViews
+	"Retrieve the objects declarative views.
+	If the default Raw view can't be declarative, provide one that is."
+	| views |
+
+	views := object gtDeclarativePhlowViews.
+	views 
+		detect: [ :each | each title = 'Raw' ]
+		ifNone: [ views add: (object gtRemoteGtRawFor: GtPhlowView empty) ].
+	
+	^ views
 ]
