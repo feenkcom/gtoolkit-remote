@@ -115,7 +115,9 @@ LanguageLinkProxyObject >> gtViewsInContext: aContext [
 LanguageLinkProxyObject >> remoteViewsFor: aView [
 	"Should be all views, but just get Raw and Print views for now"
 
-	^ self declarativeViews collect: [ :declarativeView | declarativeView viewFor: aView ].
+	^ [ self declarativeViews collect: [ :declarativeView | declarativeView viewFor: aView ] ]
+		on: LanguageLinkServerNotRunningError
+		do: [ #() ].
 
 ]
 
