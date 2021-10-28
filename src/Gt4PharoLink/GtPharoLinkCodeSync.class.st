@@ -239,6 +239,14 @@ GtPharoLinkCodeSync >> initialize [
 	events := WaitfreeQueue new
 ]
 
+{ #category : #testing }
+GtPharoLinkCodeSync >> isRunning [
+
+	^ application
+		  ifNil: [ false ]
+		  ifNotNil: [ :theApp | theApp isRunning ]
+]
+
 { #category : #accessing }
 GtPharoLinkCodeSync >> log [
 	^ log
