@@ -116,8 +116,10 @@ LanguageLinkProxyObject >> remoteViewsFor: aView [
 	"Should be all views, but just get Raw and Print views for now"
 
 	^ [ self declarativeViews collect: [ :declarativeView | declarativeView viewFor: aView ] ]
-		on: LanguageLinkServerNotRunningError
-		do: [ #() ].
+		on: LanguageLinkServerNotRunningError, LanguageLinkCommunicationError
+		do: [ :ex | application isRunning
+			ifTrue: [ ex pass ]
+			ifFalse: [ #() ] ].
 
 ]
 
