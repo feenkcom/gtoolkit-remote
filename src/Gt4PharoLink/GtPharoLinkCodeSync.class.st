@@ -200,26 +200,31 @@ GtPharoLinkCodeSync >> gtRemotePlayground: aView [
 
 { #category : #accessing }
 GtPharoLinkCodeSync >> gtRemoteProperties: aView [
-
 	<gtView>
-	application isRunning ifFalse: [ ^ aView empty ].
 	^ aView columnedList
-		  title: 'Properties';
-		  priority: 8;
-		  items: [ 
-			  { 
-				  { 
-					  'Changes file'.
-					  (application newCommandFactory
-						   << 'SourceFiles changesFileStream path asString';
-						   sendAndWait) }.
-				  { 
-					  'Epicea log'.
+		title: 'Properties';
+		priority: 8;
+		items: [ 
+			| items |
+			items := { 
+				'Is running' -> self isRunning asString.
+				'Server directory' -> application serverPath.
+				'Working directory' -> application settings workingDirectory
+				
+				} asOrderedCollection. 
+			self isRunning ifTrue: [
+				items add: ('Changes file' ->
+					(application newCommandFactory
+						<< 'SourceFiles changesFileStream path asString';
+						sendAndWait)).
+				items add: ('Epicea log' ->
 					  (application newCommandFactory
 						   << 'EpMonitor current log store asString';
-						   sendAndWait) } } ];
-		  column: 'Name' text: #first width: 100;
-		  column: 'Value' text: #second
+						   sendAndWait)) ].
+			items ];
+		  column: 'Name' text: #key width: 100;
+		  column: 'Value' text: #value;
+		send: #value
 ]
 
 { #category : #accessing }
