@@ -14,25 +14,14 @@ Class {
 	#category : #'Gt4PharoLink-Example Runtime'
 }
 
-{ #category : #'api - converting' }
-GtExampleResultSimplifiedFailureValue >> asGtExampleResultPreviewElement [
+{ #category : #'*GToolkit-Coder-UI' }
+GtExampleResultSimplifiedFailureValue >> asGtExampleResultPreviewElementFor: anExample [
 
-	^ BrVerticalPane new
-		  alignTopLeft;
-		  width: 200;
-		  vFitContent;
-		  constraintsDo: [ :c | c maxHeight: 200 ];
-		  addChild: (BrLabel new
-				   aptitude: BrGlamorousLabelAptitude new;
-				   padding: (BlInsets all: 5);
-				   hMatchParent;
-				   vFitContent;
-				   text: 'Failure converted to string';
-				   background: BrGlamorousColors failureBackgroundColor);
-		  addChild: (BrEditor new
-				   aptitude: BrGlamorousRegularEditorAptitude;
-				   text: self description asString;
-				   fitContentLimited)
+	^ GtPharoLinkExampleUtility
+		  resultPreviewElementWithTitle: 'Failure converted to string'
+		  description: self description asString
+		  background: BrGlamorousColors failureBackgroundColor
+		  example: anExample
 ]
 
 { #category : #'api - accessing' }

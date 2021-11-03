@@ -15,24 +15,13 @@ Class {
 }
 
 { #category : #'api - converting' }
-GtExampleResultSimplifiedErrorValue >> asGtExampleResultPreviewElement [
+GtExampleResultSimplifiedErrorValue >> asGtExampleResultPreviewElementFor: anExample [
 
-	^ BrVerticalPane new
-		  alignTopLeft;
-		  width: 200;
-		  vFitContent;
-		  constraintsDo: [ :c | c maxHeight: 200 ];
-		  addChild: (BrLabel new
-				   aptitude: BrGlamorousLabelAptitude new;
-				   padding: (BlInsets all: 5);
-				   hMatchParent;
-				   vFitContent;
-				   text: 'Error converted to string';
-				   background: BrGlamorousColors errorBackgroundColor);
-		  addChild: (BrEditor new
-				   aptitude: BrGlamorousRegularEditorAptitude;
-				   text: self description asString;
-				   fitContentLimited)
+	^ GtPharoLinkExampleUtility
+		  resultPreviewElementWithTitle: 'Error converted to string'
+		  description: self description asString
+		  background: BrGlamorousColors errorBackgroundColor
+		  example: anExample
 ]
 
 { #category : #'api - converting' }
