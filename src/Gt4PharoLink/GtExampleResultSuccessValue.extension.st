@@ -4,5 +4,5 @@ Extension { #name : #GtExampleResultSuccessValue }
 GtExampleResultSuccessValue >> asGtSimplifiedExampleResultValue [
 
 	^ GtExampleResultSimplifiedSuccessValue new description:
-		  self value printString
+		  self value asGtSimplifiedExampleResultValueObject
 ]

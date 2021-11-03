@@ -15,6 +15,27 @@ Class {
 }
 
 { #category : #'api - converting' }
+GtExampleResultSimplifiedSuccessValue >> asGtExampleResultPreviewElement [
+
+	^ BrVerticalPane new
+		  alignTopLeft;
+		  width: 200;
+		  vFitContent;
+		  constraintsDo: [ :c | c maxHeight: 200 ];
+		  addChild: (BrLabel new
+				   aptitude: BrGlamorousLabelAptitude new;
+				   padding: (BlInsets all: 5);
+				   hMatchParent;
+				   vFitContent;
+				   text: 'Result value converted to string';
+				   background: BrGlamorousColors successBackgroundColor);
+		  addChild: (BrEditor new
+				   aptitude: BrGlamorousRegularEditorAptitude;
+				   text: self description asString;
+				   fitContentLimited)
+]
+
+{ #category : #'api - converting' }
 GtExampleResultSimplifiedSuccessValue >> asGtSimplifiedExampleResultValue [
 
 	"Return an example result value with a simplified value, e.g., string, number."
