@@ -269,7 +269,7 @@ GtPharoLinkCodeSync >> runExamples: anExampleGroup [
 		  do: '[ :e |
 					e runAll.
 					e examples do: [ :f | f hasResult
-						ifTrue: [ f result returnValue: nil ] ].
+						ifTrue: [ f result beSimplifiedExampleResultValue ] ].
 					e ]'
 		  with: anExampleGroup
 ]
