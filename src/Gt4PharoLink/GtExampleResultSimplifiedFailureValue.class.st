@@ -14,7 +14,7 @@ Class {
 	#category : #'Gt4PharoLink-Example Runtime'
 }
 
-{ #category : #'*GToolkit-Coder-UI' }
+{ #category : #'api - converting' }
 GtExampleResultSimplifiedFailureValue >> asGtExampleResultPreviewElementFor: anExample [
 
 	^ GtPharoLinkExampleUtility
