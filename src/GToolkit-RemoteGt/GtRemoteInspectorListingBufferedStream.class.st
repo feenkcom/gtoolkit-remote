@@ -78,3 +78,13 @@ GtRemoteInspectorListingBufferedStream >> pollNext: anAsynchronousContext [
 						ifReady: [ :aReadyPoll | buffer := LinkedList newFrom: aReadyPoll value ]
 						ifPending: [ :aPendingPoll | ^ aPendingPoll ] ] ] ] repeat
 ]
+
+{ #category : #'api - stream copy' }
+GtRemoteInspectorListingBufferedStream >> postSimilarCopy [
+	"Is called by similarCopy. self is a shallow copy, implementors should set the fields as necessary to complete the similar copy"
+	
+	index := 1.
+	done := false.
+	buffer := nil.
+	bufferFuture := nil
+]
