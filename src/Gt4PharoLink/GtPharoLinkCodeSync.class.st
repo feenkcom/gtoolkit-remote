@@ -107,16 +107,6 @@ GtPharoLinkCodeSync class >> default [
 ]
 
 { #category : #accessing }
-GtPharoLinkCodeSync class >> initializeRemote [
-
-	SourceFiles gtPharoLinkEnsureReadFileWriteMemoryOpen.
-	EpMonitor current log initializeWith: OmMemoryStore new
-	"(CodeImporter fileStream: virtualChanges readStream)
-		gtReduceToUnsavedChunks;
-		evaluate."
-]
-
-{ #category : #accessing }
 GtPharoLinkCodeSync class >> reset [
 
 	default ifNotNil: #stop.
@@ -291,11 +281,7 @@ GtPharoLinkCodeSync >> start [
 
 	log announcer when: EpEntryAdded send: #entryAdded: to: self.
 	events flush.
-	application start.
-	"detach file log and changes"
-	application newCommandFactory
-		<< 'GtPharoLinkCodeSync initializeRemote';
-		sendAndWait
+	application start
 ]
 
 { #category : #accessing }
