@@ -4,8 +4,14 @@ Class {
 	#instVars : [
 		'totalItemsCount'
 	],
-	#category : 'GToolkit-RemotePhlow-DeclarativeViews'
+	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
+
+{ #category : #'api - accessing' }
+GtPhlowDeclarativeListingView >> flushItemsIterator [ 
+
+	phlowDataSource flushItemsIterator
+]
 
 { #category : #initialization }
 GtPhlowDeclarativeListingView >> initializeFromInspector: anInspector [

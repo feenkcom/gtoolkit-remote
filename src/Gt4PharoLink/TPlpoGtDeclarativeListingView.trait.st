@@ -1,7 +1,14 @@
 Trait {
 	#name : #TPlpoGtDeclarativeListingView,
-	#category : 'Gt4PharoLink-Proxies'
+	#category : #'Gt4PharoLink-Proxies'
 }
+
+{ #category : #accessing }
+TPlpoGtDeclarativeListingView >> flushItemsIterator [
+
+	^ self
+		proxyPerform: #flushItemsIterator
+]
 
 { #category : #accessing }
 TPlpoGtDeclarativeListingView >> retrieveItems: anItemsCount fromIndex: anIndex [
