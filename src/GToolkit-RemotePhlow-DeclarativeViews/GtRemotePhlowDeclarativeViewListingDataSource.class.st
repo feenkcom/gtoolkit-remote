@@ -4,8 +4,15 @@ Class {
 	#instVars : [
 		'itemsIterator'
 	],
-	#category : 'GToolkit-RemotePhlow-DeclarativeViews'
+	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
+
+{ #category : #api }
+GtRemotePhlowDeclarativeViewListingDataSource >> flushItemsIterator [
+	"Flush the items iterator to force the displayed values to be regenerated"
+
+	itemsIterator := nil.
+]
 
 { #category : #accessing }
 GtRemotePhlowDeclarativeViewListingDataSource >> formatItem: anObject atIndex: anIndex [

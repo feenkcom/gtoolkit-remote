@@ -8,7 +8,12 @@ GtPhlowDeclarativeColumnedListView >> viewFor: aView [
 	list := aView columnedList 
 		title: title;
 		priority: priority;
-		items: [ GtRemoteInspectorListingBufferedStream declarativeView: self ].
+		items: [ GtRemoteInspectorListingBufferedStream declarativeView: self ];
+		actionButtonIcon: BrGlamorousVectorIcons refresh 
+			tooltip: 'Update'
+			action: [ :aButton :aTab | 
+				phlowDataSource flushItemsIterator.
+				aTab viewContentElement phlow update ].
 	columnTitles withIndexDo: [ :cTitle :aColumnIndex |
 		| columnSpawnsObject |
 		

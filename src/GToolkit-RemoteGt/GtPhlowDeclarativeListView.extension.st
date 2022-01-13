@@ -11,6 +11,11 @@ GtPhlowDeclarativeListView >> viewFor: aView [
 		priority: priority;
 		items: [ GtRemoteInspectorListingBufferedStream declarativeView: self ];
 		send: [ :arg :selection | 
-			self retriveSentItemAt: selection first ].
+			self retriveSentItemAt: selection first ];
+		actionButtonIcon: BrGlamorousVectorIcons refresh 
+			tooltip: 'Update'
+			action: [ :aButton :aTab | 
+				phlowDataSource flushItemsIterator.
+				aTab viewContentElement phlow update ].
 	^list
 ]
