@@ -12,9 +12,14 @@ TPlpoGtDeclarativeListingView >> flushItemsIterator [
 
 { #category : #accessing }
 TPlpoGtDeclarativeListingView >> retrieveItems: anItemsCount fromIndex: anIndex [
-	^ self
-		proxyPerform: #retrieveItems:fromIndex:
-		withPrimitiveArguments: { anItemsCount . anIndex  }
+
+	^ self evaluateSourceSequence: (String streamContents: [ :stream | 
+		stream
+			<< 'PharoLinkAnswerByValue setByValueOnly.'; lf;
+			<< 'self retrieveItems: ';
+			print: anItemsCount;
+			<< ' fromIndex: ';
+			print: anIndex ]).
 ]
 
 { #category : #accessing }
