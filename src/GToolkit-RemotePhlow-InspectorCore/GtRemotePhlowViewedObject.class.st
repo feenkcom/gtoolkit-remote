@@ -59,9 +59,9 @@ GtRemotePhlowViewedObject >> getViewDeclaration: viewSelector [
 
 { #category : #'api - accessing' }
 GtRemotePhlowViewedObject >> getViewDeclarationForView: aDeclarativeView [
+
+	PharoLinkAnswerByValue setByValueOnly.
 	^ aDeclarativeView asDictionaryForExport
-		at: #'__pharolinkImmediate' put: true;
-		yourself.	
 ]
 
 { #category : #'api - accessing' }
@@ -70,9 +70,8 @@ GtRemotePhlowViewedObject >> getViewsDeclarations [
 	viewDeclarations := (self declarativeViewsBySelector 
 		collect: [ :declarativeView |
 			self getViewDeclarationForView: declarativeView ]).
-	
+	PharoLinkAnswerByValue setByValueOnly.
 	^ Dictionary new
-		at: #'__pharolinkImmediate' put: true;
 		at: 'views' put: viewDeclarations asArray;
 		yourself
 ]
