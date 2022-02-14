@@ -14,6 +14,12 @@ Class {
 	#category : #'Gt4PharoLink-Example Runtime'
 }
 
+{ #category : #accessing }
+GtExampleResultSimplifiedFailureValue class >> leJsonV4Name [
+
+	^ #gtExampleResultSimplifiedFailureValue
+]
+
 { #category : #'api - converting' }
 GtExampleResultSimplifiedFailureValue >> asGtExampleResultPreviewElementFor: anExample [
 
