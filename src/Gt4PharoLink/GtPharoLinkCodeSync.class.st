@@ -170,11 +170,7 @@ GtPharoLinkCodeSync >> flush [
 
 { #category : #accessing }
 GtPharoLinkCodeSync >> flushAsync [
-	BlTktWorkerProvider nonUISinglePool
-		schedule:
-			([ self flush ] asBlTktCommand
-				name: 'CodeSync flush';
-				yourself)
+	[ self flush ] asAsyncFuture await
 ]
 
 { #category : #accessing }
