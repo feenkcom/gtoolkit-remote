@@ -8,6 +8,14 @@ Class {
 	#category : 'GToolkit-RemoteGt-Declarative Views'
 }
 
+{ #category : #testing }
+GtLoadItemsStackSignal class >> gtNormalOperationSignal [
+	"Answer a Boolean indicating whether this signal is generated as part of normal operations.
+	Excluding these signals makes a good starting point for application specific logging, or logging unexpected signals"
+
+	^ true.
+]
+
 { #category : #accessing }
 GtLoadItemsStackSignal >> chunkSize [
 	^ chunkSize
