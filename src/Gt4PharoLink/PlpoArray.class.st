@@ -9,3 +9,8 @@ PlpoArray class >> remoteClassName [
 
 	^ #Array
 ]
+
+{ #category : #accessing }
+PlpoArray >> size [
+	^ self proxyPerform: #size
+]
