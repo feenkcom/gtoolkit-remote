@@ -5,24 +5,25 @@ Current limitations:
 
 - Only matchParent and fixed column widths are supported
 
-!!Internal Representation and Key Implementation Points.
+## Internal Representation and Key Implementation Points.
 
-!!!Instance Variables
+### Instance Variables
 	columnTitles:	<Array of String>
 	columnWidths:	<Array of Integer|nil>
 	items:				<Array of Array>	These are the formatted values to display, not the raw values to send
 
+
 "
 Class {
-	#name : 'GtRemotePhlowDeclarativeColumnedList',
-	#superclass : 'GtRemotePhlowDeclarativeListingView',
+	#name : #GtRemotePhlowDeclarativeColumnedList,
+	#superclass : #GtRemotePhlowDeclarativeListingView,
 	#instVars : [
 		'columns'
 	],
-	#category : 'GToolkit-RemotePhlow-PhlowViews'
+	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
 
-{ #category : 'converting' }
+{ #category : #converting }
 GtRemotePhlowDeclarativeColumnedList >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
@@ -38,7 +39,7 @@ GtRemotePhlowDeclarativeColumnedList >> asGtDeclarativeView [
 		dataTransport: GtPhlowDeclarativeView dataLazy
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeColumnedList >> column [
 	<return: #GtRemotePhlowColumn>
 	| aColumn |
@@ -48,7 +49,7 @@ GtRemotePhlowDeclarativeColumnedList >> column [
 	^ aColumn
 ]
 
-{ #category : 'api - scripting column' }
+{ #category : #'api - scripting column' }
 GtRemotePhlowDeclarativeColumnedList >> column: columnName iconName: anIconNameComputation [
 	| aColumn |
 	aColumn := self column.
@@ -56,7 +57,7 @@ GtRemotePhlowDeclarativeColumnedList >> column: columnName iconName: anIconNameC
 	aColumn iconName: anIconNameComputation
 ]
 
-{ #category : 'api - scripting column' }
+{ #category : #'api - scripting column' }
 GtRemotePhlowDeclarativeColumnedList >> column: columnName iconName: anIconNameComputation spawn: aSpawnBlock [
 	| aColumn |
 	aColumn := self column.
@@ -65,7 +66,7 @@ GtRemotePhlowDeclarativeColumnedList >> column: columnName iconName: anIconNameC
 	aColumn spawnObject: aSpawnBlock.
 ]
 
-{ #category : 'api - scripting column' }
+{ #category : #'api - scripting column' }
 GtRemotePhlowDeclarativeColumnedList >> column: columnName iconName: anIconNameComputation spawn: aSpawnBlock width: aNumberOrNil [
 	| aColumn |
 	aColumn := self column.
@@ -75,7 +76,7 @@ GtRemotePhlowDeclarativeColumnedList >> column: columnName iconName: anIconNameC
 	aColumn width: aNumberOrNil.
 ]
 
-{ #category : 'api - scripting column' }
+{ #category : #'api - scripting column' }
 GtRemotePhlowDeclarativeColumnedList >> column: columnName iconName: anIconNameComputation width: aNumberOrNil [
 	| aColumn |
 	aColumn := self column.
@@ -84,7 +85,7 @@ GtRemotePhlowDeclarativeColumnedList >> column: columnName iconName: anIconNameC
 	aColumn width: aNumberOrNil.
 ]
 
-{ #category : 'api - scripting column' }
+{ #category : #'api - scripting column' }
 GtRemotePhlowDeclarativeColumnedList >> column: columnName text: aBlockClosure [
 	| aColumn |
 	aColumn := self column.
@@ -92,7 +93,7 @@ GtRemotePhlowDeclarativeColumnedList >> column: columnName text: aBlockClosure [
 	aColumn text: aBlockClosure
 ]
 
-{ #category : 'api - scripting column' }
+{ #category : #'api - scripting column' }
 GtRemotePhlowDeclarativeColumnedList >> column: columnName text: aBlockClosure spawn: aSpawnBlock [
 	| aColumn |
 	aColumn := self column.
@@ -101,7 +102,7 @@ GtRemotePhlowDeclarativeColumnedList >> column: columnName text: aBlockClosure s
 	aColumn spawnObject: aSpawnBlock.
 ]
 
-{ #category : 'api - scripting column' }
+{ #category : #'api - scripting column' }
 GtRemotePhlowDeclarativeColumnedList >> column: columnName text: aBlockClosure spawn: aSpawnBlock width: aNumberOrNil [
 	| aColumn |
 	aColumn := self column.
@@ -111,7 +112,7 @@ GtRemotePhlowDeclarativeColumnedList >> column: columnName text: aBlockClosure s
 	aColumn width: aNumberOrNil.
 ]
 
-{ #category : 'api - scripting column' }
+{ #category : #'api - scripting column' }
 GtRemotePhlowDeclarativeColumnedList >> column: columnName text: aBlockClosure width: aNumberOrNil [
  	| aColumn |
 	aColumn := self column.
@@ -120,7 +121,7 @@ GtRemotePhlowDeclarativeColumnedList >> column: columnName text: aBlockClosure w
 	aColumn width: aNumberOrNil.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeColumnedList >> columns [
 	^ columns ifNil: [
 		columns := OrderedCollection new ]

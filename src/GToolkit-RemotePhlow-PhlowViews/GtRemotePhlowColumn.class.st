@@ -1,6 +1,6 @@
 Class {
-	#name : 'GtRemotePhlowColumn',
-	#superclass : 'Object',
+	#name : #GtRemotePhlowColumn,
+	#superclass : #Object,
 	#instVars : [
 		'index',
 		'title',
@@ -16,13 +16,13 @@ Class {
 	#category : 'GToolkit-RemotePhlow-PhlowViews'
 }
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtRemotePhlowColumn class >> initialize [
 	TextType := #text.
 	IconType := #icon
 ]
 
-{ #category : 'converting' }
+{ #category : #converting }
 GtRemotePhlowColumn >> asGtDeclarativeColumnDataType [
 	^ self isWithIcon
 		ifTrue: [ self isSpawningObject
@@ -33,49 +33,49 @@ GtRemotePhlowColumn >> asGtDeclarativeColumnDataType [
 			ifFalse: [ GtPhlowDeclarativeListingType new beText ] ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowColumn >> cellWidth [
 	^ width
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowColumn >> iconName: aBlock [
 	itemComputation := aBlock.
 	type := IconType
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowColumn >> index [
 	^ index
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowColumn >> index: aColumnIndex [
 	index := aColumnIndex
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 GtRemotePhlowColumn >> isSpawningObject [
 	^ spawnObjectComputation notNil
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 GtRemotePhlowColumn >> isWithIcon [
 	^ type = IconType
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowColumn >> itemComputation [
 	^ itemComputation ifNil: [ 
 		itemComputation := [ :item | item ] ]
 ]
 
-{ #category : 'private - accessing' }
+{ #category : #'private - accessing' }
 GtRemotePhlowColumn >> rowStencil [
 	^ nil
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowColumn >> spawnObject: aBlock [
 	"aBlock should return an Object that should be spawned when clicked on:
 		- a link button if the column data type is #text
@@ -86,30 +86,30 @@ GtRemotePhlowColumn >> spawnObject: aBlock [
 	spawnObjectComputation := aBlock
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowColumn >> spawnObjectComputation [
 	"If nil, the cell does not spawn an object"
 
 	^ spawnObjectComputation
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowColumn >> text: aBlock [
 	itemComputation := aBlock.
 	type := TextType
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowColumn >> title [
 	^ title
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowColumn >> title: anObject [
 	title := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowColumn >> width: aCellWidth [
 	width := aCellWidth
 ]

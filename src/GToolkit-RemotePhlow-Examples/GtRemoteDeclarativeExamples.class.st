@@ -4,15 +4,15 @@ GtRemoteDeclarativeGtExamples demonstrates the use of declarative views in Gtool
 This class runs the examples within the one image, and thus can be run without any external server setup.  Subclasses overwrite various methods to run the examples connecting to the remote server.
 "
 Class {
-	#name : 'GtRemoteDeclarativeExamples',
-	#superclass : 'Object',
+	#name : #GtRemoteDeclarativeExamples,
+	#superclass : #Object,
 	#instVars : [
 		'server'
 	],
 	#category : 'GToolkit-RemotePhlow-Examples'
 }
 
-{ #category : 'examples - views' }
+{ #category : #'examples - views' }
 GtRemoteDeclarativeExamples >> columnedListView [
 	<gtExample>
 	| viewProxy viewDictionary view data |
@@ -34,7 +34,7 @@ GtRemoteDeclarativeExamples >> columnedListView [
 	^ view
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 GtRemoteDeclarativeExamples >> columnedListViewLazyCheck: viewProxy [
 	| declarativeView |
 
@@ -43,7 +43,7 @@ GtRemoteDeclarativeExamples >> columnedListViewLazyCheck: viewProxy [
 
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 GtRemoteDeclarativeExamples >> declarativeViewNames [
 	"Answer the expected array of declarative views from the remote.
 	Subclasses may overwrite this if the set of views is different."
@@ -51,13 +51,13 @@ GtRemoteDeclarativeExamples >> declarativeViewNames [
 	^ #('gtLargeListFor:' 'gtStringFor:' 'gtListFor:' 'gtLargeColumnedListWithIndexFor:' 'gtColumnedListFor:' 'gtLargeColumnedListFor:' 'gtRemotePrintFor:')
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 GtRemoteDeclarativeExamples >> getRemoteObject [
 
 	^ GtRemotePhlowDeclarativeTestInspectable new
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 GtRemoteDeclarativeExamples >> getViewedObjectProxy [
 	"Answer the GtRemotePhlowViewedObject proxy for the remote object"
 
@@ -65,7 +65,7 @@ GtRemoteDeclarativeExamples >> getViewedObjectProxy [
 
 ]
 
-{ #category : 'examples - views' }
+{ #category : #'examples - views' }
 GtRemoteDeclarativeExamples >> listView [
 	<gtExample>
 	<after: #stopServer>
@@ -85,14 +85,14 @@ GtRemoteDeclarativeExamples >> listView [
 	^ view
 ]
 
-{ #category : 'private - commands' }
+{ #category : #'private - commands' }
 GtRemoteDeclarativeExamples >> listViewDisplayArray [
 	"Answer the command Array returned by the remote's list view"
 
 	^ #('42' 'Hello World' '2021-04-06T14:43:49.623384+02:00')
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 GtRemoteDeclarativeExamples >> listViewLazyCheck: viewProxy [
 	| declarativeView |
 
@@ -101,7 +101,7 @@ GtRemoteDeclarativeExamples >> listViewLazyCheck: viewProxy [
 
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 GtRemoteDeclarativeExamples >> printForString [
 	"Answer the string returned in the #gtPrintFor: view.
 	Subclasses may overwrite this as appropriate."
@@ -109,7 +109,7 @@ GtRemoteDeclarativeExamples >> printForString [
 	^ 'a GtRemotePhlowDeclarativeTestInspectable'
 ]
 
-{ #category : 'examples - views' }
+{ #category : #'examples - views' }
 GtRemoteDeclarativeExamples >> printView [
 	"Disable since this relies on having GToolkit-RemotePhlow-InspectorExtensions,
 	which is currently not the case in the CI"
@@ -125,7 +125,7 @@ GtRemoteDeclarativeExamples >> printView [
 	^ view
 ]
 
-{ #category : 'examples' }
+{ #category : #examples }
 GtRemoteDeclarativeExamples >> remoteObject [
 	"Answer the remote GtDeclarativeTestInspectable instance.
 	This will be a proxy with a remote server."
@@ -146,7 +146,7 @@ GtRemoteDeclarativeExamples >> remoteObject [
 	^ remoteObject
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 GtRemoteDeclarativeExamples >> runningServer [
 	"Answer a running server.
 	No server is required running the examples in a single image.
@@ -156,7 +156,7 @@ GtRemoteDeclarativeExamples >> runningServer [
 
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 GtRemoteDeclarativeExamples >> stopServer [ 
 
 	server ifNotNil: 
@@ -164,7 +164,7 @@ GtRemoteDeclarativeExamples >> stopServer [
 		server := nil ]
 ]
 
-{ #category : 'examples - views' }
+{ #category : #'examples - views' }
 GtRemoteDeclarativeExamples >> stringView [
 	<gtExample>
 	<after: #stopServer>
@@ -178,7 +178,7 @@ GtRemoteDeclarativeExamples >> stringView [
 	^ view
 ]
 
-{ #category : 'examples' }
+{ #category : #examples }
 GtRemoteDeclarativeExamples >> viewedObjectProxy [
 	"Answer the GtRemotePhlowViewedObject proxy for the remote object"
 	<gtExample>
