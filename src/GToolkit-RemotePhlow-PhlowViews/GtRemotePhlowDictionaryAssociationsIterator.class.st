@@ -1,10 +1,10 @@
 Class {
-	#name : 'GtRemotePhlowDictionaryAssociationsIterator',
-	#superclass : 'GtRemotePhlowUnindexedCollectionIterator',
+	#name : #GtRemotePhlowDictionaryAssociationsIterator,
+	#superclass : #GtRemotePhlowUnindexedCollectionIterator,
 	#category : 'GToolkit-RemotePhlow-PhlowViews'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDictionaryAssociationsIterator >> iterationSelector [
 	^ #associationsDo:
 ]

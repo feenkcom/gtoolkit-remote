@@ -1,18 +1,18 @@
 Class {
-	#name : 'GtRemotePhlowDeclarativeTable',
-	#superclass : 'GtRemotePhlowDeclarativeView',
+	#name : #GtRemotePhlowDeclarativeTable,
+	#superclass : #GtRemotePhlowDeclarativeView,
 	#instVars : [
 		'items'
 	],
 	#category : 'GToolkit-RemotePhlow-PhlowViews'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeTable >> items [
 	^ items
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtRemotePhlowDeclarativeTable >> items: anObject [
 	items := anObject
 ]

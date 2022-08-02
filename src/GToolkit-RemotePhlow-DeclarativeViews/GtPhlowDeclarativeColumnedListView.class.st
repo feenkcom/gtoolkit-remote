@@ -1,14 +1,14 @@
 "
-GtDeclarativeColumnedList supports a subset of the possible configurations of ${class:name=GtPhlowColumnedListView}.
+GtDeclarativeColumnedList supports a subset of the possible configurations of {{gtClass:name=GtPhlowColumnedListView}}.
 
 Current limitations:
 
 - Only matchParent and fixed column widths are supported
 
-1. # Internal Representation and Key Implementation Points.
+# Internal Representation and Key Implementation Points.
 
 
-1. ## Instance Variables
+## Instance Variables
 
 	columnTitles:	<Array of String>
 	columnWidths:	<Array of Integer|nil>
@@ -25,7 +25,7 @@ Class {
 		'columnTypes',
 		'columnSpawnsObjects'
 	],
-	#category : 'GToolkit-RemotePhlow-DeclarativeViews'
+	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
 { #category : #'instance creation' }
