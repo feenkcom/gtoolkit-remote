@@ -4,12 +4,12 @@ Load the client and server components for remote Gt access.
 
 "
 Class {
-	#name : 'BaselineOfGToolkitRemote',
-	#superclass : 'BaselineOf',
-	#category : 'BaselineOfGToolkitRemote'
+	#name : #BaselineOfGToolkitRemote,
+	#superclass : #BaselineOf,
+	#category : #BaselineOfGToolkitRemote
 }
 
-{ #category : 'baseline' }
+{ #category : #baseline }
 BaselineOfGToolkitRemote >> baseline: spec [
 	<baseline> 
 	spec for: #'common' do: [
@@ -17,7 +17,8 @@ BaselineOfGToolkitRemote >> baseline: spec [
 				spec repository: 'github://feenkcom/gtoolkit-phlow:main/src' ].
 		spec 
 			package: 'GToolkit-RemotePhlow-DeclarativeViews';
-			package: 'GToolkit-RemotePhlow-PhlowViews';
+			package: 'GToolkit-RemotePhlow-PhlowViews'  with: [
+				spec requires: #(#'GToolkitPhlow') ];
 			package: 'GToolkit-RemotePhlow-InspectorCore' with: [
 				spec requires: #(#'GToolkit-RemotePhlow-PhlowViews') ];
 			"GToolkit-RemotePhlow-Examples all run in the local image, 
