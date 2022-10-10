@@ -2837,7 +2837,7 @@ category: '*GToolkit-RemotePhlow-GemStone'
 method: GtRemotePhlowDeclarativeView
 writeJsonString: aJsonObject
 
-	^ STON toJsonStringPretty: aJsonObject
+	^ aJsonObject asJson
 %
 
 ! Class extensions for #'GtRemotePhlowViewedObject'

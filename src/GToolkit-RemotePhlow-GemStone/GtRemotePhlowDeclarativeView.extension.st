@@ -23,5 +23,5 @@ GtRemotePhlowDeclarativeView class >> readJsonString: aString [
 { #category : #'*GToolkit-RemotePhlow-GemStone' }
 GtRemotePhlowDeclarativeView >> writeJsonString: aJsonObject [
 
-	^ STON toJsonStringPretty: aJsonObject
+	^ aJsonObject asJson
 ]
