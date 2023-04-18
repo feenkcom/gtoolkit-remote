@@ -1,6 +1,6 @@
 Extension { #name : #TGtGroup }
 
-{ #category : #'*GToolkit-RemotePhlow-PhlowViews' }
+{ #category : #'*GToolkit-RemoteGt' }
 TGtGroup >> asGPhlowItemsIterator [
 	^ GtRemotePhlowSequenceableCollectionIterator forCollection: self
 ]
