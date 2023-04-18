@@ -1,6 +1,6 @@
 Trait {
 	#name : #TGtPharoLinkRemoteViewedObjectProxy,
-	#category : 'Gt4PharoLink-Proxies'
+	#category : #'Gt4PharoLink-Proxies'
 }
 
 { #category : #accessing }
@@ -24,5 +24,8 @@ TGtPharoLinkRemoteViewedObjectProxy >> getViewDeclaration: aViewSelector [
 
 { #category : #accessing }
 TGtPharoLinkRemoteViewedObjectProxy >> getViewsDeclarations [
-	^ self proxyPerform: #getViewsDeclarations
+	^ self newCommandFactory
+		setByValueOnly;
+		<< 'self getViewsDeclarations';
+		sendAndWait.
 ]
