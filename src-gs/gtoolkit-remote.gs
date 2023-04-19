@@ -92,16 +92,16 @@ doit
 	options: #( #logCreation )
 )
 		category: 'GToolkit-RemotePhlow-DeclarativeViews';
-		comment: 'GtDeclarativeColumnedList supports a subset of the possible configurations of ${class:name=GtPhlowColumnedListView}.
+		comment: 'GtDeclarativeColumnedList supports a subset of the possible configurations of {{gtClass:name=GtPhlowColumnedListView}}.
 
 Current limitations:
 
 - Only matchParent and fixed column widths are supported
 
-1. # Internal Representation and Key Implementation Points.
+# Internal Representation and Key Implementation Points.
 
 
-1. ## Instance Variables
+## Instance Variables
 
 	columnTitles:	<Array of String>
 	columnWidths:	<Array of Integer|nil>
@@ -126,18 +126,18 @@ doit
 	options: #( #logCreation )
 )
 		category: 'GToolkit-RemotePhlow-DeclarativeViews';
-		comment: 'GtDeclarativeList supports a subset of the possible configurations of ${class:name=GtPhlowListView}.
+		comment: '{{gtClass:GtPhlowDeclarativeListView}} supports a subset of the possible configurations of {{gtClass:name=GtPhlowListView}}.
 
  
-1. # Internal Representation and Key Implementation Points.
+#Internal Representation and Key Implementation Points.
 
 
-1. ## Instance Variables
+##Instance Variables
 
-	items:		<Array> - The formatted items to display (not the raw values held in the list)
+	items:		{{gtClass:Array}} - The formatted items to display (not the raw values held in the list)
 
 
-1. ## Implementation Points
+##Implementation Points
 
 ';
 		immediateInvariant.
@@ -398,12 +398,13 @@ doit
 		comment: 'GtDeclarativeTestInspectable is a simple object that can be used to test the Gt declarative views. 
 
  
-!!Internal Representation and Key Implementation Points.
+## Internal Representation and Key Implementation Points.
 
-!!!Instance Variables
+### Instance Variables
 
 	collectionOfObjects:		<Array>  a collection of objects for displaying in lists
 	string:		<String> for displaying in a text view
+
 ';
 		immediateInvariant.
 true.
@@ -501,18 +502,19 @@ doit
 	options: #( #logCreation )
 )
 		category: 'GToolkit-RemotePhlow-PhlowViews';
-		comment: 'GtDeclarativeColumnedList supports a subset of the possible configurations of ${class:name=GtPhlowColumnedListView}.
+		comment: '{{gtClass:GtRemotePhlowDeclarativeColumnedList}} supports a subset of the possible configurations of {{gtClass:name=GtPhlowColumnedListView}}.
 
 Current limitations:
 
 - Only matchParent and fixed column widths are supported
 
-!!Internal Representation and Key Implementation Points.
+## Internal Representation and Key Implementation Points.
 
-!!!Instance Variables
+### Instance Variables
 	columnTitles:	<Array of String>
 	columnWidths:	<Array of Integer|nil>
 	items:				<Array of Array>	These are the formatted values to display, not the raw values to send
+
 ';
 		immediateInvariant.
 true.
@@ -532,18 +534,19 @@ doit
 	options: #( #logCreation )
 )
 		category: 'GToolkit-RemotePhlow-PhlowViews';
-		comment: 'GtDeclarativeList supports a subset of the possible configurations of ${class:name=GtPhlowListView}.
+		comment: 'GtDeclarativeList supports a subset of the possible configurations of {{gtClass:name=GtPhlowListView}}.
 
  
-!!Internal Representation and Key Implementation Points.
+## Internal Representation and Key Implementation Points.
 
-!!!Instance Variables
-	itemsBuilder: 	<BlockClosure> - A BlockClosure that will return the (unformatted) list of items to be displayed.
-	items:				<Array> - The formatted items to display (not the raw values held in the list)
-	itemTextBlock: 	<BlockClosure> - A BlockClosure (or Symbol) that converts each item to its displayed format.  The result of the BlockClosure must be a JSON primitive type, effectively a string or number.
+### Instance Variables
+	itemsBuilder: 	{{gtClass:BlockClosure}} - A BlockClosure that will return the (unformatted) list of items to be displayed.
+	items:				{{gtClass:Array}} - The formatted items to display (not the raw values held in the list)
+	itemTextBlock: 	{{gtClass:BlockClosure}} - A BlockClosure (or Symbol) that converts each item to its displayed format.  The result of the BlockClosure must be a JSON primitive type, effectively a string or number.
 
 
-!!!Implementation Points';
+### Implementation Points
+';
 		immediateInvariant.
 true.
 %
@@ -967,6 +970,13 @@ viewName
 ! Class implementation for 'GtPhlowDeclarativeListingView'
 
 !		Instance methods for 'GtPhlowDeclarativeListingView'
+
+category: 'api - accessing'
+method: GtPhlowDeclarativeListingView
+flushItemsIterator 
+
+	phlowDataSource flushItemsIterator
+%
 
 category: 'initialization'
 method: GtPhlowDeclarativeListingView
@@ -2420,6 +2430,14 @@ phlowView: anObject
 
 !		Instance methods for 'GtRemotePhlowDeclarativeViewListingDataSource'
 
+category: 'api'
+method: GtRemotePhlowDeclarativeViewListingDataSource
+flushItemsIterator
+	"Flush the items iterator to force the displayed values to be regenerated"
+
+	itemsIterator := nil.
+%
+
 category: 'accessing'
 method: GtRemotePhlowDeclarativeViewListingDataSource
 formatItem: anObject atIndex: anIndex
@@ -2506,13 +2524,12 @@ retriveSpawnedObjectAtRow: aRowIndex column: aColumnIndex
 		forElementsFrom: aRowIndex 
 		to: aRowIndex 
 		withIndexDo: [ :aRowObject :anItemIndex |
-			| aColumn aCellObject aSpawnedObject |
+			| aColumn aSpawnedObject |
 			
 			aColumn := self phlowView columns at: aColumnIndex.
-			aCellObject := aColumn itemComputation value: aRowObject.
 			aSpawnedObject := aColumn isSpawningObject
-				ifTrue: [ aColumn spawnObjectComputation cull: aCellObject cull: anItemIndex  ]
-				ifFalse: [ aCellObject ].
+				ifTrue: [ aColumn spawnObjectComputation cull: aRowObject cull: anItemIndex  ]
+				ifFalse: [ aRowObject ].
 			^ aSpawnedObject ].
 	^ nil
 %
@@ -2613,9 +2630,8 @@ getViewDeclaration: viewSelector
 category: 'api - accessing'
 method: GtRemotePhlowViewedObject
 getViewDeclarationForView: aDeclarativeView
+
 	^ aDeclarativeView asDictionaryForExport
-		at: #'__pharolinkImmediate' put: true;
-		yourself.	
 %
 
 category: 'api - accessing'
@@ -2625,9 +2641,7 @@ getViewsDeclarations
 	viewDeclarations := (self declarativeViewsBySelector 
 		collect: [ :declarativeView |
 			self getViewDeclarationForView: declarativeView ]).
-	
 	^ Dictionary new
-		at: #'__pharolinkImmediate' put: true;
 		at: 'views' put: viewDeclarations asArray;
 		yourself
 %
@@ -2665,12 +2679,14 @@ object
 category: 'initialization'
 method: GtRemotePhlowViewedObject
 phlowDeclarativeViews
-	^ object gtDeclarativePhlowViews
+	"Retrieve the objects declarative views."
+
+	^ object gtDeclarativePhlowViews.
 %
 
-! Class extensions for #'AbstractDictionary'
+! Class extensions for 'AbstractDictionary'
 
-!		Instance methods for #'AbstractDictionary'
+!		Instance methods for 'AbstractDictionary'
 
 category: '*GToolkit-RemotePhlow-InspectorExtensions-GemStone'
 method: AbstractDictionary
@@ -2706,9 +2722,9 @@ gtRemoteKeysFor: aView
 		items: [ self asGPhlowKeysIterator ]
 %
 
-! Class extensions for #'Behavior'
+! Class extensions for 'Behavior'
 
-!		Instance methods for #'Behavior'
+!		Instance methods for 'Behavior'
 
 category: '*GToolkit-RemotePhlow-Gemstone'
 method: Behavior
@@ -2762,17 +2778,7 @@ gtSuperclassesFor: aView
 
 ! Class extensions for 'Collection'
 
-!		Instance methods for 'Collection'
-
-category: '*GToolkit-RemotePhlow-PhlowViews'
-method: Collection
-asGPhlowItemsIterator
-	^ GtRemotePhlowGenericCollectionIterator forCollection: self
-%
-
-! Class extensions for #'Collection'
-
-!		Class methods for #'Collection'
+!		Class methods for 'Collection'
 
 category: '*GToolkit-RemotePhlow-GemStone'
 classmethod: Collection
@@ -2780,7 +2786,13 @@ gtGsInspectorIconName
 	^ #collectionIcon
 %
 
-!		Instance methods for #'Collection'
+!		Instance methods for 'Collection'
+
+category: '*GToolkit-RemotePhlow-PhlowViews'
+method: Collection
+asGPhlowItemsIterator
+	^ GtRemotePhlowGenericCollectionIterator forCollection: self
+%
 
 category: '*GToolkit-RemotePhlow-InspectorExtensions-Remote'
 method: Collection
@@ -2793,9 +2805,9 @@ gtRemoteItemsFor: aView
 		itemText: [ :eachItem | eachItem gtDisplayString ]
 %
 
-! Class extensions for #'GtRemotePhlowDeclarativeTestInspectable'
+! Class extensions for 'GtRemotePhlowDeclarativeTestInspectable'
 
-!		Class methods for #'GtRemotePhlowDeclarativeTestInspectable'
+!		Class methods for 'GtRemotePhlowDeclarativeTestInspectable'
 
 category: '*GToolkit-RemotePhlow-GemStone'
 classmethod: GtRemotePhlowDeclarativeTestInspectable
@@ -2804,9 +2816,9 @@ new
 	^ super new initialize
 %
 
-! Class extensions for #'GtRemotePhlowDeclarativeView'
+! Class extensions for 'GtRemotePhlowDeclarativeView'
 
-!		Class methods for #'GtRemotePhlowDeclarativeView'
+!		Class methods for 'GtRemotePhlowDeclarativeView'
 
 category: '*GToolkit-RemotePhlow-GemStone'
 classmethod: GtRemotePhlowDeclarativeView
@@ -2831,7 +2843,7 @@ readJsonString: aString
 	^ JsonParser parse: aString
 %
 
-!		Instance methods for #'GtRemotePhlowDeclarativeView'
+!		Instance methods for 'GtRemotePhlowDeclarativeView'
 
 category: '*GToolkit-RemotePhlow-GemStone'
 method: GtRemotePhlowDeclarativeView
@@ -2840,9 +2852,9 @@ writeJsonString: aJsonObject
 	^ aJsonObject asJson
 %
 
-! Class extensions for #'GtRemotePhlowViewedObject'
+! Class extensions for 'GtRemotePhlowViewedObject'
 
-!		Class methods for #'GtRemotePhlowViewedObject'
+!		Class methods for 'GtRemotePhlowViewedObject'
 
 category: '*GToolkit-RemotePhlow-Gemstone'
 classmethod: GtRemotePhlowViewedObject
@@ -2851,7 +2863,7 @@ new
 	^ super new initialize
 %
 
-!		Instance methods for #'GtRemotePhlowViewedObject'
+!		Instance methods for 'GtRemotePhlowViewedObject'
 
 category: '*GToolkit-RemotePhlow-GemStone'
 method: GtRemotePhlowViewedObject
@@ -2881,9 +2893,9 @@ rawViewData
 			stream nextPut: { icon. name. value } ] ].
 %
 
-! Class extensions for #'Magnitude'
+! Class extensions for 'Magnitude'
 
-!		Class methods for #'Magnitude'
+!		Class methods for 'Magnitude'
 
 category: '*GToolkit-RemotePhlow-GemStone'
 classmethod: Magnitude
@@ -2891,9 +2903,9 @@ gtGsInspectorIconName
 	^ #magnitudeIcon
 %
 
-! Class extensions for #'Object'
+! Class extensions for 'Object'
 
-!		Instance methods for #'Object'
+!		Instance methods for 'Object'
 
 category: '*GToolkit-RemotePhlow-InspectorCore'
 method: Object
@@ -3023,9 +3035,15 @@ gtViewsInCurrentContext
 		phlowView ]
 %
 
-! Class extensions for #'SequenceableCollection'
+! Class extensions for 'SequenceableCollection'
 
-!		Instance methods for #'SequenceableCollection'
+!		Instance methods for 'SequenceableCollection'
+
+category: '*GToolkit-RemotePhlow-PhlowViews'
+method: SequenceableCollection
+asGPhlowItemsIterator
+	^ GtRemotePhlowSequenceableCollectionIterator forCollection: self
+%
 
 category: '*GToolkit-RemotePhlow-InspectorExtensions-Remote'
 method: SequenceableCollection
@@ -3041,19 +3059,9 @@ gtRemoteItemsFor: aView
 			text: [ :eachItem | eachItem gtDisplayString ].
 %
 
-! Class extensions for 'SequenceableCollection'
+! Class extensions for 'String'
 
-!		Instance methods for 'SequenceableCollection'
-
-category: '*GToolkit-RemotePhlow-PhlowViews'
-method: SequenceableCollection
-asGPhlowItemsIterator
-	^ GtRemotePhlowSequenceableCollectionIterator forCollection: self
-%
-
-! Class extensions for #'String'
-
-!		Class methods for #'String'
+!		Class methods for 'String'
 
 category: '*GToolkit-RemotePhlow-GemStone'
 classmethod: String
@@ -3061,7 +3069,7 @@ gtGsInspectorIconName
 	^ #stringIcon
 %
 
-!		Instance methods for #'String'
+!		Instance methods for 'String'
 
 category: '*GToolkit-RemotePhlow-GemStone'
 method: String
