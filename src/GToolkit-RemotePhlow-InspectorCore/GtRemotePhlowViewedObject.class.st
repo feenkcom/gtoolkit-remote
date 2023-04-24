@@ -103,7 +103,14 @@ GtRemotePhlowViewedObject >> object [
 
 { #category : #initialization }
 GtRemotePhlowViewedObject >> phlowDeclarativeViews [
-	"Retrieve the objects declarative views."
+	"Retrieve the objects declarative views.
+	If the default Raw view can't be declarative, provide one that is."
+	| views |
 
-	^ object gtDeclarativePhlowViews.
+	views := object gtDeclarativePhlowViews.
+	views 
+		detect: [ :each | each title = 'Raw' ]
+		ifNone: [ views add: (object gtRemoteGtRawFor: GtPhlowView empty) ].
+	
+	^ views
 ]
