@@ -1314,7 +1314,7 @@ columnedListView
 	viewProxy := self viewedObjectProxy.
 	viewDictionary :=  viewProxy getViewDeclaration: #gtColumnedListFor:.
 	view := GtPhlowDeclarativeView fromDictionary: viewDictionary.
-	self assert: view title equals: 'Columned List'.
+	self assert: view title equals: 'Columned list'.
 	self assert: view columnTitles equals: #(Value Lowercase).
 	self assert: view columnWidths equals: #(nil 100).
 	self assert: view columnTypes equals: #(text text).
@@ -1823,7 +1823,7 @@ gtColumnedListFor: aView
 	<gtView>
 
 	^aView columnedList
-		title: 'Columned List';
+		title: 'Columned list';
 		priority: 20;
 		items: [ collectionOfObjects ];
 		column: 'Value' text: [ :anObject | anObject ];
@@ -1836,7 +1836,7 @@ gtColumnedListSpawnTextFor: aView
 	<gtView>
 
 	^aView columnedList
-		title: 'Spawn Text Columned List';
+		title: 'Spawn text columned list';
 		priority: 20;
 		items: [ collectionOfObjects ];
 		column: 'Value' text: [ :anObject | anObject ];
@@ -1851,7 +1851,7 @@ gtLargeColumnedListFor: aView
 	<gtView>
 
 	^aView columnedList
-		title: 'Large Columned List' ;
+		title: 'Large columned list' ;
 		priority: 21;
 		items: [ 1 to: 1022 ];
 		column: 'Value' text: [ :anObject | anObject ];
@@ -1864,7 +1864,7 @@ gtLargeColumnedListWithIndexFor: aView
 	<gtView>
 
 	^aView columnedList
-		title: 'Large Columned List with Index';
+		title: 'Large columned list with index';
 		priority: 21;
 		items: [ 1 to: 1022 ];
 		column: 'Index' text: [ :anObject  :anIndex | anIndex ];
@@ -1877,7 +1877,7 @@ gtLargeListFor: aView
 	<gtView>
 
 	^aView list
-		title: 'Large List';
+		title: 'Large list';
 		priority: 20;
 		items: [ 1 to: 1022 ];
 		itemText: [ :item | item  ]
@@ -2679,9 +2679,16 @@ object
 category: 'initialization'
 method: GtRemotePhlowViewedObject
 phlowDeclarativeViews
-	"Retrieve the objects declarative views."
+	"Retrieve the objects declarative views.
+	If the default Raw view can't be declarative, provide one that is."
+	| views |
 
-	^ object gtDeclarativePhlowViews.
+	views := object gtDeclarativePhlowViews.
+	views 
+		detect: [ :each | each title = 'Raw' ]
+		ifNone: [ views add: (object gtRemoteGtRawFor: #GtPhlowView asClass empty) ].
+	
+	^ views
 %
 
 ! Class extensions for 'AbstractDictionary'

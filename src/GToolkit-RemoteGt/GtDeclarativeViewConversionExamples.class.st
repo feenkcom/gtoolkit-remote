@@ -1,7 +1,7 @@
 Class {
 	#name : #GtDeclarativeViewConversionExamples,
 	#superclass : #Object,
-	#category : 'GToolkit-RemoteGt-Examples'
+	#category : #'GToolkit-RemoteGt-Examples'
 }
 
 { #category : #examples }
@@ -36,7 +36,7 @@ GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableColumn
 	declarativeView := (GtRemotePhlowDeclarativeTestInspectable new 
 		gtColumnedListFor: GtPhlowProtoView new) asGtDeclarativeView.
 
-	self assert: declarativeView title equals: 'Columned List'.
+	self assert: declarativeView title equals: 'Columned list'.
 	self assert: declarativeView priority equals: 20.
 	self assert: declarativeView retriveFormattedItems equals: #(#('42' '42') #('Hello World' 'hello world') #('2021-04-06T14:43:49.623384+02:00' '2021-04-06t14:43:49.623384+02:00')).
 	self assert: declarativeView columnTitles equals: #('Value' 'Lowercase').
