@@ -20,7 +20,7 @@ GtRemoteDeclarativeExamples >> columnedListView [
 	viewProxy := self viewedObjectProxy.
 	viewDictionary :=  viewProxy getViewDeclaration: #gtColumnedListFor:.
 	view := GtPhlowDeclarativeView fromDictionary: viewDictionary.
-	self assert: view title equals: 'Columned List'.
+	self assert: view title equals: 'Columned list'.
 	self assert: view columnTitles equals: #(Value Lowercase).
 	self assert: view columnWidths equals: #(nil 100).
 	self assert: view columnTypes equals: #(text text).
