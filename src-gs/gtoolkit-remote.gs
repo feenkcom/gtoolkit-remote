@@ -475,6 +475,42 @@ removeallclassmethods GtRemotePhlowDeclarativeView
 
 doit
 (GtRemotePhlowDeclarativeView
+	subclass: 'GtRemotePhlowDeclarativeEmptyView'
+	instVarNames: #(  )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowDeclarativeEmptyView
+removeallclassmethods GtRemotePhlowDeclarativeEmptyView
+
+doit
+(GtRemotePhlowDeclarativeView
+	subclass: 'GtRemotePhlowDeclarativeForwarderView'
+	instVarNames: #( viewSelector objectComputation )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowDeclarativeForwarderView
+removeallclassmethods GtRemotePhlowDeclarativeForwarderView
+
+doit
+(GtRemotePhlowDeclarativeView
 	subclass: 'GtRemotePhlowDeclarativeListingView'
 	instVarNames: #( itemsProviderComputation transformation )
 	classVars: #(  )
@@ -614,6 +650,24 @@ true.
 
 removeallmethods GtRemotePhlowDeclarativeTree
 removeallclassmethods GtRemotePhlowDeclarativeTree
+
+doit
+(GtRemotePhlowDeclarativeTree
+	subclass: 'GtRemotePhlowDeclarativeColumnedTree'
+	instVarNames: #( columns )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowDeclarativeColumnedTree
+removeallclassmethods GtRemotePhlowDeclarativeColumnedTree
 
 doit
 (Object
@@ -1758,12 +1812,33 @@ columnedList
 	^ self declarativeViewOfType: GtRemotePhlowDeclarativeColumnedList
 %
 
+category: 'decorating'
+method: GtRemotePhlowDeclarativeProtoView
+columnedTree
+
+	^ self declarativeViewOfType: GtRemotePhlowDeclarativeColumnedTree
+%
+
 category: 'private'
 method: GtRemotePhlowDeclarativeProtoView
 declarativeViewOfType: aGtDeclarativeViewClass
 	"Answer a new declarative view instance"
 
 	^ aGtDeclarativeViewClass new.
+%
+
+category: 'decorating'
+method: GtRemotePhlowDeclarativeProtoView
+empty
+
+	^ self declarativeViewOfType: GtRemotePhlowDeclarativeEmptyView
+%
+
+category: 'decorating'
+method: GtRemotePhlowDeclarativeProtoView
+forward
+
+	^ self declarativeViewOfType: GtRemotePhlowDeclarativeForwarderView
 %
 
 category: 'decorating'
@@ -1847,6 +1922,48 @@ gtColumnedListSpawnTextFor: aView
 
 category: 'inspecting'
 method: GtRemotePhlowDeclarativeTestInspectable
+gtColumnedTreeFor: aView
+	<gtView>
+
+	^aView columnedTree
+		title: 'Columned Tree';
+		priority: 35;
+		items: [ 1 to: 5 ];
+		children: [ :aNumber | 
+			(aNumber // 2 = aNumber)
+				ifTrue: [ #() ] 
+				ifFalse: [
+					aNumber // 2 to: (aNumber - 1) ] ];
+		column: 'x' text: [ :aNumber | aNumber ];
+		column: 'x * x' text: [ :aNumber | aNumber * aNumber ]
+%
+
+category: 'inspecting'
+method: GtRemotePhlowDeclarativeTestInspectable
+gtForwardListFor: aView
+	<gtView>
+
+	^aView forward
+		title: 'Forward List';
+		priority: 45;
+		object: [ self ];
+		view: #gtListFor:
+%
+
+category: 'inspecting'
+method: GtRemotePhlowDeclarativeTestInspectable
+gtForwardListTwiceFor: aView
+	<gtView>
+
+	^aView forward
+		title: 'Forward List Twice';
+		priority: 46;
+		object: [ self ];
+		view: #gtForwardListFor:
+%
+
+category: 'inspecting'
+method: GtRemotePhlowDeclarativeTestInspectable
 gtLargeColumnedListFor: aView
 	<gtView>
 
@@ -1904,6 +2021,23 @@ gtStringFor: aView
 		title: 'String';
 		priority: 10;
 		text: [ self string ]
+%
+
+category: 'inspecting'
+method: GtRemotePhlowDeclarativeTestInspectable
+gtTreeFor: aView
+	<gtView>
+
+	^aView tree
+		title: 'Tree';
+		priority: 30;
+		items: [ 1 to: 5 ];
+		children: [ :aNumber | 
+			(aNumber // 2 = aNumber)
+				ifTrue: [ #() ] 
+				ifFalse: [
+					aNumber // 2 to: (aNumber - 1) ] ];
+		itemText: [ :x | x asString, ' number']
 %
 
 category: 'initialization'
@@ -2032,6 +2166,15 @@ definingSelector: aSelector
 	definingSelector := aSelector
 %
 
+category: 'printing'
+method: GtRemotePhlowDeclarativeView
+printOn: aStream
+	super printOn: aStream.
+	
+	aStream parenthesize: [
+		aStream << (self title ifNil: ['']) ]
+%
+
 category: 'accessing'
 method: GtRemotePhlowDeclarativeView
 priority
@@ -2054,6 +2197,32 @@ category: 'accessing'
 method: GtRemotePhlowDeclarativeView
 title: anObject
 	title := anObject
+%
+
+! Class implementation for 'GtRemotePhlowDeclarativeForwarderView'
+
+!		Instance methods for 'GtRemotePhlowDeclarativeForwarderView'
+
+category: 'converting'
+method: GtRemotePhlowDeclarativeForwarderView
+asGtDeclarativeView
+	^ (objectComputation value 
+		perform: viewSelector withArguments: { 
+			 GtRemotePhlowDeclarativeProtoView new }) asGtDeclarativeView
+			 	title: self title;
+			 	priority: self priority
+%
+
+category: 'api - scripting'
+method: GtRemotePhlowDeclarativeForwarderView
+object: anObjectComputation
+	objectComputation := anObjectComputation.
+%
+
+category: 'api - scripting'
+method: GtRemotePhlowDeclarativeForwarderView
+view: aSelector
+	viewSelector := aSelector
 %
 
 ! Class implementation for 'GtRemotePhlowDeclarativeListingView'
@@ -2399,6 +2568,108 @@ method: GtRemotePhlowDeclarativeTree
 itemText: aBlock
 
 	itemTextBlock := aBlock
+%
+
+! Class implementation for 'GtRemotePhlowDeclarativeColumnedTree'
+
+!		Instance methods for 'GtRemotePhlowDeclarativeColumnedTree'
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeColumnedTree
+column
+	<return: #GtRemotePhlowColumn>
+	| aColumn |
+	
+	aColumn := GtRemotePhlowColumn new index: self columns size + 1.
+	self columns add: aColumn.
+	^ aColumn
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeColumnedTree
+column: columnName iconName: anIconNameComputation
+	| aColumn |
+	aColumn := self column.
+	aColumn title: columnName.
+	aColumn iconName: anIconNameComputation
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeColumnedTree
+column: columnName iconName: anIconNameComputation spawn: aSpawnBlock
+	| aColumn |
+	aColumn := self column.
+	aColumn title: columnName.
+	aColumn iconName: anIconNameComputation.
+	aColumn spawnObject: aSpawnBlock.
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeColumnedTree
+column: columnName iconName: anIconNameComputation spawn: aSpawnBlock width: aNumberOrNil
+	| aColumn |
+	aColumn := self column.
+	aColumn title: columnName.
+	aColumn iconName: anIconNameComputation.
+	aColumn spawnObject: aSpawnBlock.
+	aColumn width: aNumberOrNil.
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeColumnedTree
+column: columnName iconName: anIconNameComputation width: aNumberOrNil
+	| aColumn |
+	aColumn := self column.
+	aColumn title: columnName.
+	aColumn iconName: anIconNameComputation.
+	aColumn width: aNumberOrNil.
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeColumnedTree
+column: columnName text: aBlockClosure
+	| aColumn |
+	aColumn := self column.
+	aColumn title: columnName.
+	aColumn text: aBlockClosure
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeColumnedTree
+column: columnName text: aBlockClosure spawn: aSpawnBlock
+	| aColumn |
+	aColumn := self column.
+	aColumn title: columnName.
+	aColumn text: aBlockClosure.
+	aColumn spawnObject: aSpawnBlock.
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeColumnedTree
+column: columnName text: aBlockClosure spawn: aSpawnBlock width: aNumberOrNil
+	| aColumn |
+	aColumn := self column.
+	aColumn title: columnName.
+	aColumn text: aBlockClosure.
+	aColumn spawnObject: aSpawnBlock.
+	aColumn width: aNumberOrNil.
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeColumnedTree
+column: columnName text: aBlockClosure width: aNumberOrNil
+ 	| aColumn |
+	aColumn := self column.
+	aColumn title: columnName.
+	aColumn text: aBlockClosure.
+	aColumn width: aNumberOrNil.
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeColumnedTree
+columns
+	^ columns ifNil: [
+		columns := OrderedCollection new ]
 %
 
 ! Class implementation for 'GtRemotePhlowDeclarativeViewDataSource'
