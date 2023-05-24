@@ -15,17 +15,22 @@ GtRemotePlainInspectionViewedObject >> gtDeclarativeViewPragmsForObject: anObjec
 ]
 
 { #category : #accessing }
-GtRemotePlainInspectionViewedObject >> gtViewsInCurrentContextForObject: anObject [
+GtRemotePlainInspectionViewedObject >> gtViewsInCurrentContextForObject: anObject excludingView: aCollection [
 	"Answer a collection of the object's declarative views"
 
-	^ (self gtDeclarativeViewPragmsForObject: anObject) collect: [ :aPragma |
-		| methodSelector phlowView |
-		methodSelector := aPragma method selector.
-		phlowView := anObject  
-			perform: methodSelector
-			with: GtRemotePhlowDeclarativeProtoView new.
-		phlowView definingSelector: methodSelector.
-		phlowView ]
+	^ ((self gtDeclarativeViewPragmsForObject: anObject) 
+		reject: [ :aPragma |
+			aCollection anySatisfy: [:assoc |
+				assoc key = aPragma methodClass and: [
+					assoc value = aPragma methodSelector ] ] ])
+		collect: [ :aPragma |
+			| methodSelector phlowView |
+			methodSelector := aPragma method selector.
+			phlowView := anObject  
+				perform: methodSelector
+				with: GtRemotePhlowDeclarativeProtoView new.
+			phlowView definingSelector: methodSelector.
+			phlowView ]
 ]
 
 { #category : #accessing }
@@ -33,11 +38,16 @@ GtRemotePlainInspectionViewedObject >> phlowDeclarativeViews [
 	"Retrieve the objects declarative views.
 	If the default Raw view can't be declarative, provide one that is."
 	| views |
-
-	views := (self gtViewsInCurrentContextForObject: object).
+	self halt.
+	views := (self 
+		gtViewsInCurrentContextForObject: object
+		excludingView: { 
+			Object ->#gtRawFor:.
+			Object -> #gtPrintFor:}) asOrderedCollection.
 	views 
 		detect: [ :each | each title = 'Raw' ]
-		ifNone: [ views add: (object gtRemoteGtRawFor: #GtPhlowView asClass empty) ].
+		ifNone: [ views add: (object 
+			gtRemoteGtRawFor: #GtRemotePhlowDeclarativeProtoView asClass new) ].
 	
 	^ views
 ]

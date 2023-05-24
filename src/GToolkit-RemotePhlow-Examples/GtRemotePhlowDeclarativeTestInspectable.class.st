@@ -64,6 +64,17 @@ GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListSpawnTextFor: aView [
 ]
 
 { #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtForwardListFor: aView [
+	<gtView>
+
+	^aView forward
+		title: 'Forward List';
+		priority: 45;
+		object: [ self ];
+		view: #gtListFor:
+]
+
+{ #category : #inspecting }
 GtRemotePhlowDeclarativeTestInspectable >> gtLargeColumnedListFor: aView [
 	<gtView>
 
