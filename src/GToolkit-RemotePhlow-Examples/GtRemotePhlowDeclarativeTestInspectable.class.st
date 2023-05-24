@@ -92,6 +92,17 @@ GtRemotePhlowDeclarativeTestInspectable >> gtForwardListFor: aView [
 ]
 
 { #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtForwardListTwiceFor: aView [
+	<gtView>
+
+	^aView forward
+		title: 'Forward List Twice';
+		priority: 46;
+		object: [ self ];
+		view: #gtForwardListFor:
+]
+
+{ #category : #inspecting }
 GtRemotePhlowDeclarativeTestInspectable >> gtLargeColumnedListFor: aView [
 	<gtView>
 
