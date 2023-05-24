@@ -16,6 +16,13 @@ GtPhlowTreeView >> asGtDeclarativeView [
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
+GtPhlowTreeView >> canBeGtDeclarativeView [
+	"Answer a boolean indicating whether the receiver can be represented as a GtDeclarativeView"
+
+	^ true
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
 GtPhlowTreeView >> gtDeclarativeViewAdd: item index: anArray to: stream [
 	"Add the supplied item and its children to the stream"
 

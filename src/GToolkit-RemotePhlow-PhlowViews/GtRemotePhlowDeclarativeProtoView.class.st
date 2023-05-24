@@ -1,7 +1,7 @@
 Class {
 	#name : #GtRemotePhlowDeclarativeProtoView,
 	#superclass : #Object,
-	#category : 'GToolkit-RemotePhlow-PhlowViews'
+	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
 
 { #category : #decorating }
@@ -10,12 +10,30 @@ GtRemotePhlowDeclarativeProtoView >> columnedList [
 	^ self declarativeViewOfType: GtRemotePhlowDeclarativeColumnedList
 ]
 
+{ #category : #decorating }
+GtRemotePhlowDeclarativeProtoView >> columnedTree [
+
+	^ self declarativeViewOfType: GtRemotePhlowDeclarativeColumnedTree
+]
+
 { #category : #private }
 GtRemotePhlowDeclarativeProtoView >> declarativeViewOfType: aGtDeclarativeViewClass [
 	"Answer a new declarative view instance"
 
 	^ aGtDeclarativeViewClass new.
 
+]
+
+{ #category : #decorating }
+GtRemotePhlowDeclarativeProtoView >> empty [
+
+	^ self declarativeViewOfType: GtRemotePhlowDeclarativeEmptyView
+]
+
+{ #category : #decorating }
+GtRemotePhlowDeclarativeProtoView >> forward [
+
+	^ self declarativeViewOfType: GtRemotePhlowDeclarativeForwarderView
 ]
 
 { #category : #decorating }

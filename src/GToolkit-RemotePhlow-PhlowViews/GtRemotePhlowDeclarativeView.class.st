@@ -32,7 +32,7 @@ Class {
 		'priority',
 		'definingSelector'
 	],
-	#category : 'GToolkit-RemotePhlow-PhlowViews'
+	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
 
 { #category : #converting }
@@ -55,6 +55,14 @@ GtRemotePhlowDeclarativeView >> definingSelector [
 GtRemotePhlowDeclarativeView >> definingSelector: aSelector [
 
 	definingSelector := aSelector
+]
+
+{ #category : #printing }
+GtRemotePhlowDeclarativeView >> printOn: aStream [
+	super printOn: aStream.
+	
+	aStream parenthesize: [
+		aStream << (self title ifNil: ['']) ]
 ]
 
 { #category : #accessing }
