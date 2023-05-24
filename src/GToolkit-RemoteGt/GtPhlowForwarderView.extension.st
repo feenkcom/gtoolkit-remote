@@ -6,6 +6,8 @@ GtPhlowForwarderView >> asGtDeclarativeView [
 	nil = not supported"
 
 	^ self phlowView wait asGtDeclarativeView
+		title: self title;
+		priority: self priority
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
