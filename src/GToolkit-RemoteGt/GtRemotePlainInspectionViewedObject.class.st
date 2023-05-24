@@ -38,7 +38,7 @@ GtRemotePlainInspectionViewedObject >> phlowDeclarativeViews [
 	"Retrieve the objects declarative views.
 	If the default Raw view can't be declarative, provide one that is."
 	| views |
-	self halt.
+	
 	views := (self 
 		gtViewsInCurrentContextForObject: object
 		excludingView: { 
