@@ -33,15 +33,16 @@ GtRemotePhlowDeclarativeColumnedList >> asGtDeclarativeView [
 		title: self title;
 		priority: self priority;
 		columnSpecifications: (columns asArray collect: [ :aColumn | 
-			GtRemotePhlowColumnSpecification new
+			| columnSpecification|
+			columnSpecification := GtRemotePhlowColumnSpecification new
 				title: aColumn title;
 				cellWidth: aColumn cellWidth;
 				type: aColumn asGtDeclarativeColumnDataType asString;
-				spawnsObjects: aColumn isSpawningObject;
-				in: [ :aColumnSpecification |
-					aColumn hasBackgroundComputation ifTrue: [ 
-						aColumnSpecification  markAsHavingBackground ].
-					aColumnSpecification ] ] ) ;
+				spawnsObjects: aColumn isSpawningObject.
+			
+			aColumn hasBackgroundComputation ifTrue: [ 
+				columnSpecification  markAsHavingBackground ].
+			columnSpecification ] ) ;
 		dataTransport: GtPhlowDeclarativeView dataLazy
 ]
 
