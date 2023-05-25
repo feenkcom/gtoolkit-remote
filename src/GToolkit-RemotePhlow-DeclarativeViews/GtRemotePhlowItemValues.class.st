@@ -12,23 +12,24 @@ Class {
 GtRemotePhlowItemValues >> asDictionaryForExport [
 	"Answer the receiver as a dictionary ready for JSON serialisation"
 
-	^ Dictionary new 
+	| data| 
+	data := Dictionary new 
 		at: #itemText put: self itemText;
-		in: [ :aDictionary |
-			self background ifNotNil: [ :aBackground |
-				| backgroundValue |
-				aBackground class name = #Array 
-					ifTrue: [backgroundValue := aBackground]
-					ifFalse: [
-						backgroundValue := (Array
-					with: aBackground red 
-					with: aBackground green 
-					with: aBackground blue 
-					with:aBackground alpha) ].
+		yourself.
+		
+	self background ifNotNil: [ :aBackground |
+		| backgroundValue |
+		aBackground class name = #Array 
+			ifTrue: [backgroundValue := aBackground]
+			ifFalse: [
+				backgroundValue := (Array
+			with: aBackground red 
+			with: aBackground green 
+			with: aBackground blue 
+			with:aBackground alpha) ].
 				
-				aDictionary at: #background put: backgroundValue ].
-			aDictionary ]
-		yourself
+		data at: #background put: backgroundValue ].
+	^ data
 ]
 
 { #category : #accessing }
