@@ -31,7 +31,7 @@ GtRemotePhlowColumnSpecification class >> fromJSONDictionary: aDictionary [
 GtRemotePhlowColumnSpecification >> asDictionaryForExport [ 
 	| dictionary |
 
-	dictionary := OrderedDictionary new 
+	dictionary := Dictionary new 
 		at: #title put: title;
 		at: #cellWidth put: cellWidth;
 		at: #type put: type;

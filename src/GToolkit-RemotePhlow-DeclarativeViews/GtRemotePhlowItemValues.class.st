@@ -14,7 +14,15 @@ GtRemotePhlowItemValues class >> fromJSONDictionary: aDictionary [
 
 	^self new 
 		itemText: (aDictionary at: #itemText);
-		background: (aDictionary at: #background ifAbsent: [ nil ]);
+		background: (aDictionary 
+			at: #background 
+			ifPresent: [ :aBackgroundValue |
+				Color 
+					r: aBackgroundValue first 
+					g: aBackgroundValue second  
+					b: aBackgroundValue third  
+					alpha: aBackgroundValue fourth  ]
+			ifAbsent: [ nil ]);
 		yourself
 ]
 
@@ -26,7 +34,11 @@ GtRemotePhlowItemValues >> asDictionaryForExport [
 		at: #itemText put: self itemText;
 		in: [ :aDictionary |
 			self background ifNotNil: [ :aBackground |
-				aDictionary at: #background put: aBackground ].
+				aDictionary at: #background put: (Array
+					with: aBackground red 
+					with: aBackground green 
+					with: aBackground blue 
+					with:aBackground alpha) ].
 			aDictionary ]
 		yourself
 ]
