@@ -78,7 +78,7 @@ GtPhlowDeclarativeColumnedListView >> columnTypes [
 { #category : #accessing }
 GtPhlowDeclarativeColumnedListView >> columnWidths [
 	^ self columnSpecifications collect: [ :aColumnSpecification |
-		aColumnSpecification width ]
+		aColumnSpecification cellWidth ]
 ]
 
 { #category : #accessing }
