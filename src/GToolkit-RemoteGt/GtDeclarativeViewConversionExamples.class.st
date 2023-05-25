@@ -20,7 +20,7 @@ GtDeclarativeViewConversionExamples >> convertColumnedList [
 
 	self assert: declarativeView title equals: #Test.
 	self assert: declarativeView priority equals: 10.
-	self assert: declarativeView retriveFormattedItems equals: #(#('1' '1') #('2' '2') #('3' '3')).
+	self assert: declarativeView retriveFormattedItems equals: ((Array new: 3) at: 1 put: ((Array new: 2) at: 1 put: ((Dictionary new) add: (#itemText->'1'); yourself); at: 2 put: ((Dictionary new) add: (#itemText->'1'); yourself); yourself); at: 2 put: ((Array new: 2) at: 1 put: ((Dictionary new) add: (#itemText->'2'); yourself); at: 2 put: ((Dictionary new) add: (#itemText->'2'); yourself); yourself); at: 3 put: ((Array new: 2) at: 1 put: ((Dictionary new) add: (#itemText->'3'); yourself); at: 2 put: ((Dictionary new) add: (#itemText->'3'); yourself); yourself); yourself).
 	self assert: declarativeView columnTitles equals: #('One' 'Two').
 	self assert: declarativeView columnWidths equals: #(nil 100).
 
@@ -38,7 +38,7 @@ GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableColumn
 
 	self assert: declarativeView title equals: 'Columned list'.
 	self assert: declarativeView priority equals: 20.
-	self assert: declarativeView retriveFormattedItems equals: #(#('42' '42') #('Hello World' 'hello world') #('2021-04-06T14:43:49.623384+02:00' '2021-04-06t14:43:49.623384+02:00')).
+	self assert: declarativeView retriveFormattedItems equals: ((Array new: 3) at: 1 put: ((Array new: 2) at: 1 put: ((Dictionary new) add: (#itemText->'42'); yourself); at: 2 put: ((Dictionary new) add: (#itemText->'42'); yourself); yourself); at: 2 put: ((Array new: 2) at: 1 put: ((Dictionary new) add: (#itemText->'Hello World'); yourself); at: 2 put: ((Dictionary new) add: (#itemText->'hello world'); yourself); yourself); at: 3 put: ((Array new: 2) at: 1 put: ((Dictionary new) add: (#itemText->'2021-04-06T14:43:49.623384+02:00'); yourself); at: 2 put: ((Dictionary new) add: (#itemText->'2021-04-06t14:43:49.623384+02:00'); yourself); yourself); yourself).
 	self assert: declarativeView columnTitles equals: #('Value' 'Lowercase').
 	self assert: declarativeView columnWidths equals: #(nil 100).
 	

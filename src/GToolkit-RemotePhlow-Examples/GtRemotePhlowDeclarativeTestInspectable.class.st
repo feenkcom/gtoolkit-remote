@@ -103,6 +103,38 @@ GtRemotePhlowDeclarativeTestInspectable >> gtForwardListTwiceFor: aView [
 ]
 
 { #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtItemsWithBackgroundFor: aView [
+	<gtView>
+	
+	^ aView columnedList
+		title: 'background: usage';
+		priority: 50;
+		items: [ {
+			'Bob' -> -43.
+			'Alice' -> 27.
+			'Mike' -> 0.
+			'Jane' -> -32.
+			'Ben' -> 12
+		} ];
+		column: 'name' text: [ :x | x key ];
+		column: 'value' do: [ :aColumn |
+			aColumn
+				text: [ :x | x value ];
+				background: [ :v |
+					v > 0
+						ifTrue: [ 
+							#(0.0  1.0  0.0  0.2980392156862745)
+							"Color green alpha: 0.3" ]
+						ifFalse: [ v < 0
+							ifTrue: [ 
+								#(1.0 0.0 0.0 0.2980392156862745)
+								"Color red alpha: 0.3" ]
+							ifFalse: [ 
+								#(0.5004887585532747 0.5004887585532747 0.5004887585532747  0.2980392156862745)
+								"Color gray alpha: 0.3" ] ] ] ]
+]
+
+{ #category : #inspecting }
 GtRemotePhlowDeclarativeTestInspectable >> gtLargeColumnedListFor: aView [
 	<gtView>
 

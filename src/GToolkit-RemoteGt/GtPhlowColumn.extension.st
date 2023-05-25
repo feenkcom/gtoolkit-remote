@@ -11,3 +11,21 @@ GtPhlowColumn >> asGtDeclarativeColumnDataType [
 GtPhlowColumn >> canBeForGtDeclarativeView [
 	^ self asGtDeclarativeColumnDataType isUnknown not
 ]
+
+{ #category : #'*GToolkit-RemoteGt' }
+GtPhlowColumn >> computeItemValuesFor: anObject rowIndex: rowIndex columnIndex: columnIndex [
+	| cellValues itemValue |
+	cellValues := GtRemotePhlowItemValues new.
+	
+	itemValue := self itemComputation 
+		cull: anObject cull: rowIndex cull: columnIndex.
+		
+	cellValues 
+		itemText: itemValue gtDisplayString.
+	self hasBackgroundComputation ifTrue: [
+		cellValues 
+			background: (self backgroundComputation
+				cull: itemValue cull: anObject cull: rowIndex cull: columnIndex) ].
+	
+	^ cellValues
+]

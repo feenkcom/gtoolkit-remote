@@ -27,18 +27,18 @@ GtRemotePhlowDeclarativeViewListingDataSource >> itemsIterator [
 
 { #category : #api }
 GtRemotePhlowDeclarativeViewListingDataSource >> retrieveItems: anItemsCount fromIndex: startIndex [
-	| formatterValues endIndex |
+	| computedItemValues endIndex |
 
-	formatterValues := OrderedCollection new: anItemsCount.
+	computedItemValues := OrderedCollection new: anItemsCount.
 	endIndex := startIndex + anItemsCount - 1.
 	
 	self itemsIterator 
 		forElementsFrom: startIndex 
 		to: endIndex 
 		withIndexDo: [ :anObject :anItemIndex |
-			formatterValues add: (self 
+			computedItemValues add: (self 
 				formatItem: anObject atIndex: anItemIndex)].
-	^ formatterValues asArray
+	^ computedItemValues asArray
 ]
 
 { #category : #api }

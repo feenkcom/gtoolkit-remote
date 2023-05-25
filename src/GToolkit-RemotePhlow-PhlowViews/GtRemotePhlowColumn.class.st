@@ -7,13 +7,14 @@ Class {
 		'width',
 		'itemComputation',
 		'type',
-		'spawnObjectComputation'
+		'spawnObjectComputation',
+		'backgroundComputation'
 	],
 	#classVars : [
 		'IconType',
 		'TextType'
 	],
-	#category : 'GToolkit-RemotePhlow-PhlowViews'
+	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
 
 { #category : #initialization }
@@ -33,12 +34,45 @@ GtRemotePhlowColumn >> asGtDeclarativeColumnDataType [
 			ifFalse: [ GtPhlowDeclarativeListingType new beText ] ]
 ]
 
+{ #category : #'api - scripting' }
+GtRemotePhlowColumn >> background: aComputation [
+	backgroundComputation := aComputation
+]
+
+{ #category : #accessing }
+GtRemotePhlowColumn >> backgroundComputation [
+	^ backgroundComputation
+]
+
 { #category : #accessing }
 GtRemotePhlowColumn >> cellWidth [
 	^ width
 ]
 
-{ #category : #accessing }
+{ #category : #computation }
+GtRemotePhlowColumn >> computeItemValuesFor: anObject rowIndex: rowIndex columnIndex: columnIndex [
+	| cellValues itemValue |
+	cellValues := GtRemotePhlowItemValues new.
+	
+	itemValue := self itemComputation 
+		cull: anObject cull: rowIndex cull: columnIndex.
+		
+	cellValues 
+		itemText: itemValue gtDisplayString.
+	self hasBackgroundComputation ifTrue: [
+		cellValues 
+			background: (self backgroundComputation
+				cull: itemValue cull: anObject cull: rowIndex cull: columnIndex) ].
+	
+	^ cellValues
+]
+
+{ #category : #testings }
+GtRemotePhlowColumn >> hasBackgroundComputation [
+	^ backgroundComputation notNil
+]
+
+{ #category : #'api - scripting' }
 GtRemotePhlowColumn >> iconName: aBlock [
 	itemComputation := aBlock.
 	type := IconType
@@ -93,7 +127,7 @@ GtRemotePhlowColumn >> spawnObjectComputation [
 	^ spawnObjectComputation
 ]
 
-{ #category : #accessing }
+{ #category : #'api - scripting' }
 GtRemotePhlowColumn >> text: aBlock [
 	itemComputation := aBlock.
 	type := TextType
@@ -104,7 +138,7 @@ GtRemotePhlowColumn >> title [
 	^ title
 ]
 
-{ #category : #accessing }
+{ #category : #'api - scripting' }
 GtRemotePhlowColumn >> title: anObject [
 	title := anObject
 ]
