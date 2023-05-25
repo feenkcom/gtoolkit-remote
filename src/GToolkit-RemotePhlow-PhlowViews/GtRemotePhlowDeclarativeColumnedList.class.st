@@ -32,7 +32,7 @@ GtRemotePhlowDeclarativeColumnedList >> asGtDeclarativeView [
 		phlowDataSource: (GtRemotePhlowDeclarativeViewColumnedListDataSource forPhlowView: self);
 		title: self title;
 		priority: self priority;
-		columnSpecifications: (columns collect: [ :aColumn | 
+		columnSpecifications: (columns asArray collect: [ :aColumn | 
 			GtRemotePhlowColumnSpecification new
 				title: aColumn title;
 				cellWidth: aColumn cellWidth;
@@ -41,7 +41,7 @@ GtRemotePhlowDeclarativeColumnedList >> asGtDeclarativeView [
 				in: [ :aColumnSpecification |
 					aColumn hasBackgroundComputation ifTrue: [ 
 						aColumnSpecification  markAsHavingBackground ].
-					aColumnSpecification ] ] as: Array) ;
+					aColumnSpecification ] ] ) ;
 		dataTransport: GtPhlowDeclarativeView dataLazy
 ]
 
