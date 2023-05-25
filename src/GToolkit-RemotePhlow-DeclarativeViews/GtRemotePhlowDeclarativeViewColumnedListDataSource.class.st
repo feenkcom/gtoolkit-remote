@@ -1,30 +1,31 @@
 Class {
 	#name : #GtRemotePhlowDeclarativeViewColumnedListDataSource,
 	#superclass : #GtRemotePhlowDeclarativeViewListingDataSource,
-	#category : 'GToolkit-RemotePhlow-DeclarativeViews'
+	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
 { #category : #'instance creation' }
 GtRemotePhlowDeclarativeViewColumnedListDataSource >> formatItem: anObject atIndex: rowIndex [
-	| phlowColumns formattedColumnItems |
+	| phlowColumns columnItems |
 
 	phlowColumns := self phlowView columns.
 
-	formattedColumnItems := Array new: phlowColumns size.
+	columnItems := Array new: phlowColumns size.
 
 	phlowColumns withIndexDo: [ :column :columnIndex | 
-		| computedObject aValueString |
+		| computedValues |
 	
-		computedObject := column itemComputation 
-			cull: anObject cull: rowIndex cull: columnIndex.
+		computedValues := column 
+			computeItemValuesFor: anObject
+			rowIndex: rowIndex
+			columnIndex: columnIndex.
 	
-		aValueString := computedObject gtDisplayString.
-	
-		formattedColumnItems 
+		columnItems 
 			at: columnIndex
-			put: aValueString ].
+			put: computedValues ].
 
-	^ formattedColumnItems
+	^ columnItems collect: [ :anItemValues |
+		anItemValues asDictionaryForExport ]
 ]
 
 { #category : #api }

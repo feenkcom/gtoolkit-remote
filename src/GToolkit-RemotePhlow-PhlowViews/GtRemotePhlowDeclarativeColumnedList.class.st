@@ -32,10 +32,16 @@ GtRemotePhlowDeclarativeColumnedList >> asGtDeclarativeView [
 		phlowDataSource: (GtRemotePhlowDeclarativeViewColumnedListDataSource forPhlowView: self);
 		title: self title;
 		priority: self priority;
-		columnTitles: (self columns collect: [ :each | each title ]) asArray;
-		columnWidths: (self columns collect: [ :each | each cellWidth ]) asArray;
-		columnTypes: (self columns collect: [ :each | each asGtDeclarativeColumnDataType asString ]) asArray;
-		columnSpawnsObjects: (self columns collect: [ :each | each isSpawningObject ]) asArray;
+		columnSpecifications: (columns collect: [ :aColumn | 
+			GtRemotePhlowColumnSpecification new
+				title: aColumn title;
+				cellWidth: aColumn cellWidth;
+				type: aColumn asGtDeclarativeColumnDataType asString;
+				spawnsObjects: aColumn isSpawningObject;
+				in: [ :aColumnSpecification |
+					aColumn hasBackgroundComputation ifTrue: [ 
+						aColumnSpecification  markAsHavingBackground ].
+					aColumnSpecification ] ] as: Array) ;
 		dataTransport: GtPhlowDeclarativeView dataLazy
 ]
 
@@ -47,6 +53,14 @@ GtRemotePhlowDeclarativeColumnedList >> column [
 	aColumn := GtRemotePhlowColumn new index: self columns size + 1.
 	self columns add: aColumn.
 	^ aColumn
+]
+
+{ #category : #'api - scripting column' }
+GtRemotePhlowDeclarativeColumnedList >> column: aTitleString do: aBlock [
+	| aColumn |
+	aColumn := self column.
+	aColumn title: aTitleString.
+	aBlock value: aColumn
 ]
 
 { #category : #'api - scripting column' }

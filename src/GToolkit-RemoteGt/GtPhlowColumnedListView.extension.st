@@ -9,13 +9,19 @@ GtPhlowColumnedListView >> asGtDeclarativeView [
 		phlowDataSource: (GtRemotePhlowDeclarativeViewColumnedListDataSource forPhlowView: self);
 		title: self title;
 		priority: self priority;
-		columnTitles: (columns collect: [ :each | each title ] as: Array);
-		columnWidths: (columns collect: [ :each | each cellWidth ifNotNil: [ :cellWidth |
-				cellWidth class = BrColumnFixedWidth
-					ifTrue: [cellWidth width]
-					ifFalse: [nil]]] as: Array);
-		columnTypes: (self columns collect: [ :each | each asGtDeclarativeColumnDataType asString ]) asArray;
-		columnSpawnsObjects: (self columns collect: [ :each | false ]) asArray;
+		columnSpecifications: (columns collect: [ :aColumn | 
+			GtRemotePhlowColumnSpecification new
+				title: aColumn title;
+				cellWidth: (aColumn cellWidth ifNotNil: [ :aCellWidth |
+					aCellWidth class = BrColumnFixedWidth
+						ifTrue: [aCellWidth width]
+						ifFalse: [nil]]);
+				type: aColumn asGtDeclarativeColumnDataType asString ;
+				spawnsObjects:  false;
+				in: [ :aColumnSpecification |
+					aColumn hasBackgroundComputation ifTrue: [ 
+						aColumnSpecification  markAsHavingBackground ].
+					aColumnSpecification ] ] as: Array);
 		dataTransport: GtPhlowDeclarativeView dataLazy
 ]
 

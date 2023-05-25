@@ -20,10 +20,7 @@ Class {
 	#name : #GtPhlowDeclarativeColumnedListView,
 	#superclass : #GtPhlowDeclarativeListingView,
 	#instVars : [
-		'columnTitles',
-		'columnWidths',
-		'columnTypes',
-		'columnSpawnsObjects'
+		'columnSpecifications'
 	],
 	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
@@ -35,12 +32,11 @@ GtPhlowDeclarativeColumnedListView class >> fromJSONDictionary: aDictionary [
 
 	list := super fromJSONDictionary: aDictionary.
 	list
-		columnTitles: (aDictionary at: #columnTitles);
-		columnWidths: (aDictionary at: #columnWidths);
-		columnTypes: (aDictionary at: #columnTypes);
-		columnSpawnsObjects: (aDictionary at: #columnSpawnsObjects).
-	"list dataTransport = self dataIncluded ifTrue: 
-		[ list items: (aDictionary at: #items) ]."
+		columnSpecifications: ((aDictionary at: #columnSpecifications)
+			collect: [ :aColumnSpecificationJson |
+				GtRemotePhlowColumnSpecification 
+					fromJSONDictionary: aColumnSpecificationJson ]).
+	
 	^list
 ]
 
@@ -49,59 +45,52 @@ GtPhlowDeclarativeColumnedListView >> asDictionaryForExport [
 	| dictionary |
 
 	dictionary := super asDictionaryForExport 
-		at: #columnTitles put: columnTitles;
-		at: #columnWidths put: columnWidths;
-		at: #columnTypes put: columnTypes;
-		at: #columnSpawnsObjects put: columnSpawnsObjects;
+		at: #columnSpecifications put: (self columnSpecifications
+			collect: [ :aColumnSpecification |
+				aColumnSpecification asDictionaryForExport ]);
 		yourself.
-	"self dataTransport = self class dataIncluded ifTrue: [ 
-		dictionary at: #items put: items ]."
+
 	^dictionary
 ]
 
 { #category : #accessing }
-GtPhlowDeclarativeColumnedListView >> columnSpawnsObjects [
-
-	^ columnSpawnsObjects
+GtPhlowDeclarativeColumnedListView >> columnSpecifications [
+	^ columnSpecifications
 ]
 
 { #category : #accessing }
-GtPhlowDeclarativeColumnedListView >> columnSpawnsObjects: anObject [
-
-	columnSpawnsObjects := anObject
+GtPhlowDeclarativeColumnedListView >> columnSpecifications: anObject [
+	columnSpecifications := anObject
 ]
 
 { #category : #accessing }
 GtPhlowDeclarativeColumnedListView >> columnTitles [
-	^ columnTitles
-]
-
-{ #category : #accessing }
-GtPhlowDeclarativeColumnedListView >> columnTitles: anObject [
-	columnTitles := anObject
+	^ self columnSpecifications collect: [ :aColumnSpecification |
+		aColumnSpecification title ]
 ]
 
 { #category : #accessing }
 GtPhlowDeclarativeColumnedListView >> columnTypes [
-	^ columnTypes
-]
-
-{ #category : #accessing }
-GtPhlowDeclarativeColumnedListView >> columnTypes: anObject [
-	columnTypes := anObject
+	^ self columnSpecifications collect: [ :aColumnSpecification |
+		aColumnSpecification type ]
 ]
 
 { #category : #accessing }
 GtPhlowDeclarativeColumnedListView >> columnWidths [
-	^ columnWidths
+	^ self columnSpecifications collect: [ :aColumnSpecification |
+		aColumnSpecification width ]
 ]
 
 { #category : #accessing }
-GtPhlowDeclarativeColumnedListView >> columnWidths: anObject [
-	columnWidths := anObject
+GtPhlowDeclarativeColumnedListView >> retrieveItems: anItemsCount fromIndex: anIndex [
+	^ (super retrieveItems: anItemsCount fromIndex: anIndex) 
+			"collect: [ :cellValuesDictionary |
+				cellValuesDictionary collect: [ :aCellValueDictionary |
+					GtRemotePhlowItemValues fromJSONDictionary: aCellValueDictionary ] ]"
 ]
 
 { #category : #'api - accessing' }
 GtPhlowDeclarativeColumnedListView >> retriveSpawnedObjectAtRow: aRowIndex column: aColumnIndex [	
-	^ self phlowDataSource retriveSpawnedObjectAtRow: aRowIndex column: aColumnIndex
+	^ self phlowDataSource 
+		retriveSpawnedObjectAtRow: aRowIndex column: aColumnIndex
 ]
