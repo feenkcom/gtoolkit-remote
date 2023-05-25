@@ -8,24 +8,6 @@ Class {
 	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
-{ #category : #'instance creation' }
-GtRemotePhlowItemValues class >> fromJSONDictionary: aDictionary [
-	"Answer an instance of the receiver from the supplied dictionary."
-
-	^self new 
-		itemText: (aDictionary at: #itemText);
-		background: (aDictionary 
-			at: #background 
-			ifPresent: [ :aBackgroundValue |
-				Color 
-					r: aBackgroundValue first 
-					g: aBackgroundValue second  
-					b: aBackgroundValue third  
-					alpha: aBackgroundValue fourth  ]
-			ifAbsent: [ nil ]);
-		yourself
-]
-
 { #category : #converting }
 GtRemotePhlowItemValues >> asDictionaryForExport [
 	"Answer the receiver as a dictionary ready for JSON serialisation"
@@ -34,11 +16,17 @@ GtRemotePhlowItemValues >> asDictionaryForExport [
 		at: #itemText put: self itemText;
 		in: [ :aDictionary |
 			self background ifNotNil: [ :aBackground |
-				aDictionary at: #background put: (Array
+				| backgroundValue |
+				aBackground class name = #Array 
+					ifTrue: [backgroundValue := aBackground]
+					ifFalse: [
+						backgroundValue := (Array
 					with: aBackground red 
 					with: aBackground green 
 					with: aBackground blue 
 					with:aBackground alpha) ].
+				
+				aDictionary at: #background put: backgroundValue ].
 			aDictionary ]
 		yourself
 ]

@@ -122,10 +122,16 @@ GtRemotePhlowDeclarativeTestInspectable >> gtItemsWithBackgroundFor: aView [
 				text: [ :x | x value ];
 				background: [ :v |
 					v > 0
-						ifTrue: [ Color green alpha: 0.3 ]
+						ifTrue: [ 
+							#(0.0  1.0  0.0  0.2980392156862745)
+							"Color green alpha: 0.3" ]
 						ifFalse: [ v < 0
-							ifTrue: [ Color red alpha: 0.3 ]
-							ifFalse: [ Color gray alpha: 0.3 ] ] ] ]
+							ifTrue: [ 
+								#(1.0 0.0 0.0 0.2980392156862745)
+								"Color red alpha: 0.3" ]
+							ifFalse: [ 
+								#(0.5004887585532747 0.5004887585532747 0.5004887585532747  0.2980392156862745)
+								"Color gray alpha: 0.3" ] ] ] ]
 ]
 
 { #category : #inspecting }
