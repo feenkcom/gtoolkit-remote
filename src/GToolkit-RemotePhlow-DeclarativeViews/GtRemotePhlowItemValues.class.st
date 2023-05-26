@@ -18,17 +18,7 @@ GtRemotePhlowItemValues >> asDictionaryForExport [
 		yourself.
 		
 	self background ifNotNil: [ :aBackground |
-		| backgroundValue |
-		aBackground class name = #Array 
-			ifTrue: [backgroundValue := aBackground]
-			ifFalse: [
-				backgroundValue := (Array
-			with: aBackground red 
-			with: aBackground green 
-			with: aBackground blue 
-			with:aBackground alpha) ].
-				
-		data at: #background put: backgroundValue ].
+		data at: #background put: aBackground asDictionaryForExport  ].
 	^ data
 ]
 
