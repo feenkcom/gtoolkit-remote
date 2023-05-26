@@ -1,27 +1,27 @@
-Extension { #name : #GtRemotePhlowDeclarativeView }
+Extension { #name : #GtPhlowViewSpecification }
 
 { #category : #'*GToolkit-RemotePhlow-GemStone' }
-GtRemotePhlowDeclarativeView classSide >> globalsDictionary [
+GtPhlowViewSpecification classSide >> globalsDictionary [
 
 	self halt.  "How to look up classes?"
 	^ GsCurrentSession currentSession symbolList
 ]
 
 { #category : #'*GToolkit-RemotePhlow-GemStone' }
-GtRemotePhlowDeclarativeView classSide >> new [
+GtPhlowViewSpecification classSide >> new [
 
 	^ super new initialize
 ]
 
 { #category : #'*GToolkit-RemotePhlow-GemStone' }
-GtRemotePhlowDeclarativeView classSide >> readJsonString: aString [
+GtPhlowViewSpecification classSide >> readJsonString: aString [
 
 	self halt.
 	^ JsonParser parse: aString
 ]
 
 { #category : #'*GToolkit-RemotePhlow-GemStone' }
-GtRemotePhlowDeclarativeView >> writeJsonString: aJsonObject [
+GtPhlowViewSpecification >> writeJsonString: aJsonObject [
 
 	^ aJsonObject asJson
 ]
