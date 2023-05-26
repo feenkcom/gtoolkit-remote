@@ -1,5 +1,5 @@
 Class {
-	#name : #PlpoGtColumnedListViewSpecification,
+	#name : #PlpoGtPhlowColumnedListViewSpecification,
 	#superclass : #PharoLinkProxyObject,
 	#traits : 'TPlpoGtDeclarativeListingView',
 	#classTraits : 'TPlpoGtDeclarativeListingView classTrait',
@@ -7,13 +7,13 @@ Class {
 }
 
 { #category : #accessing }
-PlpoGtColumnedListViewSpecification class >> remoteClassName [
+PlpoGtPhlowColumnedListViewSpecification class >> remoteClassName [
 
 	^ #GtPhlowColumnedListViewSpecification
 ]
 
 { #category : #accessing }
-PlpoGtColumnedListViewSpecification >> retriveSpawnedObjectAtRow: aRowIndex column: aColumnIndex [
+PlpoGtPhlowColumnedListViewSpecification >> retriveSpawnedObjectAtRow: aRowIndex column: aColumnIndex [
 	^ self
 		proxyPerform: #retriveSpawnedObjectAtRow:column:
 		withPrimitiveArguments: { aRowIndex . aColumnIndex }
