@@ -1,5 +1,5 @@
 "
-{{gtClass:GtPhlowDeclarativeListView}} supports a subset of the possible configurations of {{gtClass:name=GtPhlowListView}}.
+{{gtClass:GtPhlowListViewSpecification}} supports a subset of the possible configurations of {{gtClass:name=GtPhlowListView}}.
 
  
 #Internal Representation and Key Implementation Points.
