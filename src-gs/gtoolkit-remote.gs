@@ -3,6 +3,24 @@
 
 doit
 (Object
+	subclass: 'GtPhlowColor'
+	instVarNames: #( name red green blue alpha )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowColor
+removeallclassmethods GtPhlowColor
+
+doit
+(Object
 	subclass: 'GtPhlowDeclarativeListingType'
 	instVarNames: #( type )
 	classVars: #( Icon IconifiedLink Text TextualLink Unknown )
@@ -917,6 +935,99 @@ true.
 
 removeallmethods GtRemotePhlowViewedObject
 removeallclassmethods GtRemotePhlowViewedObject
+
+! Class implementation for 'GtPhlowColor'
+
+!		Class methods for 'GtPhlowColor'
+
+category: 'instance creation'
+classmethod: GtPhlowColor
+fromJSONDictionary: aDictionary
+	"Answer an instance of the receiver from the supplied dictionary."
+
+	^self new 
+		named: (aDictionary at: #name ifAbsent: [ nil ]);
+		r: (aDictionary at: #r ifAbsent: [ nil ])
+			g: (aDictionary at: #g ifAbsent: [ nil ])
+			b: (aDictionary at: #b ifAbsent: [ nil ])
+			alpha: (aDictionary at: #a ifAbsent: [ nil ]);
+		yourself
+%
+
+category: 'instance creation'
+classmethod: GtPhlowColor
+named: aColorName
+	^ self new 
+		named: aColorName
+%
+
+category: 'instance creation'
+classmethod: GtPhlowColor
+named: aColorName alpha: anAlpha
+	^ self new 
+		named: aColorName alpha: anAlpha
+%
+
+category: 'instance creation'
+classmethod: GtPhlowColor
+r: r g: g b: b 
+	^ self new 
+		r: r g: g b: b alpha: nil
+%
+
+category: 'instance creation'
+classmethod: GtPhlowColor
+r: r g: g b: b alpha: alpha
+	^ self new 
+		r: r g: g b: b alpha: alpha
+%
+
+!		Instance methods for 'GtPhlowColor'
+
+category: 'accessing'
+method: GtPhlowColor
+asDictionaryForExport
+	"Answer the receiver as a dictionary ready for JSON serialisation"
+
+	| data| 
+	data := Dictionary new 
+		yourself.
+		
+	name ifNotNil: [ :aValue |
+		data at: #name put: aValue ].
+	red ifNotNil: [ :aValue |
+		data at: #r put: aValue ].
+	green ifNotNil: [ :aValue |
+		data at: #g put: aValue ].
+	blue ifNotNil: [ :aValue |
+		data at: #b put: aValue ].
+	alpha ifNotNil: [ :aValue |
+		data at: #a put: aValue ].
+	
+	^ data
+%
+
+category: 'accessing'
+method: GtPhlowColor
+named: aColorName
+	name := aColorName
+%
+
+category: 'accessing'
+method: GtPhlowColor
+named: aColorName alpha: anAlpha
+	name := aColorName.
+	alpha := anAlpha
+%
+
+category: 'accessing'
+method: GtPhlowColor
+r: r g: g b: b alpha: anAlpha
+	red := r.
+	green := g.
+	blue := b.
+	alpha := anAlpha
+%
 
 ! Class implementation for 'GtPhlowDeclarativeListingType'
 
@@ -2195,16 +2306,12 @@ gtItemsWithBackgroundFor: aView
 				background: [ :v |
 					v > 0
 						ifTrue: [ 
-							"GtPhlowColorBuilder named: #green alpha: 0.3"
-							#(0.0  1.0  0.0  0.2980392156862745)
-							"Color green alpha: 0.3" ]
+							GtPhlowColor named: #green alpha: 0.3 ]
 						ifFalse: [ v < 0
 							ifTrue: [ 
-								#(1.0 0.0 0.0 0.2980392156862745)
-								"Color red alpha: 0.3" ]
+								GtPhlowColor named: #red alpha: 0.3 ]
 							ifFalse: [ 
-								#(0.5004887585532747 0.5004887585532747 0.5004887585532747  0.2980392156862745)
-								"Color gray alpha: 0.3" ] ] ] ]
+								GtPhlowColor named: #gray alpha: 0.3] ] ] ]
 %
 
 category: 'inspecting'
@@ -2540,17 +2647,7 @@ asDictionaryForExport
 		yourself.
 		
 	self background ifNotNil: [ :aBackground |
-		| backgroundValue |
-		aBackground class name = #Array 
-			ifTrue: [backgroundValue := aBackground]
-			ifFalse: [
-				backgroundValue := (Array
-			with: aBackground red 
-			with: aBackground green 
-			with: aBackground blue 
-			with:aBackground alpha) ].
-				
-		data at: #background put: backgroundValue ].
+		data at: #background put: aBackground asDictionaryForExport  ].
 	^ data
 %
 
@@ -3479,6 +3576,42 @@ gtRemoteItemsFor: aView
 		itemText: [ :eachItem | eachItem gtDisplayString ]
 %
 
+! Class extensions for 'GtPhlowViewSpecification'
+
+!		Class methods for 'GtPhlowViewSpecification'
+
+category: '*GToolkit-RemotePhlow-GemStone'
+classmethod: GtPhlowViewSpecification
+globalsDictionary
+
+	self halt.  "How to look up classes?"
+	^ GsCurrentSession currentSession symbolList
+%
+
+category: '*GToolkit-RemotePhlow-GemStone'
+classmethod: GtPhlowViewSpecification
+new
+
+	^ super new initialize
+%
+
+category: '*GToolkit-RemotePhlow-GemStone'
+classmethod: GtPhlowViewSpecification
+readJsonString: aString
+
+	self halt.
+	^ JsonParser parse: aString
+%
+
+!		Instance methods for 'GtPhlowViewSpecification'
+
+category: '*GToolkit-RemotePhlow-GemStone'
+method: GtPhlowViewSpecification
+writeJsonString: aJsonObject
+
+	^ aJsonObject asJson
+%
+
 ! Class extensions for 'GtRemotePhlowDeclarativeTestInspectable'
 
 !		Class methods for 'GtRemotePhlowDeclarativeTestInspectable'
@@ -3488,42 +3621,6 @@ classmethod: GtRemotePhlowDeclarativeTestInspectable
 new
 
 	^ super new initialize
-%
-
-! Class extensions for 'GtRemotePhlowDeclarativeView'
-
-!		Class methods for 'GtRemotePhlowDeclarativeView'
-
-category: '*GToolkit-RemotePhlow-GemStone'
-classmethod: GtRemotePhlowDeclarativeView
-globalsDictionary
-
-	self halt.  "How to look up classes?"
-	^ GsCurrentSession currentSession symbolList
-%
-
-category: '*GToolkit-RemotePhlow-GemStone'
-classmethod: GtRemotePhlowDeclarativeView
-new
-
-	^ super new initialize
-%
-
-category: '*GToolkit-RemotePhlow-GemStone'
-classmethod: GtRemotePhlowDeclarativeView
-readJsonString: aString
-
-	self halt.
-	^ JsonParser parse: aString
-%
-
-!		Instance methods for 'GtRemotePhlowDeclarativeView'
-
-category: '*GToolkit-RemotePhlow-GemStone'
-method: GtRemotePhlowDeclarativeView
-writeJsonString: aJsonObject
-
-	^ aJsonObject asJson
 %
 
 ! Class extensions for 'GtRemotePhlowViewedObject'
