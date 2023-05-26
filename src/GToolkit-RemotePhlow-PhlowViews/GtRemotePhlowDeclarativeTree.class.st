@@ -9,13 +9,13 @@ When transporting the data, each node in the tree is represented as an Array wit
 "
 Class {
 	#name : #GtRemotePhlowDeclarativeTree,
-	#superclass : #GtRemotePhlowDeclarativeView,
+	#superclass : #GtRemotePhlowView,
 	#instVars : [
 		'itemsBuilder',
 		'itemTextBlock',
 		'childrenBlock'
 	],
-	#category : 'GToolkit-RemotePhlow-PhlowViews'
+	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
 
 { #category : #private }
@@ -35,13 +35,13 @@ GtRemotePhlowDeclarativeTree >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
 
-	^ GtPhlowDeclarativeTreeView new 
+	^ GtPhlowTreeViewSpecification new 
 		title: self title;
 		priority: self priority;
 		items: (Array streamContents: [ :stream |
 			self itemsBuilder value doWithIndex: [ :item :i |
 				self add: item index: { i } to: stream ] ]);
-		dataTransport: GtPhlowDeclarativeView dataIncluded.
+		dataTransport: GtPhlowViewSpecification dataIncluded.
 
 ]
 

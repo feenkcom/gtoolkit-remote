@@ -1,6 +1,6 @@
 Class {
-	#name : #GtRemotePhlowDeclarativeForwarderView,
-	#superclass : #GtRemotePhlowDeclarativeView,
+	#name : #GtRemotePhlowForwarderView,
+	#superclass : #GtRemotePhlowView,
 	#instVars : [
 		'viewSelector',
 		'objectComputation'
@@ -9,20 +9,20 @@ Class {
 }
 
 { #category : #converting }
-GtRemotePhlowDeclarativeForwarderView >> asGtDeclarativeView [
+GtRemotePhlowForwarderView >> asGtDeclarativeView [
 	^ (objectComputation value 
 		perform: viewSelector withArguments: { 
-			 GtRemotePhlowDeclarativeProtoView new }) asGtDeclarativeView
+			 GtRemotePhlowProtoView new }) asGtDeclarativeView
 			 	title: self title;
 			 	priority: self priority
 ]
 
 { #category : #'api - scripting' }
-GtRemotePhlowDeclarativeForwarderView >> object: anObjectComputation [
+GtRemotePhlowForwarderView >> object: anObjectComputation [
 	objectComputation := anObjectComputation.
 ]
 
 { #category : #'api - scripting' }
-GtRemotePhlowDeclarativeForwarderView >> view: aSelector [
+GtRemotePhlowForwarderView >> view: aSelector [
 	viewSelector := aSelector
 ]

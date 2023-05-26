@@ -28,7 +28,7 @@ GtRemotePlainInspectionViewedObject >> gtViewsInCurrentContextForObject: anObjec
 			methodSelector := aPragma method selector.
 			phlowView := anObject  
 				perform: methodSelector
-				with: GtRemotePhlowDeclarativeProtoView new.
+				with: GtRemotePhlowProtoView new.
 			phlowView definingSelector: methodSelector.
 			phlowView ]
 ]
@@ -47,7 +47,7 @@ GtRemotePlainInspectionViewedObject >> phlowDeclarativeViews [
 	views 
 		detect: [ :each | each title = 'Raw' ]
 		ifNone: [ views add: (object 
-			gtRemoteGtRawFor: #GtRemotePhlowDeclarativeProtoView asClass new) ].
+			gtRemoteGtRawFor: #GtRemotePhlowProtoView asClass new) ].
 	
 	^ views
 ]

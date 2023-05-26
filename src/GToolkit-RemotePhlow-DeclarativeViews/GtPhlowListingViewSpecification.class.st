@@ -1,6 +1,6 @@
 Class {
-	#name : #GtPhlowDeclarativeListingView,
-	#superclass : #GtPhlowDeclarativeView,
+	#name : #GtPhlowListingViewSpecification,
+	#superclass : #GtPhlowViewSpecification,
 	#instVars : [
 		'totalItemsCount'
 	],
@@ -8,45 +8,45 @@ Class {
 }
 
 { #category : #'api - accessing' }
-GtPhlowDeclarativeListingView >> flushItemsIterator [ 
+GtPhlowListingViewSpecification >> flushItemsIterator [ 
 
 	phlowDataSource flushItemsIterator
 ]
 
 { #category : #initialization }
-GtPhlowDeclarativeListingView >> initializeFromInspector: anInspector [
+GtPhlowListingViewSpecification >> initializeFromInspector: anInspector [
 	self phlowDataSource: (anInspector getDeclarativeViewFor: self methodSelector)
 ]
 
 { #category : #'api - accessing' }
-GtPhlowDeclarativeListingView >> retrieveItems: anItemsCount fromIndex: anIndex [
+GtPhlowListingViewSpecification >> retrieveItems: anItemsCount fromIndex: anIndex [
 	^ self phlowDataSource 
 		retrieveItems: anItemsCount fromIndex: anIndex
 ]
 
 { #category : #accessing }
-GtPhlowDeclarativeListingView >> retrieveItemsFromIndex: anIndex [
+GtPhlowListingViewSpecification >> retrieveItemsFromIndex: anIndex [
 	^ self retrieveItems: 100 fromIndex: anIndex
 ]
 
 { #category : #'api - accessing' }
-GtPhlowDeclarativeListingView >> retrieveTotalItemsCount [
+GtPhlowListingViewSpecification >> retrieveTotalItemsCount [
 	^ self phlowDataSource retrieveTotalItemsCount
 ]
 
 { #category : #accessing }
-GtPhlowDeclarativeListingView >> retriveFormattedItems [
+GtPhlowListingViewSpecification >> retriveFormattedItems [
 	^ self phlowDataSource 
 		retrieveItems: self totalItemsCount fromIndex: 1
 ]
 
 { #category : #'api - accessing' }
-GtPhlowDeclarativeListingView >> retriveSentItemAt: aSelectionIndex [
+GtPhlowListingViewSpecification >> retriveSentItemAt: aSelectionIndex [
 	^ self phlowDataSource retriveSentItemAt: aSelectionIndex
 ]
 
 { #category : #accessing }
-GtPhlowDeclarativeListingView >> totalItemsCount [
+GtPhlowListingViewSpecification >> totalItemsCount [
 	^ totalItemsCount ifNil: [ 
 		totalItemsCount := self phlowDataSource retrieveTotalItemsCount ]
 ]

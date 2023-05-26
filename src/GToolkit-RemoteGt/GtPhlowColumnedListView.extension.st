@@ -5,7 +5,7 @@ GtPhlowColumnedListView >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
 
-	^ GtPhlowDeclarativeColumnedListView new 
+	^ GtPhlowColumnedListViewSpecification new 
 		phlowDataSource: (GtRemotePhlowDeclarativeViewColumnedListDataSource forPhlowView: self);
 		title: self title;
 		priority: self priority;
@@ -22,7 +22,7 @@ GtPhlowColumnedListView >> asGtDeclarativeView [
 					aColumn hasBackgroundComputation ifTrue: [ 
 						aColumnSpecification  markAsHavingBackground ].
 					aColumnSpecification ] ] as: Array);
-		dataTransport: GtPhlowDeclarativeView dataLazy
+		dataTransport: GtPhlowViewSpecification dataLazy
 ]
 
 { #category : #'*GToolkit-RemoteGt' }

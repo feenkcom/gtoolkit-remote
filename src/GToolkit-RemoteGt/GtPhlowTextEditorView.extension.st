@@ -9,7 +9,7 @@ GtPhlowTextEditorView >> asGtDeclarativeView [
 		title: self title;
 		priority: self priority;
 		string: self textBuilder value asString;
-		dataTransport: GtPhlowDeclarativeView dataIncluded.
+		dataTransport: GtPhlowViewSpecification dataIncluded.
 
 ]
 

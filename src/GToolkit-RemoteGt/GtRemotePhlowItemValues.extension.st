@@ -9,11 +9,7 @@ GtRemotePhlowItemValues class >> fromJSONDictionary: aDictionary [
 		background: (aDictionary 
 			at: #background 
 			ifPresent: [ :aBackgroundValue |
-				Color 
-					r: aBackgroundValue first 
-					g: aBackgroundValue second  
-					b: aBackgroundValue third  
-					alpha: aBackgroundValue fourth  ]
+				GtPhlowColor fromJSONDictionary: aBackgroundValue ]
 			ifAbsent: [ nil ]);
 		yourself
 ]

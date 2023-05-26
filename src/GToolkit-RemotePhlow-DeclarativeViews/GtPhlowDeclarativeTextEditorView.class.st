@@ -1,10 +1,10 @@
 Class {
 	#name : #GtPhlowDeclarativeTextEditorView,
-	#superclass : #GtPhlowDeclarativeView,
+	#superclass : #GtPhlowViewSpecification,
 	#instVars : [
 		'string'
 	],
-	#category : 'GToolkit-RemotePhlow-DeclarativeViews'
+	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
 { #category : #'instance creation' }

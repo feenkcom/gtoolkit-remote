@@ -1,10 +1,10 @@
 Class {
 	#name : #GtRemotePhlowDeclarativeTable,
-	#superclass : #GtRemotePhlowDeclarativeView,
+	#superclass : #GtRemotePhlowView,
 	#instVars : [
 		'items'
 	],
-	#category : 'GToolkit-RemotePhlow-PhlowViews'
+	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
 
 { #category : #accessing }

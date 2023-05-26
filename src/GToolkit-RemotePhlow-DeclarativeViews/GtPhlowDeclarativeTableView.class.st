@@ -1,10 +1,10 @@
 Class {
 	#name : #GtPhlowDeclarativeTableView,
-	#superclass : #GtPhlowDeclarativeView,
+	#superclass : #GtPhlowViewSpecification,
 	#instVars : [
 		'items'
 	],
-	#category : 'GToolkit-RemotePhlow-DeclarativeViews'
+	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
 { #category : #'instance creation' }

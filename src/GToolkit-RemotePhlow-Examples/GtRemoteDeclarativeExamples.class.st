@@ -19,17 +19,17 @@ GtRemoteDeclarativeExamples >> columnedListView [
 
 	viewProxy := self viewedObjectProxy.
 	viewDictionary :=  viewProxy getViewDeclaration: #gtColumnedListFor:.
-	view := GtPhlowDeclarativeView fromDictionary: viewDictionary.
+	view := GtPhlowViewSpecification fromDictionary: viewDictionary.
 	self assert: view title equals: 'Columned list'.
 	self assert: view columnTitles equals: #(Value Lowercase).
 	self assert: view columnWidths equals: #(nil 100).
 	self assert: view columnTypes equals: #(text text).
-	view dataTransport = GtPhlowDeclarativeView dataIncluded ifTrue:
+	view dataTransport = GtPhlowViewSpecification dataIncluded ifTrue:
 		[ data := view items.
 		self assert: data size equals: 3.
 		self assert: data first equals: #('42' '42').
 		self assert: data second equals: #('Hello World' 'hello world') ].
-	view dataTransport = GtPhlowDeclarativeView dataLazy ifTrue:
+	view dataTransport = GtPhlowViewSpecification dataLazy ifTrue:
 		[ self columnedListViewLazyCheck: viewProxy ].
 	^ view
 ]
@@ -73,14 +73,14 @@ GtRemoteDeclarativeExamples >> listView [
 
 	viewProxy := self viewedObjectProxy.
 	viewDictionary :=  viewProxy getViewDeclaration: #gtListFor:.
-	view := GtPhlowDeclarativeView fromDictionary: viewDictionary.
+	view := GtPhlowViewSpecification fromDictionary: viewDictionary.
 	self assert: view title equals: #List.
 	self assert: view priority equals: 15.
-	view dataTransport = GtPhlowDeclarativeView dataIncluded ifTrue:
+	view dataTransport = GtPhlowViewSpecification dataIncluded ifTrue:
 		[ data := view items.
 		self assert: data size equals: 3.
 		self assert: data equals: self listViewDisplayArray ].
-	view dataTransport = GtPhlowDeclarativeView dataLazy ifTrue:
+	view dataTransport = GtPhlowViewSpecification dataLazy ifTrue:
 		[ self listViewLazyCheck: viewProxy ].
 	^ view
 ]
@@ -119,7 +119,7 @@ GtRemoteDeclarativeExamples >> printView [
 
 	viewProxy := self viewedObjectProxy.
 	viewDictionary :=  viewProxy getViewDeclaration: #gtRemotePrintFor:.
-	view := GtPhlowDeclarativeView fromDictionary: viewDictionary.
+	view := GtPhlowViewSpecification fromDictionary: viewDictionary.
 	self assert: view title equals: #Print.
 	self assert: view string equals: self printForString.
 	^ view
@@ -172,7 +172,7 @@ GtRemoteDeclarativeExamples >> stringView [
 
 	viewProxy := self viewedObjectProxy.
 	viewDictionary :=  viewProxy getViewDeclaration: #gtStringFor:.
-	view :=  GtPhlowDeclarativeView fromDictionary: viewDictionary.
+	view :=  GtPhlowViewSpecification fromDictionary: viewDictionary.
 	self assert: view title equals: #String.
 	self assert: view string equals: 'hello world'.
 	^ view

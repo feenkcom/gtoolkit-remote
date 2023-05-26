@@ -17,8 +17,8 @@ Current limitations:
 
 "
 Class {
-	#name : #GtPhlowDeclarativeColumnedListView,
-	#superclass : #GtPhlowDeclarativeListingView,
+	#name : #GtPhlowColumnedListViewSpecification,
+	#superclass : #GtPhlowListingViewSpecification,
 	#instVars : [
 		'columnSpecifications'
 	],
@@ -26,7 +26,7 @@ Class {
 }
 
 { #category : #'instance creation' }
-GtPhlowDeclarativeColumnedListView class >> fromJSONDictionary: aDictionary [
+GtPhlowColumnedListViewSpecification class >> fromJSONDictionary: aDictionary [
 
 	| list |
 
@@ -41,7 +41,7 @@ GtPhlowDeclarativeColumnedListView class >> fromJSONDictionary: aDictionary [
 ]
 
 { #category : #converting }
-GtPhlowDeclarativeColumnedListView >> asDictionaryForExport [ 
+GtPhlowColumnedListViewSpecification >> asDictionaryForExport [ 
 	| dictionary |
 
 	dictionary := super asDictionaryForExport 
@@ -54,35 +54,35 @@ GtPhlowDeclarativeColumnedListView >> asDictionaryForExport [
 ]
 
 { #category : #accessing }
-GtPhlowDeclarativeColumnedListView >> columnSpecifications [
+GtPhlowColumnedListViewSpecification >> columnSpecifications [
 	^ columnSpecifications
 ]
 
 { #category : #accessing }
-GtPhlowDeclarativeColumnedListView >> columnSpecifications: anObject [
+GtPhlowColumnedListViewSpecification >> columnSpecifications: anObject [
 	columnSpecifications := anObject
 ]
 
 { #category : #accessing }
-GtPhlowDeclarativeColumnedListView >> columnTitles [
+GtPhlowColumnedListViewSpecification >> columnTitles [
 	^ self columnSpecifications collect: [ :aColumnSpecification |
 		aColumnSpecification title ]
 ]
 
 { #category : #accessing }
-GtPhlowDeclarativeColumnedListView >> columnTypes [
+GtPhlowColumnedListViewSpecification >> columnTypes [
 	^ self columnSpecifications collect: [ :aColumnSpecification |
 		aColumnSpecification type ]
 ]
 
 { #category : #accessing }
-GtPhlowDeclarativeColumnedListView >> columnWidths [
+GtPhlowColumnedListViewSpecification >> columnWidths [
 	^ self columnSpecifications collect: [ :aColumnSpecification |
 		aColumnSpecification cellWidth ]
 ]
 
 { #category : #accessing }
-GtPhlowDeclarativeColumnedListView >> retrieveItems: anItemsCount fromIndex: anIndex [
+GtPhlowColumnedListViewSpecification >> retrieveItems: anItemsCount fromIndex: anIndex [
 	^ (super retrieveItems: anItemsCount fromIndex: anIndex) 
 			"collect: [ :cellValuesDictionary |
 				cellValuesDictionary collect: [ :aCellValueDictionary |
@@ -90,7 +90,7 @@ GtPhlowDeclarativeColumnedListView >> retrieveItems: anItemsCount fromIndex: anI
 ]
 
 { #category : #'api - accessing' }
-GtPhlowDeclarativeColumnedListView >> retriveSpawnedObjectAtRow: aRowIndex column: aColumnIndex [	
+GtPhlowColumnedListViewSpecification >> retriveSpawnedObjectAtRow: aRowIndex column: aColumnIndex [	
 	^ self phlowDataSource 
 		retriveSpawnedObjectAtRow: aRowIndex column: aColumnIndex
 ]

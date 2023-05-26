@@ -1,7 +1,7 @@
-Extension { #name : #GtPhlowDeclarativeColumnedListView }
+Extension { #name : #GtPhlowColumnedListViewSpecification }
 
 { #category : #'*GToolkit-RemoteGt' }
-GtPhlowDeclarativeColumnedListView >> configureColumn: column fromSpecification: aColumnSpecification withIndex: aColumnIndex [
+GtPhlowColumnedListViewSpecification >> configureColumn: column fromSpecification: aColumnSpecification withIndex: aColumnIndex [
 	column title: aColumnSpecification title.
 
 	aColumnSpecification spawnsObjects
@@ -29,7 +29,7 @@ GtPhlowDeclarativeColumnedListView >> configureColumn: column fromSpecification:
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
-GtPhlowDeclarativeColumnedListView >> viewFor: aView [
+GtPhlowColumnedListViewSpecification >> viewFor: aView [
 	"Answer the GtPhlowView for the receiver"
 	| list |
 	

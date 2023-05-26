@@ -14,8 +14,8 @@ GtDeclarativeList supports a subset of the possible configurations of {{gtClass:
 
 "
 Class {
-	#name : #GtRemotePhlowDeclarativeList,
-	#superclass : #GtRemotePhlowDeclarativeListingView,
+	#name : #GtRemotePhlowList,
+	#superclass : #GtRemotePhlowListingView,
 	#instVars : [
 		'itemTextBlock'
 	],
@@ -23,25 +23,25 @@ Class {
 }
 
 { #category : #converting }
-GtRemotePhlowDeclarativeList >> asGtDeclarativeView [
+GtRemotePhlowList >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
 
-	^ GtPhlowDeclarativeListView new 
+	^ GtPhlowListViewSpecification new 
 		phlowDataSource: (GtRemotePhlowDeclarativeViewListDataSource forPhlowView: self);
 		title: self title;
 		priority: self priority;
-		dataTransport: GtPhlowDeclarativeView dataLazy.
+		dataTransport: GtPhlowViewSpecification dataLazy.
 ]
 
 { #category : #'private - accessing' }
-GtRemotePhlowDeclarativeList >> itemComputation [
+GtRemotePhlowList >> itemComputation [
 
 	^ self itemText
 ]
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeList >> itemText [
+GtRemotePhlowList >> itemText [
 	"Answer the BlockClosure that will convert each item to its displayed format.
 	The result of the BlockClosure must be a JSON primitive type, effectively a string or number."
 
@@ -50,7 +50,7 @@ GtRemotePhlowDeclarativeList >> itemText [
 ]
 
 { #category : #'api - scripting' }
-GtRemotePhlowDeclarativeList >> itemText: aBlockClosure [
+GtRemotePhlowList >> itemText: aBlockClosure [
 
 	itemTextBlock := aBlockClosure
 ]

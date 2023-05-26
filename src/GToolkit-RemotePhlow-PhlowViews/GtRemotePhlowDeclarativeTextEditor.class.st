@@ -1,10 +1,10 @@
 Class {
 	#name : #GtRemotePhlowDeclarativeTextEditor,
-	#superclass : #GtRemotePhlowDeclarativeView,
+	#superclass : #GtRemotePhlowView,
 	#instVars : [
 		'textBuilder'
 	],
-	#category : 'GToolkit-RemotePhlow-PhlowViews'
+	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
 
 { #category : #converting }
@@ -16,7 +16,7 @@ GtRemotePhlowDeclarativeTextEditor >> asGtDeclarativeView [
 		title: self title;
 		priority: self priority;
 		string: self textBuilder value asString;
-		dataTransport: GtPhlowDeclarativeView dataIncluded.
+		dataTransport: GtPhlowViewSpecification dataIncluded.
 
 ]
 

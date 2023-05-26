@@ -15,7 +15,7 @@ GtDeclarativeViewConversionExamples >> convertColumnedList [
 		priority: 10;
 		items: [ #(1 2 3) ];
 		column: 'One' text: [ :item | item ];
-		column: 'Two' text: [: item | item asString ] width: 100.
+		column: 'Two' text: [ :item | item asString ] width: 100.
 	declarativeView := phlowView asGtDeclarativeView.
 
 	self assert: declarativeView title equals: #Test.
