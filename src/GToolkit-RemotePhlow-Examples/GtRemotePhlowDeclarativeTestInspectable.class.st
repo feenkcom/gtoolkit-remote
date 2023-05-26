@@ -123,6 +123,7 @@ GtRemotePhlowDeclarativeTestInspectable >> gtItemsWithBackgroundFor: aView [
 				background: [ :v |
 					v > 0
 						ifTrue: [ 
+							"GtPhlowColorBuilder named: #green alpha: 0.3"
 							#(0.0  1.0  0.0  0.2980392156862745)
 							"Color green alpha: 0.3" ]
 						ifFalse: [ v < 0

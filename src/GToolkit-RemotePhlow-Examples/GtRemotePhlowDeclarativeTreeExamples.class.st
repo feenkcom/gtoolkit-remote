@@ -3,7 +3,7 @@ Class {
 	#superclass : #Object,
 	#traits : 'TAssertable',
 	#classTraits : 'TAssertable classTrait',
-	#category : 'GToolkit-RemotePhlow-Examples'
+	#category : #'GToolkit-RemotePhlow-Examples'
 }
 
 { #category : #examples }
@@ -11,7 +11,7 @@ GtRemotePhlowDeclarativeTreeExamples >> emptyTree [
 	<gtExample>
 	| view |
 
-	view := GtRemotePhlowDeclarativeProtoView new tree.
+	view := GtRemotePhlowProtoView new tree.
 	self assert: view class equals: GtRemotePhlowDeclarativeTree.
 	^ view
 ]

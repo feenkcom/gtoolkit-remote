@@ -9,13 +9,13 @@ When transporting the data, each node in the tree is represented as an Array wit
 "
 Class {
 	#name : #GtRemotePhlowDeclarativeTree,
-	#superclass : #GtRemotePhlowDeclarativeView,
+	#superclass : #GtRemotePhlowView,
 	#instVars : [
 		'itemsBuilder',
 		'itemTextBlock',
 		'childrenBlock'
 	],
-	#category : 'GToolkit-RemotePhlow-PhlowViews'
+	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
 
 { #category : #private }

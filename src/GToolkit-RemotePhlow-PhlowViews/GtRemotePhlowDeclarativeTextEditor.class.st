@@ -1,10 +1,10 @@
 Class {
 	#name : #GtRemotePhlowDeclarativeTextEditor,
-	#superclass : #GtRemotePhlowDeclarativeView,
+	#superclass : #GtRemotePhlowView,
 	#instVars : [
 		'textBuilder'
 	],
-	#category : 'GToolkit-RemotePhlow-PhlowViews'
+	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
 
 { #category : #converting }

@@ -1,42 +1,42 @@
 Class {
-	#name : #GtRemotePhlowDeclarativeListingView,
-	#superclass : #GtRemotePhlowDeclarativeView,
+	#name : #GtRemotePhlowListingView,
+	#superclass : #GtRemotePhlowView,
 	#instVars : [
 		'itemsProviderComputation',
 		'transformation'
 	],
-	#category : 'GToolkit-RemotePhlow-PhlowViews'
+	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeListingView >> defaultTransformation [
+GtRemotePhlowListingView >> defaultTransformation [
 	^ GtRemotePhlowSendObjectTransformation forValuable: [ :anObject | anObject ]
 ]
 
 { #category : #'api - scripting' }
-GtRemotePhlowDeclarativeListingView >> items: aBlockClosure [
+GtRemotePhlowListingView >> items: aBlockClosure [
 	itemsProviderComputation := aBlockClosure
 ]
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeListingView >> itemsProviderComputation [
+GtRemotePhlowListingView >> itemsProviderComputation [
 	^ itemsProviderComputation ifNil: [ 
 		itemsProviderComputation := #() asGPhlowItemsIterator ]
 ]
 
 { #category : #'api - scripting' }
-GtRemotePhlowDeclarativeListingView >> send: aBlock [
+GtRemotePhlowListingView >> send: aBlock [
 	"Define what object should be displayed on selection and fire select or spawn item requests"
 	self transformation: (GtRemotePhlowSendObjectTransformation forValuable: aBlock)
 ]
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeListingView >> transformation [ 	
+GtRemotePhlowListingView >> transformation [ 	
 	^ transformation ifNil: [ 
 		transformation := self defaultTransformation ]
 ]
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeListingView >> transformation: aGtPhlowSendTransformation [
+GtRemotePhlowListingView >> transformation: aGtPhlowSendTransformation [
 	transformation := aGtPhlowSendTransformation.
 ]

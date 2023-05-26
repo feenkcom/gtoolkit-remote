@@ -25,7 +25,7 @@ Internal Representation and Key Implementation Points.
     Implementation Points
 "
 Class {
-	#name : #GtRemotePhlowDeclarativeView,
+	#name : #GtRemotePhlowView,
 	#superclass : #Object,
 	#instVars : [
 		'title',
@@ -36,29 +36,29 @@ Class {
 }
 
 { #category : #converting }
-GtRemotePhlowDeclarativeView >> asGtDeclarativeView [
+GtRemotePhlowView >> asGtDeclarativeView [
 	^ nil
 ]
 
 { #category : #testing }
-GtRemotePhlowDeclarativeView >> canBeGtDeclarativeView [
+GtRemotePhlowView >> canBeGtDeclarativeView [
 	^ true
 ]
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeView >> definingSelector [
+GtRemotePhlowView >> definingSelector [
 
 	^ definingSelector
 ]
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeView >> definingSelector: aSelector [
+GtRemotePhlowView >> definingSelector: aSelector [
 
 	definingSelector := aSelector
 ]
 
 { #category : #printing }
-GtRemotePhlowDeclarativeView >> printOn: aStream [
+GtRemotePhlowView >> printOn: aStream [
 	super printOn: aStream.
 	
 	aStream parenthesize: [
@@ -66,21 +66,21 @@ GtRemotePhlowDeclarativeView >> printOn: aStream [
 ]
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeView >> priority [
+GtRemotePhlowView >> priority [
 	^ priority
 ]
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeView >> priority: anObject [
+GtRemotePhlowView >> priority: anObject [
 	priority := anObject
 ]
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeView >> title [
+GtRemotePhlowView >> title [
 	^ title
 ]
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeView >> title: anObject [
+GtRemotePhlowView >> title: anObject [
 	title := anObject
 ]
