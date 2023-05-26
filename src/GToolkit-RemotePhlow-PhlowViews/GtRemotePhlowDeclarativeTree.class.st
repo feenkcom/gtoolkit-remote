@@ -35,13 +35,13 @@ GtRemotePhlowDeclarativeTree >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
 
-	^ GtPhlowDeclarativeTreeView new 
+	^ GtPhlowTreeViewSpecification new 
 		title: self title;
 		priority: self priority;
 		items: (Array streamContents: [ :stream |
 			self itemsBuilder value doWithIndex: [ :item :i |
 				self add: item index: { i } to: stream ] ]);
-		dataTransport: GtPhlowDeclarativeView dataIncluded.
+		dataTransport: GtPhlowViewSpecification dataIncluded.
 
 ]
 

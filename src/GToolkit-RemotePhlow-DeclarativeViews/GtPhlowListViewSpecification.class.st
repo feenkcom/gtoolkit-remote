@@ -15,13 +15,13 @@
 
 "
 Class {
-	#name : #GtPhlowDeclarativeListView,
-	#superclass : #GtPhlowDeclarativeListingView,
+	#name : #GtPhlowListViewSpecification,
+	#superclass : #GtPhlowListingViewSpecification,
 	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
 { #category : #'instance creation' }
-GtPhlowDeclarativeListView class >> fromJSONDictionary: aDictionary [
+GtPhlowListViewSpecification class >> fromJSONDictionary: aDictionary [
 	| list |
 
 	list := super fromJSONDictionary: aDictionary.
@@ -31,7 +31,7 @@ GtPhlowDeclarativeListView class >> fromJSONDictionary: aDictionary [
 ]
 
 { #category : #converting }
-GtPhlowDeclarativeListView >> asDictionaryForExport [ 
+GtPhlowListViewSpecification >> asDictionaryForExport [ 
 
 	| dictionary |
 

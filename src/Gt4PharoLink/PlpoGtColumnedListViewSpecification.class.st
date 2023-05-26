@@ -1,19 +1,19 @@
 Class {
-	#name : #PlpoGtDeclarativeColumnedListView,
+	#name : #PlpoGtColumnedListViewSpecification,
 	#superclass : #PharoLinkProxyObject,
 	#traits : 'TPlpoGtDeclarativeListingView',
 	#classTraits : 'TPlpoGtDeclarativeListingView classTrait',
-	#category : 'Gt4PharoLink-Proxies'
+	#category : #'Gt4PharoLink-Proxies'
 }
 
 { #category : #accessing }
-PlpoGtDeclarativeColumnedListView class >> remoteClassName [
+PlpoGtColumnedListViewSpecification class >> remoteClassName [
 
-	^ #GtPhlowDeclarativeColumnedListView
+	^ #GtPhlowColumnedListViewSpecification
 ]
 
 { #category : #accessing }
-PlpoGtDeclarativeColumnedListView >> retriveSpawnedObjectAtRow: aRowIndex column: aColumnIndex [
+PlpoGtColumnedListViewSpecification >> retriveSpawnedObjectAtRow: aRowIndex column: aColumnIndex [
 	^ self
 		proxyPerform: #retriveSpawnedObjectAtRow:column:
 		withPrimitiveArguments: { aRowIndex . aColumnIndex }

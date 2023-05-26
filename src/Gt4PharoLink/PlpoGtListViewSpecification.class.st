@@ -1,13 +1,13 @@
 Class {
-	#name : #PlpoGtDeclarativeListView,
+	#name : #PlpoGtListViewSpecification,
 	#superclass : #PharoLinkProxyObject,
 	#traits : 'TPlpoGtDeclarativeListingView',
 	#classTraits : 'TPlpoGtDeclarativeListingView classTrait',
-	#category : 'Gt4PharoLink-Proxies'
+	#category : #'Gt4PharoLink-Proxies'
 }
 
 { #category : #accessing }
-PlpoGtDeclarativeListView class >> remoteClassName [
+PlpoGtListViewSpecification class >> remoteClassName [
 
-	^ #GtPhlowDeclarativeListView
+	^ #GtPhlowListViewSpecification
 ]

@@ -1,7 +1,7 @@
-Extension { #name : #GtPhlowDeclarativeListView }
+Extension { #name : #GtPhlowListViewSpecification }
 
 { #category : #'*GToolkit-RemoteGt' }
-GtPhlowDeclarativeListView >> viewFor: aView [
+GtPhlowListViewSpecification >> viewFor: aView [
 	"Answer the GtPhlowView for the receiver"
 
 	| list |
