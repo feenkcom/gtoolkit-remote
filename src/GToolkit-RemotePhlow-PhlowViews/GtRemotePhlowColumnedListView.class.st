@@ -16,20 +16,15 @@ GtRemotePhlowColumnedListView >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
 
-	^ GtPhlowColumnedListViewSpecification new 
-		phlowDataSource: (GtRemotePhlowDeclarativeViewColumnedListDataSource forPhlowView: self);
+	| viewSpecification |
+	viewSpecification := GtPhlowColumnedListViewSpecification new 
+		phlowDataSource: (GtRemotePhlowDeclarativeViewColumnedListDataSource 
+			forPhlowView: self);
 		title: self title;
 		priority: self priority;
-		columnSpecifications: (columns asArray collect: [ :aColumn | 
-			| columnSpecification|
-			columnSpecification := GtRemotePhlowColumnSpecification new
-				title: aColumn title;
-				cellWidth: aColumn cellWidth;
-				type: aColumn asGtDeclarativeColumnDataType asString;
-				spawnsObjects: aColumn isSpawningObject.
-			
-			aColumn hasBackgroundComputation ifTrue: [ 
-				columnSpecification  markAsHavingBackground ].
-			columnSpecification ] ) ;
-		dataTransport: GtPhlowViewSpecification dataLazy
+		dataTransport: GtPhlowViewSpecification dataLazy.
+		
+	self configureColumnsSpecificationOn: viewSpecification.
+	
+	^ viewSpecification
 ]

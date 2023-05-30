@@ -128,3 +128,19 @@ GtRemotePhlowBasicColumnedListView >> columns [
 	^ columns ifNil: [
 		columns := OrderedCollection new ]
 ]
+
+{ #category : #accessing }
+GtRemotePhlowBasicColumnedListView >> configureColumnsSpecificationOn: aViewSpecification [
+	aViewSpecification
+		columnSpecifications: (columns asArray collect: [ :aColumn | 
+			| columnSpecification|
+			columnSpecification := GtRemotePhlowColumnSpecification new
+				title: aColumn title;
+				cellWidth: aColumn cellWidth;
+				type: aColumn asGtDeclarativeColumnDataType asString;
+				spawnsObjects: aColumn isSpawningObject.
+			
+			aColumn hasBackgroundComputation ifTrue: [ 
+				columnSpecification  markAsHavingBackground ].
+			columnSpecification ] )
+]

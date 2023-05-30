@@ -15,6 +15,24 @@ Class {
 }
 
 { #category : #accessing }
+GtRemotePhlowColumnedTreeView >> asGtDeclarativeView [
+	"Answer the receiver as a GtDeclarativeView."
+
+	| viewSpecification |
+	
+	viewSpecification := GtPhlowColumnedTreeViewSpecification new 
+		title: self title;
+		priority: self priority;
+		phlowDataSource: (GtRemotePhlowDeclarativeViewColumnedTreeDataSource 
+			forPhlowView: self);
+		dataTransport: GtPhlowViewSpecification dataLazy.
+		
+	self configureColumnsSpecificationOn: viewSpecification.
+	
+	^ viewSpecification
+]
+
+{ #category : #accessing }
 GtRemotePhlowColumnedTreeView >> children: aBlock [
 
 	childrenBuilder := aBlock
