@@ -1,5 +1,5 @@
 Class {
-	#name : #GtPhlowDeclarativeTableView,
+	#name : #GtPhlowTableViewSpecification,
 	#superclass : #GtPhlowViewSpecification,
 	#instVars : [
 		'items'
@@ -8,7 +8,7 @@ Class {
 }
 
 { #category : #'instance creation' }
-GtPhlowDeclarativeTableView class >> fromJSONDictionary: aDictionary [
+GtPhlowTableViewSpecification class >> fromJSONDictionary: aDictionary [
 
 	| table |
 
@@ -19,7 +19,7 @@ GtPhlowDeclarativeTableView class >> fromJSONDictionary: aDictionary [
 ]
 
 { #category : #converting }
-GtPhlowDeclarativeTableView >> asDictionaryForExport [ 
+GtPhlowTableViewSpecification >> asDictionaryForExport [ 
 
 	| dictionary |
 
@@ -30,11 +30,11 @@ GtPhlowDeclarativeTableView >> asDictionaryForExport [
 ]
 
 { #category : #accessing }
-GtPhlowDeclarativeTableView >> items [
+GtPhlowTableViewSpecification >> items [
 	^ items
 ]
 
 { #category : #accessing }
-GtPhlowDeclarativeTableView >> items: anObject [
+GtPhlowTableViewSpecification >> items: anObject [
 	items := anObject
 ]

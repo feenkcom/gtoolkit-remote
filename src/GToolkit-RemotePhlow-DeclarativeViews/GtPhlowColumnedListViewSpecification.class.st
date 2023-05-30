@@ -81,14 +81,6 @@ GtPhlowColumnedListViewSpecification >> columnWidths [
 		aColumnSpecification cellWidth ]
 ]
 
-{ #category : #accessing }
-GtPhlowColumnedListViewSpecification >> retrieveItems: anItemsCount fromIndex: anIndex [
-	^ (super retrieveItems: anItemsCount fromIndex: anIndex) 
-			"collect: [ :cellValuesDictionary |
-				cellValuesDictionary collect: [ :aCellValueDictionary |
-					GtRemotePhlowItemValues fromJSONDictionary: aCellValueDictionary ] ]"
-]
-
 { #category : #'api - accessing' }
 GtPhlowColumnedListViewSpecification >> retriveSpawnedObjectAtRow: aRowIndex column: aColumnIndex [	
 	^ self phlowDataSource 

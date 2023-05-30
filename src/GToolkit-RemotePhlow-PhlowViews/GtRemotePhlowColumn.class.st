@@ -52,7 +52,7 @@ GtRemotePhlowColumn >> cellWidth [
 { #category : #computation }
 GtRemotePhlowColumn >> computeItemValuesFor: anObject rowIndex: rowIndex columnIndex: columnIndex [
 	| cellValues itemValue |
-	cellValues := GtRemotePhlowItemValues new.
+	cellValues := GtRemotePhlowItemValue new.
 	
 	itemValue := self itemComputation 
 		cull: anObject cull: rowIndex cull: columnIndex.

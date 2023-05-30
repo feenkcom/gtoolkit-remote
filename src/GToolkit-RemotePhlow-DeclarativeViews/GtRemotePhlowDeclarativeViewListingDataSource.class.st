@@ -22,7 +22,8 @@ GtRemotePhlowDeclarativeViewListingDataSource >> formatItem: anObject atIndex: a
 { #category : #accessing }
 GtRemotePhlowDeclarativeViewListingDataSource >> itemsIterator [
 	^ itemsIterator ifNil: [ 
-		itemsIterator := self phlowView itemsProviderComputation value asGPhlowItemsIterator ]
+		itemsIterator := self phlowView 
+			itemsProviderComputation value asGPhlowItemsIterator ]
 ]
 
 { #category : #api }
@@ -38,6 +39,7 @@ GtRemotePhlowDeclarativeViewListingDataSource >> retrieveItems: anItemsCount fro
 		withIndexDo: [ :anObject :anItemIndex |
 			computedItemValues add: (self 
 				formatItem: anObject atIndex: anItemIndex)].
+	
 	^ computedItemValues asArray
 ]
 

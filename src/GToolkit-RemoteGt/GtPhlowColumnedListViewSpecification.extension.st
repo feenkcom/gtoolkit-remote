@@ -39,7 +39,7 @@ GtPhlowColumnedListViewSpecification >> viewFor: aView [
 			items: [  (GtRemoteInspectorListingBufferedStream 
 				declarativeView: self) collect: [ :cellValuesDictionary |
 					cellValuesDictionary collect: [ :aCellValueDictionary |
-						GtRemotePhlowItemValues fromJSONDictionary: aCellValueDictionary ] ] ];
+						GtRemotePhlowItemValue fromJSONDictionary: aCellValueDictionary ] ] ];
 			actionButtonIcon: BrGlamorousVectorIcons refresh
 				tooltip: 'Update'
 				action: [ :aButton :aTab | 

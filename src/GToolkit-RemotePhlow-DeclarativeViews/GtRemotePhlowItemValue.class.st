@@ -1,5 +1,5 @@
 Class {
-	#name : #GtRemotePhlowItemValues,
+	#name : #GtRemotePhlowItemValue,
 	#superclass : #Object,
 	#instVars : [
 		'background',
@@ -9,7 +9,7 @@ Class {
 }
 
 { #category : #converting }
-GtRemotePhlowItemValues >> asDictionaryForExport [
+GtRemotePhlowItemValue >> asDictionaryForExport [
 	"Answer the receiver as a dictionary ready for JSON serialisation"
 
 	| data| 
@@ -23,27 +23,27 @@ GtRemotePhlowItemValues >> asDictionaryForExport [
 ]
 
 { #category : #accessing }
-GtRemotePhlowItemValues >> background [
+GtRemotePhlowItemValue >> background [
 	^ background
 ]
 
 { #category : #accessing }
-GtRemotePhlowItemValues >> background: anObject [
+GtRemotePhlowItemValue >> background: anObject [
 	background := anObject
 ]
 
 { #category : #accessing }
-GtRemotePhlowItemValues >> itemText [
+GtRemotePhlowItemValue >> itemText [
 	^ itemText
 ]
 
 { #category : #accessing }
-GtRemotePhlowItemValues >> itemText: anObject [
+GtRemotePhlowItemValue >> itemText: anObject [
 	itemText := anObject
 ]
 
 { #category : #printing }
-GtRemotePhlowItemValues >> printOn: aStream [ 
+GtRemotePhlowItemValue >> printOn: aStream [ 
 	super printOn: aStream .
 	
 	aStream parenthesize: [

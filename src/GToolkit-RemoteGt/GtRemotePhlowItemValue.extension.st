@@ -1,7 +1,7 @@
-Extension { #name : #GtRemotePhlowItemValues }
+Extension { #name : #GtRemotePhlowItemValue }
 
 { #category : #'*GToolkit-RemoteGt' }
-GtRemotePhlowItemValues class >> fromJSONDictionary: aDictionary [
+GtRemotePhlowItemValue class >> fromJSONDictionary: aDictionary [
 	"Answer an instance of the receiver from the supplied dictionary."
 
 	^self new 

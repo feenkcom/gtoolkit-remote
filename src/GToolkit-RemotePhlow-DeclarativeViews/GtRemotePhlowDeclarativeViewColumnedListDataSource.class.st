@@ -38,7 +38,8 @@ GtRemotePhlowDeclarativeViewColumnedListDataSource >> retriveSpawnedObjectAtRow:
 			
 			aColumn := self phlowView columns at: aColumnIndex.
 			aSpawnedObject := aColumn isSpawningObject
-				ifTrue: [ aColumn spawnObjectComputation cull: aRowObject cull: anItemIndex  ]
+				ifTrue: [ aColumn spawnObjectComputation 
+					cull: aRowObject cull: anItemIndex  ]
 				ifFalse: [ aRowObject ].
 			^ aSpawnedObject ].
 	^ nil

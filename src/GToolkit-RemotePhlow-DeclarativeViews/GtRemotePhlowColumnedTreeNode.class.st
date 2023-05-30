@@ -1,5 +1,5 @@
 Class {
 	#name : #GtRemotePhlowColumnedTreeNode,
-	#superclass : #GtRemotePhlowValueNode,
+	#superclass : #GtRemotePhlowTreeNode,
 	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }

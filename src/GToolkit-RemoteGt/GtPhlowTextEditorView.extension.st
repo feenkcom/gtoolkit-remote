@@ -5,7 +5,7 @@ GtPhlowTextEditorView >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
 
-	^GtPhlowDeclarativeTextEditorView new 
+	^GtPhlowTextEditorViewSpecification new 
 		title: self title;
 		priority: self priority;
 		string: self textBuilder value asString;

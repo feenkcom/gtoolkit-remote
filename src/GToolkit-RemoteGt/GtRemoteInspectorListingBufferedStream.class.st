@@ -15,7 +15,8 @@ Class {
 
 { #category : #'instance creation' }
 GtRemoteInspectorListingBufferedStream class >> declarativeView: aDeclarativeView [
-	^ self new declarativeView: aDeclarativeView
+	^ self new 
+		declarativeView: aDeclarativeView
 ]
 
 { #category : #accessing }
@@ -72,7 +73,9 @@ GtRemoteInspectorListingBufferedStream >> pollNext: anAsynchronousContext [
 		ifNil: [
 			bufferFuture
 				ifNil: [
-					bufferFuture := [ declarativeView retrieveItems: self bufferSize fromIndex: index ] asAsyncFuture ]
+					bufferFuture := [ declarativeView 
+						retrieveItems: self bufferSize 
+						fromIndex: index ] asAsyncFuture ]
 				ifNotNil: [
 					(bufferFuture poll: anAsynchronousContext)
 						ifReady: [ :aReadyPoll | buffer := LinkedList newFrom: aReadyPoll value ]
