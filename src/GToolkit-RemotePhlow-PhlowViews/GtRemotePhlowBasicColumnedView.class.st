@@ -2,7 +2,7 @@
 I provide functionality for working with columns.
 "
 Class {
-	#name : #GtRemotePhlowBasicColumnedListView,
+	#name : #GtRemotePhlowBasicColumnedView,
 	#superclass : #GtRemotePhlowListingView,
 	#instVars : [
 		'columns'
@@ -11,7 +11,7 @@ Class {
 }
 
 { #category : #converting }
-GtRemotePhlowBasicColumnedListView >> asGtDeclarativeView [
+GtRemotePhlowBasicColumnedView >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
 
@@ -34,7 +34,7 @@ GtRemotePhlowBasicColumnedListView >> asGtDeclarativeView [
 ]
 
 { #category : #accessing }
-GtRemotePhlowBasicColumnedListView >> column [
+GtRemotePhlowBasicColumnedView >> column [
 	<return: #GtRemotePhlowColumn>
 	| aColumn |
 	
@@ -44,7 +44,7 @@ GtRemotePhlowBasicColumnedListView >> column [
 ]
 
 { #category : #'api - scripting column' }
-GtRemotePhlowBasicColumnedListView >> column: aTitleString do: aBlock [
+GtRemotePhlowBasicColumnedView >> column: aTitleString do: aBlock [
 	| aColumn |
 	aColumn := self column.
 	aColumn title: aTitleString.
@@ -52,7 +52,7 @@ GtRemotePhlowBasicColumnedListView >> column: aTitleString do: aBlock [
 ]
 
 { #category : #'api - scripting column' }
-GtRemotePhlowBasicColumnedListView >> column: columnName iconName: anIconNameComputation [
+GtRemotePhlowBasicColumnedView >> column: columnName iconName: anIconNameComputation [
 	| aColumn |
 	aColumn := self column.
 	aColumn title: columnName.
@@ -60,7 +60,7 @@ GtRemotePhlowBasicColumnedListView >> column: columnName iconName: anIconNameCom
 ]
 
 { #category : #'api - scripting column' }
-GtRemotePhlowBasicColumnedListView >> column: columnName iconName: anIconNameComputation spawn: aSpawnBlock [
+GtRemotePhlowBasicColumnedView >> column: columnName iconName: anIconNameComputation spawn: aSpawnBlock [
 	| aColumn |
 	aColumn := self column.
 	aColumn title: columnName.
@@ -69,7 +69,7 @@ GtRemotePhlowBasicColumnedListView >> column: columnName iconName: anIconNameCom
 ]
 
 { #category : #'api - scripting column' }
-GtRemotePhlowBasicColumnedListView >> column: columnName iconName: anIconNameComputation spawn: aSpawnBlock width: aNumberOrNil [
+GtRemotePhlowBasicColumnedView >> column: columnName iconName: anIconNameComputation spawn: aSpawnBlock width: aNumberOrNil [
 	| aColumn |
 	aColumn := self column.
 	aColumn title: columnName.
@@ -79,7 +79,7 @@ GtRemotePhlowBasicColumnedListView >> column: columnName iconName: anIconNameCom
 ]
 
 { #category : #'api - scripting column' }
-GtRemotePhlowBasicColumnedListView >> column: columnName iconName: anIconNameComputation width: aNumberOrNil [
+GtRemotePhlowBasicColumnedView >> column: columnName iconName: anIconNameComputation width: aNumberOrNil [
 	| aColumn |
 	aColumn := self column.
 	aColumn title: columnName.
@@ -88,7 +88,7 @@ GtRemotePhlowBasicColumnedListView >> column: columnName iconName: anIconNameCom
 ]
 
 { #category : #'api - scripting column' }
-GtRemotePhlowBasicColumnedListView >> column: columnName text: aBlockClosure [
+GtRemotePhlowBasicColumnedView >> column: columnName text: aBlockClosure [
 	| aColumn |
 	aColumn := self column.
 	aColumn title: columnName.
@@ -96,7 +96,7 @@ GtRemotePhlowBasicColumnedListView >> column: columnName text: aBlockClosure [
 ]
 
 { #category : #'api - scripting column' }
-GtRemotePhlowBasicColumnedListView >> column: columnName text: aBlockClosure spawn: aSpawnBlock [
+GtRemotePhlowBasicColumnedView >> column: columnName text: aBlockClosure spawn: aSpawnBlock [
 	| aColumn |
 	aColumn := self column.
 	aColumn title: columnName.
@@ -105,7 +105,7 @@ GtRemotePhlowBasicColumnedListView >> column: columnName text: aBlockClosure spa
 ]
 
 { #category : #'api - scripting column' }
-GtRemotePhlowBasicColumnedListView >> column: columnName text: aBlockClosure spawn: aSpawnBlock width: aNumberOrNil [
+GtRemotePhlowBasicColumnedView >> column: columnName text: aBlockClosure spawn: aSpawnBlock width: aNumberOrNil [
 	| aColumn |
 	aColumn := self column.
 	aColumn title: columnName.
@@ -115,7 +115,7 @@ GtRemotePhlowBasicColumnedListView >> column: columnName text: aBlockClosure spa
 ]
 
 { #category : #'api - scripting column' }
-GtRemotePhlowBasicColumnedListView >> column: columnName text: aBlockClosure width: aNumberOrNil [
+GtRemotePhlowBasicColumnedView >> column: columnName text: aBlockClosure width: aNumberOrNil [
  	| aColumn |
 	aColumn := self column.
 	aColumn title: columnName.
@@ -124,13 +124,13 @@ GtRemotePhlowBasicColumnedListView >> column: columnName text: aBlockClosure wid
 ]
 
 { #category : #accessing }
-GtRemotePhlowBasicColumnedListView >> columns [
+GtRemotePhlowBasicColumnedView >> columns [
 	^ columns ifNil: [
 		columns := OrderedCollection new ]
 ]
 
 { #category : #accessing }
-GtRemotePhlowBasicColumnedListView >> configureColumnsSpecificationOn: aViewSpecification [
+GtRemotePhlowBasicColumnedView >> configureColumnsSpecificationOn: aViewSpecification [
 	aViewSpecification
 		columnSpecifications: (columns asArray collect: [ :aColumn | 
 			| columnSpecification|

@@ -7,7 +7,7 @@ Current limitations:
 "
 Class {
 	#name : #GtRemotePhlowColumnedListView,
-	#superclass : #GtRemotePhlowBasicColumnedListView,
+	#superclass : #GtRemotePhlowBasicColumnedView,
 	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
 

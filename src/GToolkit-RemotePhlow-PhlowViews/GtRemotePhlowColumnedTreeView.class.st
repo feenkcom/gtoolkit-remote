@@ -5,7 +5,7 @@ I subclass from {{gtClass:GtRemotePhlowBasicColumnedListView}} to reuse the func
 "
 Class {
 	#name : #GtRemotePhlowColumnedTreeView,
-	#superclass : #GtRemotePhlowBasicColumnedListView,
+	#superclass : #GtRemotePhlowBasicColumnedView,
 	#instVars : [
 		'itemsBuilder',
 		'itemTextBlock',
