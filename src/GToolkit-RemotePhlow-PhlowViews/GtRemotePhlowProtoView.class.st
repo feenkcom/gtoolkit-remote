@@ -7,13 +7,13 @@ Class {
 { #category : #decorating }
 GtRemotePhlowProtoView >> columnedList [
 
-	^ self declarativeViewOfType: GtRemotePhlowColumnedList
+	^ self declarativeViewOfType: GtRemotePhlowColumnedListView
 ]
 
 { #category : #decorating }
 GtRemotePhlowProtoView >> columnedTree [
 
-	^ self declarativeViewOfType: GtRemotePhlowDeclarativeColumnedTree
+	^ self declarativeViewOfType: GtRemotePhlowColumnedTreeView
 ]
 
 { #category : #private }
@@ -39,23 +39,23 @@ GtRemotePhlowProtoView >> forward [
 { #category : #decorating }
 GtRemotePhlowProtoView >> list [
 
-	^ self declarativeViewOfType: GtRemotePhlowList
+	^ self declarativeViewOfType: GtRemotePhlowListView
 ]
 
 { #category : #decorating }
 GtRemotePhlowProtoView >> table [
 
-	^ self declarativeViewOfType: GtRemotePhlowDeclarativeTable
+	^ self declarativeViewOfType: GtRemotePhlowTableView
 ]
 
 { #category : #decorating }
 GtRemotePhlowProtoView >> textEditor [
 
-	^ self declarativeViewOfType: GtRemotePhlowDeclarativeTextEditor
+	^ self declarativeViewOfType: GtRemotePhlowTextEditorView
 ]
 
 { #category : #decorating }
 GtRemotePhlowProtoView >> tree [
 
-	^ self declarativeViewOfType: GtRemotePhlowDeclarativeTree
+	^ self declarativeViewOfType: GtRemotePhlowTreeView
 ]

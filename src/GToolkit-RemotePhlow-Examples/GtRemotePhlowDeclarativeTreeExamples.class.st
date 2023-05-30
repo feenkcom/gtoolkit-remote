@@ -12,7 +12,7 @@ GtRemotePhlowDeclarativeTreeExamples >> emptyTree [
 	| view |
 
 	view := GtRemotePhlowProtoView new tree.
-	self assert: view class equals: GtRemotePhlowDeclarativeTree.
+	self assert: view class equals: GtRemotePhlowTreeView.
 	^ view
 ]
 

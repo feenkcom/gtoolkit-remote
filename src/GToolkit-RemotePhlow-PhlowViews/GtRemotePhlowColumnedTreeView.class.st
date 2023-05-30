@@ -1,6 +1,6 @@
 Class {
-	#name : #GtRemotePhlowDeclarativeColumnedTree,
-	#superclass : #GtRemotePhlowDeclarativeTree,
+	#name : #GtRemotePhlowColumnedTreeView,
+	#superclass : #GtRemotePhlowTreeView,
 	#instVars : [
 		'columns'
 	],
@@ -8,7 +8,7 @@ Class {
 }
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeColumnedTree >> column [
+GtRemotePhlowColumnedTreeView >> column [
 	<return: #GtRemotePhlowColumn>
 	| aColumn |
 	
@@ -18,7 +18,7 @@ GtRemotePhlowDeclarativeColumnedTree >> column [
 ]
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeColumnedTree >> column: columnName iconName: anIconNameComputation [
+GtRemotePhlowColumnedTreeView >> column: columnName iconName: anIconNameComputation [
 	| aColumn |
 	aColumn := self column.
 	aColumn title: columnName.
@@ -26,7 +26,7 @@ GtRemotePhlowDeclarativeColumnedTree >> column: columnName iconName: anIconNameC
 ]
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeColumnedTree >> column: columnName iconName: anIconNameComputation spawn: aSpawnBlock [
+GtRemotePhlowColumnedTreeView >> column: columnName iconName: anIconNameComputation spawn: aSpawnBlock [
 	| aColumn |
 	aColumn := self column.
 	aColumn title: columnName.
@@ -35,7 +35,7 @@ GtRemotePhlowDeclarativeColumnedTree >> column: columnName iconName: anIconNameC
 ]
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeColumnedTree >> column: columnName iconName: anIconNameComputation spawn: aSpawnBlock width: aNumberOrNil [
+GtRemotePhlowColumnedTreeView >> column: columnName iconName: anIconNameComputation spawn: aSpawnBlock width: aNumberOrNil [
 	| aColumn |
 	aColumn := self column.
 	aColumn title: columnName.
@@ -45,7 +45,7 @@ GtRemotePhlowDeclarativeColumnedTree >> column: columnName iconName: anIconNameC
 ]
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeColumnedTree >> column: columnName iconName: anIconNameComputation width: aNumberOrNil [
+GtRemotePhlowColumnedTreeView >> column: columnName iconName: anIconNameComputation width: aNumberOrNil [
 	| aColumn |
 	aColumn := self column.
 	aColumn title: columnName.
@@ -54,7 +54,7 @@ GtRemotePhlowDeclarativeColumnedTree >> column: columnName iconName: anIconNameC
 ]
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeColumnedTree >> column: columnName text: aBlockClosure [
+GtRemotePhlowColumnedTreeView >> column: columnName text: aBlockClosure [
 	| aColumn |
 	aColumn := self column.
 	aColumn title: columnName.
@@ -62,7 +62,7 @@ GtRemotePhlowDeclarativeColumnedTree >> column: columnName text: aBlockClosure [
 ]
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeColumnedTree >> column: columnName text: aBlockClosure spawn: aSpawnBlock [
+GtRemotePhlowColumnedTreeView >> column: columnName text: aBlockClosure spawn: aSpawnBlock [
 	| aColumn |
 	aColumn := self column.
 	aColumn title: columnName.
@@ -71,7 +71,7 @@ GtRemotePhlowDeclarativeColumnedTree >> column: columnName text: aBlockClosure s
 ]
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeColumnedTree >> column: columnName text: aBlockClosure spawn: aSpawnBlock width: aNumberOrNil [
+GtRemotePhlowColumnedTreeView >> column: columnName text: aBlockClosure spawn: aSpawnBlock width: aNumberOrNil [
 	| aColumn |
 	aColumn := self column.
 	aColumn title: columnName.
@@ -81,7 +81,7 @@ GtRemotePhlowDeclarativeColumnedTree >> column: columnName text: aBlockClosure s
 ]
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeColumnedTree >> column: columnName text: aBlockClosure width: aNumberOrNil [
+GtRemotePhlowColumnedTreeView >> column: columnName text: aBlockClosure width: aNumberOrNil [
  	| aColumn |
 	aColumn := self column.
 	aColumn title: columnName.
@@ -90,7 +90,7 @@ GtRemotePhlowDeclarativeColumnedTree >> column: columnName text: aBlockClosure w
 ]
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeColumnedTree >> columns [
+GtRemotePhlowColumnedTreeView >> columns [
 	^ columns ifNil: [
 		columns := OrderedCollection new ]
 ]
