@@ -69,6 +69,11 @@ GtRemotePhlowTreeView >> expand: anOrderedCollection to: selection from: aCollec
 
 ]
 
+{ #category : #accessing }
+GtRemotePhlowTreeView >> expandAll [
+	"To implement"
+]
+
 { #category : #initialization }
 GtRemotePhlowTreeView >> initialize [
 

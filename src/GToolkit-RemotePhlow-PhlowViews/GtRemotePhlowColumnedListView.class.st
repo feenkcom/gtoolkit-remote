@@ -1,5 +1,5 @@
 "
-{{gtClass:GtRemotePhlowDeclarativeColumnedList}} supports a subset of the possible configurations of {{gtClass:name=GtPhlowColumnedListView}}.
+I support a subset of the possible configurations of {{gtClass:name=GtPhlowColumnedListView}}.
 
 Current limitations:
 
