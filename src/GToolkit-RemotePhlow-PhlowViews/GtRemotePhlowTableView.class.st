@@ -1,5 +1,5 @@
 Class {
-	#name : #GtRemotePhlowDeclarativeTable,
+	#name : #GtRemotePhlowTableView,
 	#superclass : #GtRemotePhlowView,
 	#instVars : [
 		'items'
@@ -8,11 +8,11 @@ Class {
 }
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeTable >> items [
+GtRemotePhlowTableView >> items [
 	^ items
 ]
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeTable >> items: anObject [
+GtRemotePhlowTableView >> items: anObject [
 	items := anObject
 ]

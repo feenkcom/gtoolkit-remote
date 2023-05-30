@@ -1,5 +1,5 @@
 Class {
-	#name : #GtRemotePhlowDeclarativeTextEditor,
+	#name : #GtRemotePhlowTextEditorView,
 	#superclass : #GtRemotePhlowView,
 	#instVars : [
 		'textBuilder'
@@ -8,7 +8,7 @@ Class {
 }
 
 { #category : #converting }
-GtRemotePhlowDeclarativeTextEditor >> asGtDeclarativeView [
+GtRemotePhlowTextEditorView >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
 
@@ -21,7 +21,7 @@ GtRemotePhlowDeclarativeTextEditor >> asGtDeclarativeView [
 ]
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeTextEditor >> text: aBlockClosure [
+GtRemotePhlowTextEditorView >> text: aBlockClosure [
 	"Set the BlockClosure that will generate the string to be displayed.
 	The result of the BlockClosure must be a String (not a BlText)."
 
@@ -29,6 +29,6 @@ GtRemotePhlowDeclarativeTextEditor >> text: aBlockClosure [
 ]
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeTextEditor >> textBuilder [
+GtRemotePhlowTextEditorView >> textBuilder [
 	^ textBuilder
 ]
