@@ -47,12 +47,6 @@ GtRemotePhlowTreeView >> expandAll [
 	"To implement"
 ]
 
-{ #category : #initialization }
-GtRemotePhlowTreeView >> initialize [
-
-	super initialize.
-]
-
 { #category : #accessing }
 GtRemotePhlowTreeView >> itemComputation [
 	^ self itemText
