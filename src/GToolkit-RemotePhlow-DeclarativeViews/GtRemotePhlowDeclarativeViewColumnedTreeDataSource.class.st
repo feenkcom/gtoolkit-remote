@@ -102,6 +102,20 @@ GtRemotePhlowDeclarativeViewColumnedTreeDataSource >> formatItem: anObject atInd
 ]
 
 { #category : #accessing }
+GtRemotePhlowDeclarativeViewColumnedTreeDataSource >> gtViewCachedNodesFor: aView [ 
+	<gtView>
+	cachedNodes ifNil: [ ^ aView empty ].
+	
+	^ aView columnedTree
+		title: 'Cached Nodes';
+		items: [ cachedNodes ];
+		children: [ :aNode | 
+			aNode childNodes ifNil: [ #() ] ];
+		column: 'Id' text: [ :aNode | aNode nodeId ];
+		column: 'Value' text: [ :aNode | aNode nodeValue ]
+]
+
+{ #category : #accessing }
 GtRemotePhlowDeclarativeViewColumnedTreeDataSource >> retrieveChildrenForNodeAtPath: aNodePath [
 	self 
 		forNodesFrom: aNodePath first 

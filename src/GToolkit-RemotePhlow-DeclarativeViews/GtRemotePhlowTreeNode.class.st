@@ -8,7 +8,7 @@ Class {
 	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
-{ #category : #accessing }
+{ #category : #converting }
 GtRemotePhlowTreeNode >> asDictionaryForExport [
 	| exportDictionary  |
 	exportDictionary := super asDictionaryForExport.
@@ -36,10 +36,32 @@ GtRemotePhlowTreeNode >> childNodes: aCollectionOfNodes [
 	childNodes := aCollectionOfNodes.
 ]
 
+{ #category : #'gt - extensions' }
+GtRemotePhlowTreeNode >> gtViewChildrenFor: aView [ 
+	<gtView>
+	childNodes ifNil: [ ^ aView empty ].
+	
+	^ aView columnedTree
+		title: 'Child Nodes';
+		items: [ childNodes ];
+		children: [ :aNode | 
+			aNode childNodes ifNil: [ #() ] ];
+		column: 'Path' text: [ :aNode | 
+			aNode nodePathDescription  ] width: 100;
+		column: 'Id' text: [ :aNode | aNode nodeId ] width: 100;
+		column: 'Value' text: [ :aNode | aNode nodeValue ]
+]
+
 { #category : #accessing }
 GtRemotePhlowTreeNode >> nodePath [
 	^ Array streamContents: [ :aStream | 
 		  self withParentNodesDo: [ :eachNode | aStream nextPut: eachNode nodeId ] ] 
+]
+
+{ #category : #accessing }
+GtRemotePhlowTreeNode >> nodePathDescription [
+	^ String streamContents: [ :aStream |
+		self printNodePathOn: aStream ]
 ]
 
 { #category : #accessing }
@@ -53,6 +75,13 @@ GtRemotePhlowTreeNode >> parentNode: anObject [
 ]
 
 { #category : #printing }
+GtRemotePhlowTreeNode >> printNodePathOn: aStream [
+	self nodePath 
+		do: [:elem | aStream nextPutAll: elem asString]
+		separatedBy: [aStream nextPutAll: '/'] 
+]
+
+{ #category : #printing }
 GtRemotePhlowTreeNode >> printOn: aStream [
 	super printOn: aStream.
 	
@@ -62,7 +91,7 @@ GtRemotePhlowTreeNode >> printOn: aStream [
 			separatedBy: [aStream nextPutAll: '/'] ]
 ]
 
-{ #category : #accessing }
+{ #category : #traversing }
 GtRemotePhlowTreeNode >> withParentNodesDo: aBlock [
 
 	self parentNode ifNotNil: [ :aParentNode | 

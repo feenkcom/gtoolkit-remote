@@ -63,6 +63,22 @@ GtPhlowBasicColumnedViewSpecification >> columnWidths [
 		aColumnSpecification cellWidth ]
 ]
 
+{ #category : #accessing }
+GtPhlowBasicColumnedViewSpecification >> gtViewColumnSpecificationFor: aView [
+	<gtView>
+	
+	self columnSpecifications ifNil:  [
+		^ aView empty ].
+	
+	^ aView columnedList
+		title: 'Column Specifications';
+		items: [ self columnSpecifications ];
+		column: 'Title' text: [ :aColumnSpecification | 
+			aColumnSpecification title ];
+		column: 'Type' text: [ :aColumnSpecification | 
+			aColumnSpecification type ]
+]
+
 { #category : #'api - accessing' }
 GtPhlowBasicColumnedViewSpecification >> retriveSpawnedObjectAtRow: aRowIndex column: aColumnIndex [	
 	^ self phlowDataSource 
