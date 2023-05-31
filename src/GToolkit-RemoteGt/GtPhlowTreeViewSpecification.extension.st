@@ -19,6 +19,12 @@ GtPhlowTreeViewSpecification >> retrieveChildrenForNodeAtPath: aNodePath [
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
+GtPhlowTreeViewSpecification >> retriveSentItemAtPath: aNodePath [
+	^ self phlowDataSource 
+		retriveSentItemAtPath: aNodePath
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
 GtPhlowTreeViewSpecification >> viewFor: aView [
 	"Answer the GtPhlowView for the receiver"
 	| treeView |
@@ -40,8 +46,10 @@ GtPhlowTreeViewSpecification >> viewFor: aView [
 				phlowDataSource flushItemsIterator.
 				aTab viewContentElement phlow update ].
 	
-	"treeView send: [ :aTreeNode | 
-		self retriveSentItemForNodeWithIdentifier: aTreeNode nodeIdentifier ]."
+	treeView send: [ :aTreeNode  | 
+		aTreeNode targetObject ifNil: [
+			aTreeNode targetObject: (self retriveSentItemAtPath: aTreeNode nodePath) ].
+		aTreeNode targetObject ].
 	
 	^ treeView
 ]

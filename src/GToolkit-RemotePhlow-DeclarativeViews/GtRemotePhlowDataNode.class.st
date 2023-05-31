@@ -9,7 +9,7 @@ Class {
 	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
-{ #category : #accessing }
+{ #category : #'instance creation' }
 GtRemotePhlowDataNode class >> fromJSONDictionary: aDictionary [
 	"Answer an instance of the receiver from the supplied dictionary."
 
@@ -18,9 +18,14 @@ GtRemotePhlowDataNode class >> fromJSONDictionary: aDictionary [
 		nodeValue: (aDictionary 
 			at: #nodeValue 
 			ifPresent: [ :aNodeValueDictionary |
-				GtRemotePhlowItemValue fromJSONDictionary: aNodeValueDictionary ]
+				self valueType fromJSONDictionary: aNodeValueDictionary ]
 			ifAbsent: [ nil ]);
 		yourself
+]
+
+{ #category : #accessing }
+GtRemotePhlowDataNode class >> valueType [
+	^ GtRemotePhlowItemValue
 ]
 
 { #category : #accessing }

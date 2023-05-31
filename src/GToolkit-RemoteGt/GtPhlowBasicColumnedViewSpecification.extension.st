@@ -8,22 +8,24 @@ GtPhlowBasicColumnedViewSpecification >> configureColumn: column fromSpecificati
 		ifTrue: [ aColumnSpecification type = #icon
 				ifTrue: [ 
 					column 
-						iconName: [ :rowData | 
-							(rowData at: aColumnIndex) itemText ] ]
+						iconName: [ :aColumnedNode | 
+							(aColumnedNode columnValueAt: aColumnIndex) itemText ] ]
 				ifFalse: [ column
-						text: [ :rowData | 
-							(rowData at: aColumnIndex) itemText ]
+						text: [ :aColumnedNode | 
+							(aColumnedNode columnValueAt: aColumnIndex) itemText ]
 						spawn: [ :anArray :aRowIndex | 
 							self retriveSpawnedObjectAtRow: aRowIndex column: aColumnIndex ] ] ]
 		ifFalse: [ aColumnSpecification type = #icon
 				ifTrue: [ 
-					column iconName: [ :anArray | (anArray at: aColumnIndex) itemText ] ]
+					column iconName: [ :aColumnedNode | 
+						(aColumnedNode columnValueAt: aColumnIndex) itemText ] ]
 				ifFalse: [ 
-					column text: [ :anArray | (anArray at: aColumnIndex) itemText ] ] ].
+					column text: [ :aColumnedNode | 
+						(aColumnedNode columnValueAt: aColumnIndex) itemText ] ] ].
 
 	aColumnSpecification hasBackground ifTrue: [
-		column background: [ :aText :anArray | 
-			(anArray at: aColumnIndex) background ] ].
+		column background: [ :aText :aColumnedNode | 
+			(aColumnedNode columnValueAt: aColumnIndex) background ] ].
 	
 	^ aColumnSpecification cellWidth ifNotNil: [ :aWidth | column width: aWidth ]
 ]
@@ -53,6 +55,11 @@ GtPhlowBasicColumnedViewSpecification >> configureColumnedViewFor: aColumnedView
 				configureColumn: column
 				fromSpecification: aColumnSpecification
 				withIndex: aColumnIndex ].
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
+GtPhlowBasicColumnedViewSpecification >> instantiateNodeFrom: aNodeValueDictionary [
+	^ GtRemotePhlowColumnedTreeNode fromJSONDictionary: aNodeValueDictionary 
 ]
 
 { #category : #'*GToolkit-RemoteGt' }

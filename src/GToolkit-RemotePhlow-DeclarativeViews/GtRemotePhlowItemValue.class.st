@@ -1,12 +1,26 @@
 Class {
 	#name : #GtRemotePhlowItemValue,
-	#superclass : #Object,
+	#superclass : #GtRemotePhlowNodeValue,
 	#instVars : [
 		'background',
 		'itemText'
 	],
 	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
+
+{ #category : #'instance creation' }
+GtRemotePhlowItemValue class >> fromJSONDictionary: aDictionary [
+	"Answer an instance of the receiver from the supplied dictionary."
+
+	^self new 
+		itemText: (aDictionary at: #itemText);
+		background: (aDictionary 
+			at: #background 
+			ifPresent: [ :aBackgroundValue |
+				GtPhlowColor fromJSONDictionary: aBackgroundValue ]
+			ifAbsent: [ nil ]);
+		yourself
+]
 
 { #category : #converting }
 GtRemotePhlowItemValue >> asDictionaryForExport [

@@ -63,7 +63,7 @@ GtPhlowBasicColumnedViewSpecification >> columnWidths [
 		aColumnSpecification cellWidth ]
 ]
 
-{ #category : #accessing }
+{ #category : #'gt - extensions' }
 GtPhlowBasicColumnedViewSpecification >> gtViewColumnSpecificationFor: aView [
 	<gtView>
 	

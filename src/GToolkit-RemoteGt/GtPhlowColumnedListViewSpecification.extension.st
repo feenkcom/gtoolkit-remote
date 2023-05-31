@@ -5,15 +5,18 @@ GtPhlowColumnedListViewSpecification >> viewFor: aView [
 	"Answer the GtPhlowView for the receiver"
 	| currentView |
 	
-	currentView := aView columnedList
-		items: [ (GtRemoteInspectorListingBufferedStream declarativeView: self)
-			collect: [ :cellValuesDictionary |
-				cellValuesDictionary collect: [ :aCellValueDictionary |
-					GtRemotePhlowItemValue fromJSONDictionary: aCellValueDictionary ] ] ].
+	currentView := aView columnedList.
+	currentView items: [
+		((GtRemoteInspectorListingBufferedStream declarativeView: self)
+			collect: [ :aColumnedTreeNodeDictionary |
+				self instantiateNodeFrom: aColumnedTreeNodeDictionary ]) ].
 	
 	self configureColumnedViewFor: currentView.
 	
-	currentView send: [ :arg :selection | self retriveSentItemAt: selection first ].
+	currentView send: [ :aNode :selection | 
+		aNode targetObject ifNil: [
+			aNode targetObject: (self retriveSentItemAt: selection first) ].
+		aNode targetObject ].
 	
 	^ currentView
 ]

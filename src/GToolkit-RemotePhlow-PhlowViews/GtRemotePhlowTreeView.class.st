@@ -25,7 +25,7 @@ GtRemotePhlowTreeView >> asGtDeclarativeView [
 	^ GtPhlowTreeViewSpecification new 
 		title: self title;
 		priority: self priority;
-		phlowDataSource: (GtRemotePhlowDeclarativeViewColumnedTreeDataSource 
+		phlowDataSource: (GtRemotePhlowDeclarativeViewTreeDataSource 
 			forPhlowView: self);
 		dataTransport: GtPhlowViewSpecification dataLazy
 ]

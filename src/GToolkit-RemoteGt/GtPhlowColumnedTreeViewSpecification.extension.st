@@ -12,18 +12,23 @@ GtPhlowColumnedTreeViewSpecification >> configureTreeViewFor: aTreeView [
 GtPhlowColumnedTreeViewSpecification >> ensureChildrenLoadedForNode: aTreeNode [ 
 	aTreeNode childNodes ifNotNil: [ :currentChildren |
 		^ self ].
-		
+	
 	aTreeNode childNodes: ((self 
 		retrieveChildrenForNodeAtPath: aTreeNode nodePath) 
-			collect: [ :aNodeValueDictionary |
-				GtRemotePhlowTreeNode 
-					fromJSONDictionary: aNodeValueDictionary ])
+			collect: [ :aColumnedTreeNodeDictionary |
+				self instantiateNodeFrom: aColumnedTreeNodeDictionary ])
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
 GtPhlowColumnedTreeViewSpecification >> retrieveChildrenForNodeAtPath: aNodePath [
 	^ self phlowDataSource 
 		retrieveChildrenForNodeAtPath: aNodePath
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
+GtPhlowColumnedTreeViewSpecification >> retriveSentItemAtPath: aNodePath [
+	^ self phlowDataSource 
+		retriveSentItemAtPath:aNodePath
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
@@ -34,15 +39,16 @@ GtPhlowColumnedTreeViewSpecification >> viewFor: aView [
 	currentView := aView columnedTree.
 	currentView items: [
 		((GtRemoteInspectorListingBufferedStream declarativeView: self)
-			collect: [ :cellValuesDictionary |
-				{cellValuesDictionary} collect: [ :aCellValueDictionary |
-					GtRemotePhlowTreeNode 
-						fromJSONDictionary: aCellValueDictionary ] ]) toArray wait ].
+			collect: [ :aColumnedTreeNodeDictionary |
+				self instantiateNodeFrom: aColumnedTreeNodeDictionary ]) toArray wait ].
 	
 	self configureColumnedViewFor: currentView.
 	self configureTreeViewFor: currentView.
 	
-	"currentView send: [ :arg :selection | self retriveSentItemAt: selection first ]."
+	currentView send: [ :aTreeNode  | 
+		aTreeNode targetObject ifNil: [
+			aTreeNode targetObject: (self retriveSentItemAtPath: aTreeNode nodePath) ].
+		aTreeNode targetObject ].
 	
 	^ currentView
 ]
