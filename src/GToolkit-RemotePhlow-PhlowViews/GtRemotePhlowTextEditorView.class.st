@@ -7,6 +7,11 @@ Class {
 	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
 
+{ #category : #accessing }
+GtRemotePhlowTextEditorView >> aptitude: anAptitude [
+	"stub method"
+]
+
 { #category : #converting }
 GtRemotePhlowTextEditorView >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.

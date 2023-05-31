@@ -35,6 +35,11 @@ Class {
 	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
 
+{ #category : #accessing }
+GtRemotePhlowView >> actionUpdateButton [
+	"stub"
+]
+
 { #category : #converting }
 GtRemotePhlowView >> asGtDeclarativeView [
 	^ nil

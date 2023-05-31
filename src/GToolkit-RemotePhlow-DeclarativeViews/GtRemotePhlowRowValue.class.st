@@ -48,9 +48,3 @@ GtRemotePhlowRowValue >> columnValues [
 GtRemotePhlowRowValue >> columnValues: anObject [
 	columnValues := anObject
 ]
-
-{ #category : #accessing }
-GtRemotePhlowRowValue >> nodeValue [
-	"Temporary hack"
-	^ self
-]
