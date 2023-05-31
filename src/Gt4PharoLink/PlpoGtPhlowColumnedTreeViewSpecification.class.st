@@ -7,7 +7,7 @@ Class {
 }
 
 { #category : #accessing }
-PlpoGtPhlowColumnedTreeViewSpecification >> remoteClassName [
+PlpoGtPhlowColumnedTreeViewSpecification class >> remoteClassName [
 
 	^ #GtPhlowColumnedTreeViewSpecification
 ]
