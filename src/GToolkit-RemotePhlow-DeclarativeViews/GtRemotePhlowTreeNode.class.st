@@ -30,7 +30,8 @@ GtRemotePhlowTreeNode >> childNodes [
 { #category : #accessing }
 GtRemotePhlowTreeNode >> childNodes: aCollectionOfNodes [
 	aCollectionOfNodes do: [ :aChildNode | 
-		self assert: aChildNode parentNode isNil.
+		aChildNode parentNode ifNotNil: [ 
+			Error signal: 'Parent must be nil.' ].
 		aChildNode parentNode: self ].
 	
 	childNodes := aCollectionOfNodes.
