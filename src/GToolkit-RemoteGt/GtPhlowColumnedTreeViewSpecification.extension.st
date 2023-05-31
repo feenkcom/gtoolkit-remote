@@ -20,18 +20,6 @@ GtPhlowColumnedTreeViewSpecification >> ensureChildrenLoadedForNode: aTreeNode [
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
-GtPhlowColumnedTreeViewSpecification >> retrieveChildrenForNodeAtPath: aNodePath [
-	^ self phlowDataSource 
-		retrieveChildrenForNodeAtPath: aNodePath
-]
-
-{ #category : #'*GToolkit-RemoteGt' }
-GtPhlowColumnedTreeViewSpecification >> retriveSentItemAtPath: aNodePath [
-	^ self phlowDataSource 
-		retriveSentItemAtPath:aNodePath
-]
-
-{ #category : #'*GToolkit-RemoteGt' }
 GtPhlowColumnedTreeViewSpecification >> viewFor: aView [
 	"Answer the GtPhlowView for the receiver"
 	| currentView |
