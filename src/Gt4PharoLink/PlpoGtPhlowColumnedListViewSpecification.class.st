@@ -1,8 +1,8 @@
 Class {
 	#name : #PlpoGtPhlowColumnedListViewSpecification,
 	#superclass : #PharoLinkProxyObject,
-	#traits : 'TPlpoGtDeclarativeListingView',
-	#classTraits : 'TPlpoGtDeclarativeListingView classTrait',
+	#traits : 'TPlpoGtPhlowListingViewSpecification',
+	#classTraits : 'TPlpoGtPhlowListingViewSpecification classTrait',
 	#category : #'Gt4PharoLink-Proxies'
 }
 
