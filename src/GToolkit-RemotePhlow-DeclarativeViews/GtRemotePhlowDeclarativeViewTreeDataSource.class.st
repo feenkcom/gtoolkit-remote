@@ -27,7 +27,7 @@ GtRemotePhlowDeclarativeViewTreeDataSource >> buildChildrenForNode: aNode atPath
 		
 	^ self 
 		buildChildrenForNode: (aNode childNodes at: aNodePath first)
-		atPath: aNodePath copyWithoutFirst
+		atPath: aNodePath allButFirst
 ]
 
 { #category : #accessing }
@@ -49,7 +49,7 @@ GtRemotePhlowDeclarativeViewTreeDataSource >> locateNode: aNode atPath: aNodePat
 		
 	^ self 
 		locateNode: (aNode childNodes at: aNodePath first)
-		atPath: aNodePath copyWithoutFirst
+		atPath: aNodePath allButFirst
 ]
 
 { #category : #'api - data retrival' }
@@ -60,7 +60,7 @@ GtRemotePhlowDeclarativeViewTreeDataSource >> retrieveChildrenForNodeAtPath: aNo
 		withIndexDo: [ :aNode |
 			^ (self 
 				buildChildrenForNode: aNode 
-				atPath: aNodePath copyWithoutFirst)
+				atPath: aNodePath allButFirst)
 					collect: [ :aNodeValue |
 						aNodeValue asDictionaryForExport ] ].
 	^ #()
@@ -74,6 +74,6 @@ GtRemotePhlowDeclarativeViewTreeDataSource >> retriveSentItemAtPath: aNodePath [
 		withIndexDo: [ :aNode |
 			^ (self 
 				locateNode: aNode 
-				atPath: aNodePath copyWithoutFirst) targetObject ].
+				atPath: aNodePath allButFirst) targetObject ].
 	^ nil
 ]
