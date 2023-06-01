@@ -17,9 +17,11 @@ Object >> gtViewsInCurrentContext [
 	^ self gtDeclarativeViewPragms collect: [ :aPragma |
 		| methodSelector phlowView |
 		methodSelector := aPragma method selector.
-		phlowView := self  
-			perform: methodSelector
-			with: GtRemotePhlowDeclarativeProtoView new.
+			
+		phlowView := GtRemotePhlowProtoView new empty 
+			on: anObject 
+			perform: methodSelector.
+		
 		phlowView definingSelector: methodSelector.
 		phlowView ]
 ]
