@@ -775,24 +775,6 @@ removeallclassmethods GtRemotePhlowProtoView
 
 doit
 (GtRemotePhlowProtoView
-	subclass: 'GtRemotePhlowDeclarativeProtoView'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
-	poolDictionaries: #()
-	inDictionary: Globals
-	options: #( #logCreation )
-)
-		category: 'GToolkit-RemotePhlow-PhlowViews';
-		immediateInvariant.
-true.
-%
-
-removeallmethods GtRemotePhlowDeclarativeProtoView
-removeallclassmethods GtRemotePhlowDeclarativeProtoView
-
-doit
-(GtRemotePhlowProtoView
 	subclass: 'GtRemotePhlowView'
 	instVarNames: #( title priority definingSelector )
 	classVars: #(  )
@@ -4657,9 +4639,11 @@ gtViewsInCurrentContext
 	^ self gtDeclarativeViewPragms collect: [ :aPragma |
 		| methodSelector phlowView |
 		methodSelector := aPragma method selector.
-		phlowView := self  
-			perform: methodSelector
-			with: GtRemotePhlowDeclarativeProtoView new.
+			
+		phlowView := GtRemotePhlowProtoView new empty 
+			on: self
+			perform: methodSelector.
+		
 		phlowView definingSelector: methodSelector.
 		phlowView ]
 %
@@ -4701,6 +4685,29 @@ gtGsInspectorIconName
 !		Instance methods for 'String'
 
 category: '*GToolkit-RemotePhlow-GemStone'
+method: String
+gtDisplayOn: writeStream
+	writeStream nextPutAll: self
+%
+
+! Class extensions for 'WriteStream'
+
+!		Instance methods for 'WriteStream'
+
+category: '*GToolkit-RemotePhlow-Remote'
+method: WriteStream
+parenthesize: aBlock
+	self nextPut: $(.
+	aBlock ensure: [ self nextPut: $) ]
+%
+
+! Class Initialization
+
+run
+GtPhlowDeclarativeListingType initialize.
+GtRemotePhlowColumn initialize.
+true
+%
 method: String
 gtDisplayOn: writeStream
 	writeStream nextPutAll: self
