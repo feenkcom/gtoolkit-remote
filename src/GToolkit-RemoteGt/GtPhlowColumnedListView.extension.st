@@ -11,5 +11,6 @@ GtPhlowColumnedListView >> asGtDeclarativeView [
 		title: self title;
 		priority: self priority;
 		columnSpecifications: self buildRemoteColumnsSpecificattions;
+		horizontalScrollingEnabled: horizontalScrollingEnabled;
 		dataTransport: GtPhlowViewSpecification dataLazy
 ]
