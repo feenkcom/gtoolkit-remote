@@ -238,6 +238,24 @@ removeallmethods GtPhlowTextEditorViewSpecification
 removeallclassmethods GtPhlowTextEditorViewSpecification
 
 doit
+(GtPhlowViewSpecification
+	subclass: 'GtPhlowViewErrorViewSpecification'
+	instVarNames: #( errorMessage )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowViewErrorViewSpecification
+removeallclassmethods GtPhlowViewErrorViewSpecification
+
+doit
 (Object
 	subclass: 'GtRemoteDeclarativeExamples'
 	instVarNames: #( server )
@@ -774,25 +792,7 @@ removeallmethods GtRemotePhlowDeclarativeProtoView
 removeallclassmethods GtRemotePhlowDeclarativeProtoView
 
 doit
-(Object
-	subclass: 'GtRemotePhlowSendObjectTransformation'
-	instVarNames: #( valuable )
-	classVars: #(  )
-	classInstVars: #(  )
-	poolDictionaries: #()
-	inDictionary: Globals
-	options: #( #logCreation )
-)
-		category: 'GToolkit-RemotePhlow-PhlowViews';
-		immediateInvariant.
-true.
-%
-
-removeallmethods GtRemotePhlowSendObjectTransformation
-removeallclassmethods GtRemotePhlowSendObjectTransformation
-
-doit
-(Object
+(GtRemotePhlowProtoView
 	subclass: 'GtRemotePhlowView'
 	instVarNames: #( title priority definingSelector )
 	classVars: #(  )
@@ -1041,6 +1041,42 @@ true.
 
 removeallmethods GtRemotePhlowTreeView
 removeallclassmethods GtRemotePhlowTreeView
+
+doit
+(GtRemotePhlowView
+	subclass: 'GtRemotePhlowViewErrorView'
+	instVarNames: #( errorMessage )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowViewErrorView
+removeallclassmethods GtRemotePhlowViewErrorView
+
+doit
+(Object
+	subclass: 'GtRemotePhlowSendObjectTransformation'
+	instVarNames: #( valuable )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowSendObjectTransformation
+removeallclassmethods GtRemotePhlowSendObjectTransformation
 
 doit
 (Object
@@ -1691,6 +1727,40 @@ category: 'accessing'
 method: GtPhlowTextEditorViewSpecification
 string: anObject
 	string := anObject
+%
+
+! Class implementation for 'GtPhlowViewErrorViewSpecification'
+
+!		Class methods for 'GtPhlowViewErrorViewSpecification'
+
+category: 'instance creation'
+classmethod: GtPhlowViewErrorViewSpecification
+fromJSONDictionary: aDictionary
+
+	^ (super fromJSONDictionary: aDictionary)
+		errorMessage: (aDictionary at: #errorMessage ifAbsent: [ nil ])
+%
+
+!		Instance methods for 'GtPhlowViewErrorViewSpecification'
+
+category: 'converting'
+method: GtPhlowViewErrorViewSpecification
+asDictionaryForExport 
+	^ super asDictionaryForExport
+		at: #errorMessage put: errorMessage;
+		yourself
+%
+
+category: 'accessing'
+method: GtPhlowViewErrorViewSpecification
+errorMessage
+	^ errorMessage
+%
+
+category: 'accessing'
+method: GtPhlowViewErrorViewSpecification
+errorMessage: anObject
+	errorMessage := anObject
 %
 
 ! Class implementation for 'GtRemoteDeclarativeExamples'
@@ -3427,46 +3497,6 @@ tree
 	^ self declarativeViewOfType: GtRemotePhlowTreeView
 %
 
-! Class implementation for 'GtRemotePhlowSendObjectTransformation'
-
-!		Class methods for 'GtRemotePhlowSendObjectTransformation'
-
-category: 'instance creation'
-classmethod: GtRemotePhlowSendObjectTransformation
-forValuable: aValuable
-	^ self new
-		valuable: aValuable
-%
-
-!		Instance methods for 'GtRemotePhlowSendObjectTransformation'
-
-category: 'asserting'
-method: GtRemotePhlowSendObjectTransformation
-assertValuable: aBlock
-	self
-		assert: [ aBlock isNotNil ].
-	self
-		assert: [ aBlock argumentCount <= 2 ].
-%
-
-category: 'private - accessing'
-method: GtRemotePhlowSendObjectTransformation
-transformedValueFrom: aSelectedObject selection: aSelectionIndices
-	^ self valuable cull: aSelectedObject cull: aSelectionIndices
-%
-
-category: 'accessing'
-method: GtRemotePhlowSendObjectTransformation
-valuable
-	^ valuable
-%
-
-category: 'accessing'
-method: GtRemotePhlowSendObjectTransformation
-valuable: anObject
-	valuable := anObject
-%
-
 ! Class implementation for 'GtRemotePhlowView'
 
 !		Instance methods for 'GtRemotePhlowView'
@@ -3481,6 +3511,14 @@ category: 'converting'
 method: GtRemotePhlowView
 asGtDeclarativeView
 	^ nil
+%
+
+category: 'message performning'
+method: GtRemotePhlowView
+basicOn: anObject perform: aMessageSymbol withArguments: aCollectionOfArguments 
+	^ anObject  
+		perform: aMessageSymbol
+		with: aCollectionOfArguments first
 %
 
 category: 'testing'
@@ -3501,6 +3539,58 @@ method: GtRemotePhlowView
 definingSelector: aSelector
 
 	definingSelector := aSelector
+%
+
+category: 'message performning'
+method: GtRemotePhlowView
+on: anObject perform: aMessageSymbol 
+	<return: #GtRemotePhlowView>
+	
+	^ self on: anObject perform: aMessageSymbol withArguments: { self }
+%
+
+category: 'message performning'
+method: GtRemotePhlowView
+on: anObject perform: aMessageSymbol withArguments: aCollectionOfArguments
+	<return: #GtRemotePhlowView>
+	
+	^ [ 
+			self 
+				basicOn: anObject 
+				perform: aMessageSymbol 
+				withArguments: aCollectionOfArguments
+	] on: Error do: [ :anError |
+			self 
+				phlowErrorViewWithException: anError 
+				inComputation: nil
+				forBuildContext: nil "(GtPhlowBuildContext new 
+					object: anObject; 
+					arguments: aCollectionOfArguments) "
+				andSelector: aMessageSymbol ]
+%
+
+category: 'message performning'
+method: GtRemotePhlowView
+phlowErrorViewWithException: anException 
+	| aTitle |
+	aTitle := 'Error'.
+	
+	^ GtRemotePhlowViewErrorView new
+		title: aTitle;
+		errorMessage: anException description
+%
+
+category: 'message performning'
+method: GtRemotePhlowView
+phlowErrorViewWithException: anException inComputation: aFailedComputation forBuildContext: aContext andSelector: aMessageSymbol
+	| aPhlow | 
+
+	aPhlow := self phlowErrorViewWithException: anException.
+	
+	"aPhlow buildContext: aContext.
+	aPhlow failedComputation: aFailedComputation."
+
+	^ aPhlow
 %
 
 category: 'printing'
@@ -3543,11 +3633,19 @@ title: anObject
 category: 'converting'
 method: GtRemotePhlowForwarderView
 asGtDeclarativeView
-	^ (objectComputation value 
+	^  [ (objectComputation value 
 		perform: viewSelector withArguments: { 
-			 GtRemotePhlowProtoView new }) asGtDeclarativeView
+			 self }) asGtDeclarativeView
 			 	title: self title;
-			 	priority: self priority
+			 	priority: self priority ] 
+	on: Error do: [ :anError |
+		(self 
+				phlowErrorViewWithException: anError 
+				inComputation: nil
+				forBuildContext: nil "(GtPhlowBuildContext new 
+					object: anObject; 
+					arguments: aCollectionOfArguments) "
+				andSelector: self definingSelector) asGtDeclarativeView ]
 %
 
 category: 'api - scripting'
@@ -4038,6 +4136,74 @@ method: GtRemotePhlowTreeView
 itemText: aBlock
 
 	itemTextBlock := aBlock
+%
+
+! Class implementation for 'GtRemotePhlowViewErrorView'
+
+!		Instance methods for 'GtRemotePhlowViewErrorView'
+
+category: 'converting'
+method: GtRemotePhlowViewErrorView
+asGtDeclarativeView
+	"Answer the receiver as a GtDeclarativeView."
+
+	^GtPhlowViewErrorViewSpecification new 
+		title: self title;
+		priority: self priority;
+		errorMessage: self errorMessage;
+		dataTransport: GtPhlowViewSpecification dataIncluded.
+%
+
+category: 'accessing'
+method: GtRemotePhlowViewErrorView
+errorMessage
+	^ errorMessage
+%
+
+category: 'accessing'
+method: GtRemotePhlowViewErrorView
+errorMessage: aStringMessage
+	errorMessage := aStringMessage
+%
+
+! Class implementation for 'GtRemotePhlowSendObjectTransformation'
+
+!		Class methods for 'GtRemotePhlowSendObjectTransformation'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowSendObjectTransformation
+forValuable: aValuable
+	^ self new
+		valuable: aValuable
+%
+
+!		Instance methods for 'GtRemotePhlowSendObjectTransformation'
+
+category: 'asserting'
+method: GtRemotePhlowSendObjectTransformation
+assertValuable: aBlock
+	self
+		assert: [ aBlock isNotNil ].
+	self
+		assert: [ aBlock argumentCount <= 2 ].
+%
+
+category: 'private - accessing'
+method: GtRemotePhlowSendObjectTransformation
+transformedValueFrom: aSelectedObject selection: aSelectionIndices
+	^ self valuable cull: aSelectedObject cull: aSelectionIndices
+%
+
+category: 'accessing'
+method: GtRemotePhlowSendObjectTransformation
+valuable
+	^ valuable
+%
+
+category: 'accessing'
+method: GtRemotePhlowSendObjectTransformation
+valuable: anObject
+	valuable := anObject
 %
 
 ! Class implementation for 'GtRemotePhlowViewedObject'
