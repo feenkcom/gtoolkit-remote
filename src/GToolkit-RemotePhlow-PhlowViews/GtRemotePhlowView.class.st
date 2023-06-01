@@ -26,7 +26,7 @@ Internal Representation and Key Implementation Points.
 "
 Class {
 	#name : #GtRemotePhlowView,
-	#superclass : #Object,
+	#superclass : #GtRemotePhlowProtoView,
 	#instVars : [
 		'title',
 		'priority',
@@ -45,6 +45,13 @@ GtRemotePhlowView >> asGtDeclarativeView [
 	^ nil
 ]
 
+{ #category : #'message performning' }
+GtRemotePhlowView >> basicOn: anObject perform: aMessageSymbol withArguments: aCollectionOfArguments [ 
+	^ anObject  
+		perform: aMessageSymbol
+		with: aCollectionOfArguments first
+]
+
 { #category : #testing }
 GtRemotePhlowView >> canBeGtDeclarativeView [
 	^ true
@@ -60,6 +67,54 @@ GtRemotePhlowView >> definingSelector [
 GtRemotePhlowView >> definingSelector: aSelector [
 
 	definingSelector := aSelector
+]
+
+{ #category : #'message performning' }
+GtRemotePhlowView >> on: anObject perform: aMessageSymbol [ 
+	<return: #GtRemotePhlowView>
+	
+	^ self on: anObject perform: aMessageSymbol withArguments: { self }
+]
+
+{ #category : #'message performning' }
+GtRemotePhlowView >> on: anObject perform: aMessageSymbol withArguments: aCollectionOfArguments [
+	<return: #GtRemotePhlowView>
+	
+	^ [ 
+			self 
+				basicOn: anObject 
+				perform: aMessageSymbol 
+				withArguments: aCollectionOfArguments
+	] on: Error do: [ :anError |
+			self 
+				phlowErrorViewWithException: anError 
+				inComputation: nil
+				forBuildContext: nil "(GtPhlowBuildContext new 
+					object: anObject; 
+					arguments: aCollectionOfArguments) "
+				andSelector: aMessageSymbol ]
+]
+
+{ #category : #'message performning' }
+GtRemotePhlowView >> phlowErrorViewWithException: anException [ 
+	| aTitle |
+	aTitle := 'Error'.
+	
+	^ GtRemotePhlowViewErrorView new
+		title: aTitle;
+		errorMessage: anException description
+]
+
+{ #category : #'message performning' }
+GtRemotePhlowView >> phlowErrorViewWithException: anException inComputation: aFailedComputation forBuildContext: aContext andSelector: aMessageSymbol [
+	| aPhlow | 
+
+	aPhlow := self phlowErrorViewWithException: anException.
+	
+	"aPhlow buildContext: aContext.
+	aPhlow failedComputation: aFailedComputation."
+
+	^ aPhlow
 ]
 
 { #category : #printing }

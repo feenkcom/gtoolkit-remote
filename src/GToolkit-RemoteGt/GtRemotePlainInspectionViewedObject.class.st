@@ -26,9 +26,11 @@ GtRemotePlainInspectionViewedObject >> gtViewsInCurrentContextForObject: anObjec
 		collect: [ :aPragma |
 			| methodSelector phlowView |
 			methodSelector := aPragma method selector.
-			phlowView := anObject  
-				perform: methodSelector
-				with: GtRemotePhlowProtoView new.
+			
+			phlowView := GtRemotePhlowProtoView new empty 
+				on: anObject 
+				perform: methodSelector.
+		
 			phlowView definingSelector: methodSelector.
 			phlowView ]
 ]

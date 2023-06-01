@@ -10,11 +10,19 @@ Class {
 
 { #category : #converting }
 GtRemotePhlowForwarderView >> asGtDeclarativeView [
-	^ (objectComputation value 
+	^  [ (objectComputation value 
 		perform: viewSelector withArguments: { 
-			 GtRemotePhlowProtoView new }) asGtDeclarativeView
+			 self }) asGtDeclarativeView
 			 	title: self title;
-			 	priority: self priority
+			 	priority: self priority ] 
+	on: Error do: [ :anError |
+		(self 
+				phlowErrorViewWithException: anError 
+				inComputation: nil
+				forBuildContext: nil "(GtPhlowBuildContext new 
+					object: anObject; 
+					arguments: aCollectionOfArguments) "
+				andSelector: self definingSelector) asGtDeclarativeView ]
 ]
 
 { #category : #'api - scripting' }
