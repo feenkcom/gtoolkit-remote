@@ -8,6 +8,9 @@ Current limitations:
 Class {
 	#name : #GtRemotePhlowColumnedListView,
 	#superclass : #GtRemotePhlowBasicColumnedView,
+	#instVars : [
+		'horizontalScrollingEnabled'
+	],
 	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
 
@@ -22,9 +25,25 @@ GtRemotePhlowColumnedListView >> asGtDeclarativeView [
 			forPhlowView: self);
 		title: self title;
 		priority: self priority;
+		horizontalScrollingEnabled:  horizontalScrollingEnabled;
 		dataTransport: GtPhlowViewSpecification dataLazy.
 		
 	self configureColumnsSpecificationOn: viewSpecification.
 	
 	^ viewSpecification
+]
+
+{ #category : #testing }
+GtRemotePhlowColumnedListView >> isHorizontalScrollingEnabled [
+	^ horizontalScrollingEnabled ifNil: [ false ]
+]
+
+{ #category : #'api - scripting' }
+GtRemotePhlowColumnedListView >> withHorizontalScrolling [
+	horizontalScrollingEnabled := true
+]
+
+{ #category : #'api - scripting' }
+GtRemotePhlowColumnedListView >> withoutHorizontalScrolling [
+	horizontalScrollingEnabled := false
 ]

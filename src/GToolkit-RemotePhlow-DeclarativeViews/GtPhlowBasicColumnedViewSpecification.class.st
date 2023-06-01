@@ -24,15 +24,11 @@ GtPhlowBasicColumnedViewSpecification class >> fromJSONDictionary: aDictionary [
 
 { #category : #converting }
 GtPhlowBasicColumnedViewSpecification >> asDictionaryForExport [ 
-	| dictionary |
-
-	dictionary := super asDictionaryForExport 
+	^ super asDictionaryForExport 
 		at: #columnSpecifications put: (self columnSpecifications
 			collect: [ :aColumnSpecification |
 				aColumnSpecification asDictionaryForExport ]);
-		yourself.
-
-	^ dictionary
+		yourself
 ]
 
 { #category : #accessing }

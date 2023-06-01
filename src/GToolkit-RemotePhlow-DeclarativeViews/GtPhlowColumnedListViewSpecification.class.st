@@ -19,5 +19,38 @@ Current limitations:
 Class {
 	#name : #GtPhlowColumnedListViewSpecification,
 	#superclass : #GtPhlowBasicColumnedViewSpecification,
+	#instVars : [
+		'horizontalScrollingEnabled'
+	],
 	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
+
+{ #category : #'instance creation' }
+GtPhlowColumnedListViewSpecification class >> fromJSONDictionary: aDictionary [
+	^ (super fromJSONDictionary: aDictionary)
+		horizontalScrollingEnabled: (aDictionary 
+			at: #horizontalScrollingEnabled 
+			ifAbsent: [ nil ])
+]
+
+{ #category : #converting }
+GtPhlowColumnedListViewSpecification >> asDictionaryForExport [ 
+	^ super asDictionaryForExport 
+		at: #horizontalScrollingEnabled put: horizontalScrollingEnabled;
+		yourself
+]
+
+{ #category : #accessing }
+GtPhlowColumnedListViewSpecification >> horizontalScrollingEnabled [
+	^ horizontalScrollingEnabled
+]
+
+{ #category : #accessing }
+GtPhlowColumnedListViewSpecification >> horizontalScrollingEnabled: aBoolean [
+	horizontalScrollingEnabled := aBoolean
+]
+
+{ #category : #accessing }
+GtPhlowColumnedListViewSpecification >> isHorizontalScrollingEnabled [
+	^ self horizontalScrollingEnabled ifNil: [ false ]
+]

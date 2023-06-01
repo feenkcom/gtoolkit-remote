@@ -36,11 +36,6 @@ GtPhlowBasicColumnedViewSpecification >> configureColumnedViewFor: aColumnedView
 	aColumnedView 
 		title: title;
 		priority: priority;
-		"items: [  (GtRemoteInspectorListingBufferedStream 
-			declarativeView: self) collect: [ :cellValuesDictionary |
-				cellValuesDictionary collect: [ :aCellValueDictionary |
-					GtRemotePhlowItemValue 
-						fromJSONDictionary: aCellValueDictionary ] ] ];"
 		actionButtonIcon: BrGlamorousVectorIcons refresh
 			tooltip: 'Update'
 			action: [ :aButton :aTab | 
