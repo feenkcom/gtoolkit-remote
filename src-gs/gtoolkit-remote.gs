@@ -120,7 +120,7 @@ removeallclassmethods GtPhlowBasicColumnedViewSpecification
 doit
 (GtPhlowBasicColumnedViewSpecification
 	subclass: 'GtPhlowColumnedListViewSpecification'
-	instVarNames: #(  )
+	instVarNames: #( horizontalScrollingEnabled )
 	classVars: #(  )
 	classInstVars: #(  )
 	poolDictionaries: #()
@@ -909,7 +909,7 @@ removeallclassmethods GtRemotePhlowBasicColumnedView
 doit
 (GtRemotePhlowBasicColumnedView
 	subclass: 'GtRemotePhlowColumnedListView'
-	instVarNames: #(  )
+	instVarNames: #( horizontalScrollingEnabled )
 	classVars: #(  )
 	classInstVars: #(  )
 	poolDictionaries: #()
@@ -1478,15 +1478,11 @@ fromJSONDictionary: aDictionary
 category: 'converting'
 method: GtPhlowBasicColumnedViewSpecification
 asDictionaryForExport 
-	| dictionary |
-
-	dictionary := super asDictionaryForExport 
+	^ super asDictionaryForExport 
 		at: #columnSpecifications put: (self columnSpecifications
 			collect: [ :aColumnSpecification |
 				aColumnSpecification asDictionaryForExport ]);
-		yourself.
-
-	^ dictionary
+		yourself
 %
 
 category: 'accessing'
@@ -1544,6 +1540,47 @@ method: GtPhlowBasicColumnedViewSpecification
 retriveSpawnedObjectAtRow: aRowIndex column: aColumnIndex	
 	^ self phlowDataSource 
 		retriveSpawnedObjectAtRow: aRowIndex column: aColumnIndex
+%
+
+! Class implementation for 'GtPhlowColumnedListViewSpecification'
+
+!		Class methods for 'GtPhlowColumnedListViewSpecification'
+
+category: 'instance creation'
+classmethod: GtPhlowColumnedListViewSpecification
+fromJSONDictionary: aDictionary
+	^ (super fromJSONDictionary: aDictionary)
+		horizontalScrollingEnabled: (aDictionary 
+			at: #horizontalScrollingEnabled 
+			ifAbsent: [ nil ])
+%
+
+!		Instance methods for 'GtPhlowColumnedListViewSpecification'
+
+category: 'converting'
+method: GtPhlowColumnedListViewSpecification
+asDictionaryForExport 
+	^ super asDictionaryForExport 
+		at: #horizontalScrollingEnabled put: horizontalScrollingEnabled;
+		yourself
+%
+
+category: 'accessing'
+method: GtPhlowColumnedListViewSpecification
+horizontalScrollingEnabled
+	^ horizontalScrollingEnabled
+%
+
+category: 'accessing'
+method: GtPhlowColumnedListViewSpecification
+horizontalScrollingEnabled: aBoolean
+	horizontalScrollingEnabled := aBoolean
+%
+
+category: 'accessing'
+method: GtPhlowColumnedListViewSpecification
+isHorizontalScrollingEnabled
+	^ self horizontalScrollingEnabled ifNil: [ false ]
 %
 
 ! Class implementation for 'GtPhlowColumnedTreeViewSpecification'
@@ -2528,6 +2565,23 @@ gtColumnedListSpawnTextFor: aView
 		column: 'Class' 
 			text: [ :anObject | anObject class name ] 
 			spawn: [ :anObject | anObject class ]
+%
+
+category: 'inspecting'
+method: GtRemotePhlowDeclarativeTestInspectable
+gtColumnedListWithHorizontalScrollingFor: aView
+	<gtView>
+
+	^aView columnedList
+		title: 'Columned list with scrolling' ;
+		priority: 23;
+		items: [ 1 to: 500 ];
+		withHorizontalScrolling;
+		column: 'Value' text: [ :anInteger | anInteger ] width: 250;
+		column: 'Value + 1' text: [ :anInteger | anInteger + 1 ] width: 250;
+		column: 'Value + 2' text: [ :anInteger | anInteger + 2 ] width: 250;
+		column: 'Value + 3' text: [ :anInteger | anInteger + 3 ] width: 250;
+		column: 'Value + 4' text: [ :anInteger | anInteger + 4 ] width: 250.
 %
 
 category: 'inspecting'
@@ -3719,11 +3773,30 @@ asGtDeclarativeView
 			forPhlowView: self);
 		title: self title;
 		priority: self priority;
+		horizontalScrollingEnabled:  horizontalScrollingEnabled;
 		dataTransport: GtPhlowViewSpecification dataLazy.
 		
 	self configureColumnsSpecificationOn: viewSpecification.
 	
 	^ viewSpecification
+%
+
+category: 'testing'
+method: GtRemotePhlowColumnedListView
+isHorizontalScrollingEnabled
+	^ horizontalScrollingEnabled ifNil: [ false ]
+%
+
+category: 'api - scripting'
+method: GtRemotePhlowColumnedListView
+withHorizontalScrolling
+	horizontalScrollingEnabled := true
+%
+
+category: 'api - scripting'
+method: GtRemotePhlowColumnedListView
+withoutHorizontalScrolling
+	horizontalScrollingEnabled := false
 %
 
 ! Class implementation for 'GtRemotePhlowColumnedTreeView'
