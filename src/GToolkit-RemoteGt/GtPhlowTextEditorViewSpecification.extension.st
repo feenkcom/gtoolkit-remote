@@ -1,7 +1,7 @@
-Extension { #name : #GtPhlowDeclarativeTextEditorView }
+Extension { #name : #GtPhlowTextEditorViewSpecification }
 
 { #category : #'*GToolkit-RemoteGt' }
-GtPhlowDeclarativeTextEditorView >> viewFor: aView [
+GtPhlowTextEditorViewSpecification >> viewFor: aView [
 	"Answer the GtPhlowView for the receiver"
 
 	^aView textEditor 

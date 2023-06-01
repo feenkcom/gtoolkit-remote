@@ -1,12 +1,12 @@
-Extension { #name : #GtPhlowColumnedListView }
+Extension { #name : #GtPhlowColumnedTreeView }
 
 { #category : #'*GToolkit-RemoteGt' }
-GtPhlowColumnedListView >> asGtDeclarativeView [
+GtPhlowColumnedTreeView >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
 
-	^ GtPhlowColumnedListViewSpecification new 
-		phlowDataSource: (GtRemotePhlowDeclarativeViewColumnedListDataSource 
+	^ GtPhlowColumnedTreeViewSpecification new 
+		phlowDataSource: (GtRemotePhlowDeclarativeViewColumnedTreeDataSource 
 			forPhlowView: self);
 		title: self title;
 		priority: self priority;

@@ -1,96 +1,85 @@
+"
+I support a subset of the possible configurations of {{gtClass:name=GtPhlowColumnedTreeView}}.
+
+I subclass from {{gtClass:GtRemotePhlowBasicColumnedView}} to reuse the functionality for working with columns and duplicate the API for working with trees from {{gtClass:GtRemotePhlowTreeView}}. This happens in order to also work in GemStone where traits are not available.  Views in the Phlow version targeting the standard GT image  (subclassing {{gtClass:GtPhlowViewDecorator}}) use traits so share a common API. Since traits are not available in GemStone we rely on inheritance. We share the columns API through inheritance instead of the tree api, as the tree API is simpler and does not result in that much duplication.
+"
 Class {
 	#name : #GtRemotePhlowColumnedTreeView,
-	#superclass : #GtRemotePhlowTreeView,
+	#superclass : #GtRemotePhlowBasicColumnedView,
 	#instVars : [
-		'columns'
+		'itemsBuilder',
+		'itemTextBlock',
+		'childrenBuilder'
 	],
 	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
 
 { #category : #accessing }
-GtRemotePhlowColumnedTreeView >> column [
-	<return: #GtRemotePhlowColumn>
-	| aColumn |
+GtRemotePhlowColumnedTreeView >> asGtDeclarativeView [
+	"Answer the receiver as a GtDeclarativeView."
+
+	| viewSpecification |
 	
-	aColumn := GtRemotePhlowColumn new index: self columns size + 1.
-	self columns add: aColumn.
-	^ aColumn
+	viewSpecification := GtPhlowColumnedTreeViewSpecification new 
+		title: self title;
+		priority: self priority;
+		phlowDataSource: (GtRemotePhlowDeclarativeViewColumnedTreeDataSource 
+			forPhlowView: self);
+		dataTransport: GtPhlowViewSpecification dataLazy.
+		
+	self configureColumnsSpecificationOn: viewSpecification.
+	
+	^ viewSpecification
 ]
 
 { #category : #accessing }
-GtRemotePhlowColumnedTreeView >> column: columnName iconName: anIconNameComputation [
-	| aColumn |
-	aColumn := self column.
-	aColumn title: columnName.
-	aColumn iconName: anIconNameComputation
+GtRemotePhlowColumnedTreeView >> children: aBlock [
+
+	childrenBuilder := aBlock
 ]
 
 { #category : #accessing }
-GtRemotePhlowColumnedTreeView >> column: columnName iconName: anIconNameComputation spawn: aSpawnBlock [
-	| aColumn |
-	aColumn := self column.
-	aColumn title: columnName.
-	aColumn iconName: anIconNameComputation.
-	aColumn spawnObject: aSpawnBlock.
+GtRemotePhlowColumnedTreeView >> childrenBuilder [
+
+	^ childrenBuilder
 ]
 
 { #category : #accessing }
-GtRemotePhlowColumnedTreeView >> column: columnName iconName: anIconNameComputation spawn: aSpawnBlock width: aNumberOrNil [
-	| aColumn |
-	aColumn := self column.
-	aColumn title: columnName.
-	aColumn iconName: anIconNameComputation.
-	aColumn spawnObject: aSpawnBlock.
-	aColumn width: aNumberOrNil.
+GtRemotePhlowColumnedTreeView >> expandAll [
+	"To implement"
 ]
 
 { #category : #accessing }
-GtRemotePhlowColumnedTreeView >> column: columnName iconName: anIconNameComputation width: aNumberOrNil [
-	| aColumn |
-	aColumn := self column.
-	aColumn title: columnName.
-	aColumn iconName: anIconNameComputation.
-	aColumn width: aNumberOrNil.
+GtRemotePhlowColumnedTreeView >> itemComputation [
+	^ self itemText
 ]
 
 { #category : #accessing }
-GtRemotePhlowColumnedTreeView >> column: columnName text: aBlockClosure [
-	| aColumn |
-	aColumn := self column.
-	aColumn title: columnName.
-	aColumn text: aBlockClosure
+GtRemotePhlowColumnedTreeView >> itemText [
+
+	^ itemTextBlock ifNil: [ 
+		itemTextBlock := [ :item | item ] ]
 ]
 
 { #category : #accessing }
-GtRemotePhlowColumnedTreeView >> column: columnName text: aBlockClosure spawn: aSpawnBlock [
-	| aColumn |
-	aColumn := self column.
-	aColumn title: columnName.
-	aColumn text: aBlockClosure.
-	aColumn spawnObject: aSpawnBlock.
+GtRemotePhlowColumnedTreeView >> itemText: aBlock [
+
+	itemTextBlock := aBlock
 ]
 
 { #category : #accessing }
-GtRemotePhlowColumnedTreeView >> column: columnName text: aBlockClosure spawn: aSpawnBlock width: aNumberOrNil [
-	| aColumn |
-	aColumn := self column.
-	aColumn title: columnName.
-	aColumn text: aBlockClosure.
-	aColumn spawnObject: aSpawnBlock.
-	aColumn width: aNumberOrNil.
+GtRemotePhlowColumnedTreeView >> items: aBlock [
+
+	itemsBuilder := aBlock
 ]
 
 { #category : #accessing }
-GtRemotePhlowColumnedTreeView >> column: columnName text: aBlockClosure width: aNumberOrNil [
- 	| aColumn |
-	aColumn := self column.
-	aColumn title: columnName.
-	aColumn text: aBlockClosure.
-	aColumn width: aNumberOrNil.
+GtRemotePhlowColumnedTreeView >> itemsBuilder [
+	^ itemsBuilder ifNil: [ 
+		itemsBuilder := [ #() ] ]
 ]
 
 { #category : #accessing }
-GtRemotePhlowColumnedTreeView >> columns [
-	^ columns ifNil: [
-		columns := OrderedCollection new ]
+GtRemotePhlowColumnedTreeView >> itemsProviderComputation [
+	^ self itemsBuilder
 ]

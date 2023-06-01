@@ -15,7 +15,7 @@ Class {
 { #category : #'examples - views' }
 GtRemoteDeclarativeExamples >> columnedListView [
 	<gtExample>
-	| viewProxy viewDictionary view data |
+	| viewProxy viewDictionary view |
 
 	viewProxy := self viewedObjectProxy.
 	viewDictionary :=  viewProxy getViewDeclaration: #gtColumnedListFor:.
@@ -24,13 +24,10 @@ GtRemoteDeclarativeExamples >> columnedListView [
 	self assert: view columnTitles equals: #(Value Lowercase).
 	self assert: view columnWidths equals: #(nil 100).
 	self assert: view columnTypes equals: #(text text).
-	view dataTransport = GtPhlowViewSpecification dataIncluded ifTrue:
-		[ data := view items.
-		self assert: data size equals: 3.
-		self assert: data first equals: #('42' '42').
-		self assert: data second equals: #('Hello World' 'hello world') ].
-	view dataTransport = GtPhlowViewSpecification dataLazy ifTrue:
-		[ self columnedListViewLazyCheck: viewProxy ].
+	
+	self assert: view dataTransport equals: GtPhlowViewSpecification dataLazy.
+	self columnedListViewLazyCheck: viewProxy.
+	
 	^ view
 ]
 

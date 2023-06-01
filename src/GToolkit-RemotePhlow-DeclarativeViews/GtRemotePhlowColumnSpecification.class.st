@@ -75,6 +75,18 @@ GtRemotePhlowColumnSpecification >> markAsHavingPropertyNamed: aSymbol [
 ]
 
 { #category : #accessing }
+GtRemotePhlowColumnSpecification >> printOn: aStream [
+	super printOn: aStream.
+	
+	aStream parenthesize: [
+		aStream << self title.
+		self type ifNotNil: [
+			aStream 
+				<< ', ';
+				<< self type ]]
+]
+
+{ #category : #accessing }
 GtRemotePhlowColumnSpecification >> properties [
 	^ properties ifNil: [ 
 		properties := OrderedCollection new ]

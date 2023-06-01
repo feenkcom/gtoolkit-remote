@@ -13,60 +13,33 @@ Class {
 	#instVars : [
 		'itemsBuilder',
 		'itemTextBlock',
-		'childrenBlock'
+		'childrenBuilder'
 	],
 	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
 
-{ #category : #private }
-GtRemotePhlowTreeView >> add: item index: anArray to: stream [
-	"Add the supplied item, index and the item's children to the stream"
-
-	stream nextPut: { 
-		(self itemText value: item) asString. 
-		anArray.
-		Array streamContents: [ :childStream | 
-			(childrenBlock value: item) doWithIndex: [ :child :i |
-				self add: child index: anArray, { i } to: childStream ] ] }
-]
-
 { #category : #converting }
 GtRemotePhlowTreeView >> asGtDeclarativeView [
-	"Answer the receiver as a GtDeclarativeView.
-	nil = not supported"
+	"Answer the receiver as a GtDeclarativeView."
 
 	^ GtPhlowTreeViewSpecification new 
 		title: self title;
 		priority: self priority;
-		items: (Array streamContents: [ :stream |
-			self itemsBuilder value doWithIndex: [ :item :i |
-				self add: item index: { i } to: stream ] ]);
-		dataTransport: GtPhlowViewSpecification dataIncluded.
-
-]
-
-{ #category : #accessing }
-GtRemotePhlowTreeView >> children [
-
-	^ childrenBlock
+		phlowDataSource: (GtRemotePhlowDeclarativeViewTreeDataSource 
+			forPhlowView: self);
+		dataTransport: GtPhlowViewSpecification dataLazy
 ]
 
 { #category : #accessing }
 GtRemotePhlowTreeView >> children: aBlock [
 
-	childrenBlock := aBlock
+	childrenBuilder := aBlock
 ]
 
-{ #category : #private }
-GtRemotePhlowTreeView >> expand: anOrderedCollection to: selection from: aCollection [
+{ #category : #accessing }
+GtRemotePhlowTreeView >> childrenBuilder [
 
-	selection <= anOrderedCollection size ifTrue: [ ^ self ].
-	aCollection do: [ :each |
-		anOrderedCollection add: each.
-		selection <= anOrderedCollection size ifTrue: [ ^ self ].
-		self expand: anOrderedCollection to: selection from: (childrenBlock value: each).
-		selection <= anOrderedCollection size ifTrue: [ ^ self ] ].
-
+	^ childrenBuilder
 ]
 
 { #category : #accessing }
@@ -74,10 +47,9 @@ GtRemotePhlowTreeView >> expandAll [
 	"To implement"
 ]
 
-{ #category : #initialization }
-GtRemotePhlowTreeView >> initialize [
-
-	super initialize.
+{ #category : #accessing }
+GtRemotePhlowTreeView >> itemComputation [
+	^ self itemText
 ]
 
 { #category : #accessing }
@@ -103,4 +75,9 @@ GtRemotePhlowTreeView >> items: aBlock [
 GtRemotePhlowTreeView >> itemsBuilder [
 	^ itemsBuilder ifNil: [ 
 		itemsBuilder := [ #() ] ]
+]
+
+{ #category : #accessing }
+GtRemotePhlowTreeView >> itemsProviderComputation [
+	^ self itemsBuilder
 ]

@@ -7,12 +7,17 @@ Class {
 	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
 
+{ #category : #accessing }
+GtRemotePhlowTextEditorView >> aptitude: anAptitude [
+	"stub method"
+]
+
 { #category : #converting }
 GtRemotePhlowTextEditorView >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
 
-	^GtPhlowDeclarativeTextEditorView new 
+	^GtPhlowTextEditorViewSpecification new 
 		title: self title;
 		priority: self priority;
 		string: self textBuilder value asString;
