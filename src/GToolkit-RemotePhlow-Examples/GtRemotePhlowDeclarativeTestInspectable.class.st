@@ -64,6 +64,22 @@ GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListSpawnTextFor: aView [
 ]
 
 { #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListWithHorizontalScrollingFor: aView [
+	<gtView>
+
+	^aView columnedList
+		title: 'Columned list with scrolling' ;
+		priority: 23;
+		items: [ 1 to: 500 ];
+		withHorizontalScrolling;
+		column: 'Value' text: [ :anInteger | anInteger ] width: 250;
+		column: 'Value + 1' text: [ :anInteger | anInteger + 1 ] width: 250;
+		column: 'Value + 2' text: [ :anInteger | anInteger + 2 ] width: 250;
+		column: 'Value + 3' text: [ :anInteger | anInteger + 3 ] width: 250;
+		column: 'Value + 4' text: [ :anInteger | anInteger + 4 ] width: 250.
+]
+
+{ #category : #inspecting }
 GtRemotePhlowDeclarativeTestInspectable >> gtColumnedTreeFor: aView [
 	<gtView>
 
