@@ -48,6 +48,11 @@ GtPhlowColor class >> r: r g: g b: b alpha: alpha [
 		r: r g: g b: b alpha: alpha
 ]
 
+{ #category : #'accessing - defaults' }
+GtPhlowColor class >> transparent [
+	^ self named: #transparent
+]
+
 { #category : #accessing }
 GtPhlowColor >> asDictionaryForExport [
 	"Answer the receiver as a dictionary ready for JSON serialisation"
@@ -70,6 +75,11 @@ GtPhlowColor >> asDictionaryForExport [
 	^ data
 ]
 
+{ #category : #testing }
+GtPhlowColor >> isTransparent [
+	^ alpha = 0 or: [ name= #transparent ]
+]
+
 { #category : #accessing }
 GtPhlowColor >> named: aColorName [
 	name := aColorName
@@ -79,6 +89,27 @@ GtPhlowColor >> named: aColorName [
 GtPhlowColor >> named: aColorName alpha: anAlpha [
 	name := aColorName.
 	alpha := anAlpha
+]
+
+{ #category : #printing }
+GtPhlowColor >> printOn: aStream [
+	super printOn: aStream.
+	
+	aStream parenthesize: [
+		self isTransparent ifTrue: [ 
+			^ aStream nextPutAll: 'transparent' ].
+		name ifNotNil: [
+			^ aStream nextPutAll: name ].
+			
+	aStream
+		nextPutAll: ' r: ';
+		print: red;
+		nextPutAll: ' g: ';
+		print: green;
+		nextPutAll: ' b: ';
+		print: blue;
+		nextPutAll: ' alpha: ';
+		print: alpha]
 ]
 
 { #category : #accessing }
