@@ -2,6 +2,11 @@ Extension { #name : #GtPhlowColor }
 
 { #category : #'*GToolkit-RemoteGt' }
 GtPhlowColor >> asBlBackground [
+	^ self asColor asBlBackground
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
+GtPhlowColor >> asColor [
 	| newColor |
 	newColor:= name 
 		ifNil: [
@@ -11,5 +16,15 @@ GtPhlowColor >> asBlBackground [
 	alpha ifNotNil: [
 		newColor := newColor alpha: alpha ].
 	
-	^ newColor asBlBackground
+	^ newColor
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
+GtPhlowColor >> gtPreviewFor: aView [
+	<gtView>
+	
+	^ aView forward 
+		title: 'Preview';
+		object: [ self asColor ];
+		view: #gtPreviewFor:
 ]
