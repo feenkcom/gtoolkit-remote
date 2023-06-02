@@ -1139,6 +1139,12 @@ r: r g: g b: b alpha: alpha
 		r: r g: g b: b alpha: alpha
 %
 
+category: 'accessing - defaults'
+classmethod: GtPhlowColor
+transparent
+	^ self named: #transparent
+%
+
 !		Instance methods for 'GtPhlowColor'
 
 category: 'accessing'
@@ -1164,6 +1170,12 @@ asDictionaryForExport
 	^ data
 %
 
+category: 'testing'
+method: GtPhlowColor
+isTransparent
+	^ alpha = 0 or: [ name= #transparent ]
+%
+
 category: 'accessing'
 method: GtPhlowColor
 named: aColorName
@@ -1175,6 +1187,28 @@ method: GtPhlowColor
 named: aColorName alpha: anAlpha
 	name := aColorName.
 	alpha := anAlpha
+%
+
+category: 'printing'
+method: GtPhlowColor
+printOn: aStream
+	super printOn: aStream.
+	
+	aStream parenthesize: [
+		self isTransparent ifTrue: [ 
+			^ aStream nextPutAll: 'transparent' ].
+		name ifNotNil: [
+			^ aStream nextPutAll: name ].
+			
+	aStream
+		nextPutAll: ' r: ';
+		print: red;
+		nextPutAll: ' g: ';
+		print: green;
+		nextPutAll: ' b: ';
+		print: blue;
+		nextPutAll: ' alpha: ';
+		print: alpha]
 %
 
 category: 'accessing'
@@ -3544,7 +3578,6 @@ on: anObject perform: aMessageSymbol withArguments: aCollectionOfArguments
 	] on: Error do: [ :anError |
 			self 
 				phlowErrorViewWithException: anError 
-				inComputation: nil
 				forBuildContext: nil "(GtPhlowBuildContext new 
 					object: anObject; 
 					arguments: aCollectionOfArguments) "
@@ -3564,7 +3597,7 @@ phlowErrorViewWithException: anException
 
 category: 'message performning'
 method: GtRemotePhlowView
-phlowErrorViewWithException: anException inComputation: aFailedComputation forBuildContext: aContext andSelector: aMessageSymbol
+phlowErrorViewWithException: anException forBuildContext: aContext andSelector: aMessageSymbol
 	| aPhlow | 
 
 	aPhlow := self phlowErrorViewWithException: anException.
@@ -3623,7 +3656,6 @@ asGtDeclarativeView
 	on: Error do: [ :anError |
 		(self 
 				phlowErrorViewWithException: anError 
-				inComputation: nil
 				forBuildContext: nil "(GtPhlowBuildContext new 
 					object: anObject; 
 					arguments: aCollectionOfArguments) "
@@ -4685,29 +4717,6 @@ gtGsInspectorIconName
 !		Instance methods for 'String'
 
 category: '*GToolkit-RemotePhlow-GemStone'
-method: String
-gtDisplayOn: writeStream
-	writeStream nextPutAll: self
-%
-
-! Class extensions for 'WriteStream'
-
-!		Instance methods for 'WriteStream'
-
-category: '*GToolkit-RemotePhlow-Remote'
-method: WriteStream
-parenthesize: aBlock
-	self nextPut: $(.
-	aBlock ensure: [ self nextPut: $) ]
-%
-
-! Class Initialization
-
-run
-GtPhlowDeclarativeListingType initialize.
-GtRemotePhlowColumn initialize.
-true
-%
 method: String
 gtDisplayOn: writeStream
 	writeStream nextPutAll: self
