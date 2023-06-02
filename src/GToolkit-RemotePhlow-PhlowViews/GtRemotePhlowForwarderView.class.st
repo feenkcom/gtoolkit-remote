@@ -18,7 +18,6 @@ GtRemotePhlowForwarderView >> asGtDeclarativeView [
 	on: Error do: [ :anError |
 		(self 
 				phlowErrorViewWithException: anError 
-				inComputation: nil
 				forBuildContext: nil "(GtPhlowBuildContext new 
 					object: anObject; 
 					arguments: aCollectionOfArguments) "

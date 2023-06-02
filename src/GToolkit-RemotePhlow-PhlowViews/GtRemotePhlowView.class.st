@@ -88,7 +88,6 @@ GtRemotePhlowView >> on: anObject perform: aMessageSymbol withArguments: aCollec
 	] on: Error do: [ :anError |
 			self 
 				phlowErrorViewWithException: anError 
-				inComputation: nil
 				forBuildContext: nil "(GtPhlowBuildContext new 
 					object: anObject; 
 					arguments: aCollectionOfArguments) "
@@ -106,7 +105,7 @@ GtRemotePhlowView >> phlowErrorViewWithException: anException [
 ]
 
 { #category : #'message performning' }
-GtRemotePhlowView >> phlowErrorViewWithException: anException inComputation: aFailedComputation forBuildContext: aContext andSelector: aMessageSymbol [
+GtRemotePhlowView >> phlowErrorViewWithException: anException forBuildContext: aContext andSelector: aMessageSymbol [
 	| aPhlow | 
 
 	aPhlow := self phlowErrorViewWithException: anException.
