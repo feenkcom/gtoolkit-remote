@@ -1,7 +1,7 @@
 Class {
 	#name : #PlpoClassDescription,
 	#superclass : #PlpoBehavior,
-	#category : 'Gt4PharoLink-Proxies'
+	#category : #'Gt4PharoLink-Proxies'
 }
 
 { #category : #accessing }
@@ -23,6 +23,12 @@ PlpoClassDescription >> definition [
 	^ self proxyPerform: #definition
 ]
 
+{ #category : #accessing }
+PlpoClassDescription >> definitionString [ 
+
+	^ self proxyPerform: #definitionString
+]
+
 { #category : #ui }
 PlpoClassDescription >> gtDefinitionFor: aView [
 	<gtView>
@@ -33,7 +39,7 @@ PlpoClassDescription >> gtDefinitionFor: aView [
 				isForWorkspace: true;
 				yourself);
 		aptitude: BrGlamorousCodeEditorAptitude;
-		text: [ self definition asRopedText ].
+		text: [ self definitionString asRopedText ].
 ]
 
 { #category : #ui }
