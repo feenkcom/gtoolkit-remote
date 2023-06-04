@@ -48,8 +48,8 @@ GtRemotePlainInspectionViewedObject >> phlowDeclarativeViews [
 			Object -> #gtPrintFor:}) asOrderedCollection.
 	views 
 		detect: [ :each | each title = 'Raw' ]
-		ifNone: [ views add: (object 
-			gtRemoteGtRawFor: #GtRemotePhlowProtoView asClass new) ].
+		ifNone: [ views := views , {(object 
+			gtRemoteGtRawFor: #GtRemotePhlowProtoView asClass new)} ].
 	
 	^ views
 ]

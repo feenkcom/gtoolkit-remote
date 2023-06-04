@@ -110,7 +110,8 @@ GtRemotePhlowViewedObject >> phlowDeclarativeViews [
 	views := object gtDeclarativePhlowViews.
 	views 
 		detect: [ :each | each title = 'Raw' ]
-		ifNone: [ views, (Array with: (object gtRemoteGtRawFor: #GtPhlowView asClass empty)) ].
+		ifNone: [ views := views, (Array with: (object 
+			gtRemoteGtRawFor: #GtPhlowView asClass empty)) ].
 	
 	^ views
 ]
