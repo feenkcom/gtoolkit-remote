@@ -28,10 +28,12 @@ TGtRemoteLanguageProxySpecificViews >> gtRawFor: aView [
 TGtRemoteLanguageProxySpecificViews >> gtRemoteViewSpecificationsFor: aView [
 	<gtProxy>
 	
-	^ aView list
+	^ aView columnedList
 		title: 'Remote view specifications';
 		priority: 10001;
 		items: [ self declarativeViews ];
-		itemText: [ :aViewAccessor | aViewAccessor title ];
+		column: 'Title' text: [ :aViewAccessor | aViewAccessor title ];
+		column: 'Selector' text: [ :aViewAccessor | aViewAccessor methodSelector ];
+		column: 'Priority' text: [ :aViewAccessor | aViewAccessor priority ] width: 120;
 		send: [ :aDeclarativeView | aDeclarativeView ]
 ]
