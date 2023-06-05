@@ -48,10 +48,7 @@ LanguageLinkProxyObject >> filterLocalProxyViews: localViews [
 LanguageLinkProxyObject >> getViewProxy [
 	"Answer a GtViewedProxy on the receiver"
 
-	^ self newCommandFactory
-		<< 'GtRemotePhlowViewedObject object: self';
-		sendAndWait.
-
+	^ self evaluateAndWait: 'GtRemotePhlowViewedObject object: self'
 ]
 
 { #category : #'*Gt4PharoLink' }
