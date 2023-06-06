@@ -7,7 +7,7 @@ GtRemotePhlowViewedObject >> addRawSelfNodeTo: variableNodes [
 ]
 
 { #category : #'*GToolkit-RemotePhlow-Gemstone' }
-GtRemotePhlowViewedObject classSide >> new [
+GtRemotePhlowViewedObject class >> new [
 
 	^ super new initialize
 ]

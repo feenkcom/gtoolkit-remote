@@ -18,7 +18,7 @@ LanguageLinkProxyObject >> declarativeViews [
 		rawViews := viewSelectors collect: [ :viewSelector |
 			| viewDictionary declarativeView |
 			viewDictionary := remoteInspectorProxy getViewDeclaration: viewSelector.
-			declarativeView := GtPhlowDeclarativeView fromDictionary: viewDictionary.
+			declarativeView := GtPhlowViewSpecification fromDictionary: viewDictionary.
 			declarativeView
 				methodSelector: viewSelector;
 				initializeFromInspector: remoteInspectorProxy.
@@ -38,13 +38,30 @@ LanguageLinkProxyObject >> evaluateSourceSequence: aString [
 ]
 
 { #category : #'*Gt4PharoLink' }
+LanguageLinkProxyObject >> filterLocalProxyViews: localViews [ 
+	"When showing local views for the object, we remove all views where the method is annotated with gtProxy. Those views will only be shown for the proxy object."
+	^ localViews reject: [ :each |
+		each definingMethod compiledMethod hasPragmaNamed: #gtProxy ].
+]
+
+{ #category : #'*Gt4PharoLink' }
 LanguageLinkProxyObject >> getViewProxy [
 	"Answer a GtViewedProxy on the receiver"
 
-	^ self newCommandFactory
-		<< 'GtRemotePhlowViewedObject object: self';
-		sendAndWait.
+	^ self evaluateAndWait: 'GtRemotePhlowViewedObject object: self'
+]
 
+{ #category : #'*Gt4PharoLink' }
+LanguageLinkProxyObject >> gtDefaultInspectorTool [
+	"We extent the inspector by adding a custom tool showing object specific views."
+	
+	^ GtPhlowCompositeTool new
+		addTool: (self gtRemoteSideInspectorTool
+			name: 'Remote';
+			withLabelAndIconAptitude);
+		addTool: (super gtDefaultInspectorTool
+			name: 'Proxy';
+			withLabelAndIconAptitude)
 ]
 
 { #category : #'*Gt4PharoLink' }
@@ -56,19 +73,39 @@ LanguageLinkProxyObject >> gtInspectorTitleString [
 ]
 
 { #category : #'*Gt4PharoLink' }
-LanguageLinkProxyObject >> gtProxyFor: aView [
+LanguageLinkProxyObject >> gtMetaFor: aView [
 	<gtProxy>
 
-	^(self gtRawFor: aView)
-		title: 'Proxy' translated;
-		priority: 10000.
+	^ super gtMetaFor: aView
 ]
 
 { #category : #'*Gt4PharoLink' }
-LanguageLinkProxyObject >> gtProxyViewsFor: aView [
-	<gtView>
+LanguageLinkProxyObject >> gtPrintFor: aView [
+	<gtProxy>
+
+	^ super gtPrintFor: aView
+]
+
+{ #category : #'*Gt4PharoLink' }
+LanguageLinkProxyObject >> gtRawFor: aView [
+	<gtProxy>
+
+	^ super gtRawFor: aView
+]
+
+{ #category : #'*Gt4PharoLink' }
+LanguageLinkProxyObject >> gtRemoteSideInspectorTool [
+	^ GtInspectorTool 
+		forObject: self 
+		viewSelector: #gtRemoteViewsFor: 
+]
+
+{ #category : #'*Gt4PharoLink' }
+LanguageLinkProxyObject >> gtRemoteViewSpecificationsFor: aView [
+	<gtProxy>
+	
 	^ aView list
-		title: 'Proxy views' translated;
+		title: 'Remote view specifications';
 		priority: 10001;
 		items: [ self declarativeViews ];
 		itemText: [ :aViewAccessor | aViewAccessor title ];
@@ -76,39 +113,51 @@ LanguageLinkProxyObject >> gtProxyViewsFor: aView [
 ]
 
 { #category : #'*Gt4PharoLink' }
-LanguageLinkProxyObject >> gtViewsFor: aView inContext: aContext [
-	"Add the declarative views from the inspectors object to the inspectors views"
+LanguageLinkProxyObject >> gtRemoteViewsFor: aView [
+	"This is the default entry method for retrieving the wrapper view containing all non-proxy views for the object."
+	<return: #GtPhlowLabelledView>
+	
+	^ GtPhlowLabelledViewBuilder new
+		object: self;
+		view: aView;
+		context: GtPhlowContext new;
+		viewsSelector: #gtViewsForRemoteSideInContext:;
+		titleComputation: [
+			String streamContents: [ :stream |
+				stream
+					<< 'a(n): ';
+					<< (remoteClass ifNil: [ '<None>' ]) ]];
+		build 
+]
 
-	| resultingView inspectorViews |
-
-	resultingView := super gtViewsFor: aView inContext: aContext.
-	inspectorViews := resultingView originalView views.
-
-	"Add the explicitly declarative views from the inspected object"
-	inspectorViews addAll: (self remoteViewsFor: aView).
-
-	"Re-sort by priority"
-	inspectorViews := inspectorViews sorted: [ :a :b | a priority < b priority ].
-	resultingView originalView views: inspectorViews.
-	^resultingView
+{ #category : #'*Gt4PharoLink' }
+LanguageLinkProxyObject >> gtViewsForRemoteSideInContext: aContext [
+	"This collects all views for the current object. This excludes the proxy-specific views (annotated with #gtProxy), and includes all remote views for the object, as well as all custom views defined locally"
+ 
+	| localViews collectedViews |
+	
+	"Get the views using the super call. 
+	This will use #gtView to compute the list of views for the local object."
+	localViews := super gtViewsInContext: aContext.
+	
+	collectedViews := OrderedCollection new
+		addAll: (self filterLocalProxyViews: localViews);
+		addAll: (self remoteViewsFor: GtPhlowEmptyView new);
+		yourself.
+	GtPhlowUtility sortByPriority: collectedViews.
+	
+	^ collectedViews
 ]
 
 { #category : #'*Gt4PharoLink' }
 LanguageLinkProxyObject >> gtViewsInContext: aContext [
-	"This collects all views for the current object.
-	For a proxy we just want the Raw view renamed as 'Proxy'"
-	| views proxyRaw proxyPrint |
-
-	views := super gtViewsInContext: aContext.
-	"Retitle the original Raw view to Proxy and lower priority"
-	proxyRaw := views detect: [ :each | each title = #Raw ].
-	proxyRaw
-		title: #Proxy;
-		priority: 10000.
-	"Remove the default Print view, the remote can supply it later"
-	proxyPrint := views detect: [ :each | each title = #Print ].
-	views remove: proxyPrint.
-	^ views.
+	"Change the views of the proxy object to only those annotated with gtProxy."
+ 
+	^ GtPhlowViewsCollector new
+		fromObject: self;
+		context: aContext;
+		pragmaName: #gtProxy;
+		collect.
 ]
 
 { #category : #'*Gt4PharoLink' }

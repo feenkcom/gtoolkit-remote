@@ -64,6 +64,90 @@ GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListSpawnTextFor: aView [
 ]
 
 { #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListWithHorizontalScrollingFor: aView [
+	<gtView>
+
+	^aView columnedList
+		title: 'Columned list with scrolling' ;
+		priority: 23;
+		items: [ 1 to: 500 ];
+		withHorizontalScrolling;
+		column: 'Value' text: [ :anInteger | anInteger ] width: 250;
+		column: 'Value + 1' text: [ :anInteger | anInteger + 1 ] width: 250;
+		column: 'Value + 2' text: [ :anInteger | anInteger + 2 ] width: 250;
+		column: 'Value + 3' text: [ :anInteger | anInteger + 3 ] width: 250;
+		column: 'Value + 4' text: [ :anInteger | anInteger + 4 ] width: 250.
+]
+
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtColumnedTreeFor: aView [
+	<gtView>
+
+	^aView columnedTree
+		title: 'Columned Tree';
+		priority: 35;
+		items: [ 1 to: 5 ];
+		children: [ :aNumber | 
+			(aNumber // 2 = aNumber)
+				ifTrue: [ #() ] 
+				ifFalse: [
+					aNumber // 2 to: (aNumber - 1) ] ];
+		column: 'x' text: [ :aNumber | aNumber ];
+		column: 'x * x' text: [ :aNumber | aNumber * aNumber ]
+]
+
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtForwardListFor: aView [
+	<gtView>
+
+	^aView forward
+		title: 'Forward List';
+		priority: 45;
+		object: [ self ];
+		view: #gtListFor:
+]
+
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtForwardListTwiceFor: aView [
+	<gtView>
+
+	^aView forward
+		title: 'Forward List Twice';
+		priority: 46;
+		object: [ self ];
+		view: #gtForwardListFor:
+]
+
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtItemsWithBackgroundFor: aView [
+	<gtView>
+	
+	^ aView columnedList
+		title: 'background: usage';
+		priority: 50;
+		items: [ {
+			'Bob' -> -43.
+			'Alice' -> 27.
+			'Mike' -> 0.
+			'Jane' -> -32.
+			'Ben' -> 12
+		} ];
+		column: 'name' text: [ :x | x key ];
+		column: 'value' do: [ :aColumn |
+			aColumn
+				text: [ :x | x value ];
+				background: [ :v |
+					v > 0
+						ifTrue: [ 
+							GtPhlowColor named: #green alpha: 0.3 ]
+						ifFalse: [ v < 0
+							ifTrue: [ 
+								GtPhlowColor named: #red alpha: 0.3 ]
+							ifFalse: [ 
+								GtPhlowColor named: #gray alpha: 0.3] ] ] ]
+]
+
+{ #category : #inspecting }
 GtRemotePhlowDeclarativeTestInspectable >> gtLargeColumnedListFor: aView [
 	<gtView>
 
@@ -117,6 +201,22 @@ GtRemotePhlowDeclarativeTestInspectable >> gtStringFor: aView [
 		title: 'String';
 		priority: 10;
 		text: [ self string ]
+]
+
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtTreeFor: aView [
+	<gtView>
+
+	^aView tree
+		title: 'Tree';
+		priority: 30;
+		items: [ 1 to: 5 ];
+		children: [ :aNumber | 
+			(aNumber // 2 = aNumber)
+				ifTrue: [ #() ] 
+				ifFalse: [
+					aNumber // 2 to: (aNumber - 1) ] ];
+		itemText: [ :x | x asString, ' number']
 ]
 
 { #category : #initialization }

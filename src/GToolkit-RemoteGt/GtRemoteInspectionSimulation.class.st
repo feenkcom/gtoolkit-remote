@@ -25,13 +25,23 @@ Class {
 		'object',
 		'inspectorProxy'
 	],
-	#category : 'GToolkit-RemoteGt-Development'
+	#category : #'GToolkit-RemoteGt-Development'
 }
 
 { #category : #'instance creation' }
 GtRemoteInspectionSimulation class >> openOn: anObject [
 
 	^ self new object: anObject
+]
+
+{ #category : #simulation }
+GtRemoteInspectionSimulation >> createViewBuilder [
+	^ GtPhlowEmptyView new
+]
+
+{ #category : #accessing }
+GtRemoteInspectionSimulation >> createViewedObjectFor: anObject [ 
+	^ GtRemotePhlowViewedObject object: anObject
 ]
 
 { #category : #'gt inspector' }
@@ -43,7 +53,7 @@ GtRemoteInspectionSimulation >> declarativeViews [
 	declarativeViewDeclarations := declarativeData at: 'views' ifAbsent: [ #() ].
 	rawViews := declarativeViewDeclarations collect: [ :declarativeViewData |
 		| declarativeView |
-		declarativeView := GtPhlowDeclarativeView fromDictionary: declarativeViewData.
+		declarativeView := GtPhlowViewSpecification fromDictionary: declarativeViewData.
 		declarativeView
 			initializeFromInspector: inspectorProxy.
 		declarativeView ].
@@ -82,8 +92,8 @@ GtRemoteInspectionSimulation >> gtProxyViewsFor: aView [
 GtRemoteInspectionSimulation >> gtViewsInContext: aContext [
 	"This collects all views for the current object"
 	| emptyView collectedViews |
-
-	emptyView := GtPhlowEmptyView new.
+	
+	emptyView := self createViewBuilder .
 	collectedViews := OrderedCollection new
 		add: (self gtProxyFor: emptyView);
 		add: (self gtProxyViewsFor: emptyView);
@@ -102,13 +112,13 @@ GtRemoteInspectionSimulation >> object [
 GtRemoteInspectionSimulation >> object: anObject [
 
 	object := anObject.
-	inspectorProxy := GtRemotePhlowViewedObject object: anObject
+	inspectorProxy := self createViewedObjectFor: anObject
 ]
 
 { #category : #'gt inspector' }
 GtRemoteInspectionSimulation >> remoteViewsFor: aView [
 	"Should be all views, but just get Raw and Print views for now"
-
-	^ self declarativeViews collect: [ :declarativeView | declarativeView viewFor: aView ].
-
+	
+	^ self declarativeViews collect: [ :declarativeView | 
+		declarativeView viewFor: aView ].
 ]

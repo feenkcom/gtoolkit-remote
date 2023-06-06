@@ -3,7 +3,7 @@ Class {
 	#superclass : #Object,
 	#traits : 'TAssertable',
 	#classTraits : 'TAssertable classTrait',
-	#category : 'GToolkit-RemotePhlow-Examples'
+	#category : #'GToolkit-RemotePhlow-Examples'
 }
 
 { #category : #examples }
@@ -11,9 +11,14 @@ GtRemotePhlowDeclarativeTreeExamples >> emptyTree [
 	<gtExample>
 	| view |
 
-	view := GtRemotePhlowDeclarativeProtoView new tree.
-	self assert: view class equals: GtRemotePhlowDeclarativeTree.
+	view := GtRemotePhlowProtoView new tree.
+	self assert: view class equals: GtRemotePhlowTreeView.
 	^ view
+]
+
+{ #category : #examples }
+GtRemotePhlowDeclarativeTreeExamples >> expectedFormattedItems [
+	^ ((Array new: 4) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#itemText->'1'); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#itemText->'2'); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#itemText->'3'); yourself)); add: (#nodeId->3); yourself); at: 4 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#itemText->'4'); yourself)); add: (#nodeId->4); yourself); yourself)
 ]
 
 { #category : #examples }
@@ -41,7 +46,7 @@ GtRemotePhlowDeclarativeTreeExamples >> sentItemAt [
 { #category : #examples }
 GtRemotePhlowDeclarativeTreeExamples >> treeViewWithItemsAndChildren [
 	<gtExample>
-	| aView data |
+	| aView declarativeView |
 
 	aView := self emptyTree.
 	aView 
@@ -50,9 +55,14 @@ GtRemotePhlowDeclarativeTreeExamples >> treeViewWithItemsAndChildren [
 			aNumber = 0
 				ifTrue: [ #() ]
 				ifFalse: [ 1 to: aNumber // 2 ] ].
-	data := aView asGtDeclarativeView items.
-	self assert: data size equals: 4.
-	self assert: data first equals: #('1' #(1) #()).
-	self assert: data last equals:  #('4' #(4) #(#('1' #(4 1) #()) #('2' #(4 2) #(#('1' #(4 2 1) #()))))).
+	declarativeView := aView asGtDeclarativeView.
+	
+	self 
+		assert: declarativeView retrieveTotalItemsCount  
+		equals: 4.
+	self 
+		assert: declarativeView retriveFormattedItems 
+		equals: self expectedFormattedItems.
+	 
 	^ aView
 ]
