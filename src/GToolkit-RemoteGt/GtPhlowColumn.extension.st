@@ -2,9 +2,7 @@ Extension { #name : #GtPhlowColumn }
 
 { #category : #'*GToolkit-RemoteGt' }
 GtPhlowColumn >> asGtDeclarativeColumnDataType [
-	^ [ dataBinder asRemotePhlowDeclarativeListingType ]
-		on: MessageNotUnderstood
-		do: [ :anError | GtPhlowDeclarativeListingType new beUnknown ]
+	^ self subclassResponsibility
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
