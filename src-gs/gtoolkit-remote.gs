@@ -83,6 +83,24 @@ removeallclassmethods GtPhlowViewSpecification
 
 doit
 (GtPhlowViewSpecification
+	subclass: 'GtPhlowForwardViewSpecification'
+	instVarNames: #(  )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowForwardViewSpecification
+removeallclassmethods GtPhlowForwardViewSpecification
+
+doit
+(GtPhlowViewSpecification
 	subclass: 'GtPhlowListingViewSpecification'
 	instVarNames: #( totalItemsCount )
 	classVars: #(  )
@@ -559,6 +577,24 @@ removeallclassmethods GtRemotePhlowDeclarativeViewDataSource
 
 doit
 (GtRemotePhlowDeclarativeViewDataSource
+	subclass: 'GtRemotePhlowDeclarativeForwardViewDataSource'
+	instVarNames: #( cachedViewSpecification )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowDeclarativeForwardViewDataSource
+removeallclassmethods GtRemotePhlowDeclarativeForwardViewDataSource
+
+doit
+(GtRemotePhlowDeclarativeViewDataSource
 	subclass: 'GtRemotePhlowDeclarativeViewListingDataSource'
 	instVarNames: #( itemsIterator cachedNodes cachedValueBuilder )
 	classVars: #(  )
@@ -836,7 +872,7 @@ removeallclassmethods GtRemotePhlowEmptyView
 doit
 (GtRemotePhlowView
 	subclass: 'GtRemotePhlowForwarderView'
-	instVarNames: #( viewSelector objectComputation )
+	instVarNames: #( viewSelector objectComputation transformation )
 	classVars: #(  )
 	classInstVars: #(  )
 	poolDictionaries: #()
@@ -1149,6 +1185,12 @@ transparent
 
 category: 'accessing'
 method: GtPhlowColor
+alpha
+	^ alpha ifNil: [ 0 ]
+%
+
+category: 'accessing'
+method: GtPhlowColor
 asDictionaryForExport
 	"Answer the receiver as a dictionary ready for JSON serialisation"
 
@@ -1168,6 +1210,18 @@ asDictionaryForExport
 		data at: #a put: aValue ].
 	
 	^ data
+%
+
+category: 'accessing'
+method: GtPhlowColor
+blue
+	^ blue
+%
+
+category: 'accessing'
+method: GtPhlowColor
+green
+	^ green
 %
 
 category: 'testing'
@@ -1218,6 +1272,12 @@ r: r g: g b: b alpha: anAlpha
 	green := g.
 	blue := b.
 	alpha := anAlpha
+%
+
+category: 'accessing'
+method: GtPhlowColor
+red
+	^ red
 %
 
 ! Class implementation for 'GtPhlowDeclarativeListingType'
@@ -1447,6 +1507,60 @@ viewName
 	"Answer the name of the receivers view"
 
 	^self class name
+%
+
+! Class implementation for 'GtPhlowForwardViewSpecification'
+
+!		Instance methods for 'GtPhlowForwardViewSpecification'
+
+category: 'api - accessing'
+method: GtPhlowForwardViewSpecification
+getDeclarativeViewFor: aViewSelector
+	"This provides the same API as the inspector proxy, so that view 
+	specifications can define a single method for initializing the link 
+	between the local and the remote instance of the specification."
+	
+	^ self phlowDataSource
+		getDeclarativeViewFor: aViewSelector
+%
+
+category: 'accessing'
+method: GtPhlowForwardViewSpecification
+initializeFromInspector: anInspector
+	self phlowDataSource: (anInspector 
+		getDeclarativeViewFor: self methodSelector)
+%
+
+category: 'api - accessing'
+method: GtPhlowForwardViewSpecification
+loadViewSpecificationForForwarding
+	| declarativeViewData declarativeView |
+	
+	declarativeViewData := self retrieveViewSpecificationForForwarding.
+	declarativeView := GtPhlowViewSpecification fromDictionary: declarativeViewData.
+	
+	"At this point we need to configure the specification for new view
+	just like the inspector does it when retrieveing views. This links the
+	local instance of the specification with a proxy to the remote instance."
+	declarativeView
+		initializeFromInspector: self.
+				
+	^ declarativeView
+%
+
+category: 'api - accessing'
+method: GtPhlowForwardViewSpecification
+retrieveForwardTargetDataSource
+	"This retrieves directly the datasource for the forwarded view."
+	^ self phlowDataSource
+		retrieveForwardTargetDataSource
+%
+
+category: 'api - accessing'
+method: GtPhlowForwardViewSpecification
+retrieveViewSpecificationForForwarding
+	^ self phlowDataSource
+		retrieveViewSpecificationForForwarding
 %
 
 ! Class implementation for 'GtPhlowListingViewSpecification'
@@ -2697,7 +2811,8 @@ gtForwardListFor: aView
 		title: 'Forward List';
 		priority: 45;
 		object: [ self ];
-		view: #gtListFor:
+		view: #gtLargeListFor:;
+		send: [ :x | x * 10 ]
 %
 
 category: 'inspecting'
@@ -2709,7 +2824,21 @@ gtForwardListTwiceFor: aView
 		title: 'Forward List Twice';
 		priority: 46;
 		object: [ self ];
-		view: #gtForwardListFor:
+		view: #gtForwardListFor:;
+		send: [ :x | x + 1 ]
+%
+
+category: 'inspecting'
+method: GtRemotePhlowDeclarativeTestInspectable
+gtForwardListWithSendFor: aView
+	<gtView>
+
+	^aView forward
+		title: 'Forward List Send';
+		priority: 46;
+		object: [ self ];
+		view: #gtLargeListFor:;
+		send: [ :x | x * 10 + 2 ]
 %
 
 category: 'inspecting'
@@ -2952,6 +3081,44 @@ phlowView: anObject
 	phlowView := anObject
 %
 
+! Class implementation for 'GtRemotePhlowDeclarativeForwardViewDataSource'
+
+!		Instance methods for 'GtRemotePhlowDeclarativeForwardViewDataSource'
+
+category: 'api'
+method: GtRemotePhlowDeclarativeForwardViewDataSource
+getDeclarativeViewFor: aViewSelector
+	"This mimics the API provided by the inspecotr proxy to initialize views.
+	In this case foe forwarded views, we allways return the datasource for 
+	the target views, as this is the only view the client will request.
+	
+	We do not check right now if the selector matches, as in some
+	cases the method selector is not set correctly in the specification."
+
+	^ cachedViewSpecification
+%
+
+category: 'api'
+method: GtRemotePhlowDeclarativeForwardViewDataSource
+retrieveForwardTargetDataSource
+	^ cachedViewSpecification phlowDataSource
+%
+
+category: 'api'
+method: GtRemotePhlowDeclarativeForwardViewDataSource
+retrieveViewSpecificationForForwarding
+	| computedPhlowView |
+	computedPhlowView := self phlowView computeForwardedView.
+	self phlowView hasTransformation ifTrue: [ 
+		computedPhlowView 
+			copyTransformationFrom: self phlowView transformation ].
+			
+	cachedViewSpecification := computedPhlowView asGtDeclarativeView.
+	cachedViewSpecification methodSelector: computedPhlowView definingSelector.
+	
+	^ cachedViewSpecification asDictionaryForExport
+%
+
 ! Class implementation for 'GtRemotePhlowDeclarativeViewListingDataSource'
 
 !		Instance methods for 'GtRemotePhlowDeclarativeViewListingDataSource'
@@ -2994,6 +3161,7 @@ flushItemsIterator
 	"Flush the items iterator to force the displayed values to be regenerated"
 
 	itemsIterator := nil.
+	cachedNodes := nil.
 %
 
 category: 'accessing'
@@ -3543,6 +3711,12 @@ canBeGtDeclarativeView
 	^ true
 %
 
+category: 'copying'
+method: GtRemotePhlowView
+copyTransformationFrom: aSendBlock
+	"Do nothing by default. This is a callback used by forward views that define #send: to still work in case the view that we forward to does not support #send:"
+%
+
 category: 'accessing'
 method: GtRemotePhlowView
 definingSelector
@@ -3648,24 +3822,73 @@ title: anObject
 category: 'converting'
 method: GtRemotePhlowForwarderView
 asGtDeclarativeView
-	^  [ (objectComputation value 
-		perform: viewSelector withArguments: { 
-			 self }) asGtDeclarativeView
-			 	title: self title;
-			 	priority: self priority ] 
-	on: Error do: [ :anError |
-		(self 
-				phlowErrorViewWithException: anError 
-				forBuildContext: nil "(GtPhlowBuildContext new 
-					object: anObject; 
-					arguments: aCollectionOfArguments) "
-				andSelector: self definingSelector) asGtDeclarativeView ]
+	"Answer the receiver as a GtDeclarativeView."
+
+	^ GtPhlowForwardViewSpecification new 
+		title: self title;
+		priority: self priority;
+		phlowDataSource: (GtRemotePhlowDeclarativeForwardViewDataSource 
+			forPhlowView: self);
+		dataTransport: GtPhlowViewSpecification dataLazy
+%
+
+category: 'converting'
+method: GtRemotePhlowForwarderView
+computeForwardedView
+	| targetObject computedView |
+	
+	[ targetObject := objectComputation value ] 
+		on: Error do: [ :anError |
+			^ self 
+				phlowErrorViewWithException: anError  ].
+				
+	computedView := self on: targetObject perform: viewSelector.
+	
+	computedView class = self class ifTrue: [
+		"If we the forward is to another forwarder view we follow the chain
+		to reach the first view that is now a forward view."
+		^ computedView computeForwardedView ].
+		
+	^ computedView
+%
+
+category: 'accessing'
+method: GtRemotePhlowForwarderView
+defaultTransformation
+	^ GtRemotePhlowSendObjectTransformation forValuable: [ :anObject | anObject ]
+%
+
+category: 'testing'
+method: GtRemotePhlowForwarderView
+hasTransformation
+	<return: #Boolean>
+	^ transformation notNil
 %
 
 category: 'api - scripting'
 method: GtRemotePhlowForwarderView
 object: anObjectComputation
 	objectComputation := anObjectComputation.
+%
+
+category: 'api - scripting'
+method: GtRemotePhlowForwarderView
+send: aBlock
+	"Define what object should be displayed on selection and fire select or spawn item requests"
+	self transformation: (GtRemotePhlowSendObjectTransformation forValuable: aBlock)
+%
+
+category: 'accessing'
+method: GtRemotePhlowForwarderView
+transformation 	
+	^ transformation ifNil: [ 
+		transformation := self defaultTransformation ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowForwarderView
+transformation: aGtPhlowSendTransformation
+	transformation := aGtPhlowSendTransformation.
 %
 
 category: 'api - scripting'
@@ -3677,6 +3900,13 @@ view: aSelector
 ! Class implementation for 'GtRemotePhlowListingView'
 
 !		Instance methods for 'GtRemotePhlowListingView'
+
+category: 'copying'
+method: GtRemotePhlowListingView
+copyTransformationFrom: aTransformation
+	aTransformation ifNil: [ ^ self ].
+	self send: aTransformation valuable
+%
 
 category: 'accessing'
 method: GtRemotePhlowListingView
@@ -4322,7 +4552,8 @@ phlowDeclarativeViews
 	views := object gtDeclarativePhlowViews.
 	views 
 		detect: [ :each | each title = 'Raw' ]
-		ifNone: [ views, (Array with: (object gtRemoteGtRawFor: #GtPhlowView asClass empty)) ].
+		ifNone: [ views := views, (Array with: (object 
+			gtRemoteGtRawFor: #GtPhlowView asClass empty)) ].
 	
 	^ views
 %
@@ -4739,4 +4970,5 @@ run
 GtPhlowDeclarativeListingType initialize.
 GtRemotePhlowColumn initialize.
 true
+%
 %
