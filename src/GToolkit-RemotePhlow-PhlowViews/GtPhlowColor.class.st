@@ -54,6 +54,11 @@ GtPhlowColor class >> transparent [
 ]
 
 { #category : #accessing }
+GtPhlowColor >> alpha [
+	^ alpha ifNil: [ 0 ]
+]
+
+{ #category : #accessing }
 GtPhlowColor >> asDictionaryForExport [
 	"Answer the receiver as a dictionary ready for JSON serialisation"
 
@@ -73,6 +78,16 @@ GtPhlowColor >> asDictionaryForExport [
 		data at: #a put: aValue ].
 	
 	^ data
+]
+
+{ #category : #accessing }
+GtPhlowColor >> blue [
+	^ blue
+]
+
+{ #category : #accessing }
+GtPhlowColor >> green [
+	^ green
 ]
 
 { #category : #testing }
@@ -118,4 +133,9 @@ GtPhlowColor >> r: r g: g b: b alpha: anAlpha [
 	green := g.
 	blue := b.
 	alpha := anAlpha
+]
+
+{ #category : #accessing }
+GtPhlowColor >> red [
+	^ red
 ]

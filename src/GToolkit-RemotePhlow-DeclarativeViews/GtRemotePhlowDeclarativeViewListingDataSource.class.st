@@ -42,6 +42,7 @@ GtRemotePhlowDeclarativeViewListingDataSource >> flushItemsIterator [
 	"Flush the items iterator to force the displayed values to be regenerated"
 
 	itemsIterator := nil.
+	cachedNodes := nil.
 ]
 
 { #category : #accessing }
