@@ -16,7 +16,7 @@ GtRemotePhlowDeclarativeForwardViewDataSource >> getDeclarativeViewFor: aViewSel
 	We do not check right now if the selector matches, as in some
 	cases the method selector is not set correctly in the specification."
 
-	^ self retrieveForwardTargetDataSource
+	^ cachedViewSpecification
 ]
 
 { #category : #api }
