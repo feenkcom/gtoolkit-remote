@@ -16,14 +16,16 @@ GtPhlowColumn >> computeItemValuesFor: anObject rowIndex: rowIndex columnIndex: 
 	cellValues := GtRemotePhlowItemValue new.
 	
 	itemValue := self itemComputation 
-		cull: anObject cull: rowIndex cull: columnIndex.
-		
+		phlowValue: anObject
+		withEnoughArguments: { rowIndex . columnIndex }.
+
 	cellValues 
 		itemText: itemValue gtDisplayString.
+
 	self hasBackgroundComputation ifTrue: [
 		cellValues 
 			background: (self backgroundComputation
-				cull: itemValue cull: anObject cull: rowIndex cull: columnIndex) ].
+				phlowValue: itemValue withEnoughArguments: { anObject . rowIndex . columnIndex }) ].
 	
 	^ cellValues
 ]
