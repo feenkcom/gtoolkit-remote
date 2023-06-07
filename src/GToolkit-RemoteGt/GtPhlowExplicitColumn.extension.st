@@ -6,3 +6,23 @@ GtPhlowExplicitColumn >> asGtDeclarativeColumnDataType [
 		on: MessageNotUnderstood
 		do: [ :anError | GtPhlowDeclarativeListingType new beUnknown ]
 ]
+
+{ #category : #'*GToolkit-RemoteGt' }
+GtPhlowExplicitColumn >> computeItemValuesFor: anObject rowIndex: rowIndex columnIndex: columnIndex [
+	| cellValues itemValue |
+	cellValues := GtRemotePhlowItemValue new.
+	
+	itemValue := self itemComputation 
+		phlowValue: anObject
+		withEnoughArguments: { rowIndex . columnIndex }.
+
+	cellValues 
+		itemText: itemValue gtDisplayString.
+
+	self hasBackgroundComputation ifTrue: [
+		cellValues 
+			background: (self backgroundComputation
+				phlowValue: itemValue withEnoughArguments: { anObject . rowIndex . columnIndex }) ].
+	
+	^ cellValues
+]
