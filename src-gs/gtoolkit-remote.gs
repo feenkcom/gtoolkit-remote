@@ -4971,4 +4971,3 @@ GtPhlowDeclarativeListingType initialize.
 GtRemotePhlowColumn initialize.
 true
 %
-%
