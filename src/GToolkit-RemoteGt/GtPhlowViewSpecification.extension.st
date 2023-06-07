@@ -28,3 +28,14 @@ GtPhlowViewSpecification class >> fromJSONString: aString [
 	(viewName -> viewDictionary) asBeaconSignal emit.
 	^(Smalltalk globals at: viewName asSymbol) fromJSONDictionary: viewDictionary.
 ]
+
+{ #category : #'*GToolkit-RemoteGt' }
+GtPhlowViewSpecification >> gtActionBuildViewFor: anAction [
+	<gtAction>
+	
+	^ anAction button
+		  icon: BrGlamorousIcons go;
+		  tooltip: 'Create view';
+		  action: [ :aButton |
+		  	aButton phlow spawnObject: (self viewFor: GtPhlowView empty)  ]
+]
