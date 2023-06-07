@@ -48,7 +48,7 @@ GtRemotePhlowForwarderView >> defaultTransformation [
 { #category : #testing }
 GtRemotePhlowForwarderView >> hasTransformation [
 	<return: #Boolean>
-	^ transformation isNotNil
+	^ transformation notNil
 ]
 
 { #category : #'api - scripting' }
