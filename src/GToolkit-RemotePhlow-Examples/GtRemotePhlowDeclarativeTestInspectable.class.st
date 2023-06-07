@@ -104,7 +104,8 @@ GtRemotePhlowDeclarativeTestInspectable >> gtForwardListFor: aView [
 		title: 'Forward List';
 		priority: 45;
 		object: [ self ];
-		view: #gtListFor:
+		view: #gtLargeListFor:;
+		send: [ :x | x * 10 ]
 ]
 
 { #category : #inspecting }
@@ -115,7 +116,20 @@ GtRemotePhlowDeclarativeTestInspectable >> gtForwardListTwiceFor: aView [
 		title: 'Forward List Twice';
 		priority: 46;
 		object: [ self ];
-		view: #gtForwardListFor:
+		view: #gtForwardListFor:;
+		send: [ :x | x + 1 ]
+]
+
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtForwardListWithSendFor: aView [
+	<gtView>
+
+	^aView forward
+		title: 'Forward List Send';
+		priority: 46;
+		object: [ self ];
+		view: #gtLargeListFor:;
+		send: [ :x | x * 10 + 2 ]
 ]
 
 { #category : #inspecting }

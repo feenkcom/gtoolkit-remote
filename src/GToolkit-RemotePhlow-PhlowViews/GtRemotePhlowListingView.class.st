@@ -8,6 +8,12 @@ Class {
 	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
 
+{ #category : #copying }
+GtRemotePhlowListingView >> copyTransformationFrom: aTransformation [
+	aTransformation ifNil: [ ^ self ].
+	self send: aTransformation valuable
+]
+
 { #category : #accessing }
 GtRemotePhlowListingView >> defaultTransformation [
 	^ GtRemotePhlowSendObjectTransformation forValuable: [ :anObject | anObject ]
