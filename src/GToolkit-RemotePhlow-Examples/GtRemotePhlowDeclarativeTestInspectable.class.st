@@ -97,6 +97,31 @@ GtRemotePhlowDeclarativeTestInspectable >> gtColumnedTreeFor: aView [
 ]
 
 { #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtColumnedWithObjectsFor: aView [
+	<gtView>
+
+	^aView columnedList
+		title: 'With Objects';
+		priority: 55;
+		items: [ {
+			'New Instance' -> self class new initialize .
+			'Class Object' -> self class.
+			'Dictionary With Object Keys' -> {
+				Object new -> 'one'.
+				Object new -> 'two'} asDictionary.
+			'Dictionary With Primitive Data' -> {
+				1 -> 10.
+				2 -> 20 }.
+			'Array With Objects' -> (Array 
+				with: Object new 
+				with: Object new).
+			'Array With Numbers' -> (Array with: 1 with: 2) } ];
+		column: 'Key' text: [ :assoc | assoc key ];
+		column: 'Object' text: [ :assoc | assoc value ];
+		send: [ :assoc | assoc value ]
+]
+
+{ #category : #inspecting }
 GtRemotePhlowDeclarativeTestInspectable >> gtForwardListFor: aView [
 	<gtView>
 
