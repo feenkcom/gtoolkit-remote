@@ -142,7 +142,9 @@ LanguageLinkProxyObject >> gtViewsForRemoteSideInContext: aContext [
 	
 	collectedViews := OrderedCollection new
 		addAll: (self filterLocalProxyViews: localViews);
-		addAll: (self remoteViewsFor: GtPhlowEmptyView new);
+		addAll: (self 
+			remoteViewsFor: GtPhlowEmptyView new 
+			inContext: aContext);
 		yourself.
 	GtPhlowUtility sortByPriority: collectedViews.
 	
@@ -161,10 +163,14 @@ LanguageLinkProxyObject >> gtViewsInContext: aContext [
 ]
 
 { #category : #'*Gt4PharoLink' }
-LanguageLinkProxyObject >> remoteViewsFor: aView [
+LanguageLinkProxyObject >> remoteViewsFor: aView inContext: aContext [
 	"Should be all views, but just get Raw and Print views for now"
 
-	^ [ self declarativeViews collect: [ :declarativeView | declarativeView viewFor: aView ] ]
+	^ [ 
+		self declarativeViews 
+			collect: [ :declarativeView | 
+				declarativeView viewFor: aView ] 
+	]
 		on: LanguageLinkServerNotRunningError, LanguageLinkCommunicationError
 		do: [ :ex | application isRunning
 			ifTrue: [ ex pass ]
