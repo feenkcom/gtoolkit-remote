@@ -86,7 +86,9 @@ TGtRemoteLanguageProxyViewsAttachment >> gtViewsForRemoteSideInContext: aContext
 	
 	collectedViews := OrderedCollection new
 		addAll: (self filterLocalProxyViews: localViews);
-		addAll: (self remoteViewsFor: GtPhlowEmptyView new);
+		addAll: (self 
+			remoteViewsFor: GtPhlowEmptyView new
+			inContext: aContext);
 		yourself.
 	GtPhlowUtility sortByPriority: collectedViews.
 	

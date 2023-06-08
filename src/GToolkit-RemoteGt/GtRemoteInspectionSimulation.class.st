@@ -77,7 +77,7 @@ GtRemoteInspectionSimulation >> remoteClass [
 ]
 
 { #category : #'gt inspector' }
-GtRemoteInspectionSimulation >> remoteViewsFor: aView [
+GtRemoteInspectionSimulation >> remoteViewsFor: aView inContext: aContext [
 	"Should be all views, but just get Raw and Print views for now"
 	
 	^ self declarativeViews collect: [ :declarativeView | 

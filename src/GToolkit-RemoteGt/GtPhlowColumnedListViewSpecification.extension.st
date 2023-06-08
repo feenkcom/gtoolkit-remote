@@ -19,7 +19,8 @@ GtPhlowColumnedListViewSpecification >> viewFor: aView [
 	
 	currentView send: [ :aNode :selection | 
 		aNode targetObject ifNil: [
-			aNode targetObject: (self retriveSentItemAt: selection first) ].
+			aNode targetObject: (self 
+				retriveSentItemAt: selection first) asGtBareProxyObject ].
 		aNode targetObject ].
 	
 	^ currentView
