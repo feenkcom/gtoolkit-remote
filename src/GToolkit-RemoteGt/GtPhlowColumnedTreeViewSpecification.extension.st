@@ -35,7 +35,8 @@ GtPhlowColumnedTreeViewSpecification >> viewFor: aView [
 	
 	currentView send: [ :aTreeNode  | 
 		aTreeNode targetObject ifNil: [
-			aTreeNode targetObject: (self retriveSentItemAtPath: aTreeNode nodePath) ].
+			aTreeNode targetObject: (self 
+				retriveSentItemAtPath: aTreeNode nodePath) asGtBareProxyObject ].
 		aTreeNode targetObject ].
 	
 	^ currentView

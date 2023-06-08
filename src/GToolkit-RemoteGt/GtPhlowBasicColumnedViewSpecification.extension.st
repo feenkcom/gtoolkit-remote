@@ -71,6 +71,5 @@ GtPhlowBasicColumnedViewSpecification >> viewFor: aView [
 	
 	self configureColumnedViewFor: currentView.
 	
-	currentView send: [ :arg :selection | self retriveSentItemAt: selection first ].
 	^ currentView
 ]
