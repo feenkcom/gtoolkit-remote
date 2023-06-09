@@ -39,3 +39,8 @@ GtPhlowViewSpecification >> gtActionBuildViewFor: anAction [
 		  action: [ :aButton |
 		  	aButton phlow spawnObject: (self viewFor: GtPhlowView empty)  ]
 ]
+
+{ #category : #'*GToolkit-RemoteGt' }
+GtPhlowViewSpecification >> viewFor: aView [
+	"Specifications should implement this method to create a local phlow view from the remote data."
+]
