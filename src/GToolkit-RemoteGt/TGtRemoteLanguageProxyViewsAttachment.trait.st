@@ -39,13 +39,16 @@ TGtRemoteLanguageProxyViewsAttachment >> getViewProxy [
 { #category : #'gt inspector' }
 TGtRemoteLanguageProxyViewsAttachment >> gtDefaultInspectorTool [
 	"We extent the inspector by adding a custom tool showing object specific views."
-	
 	^ GtPhlowCompositeTool new
 		addTool: (self gtRemoteSideInspectorTool
 			name: 'Remote';
+			"playgroundPageStrategy: (LeInspectorPlaygroundProxyClassPageStrategy
+				forRemoteProxySide);"
 			withLabelAndIconAptitude);
 		addTool: (super gtDefaultInspectorTool
 			name: 'Proxy';
+			"playgroundPageStrategy: (LeInspectorPlaygroundProxyClassPageStrategy
+				forLocalProxySide);"
 			withLabelAndIconAptitude)
 ]
 
