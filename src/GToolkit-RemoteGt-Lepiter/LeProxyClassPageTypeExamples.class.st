@@ -1,6 +1,9 @@
 Class {
 	#name : #LeProxyClassPageTypeExamples,
 	#superclass : #Object,
+	#instVars : [
+		'theDatabase'
+	],
 	#category : #'GToolkit-RemoteGt-Lepiter'
 }
 
@@ -11,7 +14,7 @@ LeProxyClassPageTypeExamples >> assertPageCreationForStrategy: aPageStrategy inD
 	
 	page := aPageStrategy 
 		ensurePlaygroundPageInDatabase: aDatabase 
-		forObject: self targetObjectForInspection.
+		forObject: self targetProxyObjectForInspection.
 	
 	self assert: aDatabase pageCount equals: 1.
 	self assert: page identityHash equals: aDatabase pages first identityHash.
@@ -35,6 +38,18 @@ LeProxyClassPageTypeExamples >> assertPageOnTestProxtFor: aPage [
 	self assert: aPage type isProxyClassPageType.
 	self assert: aPage type pageClassName equals: #GtRemotePhlowDeclarativeTestInspectable.
 	self assert: aPage type proxyTypeName equals:  #GtRemoteInspectionSimulation.
+]
+
+{ #category : #asserting }
+LeProxyClassPageTypeExamples >> assertPageSerializationFor: aPage onSide: aProxySide [
+
+	| serialised deserializedPage |
+	serialised := LeJsonV4 default serialize: aPage.
+	deserializedPage := LeJsonV4 default 
+		deserialize: serialised readStream.
+		
+	self assertPageOnTestProxtFor: deserializedPage.
+	self assert: deserializedPage type pageProxySide equals: aProxySide. 
 ]
 
 { #category : #asserting }
@@ -77,6 +92,20 @@ LeProxyClassPageTypeExamples >> basicProxyPageLocalSide [
 ]
 
 { #category : #'examples - basic page' }
+LeProxyClassPageTypeExamples >> basicProxyPageLocalSide_serialisation [
+	<gtExample>
+	| page |
+	
+	page := self basicProxyPageLocalSide.
+	
+	self 
+		assertPageSerializationFor: page 
+		onSide: LeProxyClassPageType localSide.
+		
+	^ page
+]
+
+{ #category : #'examples - basic page' }
 LeProxyClassPageTypeExamples >> basicProxyPageRemoteSide [
 	<gtExample>
 	| page |
@@ -90,6 +119,40 @@ LeProxyClassPageTypeExamples >> basicProxyPageRemoteSide [
 	self assert: page type pageProxySide isRemoteSide.
 		
 	^ page
+]
+
+{ #category : #'examples - basic page' }
+LeProxyClassPageTypeExamples >> basicProxyPageRemoteSide_serialisation [
+	<gtExample>
+	| page |
+	
+	page := self basicProxyPageRemoteSide.
+	
+	self 
+		assertPageSerializationFor: page 
+		onSide: LeProxyClassPageType remoteSide.
+		
+	^ page
+]
+
+{ #category : #'examples - database' }
+LeProxyClassPageTypeExamples >> databaseWithMonitor [
+	<gtExample>
+	<after: #stopDatabaseMonitor>
+	| folderReference localStore |
+	
+	^ theDatabase ifNil: [ 
+		folderReference := FileSystem memory / 'storage'.
+		folderReference ensureCreateDirectory.
+		
+		localStore := LeLocalStoreLoad current.
+		localStore localRoot: folderReference.
+		theDatabase := localStore loadAndMonitorFrom: folderReference.
+		
+		self assert: theDatabase explicitLinks size equals: 0.
+		self assert: theDatabase pageCount equals: 0.
+			
+		theDatabase ]
 ]
 
 { #category : #accessing }
@@ -112,8 +175,7 @@ LeProxyClassPageTypeExamples >> playgroundProxyPageLocalStrategy [
 	pageStrategy := LeInspectorPlaygroundProxyClassPageStrategy forLocalProxySide.
 	initialSnippet := pageStrategy createInitialSnippet.
 	page := pageStrategy 
-		createNewPageForObject: GtRemotePhlowSimulationExamples new 
-			simulationOnRemoteObject.
+		createNewPageForObject: self targetProxyObjectForInspection.
 	
 	self assert: pageStrategy proxySide isLocalSide.
 	self assert: pageStrategy playgroundPageType equals: LeProxyClassPageType.
@@ -148,6 +210,26 @@ LeProxyClassPageTypeExamples >> playgroundProxyPageLocalStrategy_createPage [
 ]
 
 { #category : #'examples - page strategy' }
+LeProxyClassPageTypeExamples >> playgroundProxyPageLocalStrategy_createPageInMonitoredDatabase [
+	<gtExample>
+	| targetDatabase pageStrategy page |
+	
+	targetDatabase := self databaseWithMonitor.
+	pageStrategy := self playgroundProxyPageLocalStrategy.
+	
+	page := self 
+		assertPageCreationForStrategy: pageStrategy 
+		inDatabase: targetDatabase 
+		onSide: LeProxyClassPageType localSide.
+	
+	self 
+		assertSingleEmptyCodeSnippetOfType: LePharoSnippet 
+		inPage: page.
+	
+	^ targetDatabase
+]
+
+{ #category : #'examples - page strategy' }
 LeProxyClassPageTypeExamples >> playgroundProxyPageRemoteStrategy [
 	<gtExample>
 	| pageStrategy initialSnippet page |
@@ -155,8 +237,7 @@ LeProxyClassPageTypeExamples >> playgroundProxyPageRemoteStrategy [
 	pageStrategy := LeInspectorPlaygroundProxyClassPageStrategy forRemoteProxySide.
 	initialSnippet := pageStrategy createInitialSnippet.
 	page := pageStrategy 
-		createNewPageForObject: GtRemotePhlowSimulationExamples new 
-			simulationOnRemoteObject.
+		createNewPageForObject: self targetProxyObjectForInspection.
 	
 	self assert: pageStrategy proxySide isRemoteSide.
 	self assert: pageStrategy playgroundPageType equals: LeProxyClassPageType.
@@ -190,8 +271,13 @@ LeProxyClassPageTypeExamples >> playgroundProxyPageRemoteStrategy_createPage [
 	^ targetDatabase
 ]
 
+{ #category : #'examples - tear down' }
+LeProxyClassPageTypeExamples >> stopDatabaseMonitor [
+	theDatabase ifNotNil: [ theDatabase stopMonitoring ]
+]
+
 { #category : #examples }
-LeProxyClassPageTypeExamples >> targetObjectForInspection [
+LeProxyClassPageTypeExamples >> targetProxyObjectForInspection [
 	<gtExample>
 	^ GtRemotePhlowSimulationExamples new simulationOnRemoteObject
 ]
