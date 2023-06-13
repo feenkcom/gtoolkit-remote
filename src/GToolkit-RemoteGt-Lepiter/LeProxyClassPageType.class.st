@@ -31,7 +31,7 @@ LeProxyClassPageType class >> leJsonV4AttributeMapping [
 { #category : #serialization }
 LeProxyClassPageType class >> leJsonV4Name [
 
-	^ 'proxyClassPage'
+	^ 'proxyClassPageType'
 ]
 
 { #category : #accessing }
