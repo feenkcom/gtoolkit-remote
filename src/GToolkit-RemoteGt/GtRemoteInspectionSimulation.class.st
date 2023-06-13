@@ -73,7 +73,7 @@ GtRemoteInspectionSimulation >> object: anObject [
 
 { #category : #accessing }
 GtRemoteInspectionSimulation >> remoteClass [
-	^ inspectorProxy class name
+	^ inspectorProxy object class name
 ]
 
 { #category : #'gt inspector' }
