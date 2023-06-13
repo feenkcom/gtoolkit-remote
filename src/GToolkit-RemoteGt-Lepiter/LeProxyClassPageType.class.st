@@ -88,6 +88,11 @@ LeProxyClassPageType >> initializeForPageClassName: aTargetClassName proxyTypeNa
 	self page: aPage
 ]
 
+{ #category : #testing }
+LeProxyClassPageType >> isProxyClassPageType [
+	^ true
+]
+
 { #category : #accessing }
 LeProxyClassPageType >> pageClassName [
 	<return: #Symbol>

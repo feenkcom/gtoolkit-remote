@@ -27,6 +27,11 @@ LeProxyClassPageTypePageSide >> id [
 ]
 
 { #category : #testing }
+LeProxyClassPageTypePageSide >> isLocalSide [
+	^ self isRemoteSide not
+]
+
+{ #category : #testing }
 LeProxyClassPageTypePageSide >> isRemoteSide [
 	^ false
 ]
