@@ -24,8 +24,7 @@ LeProxyClassPageTypeExamples >> assertPageCreationForStrategy: aPageStrategy inD
 	
 	secondPage := aPageStrategy 
 		ensurePlaygroundPageInDatabase: aDatabase 
-		forObject: GtRemotePhlowSimulationExamples new 
-			simulationOnRemoteObject.
+		forObject: self targetProxyObjectForInspection.
 			
 	self assert: aDatabase pageCount equals: 1.
 	self assert: page identityHash equals: secondPage identityHash.
@@ -156,35 +155,53 @@ LeProxyClassPageTypeExamples >> databaseWithMonitor [
 ]
 
 { #category : #accessing }
+LeProxyClassPageTypeExamples >> inspectorToolForLocalProxyPage [
+	<gtExample>
+	| targetDatabase inspectorTool |
+	targetDatabase := self databaseWithMonitor.
+	
+	inspectorTool := (GtInspectorTool 
+		forObject: self targetProxyObjectForInspection)
+			databasesRegistry: (LeBasicDatabasesRegistry new 
+				defaultLogicalDatabase: (LeLogicalDatabase new 
+					primaryDB: targetDatabase));
+			playgroundPageStrategy: self playgroundProxyPageLocalStrategy.
+	
+	^ inspectorTool
+]
+
+{ #category : #accessing }
 LeProxyClassPageTypeExamples >> inspectorWithLocalProxyPage [
 	"<gtExample>"
-	| inspectorTool inspector |
-	inspectorTool := (GtInspectorTool forObject: self)
-		playgroundPageStrategy: self playgroundProxyPageLocalStrategy.
-		
-	inspector := inspectorTool asElement.
+	| targetDatabase aScripter inspector |
+	targetDatabase := self databaseWithMonitor.
+	
+	aScripter := self scripter.
+	
+	aScripter
+		"model: (widgetModel := self widgetModelWithDummyTests);"
+		element: (self inspectorToolForLocalProxyPage asElement).
+	
+	self assert: targetDatabase pageCount equals: 1.
+	self assertPageOnTestProxtFor: targetDatabase pages first.
 	
 	^ inspector
+]
+
+{ #category : #'accessing - local side' }
+LeProxyClassPageTypeExamples >> localCodeSnippetType [
+	^ LePharoSnippet
 ]
 
 { #category : #'examples - page strategy' }
 LeProxyClassPageTypeExamples >> playgroundProxyPageLocalStrategy [
 	<gtExample>
-	| pageStrategy initialSnippet page |
+	| pageStrategy |
 	
 	pageStrategy := LeInspectorPlaygroundProxyClassPageStrategy forLocalProxySide.
-	initialSnippet := pageStrategy createInitialSnippet.
-	page := pageStrategy 
-		createNewPageForObject: self targetProxyObjectForInspection.
 	
 	self assert: pageStrategy proxySide isLocalSide.
 	self assert: pageStrategy playgroundPageType equals: LeProxyClassPageType.
-	
-	self assert: initialSnippet class equals: LePharoSnippet.
-	self assert: initialSnippet code isEmpty.
-	
-	self assertPageOnTestProxtFor: page.
-	self assert: page type pageProxySide isLocalSide.
 	
 	^ pageStrategy
 ]
@@ -203,7 +220,7 @@ LeProxyClassPageTypeExamples >> playgroundProxyPageLocalStrategy_createPage [
 		onSide: LeProxyClassPageType localSide.
 	
 	self 
-		assertSingleEmptyCodeSnippetOfType: LePharoSnippet 
+		assertSingleEmptyCodeSnippetOfType: self localCodeSnippetType 
 		inPage: page.
 	
 	^ targetDatabase
@@ -223,27 +240,47 @@ LeProxyClassPageTypeExamples >> playgroundProxyPageLocalStrategy_createPageInMon
 		onSide: LeProxyClassPageType localSide.
 	
 	self 
-		assertSingleEmptyCodeSnippetOfType: LePharoSnippet 
+		assertSingleEmptyCodeSnippetOfType: self localCodeSnippetType
 		inPage: page.
 	
 	^ targetDatabase
 ]
 
 { #category : #'examples - page strategy' }
+LeProxyClassPageTypeExamples >> playgroundProxyPageLocalStrategy_pageCreation [
+	<gtExample>
+	| pageStrategy page |
+	
+	pageStrategy := self playgroundProxyPageLocalStrategy.
+	
+	page := pageStrategy 
+		createNewPageForObject: self targetProxyObjectForInspection.
+	
+	self 
+		assertSingleEmptyCodeSnippetOfType: self localCodeSnippetType 
+		inPage: page.
+	
+	self assertPageOnTestProxtFor: page.
+	self assert: page type pageProxySide isLocalSide.
+	
+	^ pageStrategy
+]
+
+{ #category : #'examples - page strategy' }
 LeProxyClassPageTypeExamples >> playgroundProxyPageRemoteStrategy [
 	<gtExample>
-	| pageStrategy initialSnippet page |
+	| pageStrategy page |
 	
 	pageStrategy := LeInspectorPlaygroundProxyClassPageStrategy forRemoteProxySide.
-	initialSnippet := pageStrategy createInitialSnippet.
 	page := pageStrategy 
 		createNewPageForObject: self targetProxyObjectForInspection.
 	
 	self assert: pageStrategy proxySide isRemoteSide.
 	self assert: pageStrategy playgroundPageType equals: LeProxyClassPageType.
 	
-	self assert: initialSnippet class equals: LeGemStoneSnippet.
-	self assert: initialSnippet code isEmpty.
+	self 
+		assertSingleEmptyCodeSnippetOfType: self remoteCodeSnippetType 
+		inPage: page.
 	
 	self assertPageOnTestProxtFor: page.
 	self assert: page type pageProxySide isRemoteSide.
@@ -265,10 +302,20 @@ LeProxyClassPageTypeExamples >> playgroundProxyPageRemoteStrategy_createPage [
 		onSide: LeProxyClassPageType remoteSide.
 	
 	self 
-		assertSingleEmptyCodeSnippetOfType: LeGemStoneSnippet 
+		assertSingleEmptyCodeSnippetOfType: self remoteCodeSnippetType 
 		inPage: page.
 	
 	^ targetDatabase
+]
+
+{ #category : #'accessing - remote side' }
+LeProxyClassPageTypeExamples >> remoteCodeSnippetType [
+	^ LePharoSnippet
+]
+
+{ #category : #accessing }
+LeProxyClassPageTypeExamples >> scripter [
+	^ BlScripter new
 ]
 
 { #category : #'examples - tear down' }

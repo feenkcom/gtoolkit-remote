@@ -20,10 +20,10 @@ LeInspectorPlaygroundProxyClassPageStrategy class >> forRemoteProxySide [
 ]
 
 { #category : #accessing }
-LeInspectorPlaygroundProxyClassPageStrategy >> createInitialSnippet [
-	^ self proxySide isRemoteSide 
-		ifTrue: [ LeGemStoneSnippet new ] 
-		ifFalse: [ LePharoSnippet new ]
+LeInspectorPlaygroundProxyClassPageStrategy >> configurePage: aPage forProxyObject: aProxyObject [ 
+	self proxySide
+		configurePage: aPage 
+		forProxyObject: aProxyObject.
 ]
 
 { #category : #accessing }
@@ -35,8 +35,10 @@ LeInspectorPlaygroundProxyClassPageStrategy >> createNewPageForObject: aProxyObj
 		proxyTypeName: aProxyObject class name
 		proxySide: self proxySide .
 	
-	page addSnippet: self createInitialSnippet.
-	
+	self 
+		configurePage: page 
+		forProxyObject: aProxyObject.
+
 	^ page
 ]
 
