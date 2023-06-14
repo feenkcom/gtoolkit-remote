@@ -59,6 +59,11 @@ GtRemoteInspectionSimulation >> gtInspectorTitleString [
 				<< object class name ]
 ]
 
+{ #category : #simulation }
+GtRemoteInspectionSimulation >> gtRemoteSideInitialPlaygroundSnippet [
+	^ LePharoSnippet new
+]
+
 { #category : #accessing }
 GtRemoteInspectionSimulation >> object [
 	^ object
