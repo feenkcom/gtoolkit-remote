@@ -8,6 +8,65 @@ Class {
 	#category : #'GToolkit-RemoteGt-Lepiter-Examples'
 }
 
+{ #category : #'examples - inspection' }
+GtProxyRemoteInspectionExamples >> assertInspectorTabContentsFor: aScripter [ 
+	| queryResult tabGroup |
+	
+	queryResult := (aScripter element query 
+		// GtPhlowCompositeViewElementId) result.
+	self assert: queryResult size equals: 1.
+	tabGroup := queryResult first.
+	
+	aScripter substeps: 'Check tabs content' do: [ :aStep |
+	
+		tabGroup tabs withIndexDo: [ :aTab :anIndex |
+			"aStep do
+				label: 'Select Tab';
+				// GtPhlowCompositeViewElementId;
+				block: [ :aTabGroup | 
+					self halt.
+					aTabGroup viewModel 
+						selectTab: (aTabGroup tabs 
+							at: anIndex) ];
+				play."
+			
+			aStep click 
+				label: 'Click tab ', aTab tabLabel text asString;
+				// GtPhlowCompositeViewElementId;
+				@1;
+				id: #header;
+				id: ##scrolltabbar;
+				id: #tabbar;
+				onChildAt: anIndex;
+				play.
+				
+			aStep check
+				label: 'Clicked tab selected';
+				// GtPhlowCompositeViewElementId;
+				@1;
+				value: [ :aTabGroup | 
+					aTabGroup viewModel 
+						indexOf: aTabGroup viewModel selectedTab ] equals: anIndex;
+				play ] ]
+]
+
+{ #category : #'asserting - inspection' }
+GtProxyRemoteInspectionExamples >> assertInspectorTabLabelsFor: scripter [ 
+	scripter assert
+		label: 'Tab Labels Exist';
+		// GtPhlowCompositeViewElementId;
+		satisfies: [ :aTabGroup | aTabGroup tabs size > 0 ] ;
+		play.
+	
+	scripter assert
+		label: 'Tab Labels Without Error label';
+		// GtPhlowCompositeViewElementId;
+		satisfies: [ :aTabGroup | 
+			aTabGroup tabs noneSatisfy: [ :aTab |
+				aTab tabLabel text asString = 'Error' ] ];
+		play.
+]
+
 { #category : #asserting }
 GtProxyRemoteInspectionExamples >> assertPageCreationForStrategy: aPageStrategy inDatabase: aDatabase onSide: aProxySide [
 	<gtExample>
@@ -148,7 +207,8 @@ GtProxyRemoteInspectionExamples >> inspectorForLocalProxySide [
 		
 	scripter assert
 		// GtPhlowCompositeViewElementId;
-		satisfies: [ :aTabGroup | aTabGroup tabs size > 0 ] ;
+		value: [ :aTabGroup | aTabGroup tabs size ] 
+			equals: self localSideExpectedNumberOfViews ;
 		play.
 	
 	^ scripter
@@ -173,11 +233,8 @@ GtProxyRemoteInspectionExamples >> inspectorForRemoteProxySide [
 		assertSingleEmptyCodeSnippetOfType: self remoteCodeSnippetType 
 		inPage: targetDatabase pages first.
 		
-	scripter assert
-		// GtPhlowCompositeViewElementId;
-		value: [ :aTabGroup | aTabGroup tabs size ] 
-			equals: self localSideExpectedNumberOfViews ;
-		play.
+	self assertInspectorTabLabelsFor: scripter.
+	"self assertInspectorTabContentsFor: scripter."
 	
 	^ scripter
 ]
@@ -185,15 +242,24 @@ GtProxyRemoteInspectionExamples >> inspectorForRemoteProxySide [
 { #category : #'examples - tools' }
 GtProxyRemoteInspectionExamples >> inspectorToolForLocalProxySide [
 	<gtExample>
-	| targetDatabase inspectorTool |
+	| targetDatabase |
 	targetDatabase := self databaseWithMonitor.
 	
-	inspectorTool := (GtInspectorTool 
-		forObject: self targetProxyObjectForInspection)
-			databasesRegistry: (LeBasicDatabasesRegistry new 
-				defaultLogicalDatabase: (LeLogicalDatabase new 
-					primaryDB: targetDatabase));
-			playgroundPageStrategy: self playgroundProxyPageLocalStrategy.
+	^ self
+		inspectorToolForLocalProxySideForProxy: self targetProxyObjectForInspection 
+		withDatabase: self databaseWithMonitor 
+]
+
+{ #category : #'examples - tools' }
+GtProxyRemoteInspectionExamples >> inspectorToolForLocalProxySideForProxy: aProxy withDatabase: aDatabase [
+	<gtExample>
+	|  inspectorTool |
+	
+	inspectorTool := (GtInspectorTool forObject: aProxy)
+		databasesRegistry: (LeBasicDatabasesRegistry new 
+			defaultLogicalDatabase: (LeLogicalDatabase new 
+				primaryDB: aDatabase));
+		playgroundPageStrategy: self playgroundProxyPageLocalStrategy.
 	
 	^ inspectorTool
 ]
@@ -201,15 +267,23 @@ GtProxyRemoteInspectionExamples >> inspectorToolForLocalProxySide [
 { #category : #'examples - tools' }
 GtProxyRemoteInspectionExamples >> inspectorToolForRemoteProxySide [
 	<gtExample>
-	| targetDatabase inspectorTool |
+	| targetDatabase |
 	targetDatabase := self databaseWithMonitor.
+	^ self 
+		inspectorToolForRemoteProxySideForProxy: self targetProxyObjectForInspection 
+		withDatabase: self databaseWithMonitor
+]
+
+{ #category : #'examples - tools' }
+GtProxyRemoteInspectionExamples >> inspectorToolForRemoteProxySideForProxy: aProxy withDatabase: aDatabase [
+	<gtExample>
+	| inspectorTool |
 	
-	inspectorTool := (GtInspectorTool 
-		forObject: self targetProxyObjectForInspection)
-			databasesRegistry: (LeBasicDatabasesRegistry new 
-				defaultLogicalDatabase: (LeLogicalDatabase new 
-					primaryDB: targetDatabase));
-			playgroundPageStrategy: self playgroundProxyPageRemoteStrategy.
+	inspectorTool := aProxy gtRemoteSideInspectorTool
+		databasesRegistry: (LeBasicDatabasesRegistry new 
+			defaultLogicalDatabase: (LeLogicalDatabase new 
+				primaryDB: aDatabase));
+		playgroundPageStrategy: self playgroundProxyPageRemoteStrategy.
 	
 	^ inspectorTool
 ]
@@ -300,21 +374,12 @@ GtProxyRemoteInspectionExamples >> playgroundProxyPageLocalStrategy_pageCreation
 { #category : #'examples - page strategy' }
 GtProxyRemoteInspectionExamples >> playgroundProxyPageRemoteStrategy [
 	<gtExample>
-	| pageStrategy page |
+	| pageStrategy  |
 	
 	pageStrategy := LeInspectorPlaygroundProxyClassPageStrategy forRemoteProxySide.
-	page := pageStrategy 
-		createNewPageForObject: self targetProxyObjectForInspection.
 	
 	self assert: pageStrategy proxySide isRemoteSide.
 	self assert: pageStrategy playgroundPageType equals: LeProxyClassPageType.
-	
-	self 
-		assertSingleEmptyCodeSnippetOfType: self remoteCodeSnippetType 
-		inPage: page.
-	
-	self assertPageOnTestProxyFor: page.
-	self assert: page type pageProxySide isRemoteSide.
 	
 	^ pageStrategy
 ]
@@ -337,6 +402,25 @@ GtProxyRemoteInspectionExamples >> playgroundProxyPageRemoteStrategy_createPage 
 		inPage: page.
 	
 	^ targetDatabase
+]
+
+{ #category : #'examples - page strategy' }
+GtProxyRemoteInspectionExamples >> playgroundProxyPageRemoteStrategy_pageCreation [
+	<gtExample>
+	| pageStrategy page |
+	
+	pageStrategy := self playgroundProxyPageRemoteStrategy.
+	page := pageStrategy 
+		createNewPageForObject: self targetProxyObjectForInspection.
+	
+	self 
+		assertSingleEmptyCodeSnippetOfType: self remoteCodeSnippetType 
+		inPage: page.
+	
+	self assertPageOnTestProxyFor: page.
+	self assert: page type pageProxySide isRemoteSide.
+	
+	^ pageStrategy
 ]
 
 { #category : #'accessing - remote side' }

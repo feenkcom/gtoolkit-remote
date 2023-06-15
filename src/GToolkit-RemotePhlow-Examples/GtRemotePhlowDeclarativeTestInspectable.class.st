@@ -235,7 +235,7 @@ GtRemotePhlowDeclarativeTestInspectable >> gtListFor: aView [
 { #category : #inspecting }
 GtRemotePhlowDeclarativeTestInspectable >> gtStringFor: aView [
 	<gtView>
-
+	
 	^aView textEditor
 		title: 'String';
 		priority: 10;
