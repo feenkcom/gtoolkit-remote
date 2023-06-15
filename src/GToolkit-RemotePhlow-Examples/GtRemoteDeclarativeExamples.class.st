@@ -20,6 +20,7 @@ GtRemoteDeclarativeExamples >> columnedListView [
 	viewProxy := self viewedObjectProxy.
 	viewDictionary :=  viewProxy getViewDeclaration: #gtColumnedListFor:.
 	view := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
 	self assert: view title equals: 'Columned list'.
 	self assert: view columnTitles equals: #(Value Lowercase).
 	self assert: view columnWidths equals: #(nil 100).
@@ -71,8 +72,10 @@ GtRemoteDeclarativeExamples >> listView [
 	viewProxy := self viewedObjectProxy.
 	viewDictionary :=  viewProxy getViewDeclaration: #gtListFor:.
 	view := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
 	self assert: view title equals: #List.
 	self assert: view priority equals: 15.
+	
 	view dataTransport = GtPhlowViewSpecification dataIncluded ifTrue:
 		[ data := view items.
 		self assert: data size equals: 3.
@@ -117,8 +120,10 @@ GtRemoteDeclarativeExamples >> printView [
 	viewProxy := self viewedObjectProxy.
 	viewDictionary :=  viewProxy getViewDeclaration: #gtRemotePrintFor:.
 	view := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
 	self assert: view title equals: #Print.
 	self assert: view string equals: self printForString.
+	
 	^ view
 ]
 
@@ -170,8 +175,10 @@ GtRemoteDeclarativeExamples >> stringView [
 	viewProxy := self viewedObjectProxy.
 	viewDictionary :=  viewProxy getViewDeclaration: #gtStringFor:.
 	view :=  GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
 	self assert: view title equals: #String.
 	self assert: view string equals: 'hello world'.
+	
 	^ view
 ]
 
