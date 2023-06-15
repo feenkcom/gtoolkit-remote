@@ -53,6 +53,14 @@ TGtRemoteLanguageProxyViewsAttachment >> gtDefaultInspectorTool [
 ]
 
 { #category : #'gt inspector' }
+TGtRemoteLanguageProxyViewsAttachment >> gtInspectorRemoteSideTitleStringOn: aStream [ 
+
+	aStream
+		<< 'a(n): ';
+		<< (self remoteClass ifNil: [ '<None>' ]) 
+]
+
+{ #category : #'gt inspector' }
 TGtRemoteLanguageProxyViewsAttachment >> gtRemoteSideInspectorTool [
 	^ GtInspectorTool 
 		forObject: self 
@@ -70,10 +78,8 @@ TGtRemoteLanguageProxyViewsAttachment >> gtRemoteViewsFor: aView [
 		context: GtPhlowContext new;
 		viewsSelector: #gtViewsForRemoteSideInContext:;
 		titleComputation: [
-			String streamContents: [ :stream |
-				stream
-					<< 'a(n): ';
-					<< (self remoteClass ifNil: [ '<None>' ]) ]];
+			String streamContents: [ :aStream |
+				self gtInspectorRemoteSideTitleStringOn: aStream ] ];
 		build 
 ]
 
