@@ -383,5 +383,9 @@ GtProxyRemoteInspectionExamples >> stopServer [
 GtProxyRemoteInspectionExamples >> targetProxyObjectForInspection [
 	<gtExample>
 	
-	^ GtRemotePhlowSimulationExamples new simulationOnRemoteObject
+	"This call exists here to get a dependency to the server when this examples is used within a subclass."
+	self runningServer.
+	
+	^ GtRemotePhlowSimulationExamples new 
+		simulationOnRemoteObject
 ]
