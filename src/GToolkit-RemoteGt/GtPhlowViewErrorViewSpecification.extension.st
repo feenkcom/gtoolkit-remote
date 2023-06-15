@@ -23,6 +23,7 @@ GtPhlowViewErrorViewSpecification >> createErrorElement [
 		addChildren: {messageLabel}.
 	
 	^ BrFrame new
+		id: GtRemotePhlowErrorViewElementId;
 		matchParent;
 		addChild: container
 ]
