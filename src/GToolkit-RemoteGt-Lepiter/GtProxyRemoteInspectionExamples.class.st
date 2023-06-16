@@ -8,8 +8,26 @@ Class {
 	#category : #'GToolkit-RemoteGt-Lepiter-Examples'
 }
 
+{ #category : #'asserting - inspection' }
+GtProxyRemoteInspectionExamples >> assertCompositeInspectorToolUsing: aScripter [ 
+	aScripter substeps: 'Check Remote Side' do: [ :aStep |
+		self assertLocalInspectorToolLabelUsing: aStep .
+		self assertInspectorTabLabelsUsing: aStep ].
+	
+	aScripter click
+		label: 'Switch to proxy inspector';
+		id: #header;
+		id: #scrolltabbar;
+		id: #tabbar;
+		play.
+	
+	aScripter substeps: 'Check Local Side' do: [ :aStep |
+		self assertRemoteInspectorToolLabelUsing: aStep .
+		self assertInspectorTabLabelsUsing: aStep ].
+]
+
 { #category : #'examples - inspection' }
-GtProxyRemoteInspectionExamples >> assertInspectorTabContentsFor: aScripter [ 
+GtProxyRemoteInspectionExamples >> assertInspectorTabContentsUsing: aScripter [ 
 	| queryResult tabGroup |
 	
 	queryResult := (aScripter element query 
@@ -51,20 +69,48 @@ GtProxyRemoteInspectionExamples >> assertInspectorTabContentsFor: aScripter [
 ]
 
 { #category : #'asserting - inspection' }
-GtProxyRemoteInspectionExamples >> assertInspectorTabLabelsFor: scripter [ 
+GtProxyRemoteInspectionExamples >> assertInspectorTabLabelsUsing: scripter [ 
 	scripter assert
-		label: 'Tab Labels Exist';
+		label: 'View Tabs Exist';
 		// GtPhlowCompositeViewElementId;
 		satisfies: [ :aTabGroup | aTabGroup tabs size > 0 ] ;
 		play.
 	
 	scripter assert
-		label: 'Tab Labels Without Error label';
+		label: 'View Tab Labels Without Error label';
 		// GtPhlowCompositeViewElementId;
 		satisfies: [ :aTabGroup | 
 			aTabGroup tabs noneSatisfy: [ :aTab |
 				aTab tabLabel text asString = 'Error' ] ];
 		play.
+]
+
+{ #category : #'asserting - inspection' }
+GtProxyRemoteInspectionExamples >> assertInspectorToolLabelUsing: aScripter equals: aString [
+
+	aScripter substeps: 'Check tool tab label' do: [ :aStep |
+	
+		aStep assert
+			label: 'Tab label exists';
+			id: #header;
+			id: #scrolltabbar;
+			id: #tabbar;
+			value: [ :aTabBar | aTabBar children size ] equals: 1;
+			play.
+		
+		aStep assert
+			label: 'Tab label is correct';
+			id: #header;
+			id: #scrolltabbar;
+			id: #tabbar;
+			onChildAt: 1;
+			value: [ :aTab | aTab label asString ] equals: aString;
+			play ]
+]
+
+{ #category : #'asserting - inspection' }
+GtProxyRemoteInspectionExamples >> assertLocalInspectorToolLabelUsing: aScripter [ 
+	self assertInspectorToolLabelUsing: aScripter equals: 'Proxy'
 ]
 
 { #category : #asserting }
@@ -99,6 +145,11 @@ GtProxyRemoteInspectionExamples >> assertPageOnTestProxyFor: aPage [
 	self assert: aPage type proxyTypeName equals: self currentProxyTypeName.
 ]
 
+{ #category : #'asserting - inspection' }
+GtProxyRemoteInspectionExamples >> assertRemoteInspectorToolLabelUsing: aScripter [ 
+	self assertInspectorToolLabelUsing: aScripter equals: 'Remote'
+]
+
 { #category : #asserting }
 GtProxyRemoteInspectionExamples >> assertSingleEmptyCodeSnippetOfType: aSnippetType inPage: aPage [ 
 	| initialSnippet |
@@ -125,14 +176,24 @@ GtProxyRemoteInspectionExamples >> basicDatabase [
 { #category : #'examples - tools' }
 GtProxyRemoteInspectionExamples >> compositeInspectorToolForBothProxySides [
 	<gtExample>
-	| targetDatabase compositeTool databasesRegistry |
+	| targetDatabase |
 	targetDatabase := self databaseWithMonitor.
+	
+	^ self
+		compositeInspectorToolForBothProxySidesForProxy: self targetProxyObjectForInspection 
+		withDatabase: targetDatabase
+]
+
+{ #category : #'examples - tools' }
+GtProxyRemoteInspectionExamples >> compositeInspectorToolForBothProxySidesForProxy: aProxy withDatabase: aDatabase [
+	<gtExample>
+	| compositeTool databasesRegistry |
 	
 	databasesRegistry:= LeBasicDatabasesRegistry new 
 		defaultLogicalDatabase: (LeLogicalDatabase new 
-			primaryDB: targetDatabase).
+			primaryDB: aDatabase).
 	
-	compositeTool := self targetProxyObjectForInspection gtDefaultInspectorTool.
+	compositeTool := aProxy gtDefaultInspectorTool.
 	compositeTool tools do: [ :aTool |
 		aTool databasesRegistry: databasesRegistry ].
 	
@@ -182,6 +243,8 @@ GtProxyRemoteInspectionExamples >> inspectorForBothProxySides [
 	self 
 		assertSingleEmptyCodeSnippetOfType: self remoteCodeSnippetType 
 		inPage: targetDatabase pages first.
+		
+	self assertCompositeInspectorToolUsing: scripter.
 	
 	^ scripter
 ]
@@ -210,6 +273,8 @@ GtProxyRemoteInspectionExamples >> inspectorForLocalProxySide [
 		value: [ :aTabGroup | aTabGroup tabs size ] 
 			equals: self localSideExpectedNumberOfViews ;
 		play.
+		
+	self assertInspectorTabLabelsUsing: scripter.
 	
 	^ scripter
 ]
@@ -233,7 +298,7 @@ GtProxyRemoteInspectionExamples >> inspectorForRemoteProxySide [
 		assertSingleEmptyCodeSnippetOfType: self remoteCodeSnippetType 
 		inPage: targetDatabase pages first.
 		
-	self assertInspectorTabLabelsFor: scripter.
+	self assertInspectorTabLabelsUsing: scripter.
 	"self assertInspectorTabContentsFor: scripter."
 	
 	^ scripter
