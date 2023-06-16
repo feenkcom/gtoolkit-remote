@@ -9,21 +9,51 @@ Class {
 }
 
 { #category : #'asserting - inspection' }
-GtProxyRemoteInspectionExamples >> assertCompositeInspectorToolUsing: aScripter [ 
-	aScripter substeps: 'Check Remote Side' do: [ :aStep |
-		self assertLocalInspectorToolLabelUsing: aStep .
-		self assertInspectorTabLabelsUsing: aStep ].
+GtProxyRemoteInspectionExamples >> assertBothSidesInspectionForProxy: aProxyObject withTypeName: aTypeName [
+	| targetDatabase inspectorTool scripter |
+	targetDatabase := self databaseWithMonitor.
 	
-	aScripter click
-		label: 'Switch to proxy inspector';
-		id: #header;
-		id: #scrolltabbar;
-		id: #tabbar;
-		play.
+	inspectorTool := self 
+		compositeInspectorToolForBothProxySidesForProxy: aProxyObject 
+		withDatabase: targetDatabase.
+		
+	scripter := self scripter.
+	scripter
+		model: inspectorTool object;
+		element: inspectorTool asElement.
 	
-	aScripter substeps: 'Check Local Side' do: [ :aStep |
-		self assertRemoteInspectorToolLabelUsing: aStep .
-		self assertInspectorTabLabelsUsing: aStep ].
+	self 
+		assertDatabaseBeforeCompositeToolInspectionFor: targetDatabase
+		withTypeName: aTypeName.
+	self 
+		compositeInspectorSwitchToolUsing: scripter.
+	self 
+		assertDatabaseAfterLocalAndRemoteInspectionFor: targetDatabase
+		withTypeName: aTypeName.
+	
+	^ scripter
+]
+
+{ #category : #'examples - inspection' }
+GtProxyRemoteInspectionExamples >> assertDatabaseAfterLocalAndRemoteInspectionFor: aDatabase withTypeName: aTypeName [.
+	self assert: aDatabase pageCount equals: 2.
+	self assertPageOnTestProxyFor: aDatabase pages first withTypeName: aTypeName.
+	self assertPageOnTestProxyFor: aDatabase pages second withTypeName: aTypeName.
+	self 
+		assertSingleEmptyCodeSnippetOfType: self remoteCodeSnippetType 
+		inPage: aDatabase pagesByDate second.
+	self 
+		assertSingleEmptyCodeSnippetOfType: self localCodeSnippetType 
+		inPage: aDatabase pagesByDate first.
+]
+
+{ #category : #'examples - inspection' }
+GtProxyRemoteInspectionExamples >> assertDatabaseBeforeCompositeToolInspectionFor: aDatabase withTypeName: aTypeName [.
+	self assert: aDatabase pageCount equals: 1.
+	self assertPageOnTestProxyFor: aDatabase pages first withTypeName: aTypeName.
+	self 
+		assertSingleEmptyCodeSnippetOfType: self remoteCodeSnippetType 
+		inPage: aDatabase pages first.
 ]
 
 { #category : #'examples - inspection' }
@@ -113,6 +143,34 @@ GtProxyRemoteInspectionExamples >> assertLocalInspectorToolLabelUsing: aScripter
 	self assertInspectorToolLabelUsing: aScripter equals: 'Proxy'
 ]
 
+{ #category : #'asserting - inspection' }
+GtProxyRemoteInspectionExamples >> assertLocalPlaygroundPageUsing: aScripter [
+	aScripter substeps: 'Check playground page' do: [ :aStep |
+		self assertProxyPlaygroundPageTypeUsing: aStep.
+		self 
+			assertProxyPlaygroundPageContentWithSnippetType: self localCodeSnippetType 
+			using: aStep ]
+]
+
+{ #category : #'asserting - inspection' }
+GtProxyRemoteInspectionExamples >> assertObjectInspectionFor: codeString withTypeName: anObjectType [
+	| proxyObject |
+	
+	proxyObject := self convertToTargetProxy: (self runningServer 
+		evaluateAndWait: codeString).
+	
+	^ self 
+		assertObjectInspectionForProxy: proxyObject
+		withTypeName: anObjectType
+]
+
+{ #category : #'asserting - inspection' }
+GtProxyRemoteInspectionExamples >> assertObjectInspectionForProxy: aProxyObject withTypeName: anObjectType [
+	^ self 
+		assertBothSidesInspectionForProxy: aProxyObject
+		withTypeName: anObjectType
+]
+
 { #category : #asserting }
 GtProxyRemoteInspectionExamples >> assertPageCreationForStrategy: aPageStrategy inDatabase: aDatabase onSide: aProxySide [
 	<gtExample>
@@ -140,14 +198,72 @@ GtProxyRemoteInspectionExamples >> assertPageCreationForStrategy: aPageStrategy 
 
 { #category : #asserting }
 GtProxyRemoteInspectionExamples >> assertPageOnTestProxyFor: aPage [ 
+	self 
+		assertPageOnTestProxyFor: aPage 
+		withTypeName: self remoteObjectTypeName
+]
+
+{ #category : #asserting }
+GtProxyRemoteInspectionExamples >> assertPageOnTestProxyFor: aPage assertPageOnTestProxyFor: aTypeName [
 	self assert: aPage type isProxyClassPageType.
-	self assert: aPage type pageClassName equals: self remoteObjectTypeName.
+	self assert: aPage type pageClassName equals: aTypeName.
 	self assert: aPage type proxyTypeName equals: self currentProxyTypeName.
+]
+
+{ #category : #asserting }
+GtProxyRemoteInspectionExamples >> assertPageOnTestProxyFor: aPage withTypeName: aTypeName [
+	self assert: aPage type isProxyClassPageType.
+	self assert: aPage type pageClassName equals: aTypeName.
+	self assert: aPage type proxyTypeName equals: self currentProxyTypeName.
+]
+
+{ #category : #'asserting - inspection' }
+GtProxyRemoteInspectionExamples >> assertProxyPlaygroundPageContentWithSnippetType: aSnippetType using: aScripter [ 
+	aScripter assert
+		label: 'Is proxy page';
+		// GtInspector;
+		id: #playground;
+		satisfies: [ :aPlaygroundElement | 
+			| page |
+			page := aPlaygroundElement page.
+			page children size = 1 and: [ 
+				page children first class = aSnippetType and: [
+					page children first code isEmpty ] ] ];
+		play.
+]
+
+{ #category : #'asserting - inspection' }
+GtProxyRemoteInspectionExamples >> assertProxyPlaygroundPageTypeUsing: aScripter [
+	
+	aScripter assert
+		label: 'Is proxy page';
+		// GtInspector;
+		id: #playground;
+		satisfies: [ :aPlaygroundElement | 
+			aPlaygroundElement page type isProxyClassPageType ];
+		play.
+		
+	aScripter assert
+		label: 'Proxy type name';
+		// GtInspector;
+		id: #playground;
+		value: [ :aPlaygroundElement | aPlaygroundElement page type proxyTypeName ] 
+			equals: self currentProxyTypeName;
+		play 
 ]
 
 { #category : #'asserting - inspection' }
 GtProxyRemoteInspectionExamples >> assertRemoteInspectorToolLabelUsing: aScripter [ 
 	self assertInspectorToolLabelUsing: aScripter equals: 'Remote'
+]
+
+{ #category : #'asserting - inspection' }
+GtProxyRemoteInspectionExamples >> assertRemotePlaygroundPageUsing: aScripter [
+	aScripter substeps: 'Check playground page' do: [ :aStep |
+		self assertProxyPlaygroundPageTypeUsing: aStep.
+		self 
+			assertProxyPlaygroundPageContentWithSnippetType: self remoteCodeSnippetType 
+			using: aStep ]
 ]
 
 { #category : #asserting }
@@ -171,6 +287,28 @@ GtProxyRemoteInspectionExamples >> basicDatabase [
 	self assert: database pageCount equals: 0.
 	
 	^ database
+]
+
+{ #category : #'asserting - inspection' }
+GtProxyRemoteInspectionExamples >> compositeInspectorSwitchToolUsing: aScripter [ 
+	<gtExample>
+	
+	aScripter substeps: 'Check Remote Side' do: [ :aStep |
+		self assertLocalInspectorToolLabelUsing: aStep .
+		self assertInspectorTabLabelsUsing: aStep.
+		self assertRemotePlaygroundPageUsing: aStep.  ].
+	
+	aScripter click
+		label: 'Switch to proxy inspector';
+		id: #header;
+		id: #scrolltabbar;
+		id: #tabbar;
+		play.
+	
+	aScripter substeps: 'Check Local Side' do: [ :aStep |
+		self assertRemoteInspectorToolLabelUsing: aStep .
+		self assertInspectorTabLabelsUsing: aStep.
+		self assertLocalPlaygroundPageUsing: aStep. ].
 ]
 
 { #category : #'examples - tools' }
@@ -238,13 +376,14 @@ GtProxyRemoteInspectionExamples >> inspectorForBothProxySides [
 		model: inspectorTool object;
 		element: inspectorTool asElement.
 	
-	self assert: targetDatabase pageCount equals: 1.
-	self assertPageOnTestProxyFor: targetDatabase pages first.
 	self 
-		assertSingleEmptyCodeSnippetOfType: self remoteCodeSnippetType 
-		inPage: targetDatabase pages first.
-		
-	self assertCompositeInspectorToolUsing: scripter.
+		assertDatabaseBeforeCompositeToolInspectionFor: targetDatabase
+		withTypeName: self remoteObjectTypeName.
+	self 
+		compositeInspectorSwitchToolUsing: scripter.
+	self 
+		assertDatabaseAfterLocalAndRemoteInspectionFor: targetDatabase
+		withTypeName: self remoteObjectTypeName.
 	
 	^ scripter
 ]
