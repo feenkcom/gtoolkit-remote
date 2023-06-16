@@ -32,7 +32,7 @@ LeInspectorPlaygroundProxyClassPageStrategy >> createNewPageForObject: aProxyObj
 	
 	page := LePage 
 		proxyClassName: aProxyObject remoteClass
-		proxyTypeName: aProxyObject class name
+		proxyTypeName: (self playgroundPageProxyTypeNameFor: aProxyObject)
 		proxySide: self proxySide .
 	
 	self 
@@ -48,11 +48,16 @@ LeInspectorPlaygroundProxyClassPageStrategy >> initializeForProxySide: aProxySid
 ]
 
 { #category : #accessing }
-LeInspectorPlaygroundProxyClassPageStrategy >> pageDatabaseKeyBasedOnObject: aProxyObject [ 
-	^ LeProxyClassPageTypeDataseKey 
+LeInspectorPlaygroundProxyClassPageStrategy >> pageDatabaseKeyBasedOnObject: aProxyObject [
+	^ LeProxyClassPageTypeDataseKey
 		forPageClassName: aProxyObject remoteClass
-		proxyTypeName: aProxyObject class name
+		proxyTypeName: (self playgroundPageProxyTypeNameFor: aProxyObject)
 		proxySide: self proxySide
+]
+
+{ #category : #accessing }
+LeInspectorPlaygroundProxyClassPageStrategy >> playgroundPageProxyTypeNameFor: aProxyObject [
+	^ aProxyObject class leProxyTypeForPlaygroundPage name
 ]
 
 { #category : #accessing }

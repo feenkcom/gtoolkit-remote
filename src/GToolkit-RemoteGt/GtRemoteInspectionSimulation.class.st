@@ -30,6 +30,11 @@ Class {
 	#category : #'GToolkit-RemoteGt-Development'
 }
 
+{ #category : #accessing }
+GtRemoteInspectionSimulation class >> leProxyTypeForPlaygroundPage [
+	^ self
+]
+
 { #category : #'instance creation' }
 GtRemoteInspectionSimulation class >> openOn: anObject [
 

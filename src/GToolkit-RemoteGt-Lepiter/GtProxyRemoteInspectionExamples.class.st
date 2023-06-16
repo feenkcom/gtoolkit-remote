@@ -8,8 +8,56 @@ Class {
 	#category : #'GToolkit-RemoteGt-Lepiter-Examples'
 }
 
+{ #category : #'asserting - inspection' }
+GtProxyRemoteInspectionExamples >> assertBothSidesInspectionForProxy: aProxyObject withTypeName: aTypeName [
+	| targetDatabase inspectorTool scripter |
+	targetDatabase := self databaseWithMonitor.
+	
+	inspectorTool := self 
+		compositeInspectorToolForBothProxySidesForProxy: aProxyObject 
+		withDatabase: targetDatabase.
+		
+	scripter := self scripter.
+	scripter
+		model: inspectorTool object;
+		element: inspectorTool asElement.
+	
+	self 
+		assertDatabaseBeforeCompositeToolInspectionFor: targetDatabase
+		withTypeName: aTypeName.
+	self 
+		compositeInspectorSwitchToolUsing: scripter.
+	self 
+		assertDatabaseAfterLocalAndRemoteInspectionFor: targetDatabase
+		withTypeName: aTypeName.
+	
+	^ scripter
+]
+
 { #category : #'examples - inspection' }
-GtProxyRemoteInspectionExamples >> assertInspectorTabContentsFor: aScripter [ 
+GtProxyRemoteInspectionExamples >> assertDatabaseAfterLocalAndRemoteInspectionFor: aDatabase withTypeName: aTypeName [.
+	self assert: aDatabase pageCount equals: 2.
+	self assertPageOnTestProxyFor: aDatabase pages first withTypeName: aTypeName.
+	self assertPageOnTestProxyFor: aDatabase pages second withTypeName: aTypeName.
+	self 
+		assertSingleEmptyCodeSnippetOfType: self remoteCodeSnippetType 
+		inPage: aDatabase pagesByDate second.
+	self 
+		assertSingleEmptyCodeSnippetOfType: self localCodeSnippetType 
+		inPage: aDatabase pagesByDate first.
+]
+
+{ #category : #'examples - inspection' }
+GtProxyRemoteInspectionExamples >> assertDatabaseBeforeCompositeToolInspectionFor: aDatabase withTypeName: aTypeName [.
+	self assert: aDatabase pageCount equals: 1.
+	self assertPageOnTestProxyFor: aDatabase pages first withTypeName: aTypeName.
+	self 
+		assertSingleEmptyCodeSnippetOfType: self remoteCodeSnippetType 
+		inPage: aDatabase pages first.
+]
+
+{ #category : #'examples - inspection' }
+GtProxyRemoteInspectionExamples >> assertInspectorTabContentsUsing: aScripter [ 
 	| queryResult tabGroup |
 	
 	queryResult := (aScripter element query 
@@ -51,20 +99,76 @@ GtProxyRemoteInspectionExamples >> assertInspectorTabContentsFor: aScripter [
 ]
 
 { #category : #'asserting - inspection' }
-GtProxyRemoteInspectionExamples >> assertInspectorTabLabelsFor: scripter [ 
+GtProxyRemoteInspectionExamples >> assertInspectorTabLabelsUsing: scripter [ 
 	scripter assert
-		label: 'Tab Labels Exist';
+		label: 'View Tabs Exist';
 		// GtPhlowCompositeViewElementId;
 		satisfies: [ :aTabGroup | aTabGroup tabs size > 0 ] ;
 		play.
 	
 	scripter assert
-		label: 'Tab Labels Without Error label';
+		label: 'View Tab Labels Without Error label';
 		// GtPhlowCompositeViewElementId;
 		satisfies: [ :aTabGroup | 
 			aTabGroup tabs noneSatisfy: [ :aTab |
 				aTab tabLabel text asString = 'Error' ] ];
 		play.
+]
+
+{ #category : #'asserting - inspection' }
+GtProxyRemoteInspectionExamples >> assertInspectorToolLabelUsing: aScripter equals: aString [
+
+	aScripter substeps: 'Check tool tab label' do: [ :aStep |
+	
+		aStep assert
+			label: 'Tab label exists';
+			id: #header;
+			id: #scrolltabbar;
+			id: #tabbar;
+			value: [ :aTabBar | aTabBar children size ] equals: 1;
+			play.
+		
+		aStep assert
+			label: 'Tab label is correct';
+			id: #header;
+			id: #scrolltabbar;
+			id: #tabbar;
+			onChildAt: 1;
+			value: [ :aTab | aTab label asString ] equals: aString;
+			play ]
+]
+
+{ #category : #'asserting - inspection' }
+GtProxyRemoteInspectionExamples >> assertLocalInspectorToolLabelUsing: aScripter [ 
+	self assertInspectorToolLabelUsing: aScripter equals: 'Proxy'
+]
+
+{ #category : #'asserting - inspection' }
+GtProxyRemoteInspectionExamples >> assertLocalPlaygroundPageUsing: aScripter [
+	aScripter substeps: 'Check playground page' do: [ :aStep |
+		self assertProxyPlaygroundPageTypeUsing: aStep.
+		self 
+			assertProxyPlaygroundPageContentWithSnippetType: self localCodeSnippetType 
+			using: aStep ]
+]
+
+{ #category : #'asserting - inspection' }
+GtProxyRemoteInspectionExamples >> assertObjectInspectionFor: codeString withTypeName: anObjectType [
+	| proxyObject |
+	
+	proxyObject := self convertToTargetProxy: (self runningServer 
+		evaluateAndWait: codeString).
+	
+	^ self 
+		assertObjectInspectionForProxy: proxyObject
+		withTypeName: anObjectType
+]
+
+{ #category : #'asserting - inspection' }
+GtProxyRemoteInspectionExamples >> assertObjectInspectionForProxy: aProxyObject withTypeName: anObjectType [
+	^ self 
+		assertBothSidesInspectionForProxy: aProxyObject
+		withTypeName: anObjectType
 ]
 
 { #category : #asserting }
@@ -94,9 +198,72 @@ GtProxyRemoteInspectionExamples >> assertPageCreationForStrategy: aPageStrategy 
 
 { #category : #asserting }
 GtProxyRemoteInspectionExamples >> assertPageOnTestProxyFor: aPage [ 
+	self 
+		assertPageOnTestProxyFor: aPage 
+		withTypeName: self remoteObjectTypeName
+]
+
+{ #category : #asserting }
+GtProxyRemoteInspectionExamples >> assertPageOnTestProxyFor: aPage assertPageOnTestProxyFor: aTypeName [
 	self assert: aPage type isProxyClassPageType.
-	self assert: aPage type pageClassName equals: self remoteObjectTypeName.
+	self assert: aPage type pageClassName equals: aTypeName.
 	self assert: aPage type proxyTypeName equals: self currentProxyTypeName.
+]
+
+{ #category : #asserting }
+GtProxyRemoteInspectionExamples >> assertPageOnTestProxyFor: aPage withTypeName: aTypeName [
+	self assert: aPage type isProxyClassPageType.
+	self assert: aPage type pageClassName equals: aTypeName.
+	self assert: aPage type proxyTypeName equals: self currentProxyTypeName.
+]
+
+{ #category : #'asserting - inspection' }
+GtProxyRemoteInspectionExamples >> assertProxyPlaygroundPageContentWithSnippetType: aSnippetType using: aScripter [ 
+	aScripter assert
+		label: 'Is proxy page';
+		// GtInspector;
+		id: #playground;
+		satisfies: [ :aPlaygroundElement | 
+			| page |
+			page := aPlaygroundElement page.
+			page children size = 1 and: [ 
+				page children first class = aSnippetType and: [
+					page children first code isEmpty ] ] ];
+		play.
+]
+
+{ #category : #'asserting - inspection' }
+GtProxyRemoteInspectionExamples >> assertProxyPlaygroundPageTypeUsing: aScripter [
+	
+	aScripter assert
+		label: 'Is proxy page';
+		// GtInspector;
+		id: #playground;
+		satisfies: [ :aPlaygroundElement | 
+			aPlaygroundElement page type isProxyClassPageType ];
+		play.
+		
+	aScripter assert
+		label: 'Proxy type name';
+		// GtInspector;
+		id: #playground;
+		value: [ :aPlaygroundElement | aPlaygroundElement page type proxyTypeName ] 
+			equals: self currentProxyTypeName;
+		play 
+]
+
+{ #category : #'asserting - inspection' }
+GtProxyRemoteInspectionExamples >> assertRemoteInspectorToolLabelUsing: aScripter [ 
+	self assertInspectorToolLabelUsing: aScripter equals: 'Remote'
+]
+
+{ #category : #'asserting - inspection' }
+GtProxyRemoteInspectionExamples >> assertRemotePlaygroundPageUsing: aScripter [
+	aScripter substeps: 'Check playground page' do: [ :aStep |
+		self assertProxyPlaygroundPageTypeUsing: aStep.
+		self 
+			assertProxyPlaygroundPageContentWithSnippetType: self remoteCodeSnippetType 
+			using: aStep ]
 ]
 
 { #category : #asserting }
@@ -122,17 +289,49 @@ GtProxyRemoteInspectionExamples >> basicDatabase [
 	^ database
 ]
 
+{ #category : #'asserting - inspection' }
+GtProxyRemoteInspectionExamples >> compositeInspectorSwitchToolUsing: aScripter [ 
+	<gtExample>
+	
+	aScripter substeps: 'Check Remote Side' do: [ :aStep |
+		self assertLocalInspectorToolLabelUsing: aStep .
+		self assertInspectorTabLabelsUsing: aStep.
+		self assertRemotePlaygroundPageUsing: aStep.  ].
+	
+	aScripter click
+		label: 'Switch to proxy inspector';
+		id: #header;
+		id: #scrolltabbar;
+		id: #tabbar;
+		play.
+	
+	aScripter substeps: 'Check Local Side' do: [ :aStep |
+		self assertRemoteInspectorToolLabelUsing: aStep .
+		self assertInspectorTabLabelsUsing: aStep.
+		self assertLocalPlaygroundPageUsing: aStep. ].
+]
+
 { #category : #'examples - tools' }
 GtProxyRemoteInspectionExamples >> compositeInspectorToolForBothProxySides [
 	<gtExample>
-	| targetDatabase compositeTool databasesRegistry |
+	| targetDatabase |
 	targetDatabase := self databaseWithMonitor.
+	
+	^ self
+		compositeInspectorToolForBothProxySidesForProxy: self targetProxyObjectForInspection 
+		withDatabase: targetDatabase
+]
+
+{ #category : #'examples - tools' }
+GtProxyRemoteInspectionExamples >> compositeInspectorToolForBothProxySidesForProxy: aProxy withDatabase: aDatabase [
+	<gtExample>
+	| compositeTool databasesRegistry |
 	
 	databasesRegistry:= LeBasicDatabasesRegistry new 
 		defaultLogicalDatabase: (LeLogicalDatabase new 
-			primaryDB: targetDatabase).
+			primaryDB: aDatabase).
 	
-	compositeTool := self targetProxyObjectForInspection gtDefaultInspectorTool.
+	compositeTool := aProxy gtDefaultInspectorTool.
 	compositeTool tools do: [ :aTool |
 		aTool databasesRegistry: databasesRegistry ].
 	
@@ -177,11 +376,14 @@ GtProxyRemoteInspectionExamples >> inspectorForBothProxySides [
 		model: inspectorTool object;
 		element: inspectorTool asElement.
 	
-	self assert: targetDatabase pageCount equals: 1.
-	self assertPageOnTestProxyFor: targetDatabase pages first.
 	self 
-		assertSingleEmptyCodeSnippetOfType: self remoteCodeSnippetType 
-		inPage: targetDatabase pages first.
+		assertDatabaseBeforeCompositeToolInspectionFor: targetDatabase
+		withTypeName: self remoteObjectTypeName.
+	self 
+		compositeInspectorSwitchToolUsing: scripter.
+	self 
+		assertDatabaseAfterLocalAndRemoteInspectionFor: targetDatabase
+		withTypeName: self remoteObjectTypeName.
 	
 	^ scripter
 ]
@@ -210,6 +412,8 @@ GtProxyRemoteInspectionExamples >> inspectorForLocalProxySide [
 		value: [ :aTabGroup | aTabGroup tabs size ] 
 			equals: self localSideExpectedNumberOfViews ;
 		play.
+		
+	self assertInspectorTabLabelsUsing: scripter.
 	
 	^ scripter
 ]
@@ -233,7 +437,7 @@ GtProxyRemoteInspectionExamples >> inspectorForRemoteProxySide [
 		assertSingleEmptyCodeSnippetOfType: self remoteCodeSnippetType 
 		inPage: targetDatabase pages first.
 		
-	self assertInspectorTabLabelsFor: scripter.
+	self assertInspectorTabLabelsUsing: scripter.
 	"self assertInspectorTabContentsFor: scripter."
 	
 	^ scripter
