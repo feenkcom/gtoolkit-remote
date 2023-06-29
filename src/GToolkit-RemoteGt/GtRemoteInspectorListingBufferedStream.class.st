@@ -19,6 +19,11 @@ GtRemoteInspectorListingBufferedStream class >> declarativeView: aDeclarativeVie
 		declarativeView: aDeclarativeView
 ]
 
+{ #category : #'instance creation' }
+GtRemoteInspectorListingBufferedStream class >> itemsProvider: anItemsProvider [
+	^ self  declarativeView: anItemsProvider
+]
+
 { #category : #accessing }
 GtRemoteInspectorListingBufferedStream >> bufferSize [
 	^ 100
