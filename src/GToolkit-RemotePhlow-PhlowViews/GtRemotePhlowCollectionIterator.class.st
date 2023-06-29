@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'targetCollection'
 	],
-	#category : 'GToolkit-RemotePhlow-PhlowViews'
+	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
 
 { #category : #'as yet unclassified' }
@@ -21,6 +21,22 @@ GtRemotePhlowCollectionIterator >> asGPhlowItemsIterator [
 { #category : #iterating }
 GtRemotePhlowCollectionIterator >> forElementsFrom: startIndex to: endIndex withIndexDo: aBlock [
 	self subclassResponsibility
+]
+
+{ #category : #iterating }
+GtRemotePhlowCollectionIterator >> retrieveItems: anItemsCount fromIndex: startIndex [
+	| computedElements endIndex |
+
+	computedElements := OrderedCollection new: anItemsCount.
+	endIndex := startIndex + anItemsCount - 1.
+	
+	self 
+		forElementsFrom: startIndex 
+		to: endIndex 
+		withIndexDo: [ :anItem :anIndex |
+			computedElements add: anItem ].
+	
+	^ computedElements asArray
 ]
 
 { #category : #accessing }

@@ -48,30 +48,13 @@ doit
 	options: #( #logCreation )
 )
 		category: 'GToolkit-RemotePhlow-DeclarativeViews';
-		comment: 'GtDeclarativeView provides a declarative UI specification for presenting data that can be easily serialised and sent over the wire, including between applications written in different languages.
+		comment: '{{gtClass:GtPhlowViewSpecification}} provides a declarative UI specification for presenting data that can be easily serialised and sent over the wire, including between applications written in different languages.
 
 dataTransport is an emumerated value indicating whether the data to be displayed will be included with the specification or is available via reference or by key.]
 
 - 1: data is included in the response
 - 2: data is available by reference
 - 3: data is available by reference and key (tbc)
-
-
-Public API and Key Messages
-
-- message one   
-- message two 
-- (for bonus points) how to create instances.
-
-   One simple example is simply gorgeous.
- 
-Internal Representation and Key Implementation Points.
-
-    Instance Variables
-	dataTransport:		<Object>
-
-
-    Implementation Points
 
 ';
 		immediateInvariant.
@@ -1107,21 +1090,7 @@ doit
 	options: #( #logCreation )
 )
 		category: 'GToolkit-RemotePhlow-InspectorCore';
-		comment: 'GtRemotePhlowViewedObject is responsible for serving declarative views to the client inspector.
-
-
-Public API and Key Messages
-
-- message one   
-- message two 
-- (for bonus points) how to create instances.
-
-   One simple example is simply gorgeous.
- 
-Internal Representation and Key Implementation Points.
-
-
-    Implementation Points';
+		comment: '{{gtClass:GtRemotePhlowViewedObject}} is responsible for serving serialized views to the client inspector.';
 		immediateInvariant.
 true.
 %
@@ -1906,6 +1875,7 @@ columnedListView
 	viewProxy := self viewedObjectProxy.
 	viewDictionary :=  viewProxy getViewDeclaration: #gtColumnedListFor:.
 	view := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
 	self assert: view title equals: 'Columned list'.
 	self assert: view columnTitles equals: #(Value Lowercase).
 	self assert: view columnWidths equals: #(nil 100).
@@ -1960,8 +1930,10 @@ listView
 	viewProxy := self viewedObjectProxy.
 	viewDictionary :=  viewProxy getViewDeclaration: #gtListFor:.
 	view := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
 	self assert: view title equals: #List.
 	self assert: view priority equals: 15.
+	
 	view dataTransport = GtPhlowViewSpecification dataIncluded ifTrue:
 		[ data := view items.
 		self assert: data size equals: 3.
@@ -2009,8 +1981,10 @@ printView
 	viewProxy := self viewedObjectProxy.
 	viewDictionary :=  viewProxy getViewDeclaration: #gtRemotePrintFor:.
 	view := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
 	self assert: view title equals: #Print.
 	self assert: view string equals: self printForString.
+	
 	^ view
 %
 
@@ -2065,8 +2039,10 @@ stringView
 	viewProxy := self viewedObjectProxy.
 	viewDictionary :=  viewProxy getViewDeclaration: #gtStringFor:.
 	view :=  GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
 	self assert: view title equals: #String.
 	self assert: view string equals: 'hello world'.
+	
 	^ view
 %
 
@@ -2111,6 +2087,23 @@ category: 'iterating'
 method: GtRemotePhlowCollectionIterator
 forElementsFrom: startIndex to: endIndex withIndexDo: aBlock
 	self subclassResponsibility
+%
+
+category: 'iterating'
+method: GtRemotePhlowCollectionIterator
+retrieveItems: anItemsCount fromIndex: startIndex
+	| computedElements endIndex |
+
+	computedElements := OrderedCollection new: anItemsCount.
+	endIndex := startIndex + anItemsCount - 1.
+	
+	self 
+		forElementsFrom: startIndex 
+		to: endIndex 
+		withIndexDo: [ :anItem :anIndex |
+			computedElements add: anItem ].
+	
+	^ computedElements asArray
 %
 
 category: 'accessing'
@@ -2804,6 +2797,32 @@ gtColumnedTreeFor: aView
 
 category: 'inspecting'
 method: GtRemotePhlowDeclarativeTestInspectable
+gtColumnedWithObjectsFor: aView
+	<gtView>
+
+	^aView columnedList
+		title: 'With Objects';
+		priority: 55;
+		items: [ {
+			'New Instance' -> self class new initialize .
+			'Class Object' -> self class.
+			'Dictionary With Object Keys' -> {
+				Object new -> 'one'.
+				Object new -> 'two'} asDictionary.
+			'Dictionary With Primitive Data' -> {
+				1 -> 10.
+				2 -> 20 }.
+			'Array With Objects' -> (Array 
+				with: Object new 
+				with: Object new).
+			'Array With Numbers' -> (Array with: 1 with: 2) } ];
+		column: 'Key' text: [ :assoc | assoc key ];
+		column: 'Object' text: [ :assoc | assoc value ];
+		send: [ :assoc | assoc value ]
+%
+
+category: 'inspecting'
+method: GtRemotePhlowDeclarativeTestInspectable
 gtForwardListFor: aView
 	<gtView>
 
@@ -2925,7 +2944,7 @@ category: 'inspecting'
 method: GtRemotePhlowDeclarativeTestInspectable
 gtStringFor: aView
 	<gtView>
-
+	
 	^aView textEditor
 		title: 'String';
 		priority: 10;
