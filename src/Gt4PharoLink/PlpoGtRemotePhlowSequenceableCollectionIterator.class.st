@@ -23,7 +23,7 @@ PlpoGtRemotePhlowSequenceableCollectionIterator >> retrieveItems: anItemsCount f
 	1 to: remoteElements size do: [ :anIndex | 
 		computedElements add: (remoteElements 
 			proxyPerform: #at: 
-			withPrimitiveArguments: {anIndex}) ].
+			withPrimitiveArguments: {anIndex}) asGtBareProxyObject ].
 	
 	^ computedElements
 ]
