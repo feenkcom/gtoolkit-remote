@@ -233,6 +233,18 @@ GtRemotePhlowDeclarativeTestInspectable >> gtListFor: aView [
 ]
 
 { #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtListWithSendFor: aView [
+	<gtView>
+
+	^aView list
+		title: 'List';
+		priority: 15;
+		items: [ collectionOfObjects ];
+		itemText: [ :item | item ];
+		send: [ :item | {item. item. item }]
+]
+
+{ #category : #inspecting }
 GtRemotePhlowDeclarativeTestInspectable >> gtStringFor: aView [
 	<gtView>
 	
