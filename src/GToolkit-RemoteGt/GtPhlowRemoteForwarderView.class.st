@@ -73,7 +73,7 @@ GtPhlowRemoteForwarderView >> asElementDo: aBlock [
 GtPhlowRemoteForwarderView >> computeTargetViewForObject: aForwardedObject [
 	| computedView |
 	computedView := nil.
-	
+	 
 	aForwardedObject viewProxyDo: [ :remoteInspectorProxy |
 		| forwarderViewData forwarderSpecification |
 		forwarderViewData := remoteInspectorProxy 

@@ -93,7 +93,8 @@ GtRemotePhlowDeclarativeTestInspectable >> gtColumnedTreeFor: aView [
 				ifFalse: [
 					aNumber // 2 to: (aNumber - 1) ] ];
 		column: 'x' text: [ :aNumber | aNumber ];
-		column: 'x * x' text: [ :aNumber | aNumber * aNumber ]
+		column: 'x * x' text: [ :aNumber | aNumber * aNumber ];
+		send: [ :x | x + 1000 ]
 ]
 
 { #category : #inspecting }
