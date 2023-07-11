@@ -238,8 +238,8 @@ GtRemotePhlowDeclarativeTestInspectable >> gtListWithSendFor: aView [
 	<gtView>
 
 	^aView list
-		title: 'List';
-		priority: 15;
+		title: 'List with send';
+		priority: 15.1;
 		items: [ collectionOfObjects ];
 		itemText: [ :item | item ];
 		send: [ :item | {item. item. item }]
