@@ -63,7 +63,7 @@ GtPhlowBasicColumnedViewSpecification >> viewFor: aView [
 	| currentView |
 	
 	currentView := aView columnedList
-		items: [  (GtRemoteInspectorListingBufferedStream 
+		items: [ (GtRemoteInspectorListingBufferedStream 
 			declarativeView: self) collect: [ :cellValuesDictionary |
 				cellValuesDictionary collect: [ :aCellValueDictionary |
 					GtRemotePhlowItemValue 

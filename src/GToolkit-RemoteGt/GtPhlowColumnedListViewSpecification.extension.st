@@ -1,6 +1,11 @@
 Extension { #name : #GtPhlowColumnedListViewSpecification }
 
 { #category : #'*GToolkit-RemoteGt' }
+GtPhlowColumnedListViewSpecification >> extractRemoteSendObjectFromNode: aTreeNode atSelection: aSelection [ 
+	^ self retriveSentItemAt: aSelection first
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
 GtPhlowColumnedListViewSpecification >> viewFor: aView [
 	"Answer the GtPhlowView for the receiver"
 	| currentView |
@@ -16,12 +21,7 @@ GtPhlowColumnedListViewSpecification >> viewFor: aView [
 		ifFalse: [ currentView withoutHorizontalScrolling ].
 	
 	self configureColumnedViewFor: currentView.
-	
-	currentView send: [ :aNode :selection | 
-		aNode targetObject ifNil: [
-			aNode targetObject: (self 
-				retriveSentItemAt: selection first) asGtBareProxyObject ].
-		aNode targetObject ].
-	
+	self configureViewSendFor: currentView.
+
 	^ currentView
 ]

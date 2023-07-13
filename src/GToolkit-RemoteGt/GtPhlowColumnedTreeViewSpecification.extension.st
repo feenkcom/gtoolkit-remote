@@ -20,6 +20,11 @@ GtPhlowColumnedTreeViewSpecification >> ensureChildrenLoadedForNode: aTreeNode [
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
+GtPhlowColumnedTreeViewSpecification >> extractRemoteSendObjectFromNode: aTreeNode atSelection: aSelection [ 
+	^ self retriveSentItemAtPath: aTreeNode nodePath
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
 GtPhlowColumnedTreeViewSpecification >> viewFor: aView [
 	"Answer the GtPhlowView for the receiver"
 	| currentView |
@@ -32,12 +37,7 @@ GtPhlowColumnedTreeViewSpecification >> viewFor: aView [
 	
 	self configureColumnedViewFor: currentView.
 	self configureTreeViewFor: currentView.
-	
-	currentView send: [ :aTreeNode  | 
-		aTreeNode targetObject ifNil: [
-			aTreeNode targetObject: (self 
-				retriveSentItemAtPath: aTreeNode nodePath) asGtBareProxyObject ].
-		aTreeNode targetObject ].
+	self configureViewSendFor: currentView.
 	
 	^ currentView
 ]
