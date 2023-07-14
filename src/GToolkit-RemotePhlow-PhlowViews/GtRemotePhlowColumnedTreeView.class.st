@@ -7,7 +7,6 @@ Class {
 	#name : #GtRemotePhlowColumnedTreeView,
 	#superclass : #GtRemotePhlowBasicColumnedView,
 	#instVars : [
-		'itemsBuilder',
 		'itemTextBlock',
 		'childrenBuilder'
 	],
@@ -45,6 +44,11 @@ GtRemotePhlowColumnedTreeView >> childrenBuilder [
 ]
 
 { #category : #accessing }
+GtRemotePhlowColumnedTreeView >> defaultItemsComputation [
+	^ [ #() ]
+]
+
+{ #category : #accessing }
 GtRemotePhlowColumnedTreeView >> expandAll [
 	"To implement"
 ]
@@ -68,18 +72,6 @@ GtRemotePhlowColumnedTreeView >> itemText: aBlock [
 ]
 
 { #category : #accessing }
-GtRemotePhlowColumnedTreeView >> items: aBlock [
-
-	itemsBuilder := aBlock
-]
-
-{ #category : #accessing }
 GtRemotePhlowColumnedTreeView >> itemsBuilder [
-	^ itemsBuilder ifNil: [ 
-		itemsBuilder := [ #() ] ]
-]
-
-{ #category : #accessing }
-GtRemotePhlowColumnedTreeView >> itemsProviderComputation [
-	^ self itemsBuilder
+	^ self itemsProviderComputation
 ]

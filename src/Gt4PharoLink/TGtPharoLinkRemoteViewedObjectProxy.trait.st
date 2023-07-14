@@ -18,7 +18,7 @@ TGtPharoLinkRemoteViewedObjectProxy >> getDeclarativeViewMethodNames [
 { #category : #accessing }
 TGtPharoLinkRemoteViewedObjectProxy >> getViewDeclaration: aViewSelector [ 
 	^ self
-		proxyPerform: #getViewDeclaration:
+		proxyPerformSerialized: #getViewDeclaration:
 		withPrimitiveArguments: { aViewSelector asSymbol }
 ]
 

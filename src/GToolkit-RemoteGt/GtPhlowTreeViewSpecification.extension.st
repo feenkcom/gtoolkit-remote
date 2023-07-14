@@ -13,6 +13,11 @@ GtPhlowTreeViewSpecification >> ensureChildrenLoadedForNode: aTreeNode [
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
+GtPhlowTreeViewSpecification >> extractRemoteSendObjectFromNode: aTreeNode atSelection: aSelection [ 
+	^ self retriveSentItemAtPath: aTreeNode nodePath
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
 GtPhlowTreeViewSpecification >> viewFor: aView [
 	"Answer the GtPhlowView for the receiver"
 	| treeView |
@@ -34,10 +39,7 @@ GtPhlowTreeViewSpecification >> viewFor: aView [
 				phlowDataSource flushItemsIterator.
 				aTab viewContentElement phlow update ].
 	
-	treeView send: [ :aTreeNode  | 
-		aTreeNode targetObject ifNil: [
-			aTreeNode targetObject: (self retriveSentItemAtPath: aTreeNode nodePath) ].
-		aTreeNode targetObject ].
+	self configureViewSendFor: treeView.
 	
 	^ treeView
 ]

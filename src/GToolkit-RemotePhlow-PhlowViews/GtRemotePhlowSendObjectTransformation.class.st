@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'valuable'
 	],
-	#category : 'GToolkit-RemotePhlow-PhlowViews'
+	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
 
 { #category : #'instance creation' }
@@ -21,7 +21,7 @@ GtRemotePhlowSendObjectTransformation >> assertValuable: aBlock [
 		assert: [ aBlock argumentCount <= 2 ].
 ]
 
-{ #category : #'private - accessing' }
+{ #category : #'api - transformation' }
 GtRemotePhlowSendObjectTransformation >> transformedValueFrom: aSelectedObject selection: aSelectionIndices [
 	^ self valuable cull: aSelectedObject cull: aSelectionIndices
 ]

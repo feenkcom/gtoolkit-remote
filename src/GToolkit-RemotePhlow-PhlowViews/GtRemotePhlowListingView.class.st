@@ -15,6 +15,11 @@ GtRemotePhlowListingView >> copyTransformationFrom: aTransformation [
 ]
 
 { #category : #accessing }
+GtRemotePhlowListingView >> defaultItemsComputation [
+	^ #() asGPhlowItemsIterator
+]
+
+{ #category : #accessing }
 GtRemotePhlowListingView >> defaultTransformation [
 	^ GtRemotePhlowSendObjectTransformation forValuable: [ :anObject | anObject ]
 ]
@@ -27,7 +32,7 @@ GtRemotePhlowListingView >> items: aBlockClosure [
 { #category : #accessing }
 GtRemotePhlowListingView >> itemsProviderComputation [
 	^ itemsProviderComputation ifNil: [ 
-		itemsProviderComputation := #() asGPhlowItemsIterator ]
+		itemsProviderComputation := self defaultItemsComputation ]
 ]
 
 { #category : #'api - scripting' }

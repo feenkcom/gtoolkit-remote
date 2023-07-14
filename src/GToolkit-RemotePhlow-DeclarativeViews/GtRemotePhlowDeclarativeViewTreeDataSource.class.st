@@ -71,9 +71,14 @@ GtRemotePhlowDeclarativeViewTreeDataSource >> retriveSentItemAtPath: aNodePath [
 	self 
 		forNodesFrom: aNodePath first 
 		to: aNodePath first 
-		withIndexDo: [ :aNode |
-			^ (self 
+		withIndexDo: [ :aNode :aSelectionIndex |
+			| targetNode targetObject |
+			targetNode := self 
 				locateNode: aNode 
-				atPath: aNodePath allButFirst) targetObject ].
+				atPath: aNodePath allButFirst.
+			targetObject := targetNode targetObject.
+			^ self phlowView transformation 
+				transformedValueFrom: targetObject
+				selection: aSelectionIndex ].
 	^ nil
 ]

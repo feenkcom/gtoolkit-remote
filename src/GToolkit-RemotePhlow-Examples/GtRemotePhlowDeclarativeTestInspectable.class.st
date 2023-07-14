@@ -93,7 +93,8 @@ GtRemotePhlowDeclarativeTestInspectable >> gtColumnedTreeFor: aView [
 				ifFalse: [
 					aNumber // 2 to: (aNumber - 1) ] ];
 		column: 'x' text: [ :aNumber | aNumber ];
-		column: 'x * x' text: [ :aNumber | aNumber * aNumber ]
+		column: 'x * x' text: [ :aNumber | aNumber * aNumber ];
+		send: [ :x | x + 1000 ]
 ]
 
 { #category : #inspecting }
@@ -230,6 +231,18 @@ GtRemotePhlowDeclarativeTestInspectable >> gtListFor: aView [
 		priority: 15;
 		items: [ collectionOfObjects ];
 		itemText: [ :item | item ]
+]
+
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtListWithSendFor: aView [
+	<gtView>
+
+	^aView list
+		title: 'List with send';
+		priority: 15.1;
+		items: [ collectionOfObjects ];
+		itemText: [ :item | item ];
+		send: [ :item | {item. item. item }]
 ]
 
 { #category : #inspecting }

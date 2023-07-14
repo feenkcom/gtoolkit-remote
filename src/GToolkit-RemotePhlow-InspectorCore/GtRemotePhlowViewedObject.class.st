@@ -37,9 +37,9 @@ GtRemotePhlowViewedObject >> getDeclarativeViewMethodNames [
 ]
 
 { #category : #'api - accessing' }
-GtRemotePhlowViewedObject >> getViewDeclaration: viewSelector [
+GtRemotePhlowViewedObject >> getViewDeclaration: aViewSelector [
 	| declarativeView |
-	declarativeView := self getDeclarativeViewFor: viewSelector.
+	declarativeView := self getDeclarativeViewFor: aViewSelector.
 	^ self getViewDeclarationForView: declarativeView
 ]
 
@@ -53,8 +53,8 @@ GtRemotePhlowViewedObject >> getViewDeclarationForView: aDeclarativeView [
 GtRemotePhlowViewedObject >> getViewsDeclarations [
 	| viewDeclarations |
 	viewDeclarations := (self declarativeViewsBySelector 
-		collect: [ :declarativeView |
-			self getViewDeclarationForView: declarativeView ]).
+		collect: [ :aDeclarativeView |
+			self getViewDeclarationForView: aDeclarativeView ]).
 	^ Dictionary new
 		at: 'views' put: viewDeclarations asArray;
 		yourself

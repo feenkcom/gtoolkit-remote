@@ -9,9 +9,8 @@ When transporting the data, each node in the tree is represented as an Array wit
 "
 Class {
 	#name : #GtRemotePhlowTreeView,
-	#superclass : #GtRemotePhlowView,
+	#superclass : #GtRemotePhlowListingView,
 	#instVars : [
-		'itemsBuilder',
 		'itemTextBlock',
 		'childrenBuilder'
 	],
@@ -43,6 +42,11 @@ GtRemotePhlowTreeView >> childrenBuilder [
 ]
 
 { #category : #accessing }
+GtRemotePhlowTreeView >> defaultItemsComputation [
+	^ [ #() ]
+]
+
+{ #category : #accessing }
 GtRemotePhlowTreeView >> expandAll [
 	"To implement"
 ]
@@ -59,25 +63,13 @@ GtRemotePhlowTreeView >> itemText [
 		itemTextBlock := [ :item | item ] ]
 ]
 
-{ #category : #accessing }
+{ #category : #'api - scripting' }
 GtRemotePhlowTreeView >> itemText: aBlock [
 
 	itemTextBlock := aBlock
 ]
 
 { #category : #accessing }
-GtRemotePhlowTreeView >> items: aBlock [
-
-	itemsBuilder := aBlock
-]
-
-{ #category : #accessing }
 GtRemotePhlowTreeView >> itemsBuilder [
-	^ itemsBuilder ifNil: [ 
-		itemsBuilder := [ #() ] ]
-]
-
-{ #category : #accessing }
-GtRemotePhlowTreeView >> itemsProviderComputation [
-	^ self itemsBuilder
+	^ self itemsProviderComputation
 ]
