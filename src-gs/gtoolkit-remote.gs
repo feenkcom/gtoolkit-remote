@@ -951,7 +951,7 @@ removeallclassmethods GtRemotePhlowColumnedList
 doit
 (GtRemotePhlowBasicColumnedView
 	subclass: 'GtRemotePhlowColumnedTreeView'
-	instVarNames: #( itemsBuilder itemTextBlock childrenBuilder )
+	instVarNames: #( itemTextBlock childrenBuilder )
 	classVars: #(  )
 	classInstVars: #(  )
 	poolDictionaries: #()
@@ -1001,27 +1001,9 @@ removeallmethods GtRemotePhlowListView
 removeallclassmethods GtRemotePhlowListView
 
 doit
-(GtRemotePhlowView
-	subclass: 'GtRemotePhlowTextEditorView'
-	instVarNames: #( textBuilder )
-	classVars: #(  )
-	classInstVars: #(  )
-	poolDictionaries: #()
-	inDictionary: Globals
-	options: #( #logCreation )
-)
-		category: 'GToolkit-RemotePhlow-PhlowViews';
-		immediateInvariant.
-true.
-%
-
-removeallmethods GtRemotePhlowTextEditorView
-removeallclassmethods GtRemotePhlowTextEditorView
-
-doit
-(GtRemotePhlowView
+(GtRemotePhlowListingView
 	subclass: 'GtRemotePhlowTreeView'
-	instVarNames: #( itemsBuilder itemTextBlock childrenBuilder )
+	instVarNames: #( itemTextBlock childrenBuilder )
 	classVars: #(  )
 	classInstVars: #(  )
 	poolDictionaries: #()
@@ -1042,6 +1024,24 @@ true.
 
 removeallmethods GtRemotePhlowTreeView
 removeallclassmethods GtRemotePhlowTreeView
+
+doit
+(GtRemotePhlowView
+	subclass: 'GtRemotePhlowTextEditorView'
+	instVarNames: #( textBuilder )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowTextEditorView
+removeallclassmethods GtRemotePhlowTextEditorView
 
 doit
 (GtRemotePhlowView
@@ -2792,7 +2792,8 @@ gtColumnedTreeFor: aView
 				ifFalse: [
 					aNumber // 2 to: (aNumber - 1) ] ];
 		column: 'x' text: [ :aNumber | aNumber ];
-		column: 'x * x' text: [ :aNumber | aNumber * aNumber ]
+		column: 'x * x' text: [ :aNumber | aNumber * aNumber ];
+		send: [ :x | x + 1000 ]
 %
 
 category: 'inspecting'
@@ -2938,6 +2939,19 @@ gtListFor: aView
 		priority: 15;
 		items: [ collectionOfObjects ];
 		itemText: [ :item | item ]
+%
+
+category: 'inspecting'
+method: GtRemotePhlowDeclarativeTestInspectable
+gtListWithSendFor: aView
+	<gtView>
+
+	^aView list
+		title: 'List with send';
+		priority: 15.1;
+		items: [ collectionOfObjects ];
+		itemText: [ :item | item ];
+		send: [ :item | {item. item. item }]
 %
 
 category: 'inspecting'
@@ -3420,10 +3434,15 @@ retriveSentItemAtPath: aNodePath
 	self 
 		forNodesFrom: aNodePath first 
 		to: aNodePath first 
-		withIndexDo: [ :aNode |
-			^ (self 
+		withIndexDo: [ :aNode :aSelectionIndex |
+			| targetNode targetObject |
+			targetNode := self 
 				locateNode: aNode 
-				atPath: aNodePath allButFirst) targetObject ].
+				atPath: aNodePath allButFirst.
+			targetObject := targetNode targetObject.
+			^ self phlowView transformation 
+				transformedValueFrom: targetObject
+				selection: aSelectionIndex ].
 	^ nil
 %
 
@@ -3929,6 +3948,12 @@ copyTransformationFrom: aTransformation
 
 category: 'accessing'
 method: GtRemotePhlowListingView
+defaultItemsComputation
+	^ #() asGPhlowItemsIterator
+%
+
+category: 'accessing'
+method: GtRemotePhlowListingView
 defaultTransformation
 	^ GtRemotePhlowSendObjectTransformation forValuable: [ :anObject | anObject ]
 %
@@ -3943,7 +3968,7 @@ category: 'accessing'
 method: GtRemotePhlowListingView
 itemsProviderComputation
 	^ itemsProviderComputation ifNil: [ 
-		itemsProviderComputation := #() asGPhlowItemsIterator ]
+		itemsProviderComputation := self defaultItemsComputation ]
 %
 
 category: 'api - scripting'
@@ -4199,6 +4224,12 @@ childrenBuilder
 
 category: 'accessing'
 method: GtRemotePhlowColumnedTreeView
+defaultItemsComputation
+	^ [ #() ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowColumnedTreeView
 expandAll
 	"To implement"
 %
@@ -4211,22 +4242,8 @@ itemComputation
 
 category: 'accessing'
 method: GtRemotePhlowColumnedTreeView
-items: aBlock
-
-	itemsBuilder := aBlock
-%
-
-category: 'accessing'
-method: GtRemotePhlowColumnedTreeView
 itemsBuilder
-	^ itemsBuilder ifNil: [ 
-		itemsBuilder := [ #() ] ]
-%
-
-category: 'accessing'
-method: GtRemotePhlowColumnedTreeView
-itemsProviderComputation
-	^ self itemsBuilder
+	^ self itemsProviderComputation
 %
 
 category: 'accessing'
@@ -4285,6 +4302,76 @@ itemText: aBlockClosure
 	itemTextBlock := aBlockClosure
 %
 
+! Class implementation for 'GtRemotePhlowTreeView'
+
+!		Instance methods for 'GtRemotePhlowTreeView'
+
+category: 'converting'
+method: GtRemotePhlowTreeView
+asGtDeclarativeView
+	"Answer the receiver as a GtDeclarativeView."
+
+	^ GtPhlowTreeViewSpecification new 
+		title: self title;
+		priority: self priority;
+		phlowDataSource: (GtRemotePhlowDeclarativeViewTreeDataSource 
+			forPhlowView: self);
+		dataTransport: GtPhlowViewSpecification dataLazy
+%
+
+category: 'accessing'
+method: GtRemotePhlowTreeView
+children: aBlock
+
+	childrenBuilder := aBlock
+%
+
+category: 'accessing'
+method: GtRemotePhlowTreeView
+childrenBuilder
+
+	^ childrenBuilder
+%
+
+category: 'accessing'
+method: GtRemotePhlowTreeView
+defaultItemsComputation
+	^ [ #() ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowTreeView
+expandAll
+	"To implement"
+%
+
+category: 'accessing'
+method: GtRemotePhlowTreeView
+itemComputation
+	^ self itemText
+%
+
+category: 'accessing'
+method: GtRemotePhlowTreeView
+itemsBuilder
+	^ self itemsProviderComputation
+%
+
+category: 'accessing'
+method: GtRemotePhlowTreeView
+itemText
+
+	^ itemTextBlock ifNil: [ 
+		itemTextBlock := [ :item | item ] ]
+%
+
+category: 'api - scripting'
+method: GtRemotePhlowTreeView
+itemText: aBlock
+
+	itemTextBlock := aBlock
+%
+
 ! Class implementation for 'GtRemotePhlowTextEditorView'
 
 !		Instance methods for 'GtRemotePhlowTextEditorView'
@@ -4321,84 +4408,6 @@ category: 'accessing'
 method: GtRemotePhlowTextEditorView
 textBuilder
 	^ textBuilder
-%
-
-! Class implementation for 'GtRemotePhlowTreeView'
-
-!		Instance methods for 'GtRemotePhlowTreeView'
-
-category: 'converting'
-method: GtRemotePhlowTreeView
-asGtDeclarativeView
-	"Answer the receiver as a GtDeclarativeView."
-
-	^ GtPhlowTreeViewSpecification new 
-		title: self title;
-		priority: self priority;
-		phlowDataSource: (GtRemotePhlowDeclarativeViewTreeDataSource 
-			forPhlowView: self);
-		dataTransport: GtPhlowViewSpecification dataLazy
-%
-
-category: 'accessing'
-method: GtRemotePhlowTreeView
-children: aBlock
-
-	childrenBuilder := aBlock
-%
-
-category: 'accessing'
-method: GtRemotePhlowTreeView
-childrenBuilder
-
-	^ childrenBuilder
-%
-
-category: 'accessing'
-method: GtRemotePhlowTreeView
-expandAll
-	"To implement"
-%
-
-category: 'accessing'
-method: GtRemotePhlowTreeView
-itemComputation
-	^ self itemText
-%
-
-category: 'accessing'
-method: GtRemotePhlowTreeView
-items: aBlock
-
-	itemsBuilder := aBlock
-%
-
-category: 'accessing'
-method: GtRemotePhlowTreeView
-itemsBuilder
-	^ itemsBuilder ifNil: [ 
-		itemsBuilder := [ #() ] ]
-%
-
-category: 'accessing'
-method: GtRemotePhlowTreeView
-itemsProviderComputation
-	^ self itemsBuilder
-%
-
-category: 'accessing'
-method: GtRemotePhlowTreeView
-itemText
-
-	^ itemTextBlock ifNil: [ 
-		itemTextBlock := [ :item | item ] ]
-%
-
-category: 'accessing'
-method: GtRemotePhlowTreeView
-itemText: aBlock
-
-	itemTextBlock := aBlock
 %
 
 ! Class implementation for 'GtRemotePhlowViewErrorView'
@@ -4451,7 +4460,7 @@ assertValuable: aBlock
 		assert: [ aBlock argumentCount <= 2 ].
 %
 
-category: 'private - accessing'
+category: 'api - transformation'
 method: GtRemotePhlowSendObjectTransformation
 transformedValueFrom: aSelectedObject selection: aSelectionIndices
 	^ self valuable cull: aSelectedObject cull: aSelectionIndices
@@ -4506,9 +4515,9 @@ getDeclarativeViewMethodNames
 
 category: 'api - accessing'
 method: GtRemotePhlowViewedObject
-getViewDeclaration: viewSelector
+getViewDeclaration: aViewSelector
 	| declarativeView |
-	declarativeView := self getDeclarativeViewFor: viewSelector.
+	declarativeView := self getDeclarativeViewFor: aViewSelector.
 	^ self getViewDeclarationForView: declarativeView
 %
 
@@ -4524,8 +4533,8 @@ method: GtRemotePhlowViewedObject
 getViewsDeclarations
 	| viewDeclarations |
 	viewDeclarations := (self declarativeViewsBySelector 
-		collect: [ :declarativeView |
-			self getViewDeclarationForView: declarativeView ]).
+		collect: [ :aDeclarativeView |
+			self getViewDeclarationForView: aDeclarativeView ]).
 	^ Dictionary new
 		at: 'views' put: viewDeclarations asArray;
 		yourself
