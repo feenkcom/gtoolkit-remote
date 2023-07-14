@@ -11,7 +11,7 @@ GtRemoteForwarderViewInspectionExamples >> assertBasicForwarderView: aView [
 	self assert: aView object isNotNil.
 	self 
 		assert: aView viewObject wait object class 
-		equals: GtRemoteInspectionSimulation.
+		equals: self targetProxyClass.
 	self assert: aView actions size equals: 0.
 
 	aPhlowView := aView phlowView wait.
@@ -87,4 +87,9 @@ GtRemoteForwarderViewInspectionExamples >> remoteForwardedViewWithLocalSendToLis
 		equals: {42. 42}.
 	
 	^ forwarderView
+]
+
+{ #category : #accessing }
+GtRemoteForwarderViewInspectionExamples >> targetProxyClass [
+	^ GtRemoteInspectionSimulation
 ]
