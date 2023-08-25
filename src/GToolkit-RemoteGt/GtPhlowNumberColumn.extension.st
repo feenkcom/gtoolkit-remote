@@ -1,12 +1,12 @@
-Extension { #name : #GtPhlowTextColumn }
+Extension { #name : #GtPhlowNumberColumn }
 
 { #category : #'*GToolkit-RemoteGt' }
-GtPhlowTextColumn >> asGtDeclarativeColumnDataType [
-	^ GtPhlowDeclarativeListingType text
+GtPhlowNumberColumn >> asGtDeclarativeColumnDataType [
+	^ GtPhlowDeclarativeListingType number
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
-GtPhlowTextColumn >> computeItemValuesFor: anObject rowIndex: rowIndex columnIndex: columnIndex [
+GtPhlowNumberColumn >> computeItemValuesFor: anObject rowIndex: rowIndex columnIndex: columnIndex [
 	| cellValues itemValue itemText |
 
 	cellValues := GtRemotePhlowItemValue new.
@@ -28,8 +28,7 @@ GtPhlowTextColumn >> computeItemValuesFor: anObject rowIndex: rowIndex columnInd
 	self hasBackgroundComputation ifTrue: [
 		cellValues 
 			background: (self backgroundComputation
-				phlowValue: itemValue 
-				withEnoughArguments: { anObject . rowIndex . columnIndex }) ].
+				phlowValue: itemValue withEnoughArguments: { anObject . rowIndex . columnIndex }) ].
 	
 	^ cellValues
 ]

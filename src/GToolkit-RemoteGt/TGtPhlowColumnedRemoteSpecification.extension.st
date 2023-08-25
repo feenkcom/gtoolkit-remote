@@ -1,15 +1,15 @@
 Extension { #name : #TGtPhlowColumnedRemoteSpecification }
 
 { #category : #'*GToolkit-RemoteGt' }
-TGtPhlowColumnedRemoteSpecification >> buildRemoteColumnsSpecificattions [
+TGtPhlowColumnedRemoteSpecification >> buildRemoteColumnsSpecifications [
 	^self columns collect: [ :aColumn | 
 		GtRemotePhlowColumnSpecification new
 			title: aColumn title;
 			cellWidth: (aColumn cellWidth ifNotNil: [ :aCellWidth |
 				aCellWidth class = BrColumnFixedWidth
-					ifTrue: [aCellWidth width]
+					ifTrue: [ aCellWidth width ]
 					ifFalse: [nil]]);
-			type: aColumn asGtDeclarativeColumnDataType asString ;
+			type: aColumn asGtDeclarativeColumnDataType;
 			spawnsObjects:  false;
 			in: [ :aColumnSpecification |
 				aColumn hasBackgroundComputation ifTrue: [ 

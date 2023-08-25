@@ -10,7 +10,7 @@ GtPhlowColumnedListView >> asGtDeclarativeView [
 			forPhlowView: self);
 		title: self title;
 		priority: self priority;
-		columnSpecifications: self buildRemoteColumnsSpecificattions;
+		columnSpecifications: self buildRemoteColumnsSpecifications;
 		horizontalScrollingEnabled: horizontalScrollingEnabled;
 		dataTransport: GtPhlowViewSpecification dataLazy
 ]

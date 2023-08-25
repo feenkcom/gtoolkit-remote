@@ -26,12 +26,10 @@ GtRemotePhlowColumn class >> initialize [
 { #category : #converting }
 GtRemotePhlowColumn >> asGtDeclarativeColumnDataType [
 	^ self isWithIcon
-		ifTrue: [ self isSpawningObject
-			ifTrue: [ GtPhlowDeclarativeListingType new beIconLink ]
-			ifFalse: [ GtPhlowDeclarativeListingType new beIcon ] ]
+		ifTrue: [ GtPhlowDeclarativeListingType iconName ]
 		ifFalse: [ self isSpawningObject
-			ifTrue: [ GtPhlowDeclarativeListingType new beTextLink ]
-			ifFalse: [ GtPhlowDeclarativeListingType new beText ] ]
+			ifTrue: [ GtPhlowDeclarativeListingType textLink ]
+			ifFalse: [ GtPhlowDeclarativeListingType text ] ]
 ]
 
 { #category : #'api - scripting' }

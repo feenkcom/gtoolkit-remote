@@ -4,7 +4,7 @@ Extension { #name : #GtPhlowExplicitColumn }
 GtPhlowExplicitColumn >> asGtDeclarativeColumnDataType [
 	^ [ dataBinder asRemotePhlowDeclarativeListingType ]
 		on: MessageNotUnderstood
-		do: [ :anError | GtPhlowDeclarativeListingType new beUnknown ]
+		do: [ :anError | GtPhlowDeclarativeListingType unknown ]
 ]
 
 { #category : #'*GToolkit-RemoteGt' }

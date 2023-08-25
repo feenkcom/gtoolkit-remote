@@ -13,18 +13,22 @@ Class {
 
 { #category : #'instance creation' }
 GtRemotePhlowColumnSpecification class >> fromJSONDictionary: aDictionary [
-
 	| column |
 
 	column := self new.
 	column
 		title: (aDictionary at: #title);
 		cellWidth: (aDictionary at: #cellWidth);
-		type: (aDictionary at: #type);
+		type: (self instantiateTypeFrom: (aDictionary at: #type));
 		spawnsObjects: (aDictionary at: #spawnsObjects);
 		properties: (aDictionary at: #properties) asOrderedCollection.
 		
 	^column
+]
+
+{ #category : #'instance creation' }
+GtRemotePhlowColumnSpecification class >> instantiateTypeFrom: aValue [
+	 ^ GtPhlowDeclarativeListingType forTypeLabel: aValue
 ]
 
 { #category : #conversion }
@@ -34,7 +38,7 @@ GtRemotePhlowColumnSpecification >> asDictionaryForExport [
 	dictionary := Dictionary new 
 		at: #title put: title;
 		at: #cellWidth put: cellWidth;
-		at: #type put: type;
+		at: #type put: type typeLabel;
 		at: #spawnsObjects put: spawnsObjects;
 		at: #properties put: self properties asArray;
 		yourself.
@@ -63,6 +67,12 @@ GtRemotePhlowColumnSpecification >> hasPropertyNamed: aString [
 ]
 
 { #category : #testing }
+GtRemotePhlowColumnSpecification >> isTextSpawn [
+	^ self spawnsObjects and: [
+		self type isText ]
+]
+
+{ #category : #testing }
 GtRemotePhlowColumnSpecification >> markAsHavingBackground [
 	self markAsHavingPropertyNamed: #background
 ]
@@ -83,7 +93,7 @@ GtRemotePhlowColumnSpecification >> printOn: aStream [
 		self type ifNotNil: [
 			aStream 
 				<< ', ';
-				<< self type ]]
+				<< self type typeLabel ]]
 ]
 
 { #category : #accessing }

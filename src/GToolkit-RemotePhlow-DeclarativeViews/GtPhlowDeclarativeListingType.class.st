@@ -4,83 +4,54 @@ Class {
 	#instVars : [
 		'type'
 	],
-	#classVars : [
-		'Icon',
-		'IconifiedLink',
-		'Text',
-		'TextualLink',
-		'Unknown'
-	],
-	#category : 'GToolkit-RemotePhlow-DeclarativeViews'
+	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
-{ #category : #initialization }
-GtPhlowDeclarativeListingType class >> initialize [	
-	Icon := #icon.
-	IconifiedLink := #iconLink.
-	Text := #text.
-	TextualLink := #textLink.
-	Unknown := #unknown
+{ #category : #'instance creation' }
+GtPhlowDeclarativeListingType class >> forTypeLabel: aValue [ 
+	^ self allSubclasses
+		detect: [ :aSubclass |
+			aSubclass typeLabel = aValue ]
+		ifFound: [ :aSubclass | aSubclass new ]
+		ifNone: [ self unknown ]
+]
+
+{ #category : #'types creation' }
+GtPhlowDeclarativeListingType class >> iconName [
+	^ GtPhlowIconNameDeclarativeListingType new
+]
+
+{ #category : #'types creation' }
+GtPhlowDeclarativeListingType class >> number [
+	^ GtPhlowNumberDeclarativeListingType new
+]
+
+{ #category : #'types creation' }
+GtPhlowDeclarativeListingType class >> text [
+	^ GtPhlowTextDeclarativeListingType new
+]
+
+{ #category : #'types creation' }
+GtPhlowDeclarativeListingType class >> textLink [
+	^ GtPhlowTextLinkDeclarativeListingType new
 ]
 
 { #category : #accessing }
-GtPhlowDeclarativeListingType >> asString [
-	^ type
+GtPhlowDeclarativeListingType class >> typeLabel [
+	^ 'listing type'
 ]
 
-{ #category : #accessing }
-GtPhlowDeclarativeListingType >> beIcon [
-	type := Icon
-]
-
-{ #category : #accessing }
-GtPhlowDeclarativeListingType >> beIconLink [
-	type := IconifiedLink
-]
-
-{ #category : #accessing }
-GtPhlowDeclarativeListingType >> beText [
-	type := Text
-]
-
-{ #category : #accessing }
-GtPhlowDeclarativeListingType >> beTextLink [
-	type := TextualLink
-]
-
-{ #category : #accessing }
-GtPhlowDeclarativeListingType >> beUnknown [
-	type := Unknown
-]
-
-{ #category : #accessing }
-GtPhlowDeclarativeListingType >> ifIcon: anIconBlock ifIconLink: anIconLinkBlock ifText: aTextBlock ifTextLink: aTextLinkBlock ifUnknown: anUnknownBlock [
-	type = Icon
-		ifTrue: [ ^ anIconBlock value ].
-		
-	type = IconifiedLink
-		ifTrue: [ ^ anIconLinkBlock value ].
-		
-	type = Text
-		ifTrue: [ ^ aTextBlock value ].
-		
-	type = TextualLink
-		ifTrue: [ ^ aTextLinkBlock value ].
-		
-	type = Unknown
-		ifTrue: [ ^ anUnknownBlock value ].
-		
-	self error: ('Unsupported listing view type: {1}' format: { type })
-]
-
-{ #category : #initialization }
-GtPhlowDeclarativeListingType >> initialize [
-	super initialize.
-	
-	type := Unknown
+{ #category : #'types creation' }
+GtPhlowDeclarativeListingType class >> unknown [
+	^ GtPhlowUnknownDeclarativeListingType new
 ]
 
 { #category : #testing }
 GtPhlowDeclarativeListingType >> isUnknown [
-	^ type = Unknown
+	^ false
+]
+
+{ #category : #accessing }
+GtPhlowDeclarativeListingType >> typeLabel [
+	^ self class typeLabel
 ]
