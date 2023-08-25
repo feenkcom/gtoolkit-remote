@@ -10,29 +10,6 @@ Class {
 	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
 
-{ #category : #converting }
-GtRemotePhlowBasicColumnedView >> asGtDeclarativeView [
-	"Answer the receiver as a GtDeclarativeView.
-	nil = not supported"
-
-	^ GtPhlowColumnedListViewSpecification new 
-		phlowDataSource: (GtRemotePhlowDeclarativeViewColumnedListDataSource forPhlowView: self);
-		title: self title;
-		priority: self priority;
-		columnSpecifications: (columns asArray collect: [ :aColumn | 
-			| columnSpecification|
-			columnSpecification := GtRemotePhlowColumnSpecification new
-				title: aColumn title;
-				cellWidth: aColumn cellWidth;
-				type: aColumn asGtDeclarativeColumnDataType asString;
-				spawnsObjects: aColumn isSpawningObject.
-			
-			aColumn hasBackgroundComputation ifTrue: [ 
-				columnSpecification  markAsHavingBackground ].
-			columnSpecification ] ) ;
-		dataTransport: GtPhlowViewSpecification dataLazy
-]
-
 { #category : #accessing }
 GtRemotePhlowBasicColumnedView >> column [
 	<return: #GtRemotePhlowColumn>
@@ -137,7 +114,7 @@ GtRemotePhlowBasicColumnedView >> configureColumnsSpecificationOn: aViewSpecific
 			columnSpecification := GtRemotePhlowColumnSpecification new
 				title: aColumn title;
 				cellWidth: aColumn cellWidth;
-				type: aColumn asGtDeclarativeColumnDataType asString;
+				type: aColumn asGtDeclarativeColumnDataType;
 				spawnsObjects: aColumn isSpawningObject.
 			
 			aColumn hasBackgroundComputation ifTrue: [ 

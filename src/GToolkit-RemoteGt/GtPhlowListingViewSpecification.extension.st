@@ -6,7 +6,7 @@ GtPhlowListingViewSpecification >> configureViewSendFor: aView [
 		aTreeNode targetObject ifNil: [
 			aTreeNode targetObject: (self 
 				extractRemoteSendObjectFromNode: aTreeNode 
-				atSelection: aSelection) ].
+				atSelection: aSelection) asGtBareProxyObject ].
 		aTreeNode targetObject ]
 ]
 
@@ -16,10 +16,10 @@ GtPhlowListingViewSpecification >> configureViewSendFor: aView withLocalTransfor
 		aTreeNode targetObject ifNil: [
 			aTreeNode targetObject: (self 
 				extractRemoteSendObjectFromNode: aTreeNode 
-				atSelection: aSelectionIndices) ].
-		aBlock 
+				atSelection: aSelectionIndices) asGtBareProxyObject ].
+		(aBlock 
 			cull: aTreeNode targetObject
-			cull: aSelectionIndices ]
+			cull: aSelectionIndices) asGtBareProxyObject ]
 ]
 
 { #category : #'*GToolkit-RemoteGt' }

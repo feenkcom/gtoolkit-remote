@@ -80,6 +80,26 @@ GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListWithHorizontalScrolling
 ]
 
 { #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListWithTypedColumnsFor: aView [
+	<gtView>
+
+	^aView columnedList
+		title: 'Columned list with typed columns';
+		priority: 24;
+		items: [ 1 to: 500 ];
+		column: 'Float' textDo: [ :aColumn | 
+			aColumn 
+				item: [ :aNumber | aNumber asFloat ];
+				format: [ :aFloat | 
+					'+',aFloat asString ] ];
+		column: 'Value + 1' numberDo: [ :aColumn | 
+			aColumn
+				item: [ :aNumber | aNumber + 1 ];
+				format: [ :aNumber | '+',aNumber asString ];
+				width: 100 ]
+]
+
+{ #category : #inspecting }
 GtRemotePhlowDeclarativeTestInspectable >> gtColumnedTreeFor: aView [
 	<gtView>
 

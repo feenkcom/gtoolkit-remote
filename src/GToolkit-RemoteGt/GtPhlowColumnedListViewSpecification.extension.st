@@ -13,9 +13,9 @@ GtPhlowColumnedListViewSpecification >> viewFor: aView [
 	currentView := aView columnedList.
 	currentView 
 		items: [
-			((GtRemoteInspectorListingBufferedStream declarativeView: self)
+			(GtRemoteInspectorListingBufferedStream declarativeView: self)
 				collect: [ :aColumnedTreeNodeDictionary |
-					self instantiateNodeFrom: aColumnedTreeNodeDictionary ]) ].
+					self instantiateNodeFrom: aColumnedTreeNodeDictionary ] ].
 	self isHorizontalScrollingEnabled 
 		ifTrue: [ currentView withHorizontalScrolling ]
 		ifFalse: [ currentView withoutHorizontalScrolling ].
