@@ -24,7 +24,7 @@ GtRemotePhlowBasicColumnedView >> asGtDeclarativeView [
 			columnSpecification := GtRemotePhlowColumnSpecification new
 				title: aColumn title;
 				cellWidth: aColumn cellWidth;
-				type: aColumn asGtDeclarativeColumnDataType asString;
+				type: aColumn asGtDeclarativeColumnDataType;
 				spawnsObjects: aColumn isSpawningObject.
 			
 			aColumn hasBackgroundComputation ifTrue: [ 
