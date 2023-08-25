@@ -24,7 +24,9 @@ GtRemoteDeclarativeExamples >> columnedListView [
 	self assert: view title equals: 'Columned list'.
 	self assert: view columnTitles equals: #(Value Lowercase).
 	self assert: view columnWidths equals: #(nil 100).
-	self assert: view columnTypes equals: #(text text).
+	self 
+		assert: (view columnTypes collect: #typeLabel) 
+		equals: #(text text).
 	
 	self assert: view dataTransport equals: GtPhlowViewSpecification dataLazy.
 	self columnedListViewLazyCheck: viewProxy.
