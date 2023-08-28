@@ -11,7 +11,8 @@ RwSimpleProjectLoadComponentV2 {
 		'GToolkit-RemotePhlow-InspectorCore',
 		'GToolkit-RemotePhlow-InspectorExtensions-Remote',
 		'GToolkit-RemotePhlow-Remote',
-		'GToolkit-RemotePhlow-Examples'
+		'GToolkit-RemotePhlow-Examples',
+		'GToolkit-RemotePhlow-GeolifeDemo'
 	],
 	#comment : ''
 }
