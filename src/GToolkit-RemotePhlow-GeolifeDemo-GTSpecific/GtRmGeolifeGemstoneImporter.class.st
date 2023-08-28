@@ -6,13 +6,13 @@ Class {
 
 { #category : #accessing }
 GtRmGeolifeGemstoneImporter >> ensureGemstoneUserWithId: anId [ 
-	^ self gemStoneSession 
-		evaluateAndWait: 'GtRmGeolife defaultInstance ensureUserWithId: ', anId printString
+	^ (self gemStoneSession 
+		evaluateAndWait: 'GtRmGeolife defaultInstance ensureUserWithId: ', anId printString) asGtBareProxyObject
 ]
 
 { #category : #accessing }
 GtRmGeolifeGemstoneImporter >> gemStoneSession [
-	^ GtGemStoneSessionRegistry default
+	^ GtGemStoneSessionRegistry default defaultSession
 ]
 
 { #category : #accessing }

@@ -33,15 +33,8 @@ GtRmGeoGpsTrajectory >> gtViewRecordsFor: aView [
 	
 	^ aView forward
 		title: 'Records';
-		object: [ records ];
+		object: [ self records ];
 		view: #gtItemsFor: 
-]
-
-{ #category : #initialization }
-GtRmGeoGpsTrajectory >> initialize [
-	super initialize.
-	
-	records := GtRmGeoGpsRecordsGroup new.
 ]
 
 { #category : #initialization }
@@ -73,7 +66,8 @@ GtRmGeoGpsTrajectory >> printOn: aStream [
 
 { #category : #accessing }
 GtRmGeoGpsTrajectory >> records [
-	^ records
+	^ records ifNil: [
+		records := GtRmGeoGpsRecordsGroup new ]
 ]
 
 { #category : #accessing }

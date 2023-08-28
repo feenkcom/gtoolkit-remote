@@ -56,7 +56,7 @@ GtRmGeoUser >> gtViewTrajectoriesFor: aView [
 	^ aView forward
 		title: 'Trajectories';
 		priority: 5;
-		object: [ trajectories ];
+		object: [ self trajectories ];
 		view: #gtItemsFor:
 ]
 
@@ -68,13 +68,6 @@ GtRmGeoUser >> id [
 { #category : #accessing }
 GtRmGeoUser >> id: anObject [
 	id := anObject
-]
-
-{ #category : #initialization }
-GtRmGeoUser >> initialize [
-	super initialize.
-	
-	trajectories := GtRmGeoGpsTrajectoriesGroup new.
 ]
 
 { #category : #accessing }
@@ -111,5 +104,6 @@ GtRmGeoUser >> summaryData [
 
 { #category : #accessing }
 GtRmGeoUser >> trajectories [
-	^ trajectories
+	^ trajectories ifNil: [
+		trajectories := GtRmGeoGpsTrajectoriesGroup new ]
 ]

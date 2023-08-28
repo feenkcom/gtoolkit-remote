@@ -38,6 +38,11 @@ GtRmGeolife >> allTrajectories [
 	^ self users allTrajectories
 ]
 
+{ #category : #initialization }
+GtRmGeolife >> defaultUsersGroup [
+	^ GtRmGeoGpsUsersGroup new
+]
+
 { #category : #adding }
 GtRmGeolife >> ensureUserWithId: anId [
 	^ self users 
@@ -71,15 +76,8 @@ GtRmGeolife >> gtViewUsersFor: aView [
 	^ aView forward
 		title: 'Users';
 		priority: 10;
-		object: [ users ];
+		object: [ self users ];
 		view: #gtItemsFor:
-]
-
-{ #category : #initialization }
-GtRmGeolife >> initialize [
-	super initialize.
-	
-	users := GtRmGeoGpsUsersGroup new.
 ]
 
 { #category : #accessing }
@@ -109,5 +107,6 @@ GtRmGeolife >> summaryData [
 
 { #category : #accessing }
 GtRmGeolife >> users [
-	^ users
+	^ users ifNil: [
+		users := self defaultUsersGroup ]
 ]
