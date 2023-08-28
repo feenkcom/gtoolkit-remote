@@ -10,7 +10,7 @@ GtRmGeolifeImporter >> importFromDirectory: aDirectory [
 	
 	geoLife := GtRmGeolife new.
 	
-	((aDirectory / 'Data') directories first: 3) do: [ :aUserFolder |
+	((aDirectory / 'Data') directories first: 5) do: [ :aUserFolder |
 		| user |
 		user := self importUserFromDirectory: aUserFolder.
 		geoLife addUser: user ].

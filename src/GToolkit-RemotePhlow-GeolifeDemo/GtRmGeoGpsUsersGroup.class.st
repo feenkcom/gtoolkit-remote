@@ -6,18 +6,22 @@ Class {
 
 { #category : #accessing }
 GtRmGeoGpsUsersGroup >> allRecords [
-	
-	^ self allTrajectories allRecords
+	^ self 
+		cacheAt: #allRecords 
+		ifAbsentPut: [ 
+			self allTrajectories allRecords ]
 ]
 
 { #category : #accessing }
 GtRmGeoGpsUsersGroup >> allTrajectories [
-	
-	^ self items
-		inject: GtRmGeoGpsTrajectoriesGroup new 
-		into: [ :trajectories :aUser |
-			trajectories addAll: aUser trajectories.
-			trajectories ]
+	^ self 
+		cacheAt: #allTrajectories 
+		ifAbsentPut: [  
+			self items
+				inject: GtRmGeoGpsTrajectoriesGroup new 
+				into: [ :trajectories :aUser |
+					trajectories addAll: aUser trajectories.
+					trajectories ] ]
 ]
 
 { #category : #'gt - extensions' }

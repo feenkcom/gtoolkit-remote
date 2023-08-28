@@ -6,12 +6,14 @@ Class {
 
 { #category : #accessing }
 GtRmGeoGpsTrajectoriesGroup >> allRecords [
-	
-	^ self items
-		inject: GtRmGeoGpsRecordsGroup new 
-		into: [ :records :aTrajectory |
-			records addAll: aTrajectory records items.
-			records]
+	^ self 
+		cacheAt: #allRecords 
+		ifAbsentPut: [  
+			self items
+				inject: GtRmGeoGpsRecordsGroup new 
+				into: [ :records :aTrajectory |
+					records addAll: aTrajectory records items.
+					records ] ]
 ]
 
 { #category : #'gt - extensions' }

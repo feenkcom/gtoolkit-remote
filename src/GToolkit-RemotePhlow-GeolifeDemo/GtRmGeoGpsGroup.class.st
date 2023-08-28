@@ -2,7 +2,8 @@ Class {
 	#name : #GtRmGeoGpsGroup,
 	#superclass : #Object,
 	#instVars : [
-		'items'
+		'items',
+		'cache'
 	],
 	#category : #'GToolkit-RemotePhlow-GeolifeDemo'
 }
@@ -15,6 +16,20 @@ GtRmGeoGpsGroup >> add: anObject [
 { #category : #accessing }
 GtRmGeoGpsGroup >> addAll: aCollection [
 	items addAll: aCollection
+]
+
+{ #category : #accessing }
+GtRmGeoGpsGroup >> cacheAt: aKey ifAbsentPut: aBlock [
+	cache ifNil: [ 
+		cache := Dictionary new].
+	^ cache 
+		at: aKey
+		ifAbsentPut: [ aBlock value ]
+]
+
+{ #category : #accessing }
+GtRmGeoGpsGroup >> collect: aBlock [
+	^ self items  collect: aBlock
 ]
 
 { #category : #accessing }
