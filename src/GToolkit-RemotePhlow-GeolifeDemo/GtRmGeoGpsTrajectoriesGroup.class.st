@@ -26,5 +26,11 @@ GtRmGeoGpsTrajectoriesGroup >> gtItemsFor: aView [
 		column: 'Filename' text: [ :aTrajectory | 
 			aTrajectory targetFolderName ];
 		column: 'Records' text: [ :aTrajectory | 
-			aTrajectory numberOfRecords ]
+			aTrajectory numberOfRecords ];
+		column: 'Distance (km)' text: [ :aTrajectory | 
+			self 
+				gtDo: [
+					(aTrajectory distance /1000) printShowingDecimalPlaces: 2] 
+				gemstoneDo: [
+					(aTrajectory distance /1000) asStringUsingFormat: #(0 2 false)  ] ]
 ]

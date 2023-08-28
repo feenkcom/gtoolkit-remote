@@ -26,6 +26,11 @@ GtRmGeoGpsTrajectory >> asJsonDictionary [
 		'records' -> self recordsAsJsonData  } asDictionary
 ]
 
+{ #category : #accessing }
+GtRmGeoGpsTrajectory >> distance [
+	^ self records distance
+]
+
 { #category : #'gt - extensions' }
 GtRmGeoGpsTrajectory >> gtViewRecordsFor: aView [
 	<gtView>
