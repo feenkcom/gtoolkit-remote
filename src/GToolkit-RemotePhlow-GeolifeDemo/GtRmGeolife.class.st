@@ -42,7 +42,7 @@ GtRmGeolife >> allTrajectories [
 GtRmGeolife >> ensureUserWithId: anId [
 	^ self users 
 		detect: [ :aUser | aUser id = anId ]
-		ifFound: [ :aUser ] 
+		ifFound: [ :aUser | aUser ] 
 		ifNone: [ 
 			| newUser |
 			newUser := GtRmGeoUser new 
