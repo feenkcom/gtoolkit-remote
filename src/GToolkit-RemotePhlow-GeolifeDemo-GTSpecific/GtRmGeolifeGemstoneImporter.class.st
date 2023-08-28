@@ -34,7 +34,7 @@ GtRmGeolifeGemstoneImporter >> importUserFromDirectory: aUserFolder [
 		do: [ :aTrajectoryFolder |
 			| trajectory |
 			trajectory := self createTrajectoryFromDirectory: aTrajectoryFolder.
-			user addTrajectoryFromJsonData: trajectory ].
+			user addTrajectoryFromJsonData: trajectory asJsonDictionary ].
 	
 	^ user
 ]

@@ -47,7 +47,6 @@ GtRmGeolife >> defaultUsersGroup [
 GtRmGeolife >> ensureUserWithId: anId [
 	^ self users 
 		detect: [ :aUser | aUser id = anId ]
-		ifFound: [ :aUser | aUser ] 
 		ifNone: [ 
 			| newUser |
 			newUser := GtRmGeoUser new 

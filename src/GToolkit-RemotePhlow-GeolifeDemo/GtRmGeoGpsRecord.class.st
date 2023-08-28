@@ -20,7 +20,7 @@ GtRmGeoGpsRecord >> asJsonDictionary [
 	^ {
 		#timestamp -> self timestamp.
 		#latitude -> self latitude.
-		#longitude -> self longitude }
+		#longitude -> self longitude } asDictionary
 ]
 
 { #category : #initialization }

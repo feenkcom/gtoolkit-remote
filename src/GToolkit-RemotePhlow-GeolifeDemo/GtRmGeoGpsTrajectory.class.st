@@ -24,7 +24,7 @@ GtRmGeoGpsTrajectory >> asJsonDictionary [
 	^ {
 		'targetFolderName' -> self targetFolderName.
 		'records' -> (self records collect: [ :aRecord |
-			aRecord asJsonDictionary ]) asArray  }
+			aRecord asJsonDictionary ]) asArray  } asDictionary
 ]
 
 { #category : #'gt - extensions' }

@@ -10,12 +10,12 @@ Class {
 
 { #category : #accessing }
 GtRmGeoGpsGroup >> add: anObject [
-	items add: anObject
+	self items add: anObject
 ]
 
 { #category : #accessing }
 GtRmGeoGpsGroup >> addAll: aCollection [
-	items addAll: aCollection
+	self items addAll: aCollection
 ]
 
 { #category : #accessing }
@@ -33,8 +33,9 @@ GtRmGeoGpsGroup >> collect: aBlock [
 ]
 
 { #category : #accessing }
-GtRmGeoGpsGroup >> detect: aBlock ifFound: foundBlock ifNone: exceptionBlock [
-	^ self items detect: aBlock ifFound: foundBlock ifNone: exceptionBlock
+GtRmGeoGpsGroup >> detect: aBlock ifNone: exceptionBlock [
+	^ self items 
+		detect: aBlock ifNone: exceptionBlock
 ]
 
 { #category : #accessing }
@@ -42,16 +43,10 @@ GtRmGeoGpsGroup >> do: aBlock [
 	self items do: aBlock
 ]
 
-{ #category : #initialization }
-GtRmGeoGpsGroup >> initialize [
-	super initialize.
-	
-	items := OrderedCollection new
-]
-
 { #category : #accessing }
 GtRmGeoGpsGroup >> items [
-	^ items
+	^ items ifNil: [
+		items := OrderedCollection new ]
 ]
 
 { #category : #printing }
@@ -67,10 +62,10 @@ GtRmGeoGpsGroup >> printOn: aStream [
 
 { #category : #accessing }
 GtRmGeoGpsGroup >> size [
-	^ items size
+	^ self items size
 ]
 
 { #category : #accessing }
 GtRmGeoGpsGroup >> sumNumbers: aBlock [
-	^ items sumNumbers: aBlock
+	^ self items sumNumbers: aBlock
 ]
