@@ -23,8 +23,7 @@ GtRmGeoGpsTrajectory >> addRecord: aRecord [
 GtRmGeoGpsTrajectory >> asJsonDictionary [
 	^ {
 		'targetFolderName' -> self targetFolderName.
-		'records' -> (self records collect: [ :aRecord |
-			aRecord asJsonDictionary ]) asArray  } asDictionary
+		'records' -> self recordsAsJsonData  } asDictionary
 ]
 
 { #category : #'gt - extensions' }
@@ -33,6 +32,7 @@ GtRmGeoGpsTrajectory >> gtViewRecordsFor: aView [
 	
 	^ aView forward
 		title: 'Records';
+		priority: 10;
 		object: [ self records ];
 		view: #gtItemsFor: 
 ]
@@ -68,6 +68,12 @@ GtRmGeoGpsTrajectory >> printOn: aStream [
 GtRmGeoGpsTrajectory >> records [
 	^ records ifNil: [
 		records := GtRmGeoGpsRecordsGroup new ]
+]
+
+{ #category : #accessing }
+GtRmGeoGpsTrajectory >> recordsAsJsonData [
+	^ (self records collect: [ :aRecord |
+			aRecord asJsonDictionary ]) asArray
 ]
 
 { #category : #accessing }

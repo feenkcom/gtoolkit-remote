@@ -10,11 +10,13 @@ Class {
 
 { #category : #accessing }
 GtRmGeoGpsGroup >> add: anObject [
+	self clearCache.
 	self items add: anObject
 ]
 
 { #category : #accessing }
 GtRmGeoGpsGroup >> addAll: aCollection [
+	self clearCache.
 	self items addAll: aCollection
 ]
 
@@ -25,6 +27,11 @@ GtRmGeoGpsGroup >> cacheAt: aKey ifAbsentPut: aBlock [
 	^ cache 
 		at: aKey
 		ifAbsentPut: [ aBlock value ]
+]
+
+{ #category : #accessing }
+GtRmGeoGpsGroup >> clearCache [
+	cache := nil
 ]
 
 { #category : #accessing }

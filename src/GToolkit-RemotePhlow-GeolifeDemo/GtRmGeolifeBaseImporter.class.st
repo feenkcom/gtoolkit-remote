@@ -40,5 +40,5 @@ GtRmGeolifeBaseImporter >> createTrajectoryFromDirectory: aTrajectoryFolder [
 
 { #category : #accessing }
 GtRmGeolifeBaseImporter >> directoriesToImport [
-	^ (currentDirectory / 'Data') directories first: 5
+	^ (currentDirectory / 'Data') directories first: 25
 ]
