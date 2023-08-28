@@ -33,6 +33,11 @@ GtRmGeoGpsGroup >> collect: aBlock [
 ]
 
 { #category : #accessing }
+GtRmGeoGpsGroup >> detect: aBlock ifFound: foundBlock ifNone: exceptionBlock [
+	^ self items detect: aBlock ifFound: foundBlock ifNone: exceptionBlock
+]
+
+{ #category : #accessing }
 GtRmGeoGpsGroup >> do: aBlock [ 
 	self items do: aBlock
 ]
