@@ -9,6 +9,27 @@ Class {
 	#category : #'GToolkit-RemotePhlow-GeolifeDemo'
 }
 
+{ #category : #'instance creation' }
+GtRmGeoGpsRecord class >> fromJsonDictionary: aDictionary [
+	^ self new 
+		initializeFomJsonDictionary: aDictionary
+]
+
+{ #category : #converting }
+GtRmGeoGpsRecord >> asJsonDictionary [
+	^ {
+		#timestamp -> self timestamp.
+		#latitude -> self latitude.
+		#longitude -> self longitude } asDictionary
+]
+
+{ #category : #initialization }
+GtRmGeoGpsRecord >> initializeFomJsonDictionary: aDictionary [
+	self latitude: (aDictionary at: #latitude).
+	self longitude: (aDictionary at: #longitude).
+	self timestamp: (aDictionary at: #timestamp)
+]
+
 { #category : #accessing }
 GtRmGeoGpsRecord >> latitude [
 	^ latitude

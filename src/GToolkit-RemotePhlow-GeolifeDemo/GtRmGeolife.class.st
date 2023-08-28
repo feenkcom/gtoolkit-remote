@@ -4,8 +4,22 @@ Class {
 	#instVars : [
 		'users'
 	],
+	#classVars : [
+		'DEFAULT'
+	],
 	#category : #'GToolkit-RemotePhlow-GeolifeDemo'
 }
+
+{ #category : #accessing }
+GtRmGeolife class >> defaultInstance [
+	^ DEFAULT ifNil: [
+		DEFAULT := self new ]
+]
+
+{ #category : #accessing }
+GtRmGeolife class >> resetDefaultInstance [
+	DEFAULT := nil
+]
 
 { #category : #adding }
 GtRmGeolife >> addUser: aUser [
@@ -22,6 +36,23 @@ GtRmGeolife >> allRecords [
 GtRmGeolife >> allTrajectories [
 	
 	^ self users allTrajectories
+]
+
+{ #category : #initialization }
+GtRmGeolife >> defaultUsersGroup [
+	^ GtRmGeoGpsUsersGroup new
+]
+
+{ #category : #adding }
+GtRmGeolife >> ensureUserWithId: anId [
+	^ self users 
+		detect: [ :aUser | aUser id = anId ]
+		ifNone: [ 
+			| newUser |
+			newUser := GtRmGeoUser new 
+				id: anId.
+			self addUser: newUser.
+			newUser ]
 ]
 
 { #category : #'gt - extensions' }
@@ -44,15 +75,8 @@ GtRmGeolife >> gtViewUsersFor: aView [
 	^ aView forward
 		title: 'Users';
 		priority: 10;
-		object: [ users ];
+		object: [ self users ];
 		view: #gtItemsFor:
-]
-
-{ #category : #initialization }
-GtRmGeolife >> initialize [
-	super initialize.
-	
-	users := GtRmGeoGpsUsersGroup new.
 ]
 
 { #category : #accessing }
@@ -82,5 +106,6 @@ GtRmGeolife >> summaryData [
 
 { #category : #accessing }
 GtRmGeolife >> users [
-	^ users
+	^ users ifNil: [
+		users := self defaultUsersGroup ]
 ]
