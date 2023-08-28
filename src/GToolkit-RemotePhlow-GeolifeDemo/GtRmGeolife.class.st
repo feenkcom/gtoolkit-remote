@@ -4,8 +4,22 @@ Class {
 	#instVars : [
 		'users'
 	],
+	#classVars : [
+		'DEFAULT'
+	],
 	#category : #'GToolkit-RemotePhlow-GeolifeDemo'
 }
+
+{ #category : #accessing }
+GtRmGeolife class >> defaultInstance [
+	^ DEFAULT ifNil: [
+		DEFAULT := self new ]
+]
+
+{ #category : #accessing }
+GtRmGeolife class >> resetDefaultInstance [
+	DEFAULT := nil
+]
 
 { #category : #adding }
 GtRmGeolife >> addUser: aUser [
@@ -22,6 +36,19 @@ GtRmGeolife >> allRecords [
 GtRmGeolife >> allTrajectories [
 	
 	^ self users allTrajectories
+]
+
+{ #category : #adding }
+GtRmGeolife >> ensureUserWithId: anId [
+	^ self users 
+		detect: [ :aUser | aUser id = anId ]
+		ifFound: [ :aUser ] 
+		ifNone: [ 
+			| newUser |
+			newUser := GtRmGeoUser new 
+				id: anId.
+			self addUser: newUser.
+			newUser ]
 ]
 
 { #category : #'gt - extensions' }

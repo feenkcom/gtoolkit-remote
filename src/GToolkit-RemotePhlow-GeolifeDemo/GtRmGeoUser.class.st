@@ -13,6 +13,12 @@ GtRmGeoUser >> addTrajectory: aTrajectory [
 	self trajectories add: aTrajectory
 ]
 
+{ #category : #adding }
+GtRmGeoUser >> addTrajectoryFromJsonData: aJsonData [
+	self addTrajectory: (GtRmGeoGpsTrajectory 
+		fromJsonDictionary:  aJsonData)
+]
+
 { #category : #accessing }
 GtRmGeoUser >> allRecords [
 	

@@ -8,9 +8,23 @@ Class {
 	#category : #'GToolkit-RemotePhlow-GeolifeDemo'
 }
 
+{ #category : #'instance creation' }
+GtRmGeoGpsTrajectory class >> fromJsonDictionary: aDictionary [
+	^ self new 
+		initializeFomJsonDictionary: aDictionary
+]
+
 { #category : #adding }
 GtRmGeoGpsTrajectory >> addRecord: aRecord [
 	self records add: aRecord
+]
+
+{ #category : #accessing }
+GtRmGeoGpsTrajectory >> asJsonDictionary [
+	^ {
+		'targetFolderName' -> self targetFolderName.
+		'records' -> (self records collect: [ :aRecord |
+			aRecord asJsonDictionary ]) asArray  }
 ]
 
 { #category : #'gt - extensions' }
@@ -28,6 +42,15 @@ GtRmGeoGpsTrajectory >> initialize [
 	super initialize.
 	
 	records := GtRmGeoGpsRecordsGroup new.
+]
+
+{ #category : #initialization }
+GtRmGeoGpsTrajectory >> initializeFomJsonDictionary: aDictionary [
+	self targetFolderName: (aDictionary at: 'targetFolderName').
+	
+	(aDictionary at: 'records') do: [ :aRecordData |
+		self addRecord:  (GtRmGeoGpsRecord 
+			fromJsonDictionary: aRecordData) ].
 ]
 
 { #category : #accessing }
