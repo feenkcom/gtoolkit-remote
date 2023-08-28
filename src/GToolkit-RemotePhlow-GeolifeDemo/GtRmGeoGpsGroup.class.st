@@ -67,5 +67,7 @@ GtRmGeoGpsGroup >> size [
 
 { #category : #accessing }
 GtRmGeoGpsGroup >> sumNumbers: aBlock [
-	^ self items sumNumbers: aBlock
+	^ self items
+		inject: 0 
+		into: [ :sum :each |  sum + (aBlock value: each) ]
 ]

@@ -10,7 +10,7 @@ GtRmGeoGpsRecordsGroup >> gtItemsFor: aView [
 	
 	^ aView columnedList
 		title: 'Records';
-		items: [ items ];
+		items: [ self items ];
 		column: 'Timestamp' text: [ :aRecord | aRecord timestamp ];
 		column: 'Latitude' text: [ :aRecord | aRecord latitude ];
 		column: 'Longitude' text: [ :aRecord | aRecord longitude ]

@@ -7,7 +7,7 @@ Class {
 { #category : #accessing }
 GtRmGeoGpsTrajectoriesGroup >> allRecords [
 	^ self 
-		cacheAt: #allRecords 
+		cacheAt: 'allRecords' 
 		ifAbsentPut: [  
 			self items
 				inject: GtRmGeoGpsRecordsGroup new 
@@ -22,7 +22,7 @@ GtRmGeoGpsTrajectoriesGroup >> gtItemsFor: aView [
 	
 	^ aView columnedList
 		title: 'Trajectories';
-		items: [ items ];
+		items: [ self items ];
 		column: 'Filename' text: [ :aTrajectory | 
 			aTrajectory targetFolderName ];
 		column: 'Records' text: [ :aTrajectory | 

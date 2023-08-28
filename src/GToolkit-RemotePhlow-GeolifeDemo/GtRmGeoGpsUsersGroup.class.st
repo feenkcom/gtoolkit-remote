@@ -7,7 +7,7 @@ Class {
 { #category : #accessing }
 GtRmGeoGpsUsersGroup >> allRecords [
 	^ self 
-		cacheAt: #allRecords 
+		cacheAt: 'allRecords'
 		ifAbsentPut: [ 
 			self allTrajectories allRecords ]
 ]
@@ -15,7 +15,7 @@ GtRmGeoGpsUsersGroup >> allRecords [
 { #category : #accessing }
 GtRmGeoGpsUsersGroup >> allTrajectories [
 	^ self 
-		cacheAt: #allTrajectories 
+		cacheAt: 'allTrajectories'
 		ifAbsentPut: [  
 			self items
 				inject: GtRmGeoGpsTrajectoriesGroup new 
@@ -30,7 +30,7 @@ GtRmGeoGpsUsersGroup >> gtItemsFor: aView [
 	
 	^ aView columnedList
 		title: 'Users';
-		items: [ items ];
+		items: [ self items ];
 		column: 'Id' text: [ :aUser | aUser id ];
 		column: 'Number of trajectories' 
 			text: [ :aUser | aUser numberOfTrajectories ];
