@@ -7,7 +7,7 @@ Class {
 { #category : #accessing }
 GtRmGeoGpsTrajectoriesGroup >> allRecords [
 	^ self 
-		cacheAt: #allRecords 
+		cacheAt: 'allRecords' 
 		ifAbsentPut: [  
 			self items
 				inject: GtRmGeoGpsRecordsGroup new 
@@ -22,9 +22,15 @@ GtRmGeoGpsTrajectoriesGroup >> gtItemsFor: aView [
 	
 	^ aView columnedList
 		title: 'Trajectories';
-		items: [ items ];
+		items: [ self items ];
 		column: 'Filename' text: [ :aTrajectory | 
 			aTrajectory targetFolderName ];
 		column: 'Records' text: [ :aTrajectory | 
-			aTrajectory numberOfRecords ]
+			aTrajectory numberOfRecords ];
+		column: 'Distance (km)' text: [ :aTrajectory | 
+			self 
+				gtDo: [
+					(aTrajectory distance /1000) printShowingDecimalPlaces: 2] 
+				gemstoneDo: [
+					(aTrajectory distance /1000) asStringUsingFormat: #(0 2 false)  ] ]
 ]

@@ -2,7 +2,8 @@ Class {
 	#name : #GtRmGeolifeBaseImporter,
 	#superclass : #Object,
 	#instVars : [
-		'currentDirectory'
+		'currentDirectory',
+		'usersCount'
 	],
 	#category : #'GToolkit-RemotePhlow-GeolifeDemo'
 }
@@ -40,5 +41,15 @@ GtRmGeolifeBaseImporter >> createTrajectoryFromDirectory: aTrajectoryFolder [
 
 { #category : #accessing }
 GtRmGeolifeBaseImporter >> directoriesToImport [
-	^ (currentDirectory / 'Data') directories first: 5
+	| directories |
+	
+	directories := (currentDirectory / 'Data') directories.
+	^ usersCount 
+		ifNil: [ directories ] 
+		ifNotNil: [ directories first: usersCount ]
+]
+
+{ #category : #accessing }
+GtRmGeolifeBaseImporter >> usersCount: aNumber [
+	usersCount := aNumber
 ]
