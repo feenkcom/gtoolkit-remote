@@ -18,8 +18,8 @@ GtRmGeolifeBaseImporter >> createRecordFromLine: aLine [
 		timestamp: (DateAndTime  
 			date: (Date fromString: parts sixth)
 			time: (Time fromString: parts seventh));
-		longitude: (parts first asNumber);
-		latitude:(parts second asNumber).
+		longitude: (parts second asNumber);
+		latitude:(parts first asNumber).
 		
 	^ record
 ]
