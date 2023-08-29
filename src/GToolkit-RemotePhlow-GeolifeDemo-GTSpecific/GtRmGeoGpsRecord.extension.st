@@ -8,7 +8,7 @@ GtRmGeoGpsRecord >> gtViewOnMapFor: aView [
 		title: 'On Map';
 		priority: 55;
 		stencil: [ GtRmGeoGpsWorldWithPointStencil new 
-			targetPoint:  self latitude @ self longitude ]
+			targetPoint:  self longitude @ self latitude ]
 ]
 
 { #category : #'*GToolkit-RemotePhlow-GeolifeDemo-GTSpecific' }
