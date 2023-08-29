@@ -10,3 +10,13 @@ GtRmGeoGpsRecord >> gtViewOnMapFor: aView [
 		stencil: [ GtRmGeoGpsWorldWithPointStencil new 
 			targetPoint:  self latitude @ self longitude ]
 ]
+
+{ #category : #'*GToolkit-RemotePhlow-GeolifeDemo-GTSpecific' }
+GtRmGeoGpsRecord >> gtViewOnOsmFor: aView [ 
+	<gtView>
+	
+	^ aView explicit
+		title: 'On OSM';
+		priority: 55;
+		stencil: [ GtOpenStreetMapTiles new tileWithMarkerAt:  self longitude @ self latitude zoom: 15 ]
+]
