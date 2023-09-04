@@ -101,7 +101,7 @@ GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListWithTypedColumnsFor: aV
 			aColumn 
 				item: [ :aNumber | aNumber asFloat ];
 				iconName: [ :aFloat | 
-					aFloat systemIconName ];
+					aFloat gtSystemIconName ];
 				width: 75 ]
 ]
 
