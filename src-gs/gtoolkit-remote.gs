@@ -3470,7 +3470,7 @@ gtColumnedListWithTypedColumnsFor: aView
 			aColumn 
 				item: [ :aNumber | aNumber asFloat ];
 				iconName: [ :aFloat | 
-					aFloat systemIconName ];
+					aFloat gtSystemIconName ];
 				width: 75 ]
 %
 
@@ -5596,6 +5596,18 @@ gtItemsFor: aView
 			text: [ :aUser | aUser numberOfRecords  ]
 %
 
+category: 'accessing'
+method: GtRmGeoGpsUsersGroup
+removeUser: aString
+	"Remove the supplied user.
+	GS only has #detect:ifNone: (not #detect:ifFound:)"
+
+	(items
+		detect: [ :user | user id = aString ]
+		ifNone: [ nil ]) ifNotNil:
+			[ :user | items remove: user ]
+%
+
 ! Class implementation for 'GtRmGeoGpsRecord'
 
 !		Class methods for 'GtRmGeoGpsRecord'
@@ -5616,6 +5628,13 @@ asJsonDictionary
 		#timestamp -> self timestamp.
 		#latitude -> self latitude.
 		#longitude -> self longitude } asDictionary
+%
+
+category: 'accessing'
+method: GtRmGeoGpsRecord
+asPoint
+
+	^ self longitude @ self latitude
 %
 
 category: 'initialization'
@@ -5712,14 +5731,24 @@ distance
 
 category: 'gt - extensions'
 method: GtRmGeoGpsTrajectory
-gtViewRecordsFor: aView
-	<gtView>
-	
-	^ aView forward
+gtViewGpsRecordsFor: aView
+
+	^ aView columnedList
 		title: 'Records';
-		priority: 10;
-		object: [ self records ];
-		view: #gtItemsFor: 
+		items: [ self records items ];
+		column: 'Timestamp' text: [ :aRecord | aRecord timestamp ];
+		column: 'Latitude' text: [ :aRecord | aRecord latitude ];
+		column: 'Longitude' text: [ :aRecord | aRecord longitude ]
+%
+
+category: 'accessing'
+method: GtRmGeoGpsTrajectory
+gtViewMapFor: aView
+
+	^ aView explicit
+		title: 'OSM';
+		priority: 20;
+		stencil: [ self osmMap ]
 %
 
 category: 'initialization'
@@ -5827,7 +5856,7 @@ category: 'adding'
 method: GtRmGeolife
 ensureUserWithId: anId
 	^ self users 
-		detect: [ :aUser | aUser id = anId ]
+		detect: [ :aUser | aUser id = anId ];
 		ifNone: [ 
 			| newUser |
 			newUser := GtRmGeoUser new 
@@ -5878,6 +5907,13 @@ printOn: aStream
 		print: self numberOfUsers;
 		<< ' users';
 		<< ')'
+%
+
+category: 'accessing'
+method: GtRmGeolife
+removeUser: aString
+
+	self users removeUser: aString
 %
 
 category: 'accessing'
