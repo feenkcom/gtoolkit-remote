@@ -37,3 +37,14 @@ GtRmGeoGpsUsersGroup >> gtItemsFor: aView [
 		column: 'Number of records' 
 			text: [ :aUser | aUser numberOfRecords  ]
 ]
+
+{ #category : #accessing }
+GtRmGeoGpsUsersGroup >> removeUser: aString [
+	"Remove the supplied user.
+	GS only has #detect:ifNone: (not #detect:ifFound:)"
+
+	(items
+		detect: [ :user | user id = aString ]
+		ifNone: [ nil ]) ifNotNil:
+			[ :user | items remove: user ]
+]

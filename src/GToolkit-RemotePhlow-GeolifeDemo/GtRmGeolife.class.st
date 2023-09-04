@@ -46,7 +46,7 @@ GtRmGeolife >> defaultUsersGroup [
 { #category : #adding }
 GtRmGeolife >> ensureUserWithId: anId [
 	^ self users 
-		detect: [ :aUser | aUser id = anId ]
+		detect: [ :aUser | aUser id = anId ];
 		ifNone: [ 
 			| newUser |
 			newUser := GtRmGeoUser new 
@@ -93,6 +93,12 @@ GtRmGeolife >> printOn: aStream [
 		print: self numberOfUsers;
 		<< ' users';
 		<< ')'
+]
+
+{ #category : #accessing }
+GtRmGeolife >> removeUser: aString [
+
+	self users removeUser: aString
 ]
 
 { #category : #accessing }
