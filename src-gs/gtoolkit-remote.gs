@@ -22,8 +22,8 @@ removeallclassmethods GtPhlowColor
 doit
 (Object
 	subclass: 'GtPhlowDeclarativeListingType'
-	instVarNames: #( type )
-	classVars: #( Icon IconifiedLink Text TextualLink Unknown )
+	instVarNames: #(  )
+	classVars: #(  )
 	classInstVars: #(  )
 	poolDictionaries: #()
 	inDictionary: Globals
@@ -36,6 +36,96 @@ true.
 
 removeallmethods GtPhlowDeclarativeListingType
 removeallclassmethods GtPhlowDeclarativeListingType
+
+doit
+(GtPhlowDeclarativeListingType
+	subclass: 'GtPhlowNumberDeclarativeListingType'
+	instVarNames: #(  )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowNumberDeclarativeListingType
+removeallclassmethods GtPhlowNumberDeclarativeListingType
+
+doit
+(GtPhlowDeclarativeListingType
+	subclass: 'GtPhlowTextDeclarativeListingType'
+	instVarNames: #(  )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowTextDeclarativeListingType
+removeallclassmethods GtPhlowTextDeclarativeListingType
+
+doit
+(GtPhlowDeclarativeListingType
+	subclass: 'GtPhlowTextLinkDeclarativeListingType'
+	instVarNames: #(  )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowTextLinkDeclarativeListingType
+removeallclassmethods GtPhlowTextLinkDeclarativeListingType
+
+doit
+(GtPhlowDeclarativeListingType
+	subclass: 'GtPhlowThemeIconNameDeclarativeListingType'
+	instVarNames: #(  )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowThemeIconNameDeclarativeListingType
+removeallclassmethods GtPhlowThemeIconNameDeclarativeListingType
+
+doit
+(GtPhlowDeclarativeListingType
+	subclass: 'GtPhlowUnknownDeclarativeListingType'
+	instVarNames: #(  )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowUnknownDeclarativeListingType
+removeallclassmethods GtPhlowUnknownDeclarativeListingType
 
 doit
 (Object
@@ -406,8 +496,8 @@ removeallclassmethods GtRemotePhlowPluggableCollectionIterator
 doit
 (Object
 	subclass: 'GtRemotePhlowColumn'
-	instVarNames: #( index title width itemComputation type spawnObjectComputation backgroundComputation )
-	classVars: #( IconType TextType )
+	instVarNames: #( index title width itemComputation backgroundComputation )
+	classVars: #(  )
 	classInstVars: #(  )
 	poolDictionaries: #()
 	inDictionary: Globals
@@ -420,6 +510,114 @@ true.
 
 removeallmethods GtRemotePhlowColumn
 removeallclassmethods GtRemotePhlowColumn
+
+doit
+(GtRemotePhlowColumn
+	subclass: 'GtRemotePhlowExplicitColumn'
+	instVarNames: #( spawnObjectComputation type )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowExplicitColumn
+removeallclassmethods GtRemotePhlowExplicitColumn
+
+doit
+(GtRemotePhlowColumn
+	subclass: 'GtRemotePhlowTypedColumn'
+	instVarNames: #(  )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowTypedColumn
+removeallclassmethods GtRemotePhlowTypedColumn
+
+doit
+(GtRemotePhlowTypedColumn
+	subclass: 'GtRemotePhlowIconNameColumn'
+	instVarNames: #( iconNameComputation )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowIconNameColumn
+removeallclassmethods GtRemotePhlowIconNameColumn
+
+doit
+(GtRemotePhlowIconNameColumn
+	subclass: 'GtRemotePhlowThemeIconNameColumn'
+	instVarNames: #(  )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowThemeIconNameColumn
+removeallclassmethods GtRemotePhlowThemeIconNameColumn
+
+doit
+(GtRemotePhlowTypedColumn
+	subclass: 'GtRemotePhlowNumberColumn'
+	instVarNames: #( formatComputation )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowNumberColumn
+removeallclassmethods GtRemotePhlowNumberColumn
+
+doit
+(GtRemotePhlowTypedColumn
+	subclass: 'GtRemotePhlowTextColumn'
+	instVarNames: #( formatComputation )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowTextColumn
+removeallclassmethods GtRemotePhlowTextColumn
 
 doit
 (Object
@@ -1098,6 +1296,186 @@ true.
 removeallmethods GtRemotePhlowViewedObject
 removeallclassmethods GtRemotePhlowViewedObject
 
+doit
+(Object
+	subclass: 'GtRmGeoGpsGroup'
+	instVarNames: #( items cache )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-GeolifeDemo';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRmGeoGpsGroup
+removeallclassmethods GtRmGeoGpsGroup
+
+doit
+(GtRmGeoGpsGroup
+	subclass: 'GtRmGeoGpsRecordsGroup'
+	instVarNames: #(  )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-GeolifeDemo';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRmGeoGpsRecordsGroup
+removeallclassmethods GtRmGeoGpsRecordsGroup
+
+doit
+(GtRmGeoGpsGroup
+	subclass: 'GtRmGeoGpsTrajectoriesGroup'
+	instVarNames: #(  )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-GeolifeDemo';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRmGeoGpsTrajectoriesGroup
+removeallclassmethods GtRmGeoGpsTrajectoriesGroup
+
+doit
+(GtRmGeoGpsGroup
+	subclass: 'GtRmGeoGpsUsersGroup'
+	instVarNames: #(  )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-GeolifeDemo';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRmGeoGpsUsersGroup
+removeallclassmethods GtRmGeoGpsUsersGroup
+
+doit
+(Object
+	subclass: 'GtRmGeoGpsRecord'
+	instVarNames: #( timestamp latitude longitude )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-GeolifeDemo';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRmGeoGpsRecord
+removeallclassmethods GtRmGeoGpsRecord
+
+doit
+(Object
+	subclass: 'GtRmGeoGpsTrajectory'
+	instVarNames: #( records targetFolderName )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-GeolifeDemo';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRmGeoGpsTrajectory
+removeallclassmethods GtRmGeoGpsTrajectory
+
+doit
+(Object
+	subclass: 'GtRmGeolife'
+	instVarNames: #( users )
+	classVars: #( DEFAULT )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-GeolifeDemo';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRmGeolife
+removeallclassmethods GtRmGeolife
+
+doit
+(Object
+	subclass: 'GtRmGeolifeBaseImporter'
+	instVarNames: #( currentDirectory usersCount )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-GeolifeDemo';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRmGeolifeBaseImporter
+removeallclassmethods GtRmGeolifeBaseImporter
+
+doit
+(GtRmGeolifeBaseImporter
+	subclass: 'GtRmGeolifeLocalImporter'
+	instVarNames: #(  )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-GeolifeDemo';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRmGeolifeLocalImporter
+removeallclassmethods GtRmGeolifeLocalImporter
+
+doit
+(Object
+	subclass: 'GtRmGeoUser'
+	instVarNames: #( trajectories id )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-GeolifeDemo';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRmGeoUser
+removeallclassmethods GtRmGeoUser
+
 ! Class implementation for 'GtPhlowColor'
 
 !		Class methods for 'GtPhlowColor'
@@ -1253,87 +1631,150 @@ red
 
 !		Class methods for 'GtPhlowDeclarativeListingType'
 
-category: 'initialization'
+category: 'instance creation'
 classmethod: GtPhlowDeclarativeListingType
-initialize	
-	Icon := #icon.
-	IconifiedLink := #iconLink.
-	Text := #text.
-	TextualLink := #textLink.
-	Unknown := #unknown
+forTypeLabel: aValue 
+	^ self allSubclasses
+		detect: [ :aSubclass |
+			aSubclass typeLabel = aValue ]
+		ifFound: [ :aSubclass | aSubclass new ]
+		ifNone: [ self unknown ]
+%
+
+category: 'types creation'
+classmethod: GtPhlowDeclarativeListingType
+iconName
+	^ GtPhlowThemeIconNameDeclarativeListingType new
+%
+
+category: 'types creation'
+classmethod: GtPhlowDeclarativeListingType
+number
+	^ GtPhlowNumberDeclarativeListingType new
+%
+
+category: 'types creation'
+classmethod: GtPhlowDeclarativeListingType
+text
+	^ GtPhlowTextDeclarativeListingType new
+%
+
+category: 'types creation'
+classmethod: GtPhlowDeclarativeListingType
+textLink
+	^ GtPhlowTextLinkDeclarativeListingType new
+%
+
+category: 'accessing'
+classmethod: GtPhlowDeclarativeListingType
+typeLabel
+	^ 'listing type'
+%
+
+category: 'types creation'
+classmethod: GtPhlowDeclarativeListingType
+unknown
+	^ GtPhlowUnknownDeclarativeListingType new
 %
 
 !		Instance methods for 'GtPhlowDeclarativeListingType'
 
-category: 'accessing'
+category: 'testing'
 method: GtPhlowDeclarativeListingType
-asString
-	^ type
+isIconNameListingType
+	^ false
 %
 
-category: 'accessing'
+category: 'testing'
 method: GtPhlowDeclarativeListingType
-beIcon
-	type := Icon
-%
-
-category: 'accessing'
-method: GtPhlowDeclarativeListingType
-beIconLink
-	type := IconifiedLink
-%
-
-category: 'accessing'
-method: GtPhlowDeclarativeListingType
-beText
-	type := Text
-%
-
-category: 'accessing'
-method: GtPhlowDeclarativeListingType
-beTextLink
-	type := TextualLink
-%
-
-category: 'accessing'
-method: GtPhlowDeclarativeListingType
-beUnknown
-	type := Unknown
-%
-
-category: 'accessing'
-method: GtPhlowDeclarativeListingType
-ifIcon: anIconBlock ifIconLink: anIconLinkBlock ifText: aTextBlock ifTextLink: aTextLinkBlock ifUnknown: anUnknownBlock
-	type = Icon
-		ifTrue: [ ^ anIconBlock value ].
-		
-	type = IconifiedLink
-		ifTrue: [ ^ anIconLinkBlock value ].
-		
-	type = Text
-		ifTrue: [ ^ aTextBlock value ].
-		
-	type = TextualLink
-		ifTrue: [ ^ aTextLinkBlock value ].
-		
-	type = Unknown
-		ifTrue: [ ^ anUnknownBlock value ].
-		
-	self error: ('Unsupported listing view type: {1}' format: { type })
-%
-
-category: 'initialization'
-method: GtPhlowDeclarativeListingType
-initialize
-	super initialize.
-	
-	type := Unknown
+isTextLinkListingType
+	^ false
 %
 
 category: 'testing'
 method: GtPhlowDeclarativeListingType
 isUnknown
-	^ type = Unknown
+	^ false
+%
+
+category: 'accessing'
+method: GtPhlowDeclarativeListingType
+typeLabel
+	^ self class typeLabel
+%
+
+! Class implementation for 'GtPhlowNumberDeclarativeListingType'
+
+!		Class methods for 'GtPhlowNumberDeclarativeListingType'
+
+category: 'accessing'
+classmethod: GtPhlowNumberDeclarativeListingType
+typeLabel
+	^ #number
+%
+
+! Class implementation for 'GtPhlowTextDeclarativeListingType'
+
+!		Class methods for 'GtPhlowTextDeclarativeListingType'
+
+category: 'accessing'
+classmethod: GtPhlowTextDeclarativeListingType
+typeLabel
+	^ #text
+%
+
+! Class implementation for 'GtPhlowTextLinkDeclarativeListingType'
+
+!		Class methods for 'GtPhlowTextLinkDeclarativeListingType'
+
+category: 'accessing'
+classmethod: GtPhlowTextLinkDeclarativeListingType
+typeLabel
+	^ #textLink
+%
+
+!		Instance methods for 'GtPhlowTextLinkDeclarativeListingType'
+
+category: 'testing'
+method: GtPhlowTextLinkDeclarativeListingType
+isTextLinkListingType
+	^ true
+%
+
+! Class implementation for 'GtPhlowThemeIconNameDeclarativeListingType'
+
+!		Class methods for 'GtPhlowThemeIconNameDeclarativeListingType'
+
+category: 'accessing'
+classmethod: GtPhlowThemeIconNameDeclarativeListingType
+typeLabel
+	^ #icon
+%
+
+!		Instance methods for 'GtPhlowThemeIconNameDeclarativeListingType'
+
+category: 'testing'
+method: GtPhlowThemeIconNameDeclarativeListingType
+isIconNameListingType
+	^ false
+%
+
+! Class implementation for 'GtPhlowUnknownDeclarativeListingType'
+
+!		Class methods for 'GtPhlowUnknownDeclarativeListingType'
+
+category: 'accessing'
+classmethod: GtPhlowUnknownDeclarativeListingType
+typeLabel
+	^ #unknown
+%
+
+!		Instance methods for 'GtPhlowUnknownDeclarativeListingType'
+
+category: 'testing'
+method: GtPhlowUnknownDeclarativeListingType
+isUnknown
+	^ true
 %
 
 ! Class implementation for 'GtPhlowViewSpecification'
@@ -1879,7 +2320,9 @@ columnedListView
 	self assert: view title equals: 'Columned list'.
 	self assert: view columnTitles equals: #(Value Lowercase).
 	self assert: view columnWidths equals: #(nil 100).
-	self assert: view columnTypes equals: #(text text).
+	self 
+		assert: (view columnTypes collect: #typeLabel) 
+		equals: #(text text).
 	
 	self assert: view dataTransport equals: GtPhlowViewSpecification dataLazy.
 	self columnedListViewLazyCheck: viewProxy.
@@ -1896,6 +2339,45 @@ columnedListViewLazyCheck: viewProxy
 	self assert: declarativeView retrieveTotalItemsCount equals: 3.
 %
 
+category: 'examples - views'
+method: GtRemoteDeclarativeExamples
+columnedListWithTypedColumns
+	<gtExample>
+	<after: #stopServer>
+	| viewProxy viewDictionary viewSpecification |
+
+	viewProxy := self viewedObjectProxy.
+	viewDictionary := viewProxy getViewDeclaration: #gtColumnedListWithTypedColumnsFor:.
+	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
+	viewSpecification initializeFromInspector: viewProxy.
+	
+	self assert: viewSpecification title equals: 'Columned list with typed columns'.
+	self assert: viewSpecification priority equals: 24.
+	
+	self 
+		assert: viewSpecification methodSelector 
+		equals: #gtColumnedListWithTypedColumnsFor:.
+	self 
+		assert: (viewSpecification columnSpecifications 
+			collect: [ :aColumnSpecification | aColumnSpecification typeLabel ])
+		equals: #('text' 'number' 'icon').
+	self 
+		assert: viewSpecification columnTitles 
+		equals: #('Text' 'Number' 'Icon Name').
+	self 
+		assert: viewSpecification columnWidths 
+		equals: #(nil 100 75).
+	
+	self assert: viewSpecification totalItemsCount equals: 500.
+	
+	self 
+		assert: (viewSpecification retrieveItems: 2 fromIndex: 1)
+		equals: self expectedColumnedListTypedColumnsTwoItems.
+	
+	^ viewSpecification
+%
+
 category: 'private'
 method: GtRemoteDeclarativeExamples
 declarativeViewNames
@@ -1903,6 +2385,12 @@ declarativeViewNames
 	Subclasses may overwrite this if the set of views is different."
 
 	^ #('gtLargeListFor:' 'gtStringFor:' 'gtListFor:' 'gtLargeColumnedListWithIndexFor:' 'gtColumnedListFor:' 'gtLargeColumnedListFor:' 'gtRemotePrintFor:')
+%
+
+category: 'examples - views'
+method: GtRemoteDeclarativeExamples
+expectedColumnedListTypedColumnsTwoItems
+	^ ((Array new: 2) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#itemText->'+1'); yourself); at: 2 put: ((Dictionary new) add: (#itemText->'+1'); yourself); at: 3 put: ((Dictionary new) add: (#itemText->#classIcon); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#itemText->'+2'); yourself); at: 2 put: ((Dictionary new) add: (#itemText->'+2'); yourself); at: 3 put: ((Dictionary new) add: (#itemText->#classIcon); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); yourself)
 %
 
 category: 'private'
@@ -1925,21 +2413,17 @@ method: GtRemoteDeclarativeExamples
 listView
 	<gtExample>
 	<after: #stopServer>
-	| viewProxy viewDictionary view data |
+	| viewProxy viewDictionary view |
 
 	viewProxy := self viewedObjectProxy.
-	viewDictionary :=  viewProxy getViewDeclaration: #gtListFor:.
+	viewDictionary := viewProxy getViewDeclaration: #gtListFor:.
 	view := GtPhlowViewSpecification fromDictionary: viewDictionary.
 	
 	self assert: view title equals: #List.
 	self assert: view priority equals: 15.
 	
-	view dataTransport = GtPhlowViewSpecification dataIncluded ifTrue:
-		[ data := view items.
-		self assert: data size equals: 3.
-		self assert: data equals: self listViewDisplayArray ].
-	view dataTransport = GtPhlowViewSpecification dataLazy ifTrue:
-		[ self listViewLazyCheck: viewProxy ].
+	self listViewLazyCheck: viewProxy.
+	
 	^ view
 %
 
@@ -2213,11 +2697,10 @@ iterationSelector: aSelector
 
 !		Class methods for 'GtRemotePhlowColumn'
 
-category: 'initialization'
+category: 'testing'
 classmethod: GtRemotePhlowColumn
-initialize
-	TextType := #text.
-	IconType := #icon
+isAbstract
+	^ self name = #GtRemotePhlowColumn
 %
 
 !		Instance methods for 'GtRemotePhlowColumn'
@@ -2225,13 +2708,7 @@ initialize
 category: 'converting'
 method: GtRemotePhlowColumn
 asGtDeclarativeColumnDataType
-	^ self isWithIcon
-		ifTrue: [ self isSpawningObject
-			ifTrue: [ GtPhlowDeclarativeListingType new beIconLink ]
-			ifFalse: [ GtPhlowDeclarativeListingType new beIcon ] ]
-		ifFalse: [ self isSpawningObject
-			ifTrue: [ GtPhlowDeclarativeListingType new beTextLink ]
-			ifFalse: [ GtPhlowDeclarativeListingType new beText ] ]
+	^ self subclassResponsibility
 %
 
 category: 'api - scripting'
@@ -2255,33 +2732,36 @@ cellWidth
 category: 'computation'
 method: GtRemotePhlowColumn
 computeItemValuesFor: anObject rowIndex: rowIndex columnIndex: columnIndex
-	| cellValues itemValue |
-	cellValues := GtRemotePhlowItemValue new.
+	| cellValue itemValue |
+	cellValue := self createRemotePhlowCellValue.
 	
 	itemValue := self itemComputation 
 		cull: anObject cull: rowIndex cull: columnIndex.
 		
-	cellValues 
-		itemText: itemValue gtDisplayString.
+	self 
+		updateValue: cellValue 
+		forComputedItem: anObject 
+		rowIndex: rowIndex 
+		columnIndex: columnIndex.
+	
 	self hasBackgroundComputation ifTrue: [
-		cellValues 
+		cellValue 
 			background: (self backgroundComputation
 				cull: itemValue cull: anObject cull: rowIndex cull: columnIndex) ].
 	
-	^ cellValues
+	^ cellValue
 %
 
-category: 'testings'
+category: 'computation'
+method: GtRemotePhlowColumn
+createRemotePhlowCellValue
+	^ GtRemotePhlowItemValue new
+%
+
+category: 'testing'
 method: GtRemotePhlowColumn
 hasBackgroundComputation
 	^ backgroundComputation notNil
-%
-
-category: 'api - scripting'
-method: GtRemotePhlowColumn
-iconName: aBlock
-	itemComputation := aBlock.
-	type := IconType
 %
 
 category: 'accessing'
@@ -2299,13 +2779,13 @@ index: aColumnIndex
 category: 'testing'
 method: GtRemotePhlowColumn
 isSpawningObject
-	^ spawnObjectComputation notNil
+	^ false
 %
 
-category: 'testing'
+category: 'accessing'
 method: GtRemotePhlowColumn
-isWithIcon
-	^ type = IconType
+item: anItemComputation
+	itemComputation := anItemComputation
 %
 
 category: 'accessing'
@@ -2323,33 +2803,6 @@ rowStencil
 
 category: 'accessing'
 method: GtRemotePhlowColumn
-spawnObject: aBlock
-	"aBlock should return an Object that should be spawned when clicked on:
-		- a link button if the column data type is #text
-		- a link icon if the column data type is #icon.
-
-	Setting a spawnObject influences how a cell is rendered"
-
-	spawnObjectComputation := aBlock
-%
-
-category: 'accessing'
-method: GtRemotePhlowColumn
-spawnObjectComputation
-	"If nil, the cell does not spawn an object"
-
-	^ spawnObjectComputation
-%
-
-category: 'api - scripting'
-method: GtRemotePhlowColumn
-text: aBlock
-	itemComputation := aBlock.
-	type := TextType
-%
-
-category: 'accessing'
-method: GtRemotePhlowColumn
 title
 	^ title
 %
@@ -2360,10 +2813,209 @@ title: anObject
 	title := anObject
 %
 
+category: 'computation'
+method: GtRemotePhlowColumn
+updateValue: aCellValue forComputedItem: aComputedItem rowIndex: rowIndex columnIndex: columnIndex
+	aCellValue 
+		itemText: aComputedItem gtDisplayString.
+%
+
 category: 'accessing'
 method: GtRemotePhlowColumn
 width: aCellWidth
 	width := aCellWidth
+%
+
+! Class implementation for 'GtRemotePhlowExplicitColumn'
+
+!		Instance methods for 'GtRemotePhlowExplicitColumn'
+
+category: 'converting'
+method: GtRemotePhlowExplicitColumn
+asGtDeclarativeColumnDataType
+	^ type ifNil: [
+		GtPhlowDeclarativeListingType unknown ]
+%
+
+category: 'configuration'
+method: GtRemotePhlowExplicitColumn
+iconName: aBlock
+	self item: aBlock.
+	type := GtPhlowDeclarativeListingType iconName
+%
+
+category: 'testing'
+method: GtRemotePhlowExplicitColumn
+isSpawningObject
+	^ self asGtDeclarativeColumnDataType isTextLinkListingType
+%
+
+category: 'accessing'
+method: GtRemotePhlowExplicitColumn
+spawnObjectComputation
+	"If nil, the cell does not spawn an object"
+
+	^ spawnObjectComputation
+%
+
+category: 'configuration'
+method: GtRemotePhlowExplicitColumn
+text: aBlock
+	self item: aBlock.
+	type := GtPhlowDeclarativeListingType text
+%
+
+category: 'configuration'
+method: GtRemotePhlowExplicitColumn
+text: aBlock spawn: aSpawnObjectComputation
+	"aSpawnObjectComputation should return an Object that should be spawned when clicked on:
+		- a link button if the column data type is #text
+		- a link icon if the column data type is #icon.
+
+	Setting a spawnObject influences how a cell is rendered"
+	
+	self item: aBlock.
+	spawnObjectComputation := aSpawnObjectComputation.
+	type := GtPhlowDeclarativeListingType textLink
+%
+
+! Class implementation for 'GtRemotePhlowTypedColumn'
+
+!		Class methods for 'GtRemotePhlowTypedColumn'
+
+category: 'testing'
+classmethod: GtRemotePhlowTypedColumn
+isAbstract
+	^ self name = #GtRemotePhlowTypedColumn
+%
+
+! Class implementation for 'GtRemotePhlowIconNameColumn'
+
+!		Class methods for 'GtRemotePhlowIconNameColumn'
+
+category: 'testing'
+classmethod: GtRemotePhlowIconNameColumn
+isAbstract
+	^ self name = #GtRemotePhlowIconNameColumn
+%
+
+!		Instance methods for 'GtRemotePhlowIconNameColumn'
+
+category: 'accessing'
+method: GtRemotePhlowIconNameColumn
+iconName: anIconNameComputation
+	iconNameComputation := anIconNameComputation
+%
+
+category: 'accessing'
+method: GtRemotePhlowIconNameColumn
+iconNameComputation
+	^ iconNameComputation
+%
+
+category: 'computation'
+method: GtRemotePhlowIconNameColumn
+updateValue: aCellValue forComputedItem: aComputedItem rowIndex: rowIndex columnIndex: columnIndex
+	| itemText |
+	
+	itemText := self iconNameComputation 
+		ifNil: [ aComputedItem ]
+		ifNotNil: [ :anIconNameComputation |
+			anIconNameComputation
+				cull: aComputedItem
+				cull: rowIndex 
+				cull: columnIndex ].
+				
+	aCellValue 
+		itemText: itemText gtDisplayString.
+%
+
+! Class implementation for 'GtRemotePhlowThemeIconNameColumn'
+
+!		Instance methods for 'GtRemotePhlowThemeIconNameColumn'
+
+category: 'accessing'
+method: GtRemotePhlowThemeIconNameColumn
+asGtDeclarativeColumnDataType
+	^ GtPhlowDeclarativeListingType iconName
+%
+
+! Class implementation for 'GtRemotePhlowNumberColumn'
+
+!		Instance methods for 'GtRemotePhlowNumberColumn'
+
+category: 'converting'
+method: GtRemotePhlowNumberColumn
+asGtDeclarativeColumnDataType
+	^ GtPhlowDeclarativeListingType number
+%
+
+category: 'configuration'
+method: GtRemotePhlowNumberColumn
+format: aBlock
+	formatComputation := aBlock
+%
+
+category: 'accessing'
+method: GtRemotePhlowNumberColumn
+formatComputation
+	^ formatComputation
+%
+
+category: 'computation'
+method: GtRemotePhlowNumberColumn
+updateValue: aCellValue forComputedItem: aComputedItem rowIndex: rowIndex columnIndex: columnIndex
+	| itemText |
+	
+	itemText := self formatComputation 
+		ifNil: [ aComputedItem ]
+		ifNotNil: [ :aFomattingComputation |
+			aFomattingComputation
+				cull: aComputedItem
+				cull: rowIndex 
+				cull: columnIndex ].
+				
+	aCellValue 
+		itemText: itemText gtDisplayString.
+%
+
+! Class implementation for 'GtRemotePhlowTextColumn'
+
+!		Instance methods for 'GtRemotePhlowTextColumn'
+
+category: 'converting'
+method: GtRemotePhlowTextColumn
+asGtDeclarativeColumnDataType
+	^ GtPhlowDeclarativeListingType text
+%
+
+category: 'configuration'
+method: GtRemotePhlowTextColumn
+format: aBlock
+	formatComputation := aBlock
+%
+
+category: 'accessing'
+method: GtRemotePhlowTextColumn
+formatComputation
+	^ formatComputation
+%
+
+category: 'computation'
+method: GtRemotePhlowTextColumn
+updateValue: aCellValue forComputedItem: aComputedItem rowIndex: rowIndex columnIndex: columnIndex
+	| itemText |
+	
+	itemText := self formatComputation 
+		ifNil: [ aComputedItem ]
+		ifNotNil: [ :aFomattingComputation |
+			aFomattingComputation
+				cull: aComputedItem
+				cull: rowIndex 
+				cull: columnIndex ].
+	
+	aCellValue 
+		itemText: itemText gtDisplayString.
 %
 
 ! Class implementation for 'GtRemotePhlowColumnSpecification'
@@ -2373,18 +3025,23 @@ width: aCellWidth
 category: 'instance creation'
 classmethod: GtRemotePhlowColumnSpecification
 fromJSONDictionary: aDictionary
-
 	| column |
 
 	column := self new.
 	column
 		title: (aDictionary at: #title);
 		cellWidth: (aDictionary at: #cellWidth);
-		type: (aDictionary at: #type);
+		type: (self instantiateTypeFrom: (aDictionary at: #type));
 		spawnsObjects: (aDictionary at: #spawnsObjects);
 		properties: (aDictionary at: #properties) asOrderedCollection.
 		
 	^column
+%
+
+category: 'instance creation'
+classmethod: GtRemotePhlowColumnSpecification
+instantiateTypeFrom: aValue
+	 ^ GtPhlowDeclarativeListingType forTypeLabel: aValue
 %
 
 !		Instance methods for 'GtRemotePhlowColumnSpecification'
@@ -2397,7 +3054,7 @@ asDictionaryForExport
 	dictionary := Dictionary new 
 		at: #title put: title;
 		at: #cellWidth put: cellWidth;
-		at: #type put: type;
+		at: #type put: type typeLabel;
 		at: #spawnsObjects put: spawnsObjects;
 		at: #properties put: self properties asArray;
 		yourself.
@@ -2431,6 +3088,13 @@ hasPropertyNamed: aString
 
 category: 'testing'
 method: GtRemotePhlowColumnSpecification
+isTextSpawn
+	^ self spawnsObjects and: [
+		self type isText ]
+%
+
+category: 'testing'
+method: GtRemotePhlowColumnSpecification
 markAsHavingBackground
 	self markAsHavingPropertyNamed: #background
 %
@@ -2453,7 +3117,7 @@ printOn: aStream
 		self type ifNotNil: [
 			aStream 
 				<< ', ';
-				<< self type ]]
+				<< self type typeLabel ]]
 %
 
 category: 'accessing'
@@ -2503,6 +3167,12 @@ category: 'accessing'
 method: GtRemotePhlowColumnSpecification
 type: anObject
 	type := anObject
+%
+
+category: 'accessing'
+method: GtRemotePhlowColumnSpecification
+typeLabel
+	^ self type typeLabel
 %
 
 ! Class implementation for 'GtRemotePhlowDataNode'
@@ -2779,6 +3449,33 @@ gtColumnedListWithHorizontalScrollingFor: aView
 
 category: 'inspecting'
 method: GtRemotePhlowDeclarativeTestInspectable
+gtColumnedListWithTypedColumnsFor: aView
+	<gtView>
+
+	^aView columnedList
+		title: 'Columned list with typed columns';
+		priority: 24;
+		items: [ 1 to: 500 ];
+		column: 'Text' textDo: [ :aColumn | 
+			aColumn 
+				item: [ :aNumber | aNumber asFloat ];
+				format: [ :aFloat | 
+					'+',aFloat asString ] ];
+		column: 'Number' numberDo: [ :aColumn | 
+			aColumn
+				item: [ :aNumber | aNumber + 1 ];
+				format: [ :aNumber | '+',aNumber asString ];
+				width: 100 ];
+		column: 'Icon Name' iconNameDo: [ :aColumn | 
+			aColumn 
+				item: [ :aNumber | aNumber asFloat ];
+				iconName: [ :aFloat | 
+					aFloat gtSystemIconName ];
+				width: 75 ]
+%
+
+category: 'inspecting'
+method: GtRemotePhlowDeclarativeTestInspectable
 gtColumnedTreeFor: aView
 	<gtView>
 
@@ -3038,7 +3735,40 @@ emptyTree
 category: 'examples'
 method: GtRemotePhlowDeclarativeTreeExamples
 expectedFormattedItems
-	^ ((Array new: 4) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#itemText->'1'); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#itemText->'2'); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#itemText->'3'); yourself)); add: (#nodeId->3); yourself); at: 4 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#itemText->'4'); yourself)); add: (#nodeId->4); yourself); yourself)
+	^ (Array new: 4)
+		at: 1
+			put: (Dictionary new
+					add: #nodeValue
+							-> (Dictionary new
+									add: #itemText -> '1';
+									yourself);
+					add: #nodeId -> 1;
+					yourself);
+		at: 2
+			put: (Dictionary new
+					add: #nodeValue
+							-> (Dictionary new
+									add: #itemText -> '2';
+									yourself);
+					add: #nodeId -> 2;
+					yourself);
+		at: 3
+			put: (Dictionary new
+					add: #nodeValue
+							-> (Dictionary new
+									add: #itemText -> '3';
+									yourself);
+					add: #nodeId -> 3;
+					yourself);
+		at: 4
+			put: (Dictionary new
+					add: #nodeValue
+							-> (Dictionary new
+									add: #itemText -> '4';
+									yourself);
+					add: #nodeId -> 4;
+					yourself);
+		yourself
 %
 
 category: 'examples'
@@ -3995,39 +4725,12 @@ transformation: aGtPhlowSendTransformation
 
 !		Instance methods for 'GtRemotePhlowBasicColumnedView'
 
-category: 'converting'
-method: GtRemotePhlowBasicColumnedView
-asGtDeclarativeView
-	"Answer the receiver as a GtDeclarativeView.
-	nil = not supported"
-
-	^ GtPhlowColumnedListViewSpecification new 
-		phlowDataSource: (GtRemotePhlowDeclarativeViewColumnedListDataSource forPhlowView: self);
-		title: self title;
-		priority: self priority;
-		columnSpecifications: (columns asArray collect: [ :aColumn | 
-			| columnSpecification|
-			columnSpecification := GtRemotePhlowColumnSpecification new
-				title: aColumn title;
-				cellWidth: aColumn cellWidth;
-				type: aColumn asGtDeclarativeColumnDataType asString;
-				spawnsObjects: aColumn isSpawningObject.
-			
-			aColumn hasBackgroundComputation ifTrue: [ 
-				columnSpecification  markAsHavingBackground ].
-			columnSpecification ] ) ;
-		dataTransport: GtPhlowViewSpecification dataLazy
-%
-
 category: 'accessing'
 method: GtRemotePhlowBasicColumnedView
 column
-	<return: #GtRemotePhlowColumn>
-	| aColumn |
+	<return: #GtRemotePhlowExplicitColumn>
 	
-	aColumn := GtRemotePhlowColumn new index: self columns size + 1.
-	self columns add: aColumn.
-	^ aColumn
+	^ self explicitColumn
 %
 
 category: 'api - scripting column'
@@ -4041,51 +4744,68 @@ column: aTitleString do: aBlock
 
 category: 'api - scripting column'
 method: GtRemotePhlowBasicColumnedView
-column: columnName iconName: anIconNameComputation
-	| aColumn |
-	aColumn := self column.
-	aColumn title: columnName.
-	aColumn iconName: anIconNameComputation
+column: aTitleString iconName: anIconNameComputation
+	self column: aTitleString iconNameDo: [ :aColumn |
+		aColumn
+			item: [ :each | each ];
+			iconName: anIconNameComputation ]
 %
 
 category: 'api - scripting column'
 method: GtRemotePhlowBasicColumnedView
-column: columnName iconName: anIconNameComputation spawn: aSpawnBlock
-	| aColumn |
-	aColumn := self column.
-	aColumn title: columnName.
-	aColumn iconName: anIconNameComputation.
-	aColumn spawnObject: aSpawnBlock.
+column: aTitleString iconName: anIconNameComputation width: aNumber
+	self column: aTitleString iconNameDo: [ :aColumn |
+		aColumn
+			item: [ :each | each ];
+			iconName: anIconNameComputation;
+			width: aNumber ]
 %
 
 category: 'api - scripting column'
 method: GtRemotePhlowBasicColumnedView
-column: columnName iconName: anIconNameComputation spawn: aSpawnBlock width: aNumberOrNil
-	| aColumn |
-	aColumn := self column.
-	aColumn title: columnName.
-	aColumn iconName: anIconNameComputation.
-	aColumn spawnObject: aSpawnBlock.
-	aColumn width: aNumberOrNil.
+column: aTitle iconNameDo: aBlock
+	aBlock value: (self iconNameColumn title: aTitle)
 %
 
 category: 'api - scripting column'
 method: GtRemotePhlowBasicColumnedView
-column: columnName iconName: anIconNameComputation width: aNumberOrNil
-	| aColumn |
-	aColumn := self column.
-	aColumn title: columnName.
-	aColumn iconName: anIconNameComputation.
-	aColumn width: aNumberOrNil.
+column: aTitleString item: anItemComputation text: aBlock	
+	self column: aTitleString textDo: [ :aColumn |
+		aColumn
+			item: anItemComputation;
+			format: aBlock ]
 %
 
 category: 'api - scripting column'
 method: GtRemotePhlowBasicColumnedView
-column: columnName text: aBlockClosure
-	| aColumn |
-	aColumn := self column.
-	aColumn title: columnName.
-	aColumn text: aBlockClosure
+column: aTitle number: aBlock
+	self numberColumn
+		title: aTitle;
+		item: aBlock
+%
+
+category: 'api - scripting column'
+method: GtRemotePhlowBasicColumnedView
+column: aTitle number: aBlock format: aFormatBlock
+	self numberColumn
+		title: aTitle;
+		item: aBlock;
+		format: aFormatBlock
+%
+
+category: 'api - scripting column'
+method: GtRemotePhlowBasicColumnedView
+column: aTitle numberDo: aBlock
+	aBlock value: (self numberColumn title: aTitle)
+%
+
+category: 'api - scripting column'
+method: GtRemotePhlowBasicColumnedView
+column: aTitleString text: aBlock	
+	self column: aTitleString textDo: [ :aColumn |
+		aColumn
+			item: [ :each | each ];
+			format: aBlock ]
 %
 
 category: 'api - scripting column'
@@ -4094,8 +4814,7 @@ column: columnName text: aBlockClosure spawn: aSpawnBlock
 	| aColumn |
 	aColumn := self column.
 	aColumn title: columnName.
-	aColumn text: aBlockClosure.
-	aColumn spawnObject: aSpawnBlock.
+	aColumn text: aBlockClosure spawn: aSpawnBlock.
 %
 
 category: 'api - scripting column'
@@ -4104,19 +4823,45 @@ column: columnName text: aBlockClosure spawn: aSpawnBlock width: aNumberOrNil
 	| aColumn |
 	aColumn := self column.
 	aColumn title: columnName.
-	aColumn text: aBlockClosure.
-	aColumn spawnObject: aSpawnBlock.
+	aColumn text: aBlockClosure spawn: aSpawnBlock.
 	aColumn width: aNumberOrNil.
 %
 
 category: 'api - scripting column'
 method: GtRemotePhlowBasicColumnedView
-column: columnName text: aBlockClosure width: aNumberOrNil
- 	| aColumn |
-	aColumn := self column.
-	aColumn title: columnName.
-	aColumn text: aBlockClosure.
-	aColumn width: aNumberOrNil.
+column: aTitleString text: aBlock weight: aNumber
+	self column: aTitleString textDo: [ :aColumn |
+		aColumn
+			item: [ :each | each ];
+			format: aBlock;
+			weight: aNumber ]
+%
+
+category: 'api - scripting column'
+method: GtRemotePhlowBasicColumnedView
+column: aTitleString text: aBlock width: aNumber
+	self column: aTitleString textDo: [ :aColumn |
+		aColumn
+			item: [ :each | each ];
+			format: aBlock;
+			width: aNumber ]
+%
+
+category: 'api - scripting column'
+method: GtRemotePhlowBasicColumnedView
+column: aTitleString textDo: aBlock
+	aBlock value: (self textColumn title: aTitleString)
+%
+
+category: 'api - scripting column'
+method: GtRemotePhlowBasicColumnedView
+columnOfType: aColumnClass
+	<return: #GtRemotePhlowColumn>
+	| aColumn |
+	
+	aColumn := aColumnClass new index: self columns size + 1.
+	self columns add: aColumn.
+	^ aColumn
 %
 
 category: 'accessing'
@@ -4135,12 +4880,44 @@ configureColumnsSpecificationOn: aViewSpecification
 			columnSpecification := GtRemotePhlowColumnSpecification new
 				title: aColumn title;
 				cellWidth: aColumn cellWidth;
-				type: aColumn asGtDeclarativeColumnDataType asString;
+				type: aColumn asGtDeclarativeColumnDataType;
 				spawnsObjects: aColumn isSpawningObject.
 			
 			aColumn hasBackgroundComputation ifTrue: [ 
 				columnSpecification  markAsHavingBackground ].
 			columnSpecification ] )
+%
+
+category: 'api - scripting column'
+method: GtRemotePhlowBasicColumnedView
+explicitColumn
+	<return: #GtRemotePhlowExplicitColumn>
+
+	^ self columnOfType: GtRemotePhlowExplicitColumn
+%
+
+category: 'api - scripting column'
+method: GtRemotePhlowBasicColumnedView
+iconNameColumn
+	<return: #GtRemotePhlowThemeIconNameColumn>
+
+	^ self columnOfType: GtRemotePhlowThemeIconNameColumn
+%
+
+category: 'api - scripting column'
+method: GtRemotePhlowBasicColumnedView
+numberColumn
+	<return: #GtRemotePhlowNumberColumn>
+
+	^ self columnOfType: GtRemotePhlowNumberColumn
+%
+
+category: 'api - scripting column'
+method: GtRemotePhlowBasicColumnedView
+textColumn
+	<return: #GtRemotePhlowTextColumn>
+
+	^ self columnOfType: GtRemotePhlowTextColumn
 %
 
 ! Class implementation for 'GtRemotePhlowColumnedListView'
@@ -4586,6 +5363,791 @@ phlowDeclarativeViews
 	^ views
 %
 
+! Class implementation for 'GtRmGeoGpsGroup'
+
+!		Instance methods for 'GtRmGeoGpsGroup'
+
+category: 'accessing'
+method: GtRmGeoGpsGroup
+add: anObject
+	self clearCache.
+	self items add: anObject
+%
+
+category: 'accessing'
+method: GtRmGeoGpsGroup
+addAll: aCollection
+	self clearCache.
+	self items addAll: aCollection
+%
+
+category: 'accessing'
+method: GtRmGeoGpsGroup
+cacheAt: aKey ifAbsentPut: aBlock
+	cache ifNil: [ 
+		cache := Dictionary new].
+	^ cache 
+		at: aKey
+		ifAbsentPut: [ aBlock value ]
+%
+
+category: 'accessing'
+method: GtRmGeoGpsGroup
+clearCache
+	cache := nil
+%
+
+category: 'accessing'
+method: GtRmGeoGpsGroup
+collect: aBlock
+	^ self items  collect: aBlock
+%
+
+category: 'accessing'
+method: GtRmGeoGpsGroup
+detect: aBlock ifNone: exceptionBlock
+	^ self items 
+		detect: aBlock ifNone: exceptionBlock
+%
+
+category: 'accessing'
+method: GtRmGeoGpsGroup
+do: aBlock 
+	self items do: aBlock
+%
+
+category: 'accessing'
+method: GtRmGeoGpsGroup
+items
+	^ items ifNil: [
+		items := OrderedCollection new ]
+%
+
+category: 'printing'
+method: GtRmGeoGpsGroup
+printOn: aStream
+	super printOn: aStream.
+	
+	aStream 
+		<< '[';
+		print: self size;
+		<< ' items';
+		<< ']'
+%
+
+category: 'accessing'
+method: GtRmGeoGpsGroup
+size
+	^ self items size
+%
+
+category: 'accessing'
+method: GtRmGeoGpsGroup
+sumNumbers: aBlock
+	^ self items
+		inject: 0 
+		into: [ :sum :each |  sum + (aBlock value: each) ]
+%
+
+! Class implementation for 'GtRmGeoGpsRecordsGroup'
+
+!		Instance methods for 'GtRmGeoGpsRecordsGroup'
+
+category: 'accessing'
+method: GtRmGeoGpsRecordsGroup
+computeDistance
+	| distance |
+	self size = 1 ifTrue: [ ^ 0 ].
+	distance := 0.
+	1 to: self size - 1 do: [ :anIndex |
+		distance := distance + (self
+			distanceFrom: (self items at: anIndex)
+			to: (self items at: anIndex + 1)) ].
+	^ distance
+%
+
+category: 'accessing'
+method: GtRmGeoGpsRecordsGroup
+distance
+	^ self 
+		cacheAt: 'distance' 
+		ifAbsentPut: [
+			self computeDistance ]
+%
+
+category: 'accessing'
+method: GtRmGeoGpsRecordsGroup
+distanceBetween: firstPosition and: secondPosition
+        "T3GeoTools distanceBetween: 5.33732@50.926 and: 5.49705@50.82733"
+
+        | c |
+        c := (firstPosition y degreesToRadians sin 
+        	* secondPosition y degreesToRadians sin)
+                + (firstPosition y degreesToRadians cos 
+                	* secondPosition y degreesToRadians cos
+                        * (secondPosition x degreesToRadians 
+                        	- firstPosition x degreesToRadians) cos).
+        c := c >= 0 ifTrue: [ 1 min: c ] ifFalse: [ -1 max: c ].
+        ^ c arcCos * 6371000
+%
+
+category: 'accessing'
+method: GtRmGeoGpsRecordsGroup
+distanceFrom: firstRecord to: secondRecord
+	| c |
+    c := (firstRecord longitude degreesToRadians sin 
+    	* secondRecord longitude degreesToRadians sin)
+			+ (firstRecord longitude degreesToRadians cos 
+				* secondRecord longitude degreesToRadians cos
+            		* (secondRecord latitude degreesToRadians 
+            			- firstRecord latitude degreesToRadians) cos).
+    c := c >= 0 ifTrue: [ 1 min: c ] ifFalse: [ -1 max: c ].
+    ^ c arcCos * 6371000
+%
+
+category: 'gt - extensions'
+method: GtRmGeoGpsRecordsGroup
+gtItemsFor: aView
+	<gtView>
+	
+	^ aView columnedList
+		title: 'Records';
+		items: [ self items ];
+		column: 'Timestamp' text: [ :aRecord | aRecord timestamp ];
+		column: 'Latitude' text: [ :aRecord | aRecord latitude ];
+		column: 'Longitude' text: [ :aRecord | aRecord longitude ]
+%
+
+! Class implementation for 'GtRmGeoGpsTrajectoriesGroup'
+
+!		Instance methods for 'GtRmGeoGpsTrajectoriesGroup'
+
+category: 'accessing'
+method: GtRmGeoGpsTrajectoriesGroup
+allRecords
+	^ self 
+		cacheAt: 'allRecords' 
+		ifAbsentPut: [  
+			self items
+				inject: GtRmGeoGpsRecordsGroup new 
+				into: [ :records :aTrajectory |
+					records addAll: aTrajectory records items.
+					records ] ]
+%
+
+category: 'gt - extensions'
+method: GtRmGeoGpsTrajectoriesGroup
+gtItemsFor: aView
+	<gtView>
+	
+	^ aView columnedList
+		title: 'Trajectories';
+		items: [ self items ];
+		column: 'Filename' text: [ :aTrajectory | 
+			aTrajectory targetFolderName ];
+		column: 'Records' text: [ :aTrajectory | 
+			aTrajectory numberOfRecords ];
+		column: 'Distance (km)' text: [ :aTrajectory | 
+			self 
+				gtDo: [
+					(aTrajectory distance /1000) printShowingDecimalPlaces: 2] 
+				gemstoneDo: [
+					(aTrajectory distance /1000) asStringUsingFormat: #(0 2 false)  ] ]
+%
+
+! Class implementation for 'GtRmGeoGpsUsersGroup'
+
+!		Instance methods for 'GtRmGeoGpsUsersGroup'
+
+category: 'accessing'
+method: GtRmGeoGpsUsersGroup
+allRecords
+	^ self 
+		cacheAt: 'allRecords'
+		ifAbsentPut: [ 
+			self allTrajectories allRecords ]
+%
+
+category: 'accessing'
+method: GtRmGeoGpsUsersGroup
+allTrajectories
+	^ self 
+		cacheAt: 'allTrajectories'
+		ifAbsentPut: [  
+			self items
+				inject: GtRmGeoGpsTrajectoriesGroup new 
+				into: [ :trajectories :aUser |
+					trajectories addAll: aUser trajectories.
+					trajectories ] ]
+%
+
+category: 'gt - extensions'
+method: GtRmGeoGpsUsersGroup
+gtItemsFor: aView
+	<gtView>
+	
+	^ aView columnedList
+		title: 'Users';
+		items: [ self items ];
+		column: 'Id' text: [ :aUser | aUser id ];
+		column: 'Number of trajectories' 
+			text: [ :aUser | aUser numberOfTrajectories ];
+		column: 'Number of records' 
+			text: [ :aUser | aUser numberOfRecords  ]
+%
+
+category: 'accessing'
+method: GtRmGeoGpsUsersGroup
+removeUser: aString
+	"Remove the supplied user.
+	GS only has #detect:ifNone: (not #detect:ifFound:)"
+
+	(items
+		detect: [ :user | user id = aString ]
+		ifNone: [ nil ]) ifNotNil:
+			[ :user | items remove: user ]
+%
+
+! Class implementation for 'GtRmGeoGpsRecord'
+
+!		Class methods for 'GtRmGeoGpsRecord'
+
+category: 'instance creation'
+classmethod: GtRmGeoGpsRecord
+fromJsonDictionary: aDictionary
+	^ self new 
+		initializeFomJsonDictionary: aDictionary
+%
+
+!		Instance methods for 'GtRmGeoGpsRecord'
+
+category: 'converting'
+method: GtRmGeoGpsRecord
+asJsonDictionary
+	^ {
+		#timestamp -> self timestamp.
+		#latitude -> self latitude.
+		#longitude -> self longitude } asDictionary
+%
+
+category: 'accessing'
+method: GtRmGeoGpsRecord
+asPoint
+
+	^ self longitude @ self latitude
+%
+
+category: 'initialization'
+method: GtRmGeoGpsRecord
+initializeFomJsonDictionary: aDictionary
+	self latitude: (aDictionary at: #latitude).
+	self longitude: (aDictionary at: #longitude).
+	self timestamp: (aDictionary at: #timestamp)
+%
+
+category: 'accessing'
+method: GtRmGeoGpsRecord
+latitude
+	^ latitude
+%
+
+category: 'accessing'
+method: GtRmGeoGpsRecord
+latitude: aFloat
+	latitude := aFloat
+%
+
+category: 'accessing'
+method: GtRmGeoGpsRecord
+longitude
+	^ longitude
+%
+
+category: 'accessing'
+method: GtRmGeoGpsRecord
+longitude: aFloat
+	longitude := aFloat
+%
+
+category: 'printing'
+method: GtRmGeoGpsRecord
+printOn: aStream
+	super printOn: aStream.
+	
+	aStream 
+		<< '(';
+		print: self timestamp;
+		<< '; ';
+		print: self latitude;
+		<< ', ';
+		print: self longitude;
+		<< ')'
+%
+
+category: 'accessing'
+method: GtRmGeoGpsRecord
+timestamp
+	^ timestamp
+%
+
+category: 'accessing'
+method: GtRmGeoGpsRecord
+timestamp: aDateAndTime
+	timestamp := aDateAndTime
+%
+
+! Class implementation for 'GtRmGeoGpsTrajectory'
+
+!		Class methods for 'GtRmGeoGpsTrajectory'
+
+category: 'instance creation'
+classmethod: GtRmGeoGpsTrajectory
+fromJsonDictionary: aDictionary
+	^ self new 
+		initializeFomJsonDictionary: aDictionary
+%
+
+!		Instance methods for 'GtRmGeoGpsTrajectory'
+
+category: 'adding'
+method: GtRmGeoGpsTrajectory
+addRecord: aRecord
+	self records add: aRecord
+%
+
+category: 'accessing'
+method: GtRmGeoGpsTrajectory
+asJsonDictionary
+	^ {
+		'targetFolderName' -> self targetFolderName.
+		'records' -> self recordsAsJsonData  } asDictionary
+%
+
+category: 'accessing'
+method: GtRmGeoGpsTrajectory
+distance
+	^ self records distance
+%
+
+category: 'gt - extensions'
+method: GtRmGeoGpsTrajectory
+gtViewGpsRecordsFor: aView
+
+	^ aView columnedList
+		title: 'Records';
+		items: [ self records items ];
+		column: 'Timestamp' text: [ :aRecord | aRecord timestamp ];
+		column: 'Latitude' text: [ :aRecord | aRecord latitude ];
+		column: 'Longitude' text: [ :aRecord | aRecord longitude ]
+%
+
+category: 'accessing'
+method: GtRmGeoGpsTrajectory
+gtViewMapFor: aView
+
+	^ aView explicit
+		title: 'OSM';
+		priority: 20;
+		stencil: [ self osmMap ]
+%
+
+category: 'initialization'
+method: GtRmGeoGpsTrajectory
+initializeFomJsonDictionary: aDictionary
+	self targetFolderName: (aDictionary at: 'targetFolderName').
+	
+	(aDictionary at: 'records') do: [ :aRecordData |
+		self addRecord:  (GtRmGeoGpsRecord 
+			fromJsonDictionary: aRecordData) ].
+%
+
+category: 'accessing'
+method: GtRmGeoGpsTrajectory
+numberOfRecords
+	^ self records size
+%
+
+category: 'printing'
+method: GtRmGeoGpsTrajectory
+printOn: aStream
+	super printOn: aStream.
+	
+	aStream 
+		<< '(';
+		print: self targetFolderName;
+		<< '; ';
+		print: self records size;
+		<< ' records';
+		<< ')'
+%
+
+category: 'accessing'
+method: GtRmGeoGpsTrajectory
+records
+	^ records ifNil: [
+		records := GtRmGeoGpsRecordsGroup new ]
+%
+
+category: 'accessing'
+method: GtRmGeoGpsTrajectory
+recordsAsJsonData
+	^ (self records collect: [ :aRecord |
+			aRecord asJsonDictionary ]) asArray
+%
+
+category: 'accessing'
+method: GtRmGeoGpsTrajectory
+targetFolderName
+	^ targetFolderName
+%
+
+category: 'accessing'
+method: GtRmGeoGpsTrajectory
+targetFolderName: aFolderName
+	targetFolderName := aFolderName
+%
+
+! Class implementation for 'GtRmGeolife'
+
+!		Class methods for 'GtRmGeolife'
+
+category: 'accessing'
+classmethod: GtRmGeolife
+defaultInstance
+	^ DEFAULT ifNil: [
+		DEFAULT := self new ]
+%
+
+category: 'accessing'
+classmethod: GtRmGeolife
+resetDefaultInstance
+	DEFAULT := nil
+%
+
+!		Instance methods for 'GtRmGeolife'
+
+category: 'adding'
+method: GtRmGeolife
+addUser: aUser
+	self users add: aUser
+%
+
+category: 'accessing'
+method: GtRmGeolife
+allRecords
+	
+	^ self users allRecords
+%
+
+category: 'accessing'
+method: GtRmGeolife
+allTrajectories
+	
+	^ self users allTrajectories
+%
+
+category: 'initialization'
+method: GtRmGeolife
+defaultUsersGroup
+	^ GtRmGeoGpsUsersGroup new
+%
+
+category: 'adding'
+method: GtRmGeolife
+ensureUserWithId: anId
+	^ self users 
+		detect: [ :aUser | aUser id = anId ];
+		ifNone: [ 
+			| newUser |
+			newUser := GtRmGeoUser new 
+				id: anId.
+			self addUser: newUser.
+			newUser ]
+%
+
+category: 'gt - extensions'
+method: GtRmGeolife
+gtViewSummaryDataFor: aView
+	<gtView>
+	
+	^ aView columnedList
+		title: 'Overview';
+		priority: 1;
+		items: [ self summaryData ];
+		column: 'Name' text: [ :array | array first ];
+		column: 'Value' text: [ :array | array second value ];
+		send: [ :array | array third value ]
+%
+
+category: 'gt - extensions'
+method: GtRmGeolife
+gtViewUsersFor: aView
+	<gtView>
+	
+	^ aView forward
+		title: 'Users';
+		priority: 10;
+		object: [ self users ];
+		view: #gtItemsFor:
+%
+
+category: 'accessing'
+method: GtRmGeolife
+numberOfUsers
+	^ self users size
+%
+
+category: 'printing'
+method: GtRmGeolife
+printOn: aStream
+	super printOn: aStream.
+	
+	aStream 
+		<< '(';
+		print: self numberOfUsers;
+		<< ' users';
+		<< ')'
+%
+
+category: 'accessing'
+method: GtRmGeolife
+removeUser: aString
+
+	self users removeUser: aString
+%
+
+category: 'accessing'
+method: GtRmGeolife
+summaryData
+	^ {
+		{'Users'. [ self users size]. [self users]}.
+		{'Trajectories'. [ self allTrajectories size]. [self allTrajectories]}.
+		{'Records'. [ self allRecords size]. [self allRecords]}
+	}
+%
+
+category: 'accessing'
+method: GtRmGeolife
+users
+	^ users ifNil: [
+		users := self defaultUsersGroup ]
+%
+
+! Class implementation for 'GtRmGeolifeBaseImporter'
+
+!		Instance methods for 'GtRmGeolifeBaseImporter'
+
+category: 'importing'
+method: GtRmGeolifeBaseImporter
+createRecordFromLine: aLine
+	| parts record |
+	record := GtRmGeoGpsRecord new.
+	parts := aLine splitOn: ','.
+	
+	record 
+		timestamp: (DateAndTime  
+			date: (Date fromString: parts sixth)
+			time: (Time fromString: parts seventh));
+		longitude: (parts second asNumber);
+		latitude:(parts first asNumber).
+		
+	^ record
+%
+
+category: 'importing'
+method: GtRmGeolifeBaseImporter
+createTrajectoryFromDirectory: aTrajectoryFolder 
+	| trajectory lines |
+	
+	trajectory := GtRmGeoGpsTrajectory new.
+	trajectory targetFolderName: aTrajectoryFolder basename.
+	lines := aTrajectoryFolder contents lines.
+	7 to: lines size do: [ :anIndex |
+		| record | 
+		record := self createRecordFromLine: (lines at: anIndex).
+		trajectory addRecord: record ].
+		
+	^ trajectory
+%
+
+category: 'accessing'
+method: GtRmGeolifeBaseImporter
+directoriesToImport
+	| directories |
+	
+	directories := (currentDirectory / 'Data') directories.
+	^ usersCount 
+		ifNil: [ directories ] 
+		ifNotNil: [ directories first: usersCount ]
+%
+
+category: 'accessing'
+method: GtRmGeolifeBaseImporter
+usersCount: aNumber
+	usersCount := aNumber
+%
+
+! Class implementation for 'GtRmGeolifeLocalImporter'
+
+!		Instance methods for 'GtRmGeolifeLocalImporter'
+
+category: 'importing'
+method: GtRmGeolifeLocalImporter
+createUserFromDirectory: aUserFolder
+	| user |
+	
+	user := GtRmGeoUser new.
+	user id: aUserFolder basename.
+	((aUserFolder / 'Trajectory') childrenMatching: '*.plt') 
+		do: [ :aTrajectoryFolder |
+			| trajectory |
+			trajectory := self createTrajectoryFromDirectory: aTrajectoryFolder.
+			user addTrajectory:trajectory ].
+	
+	^ user
+%
+
+category: 'importing'
+method: GtRmGeolifeLocalImporter
+importFromDirectory: aDirectory
+	| geoLife |
+	
+	currentDirectory := aDirectory.
+	geoLife := GtRmGeolife new.
+	
+	self directoriesToImport do: [ :aUserFolder |
+		self 
+			importUserFromDirectory: aUserFolder
+			into: geoLife ].
+		
+	^ geoLife
+%
+
+category: 'importing'
+method: GtRmGeolifeLocalImporter
+importUserFromDirectory: aUserFolder into: aGeolife
+	| user |
+	user := self createUserFromDirectory: aUserFolder.
+	aGeolife addUser: user
+%
+
+! Class implementation for 'GtRmGeoUser'
+
+!		Instance methods for 'GtRmGeoUser'
+
+category: 'adding'
+method: GtRmGeoUser
+addTrajectory: aTrajectory 
+	self trajectories add: aTrajectory
+%
+
+category: 'adding'
+method: GtRmGeoUser
+addTrajectoryFromJsonData: aJsonData
+	self addTrajectory: (GtRmGeoGpsTrajectory 
+		fromJsonDictionary:  aJsonData)
+%
+
+category: 'accessing'
+method: GtRmGeoUser
+allRecords
+	
+	^ self trajectories allRecords
+%
+
+category: 'gt - extensions'
+method: GtRmGeoUser
+gtViewRecordsFor: aView
+	<gtView>
+	
+	^ aView forward
+		title: 'Records';
+		priority: 10;
+		object: [ self allRecords ];
+		view: #gtItemsFor: 
+%
+
+category: 'gt - extensions'
+method: GtRmGeoUser
+gtViewSummaryDataFor: aView
+	<gtView>
+	
+	^ aView columnedList
+		title: 'Overview';
+		priority: 1;
+		items: [ self summaryData ];
+		column: 'Name' text: [ :array | array first ];
+		column: 'Value' text: [ :array | array second value ];
+		send: [ :array | array third value ]
+%
+
+category: 'gt - extensions'
+method: GtRmGeoUser
+gtViewTrajectoriesFor: aView
+	<gtView>
+	
+	^ aView forward
+		title: 'Trajectories';
+		priority: 5;
+		object: [ self trajectories ];
+		view: #gtItemsFor:
+%
+
+category: 'accessing'
+method: GtRmGeoUser
+id
+	^ id
+%
+
+category: 'accessing'
+method: GtRmGeoUser
+id: anObject
+	id := anObject
+%
+
+category: 'accessing'
+method: GtRmGeoUser
+numberOfRecords
+	^ self trajectories sumNumbers: [ :aTrajectory |
+		aTrajectory numberOfRecords ]
+%
+
+category: 'accessing'
+method: GtRmGeoUser
+numberOfTrajectories
+	^ self trajectories size
+%
+
+category: 'printing'
+method: GtRmGeoUser
+printOn: aStream
+	super printOn: aStream.
+	
+	aStream 
+		<< '(';
+		print: self id;
+		<< '; ';
+		print: self trajectories size;
+		<< ' trajectories';
+		<< ')'
+%
+
+category: 'accessing'
+method: GtRmGeoUser
+summaryData
+	^ {
+		{'Trajectories'. [ self trajectories size]. [self trajectories]}.
+		{'Records'. [ self allRecords size]. [self allRecords]}
+	}
+%
+
+category: 'accessing'
+method: GtRmGeoUser
+trajectories
+	^ trajectories ifNil: [
+		trajectories := GtRmGeoGpsTrajectoriesGroup new ]
+%
+
 ! Class extensions for 'AbstractDictionary'
 
 !		Instance methods for 'AbstractDictionary'
@@ -4992,10 +6554,3 @@ parenthesize: aBlock
 	aBlock ensure: [ self nextPut: $) ]
 %
 
-! Class Initialization
-
-run
-GtPhlowDeclarativeListingType initialize.
-GtRemotePhlowColumn initialize.
-true
-%

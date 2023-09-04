@@ -43,12 +43,55 @@ GtRemoteDeclarativeExamples >> columnedListViewLazyCheck: viewProxy [
 
 ]
 
+{ #category : #'examples - views' }
+GtRemoteDeclarativeExamples >> columnedListWithTypedColumns [
+	<gtExample>
+	<after: #stopServer>
+	| viewProxy viewDictionary viewSpecification |
+
+	viewProxy := self viewedObjectProxy.
+	viewDictionary := viewProxy getViewDeclaration: #gtColumnedListWithTypedColumnsFor:.
+	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
+	viewSpecification initializeFromInspector: viewProxy.
+	
+	self assert: viewSpecification title equals: 'Columned list with typed columns'.
+	self assert: viewSpecification priority equals: 24.
+	
+	self 
+		assert: viewSpecification methodSelector 
+		equals: #gtColumnedListWithTypedColumnsFor:.
+	self 
+		assert: (viewSpecification columnSpecifications 
+			collect: [ :aColumnSpecification | aColumnSpecification typeLabel ])
+		equals: #('text' 'number' 'icon').
+	self 
+		assert: viewSpecification columnTitles 
+		equals: #('Text' 'Number' 'Icon Name').
+	self 
+		assert: viewSpecification columnWidths 
+		equals: #(nil 100 75).
+	
+	self assert: viewSpecification totalItemsCount equals: 500.
+	
+	self 
+		assert: (viewSpecification retrieveItems: 2 fromIndex: 1)
+		equals: self expectedColumnedListTypedColumnsTwoItems.
+	
+	^ viewSpecification
+]
+
 { #category : #private }
 GtRemoteDeclarativeExamples >> declarativeViewNames [
 	"Answer the expected array of declarative views from the remote.
 	Subclasses may overwrite this if the set of views is different."
 
 	^ #('gtLargeListFor:' 'gtStringFor:' 'gtListFor:' 'gtLargeColumnedListWithIndexFor:' 'gtColumnedListFor:' 'gtLargeColumnedListFor:' 'gtRemotePrintFor:')
+]
+
+{ #category : #'examples - views' }
+GtRemoteDeclarativeExamples >> expectedColumnedListTypedColumnsTwoItems [
+	^ ((Array new: 2) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#itemText->'+1'); yourself); at: 2 put: ((Dictionary new) add: (#itemText->'+1'); yourself); at: 3 put: ((Dictionary new) add: (#itemText->#classIcon); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#itemText->'+2'); yourself); at: 2 put: ((Dictionary new) add: (#itemText->'+2'); yourself); at: 3 put: ((Dictionary new) add: (#itemText->#classIcon); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); yourself)
 ]
 
 { #category : #private }
@@ -69,21 +112,17 @@ GtRemoteDeclarativeExamples >> getViewedObjectProxy [
 GtRemoteDeclarativeExamples >> listView [
 	<gtExample>
 	<after: #stopServer>
-	| viewProxy viewDictionary view data |
+	| viewProxy viewDictionary view |
 
 	viewProxy := self viewedObjectProxy.
-	viewDictionary :=  viewProxy getViewDeclaration: #gtListFor:.
+	viewDictionary := viewProxy getViewDeclaration: #gtListFor:.
 	view := GtPhlowViewSpecification fromDictionary: viewDictionary.
 	
 	self assert: view title equals: #List.
 	self assert: view priority equals: 15.
 	
-	view dataTransport = GtPhlowViewSpecification dataIncluded ifTrue:
-		[ data := view items.
-		self assert: data size equals: 3.
-		self assert: data equals: self listViewDisplayArray ].
-	view dataTransport = GtPhlowViewSpecification dataLazy ifTrue:
-		[ self listViewLazyCheck: viewProxy ].
+	self listViewLazyCheck: viewProxy.
+	
 	^ view
 ]
 
@@ -100,7 +139,6 @@ GtRemoteDeclarativeExamples >> listViewLazyCheck: viewProxy [
 
 	declarativeView := viewProxy getDeclarativeViewFor: #gtListFor:.
 	self assert: declarativeView retrieveTotalItemsCount equals: 3.
-
 ]
 
 { #category : #private }

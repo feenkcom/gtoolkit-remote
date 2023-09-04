@@ -8,3 +8,8 @@ Class {
 GtPhlowTextLinkDeclarativeListingType class >> typeLabel [
 	^ #textLink
 ]
+
+{ #category : #testing }
+GtPhlowTextLinkDeclarativeListingType >> isTextLinkListingType [
+	^ true
+]

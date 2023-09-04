@@ -87,16 +87,22 @@ GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListWithTypedColumnsFor: aV
 		title: 'Columned list with typed columns';
 		priority: 24;
 		items: [ 1 to: 500 ];
-		column: 'Float' textDo: [ :aColumn | 
+		column: 'Text' textDo: [ :aColumn | 
 			aColumn 
 				item: [ :aNumber | aNumber asFloat ];
 				format: [ :aFloat | 
 					'+',aFloat asString ] ];
-		column: 'Value + 1' numberDo: [ :aColumn | 
+		column: 'Number' numberDo: [ :aColumn | 
 			aColumn
 				item: [ :aNumber | aNumber + 1 ];
 				format: [ :aNumber | '+',aNumber asString ];
-				width: 100 ]
+				width: 100 ];
+		column: 'Icon Name' iconNameDo: [ :aColumn | 
+			aColumn 
+				item: [ :aNumber | aNumber asFloat ];
+				iconName: [ :aFloat | 
+					aFloat gtSystemIconName ];
+				width: 75 ]
 ]
 
 { #category : #inspecting }

@@ -1,9 +1,6 @@
 Class {
 	#name : #GtPhlowDeclarativeListingType,
 	#superclass : #Object,
-	#instVars : [
-		'type'
-	],
 	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
@@ -18,7 +15,7 @@ GtPhlowDeclarativeListingType class >> forTypeLabel: aValue [
 
 { #category : #'types creation' }
 GtPhlowDeclarativeListingType class >> iconName [
-	^ GtPhlowIconNameDeclarativeListingType new
+	^ GtPhlowThemeIconNameDeclarativeListingType new
 ]
 
 { #category : #'types creation' }
@@ -44,6 +41,16 @@ GtPhlowDeclarativeListingType class >> typeLabel [
 { #category : #'types creation' }
 GtPhlowDeclarativeListingType class >> unknown [
 	^ GtPhlowUnknownDeclarativeListingType new
+]
+
+{ #category : #testing }
+GtPhlowDeclarativeListingType >> isIconNameListingType [
+	^ false
+]
+
+{ #category : #testing }
+GtPhlowDeclarativeListingType >> isTextLinkListingType [
+	^ false
 ]
 
 { #category : #testing }

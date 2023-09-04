@@ -10,7 +10,7 @@ TGtPhlowColumnedRemoteSpecification >> buildRemoteColumnsSpecifications [
 					ifTrue: [ aCellWidth width ]
 					ifFalse: [nil]]);
 			type: aColumn asGtDeclarativeColumnDataType;
-			spawnsObjects:  false;
+			spawnsObjects:  aColumn isSpawningObject;
 			in: [ :aColumnSpecification |
 				aColumn hasBackgroundComputation ifTrue: [ 
 					aColumnSpecification  markAsHavingBackground ].

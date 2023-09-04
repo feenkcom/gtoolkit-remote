@@ -6,30 +6,19 @@ Class {
 		'title',
 		'width',
 		'itemComputation',
-		'type',
-		'spawnObjectComputation',
 		'backgroundComputation'
-	],
-	#classVars : [
-		'IconType',
-		'TextType'
 	],
 	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
 
-{ #category : #initialization }
-GtRemotePhlowColumn class >> initialize [
-	TextType := #text.
-	IconType := #icon
+{ #category : #testing }
+GtRemotePhlowColumn class >> isAbstract [
+	^ self name = #GtRemotePhlowColumn
 ]
 
 { #category : #converting }
 GtRemotePhlowColumn >> asGtDeclarativeColumnDataType [
-	^ self isWithIcon
-		ifTrue: [ GtPhlowDeclarativeListingType iconName ]
-		ifFalse: [ self isSpawningObject
-			ifTrue: [ GtPhlowDeclarativeListingType textLink ]
-			ifFalse: [ GtPhlowDeclarativeListingType text ] ]
+	^ self subclassResponsibility
 ]
 
 { #category : #'api - scripting' }
@@ -49,31 +38,34 @@ GtRemotePhlowColumn >> cellWidth [
 
 { #category : #computation }
 GtRemotePhlowColumn >> computeItemValuesFor: anObject rowIndex: rowIndex columnIndex: columnIndex [
-	| cellValues itemValue |
-	cellValues := GtRemotePhlowItemValue new.
+	| cellValue itemValue |
+	cellValue := self createRemotePhlowCellValue.
 	
 	itemValue := self itemComputation 
 		cull: anObject cull: rowIndex cull: columnIndex.
 		
-	cellValues 
-		itemText: itemValue gtDisplayString.
+	self 
+		updateValue: cellValue 
+		forComputedItem: anObject 
+		rowIndex: rowIndex 
+		columnIndex: columnIndex.
+	
 	self hasBackgroundComputation ifTrue: [
-		cellValues 
+		cellValue 
 			background: (self backgroundComputation
 				cull: itemValue cull: anObject cull: rowIndex cull: columnIndex) ].
 	
-	^ cellValues
+	^ cellValue
 ]
 
-{ #category : #testings }
+{ #category : #computation }
+GtRemotePhlowColumn >> createRemotePhlowCellValue [
+	^ GtRemotePhlowItemValue new
+]
+
+{ #category : #testing }
 GtRemotePhlowColumn >> hasBackgroundComputation [
 	^ backgroundComputation notNil
-]
-
-{ #category : #'api - scripting' }
-GtRemotePhlowColumn >> iconName: aBlock [
-	itemComputation := aBlock.
-	type := IconType
 ]
 
 { #category : #accessing }
@@ -88,12 +80,12 @@ GtRemotePhlowColumn >> index: aColumnIndex [
 
 { #category : #testing }
 GtRemotePhlowColumn >> isSpawningObject [
-	^ spawnObjectComputation notNil
+	^ false
 ]
 
-{ #category : #testing }
-GtRemotePhlowColumn >> isWithIcon [
-	^ type = IconType
+{ #category : #accessing }
+GtRemotePhlowColumn >> item: anItemComputation [
+	itemComputation := anItemComputation
 ]
 
 { #category : #accessing }
@@ -108,30 +100,6 @@ GtRemotePhlowColumn >> rowStencil [
 ]
 
 { #category : #accessing }
-GtRemotePhlowColumn >> spawnObject: aBlock [
-	"aBlock should return an Object that should be spawned when clicked on:
-		- a link button if the column data type is #text
-		- a link icon if the column data type is #icon.
-
-	Setting a spawnObject influences how a cell is rendered"
-
-	spawnObjectComputation := aBlock
-]
-
-{ #category : #accessing }
-GtRemotePhlowColumn >> spawnObjectComputation [
-	"If nil, the cell does not spawn an object"
-
-	^ spawnObjectComputation
-]
-
-{ #category : #'api - scripting' }
-GtRemotePhlowColumn >> text: aBlock [
-	itemComputation := aBlock.
-	type := TextType
-]
-
-{ #category : #accessing }
 GtRemotePhlowColumn >> title [
 	^ title
 ]
@@ -139,6 +107,12 @@ GtRemotePhlowColumn >> title [
 { #category : #'api - scripting' }
 GtRemotePhlowColumn >> title: anObject [
 	title := anObject
+]
+
+{ #category : #computation }
+GtRemotePhlowColumn >> updateValue: aCellValue forComputedItem: aComputedItem rowIndex: rowIndex columnIndex: columnIndex [
+	aCellValue 
+		itemText: aComputedItem gtDisplayString.
 ]
 
 { #category : #accessing }
