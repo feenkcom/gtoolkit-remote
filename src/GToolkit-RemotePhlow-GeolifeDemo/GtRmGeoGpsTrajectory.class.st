@@ -32,14 +32,23 @@ GtRmGeoGpsTrajectory >> distance [
 ]
 
 { #category : #'gt - extensions' }
-GtRmGeoGpsTrajectory >> gtViewRecordsFor: aView [
-	<gtView>
-	
-	^ aView forward
+GtRmGeoGpsTrajectory >> gtViewGpsRecordsFor: aView [
+
+	^ aView columnedList
 		title: 'Records';
-		priority: 10;
-		object: [ self records ];
-		view: #gtItemsFor: 
+		items: [ self records items ];
+		column: 'Timestamp' text: [ :aRecord | aRecord timestamp ];
+		column: 'Latitude' text: [ :aRecord | aRecord latitude ];
+		column: 'Longitude' text: [ :aRecord | aRecord longitude ]
+]
+
+{ #category : #accessing }
+GtRmGeoGpsTrajectory >> gtViewMapFor: aView [
+
+	^ aView explicit
+		title: 'OSM';
+		priority: 20;
+		stencil: [ self osmMap ]
 ]
 
 { #category : #initialization }
@@ -54,6 +63,20 @@ GtRmGeoGpsTrajectory >> initializeFomJsonDictionary: aDictionary [
 { #category : #accessing }
 GtRmGeoGpsTrajectory >> numberOfRecords [
 	^ self records size
+]
+
+{ #category : #accessing }
+GtRmGeoGpsTrajectory >> osmMap [
+	| map path points |
+
+	map := GtOsmMap new zoom: 15.
+	points := self records collect: #asPoint.
+	points do: 
+		[ :point | map includeCoordinate: point ].
+	map addChildren.
+	path := GtOsmPath new coordinates: points.
+	path addToMap: map.
+	^ map asScalableElement
 ]
 
 { #category : #printing }
