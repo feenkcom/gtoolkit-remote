@@ -136,3 +136,8 @@ GtRemotePhlowColumnSpecification >> type [
 GtRemotePhlowColumnSpecification >> type: anObject [
 	type := anObject
 ]
+
+{ #category : #accessing }
+GtRemotePhlowColumnSpecification >> typeLabel [
+	^ self type typeLabel
+]

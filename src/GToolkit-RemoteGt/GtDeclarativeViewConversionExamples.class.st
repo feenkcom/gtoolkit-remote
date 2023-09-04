@@ -80,6 +80,32 @@ GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableColumn
 ]
 
 { #category : #examples }
+GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableColumnedListWithTypedColumns [
+	"Check the conversion to declarative specification with data"
+	<gtExample>
+	| declarativeSpecification |
+
+	declarativeSpecification := (GtRemotePhlowDeclarativeTestInspectable new 
+		gtColumnedListWithTypedColumnsFor: GtPhlowProtoView new)
+			asGtDeclarativeView.
+
+	self assert: declarativeSpecification title equals: 'Columned list with typed columns'.
+	self assert: declarativeSpecification priority equals: 24.
+	self 
+		assert: (declarativeSpecification columnSpecifications 
+			collect: [ :aColumnSpecification | aColumnSpecification typeLabel ])
+		equals: #('text' 'number' 'icon').
+	self 
+		assert: declarativeSpecification columnTitles 
+		equals: #('Text' 'Number' 'Icon Name').
+	self 
+		assert: declarativeSpecification columnWidths 
+		equals: #(nil 100 75).
+	
+	^ declarativeSpecification
+]
+
+{ #category : #examples }
 GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableList [
 	"Check the conversion to declarative specification with data"
 	<gtExample>
@@ -112,7 +138,6 @@ GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableText [
 	self assert: declarativeSpecification string equals: 'hello world'.
 	
 	^ declarativeSpecification
-
 ]
 
 { #category : #examples }
