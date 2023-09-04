@@ -23,6 +23,12 @@ GtRmGeoGpsRecord >> asJsonDictionary [
 		#longitude -> self longitude } asDictionary
 ]
 
+{ #category : #accessing }
+GtRmGeoGpsRecord >> asPoint [
+
+	^ self longitude @ self latitude
+]
+
 { #category : #initialization }
 GtRmGeoGpsRecord >> initializeFomJsonDictionary: aDictionary [
 	self latitude: (aDictionary at: #latitude).
