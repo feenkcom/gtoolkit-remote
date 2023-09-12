@@ -13,7 +13,7 @@ GtPhlowTypedColumn >> computeItemValuesFor: anObject rowIndex: rowIndex columnIn
 
 	self 
 		updateValue: cellValue 
-		forComputedItem: anObject 
+		forComputedItem: itemValue 
 		rowIndex: rowIndex 
 		columnIndex: columnIndex.
 	
