@@ -46,7 +46,7 @@ GtRemotePhlowColumn >> computeItemValuesFor: anObject rowIndex: rowIndex columnI
 		
 	self 
 		updateValue: cellValue 
-		forComputedItem: anObject 
+		forComputedItem: itemValue 
 		rowIndex: rowIndex 
 		columnIndex: columnIndex.
 	

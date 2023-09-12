@@ -2740,7 +2740,7 @@ computeItemValuesFor: anObject rowIndex: rowIndex columnIndex: columnIndex
 		
 	self 
 		updateValue: cellValue 
-		forComputedItem: anObject 
+		forComputedItem: itemValue 
 		rowIndex: rowIndex 
 		columnIndex: columnIndex.
 	
