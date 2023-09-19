@@ -5,11 +5,17 @@ Class {
 }
 
 { #category : #building }
-GtRemotePhlowItemBuilder >> computeNodeValueForObject: anObject atIndex: anIndex [ 
-	^ GtRemotePhlowItemValue new 
+GtRemotePhlowItemBuilder >> basicComputeNodeValueForObject: anObject atIndex: anIndex [ 
+	^ GtRemotePhlowItemTextualValue new 
 		itemText: (self 
 			formatItem: anObject 
 			atIndex: anIndex)
+]
+
+{ #category : #building }
+GtRemotePhlowItemBuilder >> computeNodeValueForObject: anObject atIndex: anIndex [ 
+	^ self withErrorHandlingCompute: [ 
+		self basicComputeNodeValueForObject: anObject atIndex: anIndex ] 
 ]
 
 { #category : #accessing }

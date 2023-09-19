@@ -9,7 +9,7 @@ Class {
 
 { #category : #accessing }
 GtRemotePhlowNodeValueBuilder >> computeNodeValueForObject: anObject atIndex: anIndex [ 
-	self subclassResponsibility
+	^ self subclassResponsibility
 ]
 
 { #category : #accessing }
@@ -20,4 +20,13 @@ GtRemotePhlowNodeValueBuilder >> phlowView [
 { #category : #accessing }
 GtRemotePhlowNodeValueBuilder >> phlowView: anObject [
 	phlowView := anObject
+]
+
+{ #category : #building }
+GtRemotePhlowNodeValueBuilder >> withErrorHandlingCompute: aBlock [
+	^ aBlock
+		on: Error 
+		do: [ :anError |
+			GtRemotePhlowItemErrorValue new
+				itemText: anError description ] 
 ]

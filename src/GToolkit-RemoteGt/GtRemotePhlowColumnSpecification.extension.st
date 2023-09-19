@@ -12,9 +12,9 @@ GtRemotePhlowColumnSpecification >> createColumnAtIndex: aColumnIndex inViewSpec
 
 	column title: self title.
 	
-	self hasBackground ifTrue: [
-		column background: [ :aText :aColumnedNode | 
-			(aColumnedNode columnValueAt: aColumnIndex) background ] ].
+	column background: [ :aText :aColumnedNode | 
+		(aColumnedNode columnValueAt: aColumnIndex) background ifNil: [
+			Color transparent] ].
 	
 	self cellWidth ifNotNil: [ :aWidth | 
 		column width: aWidth ]
