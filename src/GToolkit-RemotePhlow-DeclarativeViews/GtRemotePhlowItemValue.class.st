@@ -11,28 +11,53 @@ Class {
 { #category : #'instance creation' }
 GtRemotePhlowItemValue class >> fromJSONDictionary: aDictionary [
 	"Answer an instance of the receiver from the supplied dictionary."
+	| valueClass |
 
-	^self new 
-		itemText: (aDictionary at: #itemText);
-		background: (aDictionary 
-			at: #background 
-			ifPresent: [ :aBackgroundValue |
-				GtPhlowColor fromJSONDictionary: aBackgroundValue ]
-			ifAbsent: [ nil ]);
-		yourself
+	valueClass := self valueTypeFrom: aDictionary.
+		
+	^ valueClass new
+		initializeFromJSONDictionary: aDictionary
+]
+
+{ #category : #'instance creation' }
+GtRemotePhlowItemValue class >> valueTypeFrom: aDictionary [ 
+	^ (aDictionary 
+		at: #valueTypeName 
+		ifPresent: [ :aTypeName |
+			| detectedType |
+			"There are only two types now so we can do a manual check, 
+			as it will be faster; this is called for every value in a table.
+			As we add more types we can extend this."
+			detectedType := GtRemotePhlowItemValue.
+			aTypeName = GtRemotePhlowItemTextualValue valueTypeName
+				ifTrue: [ detectedType := GtRemotePhlowItemTextualValue ].
+			aTypeName = GtRemotePhlowItemErrorValue valueTypeName
+				ifTrue: [ detectedType := GtRemotePhlowItemErrorValue ].
+			detectedType ]
+		ifAbsent: [ GtRemotePhlowItemValue ])
+]
+
+{ #category : #accessing }
+GtRemotePhlowItemValue class >> valueTypeName [
+	^ 'item'
 ]
 
 { #category : #converting }
 GtRemotePhlowItemValue >> asDictionaryForExport [
 	"Answer the receiver as a dictionary ready for JSON serialisation"
 
-	| data| 
+	| data | 
+	
 	data := Dictionary new 
 		at: #itemText put: self itemText;
+		at: #valueTypeName put: self class valueTypeName;
 		yourself.
 		
-	self background ifNotNil: [ :aBackground |
+	"We check the attribute here instead of using the accessor,
+	as subclasses can provide default value in case the background is nil"
+	background ifNotNil: [ :aBackground |
 		data at: #background put: aBackground asDictionaryForExport  ].
+	
 	^ data
 ]
 
@@ -44,6 +69,21 @@ GtRemotePhlowItemValue >> background [
 { #category : #accessing }
 GtRemotePhlowItemValue >> background: anObject [
 	background := anObject
+]
+
+{ #category : #initialization }
+GtRemotePhlowItemValue >> initializeFromJSONDictionary: aDictionary [
+	self itemText: (aDictionary at: #itemText).
+	
+	aDictionary 
+		at: #background 
+		ifPresent: [ :aBackgroundValue |
+			self background: (GtPhlowColor fromJSONDictionary: aBackgroundValue) ]
+]
+
+{ #category : #testing }
+GtRemotePhlowItemValue >> isErrorItemValue [
+	^ false
 ]
 
 { #category : #accessing }

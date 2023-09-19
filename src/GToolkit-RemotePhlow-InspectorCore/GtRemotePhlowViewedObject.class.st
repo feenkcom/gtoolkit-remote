@@ -17,6 +17,18 @@ GtRemotePhlowViewedObject class >> object: anObject [
 	^ self new initializeWith: anObject
 ]
 
+{ #category : #initialization }
+GtRemotePhlowViewedObject >> computeViewSpecificationForPhlowView: aPhlowView [
+	^ [ aPhlowView asGtDeclarativeView ] 
+		on: Error do: [ :anError |
+			| errorView |
+			errorView := aPhlowView phlowErrorViewWithException: anError.
+			errorView title: aPhlowView title.
+			errorView priority: aPhlowView priority.
+			
+			errorView asGtDeclarativeView ]
+]
+
 { #category : #accessing }
 GtRemotePhlowViewedObject >> declarativeViewsBySelector [
 	declarativeViewsBySelector ifNil: [ 
@@ -64,16 +76,17 @@ GtRemotePhlowViewedObject >> getViewsDeclarations [
 GtRemotePhlowViewedObject >> initializeDeclarativeViews [
 	| phlowViews |
 	declarativeViewsBySelector := Dictionary new.
-	
+
 	phlowViews := self phlowDeclarativeViews.
-	phlowViews do: [ :aPhlowView | 
-		| declarativeView |
-		declarativeView := aPhlowView asGtDeclarativeView.
-		declarativeView ifNotNil: [
-			declarativeView methodSelector: aPhlowView definingSelector.
-			declarativeViewsBySelector 
-				at: aPhlowView definingSelector 
-				put: declarativeView ] ]
+	phlowViews
+		do: [ :aPhlowView | 
+			| viewSpecification |
+			viewSpecification := self computeViewSpecificationForPhlowView: aPhlowView.
+			viewSpecification
+				ifNotNil: [ viewSpecification methodSelector: aPhlowView definingSelector.
+					declarativeViewsBySelector
+						at: aPhlowView definingSelector
+						put: viewSpecification ] ]
 ]
 
 { #category : #initialization }

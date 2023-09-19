@@ -5,6 +5,6 @@ GtPhlowNumberDeclarativeListingType >> createColumnWithSpecification: aColumnSpe
 
 	^ aColumnedView numberColumn
 		format: [ :aColumnedNode | 
-						(aColumnedNode columnValueAt: aColumnIndex) itemText ];
+			(aColumnedNode columnValueAt: aColumnIndex) itemText ];
 		yourself
 ]

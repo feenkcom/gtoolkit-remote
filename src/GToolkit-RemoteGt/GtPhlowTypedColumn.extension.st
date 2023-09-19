@@ -29,7 +29,7 @@ GtPhlowTypedColumn >> computeItemValuesFor: anObject rowIndex: rowIndex columnIn
 
 { #category : #'*GToolkit-RemoteGt' }
 GtPhlowTypedColumn >> createRemotePhlowCellValue [
-	^ GtRemotePhlowItemValue new
+	^ GtRemotePhlowItemTextualValue new
 ]
 
 { #category : #'*GToolkit-RemoteGt' }

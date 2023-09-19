@@ -17,6 +17,12 @@ GtPhlowListViewSpecification >> viewFor: aView [
 		items: [ (GtRemoteInspectorListingBufferedStream declarativeView: self)
 			collect: [ :aNodeDictionary |
 				GtRemotePhlowDataNode fromJSONDictionary: aNodeDictionary ] ];
+		itemType: [ :anItemTypeFactory :aDataNode :aDataNodeIndex | 
+			aDataNode nodeValue isErrorItemValue
+				ifTrue: [
+					GtPhlowExceptionItemType 
+						exception: aDataNode nodeValue remoteExceptionWrapper ]
+				ifFalse: [ anItemTypeFactory default ] ];
 		itemText: [ :aDataNode | aDataNode nodeValue itemText ];
 		actionButtonIcon: BrGlamorousVectorIcons refresh 
 			tooltip: 'Update'

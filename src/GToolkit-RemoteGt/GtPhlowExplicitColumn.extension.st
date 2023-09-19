@@ -10,7 +10,7 @@ GtPhlowExplicitColumn >> asGtDeclarativeColumnDataType [
 { #category : #'*GToolkit-RemoteGt' }
 GtPhlowExplicitColumn >> computeItemValuesFor: anObject rowIndex: rowIndex columnIndex: columnIndex [
 	| cellValue itemValue |
-	cellValue := GtRemotePhlowItemValue new.
+	cellValue := GtRemotePhlowItemTextualValue new.
 	
 	itemValue := self itemComputation 
 		phlowValue: anObject
@@ -22,7 +22,8 @@ GtPhlowExplicitColumn >> computeItemValuesFor: anObject rowIndex: rowIndex colum
 	self hasBackgroundComputation ifTrue: [
 		cellValue 
 			background: (self backgroundComputation
-				phlowValue: itemValue withEnoughArguments: { anObject . rowIndex . columnIndex }) ].
+				phlowValue: itemValue 
+				withEnoughArguments: { anObject . rowIndex . columnIndex }) ].
 	
 	^ cellValue
 ]

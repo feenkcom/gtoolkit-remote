@@ -60,7 +60,7 @@ GtRemotePhlowColumn >> computeItemValuesFor: anObject rowIndex: rowIndex columnI
 
 { #category : #computation }
 GtRemotePhlowColumn >> createRemotePhlowCellValue [
-	^ GtRemotePhlowItemValue new
+	^ GtRemotePhlowItemTextualValue new
 ]
 
 { #category : #testing }

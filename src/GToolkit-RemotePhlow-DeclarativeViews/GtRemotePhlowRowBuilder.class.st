@@ -12,16 +12,17 @@ GtRemotePhlowRowBuilder >> computeNodeValueForObject: anObject atIndex: aRowInde
 	columnValues := Array new: phlowColumns size.
 	
 	phlowColumns withIndexDo: [ :aColumn :aColumnIndex | 
-		| computedValues |
+		| computedValue |
 	
-		computedValues := aColumn 
-			computeItemValuesFor: anObject
-			rowIndex: aRowIndex
-			columnIndex: aColumnIndex.
+		computedValue := self withErrorHandlingCompute: [ 
+			aColumn 
+				computeItemValuesFor: anObject
+				rowIndex: aRowIndex
+				columnIndex: aColumnIndex ].
 	
 		columnValues 
 			at: aColumnIndex
-			put: computedValues ].
+			put: computedValue ].
 
 	^ GtRemotePhlowRowValue new
 		columnValues: columnValues

@@ -23,6 +23,7 @@ GtRemotePhlowDeclarativeTreeExamples >> expectedFormattedItems [
 			put: (Dictionary new
 					add: #nodeValue
 							-> (Dictionary new
+									add: #valueTypeName -> 'textualValue';
 									add: #itemText -> '1';
 									yourself);
 					add: #nodeId -> 1;
@@ -31,6 +32,7 @@ GtRemotePhlowDeclarativeTreeExamples >> expectedFormattedItems [
 			put: (Dictionary new
 					add: #nodeValue
 							-> (Dictionary new
+									add: #valueTypeName -> 'textualValue';
 									add: #itemText -> '2';
 									yourself);
 					add: #nodeId -> 2;
@@ -39,6 +41,7 @@ GtRemotePhlowDeclarativeTreeExamples >> expectedFormattedItems [
 			put: (Dictionary new
 					add: #nodeValue
 							-> (Dictionary new
+									add: #valueTypeName -> 'textualValue';
 									add: #itemText -> '3';
 									yourself);
 					add: #nodeId -> 3;
@@ -47,6 +50,7 @@ GtRemotePhlowDeclarativeTreeExamples >> expectedFormattedItems [
 			put: (Dictionary new
 					add: #nodeValue
 							-> (Dictionary new
+									add: #valueTypeName -> 'textualValue';
 									add: #itemText -> '4';
 									yourself);
 					add: #nodeId -> 4;

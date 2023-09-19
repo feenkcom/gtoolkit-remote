@@ -901,6 +901,43 @@ removeallmethods GtRemotePhlowItemValue
 removeallclassmethods GtRemotePhlowItemValue
 
 doit
+(GtRemotePhlowItemValue
+	subclass: 'GtRemotePhlowItemErrorValue'
+	instVarNames: #(  )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		comment: 'I am a node modeling an error that happened during the computation';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowItemErrorValue
+removeallclassmethods GtRemotePhlowItemErrorValue
+
+doit
+(GtRemotePhlowItemValue
+	subclass: 'GtRemotePhlowItemTextualValue'
+	instVarNames: #(  )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowItemTextualValue
+removeallclassmethods GtRemotePhlowItemTextualValue
+
+doit
 (GtRemotePhlowNodeValue
 	subclass: 'GtRemotePhlowRowValue'
 	instVarNames: #( columnValues )
@@ -1127,24 +1164,6 @@ true.
 
 removeallmethods GtRemotePhlowColumnedListView
 removeallclassmethods GtRemotePhlowColumnedListView
-
-doit
-(GtRemotePhlowColumnedListView
-	subclass: 'GtRemotePhlowColumnedList'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
-	poolDictionaries: #()
-	inDictionary: Globals
-	options: #( #logCreation )
-)
-		category: 'GToolkit-RemotePhlow-PhlowViews';
-		immediateInvariant.
-true.
-%
-
-removeallmethods GtRemotePhlowColumnedList
-removeallclassmethods GtRemotePhlowColumnedList
 
 doit
 (GtRemotePhlowBasicColumnedView
@@ -2390,7 +2409,7 @@ declarativeViewNames
 category: 'examples - views'
 method: GtRemoteDeclarativeExamples
 expectedColumnedListTypedColumnsTwoItems
-	^ ((Array new: 2) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#itemText->'+1'); yourself); at: 2 put: ((Dictionary new) add: (#itemText->'+1'); yourself); at: 3 put: ((Dictionary new) add: (#itemText->#classIcon); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#itemText->'+2'); yourself); at: 2 put: ((Dictionary new) add: (#itemText->'+2'); yourself); at: 3 put: ((Dictionary new) add: (#itemText->#classIcon); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); yourself)
+	^ ((Array new: 2) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#itemText->'+1.0'); yourself); at: 2 put: ((Dictionary new) add: (#itemText->'+2'); yourself); at: 3 put: ((Dictionary new) add: (#itemText->#classIcon); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#itemText->'+2.0'); yourself); at: 2 put: ((Dictionary new) add: (#itemText->'+3'); yourself); at: 3 put: ((Dictionary new) add: (#itemText->#classIcon); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); yourself)
 %
 
 category: 'private'
@@ -2755,7 +2774,7 @@ computeItemValuesFor: anObject rowIndex: rowIndex columnIndex: columnIndex
 category: 'computation'
 method: GtRemotePhlowColumn
 createRemotePhlowCellValue
-	^ GtRemotePhlowItemValue new
+	^ GtRemotePhlowItemTextualValue new
 %
 
 category: 'testing'
@@ -4200,15 +4219,37 @@ category: 'instance creation'
 classmethod: GtRemotePhlowItemValue
 fromJSONDictionary: aDictionary
 	"Answer an instance of the receiver from the supplied dictionary."
+	| valueClass |
 
-	^self new 
-		itemText: (aDictionary at: #itemText);
-		background: (aDictionary 
-			at: #background 
-			ifPresent: [ :aBackgroundValue |
-				GtPhlowColor fromJSONDictionary: aBackgroundValue ]
-			ifAbsent: [ nil ]);
-		yourself
+	valueClass := self valueTypeFrom: aDictionary.
+		
+	^ valueClass new
+		initializeFromJSONDictionary: aDictionary
+%
+
+category: 'instance creation'
+classmethod: GtRemotePhlowItemValue
+valueTypeFrom: aDictionary 
+	^ (aDictionary 
+		at: #valueTypeName 
+		ifPresent: [ :aTypeName |
+			| detectedType |
+			"There are only two types now so we can do a manual check, 
+			as it will be faster; this is called for every value in a table.
+			As we add more types we can extend this."
+			detectedType := GtRemotePhlowItemValue.
+			aTypeName = GtRemotePhlowItemTextualValue valueTypeName
+				ifTrue: [ detectedType := GtRemotePhlowItemTextualValue ].
+			aTypeName = GtRemotePhlowItemErrorValue valueTypeName
+				ifTrue: [ detectedType := GtRemotePhlowItemErrorValue ].
+			detectedType ]
+		ifAbsent: [ GtRemotePhlowItemValue ])
+%
+
+category: 'accessing'
+classmethod: GtRemotePhlowItemValue
+valueTypeName
+	^ 'item'
 %
 
 !		Instance methods for 'GtRemotePhlowItemValue'
@@ -4218,13 +4259,18 @@ method: GtRemotePhlowItemValue
 asDictionaryForExport
 	"Answer the receiver as a dictionary ready for JSON serialisation"
 
-	| data| 
+	| data | 
+	
 	data := Dictionary new 
 		at: #itemText put: self itemText;
+		at: #valueTypeName put: self class valueTypeName;
 		yourself.
 		
-	self background ifNotNil: [ :aBackground |
+	"We check the attribute here instead of using the accessor,
+	as subclasses can provide default value in case the background is nil"
+	background ifNotNil: [ :aBackground |
 		data at: #background put: aBackground asDictionaryForExport  ].
+	
 	^ data
 %
 
@@ -4238,6 +4284,23 @@ category: 'accessing'
 method: GtRemotePhlowItemValue
 background: anObject
 	background := anObject
+%
+
+category: 'initialization'
+method: GtRemotePhlowItemValue
+initializeFromJSONDictionary: aDictionary
+	self itemText: (aDictionary at: #itemText).
+	
+	aDictionary 
+		at: #background 
+		ifPresent: [ :aBackgroundValue |
+			self background: (GtPhlowColor fromJSONDictionary: aBackgroundValue) ]
+%
+
+category: 'testing'
+method: GtRemotePhlowItemValue
+isErrorItemValue
+	^ false
 %
 
 category: 'accessing'
@@ -4263,6 +4326,45 @@ printOn: aStream
 			aStream 
 				<< ', background: ';
 				print: aBackground ] ]
+%
+
+! Class implementation for 'GtRemotePhlowItemErrorValue'
+
+!		Class methods for 'GtRemotePhlowItemErrorValue'
+
+category: 'accessing'
+classmethod: GtRemotePhlowItemErrorValue
+valueTypeName
+	^ 'errorValue'
+%
+
+!		Instance methods for 'GtRemotePhlowItemErrorValue'
+
+category: 'accessing'
+method: GtRemotePhlowItemErrorValue
+background
+	^ super background ifNil: [
+		"#errorBackgroundColor"
+		GtPhlowColor  
+			r: 1.0 
+			g: 0.4701857282502444 
+			b: 0.458455522971652   ]
+%
+
+category: 'testing'
+method: GtRemotePhlowItemErrorValue
+isErrorItemValue
+	^ true
+%
+
+! Class implementation for 'GtRemotePhlowItemTextualValue'
+
+!		Class methods for 'GtRemotePhlowItemTextualValue'
+
+category: 'accessing'
+classmethod: GtRemotePhlowItemTextualValue
+valueTypeName
+	^ 'textualValue'
 %
 
 ! Class implementation for 'GtRemotePhlowRowValue'
@@ -4325,7 +4427,7 @@ columnValues: anObject
 category: 'accessing'
 method: GtRemotePhlowNodeValueBuilder
 computeNodeValueForObject: anObject atIndex: anIndex 
-	self subclassResponsibility
+	^ self subclassResponsibility
 %
 
 category: 'accessing'
@@ -4340,17 +4442,34 @@ phlowView: anObject
 	phlowView := anObject
 %
 
+category: 'building'
+method: GtRemotePhlowNodeValueBuilder
+withErrorHandlingCompute: aBlock
+	^ aBlock
+		on: Error 
+		do: [ :anError |
+			GtRemotePhlowItemErrorValue new
+				itemText: anError description ] 
+%
+
 ! Class implementation for 'GtRemotePhlowItemBuilder'
 
 !		Instance methods for 'GtRemotePhlowItemBuilder'
 
 category: 'building'
 method: GtRemotePhlowItemBuilder
-computeNodeValueForObject: anObject atIndex: anIndex 
-	^ GtRemotePhlowItemValue new 
+basicComputeNodeValueForObject: anObject atIndex: anIndex 
+	^ GtRemotePhlowItemTextualValue new 
 		itemText: (self 
 			formatItem: anObject 
 			atIndex: anIndex)
+%
+
+category: 'building'
+method: GtRemotePhlowItemBuilder
+computeNodeValueForObject: anObject atIndex: anIndex 
+	^ self withErrorHandlingCompute: [ 
+		self basicComputeNodeValueForObject: anObject atIndex: anIndex ] 
 %
 
 category: 'accessing'
@@ -4373,16 +4492,17 @@ computeNodeValueForObject: anObject atIndex: aRowIndex
 	columnValues := Array new: phlowColumns size.
 	
 	phlowColumns withIndexDo: [ :aColumn :aColumnIndex | 
-		| computedValues |
+		| computedValue |
 	
-		computedValues := aColumn 
-			computeItemValuesFor: anObject
-			rowIndex: aRowIndex
-			columnIndex: aColumnIndex.
+		computedValue := self withErrorHandlingCompute: [ 
+			aColumn 
+				computeItemValuesFor: anObject
+				rowIndex: aRowIndex
+				columnIndex: aColumnIndex ].
 	
 		columnValues 
 			at: aColumnIndex
-			put: computedValues ].
+			put: computedValue ].
 
 	^ GtRemotePhlowRowValue new
 		columnValues: columnValues
@@ -5049,7 +5169,8 @@ asGtDeclarativeView
 	nil = not supported"
 
 	^ GtPhlowListViewSpecification new 
-		phlowDataSource: (GtRemotePhlowDeclarativeViewListDataSource forPhlowView: self);
+		phlowDataSource: (GtRemotePhlowDeclarativeViewListDataSource 
+			forPhlowView: self);
 		title: self title;
 		priority: self priority;
 		dataTransport: GtPhlowViewSpecification dataLazy.
@@ -5268,6 +5389,19 @@ object: anObject
 
 !		Instance methods for 'GtRemotePhlowViewedObject'
 
+category: 'initialization'
+method: GtRemotePhlowViewedObject
+computeViewSpecificationForPhlowView: aPhlowView
+	^ [ aPhlowView asGtDeclarativeView ] 
+		on: Error do: [ :anError |
+			| errorView |
+			errorView := aPhlowView phlowErrorViewWithException: anError.
+			errorView title: aPhlowView title.
+			errorView priority: aPhlowView priority.
+			
+			errorView asGtDeclarativeView ]
+%
+
 category: 'accessing'
 method: GtRemotePhlowViewedObject
 declarativeViewsBySelector
@@ -5322,16 +5456,17 @@ method: GtRemotePhlowViewedObject
 initializeDeclarativeViews
 	| phlowViews |
 	declarativeViewsBySelector := Dictionary new.
-	
+
 	phlowViews := self phlowDeclarativeViews.
-	phlowViews do: [ :aPhlowView | 
-		| declarativeView |
-		declarativeView := aPhlowView asGtDeclarativeView.
-		declarativeView ifNotNil: [
-			declarativeView methodSelector: aPhlowView definingSelector.
-			declarativeViewsBySelector 
-				at: aPhlowView definingSelector 
-				put: declarativeView ] ]
+	phlowViews
+		do: [ :aPhlowView | 
+			| viewSpecification |
+			viewSpecification := self computeViewSpecificationForPhlowView: aPhlowView.
+			viewSpecification
+				ifNotNil: [ viewSpecification methodSelector: aPhlowView definingSelector.
+					declarativeViewsBySelector
+						at: aPhlowView definingSelector
+						put: viewSpecification ] ]
 %
 
 category: 'initialization'
@@ -6499,6 +6634,17 @@ gtViewsInCurrentContext
 		
 		phlowView definingSelector: methodSelector.
 		phlowView ]
+%
+
+! Class extensions for 'PrintStream'
+
+!		Instance methods for 'PrintStream'
+
+category: '*GToolkit-RemotePhlow-GemStone'
+method: PrintStream
+parenthesize: aBlock
+	self nextPut: $(.
+	aBlock ensure: [ self nextPut: $) ]
 %
 
 ! Class extensions for 'SequenceableCollection'
