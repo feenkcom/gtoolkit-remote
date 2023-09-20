@@ -29,6 +29,12 @@ GtPhlowTreeViewSpecification >> viewFor: aView [
 			declarativeView: self) collect: [ :aNodeValueDictionary |
 				GtRemotePhlowTreeNode 
 					fromJSONDictionary: aNodeValueDictionary ]) toArray wait ];
+		itemType: [ :anItemTypeFactory :aDataNode :aDataNodeIndex | 
+			aDataNode value nodeValue isErrorItemValue
+				ifTrue: [
+					GtPhlowExceptionItemType 
+						exception: aDataNode value nodeValue remoteExceptionWrapper ]
+				ifFalse: [ anItemTypeFactory default ] ];
 		itemText: [ :aTreeNode | aTreeNode nodeValue itemText ];
 		children: [ :aTreeNode |
 			self ensureChildrenLoadedForNode: aTreeNode.
