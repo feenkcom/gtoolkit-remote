@@ -29,6 +29,11 @@ GtRemoteForwarderViewInspectionExamples >> assertBasicForwarderView: aView [
 	self assert: ((aView asElementDo: [ :anElement | anElement ]) isKindOf: BrFromPromise). 
 ]
 
+{ #category : #assertions }
+GtRemoteForwarderViewInspectionExamples >> assertTransformedValueInListFor: aTransformedValue [ 
+	self assert:  aTransformedValue = { 42 . 42 } 
+]
+
 { #category : #accessing }
 GtRemoteForwarderViewInspectionExamples >> computeObject [
 	<gtExample>
@@ -81,10 +86,8 @@ GtRemoteForwarderViewInspectionExamples >> remoteForwardedViewWithLocalSendToLis
 		
 	phlowView :=  forwarderView phlowView wait.
 	self assert: phlowView hasTransformation.
-	self 
-		assert: (phlowView transformation 
-			transformedValueFrom: GtRemotePhlowDataNode new selection: {1})
-		equals: {42. 42}.
+	self assertTransformedValueInListFor: (phlowView transformation 
+		transformedValueFrom: GtRemotePhlowDataNode new selection: {1}).
 	
 	^ forwarderView
 ]

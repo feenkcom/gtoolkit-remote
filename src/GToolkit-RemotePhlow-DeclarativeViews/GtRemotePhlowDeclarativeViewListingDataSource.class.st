@@ -125,6 +125,20 @@ GtRemotePhlowDeclarativeViewListingDataSource >> retrieveItems: anItemsCount fro
 ]
 
 { #category : #'api - data retrival' }
+GtRemotePhlowDeclarativeViewListingDataSource >> retrieveSentItemAt: aSelectionIndex [
+	"Answer the raw value at the supplied index"
+	
+	self  
+		forNodesFrom: aSelectionIndex 
+		to: aSelectionIndex 
+		withIndexDo: [ :aNode :anItemIndex |
+			^ self phlowView transformation 
+				transformedValueFrom: aNode targetObject
+				selection: aSelectionIndex ].
+	^ nil
+]
+
+{ #category : #'api - data retrival' }
 GtRemotePhlowDeclarativeViewListingDataSource >> retrieveTotalItemsCount [
 	^ self itemsIterator totalItemsCount
 ]

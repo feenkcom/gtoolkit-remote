@@ -30,6 +30,11 @@ GtPhlowListingViewSpecification >> retrieveItemsFromIndex: anIndex [
 ]
 
 { #category : #'api - accessing' }
+GtPhlowListingViewSpecification >> retrieveSentItemAt: aSelectionIndex [
+	^ self phlowDataSource retrieveSentItemAt: aSelectionIndex
+]
+
+{ #category : #'api - accessing' }
 GtPhlowListingViewSpecification >> retrieveTotalItemsCount [
 	^ self phlowDataSource retrieveTotalItemsCount
 ]
