@@ -82,9 +82,9 @@ GtRemoteForwarderViewInspectionExamples >> remoteForwardedViewWithLocalSendToLis
 	phlowView :=  forwarderView phlowView wait.
 	self assert: phlowView hasTransformation.
 	self 
-		assert: ((phlowView transformation 
-			transformedValueFrom: GtRemotePhlowDataNode new selection: {1}) allSatisfy:
-			[ :each | each class == GtGsBareProxy ]).
+		assert: (phlowView transformation 
+			transformedValueFrom: GtRemotePhlowDataNode new selection: {1})
+		equals: {42. 42}.
 	
 	^ forwarderView
 ]
