@@ -19,6 +19,13 @@ TPlpoGtPhlowListingViewSpecification >> retrieveItems: anItemsCount fromIndex: a
 ]
 
 { #category : #accessing }
+TPlpoGtPhlowListingViewSpecification >> retrieveSentItemAt: aSelectionIndex [ 
+	^ self
+		proxyPerform: #retrieveSentItemAt:
+		withPrimitiveArguments: { aSelectionIndex }
+]
+
+{ #category : #accessing }
 TPlpoGtPhlowListingViewSpecification >> retrieveTotalItemsCount [
 	^ self
 		proxyPerform: #retrieveTotalItemsCount

@@ -11,6 +11,13 @@ TPlpoGtPhlowTreeViewSpecification >> retrieveChildrenForNodeAtPath: aNodePath [
 ]
 
 { #category : #accessing }
+TPlpoGtPhlowTreeViewSpecification >> retrieveSentItemAtPath: aNodePath [
+	^ self
+		proxyPerform: #retrieveSentItemAtPath:
+		withPrimitiveArguments: { aNodePath }
+]
+
+{ #category : #accessing }
 TPlpoGtPhlowTreeViewSpecification >> retriveSentItemAtPath: aNodePath [
 	^ self
 		proxyPerform: #retriveSentItemAtPath:

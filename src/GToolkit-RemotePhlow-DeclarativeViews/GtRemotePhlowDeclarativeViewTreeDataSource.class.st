@@ -67,6 +67,23 @@ GtRemotePhlowDeclarativeViewTreeDataSource >> retrieveChildrenForNodeAtPath: aNo
 ]
 
 { #category : #'api - data retrival' }
+GtRemotePhlowDeclarativeViewTreeDataSource >> retrieveSentItemAtPath: aNodePath [
+	self 
+		forNodesFrom: aNodePath first 
+		to: aNodePath first 
+		withIndexDo: [ :aNode :aSelectionIndex |
+			| targetNode targetObject |
+			targetNode := self 
+				locateNode: aNode 
+				atPath: aNodePath allButFirst.
+			targetObject := targetNode targetObject.
+			^ self phlowView transformation 
+				transformedValueFrom: targetObject
+				selection: aSelectionIndex ].
+	^ nil
+]
+
+{ #category : #'api - data retrival' }
 GtRemotePhlowDeclarativeViewTreeDataSource >> retriveSentItemAtPath: aNodePath [
 	self 
 		forNodesFrom: aNodePath first 

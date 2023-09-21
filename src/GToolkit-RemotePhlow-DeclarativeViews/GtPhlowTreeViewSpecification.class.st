@@ -11,6 +11,12 @@ GtPhlowTreeViewSpecification >> retrieveChildrenForNodeAtPath: aNodePath [
 ]
 
 { #category : #'api - accessing' }
+GtPhlowTreeViewSpecification >> retrieveSentItemAtPath: aNodePath [
+	^ self phlowDataSource 
+		retrieveSentItemAtPath: aNodePath
+]
+
+{ #category : #'api - accessing' }
 GtPhlowTreeViewSpecification >> retriveSentItemAtPath: aNodePath [
 	^ self phlowDataSource 
 		retriveSentItemAtPath: aNodePath
