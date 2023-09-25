@@ -693,6 +693,24 @@ removeallclassmethods GtRemotePhlowColumnedTreeNode
 
 doit
 (Object
+	subclass: 'GtRemotePhlowDeclarativeErrorTestInspectable'
+	instVarNames: #(  )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Examples';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowDeclarativeErrorTestInspectable
+removeallclassmethods GtRemotePhlowDeclarativeErrorTestInspectable
+
+doit
+(Object
 	subclass: 'GtRemotePhlowDeclarativeTestInspectable'
 	instVarNames: #( string collectionOfObjects )
 	classVars: #(  )
@@ -2024,6 +2042,12 @@ retrieveItemsFromIndex: anIndex
 
 category: 'api - accessing'
 method: GtPhlowListingViewSpecification
+retrieveSentItemAt: aSelectionIndex
+	^ self phlowDataSource retrieveSentItemAt: aSelectionIndex
+%
+
+category: 'api - accessing'
+method: GtPhlowListingViewSpecification
 retrieveTotalItemsCount
 	^ self phlowDataSource retrieveTotalItemsCount
 %
@@ -2191,6 +2215,13 @@ retrieveChildrenForNodeAtPath: aNodePath
 
 category: 'api - accessing'
 method: GtPhlowColumnedTreeViewSpecification
+retrieveSentItemAtPath: aNodePath
+	^ self phlowDataSource 
+		retrieveSentItemAtPath:aNodePath
+%
+
+category: 'api - accessing'
+method: GtPhlowColumnedTreeViewSpecification
 retriveSentItemAtPath: aNodePath
 	^ self phlowDataSource 
 		retriveSentItemAtPath:aNodePath
@@ -2234,6 +2265,13 @@ method: GtPhlowTreeViewSpecification
 retrieveChildrenForNodeAtPath: aNodePath
 	^ self phlowDataSource 
 		retrieveChildrenForNodeAtPath: aNodePath
+%
+
+category: 'api - accessing'
+method: GtPhlowTreeViewSpecification
+retrieveSentItemAtPath: aNodePath
+	^ self phlowDataSource 
+		retrieveSentItemAtPath: aNodePath
 %
 
 category: 'api - accessing'
@@ -2392,7 +2430,11 @@ columnedListWithTypedColumns
 	
 	self 
 		assert: (viewSpecification retrieveItems: 2 fromIndex: 1)
-		equals: self expectedColumnedListTypedColumnsTwoItems.
+		equals: (self 
+			forPharo11: [
+				self expectedColumnedListTypedColumnsTwoItemsPharo11]
+			forPharo10: [
+				self expectedColumnedListTypedColumnsTwoItems ]).
 	
 	^ viewSpecification
 %
@@ -2409,7 +2451,13 @@ declarativeViewNames
 category: 'examples - views'
 method: GtRemoteDeclarativeExamples
 expectedColumnedListTypedColumnsTwoItems
-	^ ((Array new: 2) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#itemText->'+1.0'); yourself); at: 2 put: ((Dictionary new) add: (#itemText->'+2'); yourself); at: 3 put: ((Dictionary new) add: (#itemText->#classIcon); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#itemText->'+2.0'); yourself); at: 2 put: ((Dictionary new) add: (#itemText->'+3'); yourself); at: 3 put: ((Dictionary new) add: (#itemText->#classIcon); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); yourself)
+	^ ((Array new: 2) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+1.0'); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+2'); yourself); at: 3 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->#classIcon); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+2.0'); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+3'); yourself); at: 3 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->#classIcon); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); yourself)
+%
+
+category: 'examples - views'
+method: GtRemoteDeclarativeExamples
+expectedColumnedListTypedColumnsTwoItemsPharo11
+	^ ((Array new: 2) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+1.0'); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+2'); yourself); at: 3 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->#class); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+2.0'); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+3'); yourself); at: 3 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->#class); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); yourself)
 %
 
 category: 'private'
@@ -3398,6 +3446,154 @@ columnValueAt: anIndex
 	^ self nodeValue columnValueAt: anIndex
 %
 
+! Class implementation for 'GtRemotePhlowDeclarativeErrorTestInspectable'
+
+!		Instance methods for 'GtRemotePhlowDeclarativeErrorTestInspectable'
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeErrorTestInspectable
+gtColumnedListWithFormatErrorsFor: aView
+	<gtView>
+
+	^aView columnedList
+		title: 'Columned list - format error';
+		priority: 20;
+		items: [ 1 to: 4 ];
+		column: 'Value' text: [ :item | 
+			item < 3 ifTrue: [ 1/ 0]. 
+			item ];
+		column: 'Lowercase' text: [ :item | 
+			item = 2 ifTrue: [ 1/ 0].
+			item asString asLowercase ] width: 100.
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeErrorTestInspectable
+gtForwardListWithFormatErrorsFor: aView
+	<gtView>
+
+	^aView forward
+		title: 'Forward List - with format errors';
+		priority: 45;
+		object: [ self ];
+		view: #gtListWithFormatErrors:
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeErrorTestInspectable
+gtForwardListWithIFormatErrorsFor: aView
+	<gtView>
+
+	^aView forward
+		title: 'Forward List - with format errors';
+		priority: 45;
+		object: [ self ];
+		view: #gtListWithFormatErrors:
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeErrorTestInspectable
+gtForwardListWithItemsErrorsFor: aView
+	<gtView>
+
+	^aView forward
+		title: 'Forward List - with item errors';
+		priority: 45;
+		object: [ self ];
+		view: #gtListWithItemsErrors:
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeErrorTestInspectable
+gtListWithFormatErrors: aView
+	<gtView>
+
+	^aView list
+		title: 'List - with format errors';
+		priority: 15;
+		items: [ 1 to: 4 ];
+		itemText: [ :item | item < 3 ifTrue: [ 1/ 0]. item ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeErrorTestInspectable
+gtListWithItemsErrors: aView
+	<gtView>
+
+	^aView list
+		title: 'List - with item errors';
+		priority: 15;
+		items: [ 1/0. 1 to: 4 ];
+		itemText: [ :item | item ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeErrorTestInspectable
+gtStringWithTextErrorFor: aView
+	<gtView>
+	
+	^aView textEditor
+		title: 'String - with text error';
+		priority: 10;
+		text: [ 1/0 . 'text value' ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeErrorTestInspectable
+gtTreeWithChildrenErrorsFor: aView
+	<gtView>
+
+	^aView tree
+		title: 'Tree - with children errors';
+		priority: 30;
+		items: [ 1 to: 5 ];
+		children: [ :aNumber | 
+			1/0 . 
+			(aNumber // 2 = aNumber)
+				ifTrue: [ #() ] 
+				ifFalse: [
+					aNumber // 2 to: (aNumber - 1) ] ];
+		itemText: [ :x | 
+			x asString, ' number']
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeErrorTestInspectable
+gtTreeWithFormatErrorsFor: aView
+	<gtView>
+
+	^aView tree
+		title: 'Tree - with format errors';
+		priority: 30;
+		items: [ 1 to: 5 ];
+		children: [ :aNumber | 
+			(aNumber // 2 = aNumber)
+				ifTrue: [ #() ] 
+				ifFalse: [
+					aNumber // 2 to: (aNumber - 1) ] ];
+		itemText: [ :x | 
+			x < 3 ifTrue: [ 1/ 0]. 
+			x asString, ' number']
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeErrorTestInspectable
+gtTreeWithItemsErrorsFor: aView
+	<gtView>
+
+	^aView tree
+		title: 'Tree - with item errors';
+		priority: 30;
+		items: [ 1/0 . 1 to: 5 ];
+		children: [ :aNumber | 
+			(aNumber // 2 = aNumber)
+				ifTrue: [ #() ] 
+				ifFalse: [
+					aNumber // 2 to: (aNumber - 1) ] ];
+		itemText: [ :x | 
+			x asString, ' number']
+%
+
 ! Class implementation for 'GtRemotePhlowDeclarativeTestInspectable'
 
 !		Instance methods for 'GtRemotePhlowDeclarativeTestInspectable'
@@ -3759,6 +3955,7 @@ expectedFormattedItems
 			put: (Dictionary new
 					add: #nodeValue
 							-> (Dictionary new
+									add: #valueTypeName -> 'textualValue';
 									add: #itemText -> '1';
 									yourself);
 					add: #nodeId -> 1;
@@ -3767,6 +3964,7 @@ expectedFormattedItems
 			put: (Dictionary new
 					add: #nodeValue
 							-> (Dictionary new
+									add: #valueTypeName -> 'textualValue';
 									add: #itemText -> '2';
 									yourself);
 					add: #nodeId -> 2;
@@ -3775,6 +3973,7 @@ expectedFormattedItems
 			put: (Dictionary new
 					add: #nodeValue
 							-> (Dictionary new
+									add: #valueTypeName -> 'textualValue';
 									add: #itemText -> '3';
 									yourself);
 					add: #nodeId -> 3;
@@ -3783,6 +3982,7 @@ expectedFormattedItems
 			put: (Dictionary new
 					add: #nodeValue
 							-> (Dictionary new
+									add: #valueTypeName -> 'textualValue';
 									add: #itemText -> '4';
 									yourself);
 					add: #nodeId -> 4;
@@ -4034,6 +4234,21 @@ retrieveItems: anItemsCount fromIndex: startIndex
 
 category: 'api - data retrival'
 method: GtRemotePhlowDeclarativeViewListingDataSource
+retrieveSentItemAt: aSelectionIndex
+	"Answer the raw value at the supplied index"
+	
+	self  
+		forNodesFrom: aSelectionIndex 
+		to: aSelectionIndex 
+		withIndexDo: [ :aNode :anItemIndex |
+			^ self phlowView transformation 
+				transformedValueFrom: aNode targetObject
+				selection: aSelectionIndex ].
+	^ nil
+%
+
+category: 'api - data retrival'
+method: GtRemotePhlowDeclarativeViewListingDataSource
 retrieveTotalItemsCount
 	^ self itemsIterator totalItemsCount
 %
@@ -4175,6 +4390,24 @@ retrieveChildrenForNodeAtPath: aNodePath
 					collect: [ :aNodeValue |
 						aNodeValue asDictionaryForExport ] ].
 	^ #()
+%
+
+category: 'api - data retrival'
+method: GtRemotePhlowDeclarativeViewTreeDataSource
+retrieveSentItemAtPath: aNodePath
+	self 
+		forNodesFrom: aNodePath first 
+		to: aNodePath first 
+		withIndexDo: [ :aNode :aSelectionIndex |
+			| targetNode targetObject |
+			targetNode := self 
+				locateNode: aNode 
+				atPath: aNodePath allButFirst.
+			targetObject := targetNode targetObject.
+			^ self phlowView transformation 
+				transformedValueFrom: targetObject
+				selection: aSelectionIndex ].
+	^ nil
 %
 
 category: 'api - data retrival'
