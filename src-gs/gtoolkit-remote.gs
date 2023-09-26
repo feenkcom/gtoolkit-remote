@@ -2027,6 +2027,13 @@ initializeFromInspector: anInspector
 	self phlowDataSource: (anInspector getDeclarativeViewFor: self methodSelector)
 %
 
+category: 'accessing'
+method: GtPhlowListingViewSpecification
+retrieveFormattedItems
+	^ self phlowDataSource 
+		retrieveItems: self totalItemsCount fromIndex: 1
+%
+
 category: 'api - accessing'
 method: GtPhlowListingViewSpecification
 retrieveItems: anItemsCount fromIndex: anIndex
