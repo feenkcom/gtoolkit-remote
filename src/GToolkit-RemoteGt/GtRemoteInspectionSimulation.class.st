@@ -51,6 +51,16 @@ GtRemoteInspectionSimulation >> createViewedObjectFor: anObject [
 	^ GtRemotePhlowViewedObject object: anObject
 ]
 
+{ #category : #accessing }
+GtRemoteInspectionSimulation >> getDeclarativeViewFor: aViewSelector [
+	^ inspectorProxy getDeclarativeViewFor: aViewSelector
+]
+
+{ #category : #accessing }
+GtRemoteInspectionSimulation >> getViewDeclaration: aViewSelector [
+	^ inspectorProxy getViewDeclaration: aViewSelector
+]
+
 { #category : #'gt inspector' }
 GtRemoteInspectionSimulation >> getViewProxy [
 	^ inspectorProxy
