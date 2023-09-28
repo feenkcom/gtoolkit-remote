@@ -6,7 +6,7 @@ A specification contains basic data about the view, like its title and priority,
 
 An instance of the specification is created remotely based on the remote view. That specification is serialized by sending it {{gtMethod:GtPhlowViewSpecification>>asJSONForExport|label=#selector}}, and based on it a new instance is created locally with the same data using {{gtMethod:GtPhlowViewSpecification class>>fromJSONString:|label=#selector}}. So there will be two instances of the specification, one remotely and one locally.
 
-####Initializing the  local instance
+####Initializing the local instance
 
 The initialisation of the local version of the specification is done in two steps. First, an instance is created and initialized using the initial JSON data. Second, on this instance the inspector calls {{gtMethod:GtPhlowViewSpecification>>initializeFromInspector:|label=#selector}}. 
 

@@ -66,6 +66,11 @@ GtRemoteInspectionSimulation >> getViewProxy [
 	^ inspectorProxy
 ]
 
+{ #category : #accessing }
+GtRemoteInspectionSimulation >> getViewsDeclarations [
+	^ inspectorProxy getViewsDeclarations
+]
+
 { #category : #simulation }
 GtRemoteInspectionSimulation >> gtInspectorTitleString [
 	^ String streamContents: [ :stream |
