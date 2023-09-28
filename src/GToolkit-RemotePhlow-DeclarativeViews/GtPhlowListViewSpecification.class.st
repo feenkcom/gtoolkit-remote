@@ -1,18 +1,11 @@
 "
-{{gtClass:GtPhlowListViewSpecification}} supports a subset of the possible configurations of {{gtClass:name=GtPhlowListView}}.
+{{gtClass:GtPhlowListViewSpecification}}  provides the data needed to instantiate a local {{gtClass:name=GtPhlowListView}} used to show the items in a remote list view.
 
- 
-#Internal Representation and Key Implementation Points.
+The `phlowDataSource` for a list view should provide the following API:
+	- `retrieveItems:fromIndex:` returns  the concrete data for displaying a number of items from a certain index
+	- `retrieveSentItemAt:` returns a proxy to the item at the given position
 
-
-##Instance Variables
-
-	items:		{{gtClass:Array}} - The formatted items to display (not the raw values held in the list)
-
-
-##Implementation Points
-
-
+When the remote side is Glamorous Toolkit, GemStone or Pharo, in the local instane of the specification `phlowDataSource` is a proxy to an instance of type {{gtClass:GtRemotePhlowDeclarativeViewListDataSource}}. When using the simulation we get directly an instance of type {{gtClass:GtRemotePhlowDeclarativeViewListDataSource}} as the data source.
 "
 Class {
 	#name : #GtPhlowListViewSpecification,
