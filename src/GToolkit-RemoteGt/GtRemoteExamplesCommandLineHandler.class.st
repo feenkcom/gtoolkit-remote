@@ -6,8 +6,13 @@ As these tests require the external environment to be set up and configured, the
 Class {
 	#name : #GtRemoteExamplesCommandLineHandler,
 	#superclass : #GtExamplesCommandLineHandler,
-	#category : 'GToolkit-RemoteGt'
+	#category : #'GToolkit-RemoteGt'
 }
+
+{ #category : #accessing }
+GtRemoteExamplesCommandLineHandler class >> checksLabel [
+	^ 'Example'
+]
 
 { #category : #accessing }
 GtRemoteExamplesCommandLineHandler class >> commandName [
