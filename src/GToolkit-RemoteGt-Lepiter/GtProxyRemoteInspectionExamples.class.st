@@ -57,18 +57,18 @@ GtProxyRemoteInspectionExamples >> assertDatabaseBeforeCompositeToolInspectionFo
 ]
 
 { #category : #'examples - inspection' }
-GtProxyRemoteInspectionExamples >> assertInspectorTabContentsUsing: aScripter [ 
+GtProxyRemoteInspectionExamples >> assertInspectorTabContentsUsing: aScripter [
 	| queryResult tabGroup |
-	
-	queryResult := (aScripter element query 
-		// GtPhlowCompositeViewElementId) result.
+	queryResult := (aScripter element query // GtPhlowCompositeViewElementId)
+			result.
 	self assert: queryResult size equals: 1.
 	tabGroup := queryResult first.
-	
-	aScripter substeps: 'Check tabs content' do: [ :aStep |
-	
-		tabGroup tabs withIndexDo: [ :aTab :anIndex |
-			"aStep do
+
+	aScripter
+		substeps: 'Check tabs content'
+		do: [ :aStep | 
+			tabGroup tabs
+				withIndexDo: [  "aStep do
 				label: 'Select Tab';
 				// GtPhlowCompositeViewElementId;
 				block: [ :aTabGroup | 
@@ -76,66 +76,68 @@ GtProxyRemoteInspectionExamples >> assertInspectorTabContentsUsing: aScripter [
 					aTabGroup viewModel 
 						selectTab: (aTabGroup tabs 
 							at: anIndex) ];
-				play."
-			
-			aStep click 
-				label: 'Click tab ', aTab tabLabel text asString;
-				// GtPhlowCompositeViewElementId;
-				@1;
-				id: #header;
-				id: ##scrolltabbar;
-				id: #tabbar;
-				onChildAt: anIndex;
-				play.
-				
-			aStep check
-				label: 'Clicked tab selected';
-				// GtPhlowCompositeViewElementId;
-				@1;
-				value: [ :aTabGroup | 
-					aTabGroup viewModel 
-						indexOf: aTabGroup viewModel selectedTab ] equals: anIndex;
-				play ] ]
+				play.":aTab :anIndex | 
+					aStep
+						clickStep: [ :s | 
+							s
+								label: 'Click tab ' , aTab tabLabel text asString;
+								// GtPhlowCompositeViewElementId;
+								@ 1;
+								id: #header;
+								id: #scrolltabbar;
+								id: #tabbar;
+								onChildAt: anIndex ].
+
+					aStep
+						checkStep: [ :s | 
+							s
+								label: 'Clicked tab selected';
+								// GtPhlowCompositeViewElementId;
+								@ 1;
+								value: [ :aTabGroup | aTabGroup viewModel indexOf: aTabGroup viewModel selectedTab ]
+									equals: anIndex ] ] ]
 ]
 
 { #category : #'asserting - inspection' }
-GtProxyRemoteInspectionExamples >> assertInspectorTabLabelsUsing: scripter [ 
-	scripter assert
-		label: 'View Tabs Exist';
-		// GtPhlowCompositeViewElementId;
-		satisfies: [ :aTabGroup | aTabGroup tabs size > 0 ] ;
-		play.
-	
-	scripter assert
-		label: 'View Tab Labels Without Error label';
-		// GtPhlowCompositeViewElementId;
-		satisfies: [ :aTabGroup | 
-			aTabGroup tabs noneSatisfy: [ :aTab |
-				aTab tabLabel text asString = 'Error' ] ];
-		play.
+GtProxyRemoteInspectionExamples >> assertInspectorTabLabelsUsing: scripter [
+	scripter
+		assertStep: [ :s | 
+			s
+				label: 'View Tabs Exist';
+				// GtPhlowCompositeViewElementId;
+				satisfies: [ :aTabGroup | aTabGroup tabs size > 0 ] ].
+
+	scripter
+		assertStep: [ :s | 
+			s
+				label: 'View Tab Labels Without Error label';
+				// GtPhlowCompositeViewElementId;
+				satisfies: [ :aTabGroup | aTabGroup tabs noneSatisfy: [ :aTab | aTab tabLabel text asString = 'Error' ] ] ]
 ]
 
 { #category : #'asserting - inspection' }
 GtProxyRemoteInspectionExamples >> assertInspectorToolLabelUsing: aScripter equals: aString [
+	aScripter
+		substeps: 'Check tool tab label'
+		do: [ :aStep | 
+			aStep
+				assertStep: [ :s | 
+					s
+						label: 'Tab label exists';
+						id: #header;
+						id: #scrolltabbar;
+						id: #tabbar;
+						value: [ :aTabBar | aTabBar children size ] equals: 1 ].
 
-	aScripter substeps: 'Check tool tab label' do: [ :aStep |
-	
-		aStep assert
-			label: 'Tab label exists';
-			id: #header;
-			id: #scrolltabbar;
-			id: #tabbar;
-			value: [ :aTabBar | aTabBar children size ] equals: 1;
-			play.
-		
-		aStep assert
-			label: 'Tab label is correct';
-			id: #header;
-			id: #scrolltabbar;
-			id: #tabbar;
-			onChildAt: 1;
-			value: [ :aTab | aTab label asString ] equals: aString;
-			play ]
+			aStep
+				assertStep: [ :s | 
+					s
+						label: 'Tab label is correct';
+						id: #header;
+						id: #scrolltabbar;
+						id: #tabbar;
+						onChildAt: 1;
+						value: [ :aTab | aTab label asString ] equals: aString ] ]
 ]
 
 { #category : #'asserting - inspection' }
@@ -218,38 +220,39 @@ GtProxyRemoteInspectionExamples >> assertPageOnTestProxyFor: aPage withTypeName:
 ]
 
 { #category : #'asserting - inspection' }
-GtProxyRemoteInspectionExamples >> assertProxyPlaygroundPageContentWithSnippetType: aSnippetType using: aScripter [ 
-	aScripter assert
-		label: 'Is proxy page';
-		// GtInspector;
-		id: #playground;
-		satisfies: [ :aPlaygroundElement | 
-			| page |
-			page := aPlaygroundElement page.
-			page children size = 1 and: [ 
-				page children first class = aSnippetType and: [
-					page children first code isEmpty ] ] ];
-		play.
+GtProxyRemoteInspectionExamples >> assertProxyPlaygroundPageContentWithSnippetType: aSnippetType using: aScripter [
+	aScripter
+		assertStep: [ :s | 
+			s
+				label: 'Is proxy page';
+				// GtInspector;
+				id: #playground;
+				satisfies: [ :aPlaygroundElement | 
+					| page |
+					page := aPlaygroundElement page.
+					page children size = 1
+						and: [ page children first class = aSnippetType
+								and: [ page children first code isEmpty ] ] ] ]
 ]
 
 { #category : #'asserting - inspection' }
 GtProxyRemoteInspectionExamples >> assertProxyPlaygroundPageTypeUsing: aScripter [
-	
-	aScripter assert
-		label: 'Is proxy page';
-		// GtInspector;
-		id: #playground;
-		satisfies: [ :aPlaygroundElement | 
-			aPlaygroundElement page type isProxyClassPageType ];
-		play.
-		
-	aScripter assert
-		label: 'Proxy type name';
-		// GtInspector;
-		id: #playground;
-		value: [ :aPlaygroundElement | aPlaygroundElement page type proxyTypeName ] 
-			equals: self currentProxyTypeName;
-		play 
+	aScripter
+		assertStep: [ :s | 
+			s
+				label: 'Is proxy page';
+				// GtInspector;
+				id: #playground;
+				satisfies: [ :aPlaygroundElement | aPlaygroundElement page type isProxyClassPageType ] ].
+
+	aScripter
+		assertStep: [ :s | 
+			s
+				label: 'Proxy type name';
+				// GtInspector;
+				id: #playground;
+				value: [ :aPlaygroundElement | aPlaygroundElement page type proxyTypeName ]
+					equals: self currentProxyTypeName ]
 ]
 
 { #category : #'asserting - inspection' }
@@ -290,25 +293,29 @@ GtProxyRemoteInspectionExamples >> basicDatabase [
 ]
 
 { #category : #'asserting - inspection' }
-GtProxyRemoteInspectionExamples >> compositeInspectorSwitchToolUsing: aScripter [ 
+GtProxyRemoteInspectionExamples >> compositeInspectorSwitchToolUsing: aScripter [
 	<gtExample>
-	
-	aScripter substeps: 'Check Remote Side' do: [ :aStep |
-		self assertLocalInspectorToolLabelUsing: aStep .
-		self assertInspectorTabLabelsUsing: aStep.
-		self assertRemotePlaygroundPageUsing: aStep.  ].
-	
-	aScripter click
-		label: 'Switch to proxy inspector';
-		id: #header;
-		id: #scrolltabbar;
-		id: #tabbar;
-		play.
-	
-	aScripter substeps: 'Check Local Side' do: [ :aStep |
-		self assertRemoteInspectorToolLabelUsing: aStep .
-		self assertInspectorTabLabelsUsing: aStep.
-		self assertLocalPlaygroundPageUsing: aStep. ].
+	aScripter
+		substeps: 'Check Remote Side'
+		do: [ :aStep | 
+			self assertLocalInspectorToolLabelUsing: aStep.
+			self assertInspectorTabLabelsUsing: aStep.
+			self assertRemotePlaygroundPageUsing: aStep ].
+
+	aScripter
+		clickStep: [ :s | 
+			s
+				label: 'Switch to proxy inspector';
+				id: #header;
+				id: #scrolltabbar;
+				id: #tabbar ].
+
+	aScripter
+		substeps: 'Check Local Side'
+		do: [ :aStep | 
+			self assertRemoteInspectorToolLabelUsing: aStep.
+			self assertInspectorTabLabelsUsing: aStep.
+			self assertLocalPlaygroundPageUsing: aStep ]
 ]
 
 { #category : #'examples - tools' }
@@ -393,28 +400,29 @@ GtProxyRemoteInspectionExamples >> inspectorForLocalProxySide [
 	<gtExample>
 	| targetDatabase scripter inspectorTool |
 	targetDatabase := self databaseWithMonitor.
-	
+
 	inspectorTool := self inspectorToolForLocalProxySide.
-	
+
 	scripter := self scripter.
 	scripter
 		model: inspectorTool object;
 		element: inspectorTool asElement.
-	
+
 	self assert: targetDatabase pageCount equals: 1.
 	self assertPageOnTestProxyFor: targetDatabase pages first.
-	self 
-		assertSingleEmptyCodeSnippetOfType: self localCodeSnippetType 
+	self
+		assertSingleEmptyCodeSnippetOfType: self localCodeSnippetType
 		inPage: targetDatabase pages first.
-		
-	scripter assert
-		// GtPhlowCompositeViewElementId;
-		value: [ :aTabGroup | aTabGroup tabs size ] 
-			equals: self localSideExpectedNumberOfViews ;
-		play.
-		
+
+	scripter
+		assertStep: [ :s | 
+			s
+				// GtPhlowCompositeViewElementId;
+				value: [ :aTabGroup | aTabGroup tabs size ]
+					equals: self localSideExpectedNumberOfViews ].
+
 	self assertInspectorTabLabelsUsing: scripter.
-	
+
 	^ scripter
 ]
 
