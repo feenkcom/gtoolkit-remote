@@ -46,6 +46,18 @@ PharoLinkRemoteError >> gtLiveFor: aView [
 ]
 
 { #category : #'*Gt4PharoLink' }
+PharoLinkRemoteError >> gtPharoStackFor: aView [
+	<gtView>
+	
+	(signalContext isNil or: [ self signalerContext isNil ]) ifTrue: [ ^ aView empty ].
+	^ aView forward
+		title: 'Pharo stack';
+		priority: 10;
+		object: [ self signalerContext ];
+		view: #gtStackFor:
+]
+
+{ #category : #'*Gt4PharoLink' }
 PharoLinkRemoteError >> gtTraceTextFor: aView [
 	<gtView>
 
