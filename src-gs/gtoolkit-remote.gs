@@ -140,11 +140,28 @@ doit
 		category: 'GToolkit-RemotePhlow-DeclarativeViews';
 		comment: '{{gtClass:GtPhlowViewSpecification}} provides a declarative UI specification for presenting data that can be easily serialised and sent over the wire, including between applications written in different languages.
 
+A specification contains basic data about the view, like its title and priority, and a data source that handles the actual data of the view.
+####Local and and remote instances
+
+An instance of the specification is created remotely based on the remote view. That specification is serialized by sending it {{gtMethod:GtPhlowViewSpecification>>asJSONForExport|label=#selector}}, and based on it a new instance is created locally with the same data using {{gtMethod:GtPhlowViewSpecification class>>fromJSONString:|label=#selector}}. So there will be two instances of the specification, one remotely and one locally.
+
+####Initializing the local instance
+
+The initialisation of the local version of the specification is done in two steps. First, an instance is created and initialized using the initial JSON data. Second, on this instance the inspector calls {{gtMethod:GtPhlowViewSpecification>>initializeFromInspector:|label=#selector}}. 
+
+This call exists so that the specification can initialize the `phlowDataSource` attributes. Views can initialize it with a local object, if all the data of the view was retrieved, or with a proxy to the remote data source.  
+
+So while the local and remote instances of the specification have the same attributes, for the data source attribute the local version can have a proxy, and the remote version the actual object.
+
 dataTransport is an emumerated value indicating whether the data to be displayed will be included with the specification or is available via reference or by key.]
 
 - 1: data is included in the response
 - 2: data is available by reference
 - 3: data is available by reference and key (tbc)
+
+####Creating local views
+
+Subclasses should override {{gtMethod:GtPhlowViewSpecification>>viewFor:|label=#selector}}  for creating a  local views from a specification.
 
 ';
 		immediateInvariant.
@@ -183,6 +200,11 @@ doit
 	options: #( #logCreation )
 )
 		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		comment: '{{gtClass:GtPhlowListingViewSpecification}} provides support for instantiating local list, tree and column views used to show the items in remote list, tree and column views.
+
+When the remote side is in a different environment, in the local instance of the specification,  `phlowDataSource` is going to be a proxy providing the required API for accessing items in the view. 
+
+When the remote side is Glamorous Toolkit, Pharo and GemStone, the data source is of type {{gtClass:GtRemotePhlowDeclarativeViewListingDataSource}} in the remote instance of the specification.';
 		immediateInvariant.
 true.
 %
@@ -271,20 +293,13 @@ doit
 	options: #( #logCreation )
 )
 		category: 'GToolkit-RemotePhlow-DeclarativeViews';
-		comment: '{{gtClass:GtPhlowListViewSpecification}} supports a subset of the possible configurations of {{gtClass:name=GtPhlowListView}}.
+		comment: '{{gtClass:GtPhlowListViewSpecification}}  provides the data needed to instantiate a local {{gtClass:name=GtPhlowListView}} used to show the items in a remote list view.
 
- 
-#Internal Representation and Key Implementation Points.
+The `phlowDataSource` for a list view should provide the following API:
+	- `retrieveItems:fromIndex:` returns  the concrete data for displaying a number of items from a certain index
+	- `retrieveSentItemAt:` returns a proxy to the item at the given position
 
-
-##Instance Variables
-
-	items:		{{gtClass:Array}} - The formatted items to display (not the raw values held in the list)
-
-
-##Implementation Points
-
-';
+When the remote side is Glamorous Toolkit, GemStone or Pharo, in the local instane of the specification `phlowDataSource` is a proxy to an instance of type {{gtClass:GtRemotePhlowDeclarativeViewListDataSource}}. When using the simulation we get directly an instance of type {{gtClass:GtRemotePhlowDeclarativeViewListDataSource}} as the data source.';
 		immediateInvariant.
 true.
 %
