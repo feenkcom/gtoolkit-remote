@@ -21,12 +21,10 @@ GtPhlowViewSpecification class >> fromDictionary: viewDictionary [
 GtPhlowViewSpecification class >> fromJSONString: aString [
 	"Answer the view specified by aString"
 
-	| viewDictionary viewName |
+	| viewDictionary |
 
 	viewDictionary := STONJSON fromString: aString.
-	viewName := viewDictionary at: #viewName.
-	(viewName -> viewDictionary) asBeaconSignal emit.
-	^(Smalltalk globals at: viewName asSymbol) fromJSONDictionary: viewDictionary.
+	^self fromDictionary: viewDictionary.
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
