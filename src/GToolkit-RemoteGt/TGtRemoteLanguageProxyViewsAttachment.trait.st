@@ -4,6 +4,16 @@ Trait {
 }
 
 { #category : #'gt inspector' }
+TGtRemoteLanguageProxyViewsAttachment >> buildLocalViewSpecificationFor: aViewSelector [ 
+	| viewSpecificationData viewSpecification |
+	viewSpecificationData := self getViewDeclaration: aViewSelector.
+	viewSpecification := GtPhlowViewSpecification 
+		fromDictionary: viewSpecificationData.
+	viewSpecification initializeFromInspector: self.
+	^ viewSpecification
+]
+
+{ #category : #'gt inspector' }
 TGtRemoteLanguageProxyViewsAttachment >> declarativeViews [
 	"Answer the views for the receiver"
 	| rawViews |
