@@ -8,7 +8,7 @@ Class {
 		'stride',
 		'format'
 	],
-	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
+	#category : #'GToolkit-RemotePhlow-DeclarativeViews-GTSpecific'
 }
 
 { #category : #accessing }
