@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'bitmap'
 	],
-	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
+	#category : #'GToolkit-RemotePhlow-DeclarativeViews-GTSpecific'
 }
 
 { #category : #'instance creation' }
