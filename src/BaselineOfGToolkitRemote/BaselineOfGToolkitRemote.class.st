@@ -18,13 +18,15 @@ BaselineOfGToolkitRemote >> baseline: spec [
 				spec repository: 'github://feenkcom/gtoolkit-phlow:v0.8.1153/src' ].
 
 		spec package: 'GToolkit-RemotePhlow-DeclarativeViews'.
+		spec package: 'GToolkit-RemotePhlow-DeclarativeViews-GTSpecific' with: [
+			spec requires: #('GToolkit-RemotePhlow-DeclarativeViews') ].
 		spec package: 'GToolkit-RemotePhlow-PhlowViews' with: [
 			spec requires: #('GToolkitPhlow') ].
 		spec package: 'GToolkit-RemotePhlow-InspectorCore' with: [
 			spec requires: #('GToolkit-RemotePhlow-PhlowViews') ].
 		spec package: 'GToolkit-RemotePhlow-Examples'.
 		spec package: 'GToolkit-RemoteGt' with: [
-			spec requires: #('GToolkitPhlow' 'GToolkit-RemotePhlow-DeclarativeViews' 'GToolkit-RemotePhlow-PhlowViews' 'GToolkit-RemotePhlow-Examples') ].
+			spec requires: #('GToolkitPhlow' 'GToolkit-RemotePhlow-DeclarativeViews-GTSpecific' 'GToolkit-RemotePhlow-PhlowViews' 'GToolkit-RemotePhlow-Examples') ].
 		spec package: 'GToolkit-RemoteGt-Lepiter' with: [
 			spec requires: #('GToolkit-RemoteGt') ].
 		spec package: 'GToolkit-RemotePhlow-GeolifeDemo'.
