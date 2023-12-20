@@ -4093,7 +4093,7 @@ category: 'api'
 method: GtRemotePhlowDeclarativeForwardViewDataSource
 getDeclarativeViewFor: aViewSelector
 	"This mimics the API provided by the inspecotr proxy to initialize views.
-	In this case foe forwarded views, we allways return the datasource for 
+	In this case for forwarded views, we allways return the datasource for 
 	the target views, as this is the only view the client will request.
 	
 	We do not check right now if the selector matches, as in some
