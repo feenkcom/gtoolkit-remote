@@ -6659,6 +6659,42 @@ gtRemoteItemsFor: aView
 		itemText: [ :eachItem | eachItem gtDisplayString ]
 %
 
+! Class extensions for 'GtGemStoneDoubleLocalCallFrame'
+
+!		Instance methods for 'GtGemStoneDoubleLocalCallFrame'
+
+category: '*GToolkit-RemotePhlow-InspectorCore'
+method: GtGemStoneDoubleLocalCallFrame
+phlowBackgroundColor
+	| allSendersMatch |
+	allSendersMatch := self sender
+		ifNil: [true] 
+		ifNotNil: [ :aSender | aSender hasSamePropertiesSinceTheBeginning ].
+	
+	^ (self hasSameProperties and: [ allSendersMatch ])
+			ifTrue: [ GtPhlowColor named: #green alpha: 0.4 ]
+			ifFalse: [ 
+				allSendersMatch
+					ifTrue: [ GtPhlowColor named: #orange alpha: 0.4 ]
+					ifFalse: [ GtPhlowColor transparent ]  ]
+%
+
+category: '*GToolkit-RemotePhlow-InspectorCore'
+method: GtGemStoneDoubleLocalCallFrame
+phlowBackgroundColorInIsolation
+	| senderMatches |
+	senderMatches := self sender
+		ifNil: [true] 
+		ifNotNil: [ :aSender | aSender hasSameProperties ].
+	
+	^ self hasSameProperties
+			ifTrue: [ GtPhlowColor named: #green alpha: 0.4 ]
+			ifFalse: [ 
+				senderMatches
+					ifTrue: [ GtPhlowColor named: #orange alpha: 0.4 ]
+					ifFalse: [ GtPhlowColor transparent ]  ]
+%
+
 ! Class extensions for 'GtPhlowViewSpecification'
 
 !		Class methods for 'GtPhlowViewSpecification'
