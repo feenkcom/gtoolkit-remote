@@ -116,7 +116,7 @@ GtProxyRemoteInspectionExamples >> assertInspectorTabLabelsUsing: scripter [
 ]
 
 { #category : #'asserting - inspection' }
-GtProxyRemoteInspectionExamples >> assertInspectorToolLabelUsing: aScripter equals: aString [
+GtProxyRemoteInspectionExamples >> assertInspectorToolLabelUsing: aScripter atIndex: aTabIndex selected: aBoolean equals: aString [
 	aScripter
 		substeps: 'Check tool tab label'
 		do: [ :aStep | 
@@ -127,7 +127,7 @@ GtProxyRemoteInspectionExamples >> assertInspectorToolLabelUsing: aScripter equa
 						id: #header;
 						id: #scrolltabbar;
 						id: #tabbar;
-						value: [ :aTabBar | aTabBar children size ] equals: 1 ].
+						value: [ :aTabBar | aTabBar children size ] equals: 2 ].
 
 			aStep
 				assertStep: [ :s | 
@@ -136,13 +136,33 @@ GtProxyRemoteInspectionExamples >> assertInspectorToolLabelUsing: aScripter equa
 						id: #header;
 						id: #scrolltabbar;
 						id: #tabbar;
-						onChildAt: 1;
-						value: [ :aTab | aTab label asString ] equals: aString ] ]
+						onChildAt: aTabIndex;
+						value: [ :aTab | aTab label asString ] equals: aString ].
+						
+			aStep
+				assertStep: [ :s | 
+					s
+						label: 'Tab is selected';
+						id: #header;
+						id: #scrolltabbar;
+						id: #tabbar;
+						onChildAt: aTabIndex;
+						value: [ :aTab | aTab viewModel isSelected ] equals:aBoolean ] ]
 ]
 
 { #category : #'asserting - inspection' }
-GtProxyRemoteInspectionExamples >> assertLocalInspectorToolLabelUsing: aScripter [ 
-	self assertInspectorToolLabelUsing: aScripter equals: 'Proxy'
+GtProxyRemoteInspectionExamples >> assertLocalInspectorToolLabelUsing: aScripter selected: aBoolean [
+	self 
+		assertInspectorToolLabelUsing: aScripter 
+		atIndex: 2 
+		selected: aBoolean
+		equals: 'Proxy'
+]
+
+{ #category : #'asserting - inspection' }
+GtProxyRemoteInspectionExamples >> assertLocalInspectorToolSelectedUsing: aScripter [ 
+	self assertRemoteInspectorToolLabelUsing: aScripter selected: false.
+	self assertLocalInspectorToolLabelUsing: aScripter selected: true.
 ]
 
 { #category : #'asserting - inspection' }
@@ -256,8 +276,18 @@ GtProxyRemoteInspectionExamples >> assertProxyPlaygroundPageTypeUsing: aScripter
 ]
 
 { #category : #'asserting - inspection' }
-GtProxyRemoteInspectionExamples >> assertRemoteInspectorToolLabelUsing: aScripter [ 
-	self assertInspectorToolLabelUsing: aScripter equals: 'Remote'
+GtProxyRemoteInspectionExamples >> assertRemoteInspectorToolLabelUsing: aScripter selected: aBoolean [
+	self 
+		assertInspectorToolLabelUsing: aScripter 
+		atIndex: 1
+		selected: aBoolean
+		equals: 'Remote'
+]
+
+{ #category : #'asserting - inspection' }
+GtProxyRemoteInspectionExamples >> assertRemoteInspectorToolSelectedUsing: aScripter [ 
+	self assertRemoteInspectorToolLabelUsing: aScripter selected: true.
+	self assertLocalInspectorToolLabelUsing: aScripter selected: false.
 ]
 
 { #category : #'asserting - inspection' }
@@ -298,7 +328,7 @@ GtProxyRemoteInspectionExamples >> compositeInspectorSwitchToolUsing: aScripter 
 	aScripter
 		substeps: 'Check Remote Side'
 		do: [ :aStep | 
-			self assertLocalInspectorToolLabelUsing: aStep.
+			self assertRemoteInspectorToolSelectedUsing: aStep.
 			self assertInspectorTabLabelsUsing: aStep.
 			self assertRemotePlaygroundPageUsing: aStep ].
 
@@ -308,12 +338,13 @@ GtProxyRemoteInspectionExamples >> compositeInspectorSwitchToolUsing: aScripter 
 				label: 'Switch to proxy inspector';
 				id: #header;
 				id: #scrolltabbar;
-				id: #tabbar ].
+				id: #tabbar;
+				onChildAt: 2 ].
 
 	aScripter
 		substeps: 'Check Local Side'
 		do: [ :aStep | 
-			self assertRemoteInspectorToolLabelUsing: aStep.
+			self assertLocalInspectorToolSelectedUsing: aStep.
 			self assertInspectorTabLabelsUsing: aStep.
 			self assertLocalPlaygroundPageUsing: aStep ]
 ]
