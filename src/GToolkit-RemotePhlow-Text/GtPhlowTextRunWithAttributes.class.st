@@ -19,6 +19,11 @@ GtPhlowTextRunWithAttributes class >> typeLabel [
 	^ 'phlowTextRunWithAttributes'
 ]
 
+{ #category : #accessing }
+GtPhlowTextRunWithAttributes >> addAttribute: anAttribute [
+	self attributes add: anAttribute
+]
+
 { #category : #styling }
 GtPhlowTextRunWithAttributes >> applyStyleToText: aText [
 	| subText |
@@ -47,6 +52,31 @@ GtPhlowTextRunWithAttributes >> attributes: aCollection [
 	attributes := aCollection
 ]
 
+{ #category : #printing }
+GtPhlowTextRunWithAttributes >> attributesDescription [
+	^ String streamContents: [ :aStream |
+		self attributesDescriptionOn: aStream ]
+]
+
+{ #category : #printing }
+GtPhlowTextRunWithAttributes >> attributesDescriptionOn: aStream [ 
+	self attributes 
+		do: [ :anAttribute |
+			aStream << anAttribute printString ] 
+		separatedBy: [ aStream << ' ']
+]
+
+{ #category : #accessing }
+GtPhlowTextRunWithAttributes >> gtViewAttributesFor: aView [ 
+	<gtView>
+	
+	^ aView columnedList 
+		title: 'Attributes';
+		items: [ self attributes ];
+		column: 'Attribute' text: [ :anAttribute | anAttribute printString];
+		column: 'Run ' text: [ :_ | self runDescription ]
+]
+
 { #category : #initialization }
 GtPhlowTextRunWithAttributes >> initializeFromJSONDictionary: aTextStylerData [
 	aTextStylerData at: 'run' ifPresent: [ :aRunData |
@@ -54,6 +84,13 @@ GtPhlowTextRunWithAttributes >> initializeFromJSONDictionary: aTextStylerData [
 			from: aRunData first to: aRunData second ].
 	attributes := ((aTextStylerData at: 'attributes') collect: [ :anAttributeData |
 		 GtPhlowTextAttribute fromJSONDictionary: anAttributeData ]) asArray
+]
+
+{ #category : #printing }
+GtPhlowTextRunWithAttributes >> printOn: aStream [
+	self runDescriptionOn:  aStream.
+	aStream << ': '.
+	self attributesDescriptionOn: aStream 
 ]
 
 { #category : #accessing }
@@ -64,4 +101,18 @@ GtPhlowTextRunWithAttributes >> run [
 { #category : #accessing }
 GtPhlowTextRunWithAttributes >> run: anInterval [
 	^ run := anInterval
+]
+
+{ #category : #printing }
+GtPhlowTextRunWithAttributes >> runDescription [
+	^ String streamContents: [ :aStream |
+		 self runDescriptionOn: aStream ]
+]
+
+{ #category : #printing }
+GtPhlowTextRunWithAttributes >> runDescriptionOn: aStream [
+	aStream 
+		print: self run first;
+		<< '-';
+		print: self run last
 ]
