@@ -68,6 +68,7 @@ GtPhlowBasicColumnedViewSpecification >> gtViewColumnSpecificationFor: aView [
 	
 	^ aView columnedList
 		title: 'Column Specifications';
+		priority: 20;
 		items: [ self columnSpecifications ];
 		column: 'Title' text: [ :aColumnSpecification | 
 			aColumnSpecification title ];
