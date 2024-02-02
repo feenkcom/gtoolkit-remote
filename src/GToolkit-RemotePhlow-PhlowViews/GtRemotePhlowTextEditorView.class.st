@@ -2,7 +2,8 @@ Class {
 	#name : #GtRemotePhlowTextEditorView,
 	#superclass : #GtRemotePhlowView,
 	#instVars : [
-		'textBuilder'
+		'textBuilder',
+		'textStylerComputation'
 	],
 	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
@@ -17,12 +18,18 @@ GtRemotePhlowTextEditorView >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
 
-	^GtPhlowTextEditorViewSpecification new 
+	^ GtPhlowTextEditorViewSpecification new 
 		title: self title;
 		priority: self priority;
 		string: self textBuilder value asString;
 		dataTransport: GtPhlowViewSpecification dataIncluded.
+]
 
+{ #category : #accessing }
+GtRemotePhlowTextEditorView >> styler: aBlockClosure [
+	"Set the computation that will generate ."
+
+	textStylerComputation := aBlockClosure
 ]
 
 { #category : #accessing }
