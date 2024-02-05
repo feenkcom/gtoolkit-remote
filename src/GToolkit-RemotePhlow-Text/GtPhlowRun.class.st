@@ -68,6 +68,14 @@ GtPhlowRun >> attributesDescriptionOn: aStream [
 		separatedBy: [ aStream << ' ']
 ]
 
+{ #category : #copying }
+GtPhlowRun >> copyFrom: aStartIndex to: anEndIndex [
+	^ self class
+		from: (aStartIndex max: startIndex) - aStartIndex + 1
+		to: (anEndIndex min: endIndex) - aStartIndex + 1
+		attributes: attributes  copy
+]
+
 { #category : #accessing }
 GtPhlowRun >> endIndex [
 	^ endIndex

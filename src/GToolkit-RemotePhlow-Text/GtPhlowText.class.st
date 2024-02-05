@@ -48,6 +48,16 @@ GtPhlowText >> from: aStart to: anEnd [
 	^ self subclassResponsibility
 ]
 
+{ #category : #'gt - extensions' }
+GtPhlowText >> gtTextFor: aView [
+	<gtView>
+	
+	^ aView textEditor
+		title: 'Text';
+		priority: 2;
+		text: [ self ]
+]
+
 { #category : #testing }
 GtPhlowText >> isEmpty [
 	^ self size = 0
