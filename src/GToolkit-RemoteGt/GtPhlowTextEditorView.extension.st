@@ -40,11 +40,11 @@ GtPhlowTextEditorView >> createRemotePhlowStylerSpecificationForText: aText [
 
 { #category : #'*GToolkit-RemoteGt' }
 GtPhlowTextEditorView >> extractRemotePhlowRunsFrom: aStyledText [ 
-	| runArray |
-	runArray := GtPhlowRunArray new.
+	| runsGroup |
+	runsGroup := GtPhlowRunsGroup new.
 	
 	aStyledText attributeRunsDo: [ :aStartIndex :anEndIndex :localAttributes | 
-		 runArray addRun: (GtPhlowRun  
+		 runsGroup addRun: (GtPhlowRun  
 		 	from: aStartIndex
 		 	to: anEndIndex
 		 	attributes: (localAttributes 
@@ -52,6 +52,6 @@ GtPhlowTextEditorView >> extractRemotePhlowRunsFrom: aStyledText [
 		 			anAttribute asGtRemotePhlowTextAttribute ]
 		 		as: Array ) ) ].
 				
-	^ runArray reject: [ :aRunWithAttributes |
+	^ runsGroup reject: [ :aRunWithAttributes |
 		aRunWithAttributes attributes isEmpty ] 
 ]

@@ -104,7 +104,7 @@ GtPhlowText >> gtViewIntervalsFor: aView [
 { #category : #initialization }
 GtPhlowText >> initialieWithString: aString [ 
 	sourceString := aString.
-	attributedRuns := GtPhlowRunArray new
+	attributedRuns := GtPhlowRunsGroup new
 ]
 
 { #category : #printing }

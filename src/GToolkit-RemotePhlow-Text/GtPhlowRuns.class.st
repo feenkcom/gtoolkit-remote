@@ -9,8 +9,8 @@ GtPhlowRuns class >> fromJSONDictionary: aRunsData [
 	| typeLabel runsClass |
  	typeLabel := aRunsData at: '__typeLabel'.
 			
-	typeLabel = GtPhlowRunArray typeLabel ifTrue: [
- 		runsClass :=  GtPhlowRunArray ].
+	typeLabel = GtPhlowRunsGroup typeLabel ifTrue: [
+ 		runsClass :=  GtPhlowRunsGroup ].
 		
 	^ runsClass 
 		ifNil: [ nil ]
