@@ -16,11 +16,13 @@ BaselineOfGToolkitRemote >> baseline: spec [
 		spec baseline: 'GToolkitPhlow' with: [
 				spec repository: 'github://feenkcom/gtoolkit-phlow:main/src' ].
 		spec 
-			package: 'GToolkit-RemotePhlow-DeclarativeViews';
+			package: 'GToolkit-RemotePhlow-Text';
+			package: 'GToolkit-RemotePhlow-DeclarativeViews' with: [
+				spec requires: #('GToolkit-RemotePhlow-Text')];
 			package: 'GToolkit-RemotePhlow-DeclarativeViews-GTSpecific'with: [
 				spec requires: #(#'GToolkit-RemotePhlow-DeclarativeViews') ];
 			package: 'GToolkit-RemotePhlow-PhlowViews'  with: [
-				spec requires: #(#'GToolkitPhlow') ];
+				spec requires: #(#'GToolkitPhlow' 'GToolkit-RemotePhlow-Text') ];
 			package: 'GToolkit-RemotePhlow-InspectorCore' with: [
 				spec requires: #(#'GToolkit-RemotePhlow-PhlowViews') ];
 			"GToolkit-RemotePhlow-Examples all run in the local image, 
