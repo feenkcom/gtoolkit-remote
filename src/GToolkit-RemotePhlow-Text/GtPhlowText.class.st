@@ -7,7 +7,7 @@ Class {
 { #category : #accessing }
 GtPhlowText class >> forString: aString [
 	^ GtPhlowRunBasedText new 
-		initialieWithString: aString
+		initializeWithString: aString
 ]
 
 { #category : #attributes }
@@ -46,6 +46,16 @@ GtPhlowText >> from: aStart to: anEnd [
 	<return: #GtPhlowSubText>
 	
 	^ self subclassResponsibility
+]
+
+{ #category : #'gt - extensions' }
+GtPhlowText >> gtTextFor: aView [
+	<gtView>
+	
+	^ aView textEditor
+		title: 'Text';
+		priority: 2;
+		text: [ self ]
 ]
 
 { #category : #testing }

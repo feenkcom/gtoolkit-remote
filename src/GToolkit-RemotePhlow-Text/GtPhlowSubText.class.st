@@ -25,6 +25,16 @@ GtPhlowSubText >> addAttribute: aPhlowAttribute from: aStartIndex to: anEndIndex
 		addAttribute: aPhlowAttribute from: aStartIndex to: anEndIndex 
 ]
 
+{ #category : #copy }
+GtPhlowSubText >> asRopedText [
+	^ parentText copyFrom: startIndex to: endIndex
+]
+
+{ #category : #copy }
+GtPhlowSubText >> asRopedtext [
+	^ parentText copyFrom: startIndex to: endIndex
+]
+
 { #category : #assertions }
 GtPhlowSubText >> assertInvariant [
 	self assertStart: startIndex end: endIndex
@@ -62,6 +72,17 @@ GtPhlowSubText >> from: aStart to: anEnd [
 	^ parentText
 		from: ((aStart + startIndex - 1) max: 0)
 		to: ((anEnd + startIndex - 1) max: 0)
+]
+
+{ #category : #'gt - extensions' }
+GtPhlowSubText >> gtAttributeTreeFor: aView [
+	<gtView>
+	
+	^ aView forward 
+		title: 'All attributes';
+		priority: 20;
+		object: [ self asRopedText ];
+		view: #gtAttributeTreeFor: 
 ]
 
 { #category : #'test - accessing' }
