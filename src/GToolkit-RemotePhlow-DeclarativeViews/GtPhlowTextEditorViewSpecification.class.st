@@ -17,9 +17,9 @@ GtPhlowTextEditorViewSpecification class >> fromJSONDictionary: aDictionary [
 		editor string: (aDictionary at: #string).
 		(aDictionary 
 			at: #textStyler 
-			ifPresent: [ :aTextStylerData |
+			ifPresent: [ :aTextStylerSpecificationData |
 				editor textStyler: (#GtRemotePhlowTextStylerSpecification  asClass
-					fromJSONDictionary: aTextStylerData) ]). ].
+					fromJSONDictionary: aTextStylerSpecificationData) ]). ].
 	^editor
 ]
 

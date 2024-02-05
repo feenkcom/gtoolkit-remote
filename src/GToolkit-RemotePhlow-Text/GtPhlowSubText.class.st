@@ -1,6 +1,6 @@
 Class {
 	#name : #GtPhlowSubText,
-	#superclass : #GtPhlowAbstractText,
+	#superclass : #GtPhlowText,
 	#instVars : [
 		'parentText',
 		'startIndex',

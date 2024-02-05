@@ -2,19 +2,19 @@ Class {
 	#name : #GtRemotePhlowLocalTextAttributeRunsStyler,
 	#superclass : #BlTextStyler,
 	#instVars : [
-		'attributedRun'
+		'attributeRuns'
 	],
 	#category : #'GToolkit-RemoteGt-Styler'
 }
 
 { #category : #accessing }
-GtRemotePhlowLocalTextAttributeRunsStyler >> attributedRuns: aCollection [
-	attributedRun := aCollection
+GtRemotePhlowLocalTextAttributeRunsStyler >> attributeRuns: aRunsCollection [
+	attributeRuns := aRunsCollection
 ]
 
 { #category : #accessing }
 GtRemotePhlowLocalTextAttributeRunsStyler >> privateStyle: aText [
-	attributedRun do: [ :anAttributedRun |
+	attributeRuns runsDo: [ :anAttributedRun |
 		anAttributedRun applyStyleToText: aText  ].
 	^ aText
 ]

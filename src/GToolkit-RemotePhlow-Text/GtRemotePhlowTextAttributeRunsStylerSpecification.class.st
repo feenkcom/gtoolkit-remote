@@ -2,7 +2,7 @@ Class {
 	#name : #GtRemotePhlowTextAttributeRunsStylerSpecification,
 	#superclass : #GtRemotePhlowTextStylerSpecification,
 	#instVars : [
-		'attributedRuns'
+		'attributeRuns'
 	],
 	#category : #'GToolkit-RemotePhlow-Text'
 }
@@ -14,7 +14,7 @@ GtRemotePhlowTextAttributeRunsStylerSpecification class >> typeLabel [
 
 { #category : #testing }
 GtRemotePhlowTextAttributeRunsStylerSpecification >> affectsText [
-	^ attributedRuns notNil and: [ attributedRuns notEmpty ]
+	^ attributeRuns notNil and: [ attributeRuns notEmpty ]
 ]
 
 { #category : #converting }
@@ -23,36 +23,28 @@ GtRemotePhlowTextAttributeRunsStylerSpecification >> asDictionaryForExport [
 	Subclasses will override and add to the dictionary"
 
 	^ super asDictionaryForExport
-		at: 'attributedRuns' put: (attributedRuns 
-			collect: [ :anAttributeRun | 
-				anAttributeRun asDictionaryForExport ]) asArray;
+		at: 'attributeRuns' put: attributeRuns  asDictionaryForExport;
 		yourself
 ]
 
 { #category : #accessing }
-GtRemotePhlowTextAttributeRunsStylerSpecification >> attributedRuns: aCollection [
-	attributedRuns := aCollection
+GtRemotePhlowTextAttributeRunsStylerSpecification >> attributeRuns: aCollection [
+	attributeRuns := aCollection
 ]
 
 { #category : #'gt - extensions' }
 GtRemotePhlowTextAttributeRunsStylerSpecification >> gtViewRunWithAttributesFor: aView [ 
 	<gtView>
 	
-	^ aView columnedList 
-		title: 'Runs with attributes';
-		items: [ attributedRuns ];
-		column: 'Run' 
-			text: [ :anAttributeRun | anAttributeRun run printString ]
-			weight: 0.5;
-		column: 'Attribute' 
-			text: [ :anAttributeRun | anAttributeRun attributes ]
+	^ aView forward 
+		title: 'Runs';
+		object: [ attributeRuns ];
+		view: #gtViewIntervalsFor:
 ]
 
 { #category : #initialization }
 GtRemotePhlowTextAttributeRunsStylerSpecification >> initializeFromJSONDictionary: aTextStylerSpecificationData [ 
 	super initializeFromJSONDictionary: aTextStylerSpecificationData .
 	
-	attributedRuns := (aTextStylerSpecificationData at: 'attributedRuns') 
-		collect: [ :anAttributeRunData |
-			GtPhlowTextAttributedRuns fromJSONDictionary:  anAttributeRunData ]
+	attributeRuns := GtPhlowRuns fromJSONDictionary:   (aTextStylerSpecificationData at: 'attributeRuns')
 ]
