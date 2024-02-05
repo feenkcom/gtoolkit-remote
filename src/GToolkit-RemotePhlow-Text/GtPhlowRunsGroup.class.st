@@ -25,7 +25,7 @@ GtPhlowRunsGroup >> add: aRun [
 
 { #category : #adding }
 GtPhlowRunsGroup >> addRun: aRun [
-	self runs add: aRun
+	self items add: aRun
 ]
 
 { #category : #converting }
@@ -37,9 +37,18 @@ GtPhlowRunsGroup >> asDictionaryForExport [
 		yourself
 ]
 
+{ #category : #accessing }
+GtPhlowRunsGroup >> copyFrom: aStartIndex to: anEndIndex [
+	^ self class withRuns: ((self items 
+		reject: [ :aRun |
+			(anEndIndex < aRun startIndex) or: [ aStartIndex > aRun endIndex]])
+		collect: [ :aRun |
+			aRun copyFrom: aStartIndex to: anEndIndex ])
+]
+
 { #category : #enumerating }
 GtPhlowRunsGroup >> detect: aBlock ifNone: exceptionBlock [
-	^ self runs detect: aBlock ifNone: exceptionBlock
+	^ self items detect: aBlock ifNone: exceptionBlock
 ]
 
 { #category : #initialization }
@@ -83,15 +92,17 @@ GtPhlowRunsGroup >> printOn: aStream [
 { #category : #enumerating }
 GtPhlowRunsGroup >> reject: aBlock [
 	^ self class 
-		withRuns: (self runs reject: aBlock)
-]
-
-{ #category : #accessing }
-GtPhlowRunsGroup >> runs [
-	^ self items
+		withRuns: (self items reject: aBlock)
 ]
 
 { #category : #enumerating }
 GtPhlowRunsGroup >> runsDo: aBlock [
 	self itemsDo: aBlock
+]
+
+{ #category : #accessing }
+GtPhlowRunsGroup >> size [
+	^ self isEmpty 
+		ifTrue: [0] 
+		ifFalse: [ self items size ]
 ]
