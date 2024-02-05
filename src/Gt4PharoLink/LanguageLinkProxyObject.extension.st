@@ -104,11 +104,15 @@ LanguageLinkProxyObject >> gtRemoteSideInspectorTool [
 LanguageLinkProxyObject >> gtRemoteViewSpecificationsFor: aView [
 	<gtProxy>
 	
-	^ aView list
+	^ aView columnedList
 		title: 'Remote view specifications';
 		priority: 10001;
-		items: [ self declarativeViews ];
-		itemText: [ :aViewAccessor | aViewAccessor title ];
+		items: [ self declarativeViews sorted: #priority ascending];
+		column: 'Title' text: [ :aViewAccessor | aViewAccessor title ];
+		column: 'Selector' text: [ :aViewAccessor | aViewAccessor methodSelector ];
+		column: 'View' text: [ :aViewAccessor | aViewAccessor viewName ];
+		column: 'Priority' text: [ :aViewAccessor | aViewAccessor priority ] weight: 0.5;
+		column: 'Transport' text: [ :aViewAccessor | aViewAccessor dataTransport ] weight: 0.5;
 		send: [ :aDeclarativeView | aDeclarativeView ]
 ]
 
