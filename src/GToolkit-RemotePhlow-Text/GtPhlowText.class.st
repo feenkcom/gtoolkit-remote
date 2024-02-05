@@ -7,7 +7,7 @@ Class {
 { #category : #accessing }
 GtPhlowText class >> forString: aString [
 	^ GtPhlowRunBasedText new 
-		initialieWithString: aString
+		initializeWithString: aString
 ]
 
 { #category : #attributes }

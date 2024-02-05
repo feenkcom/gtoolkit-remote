@@ -96,7 +96,7 @@ GtPhlowRunBasedText >> gtViewIntervalsFor: aView [
 ]
 
 { #category : #initialization }
-GtPhlowRunBasedText >> initialieWithString: aString [ 
+GtPhlowRunBasedText >> initializeWithString: aString [ 
 	sourceString := aString.
 	attributeRuns := GtPhlowRunsGroup new
 ]
