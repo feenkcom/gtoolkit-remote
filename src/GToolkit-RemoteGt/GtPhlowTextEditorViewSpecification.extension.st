@@ -1,13 +1,18 @@
 Extension { #name : #GtPhlowTextEditorViewSpecification }
 
 { #category : #'*GToolkit-RemoteGt' }
-GtPhlowTextEditorViewSpecification >> configureForLazyDataView: aTextView [ 
+GtPhlowTextEditorViewSpecification >> configureForLazyDataView: aTextView [
+	aTextView
+		text: [ | remoteText |
+			remoteText := dataSource getText.
+			(GtRemotePhlowText fromJSONDictionary: remoteText) asRopedText ]
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
-GtPhlowTextEditorViewSpecification >> configureForLocalDataView: aTextView [ 
-	textStyler ifNotNil: [ :aTextStyler | 
-		aTextView styler: [ aTextStyler createBlStyler ] ].
+GtPhlowTextEditorViewSpecification >> configureForLocalDataView: aTextView [
+	aTextView text: [ self string ].
+	textStyler
+		ifNotNil: [ :aTextStyler | aTextView styler: [ aTextStyler createBlStyler ] ]
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
@@ -17,8 +22,7 @@ GtPhlowTextEditorViewSpecification >> viewFor: aView [
 
 	currentView := aView textEditor 
 		title: title;
-		priority: priority;
-		text: [ self string ].
+		priority: priority.
 	
 	self dataTransport = self class dataIncluded 
 		ifTrue: [ self configureForLocalDataView: currentView ] 
