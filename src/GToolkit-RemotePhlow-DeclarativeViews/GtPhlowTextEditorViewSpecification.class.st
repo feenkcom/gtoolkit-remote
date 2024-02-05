@@ -3,7 +3,8 @@ Class {
 	#superclass : #GtPhlowViewSpecification,
 	#instVars : [
 		'string',
-		'textStyler'
+		'textStyler',
+		'dataSource'
 	],
 	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
@@ -11,16 +12,17 @@ Class {
 { #category : #'instance creation' }
 GtPhlowTextEditorViewSpecification class >> fromJSONDictionary: aDictionary [
 	| editor |
-
 	editor := super fromJSONDictionary: aDictionary.
-	editor dataTransport = self dataIncluded ifTrue: [ 
-		editor string: (aDictionary at: #string).
-		(aDictionary 
-			at: #textStyler 
-			ifPresent: [ :aTextStylerSpecificationData |
-				editor textStyler: (#GtRemotePhlowTextStylerSpecification  asClass
-					fromJSONDictionary: aTextStylerSpecificationData) ]). ].
-	^editor
+	editor dataTransport = self dataIncluded
+		ifTrue: [ editor string: (aDictionary at: #string).
+			aDictionary
+				at: #textStyler
+				ifPresent: [ :aTextStylerSpecificationData | 
+					editor
+						textStyler: (#GtRemotePhlowTextStylerSpecification asClass
+								fromJSONDictionary: aTextStylerSpecificationData) ] ]
+		ifFalse: [ editor dataSource: (aDictionary at: #dataSource) ].
+	^ editor
 ]
 
 { #category : #converting }
@@ -36,6 +38,16 @@ GtPhlowTextEditorViewSpecification >> asDictionaryForExport [
 				put: textStyler asDictionaryForExport ] ].
 	
 	^ dictionary
+]
+
+{ #category : #accessing }
+GtPhlowTextEditorViewSpecification >> dataSource [
+	^ dataSource
+]
+
+{ #category : #accessing }
+GtPhlowTextEditorViewSpecification >> dataSource: anObject [
+	dataSource := anObject
 ]
 
 { #category : #accessing }
