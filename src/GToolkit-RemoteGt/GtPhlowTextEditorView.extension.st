@@ -35,7 +35,7 @@ GtPhlowTextEditorView >> createRemotePhlowStylerSpecificationForText: aText [
 	
 	styledText := computedStyler style: aText.
 	^ GtRemotePhlowTextAttributeRunsStylerSpecification new
-		attributedRuns: (self extractRemotePhlowRunsFrom: styledText)
+		attributeRuns: (self extractRemotePhlowRunsFrom: styledText)
 ]
 
 { #category : #'*GToolkit-RemoteGt' }

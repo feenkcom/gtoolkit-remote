@@ -53,6 +53,11 @@ GtPhlowRunsGroup >> initializeWithRuns: aCollectionOfRuns [
 	items := aCollectionOfRuns
 ]
 
+{ #category : #testing }
+GtPhlowRunsGroup >> isEmpty [
+	^ items isNil or: [ items isEmpty ]
+]
+
 { #category : #accessing }
 GtPhlowRunsGroup >> items [
 	^ items ifNil: [

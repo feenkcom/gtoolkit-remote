@@ -2,7 +2,7 @@ Class {
 	#name : #GtRemotePhlowTextAttributeRunsStylerSpecification,
 	#superclass : #GtRemotePhlowTextStylerSpecification,
 	#instVars : [
-		'attributedRuns'
+		'attributeRuns'
 	],
 	#category : #'GToolkit-RemotePhlow-Text'
 }
@@ -14,7 +14,7 @@ GtRemotePhlowTextAttributeRunsStylerSpecification class >> typeLabel [
 
 { #category : #testing }
 GtRemotePhlowTextAttributeRunsStylerSpecification >> affectsText [
-	^ attributedRuns notNil and: [ attributedRuns notEmpty ]
+	^ attributeRuns notNil and: [ attributeRuns notEmpty ]
 ]
 
 { #category : #converting }
@@ -23,13 +23,13 @@ GtRemotePhlowTextAttributeRunsStylerSpecification >> asDictionaryForExport [
 	Subclasses will override and add to the dictionary"
 
 	^ super asDictionaryForExport
-		at: 'attributedRuns' put: attributedRuns  asDictionaryForExport;
+		at: 'attributeRuns' put: attributeRuns  asDictionaryForExport;
 		yourself
 ]
 
 { #category : #accessing }
-GtRemotePhlowTextAttributeRunsStylerSpecification >> attributedRuns: aCollection [
-	attributedRuns := aCollection
+GtRemotePhlowTextAttributeRunsStylerSpecification >> attributeRuns: aCollection [
+	attributeRuns := aCollection
 ]
 
 { #category : #'gt - extensions' }
@@ -38,7 +38,7 @@ GtRemotePhlowTextAttributeRunsStylerSpecification >> gtViewRunWithAttributesFor:
 	
 	^ aView forward 
 		title: 'Runs';
-		object: [ attributedRuns ];
+		object: [ attributeRuns ];
 		view: #gtViewIntervalsFor:
 ]
 
@@ -46,5 +46,5 @@ GtRemotePhlowTextAttributeRunsStylerSpecification >> gtViewRunWithAttributesFor:
 GtRemotePhlowTextAttributeRunsStylerSpecification >> initializeFromJSONDictionary: aTextStylerSpecificationData [ 
 	super initializeFromJSONDictionary: aTextStylerSpecificationData .
 	
-	attributedRuns := GtPhlowRuns fromJSONDictionary:   (aTextStylerSpecificationData at: 'attributedRuns')
+	attributeRuns := GtPhlowRuns fromJSONDictionary:   (aTextStylerSpecificationData at: 'attributeRuns')
 ]

@@ -63,6 +63,16 @@ GtPhlowRuns >> gtViewIntervalsFor: aView [
 GtPhlowRuns >> initializeFromJSONDictionary: aRunsData [
 ]
 
+{ #category : #testing }
+GtPhlowRuns >> isEmpty [
+	^ self subclassResponsibility
+]
+
+{ #category : #testing }
+GtPhlowRuns >> notEmpty [
+	^ self isEmpty not
+]
+
 { #category : #enumerating }
 GtPhlowRuns >> runsDo: aBlock [
 	self subclassResponsibility 
