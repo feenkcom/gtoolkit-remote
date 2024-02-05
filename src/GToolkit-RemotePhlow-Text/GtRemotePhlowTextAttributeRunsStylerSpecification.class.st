@@ -23,9 +23,7 @@ GtRemotePhlowTextAttributeRunsStylerSpecification >> asDictionaryForExport [
 	Subclasses will override and add to the dictionary"
 
 	^ super asDictionaryForExport
-		at: 'attributedRuns' put: (attributedRuns 
-			collect: [ :anAttributeRun | 
-				anAttributeRun asDictionaryForExport ]) asArray;
+		at: 'attributedRuns' put: attributedRuns  asDictionaryForExport;
 		yourself
 ]
 
@@ -38,21 +36,15 @@ GtRemotePhlowTextAttributeRunsStylerSpecification >> attributedRuns: aCollection
 GtRemotePhlowTextAttributeRunsStylerSpecification >> gtViewRunWithAttributesFor: aView [ 
 	<gtView>
 	
-	^ aView columnedList 
-		title: 'Runs with attributes';
-		items: [ attributedRuns ];
-		column: 'Run' 
-			text: [ :anAttributeRun | anAttributeRun run printString ]
-			weight: 0.5;
-		column: 'Attribute' 
-			text: [ :anAttributeRun | anAttributeRun attributes ]
+	^ aView forward 
+		title: 'Runs';
+		object: [ attributedRuns ];
+		view: #gtViewIntervalsFor:
 ]
 
 { #category : #initialization }
 GtRemotePhlowTextAttributeRunsStylerSpecification >> initializeFromJSONDictionary: aTextStylerSpecificationData [ 
 	super initializeFromJSONDictionary: aTextStylerSpecificationData .
 	
-	attributedRuns := (aTextStylerSpecificationData at: 'attributedRuns') 
-		collect: [ :anAttributeRunData |
-			GtPhlowTextAttributedRuns fromJSONDictionary:  anAttributeRunData ]
+	attributedRuns := GtPhlowRuns fromJSONDictionary:   (aTextStylerSpecificationData at: 'attributedRuns')
 ]

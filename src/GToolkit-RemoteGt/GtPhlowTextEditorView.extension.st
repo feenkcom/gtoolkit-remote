@@ -35,22 +35,23 @@ GtPhlowTextEditorView >> createRemotePhlowStylerSpecificationForText: aText [
 	
 	styledText := computedStyler style: aText.
 	^ GtRemotePhlowTextAttributeRunsStylerSpecification new
-		attributedRuns: (self extractRemotePhlowAttributeRunsFrom: styledText)
+		attributedRuns: (self extractRemotePhlowRunsFrom: styledText)
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
-GtPhlowTextEditorView >> extractRemotePhlowAttributeRunsFrom: aStyledText [ 
-	| runsWithAttributes |
-	runsWithAttributes := OrderedCollection new.
+GtPhlowTextEditorView >> extractRemotePhlowRunsFrom: aStyledText [ 
+	| runArray |
+	runArray := GtPhlowRunArray new.
 	
-	aStyledText attributeRunsDo: [ :from :to :localAttributes | 
-		 runsWithAttributes add: (GtPhlowTextRunWithAttributes new 
-		 	run: (Interval from: from to: to);
+	aStyledText attributeRunsDo: [ :aStartIndex :anEndIndex :localAttributes | 
+		 runArray addRun: (GtPhlowRun  
+		 	from: aStartIndex
+		 	to: anEndIndex
 		 	attributes: (localAttributes 
 		 		collect: [ :anAttribute |
 		 			anAttribute asGtRemotePhlowTextAttribute ]
 		 		as: Array ) ) ].
 				
-	^ runsWithAttributes reject: [ :aRunWithAttributes |
+	^ runArray reject: [ :aRunWithAttributes |
 		aRunWithAttributes attributes isEmpty ] 
 ]

@@ -5,17 +5,17 @@ Class {
 }
 
 { #category : #'instance creation' }
-GtRemotePhlowTextStylerSpecification class >> fromJSONDictionary: aTextStylerData [ 
-	| typeLabel stylerClass |
- 	typeLabel := aTextStylerData at: '__typeLabel'.
+GtRemotePhlowTextStylerSpecification class >> fromJSONDictionary: aTextStylerSpecificationData [ 
+	| typeLabel stylerSpecificationClass |
+ 	typeLabel := aTextStylerSpecificationData at: '__typeLabel'.
  	
- 	stylerClass := self stylerSpecificationClassForType: typeLabel.
+ 	stylerSpecificationClass := self stylerSpecificationClassForType: typeLabel.
 		
-	^ stylerClass 
+	^ stylerSpecificationClass 
 		ifNil: [ nil ]
 		ifNotNil: [
-			stylerClass new  
-				initializeFromJSONDictionary: aTextStylerData ]
+			stylerSpecificationClass new 
+				initializeFromJSONDictionary: aTextStylerSpecificationData ]
 ]
 
 { #category : #'instance creation' }
@@ -48,6 +48,6 @@ GtRemotePhlowTextStylerSpecification >> asDictionaryForExport [
 ]
 
 { #category : #initialization }
-GtRemotePhlowTextStylerSpecification >> initializeFromJSONDictionary: aTextStylerData [ 
+GtRemotePhlowTextStylerSpecification >> initializeFromJSONDictionary: aTextStylerSpecificationData [ 
 	
 ]

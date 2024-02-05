@@ -3,7 +3,7 @@ Class {
 	#superclass : #GtPhlowAbstractText,
 	#instVars : [
 		'sourceString',
-		'runsWithAttributes'
+		'attributedRuns'
 	],
 	#category : #'GToolkit-RemotePhlow-Text'
 }
@@ -17,17 +17,18 @@ GtPhlowText class >> forString: aString [
 { #category : #attributes }
 GtPhlowText >> addAttribute: aPhlowAttribute from: aStartIndex to: anEndIndex [
 	| targetRunWithAttributes | 
-	targetRunWithAttributes := runsWithAttributes 
+	targetRunWithAttributes := attributedRuns 
 		detect: [ :aRunWithAttributes |
-			aRunWithAttributes run first = aStartIndex and: [
-				aRunWithAttributes run last = anEndIndex ] ] 
+			aRunWithAttributes startIndex = aStartIndex and: [
+				aRunWithAttributes endIndex = anEndIndex ] ] 
 		ifNone: [
-			| newRunWithAttributes |
-			newRunWithAttributes := (GtPhlowTextRunWithAttributes new
-				run: (Interval from: aStartIndex to: anEndIndex);
+			| newRun |
+			newRun := (GtPhlowRun 
+				from: aStartIndex
+				to: anEndIndex
 				attributes: OrderedCollection new).
-			runsWithAttributes add: newRunWithAttributes.
-			newRunWithAttributes ].
+			attributedRuns addRun: newRun.
+			newRun ].
 	targetRunWithAttributes addAttribute: aPhlowAttribute
 ]
 
@@ -36,7 +37,7 @@ GtPhlowText >> asRopedText [
 	^ self 
 		gtDo: [ 
 			(#GtRemotePhlowLocalTextAttributeRunsStyler asClass new 
-				attributedRuns: runsWithAttributes)
+				attributedRuns: attributedRuns)
 					style: sourceString asRopedText]
 		gemstoneDo: [ self ]
 ]
@@ -93,21 +94,17 @@ GtPhlowText >> gtTextFor: aView [
 GtPhlowText >> gtViewIntervalsFor: aView [
 	<gtView>
 	
-	^ aView columnedList 
+	^ aView forward 
 		title: 'Intervals';
 		priority: 10;
-		items: [ runsWithAttributes ];
-		column: 'Interval' 
-			text: [ :aRunWithAttributes | aRunWithAttributes run first asString, '-', aRunWithAttributes run last asString ];
-		column: 'Attributes' 
-			text: [ :aRunWithAttributes | 
-				aRunWithAttributes attributesDescription ]
+		object: [ attributedRuns ];
+		view: #gtViewIntervalsFor: 
 ]
 
 { #category : #initialization }
 GtPhlowText >> initialieWithString: aString [ 
 	sourceString := aString.
-	runsWithAttributes := OrderedCollection new
+	attributedRuns := GtPhlowRunArray new
 ]
 
 { #category : #printing }
