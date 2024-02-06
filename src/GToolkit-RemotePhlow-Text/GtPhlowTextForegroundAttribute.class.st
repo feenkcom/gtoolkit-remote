@@ -1,9 +1,6 @@
 Class {
 	#name : #GtPhlowTextForegroundAttribute,
-	#superclass : #GtPhlowTextAttribute,
-	#instVars : [
-		'color'
-	],
+	#superclass : #GtPhlowTextColorAttribute,
 	#category : #'GToolkit-RemotePhlow-Text'
 }
 
@@ -15,31 +12,6 @@ GtPhlowTextForegroundAttribute class >> typeLabel [
 { #category : #styling }
 GtPhlowTextForegroundAttribute >> applyStyleToText: aText [
 	aText foreground: self color asColor 
-]
-
-{ #category : #converting }
-GtPhlowTextForegroundAttribute >> asDictionaryForExport [
-
-	^ super asDictionaryForExport
-		at: 'color' put: self color asDictionaryForExport;
-		yourself
-]
-
-{ #category : #accessing }
-GtPhlowTextForegroundAttribute >> color [
-	^ color
-]
-
-{ #category : #accessing }
-GtPhlowTextForegroundAttribute >> color: anObject [
-	color := anObject
-]
-
-{ #category : #initialization }
-GtPhlowTextForegroundAttribute >> initializeFromJSONDictionary: aTextAttributeData [ 
-	super initializeFromJSONDictionary: aTextAttributeData .
-	
-	color := GtPhlowColor fromJSONDictionary: (aTextAttributeData at: 'color')
 ]
 
 { #category : #printing }

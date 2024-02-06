@@ -5,14 +5,10 @@ Class {
 }
 
 { #category : #'instance creation' }
-GtPhlowTextAttribute class >> attibuteClassForType: aTypeLabel [ 
- 	
-	aTypeLabel = GtPhlowTextForegroundAttribute typeLabel ifTrue: [
- 		^ GtPhlowTextForegroundAttribute  ].
-	aTypeLabel = GtPhlowFontSizeAttribute typeLabel ifTrue: [
- 		^ GtPhlowFontSizeAttribute  ].
-		
-	^ nil
+GtPhlowTextAttribute class >> attibuteClassForType: aTypeLabel [
+	self
+		allSubclassesDo: [ :each | each typeLabel = aTypeLabel ifTrue: [ ^ each ] ].
+	^ GtPhlowTextUnknownAttribute
 ]
 
 { #category : #'instance creation' }
