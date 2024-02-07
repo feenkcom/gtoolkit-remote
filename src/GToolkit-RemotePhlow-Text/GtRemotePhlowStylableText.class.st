@@ -1,5 +1,5 @@
 Class {
-	#name : #GtRemotePhlowText,
+	#name : #GtRemotePhlowStylableText,
 	#superclass : #Object,
 	#instVars : [
 		'string',
@@ -9,18 +9,18 @@ Class {
 }
 
 { #category : #'instance creation' }
-GtRemotePhlowText class >> fromJSONDictionary: aDictionary [
+GtRemotePhlowStylableText class >> fromJSONDictionary: aDictionary [
 	^ self new
 		initializeFromJSONDictionary: aDictionary
 ]
 
 { #category : #accessing }
-GtRemotePhlowText class >> typeLabel [
+GtRemotePhlowStylableText class >> typeLabel [
 	^ 'remotePhlowText'
 ]
 
 { #category : #converting }
-GtRemotePhlowText >> asDictionaryForExport [
+GtRemotePhlowStylableText >> asDictionaryForExport [
 	"Answer the receiver as a dictionary ready for JSON serialisation.
 	Subclasses will override and add to the dictionary"
 	| dataForExport|
@@ -37,7 +37,7 @@ GtRemotePhlowText >> asDictionaryForExport [
 ]
 
 { #category : #accessing }
-GtRemotePhlowText >> asRopedText [
+GtRemotePhlowStylableText >> cretateStyledText [
 	^ self stylerSpecification 
 		ifNil: [ string asRopedText ]
 		ifNotNil: [ :aStylerSpecification |
@@ -46,7 +46,7 @@ GtRemotePhlowText >> asRopedText [
 ]
 
 { #category : #initialization }
-GtRemotePhlowText >> initializeFromJSONDictionary: aDictionary [
+GtRemotePhlowStylableText >> initializeFromJSONDictionary: aDictionary [
 	self string: (aDictionary at: 'string').
 		
 	(aDictionary includesKey: 'stylerSpecification') ifTrue: [
@@ -55,21 +55,21 @@ GtRemotePhlowText >> initializeFromJSONDictionary: aDictionary [
 ]
 
 { #category : #accessing }
-GtRemotePhlowText >> string [
+GtRemotePhlowStylableText >> string [
 	^ string
 ]
 
 { #category : #accessing }
-GtRemotePhlowText >> string: anObject [
+GtRemotePhlowStylableText >> string: anObject [
 	string := anObject
 ]
 
 { #category : #accessing }
-GtRemotePhlowText >> stylerSpecification [
+GtRemotePhlowStylableText >> stylerSpecification [
 	^ stylerSpecification
 ]
 
 { #category : #accessing }
-GtRemotePhlowText >> stylerSpecification: anObject [
+GtRemotePhlowStylableText >> stylerSpecification: anObject [
 	stylerSpecification := anObject
 ]

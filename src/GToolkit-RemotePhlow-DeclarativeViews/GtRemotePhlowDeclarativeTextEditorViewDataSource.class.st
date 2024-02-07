@@ -15,7 +15,7 @@ GtRemotePhlowDeclarativeTextEditorViewDataSource >> computeText [
 		stylerSpecification := GtRemotePhlowTextAttributeRunsStylerSpecification new 
 			attributeRuns: computedText extractRemotePhlowRuns ].
 
-	^ GtRemotePhlowText new
+	^ GtRemotePhlowStylableText new
 		string: computedText asString;
 		stylerSpecification: stylerSpecification
 ]

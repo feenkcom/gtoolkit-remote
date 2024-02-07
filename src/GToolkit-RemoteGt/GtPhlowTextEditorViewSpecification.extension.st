@@ -2,10 +2,11 @@ Extension { #name : #GtPhlowTextEditorViewSpecification }
 
 { #category : #'*GToolkit-RemoteGt' }
 GtPhlowTextEditorViewSpecification >> configureForLazyDataView: aTextView [
-	aTextView
-		text: [ | remoteText |
-			remoteText := self phlowDataSource getText.
-			(GtRemotePhlowText fromJSONDictionary: remoteText) asRopedText ]
+	aTextView text: [ 
+		| stylableText |
+		stylableText := self phlowDataSource getText.
+		(GtRemotePhlowStylableText 
+				fromJSONDictionary: stylableText) cretateStyledText ]
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
