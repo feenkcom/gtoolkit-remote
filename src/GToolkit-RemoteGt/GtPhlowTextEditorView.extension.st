@@ -5,11 +5,10 @@ GtPhlowTextEditorView >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
 
-
 	^ GtPhlowTextEditorViewSpecification new
 		title: self title;
 		priority: self priority;
-		phlowDataSource: (GtRemotePhlowDeclarativeTextEditorViewDataSource 
+		phlowDataSource: (GtRemotePhlowDeclarativeTextualViewDataSource 
 			forPhlowView: self);
 		dataTransport: GtPhlowViewSpecification dataLazy
 ]

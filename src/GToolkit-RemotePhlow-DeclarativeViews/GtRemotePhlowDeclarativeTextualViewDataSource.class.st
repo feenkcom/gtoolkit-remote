@@ -1,11 +1,11 @@
 Class {
-	#name : #GtRemotePhlowDeclarativeTextEditorViewDataSource,
+	#name : #GtRemotePhlowDeclarativeTextualViewDataSource,
 	#superclass : #GtRemotePhlowDeclarativeViewDataSource,
 	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeTextEditorViewDataSource >> computeText [ 
+GtRemotePhlowDeclarativeTextualViewDataSource >> computeText [ 
 	| computedText stylerSpecification |
 	computedText := self phlowView textBuilder value asRopedText.
 	stylerSpecification := self 
@@ -21,7 +21,7 @@ GtRemotePhlowDeclarativeTextEditorViewDataSource >> computeText [
 ]
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeTextEditorViewDataSource >> createRemotePhlowStylerSpecificationForText: aText [
+GtRemotePhlowDeclarativeTextualViewDataSource >> createRemotePhlowStylerSpecificationForText: aText [
 	| stylerSpecification |
 	
 	stylerSpecification := self phlowView stylerSpecification.
@@ -33,6 +33,11 @@ GtRemotePhlowDeclarativeTextEditorViewDataSource >> createRemotePhlowStylerSpeci
 ]
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeTextEditorViewDataSource >> getText [ 
+GtRemotePhlowDeclarativeTextualViewDataSource >> getText [ 
+	^ self computeText asDictionaryForExport
+]
+
+{ #category : #accessing }
+GtRemotePhlowDeclarativeTextualViewDataSource >> retrieveStylableText [ 
 	^ self computeText asDictionaryForExport
 ]

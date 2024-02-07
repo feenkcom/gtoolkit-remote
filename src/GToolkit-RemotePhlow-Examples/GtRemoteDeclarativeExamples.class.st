@@ -12,6 +12,16 @@ Class {
 	#category : #'GToolkit-RemotePhlow-Examples'
 }
 
+{ #category : #assertions }
+GtRemoteDeclarativeExamples >> assertSimpleUnstyledStringInViewSpecification: aViewSpecification [
+	| stylableText |
+	
+	stylableText := (GtRemotePhlowStylableText 
+			fromJSONDictionary: aViewSpecification getText).
+	self assert: stylableText string equals: 'hello world'.
+	self assert: stylableText stylerSpecification canAffectText not.
+]
+
 { #category : #'examples - views' }
 GtRemoteDeclarativeExamples >> columnedListView [
 	<gtExample>
@@ -121,16 +131,16 @@ GtRemoteDeclarativeExamples >> getViewedObjectProxy [
 GtRemoteDeclarativeExamples >> listView [
 	<gtExample>
 	<after: #stopServer>
-	| viewProxy viewDictionary view |
+	| viewedObjectProxy viewDictionary view |
 
-	viewProxy := self viewedObjectProxy.
-	viewDictionary := viewProxy getViewDeclaration: #gtListFor:.
+	viewedObjectProxy := self viewedObjectProxy.
+	viewDictionary := viewedObjectProxy getViewDeclaration: #gtListFor:.
 	view := GtPhlowViewSpecification fromDictionary: viewDictionary.
 	
 	self assert: view title equals: #List.
 	self assert: view priority equals: 15.
 	
-	self listViewLazyCheck: viewProxy.
+	self listViewLazyCheck: viewedObjectProxy.
 	
 	^ view
 ]
@@ -216,17 +226,40 @@ GtRemoteDeclarativeExamples >> stopServer [
 ]
 
 { #category : #'examples - views' }
-GtRemoteDeclarativeExamples >> stringView [
+GtRemoteDeclarativeExamples >> textEditorViewWithSimpleString [
 	<gtExample>
 	<after: #stopServer>
-	| viewProxy viewDictionary view |
+	| viewedObjectProxy viewDictionary view viewSpecification |
 
-	viewProxy := self viewedObjectProxy.
-	viewDictionary :=  viewProxy getViewDeclaration: #gtStringFor:.
-	view :=  GtPhlowViewSpecification fromDictionary: viewDictionary.
+	viewedObjectProxy := self viewedObjectProxy.
+	viewDictionary :=  viewedObjectProxy getViewDeclaration: #gtStringInTextEditorViewFor: .
+	view := GtPhlowViewSpecification fromDictionary: viewDictionary.
 	
-	self assert: view title equals: #String.
-	self assert: view string equals: 'hello world'.
+	self assert: view title equals: 'String (editor)'.
+	self assert: view priority equals: 11.
+	self assert: view string equals: nil.
+	
+	viewSpecification := viewedObjectProxy getDeclarativeViewFor: #gtStringInTextEditorViewFor: .
+	self assertSimpleUnstyledStringInViewSpecification: viewSpecification.
+	
+	^ view
+]
+
+{ #category : #'examples - views' }
+GtRemoteDeclarativeExamples >> textViewWithSimpleString [
+	<gtExample>
+	<after: #stopServer>
+	| viewedObjectProxy viewDictionary view viewSpecification |
+
+	viewedObjectProxy := self viewedObjectProxy.
+	viewDictionary :=  viewedObjectProxy getViewDeclaration: #gtStringInTextViewFor:.
+	view := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
+	self assert: view title equals: 'String (text)'.
+	self assert: view priority equals: 10.
+	
+	viewSpecification := viewedObjectProxy getDeclarativeViewFor: #gtStringInTextViewFor: .
+	self assertSimpleUnstyledStringInViewSpecification: viewSpecification.
 	
 	^ view
 ]

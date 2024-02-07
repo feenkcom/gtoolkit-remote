@@ -73,7 +73,7 @@ GtPhlowText >> glamorousRegularFont [
 GtPhlowText >> gtTextFor: aView [
 	<gtView>
 	
-	^ aView textEditor
+	^ aView text
 		title: 'Text';
 		priority: 2;
 		text: [ self ]

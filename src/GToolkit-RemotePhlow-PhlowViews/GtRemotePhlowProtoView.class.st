@@ -43,6 +43,12 @@ GtRemotePhlowProtoView >> list [
 ]
 
 { #category : #decorating }
+GtRemotePhlowProtoView >> text [
+
+	^ self declarativeViewOfType: GtRemotePhlowTextView
+]
+
+{ #category : #decorating }
 GtRemotePhlowProtoView >> textEditor [
 
 	^ self declarativeViewOfType: GtRemotePhlowTextEditorView

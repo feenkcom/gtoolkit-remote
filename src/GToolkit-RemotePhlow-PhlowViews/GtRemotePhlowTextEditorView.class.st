@@ -1,17 +1,11 @@
 Class {
 	#name : #GtRemotePhlowTextEditorView,
-	#superclass : #GtRemotePhlowView,
+	#superclass : #GtRemotePhlowTextualView,
 	#instVars : [
-		'textBuilder',
 		'stylerSpecification'
 	],
 	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
-
-{ #category : #accessing }
-GtRemotePhlowTextEditorView >> aptitude: anAptitude [
-	"stub method"
-]
 
 { #category : #converting }
 GtRemotePhlowTextEditorView >> asGtDeclarativeView [
@@ -21,7 +15,7 @@ GtRemotePhlowTextEditorView >> asGtDeclarativeView [
 	^ GtPhlowTextEditorViewSpecification new 
 		title: self title;
 		priority: self priority;
-		phlowDataSource: (GtRemotePhlowDeclarativeTextEditorViewDataSource 
+		phlowDataSource: (GtRemotePhlowDeclarativeTextualViewDataSource 
 			forPhlowView: self);
 		dataTransport: GtPhlowViewSpecification dataLazy.
 ]
@@ -49,17 +43,4 @@ GtRemotePhlowTextEditorView >> stylerParserClassName: aParserClassName [
 { #category : #accessing }
 GtRemotePhlowTextEditorView >> stylerSpecification [
 	^ stylerSpecification
-]
-
-{ #category : #accessing }
-GtRemotePhlowTextEditorView >> text: aBlockClosure [
-	"Set the BlockClosure that will generate the string to be displayed.
-	The result of the BlockClosure must be a String (not a BlText)."
-
-	textBuilder := aBlockClosure
-]
-
-{ #category : #accessing }
-GtRemotePhlowTextEditorView >> textBuilder [
-	^ textBuilder
 ]

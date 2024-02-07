@@ -3,10 +3,8 @@ Extension { #name : #GtPhlowTextEditorViewSpecification }
 { #category : #'*GToolkit-RemoteGt' }
 GtPhlowTextEditorViewSpecification >> configureForLazyDataView: aTextView [
 	aTextView text: [ 
-		| stylableText |
-		stylableText := self retrieveStyledText.
 		(GtRemotePhlowStylableText 
-			fromJSONDictionary: stylableText) createStyledText ]
+			fromJSONDictionary: self getText) createStyledText ]
 ]
 
 { #category : #'*GToolkit-RemoteGt' }

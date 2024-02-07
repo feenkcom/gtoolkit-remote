@@ -125,17 +125,21 @@ GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableList [
 ]
 
 { #category : #examples }
-GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableText [
+GtDeclarativeViewConversionExamples >> convertGtDeclarativeTestInspectableTextEditor [
 	"Check the conversion to declarative specification with data"
 	<gtExample>
 	| declarativeSpecification |
 
 	declarativeSpecification := (GtRemotePhlowDeclarativeTestInspectable new 
-		gtStringFor: GtPhlowProtoView new) asGtDeclarativeView.
+		gtStringInTextEditorViewFor: GtPhlowProtoView new) asGtDeclarativeView.
 
-	self assert: declarativeSpecification title equals: 'String'.
-	self assert: declarativeSpecification priority equals: 10.
-	self assert: declarativeSpecification string equals: 'hello world'.
+	self assert: declarativeSpecification title equals: 'String (editor)'.
+	self assert: declarativeSpecification priority equals: 11.
+	self assert: declarativeSpecification string equals: nil.
+	
+	self 
+		assert: declarativeSpecification retrieveStylableText 
+		equals: self expectedTextEditorBasicStringStylableTextData.
 	
 	^ declarativeSpecification
 ]
@@ -168,15 +172,41 @@ GtDeclarativeViewConversionExamples >> convertText [
 	<gtExample>
 	| phlowView declarativeSpecification |
 
-	phlowView := GtPhlowProtoView new textEditor
+	phlowView := GtPhlowProtoView new text
 		title: #Test;
-		priority: 10;
-		text: [ #HelloWorld ].
+		priority: 11;
+		text: [ 'hello world' ].
 	declarativeSpecification := phlowView asGtDeclarativeView.
 
 	self assert: declarativeSpecification title equals: #Test.
-	self assert: declarativeSpecification priority equals: 10.
-	self assert: declarativeSpecification string equals: #HelloWorld.
+	self assert: declarativeSpecification priority equals: 11.
+	
+	self 
+		assert: declarativeSpecification retrieveStylableText 
+		equals: self expectedTextEditorBasicStringStylableTextData.
+
+	^ declarativeSpecification.
+]
+
+{ #category : #examples }
+GtDeclarativeViewConversionExamples >> convertTextEditor [
+	"Demonstrate converting a columned list phlow view to a declarative specification"
+	<gtExample>
+	| phlowView declarativeSpecification |
+
+	phlowView := GtPhlowProtoView new textEditor
+		title: #Test;
+		priority: 11;
+		text: [ 'hello world' ].
+	declarativeSpecification := phlowView asGtDeclarativeView.
+
+	self assert: declarativeSpecification title equals: #Test.
+	self assert: declarativeSpecification priority equals: 11.
+	self assert: declarativeSpecification string equals: nil.
+	
+	self 
+		assert: declarativeSpecification retrieveStylableText 
+		equals: self expectedTextEditorBasicStringStylableTextData.
 
 	^ declarativeSpecification.
 ]
@@ -229,6 +259,11 @@ GtDeclarativeViewConversionExamples >> expectedListForExampleObjectItems [
 { #category : #'accessing - data' }
 GtDeclarativeViewConversionExamples >> expectedListWithNumberItems [
 	^ ((Array new: 3) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'Number: 1'); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'Number: 2'); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'Number: 3'); yourself)); add: (#nodeId->3); yourself); yourself)
+]
+
+{ #category : #'accessing - data' }
+GtDeclarativeViewConversionExamples >> expectedTextEditorBasicStringStylableTextData [
+	^ ((Dictionary new) add: ('string'->'hello world'); add: ('__typeLabel'->'remotePhlowText'); add: ('stylerSpecification'->((Dictionary new) add: ('__typeLabel'->'remotePhlowTextAttributeRunsStylerSpecification'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)
 ]
 
 { #category : #'accessing - data' }

@@ -5,12 +5,15 @@ GtPhlowTextView >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
 
-	^ nil
+	^ GtPhlowTextViewSpecification new 
+		title: self title;
+		priority: self priority;
+		phlowDataSource: (GtRemotePhlowDeclarativeTextualViewDataSource 
+			forPhlowView: self);
+		dataTransport: GtPhlowViewSpecification dataLazy.
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
 GtPhlowTextView >> canBeGtDeclarativeView [
-	"Answer a boolean indicating whether the receiver can be represented as a GtDeclarativeView"
-
-	^ false
+	^ true
 ]

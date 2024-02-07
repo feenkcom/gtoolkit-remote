@@ -1,6 +1,6 @@
 Class {
 	#name : #GtPhlowTextEditorViewSpecification,
-	#superclass : #GtPhlowViewSpecification,
+	#superclass : #GtPhlowTextualViewSpecification,
 	#instVars : [
 		'string',
 		'dataSource',
@@ -44,24 +44,6 @@ GtPhlowTextEditorViewSpecification >> asDictionaryForExport [
 				put: textStylerSpecification asDictionaryForExport ] ].
 	
 	^ dictionary
-]
-
-{ #category : #'api - accessing' }
-GtPhlowTextEditorViewSpecification >> getText [
-	^ self retrieveStyledText
-]
-
-{ #category : #accessing }
-GtPhlowTextEditorViewSpecification >> initializeFromInspector: anInspector [
-	self dataTransport = self class dataIncluded ifTrue: [ ^ self ].
-	
-	phlowDataSource ifNil: [
-		self phlowDataSource: (anInspector getDeclarativeViewFor: self methodSelector) ]
-]
-
-{ #category : #'api - accessing' }
-GtPhlowTextEditorViewSpecification >> retrieveStyledText [
-	^ self phlowDataSource getText
 ]
 
 { #category : #accessing }
