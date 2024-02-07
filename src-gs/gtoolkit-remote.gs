@@ -3,6 +3,42 @@
 
 doit
 (Object
+	subclass: 'GtPhlowBasicRun'
+	instVarNames: #(  )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Text';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowBasicRun
+removeallclassmethods GtPhlowBasicRun
+
+doit
+(GtPhlowBasicRun
+	subclass: 'GtPhlowRun'
+	instVarNames: #( attributes startIndex endIndex )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Text';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowRun
+removeallclassmethods GtPhlowRun
+
+doit
+(Object
 	subclass: 'GtPhlowColor'
 	instVarNames: #( name red green blue alpha )
 	classVars: #(  )
@@ -126,6 +162,258 @@ true.
 
 removeallmethods GtPhlowUnknownDeclarativeListingType
 removeallclassmethods GtPhlowUnknownDeclarativeListingType
+
+doit
+(Object
+	subclass: 'GtPhlowRuns'
+	instVarNames: #(  )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Text';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowRuns
+removeallclassmethods GtPhlowRuns
+
+doit
+(GtPhlowRuns
+	subclass: 'GtPhlowRunsGroup'
+	instVarNames: #( items )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Text';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowRunsGroup
+removeallclassmethods GtPhlowRunsGroup
+
+doit
+(Object
+	subclass: 'GtPhlowText'
+	instVarNames: #(  )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Text';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowText
+removeallclassmethods GtPhlowText
+
+doit
+(GtPhlowText
+	subclass: 'GtPhlowRunBasedText'
+	instVarNames: #( sourceString attributeRuns )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Text';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowRunBasedText
+removeallclassmethods GtPhlowRunBasedText
+
+doit
+(GtPhlowText
+	subclass: 'GtPhlowSubText'
+	instVarNames: #( parentText startIndex endIndex )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Text';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowSubText
+removeallclassmethods GtPhlowSubText
+
+doit
+(Object
+	subclass: 'GtPhlowTextAttribute'
+	instVarNames: #(  )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Text';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowTextAttribute
+removeallclassmethods GtPhlowTextAttribute
+
+doit
+(GtPhlowTextAttribute
+	subclass: 'GtPhlowFontEmphasisAttribute'
+	instVarNames: #( emphasis )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Text';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowFontEmphasisAttribute
+removeallclassmethods GtPhlowFontEmphasisAttribute
+
+doit
+(GtPhlowTextAttribute
+	subclass: 'GtPhlowFontNameAttribute'
+	instVarNames: #( fontName )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Text';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowFontNameAttribute
+removeallclassmethods GtPhlowFontNameAttribute
+
+doit
+(GtPhlowTextAttribute
+	subclass: 'GtPhlowFontSizeAttribute'
+	instVarNames: #( sizeValue )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Text';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowFontSizeAttribute
+removeallclassmethods GtPhlowFontSizeAttribute
+
+doit
+(GtPhlowTextAttribute
+	subclass: 'GtPhlowFontWeightAttribute'
+	instVarNames: #( weight )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Text';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowFontWeightAttribute
+removeallclassmethods GtPhlowFontWeightAttribute
+
+doit
+(GtPhlowTextAttribute
+	subclass: 'GtPhlowTextColorAttribute'
+	instVarNames: #( color )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Text';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowTextColorAttribute
+removeallclassmethods GtPhlowTextColorAttribute
+
+doit
+(GtPhlowTextColorAttribute
+	subclass: 'GtPhlowTextForegroundAttribute'
+	instVarNames: #(  )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Text';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowTextForegroundAttribute
+removeallclassmethods GtPhlowTextForegroundAttribute
+
+doit
+(GtPhlowTextColorAttribute
+	subclass: 'GtPhlowTextHighlightAttribute'
+	instVarNames: #(  )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Text';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowTextHighlightAttribute
+removeallclassmethods GtPhlowTextHighlightAttribute
+
+doit
+(GtPhlowTextAttribute
+	subclass: 'GtPhlowTextUnknownAttribute'
+	instVarNames: #( rawData )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Text';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowTextUnknownAttribute
+removeallclassmethods GtPhlowTextUnknownAttribute
 
 doit
 (Object
@@ -327,8 +615,26 @@ removeallclassmethods GtPhlowTreeViewSpecification
 
 doit
 (GtPhlowViewSpecification
+	subclass: 'GtPhlowTextualViewSpecification'
+	instVarNames: #(  )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowTextualViewSpecification
+removeallclassmethods GtPhlowTextualViewSpecification
+
+doit
+(GtPhlowTextualViewSpecification
 	subclass: 'GtPhlowTextEditorViewSpecification'
-	instVarNames: #( string )
+	instVarNames: #( string dataSource textStylerSpecification )
 	classVars: #(  )
 	classInstVars: #(  )
 	poolDictionaries: #()
@@ -342,6 +648,24 @@ true.
 
 removeallmethods GtPhlowTextEditorViewSpecification
 removeallclassmethods GtPhlowTextEditorViewSpecification
+
+doit
+(GtPhlowTextualViewSpecification
+	subclass: 'GtPhlowTextViewSpecification'
+	instVarNames: #(  )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowTextViewSpecification
+removeallclassmethods GtPhlowTextViewSpecification
 
 doit
 (GtPhlowViewSpecification
@@ -809,6 +1133,24 @@ removeallclassmethods GtRemotePhlowDeclarativeForwardViewDataSource
 
 doit
 (GtRemotePhlowDeclarativeViewDataSource
+	subclass: 'GtRemotePhlowDeclarativeTextualViewDataSource'
+	instVarNames: #(  )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowDeclarativeTextualViewDataSource
+removeallclassmethods GtRemotePhlowDeclarativeTextualViewDataSource
+
+doit
+(GtRemotePhlowDeclarativeViewDataSource
 	subclass: 'GtRemotePhlowDeclarativeViewListingDataSource'
 	instVarNames: #( itemsIterator cachedNodes cachedValueBuilder )
 	classVars: #(  )
@@ -896,6 +1238,24 @@ true.
 
 removeallmethods GtRemotePhlowDeclarativeViewColumnedTreeDataSource
 removeallclassmethods GtRemotePhlowDeclarativeViewColumnedTreeDataSource
+
+doit
+(Object
+	subclass: 'GtRemotePhlowDummyTextStyler'
+	instVarNames: #(  )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Examples';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowDummyTextStyler
+removeallclassmethods GtRemotePhlowDummyTextStyler
 
 doit
 (Object
@@ -1277,8 +1637,26 @@ removeallclassmethods GtRemotePhlowTreeView
 
 doit
 (GtRemotePhlowView
-	subclass: 'GtRemotePhlowTextEditorView'
+	subclass: 'GtRemotePhlowTextualView'
 	instVarNames: #( textBuilder )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowTextualView
+removeallclassmethods GtRemotePhlowTextualView
+
+doit
+(GtRemotePhlowTextualView
+	subclass: 'GtRemotePhlowTextEditorView'
+	instVarNames: #( stylerSpecification )
 	classVars: #(  )
 	classInstVars: #(  )
 	poolDictionaries: #()
@@ -1292,6 +1670,24 @@ true.
 
 removeallmethods GtRemotePhlowTextEditorView
 removeallclassmethods GtRemotePhlowTextEditorView
+
+doit
+(GtRemotePhlowTextualView
+	subclass: 'GtRemotePhlowTextView'
+	instVarNames: #(  )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowTextView
+removeallclassmethods GtRemotePhlowTextView
 
 doit
 (GtRemotePhlowView
@@ -1328,6 +1724,150 @@ true.
 
 removeallmethods GtRemotePhlowSendObjectTransformation
 removeallclassmethods GtRemotePhlowSendObjectTransformation
+
+doit
+(Object
+	subclass: 'GtRemotePhlowStylableText'
+	instVarNames: #( string stylerSpecification )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Text';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowStylableText
+removeallclassmethods GtRemotePhlowStylableText
+
+doit
+(Object
+	subclass: 'GtRemotePhlowTextStylerSpecification'
+	instVarNames: #(  )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Text';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowTextStylerSpecification
+removeallclassmethods GtRemotePhlowTextStylerSpecification
+
+doit
+(GtRemotePhlowTextStylerSpecification
+	subclass: 'GtRemotePhlowTextAttributeRunsStylerSpecification'
+	instVarNames: #( attributeRuns )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Text';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowTextAttributeRunsStylerSpecification
+removeallclassmethods GtRemotePhlowTextAttributeRunsStylerSpecification
+
+doit
+(GtRemotePhlowTextStylerSpecification
+	subclass: 'GtRemotePhlowTextNamedStylerSpecification'
+	instVarNames: #(  )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Text';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowTextNamedStylerSpecification
+removeallclassmethods GtRemotePhlowTextNamedStylerSpecification
+
+doit
+(GtRemotePhlowTextNamedStylerSpecification
+	subclass: 'GtRemotePhlowTextClassStylerSpecification'
+	instVarNames: #( stylerClassName )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Text';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowTextClassStylerSpecification
+removeallclassmethods GtRemotePhlowTextClassStylerSpecification
+
+doit
+(GtRemotePhlowTextNamedStylerSpecification
+	subclass: 'GtRemotePhlowTextParserStylerSpecification'
+	instVarNames: #( parserClassName )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Text';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowTextParserStylerSpecification
+removeallclassmethods GtRemotePhlowTextParserStylerSpecification
+
+doit
+(GtRemotePhlowTextStylerSpecification
+	subclass: 'GtRemotePhlowTextNullStylerSpecification'
+	instVarNames: #(  )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Text';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowTextNullStylerSpecification
+removeallclassmethods GtRemotePhlowTextNullStylerSpecification
+
+doit
+(GtRemotePhlowTextStylerSpecification
+	subclass: 'GtRemoteTextStylerComputableSpecification'
+	instVarNames: #( stylerComputation )
+	classVars: #(  )
+	classInstVars: #(  )
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Text';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemoteTextStylerComputableSpecification
+removeallclassmethods GtRemoteTextStylerComputableSpecification
 
 doit
 (Object
@@ -1528,6 +2068,213 @@ true.
 removeallmethods GtRmGeoUser
 removeallclassmethods GtRmGeoUser
 
+! Class implementation for 'GtPhlowBasicRun'
+
+!		Class methods for 'GtPhlowBasicRun'
+
+category: 'instance creation'
+classmethod: GtPhlowBasicRun
+from: aStartIndex to: aEndIndex attributes: aCollectionOfAttributes
+	^ self new 
+		initializeFrom: aStartIndex to: aEndIndex attributes: aCollectionOfAttributes
+%
+
+category: 'instance creation'
+classmethod: GtPhlowBasicRun
+fromJSONDictionary: aTextStylerData 
+	| typeLabel attributesClass |
+ 	typeLabel := aTextStylerData at: '__typeLabel'.
+			
+	typeLabel = GtPhlowRun typeLabel ifTrue: [
+ 		attributesClass :=  GtPhlowRun ].
+		
+	^ attributesClass 
+		ifNil: [ nil ]
+		ifNotNil: [
+			attributesClass new  
+				initializeFromJSONDictionary: aTextStylerData ]
+%
+
+category: 'accessing'
+classmethod: GtPhlowBasicRun
+typeLabel
+	^ '<missing>'
+%
+
+!		Instance methods for 'GtPhlowBasicRun'
+
+category: 'styling'
+method: GtPhlowBasicRun
+applyStyleToText: aText
+	self subclassResponsibility
+%
+
+category: 'accessing'
+method: GtPhlowBasicRun
+asDictionaryForExport
+	"Answer the receiver as a dictionary ready for JSON serialisation.
+	Subclasses will override and add to the dictionary"
+
+	^ Dictionary new 
+		at: '__typeLabel' put: self class typeLabel;
+		yourself
+%
+
+category: 'initialization'
+method: GtPhlowBasicRun
+initializeFrom: aStartIndex to: aEndIndex attributes: aCollectionOfAttributes 
+	self subclassResponsibility
+%
+
+! Class implementation for 'GtPhlowRun'
+
+!		Class methods for 'GtPhlowRun'
+
+category: 'instance creation'
+classmethod: GtPhlowRun
+fromJSONDictionary: anAttributeData 
+	^ self new  
+		initializeFromJSONDictionary: anAttributeData
+%
+
+category: 'accessing'
+classmethod: GtPhlowRun
+typeLabel
+	^ 'phlowRun'
+%
+
+!		Instance methods for 'GtPhlowRun'
+
+category: 'accessing'
+method: GtPhlowRun
+addAttribute: anAttribute
+	self attributes add: anAttribute
+%
+
+category: 'styling'
+method: GtPhlowRun
+applyStyleToText: aText
+	| subText |
+	subText := aText from: startIndex to: endIndex.
+	attributes do: [ :anAttribute |
+		anAttribute applyStyleToText: subText ]
+%
+
+category: 'converting'
+method: GtPhlowRun
+asDictionaryForExport
+
+	^ super asDictionaryForExport
+		at: 'startIndex' put: startIndex;
+		at: 'endIndex' put: endIndex;
+		at: 'attributes' put: (attributes collect: [ :anAttribute |
+			anAttribute asDictionaryForExport ]) asArray;
+		yourself
+%
+
+category: 'accessing'
+method: GtPhlowRun
+attributes
+	^ attributes
+%
+
+category: 'accessing'
+method: GtPhlowRun
+attributes: aCollection
+	attributes := aCollection
+%
+
+category: 'printing'
+method: GtPhlowRun
+attributesDescription
+	^ String streamContents: [ :aStream |
+		self attributesDescriptionOn: aStream ]
+%
+
+category: 'printing'
+method: GtPhlowRun
+attributesDescriptionOn: aStream 
+	self attributes 
+		do: [ :anAttribute |
+			aStream << anAttribute printString ] 
+		separatedBy: [ aStream << ' ']
+%
+
+category: 'copying'
+method: GtPhlowRun
+copyFrom: aStartIndex to: anEndIndex
+	^ self class
+		from: (aStartIndex max: startIndex) - aStartIndex + 1
+		to: (anEndIndex min: endIndex) - aStartIndex + 1
+		attributes: attributes  copy
+%
+
+category: 'accessing'
+method: GtPhlowRun
+endIndex
+	^ endIndex
+%
+
+category: 'accessing'
+method: GtPhlowRun
+gtViewAttributesFor: aView 
+	<gtView>
+	
+	^ aView columnedList 
+		title: 'Attributes';
+		items: [ self attributes ];
+		column: 'Attribute' text: [ :anAttribute | anAttribute printString];
+		column: 'Range ' text: [ :_ | self rangeDescription ]
+%
+
+category: 'initialization'
+method: GtPhlowRun
+initializeFrom: aStartIndex to: aEndIndex attributes: aCollectionOfAttributes 
+	startIndex := aStartIndex.
+	endIndex := aEndIndex.
+	attributes := aCollectionOfAttributes.
+%
+
+category: 'initialization'
+method: GtPhlowRun
+initializeFromJSONDictionary: aRunData
+	self 
+		initializeFrom: (aRunData at: 'startIndex')
+		to: (aRunData at: 'endIndex')
+		attributes: ((aRunData at: 'attributes') collect: [ :anAttributeData |
+		 GtPhlowTextAttribute fromJSONDictionary: anAttributeData ]) asArray
+%
+
+category: 'printing'
+method: GtPhlowRun
+printOn: aStream
+	self rangeDescriptionOn:  aStream.
+	aStream << ': '.
+	self attributesDescriptionOn: aStream 
+%
+
+category: 'printing'
+method: GtPhlowRun
+rangeDescription
+	^ String streamContents: [ :aStream |
+		 self rangeDescriptionOn: aStream ]
+%
+
+category: 'printing'
+method: GtPhlowRun
+rangeDescriptionOn: aStream
+	aStream 
+		print: startIndex;
+		<< '-';
+		print: endIndex
+%
+
+category: 'accessing'
+method: GtPhlowRun
+startIndex
+	^ startIndex
+%
+
 ! Class implementation for 'GtPhlowColor'
 
 !		Class methods for 'GtPhlowColor'
@@ -1621,6 +2368,12 @@ category: 'accessing'
 method: GtPhlowColor
 green
 	^ green
+%
+
+category: 'testing'
+method: GtPhlowColor
+isColor
+	^ true
 %
 
 category: 'testing'
@@ -1827,6 +2580,1092 @@ category: 'testing'
 method: GtPhlowUnknownDeclarativeListingType
 isUnknown
 	^ true
+%
+
+! Class implementation for 'GtPhlowRuns'
+
+!		Class methods for 'GtPhlowRuns'
+
+category: 'instance creation'
+classmethod: GtPhlowRuns
+fromJSONDictionary: aRunsData 
+	| typeLabel runsClass |
+ 	typeLabel := aRunsData at: '__typeLabel'.
+			
+	typeLabel = GtPhlowRunsGroup typeLabel ifTrue: [
+ 		runsClass :=  GtPhlowRunsGroup ].
+		
+	^ runsClass 
+		ifNil: [ nil ]
+		ifNotNil: [
+			runsClass new  
+				initializeFromJSONDictionary: aRunsData ]
+%
+
+category: 'accessing'
+classmethod: GtPhlowRuns
+typeLabel
+	^ '<missing>'
+%
+
+!		Instance methods for 'GtPhlowRuns'
+
+category: 'styling'
+method: GtPhlowRuns
+applyStyleToText: aText
+	self runsDo: [ :aRun |
+		aRun applyStyleToText: aText ]
+%
+
+category: 'converting'
+method: GtPhlowRuns
+asDictionaryForExport
+	"Answer the receiver as a dictionary ready for JSON serialisation.
+	Subclasses will override and add to the dictionary"
+
+	^ Dictionary new 
+		at: '__typeLabel' put: self class typeLabel;
+		yourself
+%
+
+category: 'gt - extensions'
+method: GtPhlowRuns
+gtViewIntervalsFor: aView
+	<gtView>
+	
+	^ aView columnedList 
+		title: 'Runs';
+		priority: 10;
+		items: [ 
+			| collectedRuns |
+			collectedRuns := OrderedCollection new.
+			self runsDo: [ :aRun |
+				collectedRuns add: aRun ].
+			collectedRuns ];
+		column: 'Interval' 
+			text: [ :aRun | aRun rangeDescription ]
+			width: 150;
+		column: 'Attributes' 
+			text: [ :aRun | aRun attributesDescription ]
+%
+
+category: 'initialization '
+method: GtPhlowRuns
+initializeFromJSONDictionary: aRunsData
+%
+
+category: 'testing'
+method: GtPhlowRuns
+isEmpty
+	^ self subclassResponsibility
+%
+
+category: 'testing'
+method: GtPhlowRuns
+notEmpty
+	^ self isEmpty not
+%
+
+category: 'enumerating'
+method: GtPhlowRuns
+runsDo: aBlock
+	self subclassResponsibility 
+%
+
+! Class implementation for 'GtPhlowRunsGroup'
+
+!		Class methods for 'GtPhlowRunsGroup'
+
+category: 'accessing'
+classmethod: GtPhlowRunsGroup
+typeLabel
+	^ 'phlowRunsGroup'
+%
+
+category: 'initialization'
+classmethod: GtPhlowRunsGroup
+withRuns: aCollectionOfRuns
+	^ self new 
+		initializeWithRuns: aCollectionOfRuns
+%
+
+!		Instance methods for 'GtPhlowRunsGroup'
+
+category: 'adding'
+method: GtPhlowRunsGroup
+add: aRun
+	self addRun: aRun
+%
+
+category: 'adding'
+method: GtPhlowRunsGroup
+addRun: aRun
+	self items add: aRun
+%
+
+category: 'converting'
+method: GtPhlowRunsGroup
+asDictionaryForExport
+
+	^ super asDictionaryForExport
+		at: 'items' put: (self items collect: [ :aRun |
+			aRun asDictionaryForExport ]) asArray;
+		yourself
+%
+
+category: 'accessing'
+method: GtPhlowRunsGroup
+copyFrom: aStartIndex to: anEndIndex
+	^ self class withRuns: ((self items 
+		reject: [ :aRun |
+			(anEndIndex < aRun startIndex) or: [ aStartIndex > aRun endIndex]])
+		collect: [ :aRun |
+			aRun copyFrom: aStartIndex to: anEndIndex ])
+%
+
+category: 'enumerating'
+method: GtPhlowRunsGroup
+detect: aBlock ifNone: exceptionBlock
+	^ self items detect: aBlock ifNone: exceptionBlock
+%
+
+category: 'initialization'
+method: GtPhlowRunsGroup
+initializeFromJSONDictionary: aRunsData
+	items := ((aRunsData at: 'items') collect: [ :aRunData |
+		GtPhlowBasicRun fromJSONDictionary:  aRunData ]) asOrderedCollection
+%
+
+category: 'initialization'
+method: GtPhlowRunsGroup
+initializeWithRuns: aCollectionOfRuns
+	items := aCollectionOfRuns
+%
+
+category: 'testing'
+method: GtPhlowRunsGroup
+isEmpty
+	^ items isNil or: [ items isEmpty ]
+%
+
+category: 'accessing'
+method: GtPhlowRunsGroup
+items
+	^ items ifNil: [
+		items := OrderedCollection new ]	
+%
+
+category: 'enumerating'
+method: GtPhlowRunsGroup
+itemsDo: aBlock
+	items ifNil: [ ^ self ].
+	
+	items do: aBlock
+%
+
+category: 'printing'
+method: GtPhlowRunsGroup
+printOn: aStream
+	super printOn:  aStream.
+	aStream parenthesize: [
+		aStream
+			print: items size;
+			<< ' runs' ]
+%
+
+category: 'enumerating'
+method: GtPhlowRunsGroup
+reject: aBlock
+	^ self class 
+		withRuns: (self items reject: aBlock)
+%
+
+category: 'enumerating'
+method: GtPhlowRunsGroup
+runsDo: aBlock
+	self itemsDo: aBlock
+%
+
+category: 'accessing'
+method: GtPhlowRunsGroup
+size
+	^ self isEmpty 
+		ifTrue: [0] 
+		ifFalse: [ self items size ]
+%
+
+! Class implementation for 'GtPhlowText'
+
+!		Class methods for 'GtPhlowText'
+
+category: 'accessing'
+classmethod: GtPhlowText
+forString: aString
+	^ GtPhlowRunBasedText new 
+		initializeWithString: aString
+%
+
+!		Instance methods for 'GtPhlowText'
+
+category: 'attributes'
+method: GtPhlowText
+addAttribute: aPhlowAttribute
+	 self  
+	 	addAttribute: aPhlowAttribute 
+	 	from: self startIndex
+	 	to: self endIndex
+%
+
+category: 'attributes'
+method: GtPhlowText
+addAttribute: aPhlowAttribute from: aStartIndex to: anEndIndex 
+	self subclassResponsibility
+%
+
+category: 'api - text style'
+method: GtPhlowText
+bold
+	^ self addAttribute: GtPhlowFontWeightAttribute bold
+%
+
+category: 'accessing'
+method: GtPhlowText
+endIndex
+	^ self subclassResponsibility
+%
+
+category: 'api - text style'
+method: GtPhlowText
+fontName: aName
+	self addAttribute: (GtPhlowFontNameAttribute new 
+		fontName: aName)
+%
+
+category: 'api - text style'
+method: GtPhlowText
+fontSize: aNumber
+	self addAttribute: (GtPhlowFontSizeAttribute new 
+		sizeValue: aNumber)
+%
+
+category: 'api - text style'
+method: GtPhlowText
+foreground: aPhlowColor
+	self addAttribute: (GtPhlowTextForegroundAttribute new 
+		color: aPhlowColor)
+%
+
+category: 'test - accessing'
+method: GtPhlowText
+from: aStart to: anEnd
+	"Create and return a subtext of this text form aStart to anEnd."
+	<return: #GtPhlowSubText>
+	
+	^ self subclassResponsibility
+%
+
+category: 'api - text style'
+method: GtPhlowText
+glamorousCodeFont
+	self fontName: 'Source Code Pro'
+%
+
+category: 'api - text style'
+method: GtPhlowText
+glamorousRegularFont
+	self fontName: 'Source Sans Pro'
+%
+
+category: 'gt - extensions'
+method: GtPhlowText
+gtTextFor: aView
+	<gtView>
+	
+	^ aView text
+		title: 'Text';
+		priority: 2;
+		text: [ self ]
+%
+
+category: 'api - text style'
+method: GtPhlowText
+highlight: aColor
+	self addAttribute: (GtPhlowTextHighlightAttribute new 
+		color: aColor)
+%
+
+category: 'testing'
+method: GtPhlowText
+isEmpty
+	^ self size = 0
+%
+
+category: 'api - text style'
+method: GtPhlowText
+italic
+	^ self addAttribute: GtPhlowFontEmphasisAttribute italic
+%
+
+category: 'testing'
+method: GtPhlowText
+notEmpty
+	^ self isEmpty not
+%
+
+category: 'test - accessing'
+method: GtPhlowText
+size
+	^ self subclassResponsibility
+%
+
+category: 'accessing'
+method: GtPhlowText
+startIndex
+	^ self subclassResponsibility
+%
+
+category: 'api - text style'
+method: GtPhlowText
+thin
+	^ self addAttribute: GtPhlowFontWeightAttribute thin
+%
+
+! Class implementation for 'GtPhlowRunBasedText'
+
+!		Instance methods for 'GtPhlowRunBasedText'
+
+category: 'attributes'
+method: GtPhlowRunBasedText
+addAttribute: aPhlowAttribute from: aStartIndex to: anEndIndex
+	| targetRun | 
+	targetRun := attributeRuns 
+		detect: [ :aRunWithAttributes |
+			aRunWithAttributes startIndex = aStartIndex and: [
+				aRunWithAttributes endIndex = anEndIndex ] ] 
+		ifNone: [
+			| newRun |
+			newRun := (GtPhlowRun 
+				from: aStartIndex
+				to: anEndIndex
+				attributes: OrderedCollection new).
+			attributeRuns addRun: newRun.
+			newRun ].
+	targetRun addAttribute: aPhlowAttribute
+%
+
+category: 'converting'
+method: GtPhlowRunBasedText
+asRopedText
+	^ self 
+		gtDo: [ 
+			(#GtRemotePhlowLocalTextAttributeRunsStyler asClass new 
+				attributeRuns: attributeRuns)
+					style: sourceString asRopedText]
+		gemstoneDo: [ self ]
+%
+
+category: 'converting'
+method: GtPhlowRunBasedText
+asString
+	^ sourceString
+%
+
+category: 'accessing'
+method: GtPhlowRunBasedText
+attributeRuns
+	^ attributeRuns
+%
+
+category: 'accessing'
+method: GtPhlowRunBasedText
+attributeRuns: anAttributeRuns
+	attributeRuns := anAttributeRuns
+%
+
+category: 'test - accessing'
+method: GtPhlowRunBasedText
+copyFrom: aStartIndex to: anEndIndex
+	"Create a copy of this text within a given indices interval.
+	Note: I am different from ==#from:to:== in a sense that I don't create a sub-text that points
+	to the original text, I create an independent copy which can be safely used in text editors and other tools."
+
+	<return: #BlText>
+	| result |
+	aStartIndex > anEndIndex ifTrue: [ 
+		^ self empty].
+	
+	result := self class
+		forString: (sourceString copyFrom: aStartIndex to: anEndIndex).
+		
+	self attributeRuns size > 0 ifTrue: [ 
+		result
+			attributeRuns: (self attributeRuns 
+				copyFrom: aStartIndex
+				to: anEndIndex) ].
+	^ result
+%
+
+category: 'test - accessing'
+method: GtPhlowRunBasedText
+empty
+	"Return a similar (the same backend data structure) but empty text"
+	<return: #BlText>
+	
+	^ self class forString: ''
+%
+
+category: 'accessing'
+method: GtPhlowRunBasedText
+endIndex
+	^ sourceString size
+%
+
+category: 'accessing'
+method: GtPhlowRunBasedText
+extractRemotePhlowRuns
+	^ self attributeRuns
+%
+
+category: 'accessing'
+method: GtPhlowRunBasedText
+forString: aString
+	^ self
+		initializeWithString: aString
+%
+
+category: 'test - accessing'
+method: GtPhlowRunBasedText
+from: aStart to: anEnd
+	"Create and return a subtext of this text form aStart to anEnd."
+	<return: #GtPhlowSubText>
+	
+	aStart <= (anEnd + 1) 
+		ifFalse: [ Error signal: 'Start must not exceed end' ].
+		
+	(self notEmpty or: [ aStart = 1 and: [ anEnd isZero ] ]) 
+		ifFalse: [ Error signal: 'If I am empty then start must be 1 and end must be zero' ].
+
+	^ GtPhlowSubText text: self from: aStart to: anEnd
+%
+
+category: 'gt - extensions'
+method: GtPhlowRunBasedText
+gtAttributeTreeFor: aView
+	<gtView>
+	| attributes |
+	attributes := Dictionary new.
+	attributeRuns runsDo: [ :aRun | 
+			aRun attributes
+				do: [ :each | 
+					| locations |
+					locations := attributes at: each ifAbsentPut: [ OrderedCollection new ].
+					(locations notEmpty and: [ locations last last + 1 = aRun startIndex ])
+						ifTrue: [ locations at: locations size put: (locations last first to: aRun endIndex) ]
+						ifFalse: [ locations add: (aRun startIndex to: aRun endIndex) ] ] ].
+	^ aView columnedTree
+		title: 'All attributes';
+		priority: 20;
+		items: [ attributes keys
+				asSortedCollection: [ :a :b | (attributes at: a) first first < (attributes at: b) first first ] ];
+		children: [ :each | attributes at: each ifAbsent: [ #() ] ];
+		column: 'Text'
+			text: [ :each | 
+				each class = Interval
+					ifTrue: [ (self copyFrom: each first to: each last) asRopedText ]
+					ifFalse: [ each printString ] ];
+		column: 'Interval'
+			text: [ :each | 
+				each class = Interval
+					ifTrue: [ each first printString , '-' , each last printString ]
+					ifFalse: [ '' ] ]
+			width: 80;
+		send: [ :each | 
+			each class = Interval
+				ifTrue: [ self from: (each first max: 1) to: each last ]
+				ifFalse: [ each ] ]
+%
+
+category: 'gt - extensions'
+method: GtPhlowRunBasedText
+gtStringFor: aView
+	<gtView>
+	self isEmpty ifTrue: [ ^ aView empty ].
+	
+	^ aView forward 
+		title: 'String';
+		priority: 5;
+		object: [ sourceString ];
+		view: #gtLiveFor:
+%
+
+category: 'gt - extensions'
+method: GtPhlowRunBasedText
+gtViewIntervalsFor: aView
+	<gtView>
+	
+	^ aView forward 
+		title: 'Runs';
+		priority: 10;
+		object: [ attributeRuns ];
+		view: #gtViewIntervalsFor: 
+%
+
+category: 'initialization'
+method: GtPhlowRunBasedText
+initializeWithString: aString 
+	sourceString := aString.
+	attributeRuns := GtPhlowRunsGroup new
+%
+
+category: 'printing'
+method: GtPhlowRunBasedText
+printOn: aStream
+	aStream 
+		<< 'Phlow Rope: ';
+		<< sourceString
+%
+
+category: 'test - accessing'
+method: GtPhlowRunBasedText
+size
+	^ sourceString size
+%
+
+category: 'accessing'
+method: GtPhlowRunBasedText
+startIndex
+	^ 1
+%
+
+! Class implementation for 'GtPhlowSubText'
+
+!		Class methods for 'GtPhlowSubText'
+
+category: 'instance creation'
+classmethod: GtPhlowSubText
+text: aPhlowText from: aStartIndex to: anEndIndex
+	(aPhlowText isKindOf: self) ifTrue: [
+		Error signal: 'Can not create sub text of a subtext' ].
+
+	^ self new
+		text: aPhlowText from: aStartIndex to: anEndIndex;
+		yourself
+%
+
+!		Instance methods for 'GtPhlowSubText'
+
+category: 'attributes'
+method: GtPhlowSubText
+addAttribute: aPhlowAttribute from: aStartIndex to: anEndIndex 
+	parentText 
+		addAttribute: aPhlowAttribute from: aStartIndex to: anEndIndex 
+%
+
+category: 'copy'
+method: GtPhlowSubText
+asRopedText
+	^ parentText copyFrom: startIndex to: endIndex
+%
+
+category: 'assertions'
+method: GtPhlowSubText
+assertInvariant
+	self assertStart: startIndex end: endIndex
+%
+
+category: 'assertions'
+method: GtPhlowSubText
+assertStart: aStartIndex end: anEndIndex
+	
+	aStartIndex = 0
+		ifTrue: [ Error signal: 'Start index must not be zero' ].
+
+	(aStartIndex between: 1 and: (parentText size + 1))
+		ifFalse: [Error signal: 'Sub-text start index is out of bounds'] .
+	(anEndIndex between: 0 and: parentText size) ifFalse: [ Error signal: 'Sub-text end index is out of bounds!'].
+	
+	(parentText notEmpty or: [ aStartIndex = 1 and: [ anEndIndex = 0 ] ]) 
+		ifFalse: [ Error signal: 'If text is empty, start must be 1 and end index must be Zero!' ].
+
+	(anEndIndex ~= 0  or: [ aStartIndex = 1 ])
+		ifFalse: [ Error signal: 'If end index is zero then start index must be 1' ]
+%
+
+category: 'copy'
+method: GtPhlowSubText
+asString
+	^ self asRopedText asString
+%
+
+category: 'accessing'
+method: GtPhlowSubText
+endIndex
+	^ endIndex
+%
+
+category: 'test - accessing'
+method: GtPhlowSubText
+from: aStart to: anEnd
+	self assertInvariant.
+	
+	(self notEmpty or: [ aStart = 1 and: [ anEnd isZero ] ])
+		ifFalse: [ Error signal: 'If I am empty then start must be 1 and end must be zero' ].
+	
+	^ parentText
+		from: ((aStart + startIndex - 1) max: 0)
+		to: ((anEnd + startIndex - 1) max: 0)
+%
+
+category: 'gt - extensions'
+method: GtPhlowSubText
+gtAttributeTreeFor: aView
+	<gtView>
+	
+	^ aView forward 
+		title: 'All attributes';
+		priority: 20;
+		object: [ self asRopedText ];
+		view: #gtAttributeTreeFor: 
+%
+
+category: 'accessing'
+method: GtPhlowSubText
+printOn: aStream
+	aStream 
+		<< 'Phlow SubText: ';
+		<< self asString
+%
+
+category: 'test - accessing'
+method: GtPhlowSubText
+size
+	self assertInvariant.
+
+	^ (startIndex = endIndex and: [ startIndex = 0 ])
+		ifTrue: [ 0 ]
+		ifFalse: [ endIndex - startIndex + 1 ]
+%
+
+category: 'accessing'
+method: GtPhlowSubText
+startIndex
+	^ startIndex
+%
+
+category: 'initialization'
+method: GtPhlowSubText
+text: aPhlowText from: aStartIndex to: anEndIndex 
+	startIndex := aStartIndex.
+	endIndex := anEndIndex.
+	parentText := aPhlowText.
+	
+	self assertInvariant
+%
+
+! Class implementation for 'GtPhlowTextAttribute'
+
+!		Class methods for 'GtPhlowTextAttribute'
+
+category: 'instance creation'
+classmethod: GtPhlowTextAttribute
+attibuteClassForType: aTypeLabel
+	self
+		allSubclassesDo: [ :each | each typeLabel = aTypeLabel ifTrue: [ ^ each ] ].
+	^ GtPhlowTextUnknownAttribute
+%
+
+category: 'instance creation'
+classmethod: GtPhlowTextAttribute
+fromJSONDictionary: aTextAttributeData 
+	| attributeType attributeClass |
+	attributeType :=  aTextAttributeData at: '__typeLabel'.
+ 	
+	attributeClass := self attibuteClassForType: attributeType.
+		
+	^ attributeType 
+		ifNil: [ 
+			GtPhlowTextUnknownAttribute new
+				rawData: aTextAttributeData ]
+		ifNotNil: [
+			attributeClass new
+				initializeFromJSONDictionary: aTextAttributeData  ]
+%
+
+category: 'accessing'
+classmethod: GtPhlowTextAttribute
+typeLabel
+	^ 'unknown'
+%
+
+!		Instance methods for 'GtPhlowTextAttribute'
+
+category: 'styling'
+method: GtPhlowTextAttribute
+applyStyleToText: aText
+	self subclassResponsibility
+%
+
+category: 'converting'
+method: GtPhlowTextAttribute
+asDictionaryForExport
+	"Answer the receiver as a dictionary ready for JSON serialisation.
+	Subclasses will override and add to the dictionary"
+
+	^ Dictionary new 
+		at: '__typeLabel' put: self class typeLabel;
+		yourself
+%
+
+category: 'initialization'
+method: GtPhlowTextAttribute
+initializeFromJSONDictionary: aTextAttributeData 
+%
+
+! Class implementation for 'GtPhlowFontEmphasisAttribute'
+
+!		Class methods for 'GtPhlowFontEmphasisAttribute'
+
+category: 'instance creation'
+classmethod: GtPhlowFontEmphasisAttribute
+italic
+	^ self new 
+		emphasis: #italic
+%
+
+category: 'accessing'
+classmethod: GtPhlowFontEmphasisAttribute
+typeLabel
+	^ 'phlowFontEmphasisAttribute'
+%
+
+!		Instance methods for 'GtPhlowFontEmphasisAttribute'
+
+category: 'styling'
+method: GtPhlowFontEmphasisAttribute
+applyStyleToText: aText
+	aText perform: emphasis asSymbol
+%
+
+category: 'converting'
+method: GtPhlowFontEmphasisAttribute
+asDictionaryForExport
+	^ super asDictionaryForExport
+		at: 'emphasis' put: emphasis;
+		yourself
+%
+
+category: 'accessing'
+method: GtPhlowFontEmphasisAttribute
+emphasis
+	^ emphasis
+%
+
+category: 'accessing'
+method: GtPhlowFontEmphasisAttribute
+emphasis: anObject
+	emphasis := anObject
+%
+
+category: 'initialization'
+method: GtPhlowFontEmphasisAttribute
+initializeFromJSONDictionary: aTextAttributeData
+	super initializeFromJSONDictionary: aTextAttributeData.
+	emphasis := aTextAttributeData at: 'emphasis'
+%
+
+category: 'printing'
+method: GtPhlowFontEmphasisAttribute
+printOn: aStream
+	aStream
+		nextPutAll: 'phlow font-emphasis: ';
+		nextPutAll: emphasis
+%
+
+! Class implementation for 'GtPhlowFontNameAttribute'
+
+!		Class methods for 'GtPhlowFontNameAttribute'
+
+category: 'accessing'
+classmethod: GtPhlowFontNameAttribute
+typeLabel
+	^ 'phlowFontNameAttribute'
+%
+
+!		Instance methods for 'GtPhlowFontNameAttribute'
+
+category: 'styling'
+method: GtPhlowFontNameAttribute
+applyStyleToText: aText
+	aText fontName: fontName
+%
+
+category: 'converting'
+method: GtPhlowFontNameAttribute
+asDictionaryForExport
+	^ super asDictionaryForExport
+		at: 'name' put: fontName;
+		yourself
+%
+
+category: 'accessing'
+method: GtPhlowFontNameAttribute
+fontName
+	^ fontName
+%
+
+category: 'accessing'
+method: GtPhlowFontNameAttribute
+fontName: aString
+	fontName := aString
+%
+
+category: 'initialization'
+method: GtPhlowFontNameAttribute
+initializeFromJSONDictionary: aTextAttributeData
+	super initializeFromJSONDictionary: aTextAttributeData.
+	fontName := aTextAttributeData at: 'name'
+%
+
+category: 'printing'
+method: GtPhlowFontNameAttribute
+printOn: aStream
+	aStream
+		nextPutAll: 'phlow font-name: ';
+		nextPutAll: fontName
+%
+
+! Class implementation for 'GtPhlowFontSizeAttribute'
+
+!		Class methods for 'GtPhlowFontSizeAttribute'
+
+category: 'accessing'
+classmethod: GtPhlowFontSizeAttribute
+typeLabel
+	^ 'phlowFontSizeAttribute'
+%
+
+!		Instance methods for 'GtPhlowFontSizeAttribute'
+
+category: 'styling'
+method: GtPhlowFontSizeAttribute
+applyStyleToText: aText
+	aText fontSize: self sizeValue
+%
+
+category: 'converting'
+method: GtPhlowFontSizeAttribute
+asDictionaryForExport
+
+	^ super asDictionaryForExport
+		at: 'size' put: self sizeValue;
+		yourself
+%
+
+category: 'initialization'
+method: GtPhlowFontSizeAttribute
+initializeFromJSONDictionary: aTextAttributeData 
+	super initializeFromJSONDictionary: aTextAttributeData .
+	
+	sizeValue := aTextAttributeData at: 'size'
+%
+
+category: 'printing'
+method: GtPhlowFontSizeAttribute
+printOn: aStream
+	aStream
+		nextPutAll: 'phlow font-size: ';
+		nextPutAll: self sizeValue asString
+%
+
+category: 'accessing'
+method: GtPhlowFontSizeAttribute
+sizeValue
+	^ sizeValue
+%
+
+category: 'accessing'
+method: GtPhlowFontSizeAttribute
+sizeValue: anInteger
+	sizeValue := anInteger
+%
+
+! Class implementation for 'GtPhlowFontWeightAttribute'
+
+!		Class methods for 'GtPhlowFontWeightAttribute'
+
+category: 'instance creation'
+classmethod: GtPhlowFontWeightAttribute
+bold
+	^ self new 
+		weight: #bold
+%
+
+category: 'instance creation'
+classmethod: GtPhlowFontWeightAttribute
+thin
+	^ self new 
+		weight: #thin
+%
+
+category: 'accessing'
+classmethod: GtPhlowFontWeightAttribute
+typeLabel
+	^ 'phlowFontWeightAttribute'
+%
+
+!		Instance methods for 'GtPhlowFontWeightAttribute'
+
+category: 'styling'
+method: GtPhlowFontWeightAttribute
+applyStyleToText: aText
+	aText perform: weight asSymbol
+%
+
+category: 'converting'
+method: GtPhlowFontWeightAttribute
+asDictionaryForExport
+	^ super asDictionaryForExport
+		at: 'weight' put: weight;
+		yourself
+%
+
+category: 'initialization'
+method: GtPhlowFontWeightAttribute
+initializeFromJSONDictionary: aTextAttributeData
+	super initializeFromJSONDictionary: aTextAttributeData.
+	weight := aTextAttributeData at: 'weight'
+%
+
+category: 'printing'
+method: GtPhlowFontWeightAttribute
+printOn: aStream
+	aStream
+		nextPutAll: 'phlow font-weight: ';
+		nextPutAll: weight
+%
+
+category: 'accessing'
+method: GtPhlowFontWeightAttribute
+weight
+	^ weight
+%
+
+category: 'accessing'
+method: GtPhlowFontWeightAttribute
+weight: anObject
+	weight := anObject
+%
+
+! Class implementation for 'GtPhlowTextColorAttribute'
+
+!		Instance methods for 'GtPhlowTextColorAttribute'
+
+category: 'styling'
+method: GtPhlowTextColorAttribute
+applyStyleToText: aText
+	aText highlight: self color
+%
+
+category: 'accessing'
+method: GtPhlowTextColorAttribute
+asDictionaryForExport
+	^ super asDictionaryForExport
+		at: 'color' put: self color asDictionaryForExport;
+		yourself
+%
+
+category: 'accessing'
+method: GtPhlowTextColorAttribute
+color
+	^ color
+%
+
+category: 'accessing'
+method: GtPhlowTextColorAttribute
+color: anObject
+	color := anObject
+%
+
+category: 'initialization'
+method: GtPhlowTextColorAttribute
+initializeFromJSONDictionary: aTextAttributeData
+	super initializeFromJSONDictionary: aTextAttributeData.
+	color := GtPhlowColor fromJSONDictionary: (aTextAttributeData at: 'color')
+%
+
+! Class implementation for 'GtPhlowTextForegroundAttribute'
+
+!		Class methods for 'GtPhlowTextForegroundAttribute'
+
+category: 'accessing'
+classmethod: GtPhlowTextForegroundAttribute
+typeLabel
+	^ 'phlowTextForegroundAttribute'
+%
+
+!		Instance methods for 'GtPhlowTextForegroundAttribute'
+
+category: 'styling'
+method: GtPhlowTextForegroundAttribute
+applyStyleToText: aText
+	aText foreground: self color asColor 
+%
+
+category: 'printing'
+method: GtPhlowTextForegroundAttribute
+printOn: aStream
+	aStream
+		nextPutAll: 'phlow text-foreground: ';
+		nextPutAll: self color printString
+%
+
+! Class implementation for 'GtPhlowTextHighlightAttribute'
+
+!		Class methods for 'GtPhlowTextHighlightAttribute'
+
+category: 'accessing'
+classmethod: GtPhlowTextHighlightAttribute
+typeLabel
+	^ 'phlowTextHighlightAttribute'
+%
+
+!		Instance methods for 'GtPhlowTextHighlightAttribute'
+
+category: 'styling'
+method: GtPhlowTextHighlightAttribute
+applyStyleToText: aText
+	aText highlight: self color asColor 
+%
+
+category: 'printing'
+method: GtPhlowTextHighlightAttribute
+printOn: aStream
+	aStream
+		nextPutAll: 'phlow text-background: ';
+		nextPutAll: self color printString
+%
+
+! Class implementation for 'GtPhlowTextUnknownAttribute'
+
+!		Class methods for 'GtPhlowTextUnknownAttribute'
+
+category: 'accessing'
+classmethod: GtPhlowTextUnknownAttribute
+typeLabel
+	^ 'phlowTextUnknownAttribute'
+%
+
+!		Instance methods for 'GtPhlowTextUnknownAttribute'
+
+category: 'styling'
+method: GtPhlowTextUnknownAttribute
+applyStyleToText: aText
+%
+
+category: 'accessing'
+method: GtPhlowTextUnknownAttribute
+rawData: aTextStylerData 
+	rawData := aTextStylerData
 %
 
 ! Class implementation for 'GtPhlowViewSpecification'
@@ -2169,6 +4008,7 @@ gtViewColumnSpecificationFor: aView
 	
 	^ aView columnedList
 		title: 'Column Specifications';
+		priority: 20;
 		items: [ self columnSpecifications ];
 		column: 'Title' text: [ :aColumnSpecification | 
 			aColumnSpecification title ];
@@ -2303,6 +4143,31 @@ retriveSentItemAtPath: aNodePath
 		retriveSentItemAtPath: aNodePath
 %
 
+! Class implementation for 'GtPhlowTextualViewSpecification'
+
+!		Instance methods for 'GtPhlowTextualViewSpecification'
+
+category: 'api - accessing'
+method: GtPhlowTextualViewSpecification
+getText
+	^ self phlowDataSource getText
+%
+
+category: 'initialization'
+method: GtPhlowTextualViewSpecification
+initializeFromInspector: anInspector
+	self dataTransport = self class dataIncluded ifTrue: [ ^ self ].
+	
+	phlowDataSource ifNil: [
+		self phlowDataSource: (anInspector getDeclarativeViewFor: self methodSelector) ]
+%
+
+category: 'api - accessing'
+method: GtPhlowTextualViewSpecification
+retrieveStylableText
+	^ self phlowDataSource retrieveStylableText
+%
+
 ! Class implementation for 'GtPhlowTextEditorViewSpecification'
 
 !		Class methods for 'GtPhlowTextEditorViewSpecification'
@@ -2310,13 +4175,24 @@ retriveSentItemAtPath: aNodePath
 category: 'instance creation'
 classmethod: GtPhlowTextEditorViewSpecification
 fromJSONDictionary: aDictionary
-
-	| editor |
-
-	editor := super fromJSONDictionary: aDictionary.
-	editor dataTransport = self dataIncluded ifTrue:
-		[ editor string: (aDictionary at: #string) ].
-	^editor
+	| editorViewSpecification |
+	
+	editorViewSpecification := super fromJSONDictionary: aDictionary.
+	
+	editorViewSpecification dataTransport = self dataIncluded
+		ifTrue: [ 
+			editorViewSpecification string: (aDictionary at: 'string').
+			aDictionary
+				at: 'textStylerSpecification'
+				ifPresent: [ :aTextStylerSpecificationData | 
+					editorViewSpecification
+						textStylerSpecification: (#GtRemotePhlowTextStylerSpecification asClass
+								fromJSONDictionary: aTextStylerSpecificationData) ] ]
+		ifFalse: [ 
+			(aDictionary includesKey: 'dataSource') ifTrue: [
+				editorViewSpecification phlowDataSource: (aDictionary at: 'dataSource')] ].
+	
+	^ editorViewSpecification
 %
 
 !		Instance methods for 'GtPhlowTextEditorViewSpecification'
@@ -2324,13 +4200,17 @@ fromJSONDictionary: aDictionary
 category: 'converting'
 method: GtPhlowTextEditorViewSpecification
 asDictionaryForExport 
-
 	| dictionary |
 
 	dictionary := super asDictionaryForExport.
 	self dataTransport = self class dataIncluded ifTrue: [ 
-		dictionary at: #string put: string ].
-	^dictionary
+		dictionary at: 'string' put: string.
+		textStylerSpecification ifNotNil: [
+			dictionary 
+				at: 'textStylerSpecification'
+				put: textStylerSpecification asDictionaryForExport ] ].
+	
+	^ dictionary
 %
 
 category: 'accessing'
@@ -2346,6 +4226,31 @@ category: 'accessing'
 method: GtPhlowTextEditorViewSpecification
 string: anObject
 	string := anObject
+%
+
+category: 'accessing'
+method: GtPhlowTextEditorViewSpecification
+textStylerSpecification: aTextAttributeRuns
+	textStylerSpecification := aTextAttributeRuns
+%
+
+! Class implementation for 'GtPhlowTextViewSpecification'
+
+!		Class methods for 'GtPhlowTextViewSpecification'
+
+category: 'instance creation'
+classmethod: GtPhlowTextViewSpecification
+fromJSONDictionary: aDictionary
+	| textViewSpecification |
+	
+	textViewSpecification := super fromJSONDictionary: aDictionary.
+	
+	textViewSpecification dataTransport = self dataLazy
+		ifTrue: [ 
+			(aDictionary includesKey: 'dataSource') ifTrue: [
+				textViewSpecification phlowDataSource: (aDictionary at: 'dataSource')] ].
+	
+	^ textViewSpecification
 %
 
 ! Class implementation for 'GtPhlowViewErrorViewSpecification'
@@ -2385,6 +4290,29 @@ errorMessage: anObject
 ! Class implementation for 'GtRemoteDeclarativeExamples'
 
 !		Instance methods for 'GtRemoteDeclarativeExamples'
+
+category: 'assertions'
+method: GtRemoteDeclarativeExamples
+assertSimpleUnstyledStringInViewSpecification: aViewSpecification
+	| stylableText |
+	
+	stylableText := (GtRemotePhlowStylableText 
+			fromJSONDictionary: aViewSpecification getText).
+	self assert: stylableText string equals: 'hello world'.
+	self assert: stylableText stylerSpecification canAffectText not.
+%
+
+category: 'assertions'
+method: GtRemoteDeclarativeExamples
+assertStyledTextInViewSpecification: aViewSpecification
+	| stylableText |
+	
+	stylableText := (GtRemotePhlowStylableText 
+			fromJSONDictionary: aViewSpecification getText).
+	self assert: stylableText string equals: 'Now is the time'.
+	self assert: stylableText stylerSpecification canAffectText.
+	self assert: stylableText stylerSpecification numberOfRuns equals: 9.
+%
 
 category: 'examples - views'
 method: GtRemoteDeclarativeExamples
@@ -2502,16 +4430,16 @@ method: GtRemoteDeclarativeExamples
 listView
 	<gtExample>
 	<after: #stopServer>
-	| viewProxy viewDictionary view |
+	| viewedObjectProxy viewDictionary view |
 
-	viewProxy := self viewedObjectProxy.
-	viewDictionary := viewProxy getViewDeclaration: #gtListFor:.
+	viewedObjectProxy := self viewedObjectProxy.
+	viewDictionary := viewedObjectProxy getViewDeclaration: #gtListFor:.
 	view := GtPhlowViewSpecification fromDictionary: viewDictionary.
 	
 	self assert: view title equals: #List.
 	self assert: view priority equals: 15.
 	
-	self listViewLazyCheck: viewProxy.
+	self listViewLazyCheck: viewedObjectProxy.
 	
 	^ view
 %
@@ -2604,17 +4532,81 @@ stopServer
 
 category: 'examples - views'
 method: GtRemoteDeclarativeExamples
-stringView
+textEditorViewWithSimpleString
 	<gtExample>
 	<after: #stopServer>
-	| viewProxy viewDictionary view |
+	| viewedObjectProxy viewDictionary view viewSpecification |
 
-	viewProxy := self viewedObjectProxy.
-	viewDictionary :=  viewProxy getViewDeclaration: #gtStringFor:.
-	view :=  GtPhlowViewSpecification fromDictionary: viewDictionary.
+	viewedObjectProxy := self viewedObjectProxy.
+	viewDictionary :=  viewedObjectProxy getViewDeclaration: #gtStringInTextEditorViewFor: .
+	view := GtPhlowViewSpecification fromDictionary: viewDictionary.
 	
-	self assert: view title equals: #String.
-	self assert: view string equals: 'hello world'.
+	self assert: view title equals: 'String (editor)'.
+	self assert: view priority equals: 11.
+	self assert: view string equals: nil.
+	
+	viewSpecification := viewedObjectProxy getDeclarativeViewFor: #gtStringInTextEditorViewFor: .
+	self assertSimpleUnstyledStringInViewSpecification: viewSpecification.
+	
+	^ view
+%
+
+category: 'examples - views'
+method: GtRemoteDeclarativeExamples
+textEditorViewWithStyledText
+	<gtExample>
+	<after: #stopServer>
+	| viewedObjectProxy viewDictionary view viewSpecification |
+
+	viewedObjectProxy := self viewedObjectProxy.
+	viewDictionary :=  viewedObjectProxy getViewDeclaration: #gtStyledTextInEditorFor:.
+	view := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
+	self assert: view title equals: 'Styled text (editor)'.
+	self assert: view priority equals: 11.1.
+	
+	viewSpecification := viewedObjectProxy getDeclarativeViewFor: #gtStyledTextInEditorFor:.
+	self assertStyledTextInViewSpecification: viewSpecification.
+	
+	^ view
+%
+
+category: 'examples - views'
+method: GtRemoteDeclarativeExamples
+textViewWithSimpleString
+	<gtExample>
+	<after: #stopServer>
+	| viewedObjectProxy viewDictionary view viewSpecification |
+
+	viewedObjectProxy := self viewedObjectProxy.
+	viewDictionary :=  viewedObjectProxy getViewDeclaration: #gtStringInTextViewFor:.
+	view := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
+	self assert: view title equals: 'String (text)'.
+	self assert: view priority equals: 10.
+	
+	viewSpecification := viewedObjectProxy getDeclarativeViewFor: #gtStringInTextViewFor: .
+	self assertSimpleUnstyledStringInViewSpecification: viewSpecification.
+	
+	^ view
+%
+
+category: 'examples - views'
+method: GtRemoteDeclarativeExamples
+textViewWithStyledText
+	<gtExample>
+	<after: #stopServer>
+	| viewedObjectProxy viewDictionary view viewSpecification |
+
+	viewedObjectProxy := self viewedObjectProxy.
+	viewDictionary :=  viewedObjectProxy getViewDeclaration: #gtStyledTextFor:.
+	view := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
+	self assert: view title equals: 'Styled text'.
+	self assert: view priority equals: 10.1.
+	
+	viewSpecification := viewedObjectProxy getDeclarativeViewFor: #gtStyledTextFor:.
+	self assertStyledTextInViewSpecification: viewSpecification.
 	
 	^ view
 %
@@ -3890,13 +5882,97 @@ gtListWithSendFor: aView
 
 category: 'inspecting'
 method: GtRemotePhlowDeclarativeTestInspectable
-gtStringFor: aView
+gtStringInTextEditorViewFor: aView
 	<gtView>
 	
 	^aView textEditor
-		title: 'String';
+		title: 'String (editor)';
+		priority: 11;
+		text: [ self string ]
+%
+
+category: 'inspecting'
+method: GtRemotePhlowDeclarativeTestInspectable
+gtStringInTextViewFor: aView
+	<gtView>
+	
+	^aView text
+		title: 'String (text)';
 		priority: 10;
 		text: [ self string ]
+%
+
+category: 'inspecting'
+method: GtRemotePhlowDeclarativeTestInspectable
+gtStyledPhlowTextFor: aView
+	<gtView>
+	
+	^ aView text
+		title: 'Styled phlow text';
+		priority: 10.3;
+		text: [ self styledPhlowText ]
+%
+
+category: 'inspecting'
+method: GtRemotePhlowDeclarativeTestInspectable
+gtStyledPhlowTextInEditorFor: aView
+	<gtView>
+	
+	^ aView textEditor
+		title: 'Styled phlow text (editor)';
+		priority: 11.3;
+		text: [ self styledPhlowText ]
+%
+
+category: 'inspecting'
+method: GtRemotePhlowDeclarativeTestInspectable
+gtStyledStringJsonInEditorFor: aView
+	<gtView>
+	
+	^ aView textEditor
+		title: 'Styled JSON';
+		priority: 11.5;
+		text: [ 
+			'{
+	"name":"Me", 
+	"age":30, 
+	"data":null
+}' ];
+		stylerParserClassName: #JSONParser
+%
+
+category: 'inspecting'
+method: GtRemotePhlowDeclarativeTestInspectable
+gtStyledStringUsingStylerFor: aView
+	<gtView>
+	
+	^ aView textEditor
+		title: 'Styled text (styler)';
+		priority: 11.2;
+		text: [ 'Now is the time' ];
+		styler: [ GtRemotePhlowDummyTextStyler  new ]
+%
+
+category: 'inspecting'
+method: GtRemotePhlowDeclarativeTestInspectable
+gtStyledTextFor: aView
+	<gtView>
+	
+	^ aView text
+		title: 'Styled text';
+		priority: 10.1;
+		text: [ self styledText ]
+%
+
+category: 'inspecting'
+method: GtRemotePhlowDeclarativeTestInspectable
+gtStyledTextInEditorFor: aView
+	<gtView>
+	
+	^ aView textEditor
+		title: 'Styled text (editor)';
+		priority: 11.1;
+		text: [ self styledText ]
 %
 
 category: 'inspecting'
@@ -3945,6 +6021,38 @@ category: 'accessing'
 method: GtRemotePhlowDeclarativeTestInspectable
 string: anObject
 	string := anObject
+%
+
+category: 'inspecting'
+method: GtRemotePhlowDeclarativeTestInspectable
+styledPhlowText
+	| text |
+	text := GtPhlowText forString: 'Now is the time'.
+	text glamorousCodeFont.
+	(text from: 12 to: 15) fontSize: 20.
+	(text from: 5 to: 6) highlight: (GtPhlowColor named: #yellow) asColor.
+	(text from: 1 to: 4) bold.
+	(text from: 8 to: 10) foreground: (GtPhlowColor named: #red) asColor.
+	(text from: 12 to: 12) glamorousRegularFont.
+	(text from: 1 to: 6) italic.
+	(text from: 8 to: 15) thin.
+	^ text
+%
+
+category: 'inspecting'
+method: GtRemotePhlowDeclarativeTestInspectable
+styledText
+	| text |
+	text := 'Now is the time' asRopedText.
+	text glamorousCodeFont.
+	(text from: 12 to: 15) fontSize: 20.
+	(text from: 5 to: 6) highlight: (GtPhlowColor named: #yellow) asColor.
+	(text from: 1 to: 4) bold.
+	(text from: 8 to: 10) foreground: (GtPhlowColor named: #red) asColor.
+	(text from: 12 to: 12) glamorousRegularFont.
+	(text from: 1 to: 6) italic.
+	(text from: 8 to: 15) thin.
+	^ text
 %
 
 category: 'accessing'
@@ -4121,6 +6229,52 @@ retrieveViewSpecificationForForwarding
 	cachedViewSpecification methodSelector: computedPhlowView definingSelector.
 	
 	^ cachedViewSpecification asDictionaryForExport
+%
+
+! Class implementation for 'GtRemotePhlowDeclarativeTextualViewDataSource'
+
+!		Instance methods for 'GtRemotePhlowDeclarativeTextualViewDataSource'
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeTextualViewDataSource
+computeText 
+	| computedText stylerSpecification |
+	computedText := self phlowView textBuilder value asRopedText.
+	stylerSpecification := self 
+		createRemotePhlowStylerSpecificationForText: computedText.
+		
+	stylerSpecification ifNil: [
+		stylerSpecification := GtRemotePhlowTextAttributeRunsStylerSpecification new 
+			attributeRuns: computedText extractRemotePhlowRuns ].
+
+	^ GtRemotePhlowStylableText new
+		string: computedText asString;
+		stylerSpecification: stylerSpecification
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeTextualViewDataSource
+createRemotePhlowStylerSpecificationForText: aText
+	| stylerSpecification |
+	
+	stylerSpecification := self phlowView stylerSpecification.
+	stylerSpecification ifNil: [ ^ nil ].
+	stylerSpecification canAffectText ifFalse: [ ^ nil ].
+	
+	^ stylerSpecification 
+		convertToSerializableSpecificationForText: aText.
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeTextualViewDataSource
+getText 
+	^ self computeText asDictionaryForExport
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeTextualViewDataSource
+retrieveStylableText 
+	^ self computeText asDictionaryForExport
 %
 
 ! Class implementation for 'GtRemotePhlowDeclarativeViewListingDataSource'
@@ -4466,6 +6620,31 @@ instantiateValueBuilder
 	^ GtRemotePhlowRowBuilder new
 %
 
+! Class implementation for 'GtRemotePhlowDummyTextStyler'
+
+!		Instance methods for 'GtRemotePhlowDummyTextStyler'
+
+category: 'accessing'
+method: GtRemotePhlowDummyTextStyler
+affectsText
+	^ true
+%
+
+category: 'accessing'
+method: GtRemotePhlowDummyTextStyler
+style: aText
+
+	aText glamorousCodeFont.
+	(aText from: 12 to: 15) fontSize: 20.
+	(aText from: 5 to: 6) highlight: (GtPhlowColor named: #yellow) asColor.
+	(aText from: 1 to: 4) bold.
+	(aText from: 8 to: 10) foreground: (GtPhlowColor named: #red) asColor.
+	(aText from: 12 to: 12) glamorousRegularFont.
+	(aText from: 1 to: 6) italic.
+	(aText from: 8 to: 15) thin.
+	^ aText 
+%
+
 ! Class implementation for 'GtRemotePhlowItemValue'
 
 !		Class methods for 'GtRemotePhlowItemValue'
@@ -4808,6 +6987,13 @@ method: GtRemotePhlowProtoView
 list
 
 	^ self declarativeViewOfType: GtRemotePhlowListView
+%
+
+category: 'decorating'
+method: GtRemotePhlowProtoView
+text
+
+	^ self declarativeViewOfType: GtRemotePhlowTextView
 %
 
 category: 'decorating'
@@ -5424,10 +7610,10 @@ asGtDeclarativeView
 	nil = not supported"
 
 	^ GtPhlowListViewSpecification new 
-		phlowDataSource: (GtRemotePhlowDeclarativeViewListDataSource 
-			forPhlowView: self);
 		title: self title;
 		priority: self priority;
+		phlowDataSource: (GtRemotePhlowDeclarativeViewListDataSource 
+			forPhlowView: self);
 		dataTransport: GtPhlowViewSpecification dataLazy.
 %
 
@@ -5525,31 +7711,18 @@ itemText: aBlock
 	itemTextBlock := aBlock
 %
 
-! Class implementation for 'GtRemotePhlowTextEditorView'
+! Class implementation for 'GtRemotePhlowTextualView'
 
-!		Instance methods for 'GtRemotePhlowTextEditorView'
+!		Instance methods for 'GtRemotePhlowTextualView'
 
 category: 'accessing'
-method: GtRemotePhlowTextEditorView
+method: GtRemotePhlowTextualView
 aptitude: anAptitude
 	"stub method"
 %
 
-category: 'converting'
-method: GtRemotePhlowTextEditorView
-asGtDeclarativeView
-	"Answer the receiver as a GtDeclarativeView.
-	nil = not supported"
-
-	^GtPhlowTextEditorViewSpecification new 
-		title: self title;
-		priority: self priority;
-		string: self textBuilder value asString;
-		dataTransport: GtPhlowViewSpecification dataIncluded.
-%
-
 category: 'accessing'
-method: GtRemotePhlowTextEditorView
+method: GtRemotePhlowTextualView
 text: aBlockClosure
 	"Set the BlockClosure that will generate the string to be displayed.
 	The result of the BlockClosure must be a String (not a BlText)."
@@ -5558,9 +7731,81 @@ text: aBlockClosure
 %
 
 category: 'accessing'
-method: GtRemotePhlowTextEditorView
+method: GtRemotePhlowTextualView
 textBuilder
 	^ textBuilder
+%
+
+! Class implementation for 'GtRemotePhlowTextEditorView'
+
+!		Instance methods for 'GtRemotePhlowTextEditorView'
+
+category: 'converting'
+method: GtRemotePhlowTextEditorView
+asGtDeclarativeView
+	"Answer the receiver as a GtDeclarativeView.
+	nil = not supported"
+
+	^ GtPhlowTextEditorViewSpecification new 
+		title: self title;
+		priority: self priority;
+		phlowDataSource: (GtRemotePhlowDeclarativeTextualViewDataSource 
+			forPhlowView: self);
+		dataTransport: GtPhlowViewSpecification dataLazy.
+%
+
+category: 'accessing'
+method: GtRemotePhlowTextEditorView
+styler: aBlockClosure
+	"Set the computation that will create the styler."
+
+	stylerSpecification := GtRemoteTextStylerComputableSpecification new 
+		stylerComputation: aBlockClosure
+%
+
+category: 'accessing'
+method: GtRemotePhlowTextEditorView
+stylerClassName: aStylerClassName
+	stylerSpecification := GtRemotePhlowTextClassStylerSpecification new 
+		stylerClassName: aStylerClassName
+%
+
+category: 'accessing'
+method: GtRemotePhlowTextEditorView
+stylerParserClassName: aParserClassName
+	stylerSpecification := GtRemotePhlowTextParserStylerSpecification new 
+		parserClassName: aParserClassName
+%
+
+category: 'accessing'
+method: GtRemotePhlowTextEditorView
+stylerSpecification
+	^ stylerSpecification
+%
+
+! Class implementation for 'GtRemotePhlowTextView'
+
+!		Instance methods for 'GtRemotePhlowTextView'
+
+category: 'accessing'
+method: GtRemotePhlowTextView
+asGtDeclarativeView
+	"Answer the receiver as a GtDeclarativeView.
+	nil = not supported"
+
+	^ GtPhlowTextViewSpecification new 
+		title: self title;
+		priority: self priority;
+		phlowDataSource: (GtRemotePhlowDeclarativeTextualViewDataSource 
+			forPhlowView: self);
+		dataTransport: GtPhlowViewSpecification dataLazy.
+%
+
+category: 'accessing'
+method: GtRemotePhlowTextView
+stylerSpecification
+	"Should be extended to support a styler that could be applied on the text"
+	^ nil
 %
 
 ! Class implementation for 'GtRemotePhlowViewErrorView'
@@ -5629,6 +7874,351 @@ category: 'accessing'
 method: GtRemotePhlowSendObjectTransformation
 valuable: anObject
 	valuable := anObject
+%
+
+! Class implementation for 'GtRemotePhlowStylableText'
+
+!		Class methods for 'GtRemotePhlowStylableText'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowStylableText
+fromJSONDictionary: aDictionary
+	^ self new
+		initializeFromJSONDictionary: aDictionary
+%
+
+category: 'accessing'
+classmethod: GtRemotePhlowStylableText
+typeLabel
+	^ 'remotePhlowText'
+%
+
+!		Instance methods for 'GtRemotePhlowStylableText'
+
+category: 'converting'
+method: GtRemotePhlowStylableText
+asDictionaryForExport
+	"Answer the receiver as a dictionary ready for JSON serialisation.
+	Subclasses will override and add to the dictionary"
+	| dataForExport|
+	dataForExport := Dictionary new.
+	dataForExport
+		at: '__typeLabel' put: self class typeLabel;
+		at: 'string' put: self string.
+	self stylerSpecification ifNotNil: [ :aStylerSpecification |
+		dataForExport 
+			at: 'stylerSpecification' 
+			put: aStylerSpecification asDictionaryForExport ].
+		
+	^ dataForExport
+%
+
+category: 'accessing'
+method: GtRemotePhlowStylableText
+createStyledText
+	^ self stylerSpecification 
+		ifNil: [ string asRopedText ]
+		ifNotNil: [ :aStylerSpecification |
+			aStylerSpecification createBlStyler 
+				style: string asRopedText]
+%
+
+category: 'initialization'
+method: GtRemotePhlowStylableText
+initializeFromJSONDictionary: aDictionary
+	self string: (aDictionary at: 'string').
+		
+	(aDictionary includesKey: 'stylerSpecification') ifTrue: [
+		self stylerSpecification: (GtRemotePhlowTextStylerSpecification
+				fromJSONDictionary: (aDictionary at: 'stylerSpecification')) ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowStylableText
+string
+	^ string
+%
+
+category: 'accessing'
+method: GtRemotePhlowStylableText
+string: anObject
+	string := anObject
+%
+
+category: 'accessing'
+method: GtRemotePhlowStylableText
+stylerSpecification
+	^ stylerSpecification
+%
+
+category: 'accessing'
+method: GtRemotePhlowStylableText
+stylerSpecification: anObject
+	stylerSpecification := anObject
+%
+
+! Class implementation for 'GtRemotePhlowTextStylerSpecification'
+
+!		Class methods for 'GtRemotePhlowTextStylerSpecification'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowTextStylerSpecification
+fromJSONDictionary: aTextStylerSpecificationData 
+	| typeLabel stylerSpecificationClass |
+ 	typeLabel := aTextStylerSpecificationData at: '__typeLabel'.
+ 	
+ 	stylerSpecificationClass := self stylerSpecificationClassForType: typeLabel.
+		
+	^ stylerSpecificationClass 
+		ifNil: [ nil ]
+		ifNotNil: [
+			stylerSpecificationClass new 
+				initializeFromJSONDictionary: aTextStylerSpecificationData ]
+%
+
+category: 'instance creation'
+classmethod: GtRemotePhlowTextStylerSpecification
+stylerSpecificationClassForType: aTypeLabel 
+	aTypeLabel = GtRemotePhlowTextAttributeRunsStylerSpecification typeLabel ifTrue: [
+ 		^ GtRemotePhlowTextAttributeRunsStylerSpecification  ].
+			
+	aTypeLabel = GtRemotePhlowTextClassStylerSpecification typeLabel ifTrue: [
+ 		^ GtRemotePhlowTextClassStylerSpecification  ].
+			
+	aTypeLabel = GtRemotePhlowTextParserStylerSpecification typeLabel ifTrue: [
+ 		^  GtRemotePhlowTextParserStylerSpecification ].
+ 		
+ 	^ nil
+%
+
+category: 'accessing'
+classmethod: GtRemotePhlowTextStylerSpecification
+typeLabel
+	^ '<missing>'
+%
+
+!		Instance methods for 'GtRemotePhlowTextStylerSpecification'
+
+category: 'converting'
+method: GtRemotePhlowTextStylerSpecification
+asDictionaryForExport
+	"Answer the receiver as a dictionary ready for JSON serialisation.
+	Subclasses will override and add to the dictionary"
+
+	^ Dictionary new 
+		at: '__typeLabel' put: self class typeLabel;
+		yourself
+%
+
+category: 'testing'
+method: GtRemotePhlowTextStylerSpecification
+canAffectText
+	^ true
+%
+
+category: 'converting'
+method: GtRemotePhlowTextStylerSpecification
+convertToSerializableSpecificationForText: aText
+	^ self
+%
+
+category: 'initialization'
+method: GtRemotePhlowTextStylerSpecification
+initializeFromJSONDictionary: aTextStylerSpecificationData 
+	
+%
+
+! Class implementation for 'GtRemotePhlowTextAttributeRunsStylerSpecification'
+
+!		Class methods for 'GtRemotePhlowTextAttributeRunsStylerSpecification'
+
+category: 'accessing'
+classmethod: GtRemotePhlowTextAttributeRunsStylerSpecification
+typeLabel
+	^ 'remotePhlowTextAttributeRunsStylerSpecification'
+%
+
+!		Instance methods for 'GtRemotePhlowTextAttributeRunsStylerSpecification'
+
+category: 'converting'
+method: GtRemotePhlowTextAttributeRunsStylerSpecification
+asDictionaryForExport
+	"Answer the receiver as a dictionary ready for JSON serialisation.
+	Subclasses will override and add to the dictionary"
+
+	^ super asDictionaryForExport
+		at: 'attributeRuns' put: attributeRuns  asDictionaryForExport;
+		yourself
+%
+
+category: 'accessing'
+method: GtRemotePhlowTextAttributeRunsStylerSpecification
+attributeRuns: aCollection
+	attributeRuns := aCollection
+%
+
+category: 'testing'
+method: GtRemotePhlowTextAttributeRunsStylerSpecification
+canAffectText
+	^ attributeRuns notNil and: [ attributeRuns notEmpty ]
+%
+
+category: 'gt - extensions'
+method: GtRemotePhlowTextAttributeRunsStylerSpecification
+gtViewRunWithAttributesFor: aView 
+	<gtView>
+	
+	^ aView forward 
+		title: 'Runs';
+		object: [ attributeRuns ];
+		view: #gtViewIntervalsFor:
+%
+
+category: 'initialization'
+method: GtRemotePhlowTextAttributeRunsStylerSpecification
+initializeFromJSONDictionary: aTextStylerSpecificationData 
+	super initializeFromJSONDictionary: aTextStylerSpecificationData .
+	
+	attributeRuns := GtPhlowRuns fromJSONDictionary:   (aTextStylerSpecificationData at: 'attributeRuns')
+%
+
+category: 'accessing'
+method: GtRemotePhlowTextAttributeRunsStylerSpecification
+numberOfRuns
+	^ attributeRuns 
+		ifNil: [ 0 ] 
+		ifNotNil: [ attributeRuns size ]
+%
+
+! Class implementation for 'GtRemotePhlowTextClassStylerSpecification'
+
+!		Class methods for 'GtRemotePhlowTextClassStylerSpecification'
+
+category: 'accessing'
+classmethod: GtRemotePhlowTextClassStylerSpecification
+typeLabel
+	^ 'remotePhlowTextClassStylerSpecification'
+%
+
+!		Instance methods for 'GtRemotePhlowTextClassStylerSpecification'
+
+category: 'converting'
+method: GtRemotePhlowTextClassStylerSpecification
+asDictionaryForExport
+	"Answer the receiver as a dictionary ready for JSON serialisation.
+	Subclasses will override and add to the dictionary"
+
+	^ super asDictionaryForExport
+		at: 'stylerClassName' put: stylerClassName;
+		yourself
+%
+
+category: 'initialization'
+method: GtRemotePhlowTextClassStylerSpecification
+initializeFromJSONDictionary: aTextStylerSpecificationData 
+	super initializeFromJSONDictionary: aTextStylerSpecificationData .
+	
+	stylerClassName := (aTextStylerSpecificationData at: 'stylerClassName') asSymbol
+%
+
+category: 'accessing'
+method: GtRemotePhlowTextClassStylerSpecification
+stylerClassName
+	^ stylerClassName
+%
+
+category: 'accessing'
+method: GtRemotePhlowTextClassStylerSpecification
+stylerClassName: aClassName
+	stylerClassName := aClassName
+%
+
+! Class implementation for 'GtRemotePhlowTextParserStylerSpecification'
+
+!		Class methods for 'GtRemotePhlowTextParserStylerSpecification'
+
+category: 'accessing'
+classmethod: GtRemotePhlowTextParserStylerSpecification
+typeLabel
+	^ 'remotePhlowTextParserStylerSpecification'
+%
+
+!		Instance methods for 'GtRemotePhlowTextParserStylerSpecification'
+
+category: 'converting'
+method: GtRemotePhlowTextParserStylerSpecification
+asDictionaryForExport
+	"Answer the receiver as a dictionary ready for JSON serialisation.
+	Subclasses will override and add to the dictionary"
+
+	^ super asDictionaryForExport
+		at: 'parserClassName' put: parserClassName;
+		yourself
+%
+
+category: 'accessing'
+method: GtRemotePhlowTextParserStylerSpecification
+initializeFromJSONDictionary: aTextStylerSpecificationData 
+	super initializeFromJSONDictionary: aTextStylerSpecificationData .
+	
+	parserClassName := (aTextStylerSpecificationData at: 'parserClassName') asSymbol
+%
+
+category: 'accessing'
+method: GtRemotePhlowTextParserStylerSpecification
+parserClassName
+	^ parserClassName
+%
+
+category: 'accessing'
+method: GtRemotePhlowTextParserStylerSpecification
+parserClassName: aClassName
+	parserClassName := aClassName
+%
+
+! Class implementation for 'GtRemotePhlowTextNullStylerSpecification'
+
+!		Class methods for 'GtRemotePhlowTextNullStylerSpecification'
+
+category: 'accessing'
+classmethod: GtRemotePhlowTextNullStylerSpecification
+typeLabel
+	^ 'remotePhlowTextNullStylerSpecification'
+%
+
+!		Instance methods for 'GtRemotePhlowTextNullStylerSpecification'
+
+category: 'testing'
+method: GtRemotePhlowTextNullStylerSpecification
+canAffectText
+	^ false
+%
+
+! Class implementation for 'GtRemoteTextStylerComputableSpecification'
+
+!		Instance methods for 'GtRemoteTextStylerComputableSpecification'
+
+category: 'converting'
+method: GtRemoteTextStylerComputableSpecification
+convertToSerializableSpecificationForText: aText
+	| computedStyler styledText |
+	
+	computedStyler := self stylerComputation value.
+	styledText := computedStyler style: aText.
+	^ GtRemotePhlowTextAttributeRunsStylerSpecification new
+		attributeRuns: styledText extractRemotePhlowRuns
+%
+
+category: 'accessing'
+method: GtRemoteTextStylerComputableSpecification
+stylerComputation
+	^ stylerComputation
+%
+
+category: 'accessing'
+method: GtRemoteTextStylerComputableSpecification
+stylerComputation: aComputation
+	stylerComputation := aComputation
 %
 
 ! Class implementation for 'GtRemotePhlowViewedObject'
@@ -6659,6 +9249,16 @@ gtRemoteItemsFor: aView
 		itemText: [ :eachItem | eachItem gtDisplayString ]
 %
 
+! Class extensions for 'GtPhlowColor'
+
+!		Instance methods for 'GtPhlowColor'
+
+category: '*GToolkit-RemotePhlow-GemStone'
+method: GtPhlowColor
+asColor
+	^ self
+%
+
 ! Class extensions for 'GtPhlowViewSpecification'
 
 !		Class methods for 'GtPhlowViewSpecification'
@@ -6760,6 +9360,12 @@ gtGsInspectorIconName
 ! Class extensions for 'Object'
 
 !		Instance methods for 'Object'
+
+category: '*GToolkit-RemotePhlow-GemStone'
+method: Object
+asRopedText
+	^ GtPhlowText forString: self asString
+%
 
 category: '*GToolkit-RemotePhlow-InspectorCore'
 method: Object
@@ -6937,6 +9543,12 @@ gtGsInspectorIconName
 %
 
 !		Instance methods for 'String'
+
+category: '*GToolkit-RemotePhlow-GemStone'
+method: String
+asRopedText
+	^ GtPhlowText forString: self
+%
 
 category: '*GToolkit-RemotePhlow-GemStone'
 method: String
