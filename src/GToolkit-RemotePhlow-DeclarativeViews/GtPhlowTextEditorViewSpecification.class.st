@@ -46,6 +46,11 @@ GtPhlowTextEditorViewSpecification >> asDictionaryForExport [
 	^ dictionary
 ]
 
+{ #category : #'api - accessing' }
+GtPhlowTextEditorViewSpecification >> getText [
+	^ self retrieveStyledText
+]
+
 { #category : #accessing }
 GtPhlowTextEditorViewSpecification >> initializeFromInspector: anInspector [
 	self dataTransport = self class dataIncluded ifTrue: [ ^ self ].
