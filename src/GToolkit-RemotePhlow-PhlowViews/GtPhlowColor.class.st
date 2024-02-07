@@ -91,6 +91,11 @@ GtPhlowColor >> green [
 ]
 
 { #category : #testing }
+GtPhlowColor >> isColor [
+	^ true
+]
+
+{ #category : #testing }
 GtPhlowColor >> isTransparent [
 	^ alpha = 0 or: [ name= #transparent ]
 ]

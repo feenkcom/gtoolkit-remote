@@ -17,6 +17,6 @@ GtPhlowTextForegroundAttribute >> applyStyleToText: aText [
 { #category : #printing }
 GtPhlowTextForegroundAttribute >> printOn: aStream [
 	aStream
-		nextPutAll: 'text-foreground: ';
+		nextPutAll: 'phlow text-foreground: ';
 		nextPutAll: self color printString
 ]

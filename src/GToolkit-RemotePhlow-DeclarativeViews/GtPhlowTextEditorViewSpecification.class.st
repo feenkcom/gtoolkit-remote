@@ -14,14 +14,17 @@ GtPhlowTextEditorViewSpecification class >> fromJSONDictionary: aDictionary [
 	| editor |
 	editor := super fromJSONDictionary: aDictionary.
 	editor dataTransport = self dataIncluded
-		ifTrue: [ editor string: (aDictionary at: #string).
+		ifTrue: [ 
+			editor string: (aDictionary at: 'string').
 			aDictionary
-				at: #textStyler
+				at: 'textStyler'
 				ifPresent: [ :aTextStylerSpecificationData | 
 					editor
 						textStyler: (#GtRemotePhlowTextStylerSpecification asClass
 								fromJSONDictionary: aTextStylerSpecificationData) ] ]
-		ifFalse: [ editor dataSource: (aDictionary at: #dataSource) ].
+		ifFalse: [ 
+			(aDictionary includesKey: 'dataSource') ifTrue: [
+				editor phlowDataSource: (aDictionary at: 'dataSource')] ].
 	^ editor
 ]
 
@@ -31,23 +34,26 @@ GtPhlowTextEditorViewSpecification >> asDictionaryForExport [
 
 	dictionary := super asDictionaryForExport.
 	self dataTransport = self class dataIncluded ifTrue: [ 
-		dictionary at: #string put: string.
+		dictionary at: 'string' put: string.
 		textStyler ifNotNil: [
 			dictionary 
-				at: #textStyler 
+				at: 'textStyler'
 				put: textStyler asDictionaryForExport ] ].
 	
 	^ dictionary
 ]
 
-{ #category : #accessing }
-GtPhlowTextEditorViewSpecification >> dataSource [
-	^ dataSource
+{ #category : #'api - accessing' }
+GtPhlowTextEditorViewSpecification >> getText [
+	^ self phlowDataSource getText
 ]
 
 { #category : #accessing }
-GtPhlowTextEditorViewSpecification >> dataSource: anObject [
-	dataSource := anObject
+GtPhlowTextEditorViewSpecification >> initializeFromInspector: anInspector [
+	self dataTransport = self class dataIncluded ifTrue: [ ^ self ].
+	
+	phlowDataSource ifNil: [
+		self phlowDataSource: (anInspector getDeclarativeViewFor: self methodSelector) ]
 ]
 
 { #category : #accessing }

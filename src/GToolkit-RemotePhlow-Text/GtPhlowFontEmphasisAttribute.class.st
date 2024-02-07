@@ -7,17 +7,23 @@ Class {
 	#category : #'GToolkit-RemotePhlow-Text'
 }
 
+{ #category : #'instance creation' }
+GtPhlowFontEmphasisAttribute class >> italic [
+	^ self new 
+		emphasis: #italic
+]
+
 { #category : #accessing }
 GtPhlowFontEmphasisAttribute class >> typeLabel [
 	^ 'phlowFontEmphasisAttribute'
 ]
 
-{ #category : #accessing }
+{ #category : #styling }
 GtPhlowFontEmphasisAttribute >> applyStyleToText: aText [
 	aText perform: emphasis asSymbol
 ]
 
-{ #category : #accessing }
+{ #category : #converting }
 GtPhlowFontEmphasisAttribute >> asDictionaryForExport [
 	^ super asDictionaryForExport
 		at: 'emphasis' put: emphasis;
@@ -34,15 +40,15 @@ GtPhlowFontEmphasisAttribute >> emphasis: anObject [
 	emphasis := anObject
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 GtPhlowFontEmphasisAttribute >> initializeFromJSONDictionary: aTextAttributeData [
 	super initializeFromJSONDictionary: aTextAttributeData.
 	emphasis := aTextAttributeData at: 'emphasis'
 ]
 
-{ #category : #accessing }
+{ #category : #printing }
 GtPhlowFontEmphasisAttribute >> printOn: aStream [
 	aStream
-		nextPutAll: 'font-emphasis: ';
+		nextPutAll: 'phlow font-emphasis: ';
 		nextPutAll: emphasis
 ]

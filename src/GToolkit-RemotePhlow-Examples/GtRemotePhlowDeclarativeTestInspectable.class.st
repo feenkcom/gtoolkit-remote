@@ -282,6 +282,75 @@ GtRemotePhlowDeclarativeTestInspectable >> gtStringFor: aView [
 ]
 
 { #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtStyledPhlowTextFor: aView [
+	<gtView>
+	
+	^ aView textEditor
+		title: 'Styled phlow text';
+		priority: 10.3;
+		text: [ 
+			| text |
+			text := GtPhlowText forString: 'Now is the time'.
+			text glamorousCodeFont.
+			(text from: 12 to: 15) fontSize: 20.
+			(text from: 5 to: 6) highlight: (GtPhlowColor named: #yellow) asColor.
+			(text from: 1 to: 4) bold.
+			(text from: 8 to: 10) foreground: (GtPhlowColor named: #red) asColor.
+			(text from: 12 to: 12) glamorousRegularFont.
+			(text from: 1 to: 6) italic.
+			(text from: 8 to: 15) thin.
+			text ]
+]
+
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtStyledStringFor: aView [
+	<gtView>
+	
+	^ aView textEditor
+		title: 'Styled text';
+		priority: 10;
+		text: [ 
+			| text |
+			text := 'Now is the time' asRopedText.
+			text glamorousCodeFont.
+			(text from: 12 to: 15) fontSize: 20.
+			(text from: 5 to: 6) highlight: (GtPhlowColor named: #yellow) asColor.
+			(text from: 1 to: 4) bold.
+			(text from: 8 to: 10) foreground: (GtPhlowColor named: #red) asColor.
+			(text from: 12 to: 12) glamorousRegularFont.
+			(text from: 1 to: 6) italic.
+			(text from: 8 to: 15) thin.
+			text ]
+]
+
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtStyledStringJsonFor: aView [
+	<gtView>
+	
+	^ aView textEditor
+		title: 'Styled JSON';
+		priority: 10.5;
+		text: [ 
+			'{
+	"name":"Me", 
+	"age":30, 
+	"data":null
+}' ];
+		stylerParserClassName: #JSONParser
+]
+
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtStyledStringUsingStylerFor: aView [
+	<gtView>
+	
+	^ aView textEditor
+		title: 'Styled text (styler)';
+		priority: 10.2;
+		text: [ 'Now is the time' ];
+		styler: [ GtRemotePhlowDummyTextStyler  new ]
+]
+
+{ #category : #inspecting }
 GtRemotePhlowDeclarativeTestInspectable >> gtTreeFor: aView [
 	<gtView>
 

@@ -11,10 +11,7 @@ Class {
 { #category : #'instance creation' }
 GtRemotePhlowText class >> fromJSONDictionary: aDictionary [
 	^ self new
-		string: (aDictionary at: 'string');
-		stylerSpecification: (GtRemotePhlowTextStylerSpecification
-				fromJSONDictionary: (aDictionary at: 'stylerSpecification'));
-		yourself
+		initializeFromJSONDictionary: aDictionary
 ]
 
 { #category : #accessing }
@@ -22,9 +19,39 @@ GtRemotePhlowText class >> typeLabel [
 	^ 'remotePhlowText'
 ]
 
+{ #category : #converting }
+GtRemotePhlowText >> asDictionaryForExport [
+	"Answer the receiver as a dictionary ready for JSON serialisation.
+	Subclasses will override and add to the dictionary"
+	| dataForExport|
+	dataForExport := Dictionary new.
+	dataForExport
+		at: '__typeLabel' put: self class typeLabel;
+		at: 'string' put: self string.
+	self stylerSpecification ifNotNil: [ :aStylerSpecification |
+		dataForExport 
+			at: 'stylerSpecification' 
+			put: aStylerSpecification asDictionaryForExport ].
+		
+	^ dataForExport
+]
+
 { #category : #accessing }
 GtRemotePhlowText >> asRopedText [
-	^ self stylerSpecification createBlStyler style: string asRopedText
+	^ self stylerSpecification 
+		ifNil: [ string asRopedText ]
+		ifNotNil: [ :aStylerSpecification |
+			aStylerSpecification createBlStyler 
+				style: string asRopedText]
+]
+
+{ #category : #initialization }
+GtRemotePhlowText >> initializeFromJSONDictionary: aDictionary [
+	self string: (aDictionary at: 'string').
+		
+	(aDictionary includesKey: 'stylerSpecification') ifTrue: [
+		self stylerSpecification: (GtRemotePhlowTextStylerSpecification
+				fromJSONDictionary: (aDictionary at: 'stylerSpecification')) ]
 ]
 
 { #category : #accessing }

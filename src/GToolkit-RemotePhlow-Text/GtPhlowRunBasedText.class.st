@@ -82,6 +82,11 @@ GtPhlowRunBasedText >> endIndex [
 ]
 
 { #category : #accessing }
+GtPhlowRunBasedText >> extractRemotePhlowRuns [
+	^ self attributeRuns
+]
+
+{ #category : #accessing }
 GtPhlowRunBasedText >> forString: aString [
 	^ self
 		initializeWithString: aString
@@ -168,7 +173,9 @@ GtPhlowRunBasedText >> initializeWithString: aString [
 
 { #category : #printing }
 GtPhlowRunBasedText >> printOn: aStream [
-	aStream << sourceString
+	aStream 
+		<< 'Phlow Rope: ';
+		<< sourceString
 ]
 
 { #category : #'test - accessing' }

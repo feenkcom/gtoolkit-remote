@@ -3,7 +3,7 @@ Class {
 	#superclass : #GtRemotePhlowView,
 	#instVars : [
 		'textBuilder',
-		'textStylerComputation'
+		'stylerSpecification'
 	],
 	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
@@ -21,15 +21,34 @@ GtRemotePhlowTextEditorView >> asGtDeclarativeView [
 	^ GtPhlowTextEditorViewSpecification new 
 		title: self title;
 		priority: self priority;
-		string: self textBuilder value asString;
-		dataTransport: GtPhlowViewSpecification dataIncluded.
+		phlowDataSource: (GtRemotePhlowDeclarativeTextEditorViewDataSource 
+			forPhlowView: self);
+		dataTransport: GtPhlowViewSpecification dataLazy.
 ]
 
 { #category : #accessing }
 GtRemotePhlowTextEditorView >> styler: aBlockClosure [
-	"Set the computation that will generate ."
+	"Set the computation that will create the styler."
 
-	textStylerComputation := aBlockClosure
+	stylerSpecification := GtRemoteTextStylerComputableSpecification new 
+		stylerComputation: aBlockClosure
+]
+
+{ #category : #accessing }
+GtRemotePhlowTextEditorView >> stylerClassName: aStylerClassName [
+	stylerSpecification := GtRemotePhlowTextClassStylerSpecification new 
+		stylerClassName: aStylerClassName
+]
+
+{ #category : #accessing }
+GtRemotePhlowTextEditorView >> stylerParserClassName: aParserClassName [
+	stylerSpecification := GtRemotePhlowTextParserStylerSpecification new 
+		parserClassName: aParserClassName
+]
+
+{ #category : #accessing }
+GtRemotePhlowTextEditorView >> stylerSpecification [
+	^ stylerSpecification
 ]
 
 { #category : #accessing }

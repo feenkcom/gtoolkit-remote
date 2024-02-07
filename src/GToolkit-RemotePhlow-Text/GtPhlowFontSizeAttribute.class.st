@@ -35,7 +35,7 @@ GtPhlowFontSizeAttribute >> initializeFromJSONDictionary: aTextAttributeData [
 { #category : #printing }
 GtPhlowFontSizeAttribute >> printOn: aStream [
 	aStream
-		nextPutAll: 'font-size: ';
+		nextPutAll: 'phlow font-size: ';
 		nextPutAll: self sizeValue asString
 ]
 

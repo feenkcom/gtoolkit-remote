@@ -26,11 +26,6 @@ GtPhlowSubText >> addAttribute: aPhlowAttribute from: aStartIndex to: anEndIndex
 ]
 
 { #category : #copy }
-GtPhlowSubText >> asRopedText [
-	^ parentText copyFrom: startIndex to: endIndex
-]
-
-{ #category : #copy }
 GtPhlowSubText >> asRopedtext [
 	^ parentText copyFrom: startIndex to: endIndex
 ]

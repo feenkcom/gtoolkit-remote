@@ -23,9 +23,20 @@ GtPhlowText >> addAttribute: aPhlowAttribute from: aStartIndex to: anEndIndex [
 	self subclassResponsibility
 ]
 
+{ #category : #'api - text style' }
+GtPhlowText >> bold [
+	^ self addAttribute: GtPhlowFontWeightAttribute bold
+]
+
 { #category : #accessing }
 GtPhlowText >> endIndex [
 	^ self subclassResponsibility
+]
+
+{ #category : #'api - text style' }
+GtPhlowText >> fontName: aName [
+	self addAttribute: (GtPhlowFontNameAttribute new 
+		fontName: aName)
 ]
 
 { #category : #'api - text style' }
@@ -48,6 +59,16 @@ GtPhlowText >> from: aStart to: anEnd [
 	^ self subclassResponsibility
 ]
 
+{ #category : #'api - text style' }
+GtPhlowText >> glamorousCodeFont [
+	self fontName: 'Source Code Pro'
+]
+
+{ #category : #'api - text style' }
+GtPhlowText >> glamorousRegularFont [
+	self fontName: 'Source Sans Pro'
+]
+
 { #category : #'gt - extensions' }
 GtPhlowText >> gtTextFor: aView [
 	<gtView>
@@ -58,9 +79,20 @@ GtPhlowText >> gtTextFor: aView [
 		text: [ self ]
 ]
 
+{ #category : #'api - text style' }
+GtPhlowText >> highlight: aColor [
+	self addAttribute: (GtPhlowTextHighlightAttribute new 
+		color: aColor)
+]
+
 { #category : #testing }
 GtPhlowText >> isEmpty [
 	^ self size = 0
+]
+
+{ #category : #'api - text style' }
+GtPhlowText >> italic [
+	^ self addAttribute: GtPhlowFontEmphasisAttribute italic
 ]
 
 { #category : #testing }
@@ -76,4 +108,9 @@ GtPhlowText >> size [
 { #category : #accessing }
 GtPhlowText >> startIndex [
 	^ self subclassResponsibility
+]
+
+{ #category : #'api - text style' }
+GtPhlowText >> thin [
+	^ self addAttribute: GtPhlowFontWeightAttribute thin
 ]
