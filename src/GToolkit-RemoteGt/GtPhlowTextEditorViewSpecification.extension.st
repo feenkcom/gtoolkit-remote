@@ -6,7 +6,7 @@ GtPhlowTextEditorViewSpecification >> configureForLazyDataView: aTextView [
 		| stylableText |
 		stylableText := self phlowDataSource getText.
 		(GtRemotePhlowStylableText 
-				fromJSONDictionary: stylableText) cretateStyledText ]
+				fromJSONDictionary: stylableText) createStyledText ]
 ]
 
 { #category : #'*GToolkit-RemoteGt' }

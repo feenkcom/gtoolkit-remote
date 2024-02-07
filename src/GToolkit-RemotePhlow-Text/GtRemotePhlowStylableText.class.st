@@ -37,7 +37,7 @@ GtRemotePhlowStylableText >> asDictionaryForExport [
 ]
 
 { #category : #accessing }
-GtRemotePhlowStylableText >> cretateStyledText [
+GtRemotePhlowStylableText >> createStyledText [
 	^ self stylerSpecification 
 		ifNil: [ string asRopedText ]
 		ifNotNil: [ :aStylerSpecification |
