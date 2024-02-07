@@ -1,15 +1,15 @@
 Class {
-	#name : 'GtPhlowSubText',
-	#superclass : 'GtPhlowText',
+	#name : #GtPhlowSubText,
+	#superclass : #GtPhlowText,
 	#instVars : [
 		'parentText',
 		'startIndex',
 		'endIndex'
 	],
-	#category : 'GToolkit-RemotePhlow-Text'
+	#category : #'GToolkit-RemotePhlow-Text'
 }
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 GtPhlowSubText class >> text: aPhlowText from: aStartIndex to: anEndIndex [
 	(aPhlowText isKindOf: self) ifTrue: [
 		Error signal: 'Can not create sub text of a subtext' ].
@@ -19,23 +19,28 @@ GtPhlowSubText class >> text: aPhlowText from: aStartIndex to: anEndIndex [
 		yourself
 ]
 
-{ #category : 'attributes' }
+{ #category : #attributes }
 GtPhlowSubText >> addAttribute: aPhlowAttribute from: aStartIndex to: anEndIndex [ 
 	parentText 
 		addAttribute: aPhlowAttribute from: aStartIndex to: anEndIndex 
 ]
 
-{ #category : 'copy' }
+{ #category : #copy }
 GtPhlowSubText >> asRopedText [
 	^ parentText copyFrom: startIndex to: endIndex
 ]
 
-{ #category : 'assertions' }
+{ #category : #copy }
+GtPhlowSubText >> asString [
+	^ self asRopedText asString
+]
+
+{ #category : #assertions }
 GtPhlowSubText >> assertInvariant [
 	self assertStart: startIndex end: endIndex
 ]
 
-{ #category : 'assertions' }
+{ #category : #assertions }
 GtPhlowSubText >> assertStart: aStartIndex end: anEndIndex [
 	
 	aStartIndex = 0
@@ -52,17 +57,12 @@ GtPhlowSubText >> assertStart: aStartIndex end: anEndIndex [
 		ifFalse: [ Error signal: 'If end index is zero then start index must be 1' ]
 ]
 
-{ #category : 'copy' }
-GtPhlowSubText >> asString [
-	^ self asRopedText asString
-]
-
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPhlowSubText >> endIndex [
 	^ endIndex
 ]
 
-{ #category : 'test - accessing' }
+{ #category : #'test - accessing' }
 GtPhlowSubText >> from: aStart to: anEnd [
 	self assertInvariant.
 	
@@ -74,7 +74,7 @@ GtPhlowSubText >> from: aStart to: anEnd [
 		to: ((anEnd + startIndex - 1) max: 0)
 ]
 
-{ #category : 'gt - extensions' }
+{ #category : #'gt - extensions' }
 GtPhlowSubText >> gtAttributeTreeFor: aView [
 	<gtView>
 	
@@ -85,7 +85,14 @@ GtPhlowSubText >> gtAttributeTreeFor: aView [
 		view: #gtAttributeTreeFor: 
 ]
 
-{ #category : 'test - accessing' }
+{ #category : #accessing }
+GtPhlowSubText >> printOn: aStream [
+	aStream 
+		<< 'Phlow SubText: ';
+		<< self asString
+]
+
+{ #category : #'test - accessing' }
 GtPhlowSubText >> size [
 	self assertInvariant.
 
@@ -94,12 +101,12 @@ GtPhlowSubText >> size [
 		ifFalse: [ endIndex - startIndex + 1 ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GtPhlowSubText >> startIndex [
 	^ startIndex
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 GtPhlowSubText >> text: aPhlowText from: aStartIndex to: anEndIndex [ 
 	startIndex := aStartIndex.
 	endIndex := anEndIndex.
