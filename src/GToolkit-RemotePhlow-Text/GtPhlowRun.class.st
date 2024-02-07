@@ -1,31 +1,31 @@
 Class {
-	#name : #GtPhlowRun,
-	#superclass : #GtPhlowBasicRun,
+	#name : 'GtPhlowRun',
+	#superclass : 'GtPhlowBasicRun',
 	#instVars : [
 		'attributes',
 		'startIndex',
 		'endIndex'
 	],
-	#category : #'GToolkit-RemotePhlow-Text'
+	#category : 'GToolkit-RemotePhlow-Text'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtPhlowRun class >> fromJSONDictionary: anAttributeData [ 
 	^ self new  
 		initializeFromJSONDictionary: anAttributeData
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPhlowRun class >> typeLabel [
 	^ 'phlowRun'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPhlowRun >> addAttribute: anAttribute [
 	self attributes add: anAttribute
 ]
 
-{ #category : #styling }
+{ #category : 'styling' }
 GtPhlowRun >> applyStyleToText: aText [
 	| subText |
 	subText := aText from: startIndex to: endIndex.
@@ -33,34 +33,34 @@ GtPhlowRun >> applyStyleToText: aText [
 		anAttribute applyStyleToText: subText ]
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 GtPhlowRun >> asDictionaryForExport [
 
 	^ super asDictionaryForExport
 		at: 'startIndex' put: startIndex;
 		at: 'endIndex' put: endIndex;
 		at: 'attributes' put: (attributes collect: [ :anAttribute |
-			anAttribute asDictionaryForExport ]);
+			anAttribute asDictionaryForExport ]) asArray;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPhlowRun >> attributes [
 	^ attributes
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPhlowRun >> attributes: aCollection [
 	attributes := aCollection
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 GtPhlowRun >> attributesDescription [
 	^ String streamContents: [ :aStream |
 		self attributesDescriptionOn: aStream ]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 GtPhlowRun >> attributesDescriptionOn: aStream [ 
 	self attributes 
 		do: [ :anAttribute |
@@ -68,7 +68,7 @@ GtPhlowRun >> attributesDescriptionOn: aStream [
 		separatedBy: [ aStream << ' ']
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 GtPhlowRun >> copyFrom: aStartIndex to: anEndIndex [
 	^ self class
 		from: (aStartIndex max: startIndex) - aStartIndex + 1
@@ -76,12 +76,12 @@ GtPhlowRun >> copyFrom: aStartIndex to: anEndIndex [
 		attributes: attributes  copy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPhlowRun >> endIndex [
 	^ endIndex
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPhlowRun >> gtViewAttributesFor: aView [ 
 	<gtView>
 	
@@ -92,14 +92,14 @@ GtPhlowRun >> gtViewAttributesFor: aView [
 		column: 'Range ' text: [ :_ | self rangeDescription ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtPhlowRun >> initializeFrom: aStartIndex to: aEndIndex attributes: aCollectionOfAttributes [ 
 	startIndex := aStartIndex.
 	endIndex := aEndIndex.
 	attributes := aCollectionOfAttributes.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtPhlowRun >> initializeFromJSONDictionary: aRunData [
 	self 
 		initializeFrom: (aRunData at: 'startIndex')
@@ -108,20 +108,20 @@ GtPhlowRun >> initializeFromJSONDictionary: aRunData [
 		 GtPhlowTextAttribute fromJSONDictionary: anAttributeData ]) asArray
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 GtPhlowRun >> printOn: aStream [
 	self rangeDescriptionOn:  aStream.
 	aStream << ': '.
 	self attributesDescriptionOn: aStream 
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 GtPhlowRun >> rangeDescription [
 	^ String streamContents: [ :aStream |
 		 self rangeDescriptionOn: aStream ]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 GtPhlowRun >> rangeDescriptionOn: aStream [
 	aStream 
 		print: startIndex;
@@ -129,7 +129,7 @@ GtPhlowRun >> rangeDescriptionOn: aStream [
 		print: endIndex
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPhlowRun >> startIndex [
 	^ startIndex
 ]

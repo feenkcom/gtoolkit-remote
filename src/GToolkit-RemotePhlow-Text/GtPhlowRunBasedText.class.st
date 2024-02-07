@@ -1,14 +1,14 @@
 Class {
-	#name : #GtPhlowRunBasedText,
-	#superclass : #GtPhlowText,
+	#name : 'GtPhlowRunBasedText',
+	#superclass : 'GtPhlowText',
 	#instVars : [
 		'sourceString',
 		'attributeRuns'
 	],
-	#category : #'GToolkit-RemotePhlow-Text'
+	#category : 'GToolkit-RemotePhlow-Text'
 }
 
-{ #category : #attributes }
+{ #category : 'attributes' }
 GtPhlowRunBasedText >> addAttribute: aPhlowAttribute from: aStartIndex to: anEndIndex [
 	| targetRun | 
 	targetRun := attributeRuns 
@@ -26,7 +26,7 @@ GtPhlowRunBasedText >> addAttribute: aPhlowAttribute from: aStartIndex to: anEnd
 	targetRun addAttribute: aPhlowAttribute
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 GtPhlowRunBasedText >> asRopedText [
 	^ self 
 		gtDo: [ 
@@ -36,17 +36,22 @@ GtPhlowRunBasedText >> asRopedText [
 		gemstoneDo: [ self ]
 ]
 
-{ #category : #accessing }
+{ #category : 'converting' }
+GtPhlowRunBasedText >> asString [
+	^ sourceString
+]
+
+{ #category : 'accessing' }
 GtPhlowRunBasedText >> attributeRuns [
 	^ attributeRuns
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPhlowRunBasedText >> attributeRuns: anAttributeRuns [
 	attributeRuns := anAttributeRuns
 ]
 
-{ #category : #'test - accessing' }
+{ #category : 'test - accessing' }
 GtPhlowRunBasedText >> copyFrom: aStartIndex to: anEndIndex [
 	"Create a copy of this text within a given indices interval.
 	Note: I am different from ==#from:to:== in a sense that I don't create a sub-text that points
@@ -68,7 +73,7 @@ GtPhlowRunBasedText >> copyFrom: aStartIndex to: anEndIndex [
 	^ result
 ]
 
-{ #category : #'test - accessing' }
+{ #category : 'test - accessing' }
 GtPhlowRunBasedText >> empty [
 	"Return a similar (the same backend data structure) but empty text"
 	<return: #BlText>
@@ -76,23 +81,23 @@ GtPhlowRunBasedText >> empty [
 	^ self class forString: ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPhlowRunBasedText >> endIndex [
 	^ sourceString size
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPhlowRunBasedText >> extractRemotePhlowRuns [
 	^ self attributeRuns
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPhlowRunBasedText >> forString: aString [
 	^ self
 		initializeWithString: aString
 ]
 
-{ #category : #'test - accessing' }
+{ #category : 'test - accessing' }
 GtPhlowRunBasedText >> from: aStart to: anEnd [
 	"Create and return a subtext of this text form aStart to anEnd."
 	<return: #GtPhlowSubText>
@@ -106,7 +111,7 @@ GtPhlowRunBasedText >> from: aStart to: anEnd [
 	^ GtPhlowSubText text: self from: aStart to: anEnd
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtPhlowRunBasedText >> gtAttributeTreeFor: aView [
 	<gtView>
 	| attributes |
@@ -127,22 +132,22 @@ GtPhlowRunBasedText >> gtAttributeTreeFor: aView [
 		children: [ :each | attributes at: each ifAbsent: [ #() ] ];
 		column: 'Text'
 			text: [ :each | 
-				each isInterval
+				each class = Interval
 					ifTrue: [ (self copyFrom: each first to: each last) asRopedText ]
 					ifFalse: [ each printString ] ];
 		column: 'Interval'
 			text: [ :each | 
-				each isInterval
+				each class = Interval
 					ifTrue: [ each first printString , '-' , each last printString ]
 					ifFalse: [ '' ] ]
 			width: 80;
 		send: [ :each | 
-			each isInterval
+			each class = Interval
 				ifTrue: [ self from: (each first max: 1) to: each last ]
 				ifFalse: [ each ] ]
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtPhlowRunBasedText >> gtStringFor: aView [
 	<gtView>
 	self isEmpty ifTrue: [ ^ aView empty ].
@@ -154,7 +159,7 @@ GtPhlowRunBasedText >> gtStringFor: aView [
 		view: #gtLiveFor:
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtPhlowRunBasedText >> gtViewIntervalsFor: aView [
 	<gtView>
 	
@@ -165,25 +170,25 @@ GtPhlowRunBasedText >> gtViewIntervalsFor: aView [
 		view: #gtViewIntervalsFor: 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtPhlowRunBasedText >> initializeWithString: aString [ 
 	sourceString := aString.
 	attributeRuns := GtPhlowRunsGroup new
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 GtPhlowRunBasedText >> printOn: aStream [
 	aStream 
 		<< 'Phlow Rope: ';
 		<< sourceString
 ]
 
-{ #category : #'test - accessing' }
+{ #category : 'test - accessing' }
 GtPhlowRunBasedText >> size [
 	^ sourceString size
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtPhlowRunBasedText >> startIndex [
 	^ 1
 ]
