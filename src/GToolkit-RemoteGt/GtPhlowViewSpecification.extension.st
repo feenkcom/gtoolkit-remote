@@ -39,6 +39,29 @@ GtPhlowViewSpecification >> gtActionBuildViewFor: anAction [
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
+GtPhlowViewSpecification >> gtViewJSONFor: aView [
+	<gtView>
+	
+	^ aView explicit
+		title: 'JSON';
+		priority: 10;
+		stencil: [ | editorElement textEditor text |
+			textEditor := BrTextEditorModel new.
+			textEditor styler: JSONParser gtStyler.
+			editorElement := BrEditorElement new.
+			editorElement editor: textEditor.
+			text := (NeoJSONWriter toStringPretty:  self asDictionaryForExport ) asRopedText.
+			text glamorousCodeFontDo: #beNotOverwritableByStyler; glamorousCodeSizeDo: #beNotOverwritableByStyler.
+			textEditor text: text.
+			editorElement
+				padding: (BlInsets all: 10);
+				constraintsDo: [ :c | 
+					c horizontal matchParent.
+					c vertical matchParent ].
+			editorElement ]
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
 GtPhlowViewSpecification >> viewFor: aView [
 	"Specifications should implement this method to create a local phlow view from the remote data."
 ]
