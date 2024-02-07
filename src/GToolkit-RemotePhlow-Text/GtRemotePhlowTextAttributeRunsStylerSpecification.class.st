@@ -48,3 +48,10 @@ GtRemotePhlowTextAttributeRunsStylerSpecification >> initializeFromJSONDictionar
 	
 	attributeRuns := GtPhlowRuns fromJSONDictionary:   (aTextStylerSpecificationData at: 'attributeRuns')
 ]
+
+{ #category : #accessing }
+GtRemotePhlowTextAttributeRunsStylerSpecification >> numberOfRuns [
+	^ attributeRuns 
+		ifNil: [ 0 ] 
+		ifNotNil: [ attributeRuns size ]
+]

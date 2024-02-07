@@ -298,18 +298,7 @@ GtRemotePhlowDeclarativeTestInspectable >> gtStyledPhlowTextFor: aView [
 	^ aView text
 		title: 'Styled phlow text';
 		priority: 10.3;
-		text: [ 
-			| text |
-			text := GtPhlowText forString: 'Now is the time'.
-			text glamorousCodeFont.
-			(text from: 12 to: 15) fontSize: 20.
-			(text from: 5 to: 6) highlight: (GtPhlowColor named: #yellow) asColor.
-			(text from: 1 to: 4) bold.
-			(text from: 8 to: 10) foreground: (GtPhlowColor named: #red) asColor.
-			(text from: 12 to: 12) glamorousRegularFont.
-			(text from: 1 to: 6) italic.
-			(text from: 8 to: 15) thin.
-			text ]
+		text: [ self styledPhlowText ]
 ]
 
 { #category : #inspecting }
@@ -319,18 +308,7 @@ GtRemotePhlowDeclarativeTestInspectable >> gtStyledPhlowTextInEditorFor: aView [
 	^ aView textEditor
 		title: 'Styled phlow text (editor)';
 		priority: 11.3;
-		text: [ 
-			| text |
-			text := GtPhlowText forString: 'Now is the time'.
-			text glamorousCodeFont.
-			(text from: 12 to: 15) fontSize: 20.
-			(text from: 5 to: 6) highlight: (GtPhlowColor named: #yellow) asColor.
-			(text from: 1 to: 4) bold.
-			(text from: 8 to: 10) foreground: (GtPhlowColor named: #red) asColor.
-			(text from: 12 to: 12) glamorousRegularFont.
-			(text from: 1 to: 6) italic.
-			(text from: 8 to: 15) thin.
-			text ]
+		text: [ self styledPhlowText ]
 ]
 
 { #category : #inspecting }
@@ -367,18 +345,7 @@ GtRemotePhlowDeclarativeTestInspectable >> gtStyledTextFor: aView [
 	^ aView text
 		title: 'Styled text';
 		priority: 10.1;
-		text: [ 
-			| text |
-			text := 'Now is the time' asRopedText.
-			text glamorousCodeFont.
-			(text from: 12 to: 15) fontSize: 20.
-			(text from: 5 to: 6) highlight: (GtPhlowColor named: #yellow) asColor.
-			(text from: 1 to: 4) bold.
-			(text from: 8 to: 10) foreground: (GtPhlowColor named: #red) asColor.
-			(text from: 12 to: 12) glamorousRegularFont.
-			(text from: 1 to: 6) italic.
-			(text from: 8 to: 15) thin.
-			text ]
+		text: [ self styledText ]
 ]
 
 { #category : #inspecting }
@@ -388,18 +355,7 @@ GtRemotePhlowDeclarativeTestInspectable >> gtStyledTextInEditorFor: aView [
 	^ aView textEditor
 		title: 'Styled text (editor)';
 		priority: 11.1;
-		text: [ 
-			| text |
-			text := 'Now is the time' asRopedText.
-			text glamorousCodeFont.
-			(text from: 12 to: 15) fontSize: 20.
-			(text from: 5 to: 6) highlight: (GtPhlowColor named: #yellow) asColor.
-			(text from: 1 to: 4) bold.
-			(text from: 8 to: 10) foreground: (GtPhlowColor named: #red) asColor.
-			(text from: 12 to: 12) glamorousRegularFont.
-			(text from: 1 to: 6) italic.
-			(text from: 8 to: 15) thin.
-			text ]
+		text: [ self styledText ]
 ]
 
 { #category : #inspecting }
@@ -443,6 +399,36 @@ GtRemotePhlowDeclarativeTestInspectable >> string [
 { #category : #accessing }
 GtRemotePhlowDeclarativeTestInspectable >> string: anObject [
 	string := anObject
+]
+
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> styledPhlowText [
+	| text |
+	text := GtPhlowText forString: 'Now is the time'.
+	text glamorousCodeFont.
+	(text from: 12 to: 15) fontSize: 20.
+	(text from: 5 to: 6) highlight: (GtPhlowColor named: #yellow) asColor.
+	(text from: 1 to: 4) bold.
+	(text from: 8 to: 10) foreground: (GtPhlowColor named: #red) asColor.
+	(text from: 12 to: 12) glamorousRegularFont.
+	(text from: 1 to: 6) italic.
+	(text from: 8 to: 15) thin.
+	^ text
+]
+
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> styledText [
+	| text |
+	text := 'Now is the time' asRopedText.
+	text glamorousCodeFont.
+	(text from: 12 to: 15) fontSize: 20.
+	(text from: 5 to: 6) highlight: (GtPhlowColor named: #yellow) asColor.
+	(text from: 1 to: 4) bold.
+	(text from: 8 to: 10) foreground: (GtPhlowColor named: #red) asColor.
+	(text from: 12 to: 12) glamorousRegularFont.
+	(text from: 1 to: 6) italic.
+	(text from: 8 to: 15) thin.
+	^ text
 ]
 
 { #category : #accessing }

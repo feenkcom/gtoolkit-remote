@@ -22,6 +22,17 @@ GtRemoteDeclarativeExamples >> assertSimpleUnstyledStringInViewSpecification: aV
 	self assert: stylableText stylerSpecification canAffectText not.
 ]
 
+{ #category : #assertions }
+GtRemoteDeclarativeExamples >> assertStyledTextInViewSpecification: aViewSpecification [
+	| stylableText |
+	
+	stylableText := (GtRemotePhlowStylableText 
+			fromJSONDictionary: aViewSpecification getText).
+	self assert: stylableText string equals: 'Now is the time'.
+	self assert: stylableText stylerSpecification canAffectText.
+	self assert: stylableText stylerSpecification numberOfRuns equals: 9.
+]
+
 { #category : #'examples - views' }
 GtRemoteDeclarativeExamples >> columnedListView [
 	<gtExample>
@@ -246,6 +257,25 @@ GtRemoteDeclarativeExamples >> textEditorViewWithSimpleString [
 ]
 
 { #category : #'examples - views' }
+GtRemoteDeclarativeExamples >> textEditorViewWithStyledText [
+	<gtExample>
+	<after: #stopServer>
+	| viewedObjectProxy viewDictionary view viewSpecification |
+
+	viewedObjectProxy := self viewedObjectProxy.
+	viewDictionary :=  viewedObjectProxy getViewDeclaration: #gtStyledTextInEditorFor:.
+	view := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
+	self assert: view title equals: 'Styled text (editor)'.
+	self assert: view priority equals: 11.1.
+	
+	viewSpecification := viewedObjectProxy getDeclarativeViewFor: #gtStyledTextInEditorFor:.
+	self assertStyledTextInViewSpecification: viewSpecification.
+	
+	^ view
+]
+
+{ #category : #'examples - views' }
 GtRemoteDeclarativeExamples >> textViewWithSimpleString [
 	<gtExample>
 	<after: #stopServer>
@@ -260,6 +290,25 @@ GtRemoteDeclarativeExamples >> textViewWithSimpleString [
 	
 	viewSpecification := viewedObjectProxy getDeclarativeViewFor: #gtStringInTextViewFor: .
 	self assertSimpleUnstyledStringInViewSpecification: viewSpecification.
+	
+	^ view
+]
+
+{ #category : #'examples - views' }
+GtRemoteDeclarativeExamples >> textViewWithStyledText [
+	<gtExample>
+	<after: #stopServer>
+	| viewedObjectProxy viewDictionary view viewSpecification |
+
+	viewedObjectProxy := self viewedObjectProxy.
+	viewDictionary :=  viewedObjectProxy getViewDeclaration: #gtStyledTextFor:.
+	view := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
+	self assert: view title equals: 'Styled text'.
+	self assert: view priority equals: 10.1.
+	
+	viewSpecification := viewedObjectProxy getDeclarativeViewFor: #gtStyledTextFor:.
+	self assertStyledTextInViewSpecification: viewSpecification.
 	
 	^ view
 ]
