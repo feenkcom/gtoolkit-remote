@@ -4,15 +4,15 @@ Extension { #name : #GtPhlowTextEditorViewSpecification }
 GtPhlowTextEditorViewSpecification >> configureForLazyDataView: aTextView [
 	aTextView text: [ 
 		| stylableText |
-		stylableText := self phlowDataSource getText.
+		stylableText := self retrieveStyledText.
 		(GtRemotePhlowStylableText 
-				fromJSONDictionary: stylableText) createStyledText ]
+			fromJSONDictionary: stylableText) createStyledText ]
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
 GtPhlowTextEditorViewSpecification >> configureForLocalDataView: aTextView [
 	aTextView text: [ self string ].
-	textStyler
+	textStylerSpecification
 		ifNotNil: [ :aTextStyler | 
 			aTextView styler: [ aTextStyler createBlStyler ] ]
 ]

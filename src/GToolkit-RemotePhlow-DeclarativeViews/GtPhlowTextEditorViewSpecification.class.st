@@ -3,29 +3,32 @@ Class {
 	#superclass : #GtPhlowViewSpecification,
 	#instVars : [
 		'string',
-		'textStyler',
-		'dataSource'
+		'dataSource',
+		'textStylerSpecification'
 	],
 	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
 { #category : #'instance creation' }
 GtPhlowTextEditorViewSpecification class >> fromJSONDictionary: aDictionary [
-	| editor |
-	editor := super fromJSONDictionary: aDictionary.
-	editor dataTransport = self dataIncluded
+	| editorViewSpecification |
+	
+	editorViewSpecification := super fromJSONDictionary: aDictionary.
+	
+	editorViewSpecification dataTransport = self dataIncluded
 		ifTrue: [ 
-			editor string: (aDictionary at: 'string').
+			editorViewSpecification string: (aDictionary at: 'string').
 			aDictionary
-				at: 'textStyler'
+				at: 'textStylerSpecification'
 				ifPresent: [ :aTextStylerSpecificationData | 
-					editor
-						textStyler: (#GtRemotePhlowTextStylerSpecification asClass
+					editorViewSpecification
+						textStylerSpecification: (#GtRemotePhlowTextStylerSpecification asClass
 								fromJSONDictionary: aTextStylerSpecificationData) ] ]
 		ifFalse: [ 
 			(aDictionary includesKey: 'dataSource') ifTrue: [
-				editor phlowDataSource: (aDictionary at: 'dataSource')] ].
-	^ editor
+				editorViewSpecification phlowDataSource: (aDictionary at: 'dataSource')] ].
+	
+	^ editorViewSpecification
 ]
 
 { #category : #converting }
@@ -35,17 +38,12 @@ GtPhlowTextEditorViewSpecification >> asDictionaryForExport [
 	dictionary := super asDictionaryForExport.
 	self dataTransport = self class dataIncluded ifTrue: [ 
 		dictionary at: 'string' put: string.
-		textStyler ifNotNil: [
+		textStylerSpecification ifNotNil: [
 			dictionary 
-				at: 'textStyler'
-				put: textStyler asDictionaryForExport ] ].
+				at: 'textStylerSpecification'
+				put: textStylerSpecification asDictionaryForExport ] ].
 	
 	^ dictionary
-]
-
-{ #category : #'api - accessing' }
-GtPhlowTextEditorViewSpecification >> getText [
-	^ self phlowDataSource getText
 ]
 
 { #category : #accessing }
@@ -54,6 +52,11 @@ GtPhlowTextEditorViewSpecification >> initializeFromInspector: anInspector [
 	
 	phlowDataSource ifNil: [
 		self phlowDataSource: (anInspector getDeclarativeViewFor: self methodSelector) ]
+]
+
+{ #category : #'api - accessing' }
+GtPhlowTextEditorViewSpecification >> retrieveStyledText [
+	^ self phlowDataSource getText
 ]
 
 { #category : #accessing }
@@ -71,6 +74,6 @@ GtPhlowTextEditorViewSpecification >> string: anObject [
 ]
 
 { #category : #accessing }
-GtPhlowTextEditorViewSpecification >> textStyler: aTextAttributeRuns [
-	textStyler := aTextAttributeRuns
+GtPhlowTextEditorViewSpecification >> textStylerSpecification: aTextAttributeRuns [
+	textStylerSpecification := aTextAttributeRuns
 ]
