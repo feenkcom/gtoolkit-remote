@@ -35,7 +35,9 @@ GtRemoteDeclarativeExamples >> assertStyledJsonTextInViewSpecification: aViewSpe
 	
 	stylableText := (GtRemotePhlowStylableText 
 			fromJSONDictionary: aViewSpecification getText).
-	self assert: stylableText string equals: self expectedJsonString.
+	self 
+		assert: stylableText string withUnixLineEndings 
+		equals: self expectedJsonString withUnixLineEndings.
 	self assert: stylableText stylerSpecification canAffectText.
 	self 
 		assert: stylableText stylerSpecification parserClassName equals: #JSONParser.
