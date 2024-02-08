@@ -20,6 +20,11 @@ GtPhlowColor >> asColor [
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
+GtPhlowColor >> asSpartaPaintOn: aSpartaCanvas [
+	^ aSpartaCanvas paint color: self asColor
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
 GtPhlowColor >> gtPreviewFor: aView [
 	<gtView>
 	

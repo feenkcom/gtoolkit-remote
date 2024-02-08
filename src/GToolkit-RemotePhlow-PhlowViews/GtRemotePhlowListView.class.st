@@ -28,10 +28,10 @@ GtRemotePhlowListView >> asGtDeclarativeView [
 	nil = not supported"
 
 	^ GtPhlowListViewSpecification new 
-		phlowDataSource: (GtRemotePhlowDeclarativeViewListDataSource 
-			forPhlowView: self);
 		title: self title;
 		priority: self priority;
+		phlowDataSource: (GtRemotePhlowDeclarativeViewListDataSource 
+			forPhlowView: self);
 		dataTransport: GtPhlowViewSpecification dataLazy.
 ]
 

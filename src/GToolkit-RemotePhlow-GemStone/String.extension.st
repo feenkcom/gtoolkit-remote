@@ -1,6 +1,11 @@
 Extension { #name : #String }
 
 { #category : #'*GToolkit-RemotePhlow-GemStone' }
+String >> asRopedText [
+	^ GtPhlowText forString: self
+]
+
+{ #category : #'*GToolkit-RemotePhlow-GemStone' }
 String >> gtDisplayOn: writeStream [
 	writeStream nextPutAll: self
 ]

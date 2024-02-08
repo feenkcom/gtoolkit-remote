@@ -31,8 +31,8 @@ GtPhlowSubText >> asRopedText [
 ]
 
 { #category : #copy }
-GtPhlowSubText >> asRopedtext [
-	^ parentText copyFrom: startIndex to: endIndex
+GtPhlowSubText >> asString [
+	^ self asRopedText asString
 ]
 
 { #category : #assertions }
@@ -43,17 +43,17 @@ GtPhlowSubText >> assertInvariant [
 { #category : #assertions }
 GtPhlowSubText >> assertStart: aStartIndex end: anEndIndex [
 	
-	aStartIndex isZero
+	aStartIndex = 0
 		ifTrue: [ Error signal: 'Start index must not be zero' ].
 
 	(aStartIndex between: 1 and: (parentText size + 1))
 		ifFalse: [Error signal: 'Sub-text start index is out of bounds'] .
 	(anEndIndex between: 0 and: parentText size) ifFalse: [ Error signal: 'Sub-text end index is out of bounds!'].
 	
-	(parentText notEmpty or: [ aStartIndex = 1 and: [ anEndIndex isZero ] ]) 
+	(parentText notEmpty or: [ aStartIndex = 1 and: [ anEndIndex = 0 ] ]) 
 		ifFalse: [ Error signal: 'If text is empty, start must be 1 and end index must be Zero!' ].
 
-	(anEndIndex isZero not or: [ aStartIndex = 1 ])
+	(anEndIndex ~= 0  or: [ aStartIndex = 1 ])
 		ifFalse: [ Error signal: 'If end index is zero then start index must be 1' ]
 ]
 
@@ -83,6 +83,13 @@ GtPhlowSubText >> gtAttributeTreeFor: aView [
 		priority: 20;
 		object: [ self asRopedText ];
 		view: #gtAttributeTreeFor: 
+]
+
+{ #category : #accessing }
+GtPhlowSubText >> printOn: aStream [
+	aStream 
+		<< 'Phlow SubText: ';
+		<< self asString
 ]
 
 { #category : #'test - accessing' }

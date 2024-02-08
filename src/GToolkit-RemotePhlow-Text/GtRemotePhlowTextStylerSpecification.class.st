@@ -47,6 +47,16 @@ GtRemotePhlowTextStylerSpecification >> asDictionaryForExport [
 		yourself
 ]
 
+{ #category : #testing }
+GtRemotePhlowTextStylerSpecification >> canAffectText [
+	^ true
+]
+
+{ #category : #converting }
+GtRemotePhlowTextStylerSpecification >> convertToSerializableSpecificationForText: aText [
+	^ self
+]
+
 { #category : #initialization }
 GtRemotePhlowTextStylerSpecification >> initializeFromJSONDictionary: aTextStylerSpecificationData [ 
 	

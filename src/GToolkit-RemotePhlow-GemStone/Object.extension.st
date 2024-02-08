@@ -1,6 +1,11 @@
 Extension { #name : #Object }
 
 { #category : #'*GToolkit-RemotePhlow-GemStone' }
+Object >> asRopedText [
+	^ GtPhlowText forString: self asString
+]
+
+{ #category : #'*GToolkit-RemotePhlow-GemStone' }
 Object >> gtDeclarativeViewSelectors [
 	"Answer a collection of the object's declarative view selectors"
 

@@ -7,33 +7,45 @@ Class {
 	#category : #'GToolkit-RemotePhlow-Text'
 }
 
+{ #category : #'instance creation' }
+GtPhlowFontWeightAttribute class >> bold [
+	^ self new 
+		weight: #bold
+]
+
+{ #category : #'instance creation' }
+GtPhlowFontWeightAttribute class >> thin [
+	^ self new 
+		weight: #thin
+]
+
 { #category : #accessing }
 GtPhlowFontWeightAttribute class >> typeLabel [
 	^ 'phlowFontWeightAttribute'
 ]
 
-{ #category : #accessing }
+{ #category : #styling }
 GtPhlowFontWeightAttribute >> applyStyleToText: aText [
 	aText perform: weight asSymbol
 ]
 
-{ #category : #accessing }
+{ #category : #converting }
 GtPhlowFontWeightAttribute >> asDictionaryForExport [
 	^ super asDictionaryForExport
 		at: 'weight' put: weight;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 GtPhlowFontWeightAttribute >> initializeFromJSONDictionary: aTextAttributeData [
 	super initializeFromJSONDictionary: aTextAttributeData.
 	weight := aTextAttributeData at: 'weight'
 ]
 
-{ #category : #accessing }
+{ #category : #printing }
 GtPhlowFontWeightAttribute >> printOn: aStream [
 	aStream
-		nextPutAll: 'font-weight: ';
+		nextPutAll: 'phlow font-weight: ';
 		nextPutAll: weight
 ]
 

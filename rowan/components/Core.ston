@@ -6,6 +6,7 @@ RwSimpleProjectLoadComponentV2 {
 		'gemstone/Core'
 	],
 	#packageNames : [
+		'GToolkit-RemotePhlow-Text',
 		'GToolkit-RemotePhlow-DeclarativeViews',
 		'GToolkit-RemotePhlow-PhlowViews',
 		'GToolkit-RemotePhlow-InspectorCore',

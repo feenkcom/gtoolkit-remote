@@ -1,28 +1,34 @@
 Class {
 	#name : #GtPhlowTextEditorViewSpecification,
-	#superclass : #GtPhlowViewSpecification,
+	#superclass : #GtPhlowTextualViewSpecification,
 	#instVars : [
 		'string',
-		'textStyler',
-		'dataSource'
+		'dataSource',
+		'textStylerSpecification'
 	],
 	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
 { #category : #'instance creation' }
 GtPhlowTextEditorViewSpecification class >> fromJSONDictionary: aDictionary [
-	| editor |
-	editor := super fromJSONDictionary: aDictionary.
-	editor dataTransport = self dataIncluded
-		ifTrue: [ editor string: (aDictionary at: #string).
+	| editorViewSpecification |
+	
+	editorViewSpecification := super fromJSONDictionary: aDictionary.
+	
+	editorViewSpecification dataTransport = self dataIncluded
+		ifTrue: [ 
+			editorViewSpecification string: (aDictionary at: 'string').
 			aDictionary
-				at: #textStyler
+				at: 'textStylerSpecification'
 				ifPresent: [ :aTextStylerSpecificationData | 
-					editor
-						textStyler: (#GtRemotePhlowTextStylerSpecification asClass
+					editorViewSpecification
+						textStylerSpecification: (#GtRemotePhlowTextStylerSpecification asClass
 								fromJSONDictionary: aTextStylerSpecificationData) ] ]
-		ifFalse: [ editor dataSource: (aDictionary at: #dataSource) ].
-	^ editor
+		ifFalse: [ 
+			(aDictionary includesKey: 'dataSource') ifTrue: [
+				editorViewSpecification phlowDataSource: (aDictionary at: 'dataSource')] ].
+	
+	^ editorViewSpecification
 ]
 
 { #category : #converting }
@@ -31,23 +37,13 @@ GtPhlowTextEditorViewSpecification >> asDictionaryForExport [
 
 	dictionary := super asDictionaryForExport.
 	self dataTransport = self class dataIncluded ifTrue: [ 
-		dictionary at: #string put: string.
-		textStyler ifNotNil: [
+		dictionary at: 'string' put: string.
+		textStylerSpecification ifNotNil: [
 			dictionary 
-				at: #textStyler 
-				put: textStyler asDictionaryForExport ] ].
+				at: 'textStylerSpecification'
+				put: textStylerSpecification asDictionaryForExport ] ].
 	
 	^ dictionary
-]
-
-{ #category : #accessing }
-GtPhlowTextEditorViewSpecification >> dataSource [
-	^ dataSource
-]
-
-{ #category : #accessing }
-GtPhlowTextEditorViewSpecification >> dataSource: anObject [
-	dataSource := anObject
 ]
 
 { #category : #accessing }
@@ -65,6 +61,6 @@ GtPhlowTextEditorViewSpecification >> string: anObject [
 ]
 
 { #category : #accessing }
-GtPhlowTextEditorViewSpecification >> textStyler: aTextAttributeRuns [
-	textStyler := aTextAttributeRuns
+GtPhlowTextEditorViewSpecification >> textStylerSpecification: aTextAttributeRuns [
+	textStylerSpecification := aTextAttributeRuns
 ]

@@ -54,7 +54,8 @@ GtPhlowRuns >> gtViewIntervalsFor: aView [
 				collectedRuns add: aRun ].
 			collectedRuns ];
 		column: 'Interval' 
-			text: [ :aRun | aRun rangeDescription ];
+			text: [ :aRun | aRun rangeDescription ]
+			width: 150;
 		column: 'Attributes' 
 			text: [ :aRun | aRun attributesDescription ]
 ]

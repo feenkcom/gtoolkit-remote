@@ -5,7 +5,7 @@ Class {
 		'sourceString',
 		'attributeRuns'
 	],
-	#category : #'GToolkit-RemotePhlow-Text'
+	#category : 'GToolkit-RemotePhlow-Text'
 }
 
 { #category : #attributes }
@@ -34,6 +34,11 @@ GtPhlowRunBasedText >> asRopedText [
 				attributeRuns: attributeRuns)
 					style: sourceString asRopedText]
 		gemstoneDo: [ self ]
+]
+
+{ #category : #converting }
+GtPhlowRunBasedText >> asString [
+	^ sourceString
 ]
 
 { #category : #accessing }
@@ -82,6 +87,11 @@ GtPhlowRunBasedText >> endIndex [
 ]
 
 { #category : #accessing }
+GtPhlowRunBasedText >> extractRemotePhlowRuns [
+	^ self attributeRuns
+]
+
+{ #category : #accessing }
 GtPhlowRunBasedText >> forString: aString [
 	^ self
 		initializeWithString: aString
@@ -122,17 +132,17 @@ GtPhlowRunBasedText >> gtAttributeTreeFor: aView [
 		children: [ :each | attributes at: each ifAbsent: [ #() ] ];
 		column: 'Text'
 			text: [ :each | 
-				each isInterval
+				each class = Interval
 					ifTrue: [ (self copyFrom: each first to: each last) asRopedText ]
 					ifFalse: [ each printString ] ];
 		column: 'Interval'
 			text: [ :each | 
-				each isInterval
+				each class = Interval
 					ifTrue: [ each first printString , '-' , each last printString ]
 					ifFalse: [ '' ] ]
 			width: 80;
 		send: [ :each | 
-			each isInterval
+			each class = Interval
 				ifTrue: [ self from: (each first max: 1) to: each last ]
 				ifFalse: [ each ] ]
 ]
@@ -168,7 +178,9 @@ GtPhlowRunBasedText >> initializeWithString: aString [
 
 { #category : #printing }
 GtPhlowRunBasedText >> printOn: aStream [
-	aStream << sourceString
+	aStream 
+		<< 'Phlow Rope: ';
+		<< sourceString
 ]
 
 { #category : #'test - accessing' }

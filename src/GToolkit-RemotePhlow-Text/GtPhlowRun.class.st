@@ -6,7 +6,7 @@ Class {
 		'startIndex',
 		'endIndex'
 	],
-	#category : #'GToolkit-RemotePhlow-Text'
+	#category : 'GToolkit-RemotePhlow-Text'
 }
 
 { #category : #'instance creation' }
@@ -40,7 +40,7 @@ GtPhlowRun >> asDictionaryForExport [
 		at: 'startIndex' put: startIndex;
 		at: 'endIndex' put: endIndex;
 		at: 'attributes' put: (attributes collect: [ :anAttribute |
-			anAttribute asDictionaryForExport ]);
+			anAttribute asDictionaryForExport ]) asArray;
 		yourself
 ]
 

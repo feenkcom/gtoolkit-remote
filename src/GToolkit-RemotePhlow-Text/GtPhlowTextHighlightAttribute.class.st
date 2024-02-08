@@ -9,14 +9,14 @@ GtPhlowTextHighlightAttribute class >> typeLabel [
 	^ 'phlowTextHighlightAttribute'
 ]
 
-{ #category : #accessing }
+{ #category : #styling }
 GtPhlowTextHighlightAttribute >> applyStyleToText: aText [
 	aText highlight: self color asColor 
 ]
 
-{ #category : #accessing }
+{ #category : #printing }
 GtPhlowTextHighlightAttribute >> printOn: aStream [
 	aStream
-		nextPutAll: 'text-background: ';
+		nextPutAll: 'phlow text-background: ';
 		nextPutAll: self color printString
 ]

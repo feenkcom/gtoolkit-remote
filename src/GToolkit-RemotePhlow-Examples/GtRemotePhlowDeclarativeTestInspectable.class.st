@@ -272,13 +272,90 @@ GtRemotePhlowDeclarativeTestInspectable >> gtListWithSendFor: aView [
 ]
 
 { #category : #inspecting }
-GtRemotePhlowDeclarativeTestInspectable >> gtStringFor: aView [
+GtRemotePhlowDeclarativeTestInspectable >> gtStringInTextEditorViewFor: aView [
 	<gtView>
 	
 	^aView textEditor
-		title: 'String';
+		title: 'String (editor)';
+		priority: 11;
+		text: [ self string ]
+]
+
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtStringInTextViewFor: aView [
+	<gtView>
+	
+	^aView text
+		title: 'String (text)';
 		priority: 10;
 		text: [ self string ]
+]
+
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtStyledPhlowTextFor: aView [
+	<gtView>
+	
+	^ aView text
+		title: 'Styled phlow text';
+		priority: 10.3;
+		text: [ self styledPhlowText ]
+]
+
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtStyledPhlowTextInEditorFor: aView [
+	<gtView>
+	
+	^ aView textEditor
+		title: 'Styled phlow text (editor)';
+		priority: 11.3;
+		text: [ self styledPhlowText ]
+]
+
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtStyledStringJsonInEditorFor: aView [
+	<gtView>
+	
+	^ aView textEditor
+		title: 'Styled JSON';
+		priority: 11.5;
+		text: [ 
+			'{
+	"name":"Me", 
+	"age":30, 
+	"data":null
+}' ];
+		stylerParserClassName: #JSONParser
+]
+
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtStyledStringUsingStylerFor: aView [
+	<gtView>
+	
+	^ aView textEditor
+		title: 'Styled text (styler)';
+		priority: 11.2;
+		text: [ 'Now is the time' ];
+		styler: [ GtRemotePhlowDummyTextStyler  new ]
+]
+
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtStyledTextFor: aView [
+	<gtView>
+	
+	^ aView text
+		title: 'Styled text';
+		priority: 10.1;
+		text: [ self styledText ]
+]
+
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtStyledTextInEditorFor: aView [
+	<gtView>
+	
+	^ aView textEditor
+		title: 'Styled text (editor)';
+		priority: 11.1;
+		text: [ self styledText ]
 ]
 
 { #category : #inspecting }
@@ -322,6 +399,36 @@ GtRemotePhlowDeclarativeTestInspectable >> string [
 { #category : #accessing }
 GtRemotePhlowDeclarativeTestInspectable >> string: anObject [
 	string := anObject
+]
+
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> styledPhlowText [
+	| text |
+	text := GtPhlowText forString: 'Now is the time'.
+	text glamorousCodeFont.
+	(text from: 12 to: 15) fontSize: 20.
+	(text from: 5 to: 6) highlight: (GtPhlowColor named: #yellow) asColor.
+	(text from: 1 to: 4) bold.
+	(text from: 8 to: 10) foreground: (GtPhlowColor named: #red) asColor.
+	(text from: 12 to: 12) glamorousRegularFont.
+	(text from: 1 to: 6) italic.
+	(text from: 8 to: 15) thin.
+	^ text
+]
+
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> styledText [
+	| text |
+	text := 'Now is the time' asRopedText.
+	text glamorousCodeFont.
+	(text from: 12 to: 15) fontSize: 20.
+	(text from: 5 to: 6) highlight: (GtPhlowColor named: #yellow) asColor.
+	(text from: 1 to: 4) bold.
+	(text from: 8 to: 10) foreground: (GtPhlowColor named: #red) asColor.
+	(text from: 12 to: 12) glamorousRegularFont.
+	(text from: 1 to: 6) italic.
+	(text from: 8 to: 15) thin.
+	^ text
 ]
 
 { #category : #accessing }

@@ -12,12 +12,12 @@ GtPhlowFontNameAttribute class >> typeLabel [
 	^ 'phlowFontNameAttribute'
 ]
 
-{ #category : #accessing }
+{ #category : #styling }
 GtPhlowFontNameAttribute >> applyStyleToText: aText [
 	aText fontName: fontName
 ]
 
-{ #category : #accessing }
+{ #category : #converting }
 GtPhlowFontNameAttribute >> asDictionaryForExport [
 	^ super asDictionaryForExport
 		at: 'name' put: fontName;
@@ -30,19 +30,19 @@ GtPhlowFontNameAttribute >> fontName [
 ]
 
 { #category : #accessing }
-GtPhlowFontNameAttribute >> fontName: anObject [
-	fontName := anObject
+GtPhlowFontNameAttribute >> fontName: aString [
+	fontName := aString
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 GtPhlowFontNameAttribute >> initializeFromJSONDictionary: aTextAttributeData [
 	super initializeFromJSONDictionary: aTextAttributeData.
 	fontName := aTextAttributeData at: 'name'
 ]
 
-{ #category : #accessing }
+{ #category : #printing }
 GtPhlowFontNameAttribute >> printOn: aStream [
 	aStream
-		nextPutAll: 'font-name: ';
+		nextPutAll: 'phlow font-name: ';
 		nextPutAll: fontName
 ]

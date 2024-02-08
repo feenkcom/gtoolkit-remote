@@ -7,6 +7,11 @@ Class {
 	#category : #'GToolkit-RemotePhlow-Text'
 }
 
+{ #category : #styling }
+GtPhlowTextColorAttribute >> applyStyleToText: aText [
+	aText highlight: self color
+]
+
 { #category : #accessing }
 GtPhlowTextColorAttribute >> asDictionaryForExport [
 	^ super asDictionaryForExport
@@ -24,7 +29,7 @@ GtPhlowTextColorAttribute >> color: anObject [
 	color := anObject
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 GtPhlowTextColorAttribute >> initializeFromJSONDictionary: aTextAttributeData [
 	super initializeFromJSONDictionary: aTextAttributeData.
 	color := GtPhlowColor fromJSONDictionary: (aTextAttributeData at: 'color')

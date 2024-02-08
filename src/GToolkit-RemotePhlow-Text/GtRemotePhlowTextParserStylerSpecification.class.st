@@ -7,6 +7,11 @@ Class {
 	#category : #'GToolkit-RemotePhlow-Text'
 }
 
+{ #category : #accessing }
+GtRemotePhlowTextParserStylerSpecification class >> typeLabel [
+	^ 'remotePhlowTextParserStylerSpecification'
+]
+
 { #category : #converting }
 GtRemotePhlowTextParserStylerSpecification >> asDictionaryForExport [
 	"Answer the receiver as a dictionary ready for JSON serialisation.

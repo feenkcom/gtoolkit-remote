@@ -2,17 +2,17 @@ Extension { #name : #GtPhlowTextEditorViewSpecification }
 
 { #category : #'*GToolkit-RemoteGt' }
 GtPhlowTextEditorViewSpecification >> configureForLazyDataView: aTextView [
-	aTextView
-		text: [ | remoteText |
-			remoteText := dataSource getText.
-			(GtRemotePhlowText fromJSONDictionary: remoteText) asRopedText ]
+	aTextView text: [ 
+		(GtRemotePhlowStylableText 
+			fromJSONDictionary: self getText) createStyledText ]
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
 GtPhlowTextEditorViewSpecification >> configureForLocalDataView: aTextView [
 	aTextView text: [ self string ].
-	textStyler
-		ifNotNil: [ :aTextStyler | aTextView styler: [ aTextStyler createBlStyler ] ]
+	textStylerSpecification
+		ifNotNil: [ :aTextStyler | 
+			aTextView styler: [ aTextStyler createBlStyler ] ]
 ]
 
 { #category : #'*GToolkit-RemoteGt' }

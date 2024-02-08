@@ -12,11 +12,6 @@ GtRemotePhlowTextAttributeRunsStylerSpecification class >> typeLabel [
 	^ 'remotePhlowTextAttributeRunsStylerSpecification'
 ]
 
-{ #category : #testing }
-GtRemotePhlowTextAttributeRunsStylerSpecification >> affectsText [
-	^ attributeRuns notNil and: [ attributeRuns notEmpty ]
-]
-
 { #category : #converting }
 GtRemotePhlowTextAttributeRunsStylerSpecification >> asDictionaryForExport [
 	"Answer the receiver as a dictionary ready for JSON serialisation.
@@ -30,6 +25,11 @@ GtRemotePhlowTextAttributeRunsStylerSpecification >> asDictionaryForExport [
 { #category : #accessing }
 GtRemotePhlowTextAttributeRunsStylerSpecification >> attributeRuns: aCollection [
 	attributeRuns := aCollection
+]
+
+{ #category : #testing }
+GtRemotePhlowTextAttributeRunsStylerSpecification >> canAffectText [
+	^ attributeRuns notNil and: [ attributeRuns notEmpty ]
 ]
 
 { #category : #'gt - extensions' }
@@ -47,4 +47,11 @@ GtRemotePhlowTextAttributeRunsStylerSpecification >> initializeFromJSONDictionar
 	super initializeFromJSONDictionary: aTextStylerSpecificationData .
 	
 	attributeRuns := GtPhlowRuns fromJSONDictionary:   (aTextStylerSpecificationData at: 'attributeRuns')
+]
+
+{ #category : #accessing }
+GtRemotePhlowTextAttributeRunsStylerSpecification >> numberOfRuns [
+	^ attributeRuns 
+		ifNil: [ 0 ] 
+		ifNotNil: [ attributeRuns size ]
 ]
