@@ -97,13 +97,18 @@ GtRemotePhlowItemValue >> itemText: anObject [
 ]
 
 { #category : #printing }
+GtRemotePhlowItemValue >> printBackgroundOn: aStream [ 
+	self background ifNotNil: [ :aBackground |
+		aStream 
+			<< ', background: ';
+			print: aBackground ]
+]
+
+{ #category : #printing }
 GtRemotePhlowItemValue >> printOn: aStream [ 
 	super printOn: aStream .
 	
 	aStream parenthesize: [
 		aStream << self itemText.
-		self background ifNotNil: [ :aBackground |
-			aStream 
-				<< ', background: ';
-				print: aBackground ] ]
+		self printBackgroundOn: aStream ]
 ]
