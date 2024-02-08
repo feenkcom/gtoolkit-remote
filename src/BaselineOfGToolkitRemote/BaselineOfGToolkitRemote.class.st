@@ -28,6 +28,8 @@ BaselineOfGToolkitRemote >> baseline: spec [
 			"GToolkit-RemotePhlow-Examples all run in the local image, 
 			i.e. don't require external servers, so can be part of the standard test suite"
 			package: 'GToolkit-RemotePhlow-Examples';
+			package: 'GToolkit-RemoteGt-LocalPhlow' with: [
+				spec requires: #('GToolkit-RemotePhlow-PhlowViews')];
 			package: 'GToolkit-RemoteGt' with: [
 				spec requires: #('GToolkitPhlow' #'GToolkit-RemotePhlow-DeclarativeViews-GTSpecific' #'GToolkit-RemotePhlow-PhlowViews' 'GToolkit-RemotePhlow-Examples'). ];
 			package: 'GToolkit-RemoteGt-Lepiter' with: [
