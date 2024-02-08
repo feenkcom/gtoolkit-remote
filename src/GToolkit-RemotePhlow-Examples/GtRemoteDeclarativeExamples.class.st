@@ -15,7 +15,7 @@ Class {
 { #category : #assertions }
 GtRemoteDeclarativeExamples >> assertBasicTextAttributedRunStyleSpecification: aStyleSpecification [
 	self 
-		assert: aStyleSpecification stylerSpecification numberOfRuns 
+		assert: aStyleSpecification numberOfRuns 
 		equals: self expectedNumberOfRunsForBasicStyledText
 ]
 
@@ -24,7 +24,7 @@ GtRemoteDeclarativeExamples >> assertSimpleUnstyledStringInViewSpecification: aV
 	| stylableText |
 	
 	stylableText := (GtRemotePhlowStylableText 
-			fromJSONDictionary: aViewSpecification getText).
+		fromJSONDictionary: aViewSpecification getText).
 	self assert: stylableText string equals: 'hello world'.
 	self assert: stylableText stylerSpecification canAffectText not.
 ]
@@ -37,7 +37,8 @@ GtRemoteDeclarativeExamples >> assertStyledTextInViewSpecification: aViewSpecifi
 			fromJSONDictionary: aViewSpecification getText).
 	self assert: stylableText string equals: 'Now is the time'.
 	self assert: stylableText stylerSpecification canAffectText.
-	self assert: stylableText stylerSpecification numberOfRuns equals: 9.
+	self 
+		assertBasicTextAttributedRunStyleSpecification: stylableText stylerSpecification.
 ]
 
 { #category : #'examples - views' }
