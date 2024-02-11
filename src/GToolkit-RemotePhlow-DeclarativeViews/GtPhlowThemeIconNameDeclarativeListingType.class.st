@@ -8,8 +8,3 @@ Class {
 GtPhlowThemeIconNameDeclarativeListingType class >> typeLabel [
 	^ #icon
 ]
-
-{ #category : #testing }
-GtPhlowThemeIconNameDeclarativeListingType >> isIconNameListingType [
-	^ false
-]

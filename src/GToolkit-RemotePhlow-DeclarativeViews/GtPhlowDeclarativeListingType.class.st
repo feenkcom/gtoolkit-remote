@@ -44,11 +44,6 @@ GtPhlowDeclarativeListingType class >> unknown [
 ]
 
 { #category : #testing }
-GtPhlowDeclarativeListingType >> isIconNameListingType [
-	^ false
-]
-
-{ #category : #testing }
 GtPhlowDeclarativeListingType >> isTextLinkListingType [
 	^ false
 ]
