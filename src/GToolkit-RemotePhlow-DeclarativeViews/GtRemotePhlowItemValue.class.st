@@ -25,15 +25,20 @@ GtRemotePhlowItemValue class >> valueTypeFrom: aDictionary [
 		at: #valueTypeName 
 		ifPresent: [ :aTypeName |
 			| detectedType |
-			"There are only two types now so we can do a manual check, 
+			"We do a manual check for the types that are by default in GT, 
 			as it will be faster; this is called for every value in a table.
-			As we add more types we can extend this."
-			detectedType := GtRemotePhlowItemValue.
+			If the type is not found we iterate subclasses ."
+			detectedType := nil.
 			aTypeName = GtRemotePhlowItemTextualValue valueTypeName
 				ifTrue: [ detectedType := GtRemotePhlowItemTextualValue ].
 			aTypeName = GtRemotePhlowItemErrorValue valueTypeName
 				ifTrue: [ detectedType := GtRemotePhlowItemErrorValue ].
-			detectedType ]
+				
+			detectedType ifNil: [
+				GtRemotePhlowItemValue allSubclasses do: [ :aSubclass |
+					aSubclass valueTypeName = aTypeName ifTrue: [ ^ aSubclass] ] ].
+					
+			GtRemotePhlowItemValue ]
 		ifAbsent: [ GtRemotePhlowItemValue ])
 ]
 
