@@ -1,6 +1,18 @@
 Extension { #name : #BlRunRopedText }
 
 { #category : #'*GToolkit-RemoteGt' }
+BlRunRopedText >> asDictionaryForExport [
+	^ self asGtPlowText asDictionaryForExport
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
+BlRunRopedText >> asGtPlowText [
+	^ (GtPhlowRunBasedText new
+		forString: self asString)
+			attributeRuns: self extractRemotePhlowRuns
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
 BlRunRopedText >> extractRemotePhlowRuns [
 	| rangesByAttributes attributesByRanges  runsGroup |
 

@@ -13,11 +13,14 @@ GtRemotePhlowItemTextualValue class >> valueTypeName [
 GtRemotePhlowItemTextualValue >> asDictionaryForExport [
 	"Answer the receiver as a dictionary ready for JSON serialisation"
 
-	| data | 
+	| data currentText | 
 	
 	data := super asDictionaryForExport.
-	data 
-		at: #itemText put: self itemText.
+	currentText := self itemText.
+	currentText := (currentText notNil and: [currentText isString not])
+		ifTrue: [ currentText asDictionaryForExport ].
+	
+	data at: #itemText put: currentText.
 	
 	^ data
 ]
@@ -25,15 +28,20 @@ GtRemotePhlowItemTextualValue >> asDictionaryForExport [
 { #category : #printing }
 GtRemotePhlowItemTextualValue >> descriptionOn: aStream [ 
 	
-	aStream << self itemText.
+	aStream print: self itemText.
 	super descriptionOn: aStream 
 ]
 
 { #category : #initialization }
 GtRemotePhlowItemTextualValue >> initializeFromJSONDictionary: aDictionary [
+	| textData |
 	super initializeFromJSONDictionary: aDictionary.
 	
-	self itemText: (aDictionary at: #itemText).
+	textData := aDictionary at: #itemText.
+	self itemText: ((textData isNil or: [ textData isString ]) 
+		ifTrue: [ textData ]
+		ifFalse: [ GtPhlowRunBasedText fromJSONDictionary: textData ])
+	
 ]
 
 { #category : #accessing }

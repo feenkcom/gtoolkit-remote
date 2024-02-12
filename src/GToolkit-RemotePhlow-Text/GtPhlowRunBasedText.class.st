@@ -5,8 +5,19 @@ Class {
 		'sourceString',
 		'attributeRuns'
 	],
-	#category : 'GToolkit-RemotePhlow-Text'
+	#category : #'GToolkit-RemotePhlow-Text'
 }
+
+{ #category : #'instance creation' }
+GtPhlowRunBasedText class >> fromJSONDictionary: aDictionary [
+	^ self new
+		initializeFromJSONDictionary: aDictionary
+]
+
+{ #category : #accessing }
+GtPhlowRunBasedText class >> typeLabel [
+	^ 'gtPhlowRunBasedText'
+]
 
 { #category : #attributes }
 GtPhlowRunBasedText >> addAttribute: aPhlowAttribute from: aStartIndex to: anEndIndex [
@@ -24,6 +35,23 @@ GtPhlowRunBasedText >> addAttribute: aPhlowAttribute from: aStartIndex to: anEnd
 			attributeRuns addRun: newRun.
 			newRun ].
 	targetRun addAttribute: aPhlowAttribute
+]
+
+{ #category : #converting }
+GtPhlowRunBasedText >> asDictionaryForExport [
+	"Answer the receiver as a dictionary ready for JSON serialisation.
+	Subclasses will override and add to the dictionary"
+	| dataForExport|
+	dataForExport := Dictionary new.
+	dataForExport
+		at: '__typeLabel' put: self class typeLabel;
+		at: 'sourceString' put: sourceString.
+	attributeRuns ifNotNil: [ :currentAttributeRuns | 
+		dataForExport
+			at: 'attributeRuns' 
+			put: currentAttributeRuns asDictionaryForExport ].
+
+	^ dataForExport
 ]
 
 { #category : #converting }
@@ -168,6 +196,15 @@ GtPhlowRunBasedText >> gtViewIntervalsFor: aView [
 		priority: 10;
 		object: [ attributeRuns ];
 		view: #gtViewIntervalsFor: 
+]
+
+{ #category : #initialization }
+GtPhlowRunBasedText >> initializeFromJSONDictionary: aDictionary [
+	self initializeWithString: (aDictionary at: 'sourceString').
+		
+	(aDictionary includesKey: 'attributeRuns') ifTrue: [
+		self attributeRuns: (GtPhlowRuns
+				fromJSONDictionary: (aDictionary at: 'attributeRuns')) ]
 ]
 
 { #category : #initialization }

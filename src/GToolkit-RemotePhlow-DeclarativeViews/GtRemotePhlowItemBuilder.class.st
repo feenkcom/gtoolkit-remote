@@ -20,6 +20,12 @@ GtRemotePhlowItemBuilder >> computeNodeValueForObject: anObject atIndex: anIndex
 
 { #category : #accessing }
 GtRemotePhlowItemBuilder >> formatItem: anObject atIndex: rowIndex [
-	^ (self phlowView 
-		itemComputation cull: anObject cull: rowIndex) gtDisplayString
+	| computedValue |
+	computedValue := self phlowView itemComputation 
+		cull: anObject cull: rowIndex.
+		
+	"This check is an optimisation for not creating text values if not needed."
+	^ computedValue isString 
+		ifTrue: [ computedValue ]
+		ifFalse: [ computedValue gtDisplayText ]
 ]

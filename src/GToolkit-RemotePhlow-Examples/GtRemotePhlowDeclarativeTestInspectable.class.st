@@ -269,7 +269,8 @@ GtRemotePhlowDeclarativeTestInspectable >> gtListWithFormattedTextFor: aView [
 		items: [ { 
 			'42' asRopedText bold.
 			self styledHelloWorld.
-			self styledText} ];
+			self styledText.
+			self styledPhlowText} ];
 		itemText: [ :item | item ]
 ]
 

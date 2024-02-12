@@ -33,10 +33,10 @@ GtRemotePhlowItemValue class >> valueTypeFrom: aDictionary [
 				ifTrue: [ detectedType := GtRemotePhlowItemTextualValue ].
 			aTypeName = GtRemotePhlowItemErrorValue valueTypeName
 				ifTrue: [ detectedType := GtRemotePhlowItemErrorValue ].
+			detectedType ifNotNil: [ ^ detectedType ].
 				
-			detectedType ifNil: [
-				GtRemotePhlowItemValue allSubclasses do: [ :aSubclass |
-					aSubclass valueTypeName = aTypeName ifTrue: [ ^ aSubclass] ] ].
+			GtRemotePhlowItemValue allSubclasses do: [ :aSubclass |
+				aSubclass valueTypeName = aTypeName ifTrue: [ ^ aSubclass] ].
 					
 			GtRemotePhlowItemValue ]
 		ifAbsent: [ GtRemotePhlowItemValue ])

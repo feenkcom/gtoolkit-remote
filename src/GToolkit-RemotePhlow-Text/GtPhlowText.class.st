@@ -70,6 +70,11 @@ GtPhlowText >> glamorousRegularFont [
 ]
 
 { #category : #'gt - extensions' }
+GtPhlowText >> gtDisplayText [
+	^ self asRopedText
+]
+
+{ #category : #'gt - extensions' }
 GtPhlowText >> gtTextFor: aView [
 	<gtView>
 	
