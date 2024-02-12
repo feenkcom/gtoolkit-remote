@@ -260,6 +260,20 @@ GtRemotePhlowDeclarativeTestInspectable >> gtListFor: aView [
 ]
 
 { #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtListWithFormattedTextFor: aView [
+	<gtView>
+
+	^aView list
+		title: 'List - formatted text';
+		priority: 15.1;
+		items: [ { 
+			'42' asRopedText bold.
+			self styledHelloWorld.
+			self styledText} ];
+		itemText: [ :item | item ]
+]
+
+{ #category : #inspecting }
 GtRemotePhlowDeclarativeTestInspectable >> gtListWithSendFor: aView [
 	<gtView>
 
@@ -399,6 +413,18 @@ GtRemotePhlowDeclarativeTestInspectable >> string [
 { #category : #accessing }
 GtRemotePhlowDeclarativeTestInspectable >> string: anObject [
 	string := anObject
+]
+
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> styledHelloWorld [
+	| text |
+	text := 'Hello World' asRopedText.
+	
+	(text from: 1 to: 5)
+		highlight: (GtPhlowColor named: #yellow) asColor;
+		fontSize: 20.
+		
+	^ text
 ]
 
 { #category : #inspecting }
