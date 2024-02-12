@@ -191,9 +191,34 @@ GtPhlowRunBasedText >> gtStringFor: aView [
 GtPhlowRunBasedText >> gtViewIntervalsFor: aView [
 	<gtView>
 	
-	^ aView forward 
-		title: 'Runs';
+	^ aView columnedList 
+		title: 'Intervals';
 		priority: 10;
+		items: [ 
+			| collectedRuns |
+			collectedRuns := OrderedCollection new.
+			attributeRuns runsDo: [ :aRun |
+				collectedRuns add: aRun ].
+			collectedRuns ];
+		column: 'Interval' 
+			text: [ :aRun | aRun rangeDescription ]
+			width: 150;
+		column: 'Text' 
+			text: [ :aRun | 
+				self 
+					copyFrom: aRun startIndex
+					to: aRun endIndex ];
+		column: 'Attributes' 
+			text: [ :aRun | aRun attributesDescription ]
+]
+
+{ #category : #'gt - extensions' }
+GtPhlowRunBasedText >> gtViewPlainRunsFor: aView [
+	<gtView>
+	
+	^ aView forward 
+		title: 'Plain Runs';
+		priority: 11;
 		object: [ attributeRuns ];
 		view: #gtViewIntervalsFor: 
 ]

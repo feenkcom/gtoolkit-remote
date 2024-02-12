@@ -45,7 +45,7 @@ GtPhlowRuns >> gtViewIntervalsFor: aView [
 	<gtView>
 	
 	^ aView columnedList 
-		title: 'Runs';
+		title: 'Intervals';
 		priority: 10;
 		items: [ 
 			| collectedRuns |
