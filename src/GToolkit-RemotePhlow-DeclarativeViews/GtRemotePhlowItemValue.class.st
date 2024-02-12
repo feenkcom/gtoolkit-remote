@@ -54,7 +54,6 @@ GtRemotePhlowItemValue >> asDictionaryForExport [
 	| data | 
 	
 	data := Dictionary new 
-		at: #itemText put: self itemText;
 		at: #valueTypeName put: self class valueTypeName;
 		yourself.
 		
@@ -76,10 +75,13 @@ GtRemotePhlowItemValue >> background: anObject [
 	background := anObject
 ]
 
+{ #category : #printing }
+GtRemotePhlowItemValue >> descriptionOn: aStream [ 
+	self printBackgroundOn: aStream.
+]
+
 { #category : #initialization }
 GtRemotePhlowItemValue >> initializeFromJSONDictionary: aDictionary [
-	self itemText: (aDictionary at: #itemText).
-	
 	aDictionary 
 		at: #background 
 		ifPresent: [ :aBackgroundValue |
@@ -89,16 +91,6 @@ GtRemotePhlowItemValue >> initializeFromJSONDictionary: aDictionary [
 { #category : #testing }
 GtRemotePhlowItemValue >> isErrorItemValue [
 	^ false
-]
-
-{ #category : #accessing }
-GtRemotePhlowItemValue >> itemText [
-	^ itemText
-]
-
-{ #category : #accessing }
-GtRemotePhlowItemValue >> itemText: anObject [
-	itemText := anObject
 ]
 
 { #category : #printing }
@@ -114,6 +106,5 @@ GtRemotePhlowItemValue >> printOn: aStream [
 	super printOn: aStream .
 	
 	aStream parenthesize: [
-		aStream << self itemText.
-		self printBackgroundOn: aStream ]
+		self descriptionOn: aStream ]
 ]

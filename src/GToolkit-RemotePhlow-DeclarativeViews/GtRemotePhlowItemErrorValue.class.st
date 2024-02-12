@@ -3,7 +3,7 @@ I am a node modeling an error that happened during the computation
 "
 Class {
 	#name : #GtRemotePhlowItemErrorValue,
-	#superclass : #GtRemotePhlowItemValue,
+	#superclass : #GtRemotePhlowItemTextualValue,
 	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
