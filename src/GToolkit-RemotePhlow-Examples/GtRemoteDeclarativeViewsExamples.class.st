@@ -103,6 +103,36 @@ GtRemoteDeclarativeViewsExamples >> columnedListViewLazyCheck: viewProxy [
 
 ]
 
+{ #category : #private }
+GtRemoteDeclarativeViewsExamples >> columnedListViewWithStyledTextLazyCheck: viewProxy [
+	| declarativeView |
+
+	declarativeView := viewProxy getDeclarativeViewFor: #gtColumnedListWithStyledTextFor:.
+	self assert: declarativeView retrieveTotalItemsCount equals: 4.
+]
+
+{ #category : #'examples - views' }
+GtRemoteDeclarativeViewsExamples >> columnedListWithStyledText [
+	<gtExample>
+	| viewProxy viewDictionary view |
+
+	viewProxy := self viewedObjectProxy.
+	viewDictionary :=  viewProxy getViewDeclaration: #gtColumnedListWithStyledTextFor:.
+	view := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
+	self assert: view title equals: 'Columned list - styled text'.
+	self assert: view columnTitles equals: {'Plain' . 'Styled' . 'Number'}.
+	self assert: view columnWidths equals: #(nil nil nil).
+	self 
+		assert: (view columnTypes collect: #typeLabel) 
+		equals: #(text text number).
+	
+	self assert: view dataTransport equals: GtPhlowViewSpecification dataLazy.
+	self columnedListViewWithStyledTextLazyCheck: viewProxy.
+	
+	^ view
+]
+
 { #category : #'examples - views' }
 GtRemoteDeclarativeViewsExamples >> columnedListWithTypedColumns [
 	<gtExample>
