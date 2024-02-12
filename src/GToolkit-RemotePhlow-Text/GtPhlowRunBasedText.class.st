@@ -176,18 +176,6 @@ GtPhlowRunBasedText >> gtAttributeTreeFor: aView [
 ]
 
 { #category : #'gt - extensions' }
-GtPhlowRunBasedText >> gtStringFor: aView [
-	<gtView>
-	self isEmpty ifTrue: [ ^ aView empty ].
-	
-	^ aView forward 
-		title: 'String';
-		priority: 5;
-		object: [ sourceString ];
-		view: #gtLiveFor:
-]
-
-{ #category : #'gt - extensions' }
 GtPhlowRunBasedText >> gtViewIntervalsFor: aView [
 	<gtView>
 	

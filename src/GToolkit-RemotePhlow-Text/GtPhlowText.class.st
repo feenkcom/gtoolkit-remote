@@ -75,6 +75,18 @@ GtPhlowText >> gtDisplayText [
 ]
 
 { #category : #'gt - extensions' }
+GtPhlowText >> gtStringFor: aView [
+	<gtView>
+	self isEmpty ifTrue: [ ^ aView empty ].
+	
+	^ aView forward 
+		title: 'String';
+		priority: 5;
+		object: [ self asString ];
+		view: #gtStringFor:
+]
+
+{ #category : #'gt - extensions' }
 GtPhlowText >> gtTextFor: aView [
 	<gtView>
 	
