@@ -4,7 +4,7 @@ GtRemoteDeclarativeGtExamples demonstrates the use of declarative views in Gtool
 This class runs the examples within the one image, and thus can be run without any external server setup.  Subclasses overwrite various methods to run the examples connecting to the remote server.
 "
 Class {
-	#name : #GtRemoteDeclarativeExamples,
+	#name : #GtRemoteDeclarativeViewsExamples,
 	#superclass : #Object,
 	#instVars : [
 		'server'
@@ -13,14 +13,14 @@ Class {
 }
 
 { #category : #assertions }
-GtRemoteDeclarativeExamples >> assertBasicTextAttributedRunStyleSpecification: aStyleSpecification [
+GtRemoteDeclarativeViewsExamples >> assertBasicTextAttributedRunStyleSpecification: aStyleSpecification [
 	self 
 		assert: aStyleSpecification numberOfRuns 
 		equals: self expectedNumberOfRunsForBasicStyledText
 ]
 
 { #category : #assertions }
-GtRemoteDeclarativeExamples >> assertSimpleUnstyledStringInViewSpecification: aViewSpecification [
+GtRemoteDeclarativeViewsExamples >> assertSimpleUnstyledStringInViewSpecification: aViewSpecification [
 	| stylableText |
 	
 	stylableText := (GtRemotePhlowStylableText 
@@ -30,7 +30,7 @@ GtRemoteDeclarativeExamples >> assertSimpleUnstyledStringInViewSpecification: aV
 ]
 
 { #category : #assertions }
-GtRemoteDeclarativeExamples >> assertStyledJsonTextInViewSpecification: aViewSpecification [
+GtRemoteDeclarativeViewsExamples >> assertStyledJsonTextInViewSpecification: aViewSpecification [
 	| stylableText |
 	
 	stylableText := (GtRemotePhlowStylableText 
@@ -44,7 +44,7 @@ GtRemoteDeclarativeExamples >> assertStyledJsonTextInViewSpecification: aViewSpe
 ]
 
 { #category : #assertions }
-GtRemoteDeclarativeExamples >> assertStyledTextInViewSpecification: aViewSpecification [
+GtRemoteDeclarativeViewsExamples >> assertStyledTextInViewSpecification: aViewSpecification [
 	| stylableText |
 	
 	stylableText := (GtRemotePhlowStylableText 
@@ -56,7 +56,7 @@ GtRemoteDeclarativeExamples >> assertStyledTextInViewSpecification: aViewSpecifi
 ]
 
 { #category : #'examples - views' }
-GtRemoteDeclarativeExamples >> assertTextualViewWithBasicStyledTextWithSelector: aViewSelector title: aTitle priority: aPriority [
+GtRemoteDeclarativeViewsExamples >> assertTextualViewWithBasicStyledTextWithSelector: aViewSelector title: aTitle priority: aPriority [
 	| viewedObjectProxy viewDictionary initialSpecification dataSource |
 
 	viewedObjectProxy := self viewedObjectProxy.
@@ -73,7 +73,7 @@ GtRemoteDeclarativeExamples >> assertTextualViewWithBasicStyledTextWithSelector:
 ]
 
 { #category : #'examples - views' }
-GtRemoteDeclarativeExamples >> columnedListView [
+GtRemoteDeclarativeViewsExamples >> columnedListView [
 	<gtExample>
 	| viewProxy viewDictionary view |
 
@@ -95,7 +95,7 @@ GtRemoteDeclarativeExamples >> columnedListView [
 ]
 
 { #category : #private }
-GtRemoteDeclarativeExamples >> columnedListViewLazyCheck: viewProxy [
+GtRemoteDeclarativeViewsExamples >> columnedListViewLazyCheck: viewProxy [
 	| declarativeView |
 
 	declarativeView := viewProxy getDeclarativeViewFor: #gtColumnedListFor:.
@@ -104,7 +104,7 @@ GtRemoteDeclarativeExamples >> columnedListViewLazyCheck: viewProxy [
 ]
 
 { #category : #'examples - views' }
-GtRemoteDeclarativeExamples >> columnedListWithTypedColumns [
+GtRemoteDeclarativeViewsExamples >> columnedListWithTypedColumns [
 	<gtExample>
 	<after: #stopServer>
 	| viewProxy viewDictionary viewSpecification |
@@ -146,7 +146,7 @@ GtRemoteDeclarativeExamples >> columnedListWithTypedColumns [
 ]
 
 { #category : #private }
-GtRemoteDeclarativeExamples >> declarativeViewNames [
+GtRemoteDeclarativeViewsExamples >> declarativeViewNames [
 	"Answer the expected array of declarative views from the remote.
 	Subclasses may overwrite this if the set of views is different."
 
@@ -154,22 +154,22 @@ GtRemoteDeclarativeExamples >> declarativeViewNames [
 ]
 
 { #category : #accessing }
-GtRemoteDeclarativeExamples >> expectedBasicString [
+GtRemoteDeclarativeViewsExamples >> expectedBasicString [
 	^ 'Now is the time'
 ]
 
 { #category : #'examples - views' }
-GtRemoteDeclarativeExamples >> expectedColumnedListTypedColumnsTwoItems [
+GtRemoteDeclarativeViewsExamples >> expectedColumnedListTypedColumnsTwoItems [
 	^ ((Array new: 2) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+1.0'); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+2'); yourself); at: 3 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->#classIcon); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+2.0'); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+3'); yourself); at: 3 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->#classIcon); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); yourself)
 ]
 
 { #category : #'examples - views' }
-GtRemoteDeclarativeExamples >> expectedColumnedListTypedColumnsTwoItemsPharo11 [
+GtRemoteDeclarativeViewsExamples >> expectedColumnedListTypedColumnsTwoItemsPharo11 [
 	^ ((Array new: 2) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+1.0'); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+2'); yourself); at: 3 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->#class); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+2.0'); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+3'); yourself); at: 3 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->#class); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); yourself)
 ]
 
 { #category : #accessing }
-GtRemoteDeclarativeExamples >> expectedJsonString [
+GtRemoteDeclarativeViewsExamples >> expectedJsonString [
 	^ '{
 	"name":"Me", 
 	"age":30, 
@@ -178,18 +178,18 @@ GtRemoteDeclarativeExamples >> expectedJsonString [
 ]
 
 { #category : #accessing }
-GtRemoteDeclarativeExamples >> expectedNumberOfRunsForBasicStyledText [
+GtRemoteDeclarativeViewsExamples >> expectedNumberOfRunsForBasicStyledText [
 	^ 9
 ]
 
 { #category : #private }
-GtRemoteDeclarativeExamples >> getRemoteObject [
+GtRemoteDeclarativeViewsExamples >> getRemoteObject [
 
 	^ GtRemotePhlowDeclarativeTestInspectable new
 ]
 
 { #category : #private }
-GtRemoteDeclarativeExamples >> getViewedObjectProxy [
+GtRemoteDeclarativeViewsExamples >> getViewedObjectProxy [
 	"Answer the GtRemotePhlowViewedObject proxy for the remote object"
 
 	^ GtRemotePhlowViewedObject object: self remoteObject.
@@ -197,7 +197,7 @@ GtRemoteDeclarativeExamples >> getViewedObjectProxy [
 ]
 
 { #category : #'examples - views' }
-GtRemoteDeclarativeExamples >> listView [
+GtRemoteDeclarativeViewsExamples >> listView [
 	<gtExample>
 	<after: #stopServer>
 	| viewedObjectProxy viewDictionary view |
@@ -215,14 +215,14 @@ GtRemoteDeclarativeExamples >> listView [
 ]
 
 { #category : #'private - commands' }
-GtRemoteDeclarativeExamples >> listViewDisplayArray [
+GtRemoteDeclarativeViewsExamples >> listViewDisplayArray [
 	"Answer the command Array returned by the remote's list view"
 
 	^ #('42' 'Hello World' '2021-04-06T14:43:49.623384+02:00')
 ]
 
 { #category : #private }
-GtRemoteDeclarativeExamples >> listViewLazyCheck: viewProxy [
+GtRemoteDeclarativeViewsExamples >> listViewLazyCheck: viewProxy [
 	| declarativeView |
 
 	declarativeView := viewProxy getDeclarativeViewFor: #gtListFor:.
@@ -230,7 +230,7 @@ GtRemoteDeclarativeExamples >> listViewLazyCheck: viewProxy [
 ]
 
 { #category : #private }
-GtRemoteDeclarativeExamples >> printForString [
+GtRemoteDeclarativeViewsExamples >> printForString [
 	"Answer the string returned in the #gtPrintFor: view.
 	Subclasses may overwrite this as appropriate."
 
@@ -238,7 +238,7 @@ GtRemoteDeclarativeExamples >> printForString [
 ]
 
 { #category : #'examples - views' }
-GtRemoteDeclarativeExamples >> printView [
+GtRemoteDeclarativeViewsExamples >> printView [
 	"Disable since this relies on having GToolkit-RemotePhlow-InspectorExtensions,
 	which is currently not the case in the CI"
 	"<gtExample>"
@@ -256,7 +256,7 @@ GtRemoteDeclarativeExamples >> printView [
 ]
 
 { #category : #examples }
-GtRemoteDeclarativeExamples >> remoteObject [
+GtRemoteDeclarativeViewsExamples >> remoteObject [
 	"Answer the remote GtDeclarativeTestInspectable instance.
 	This will be a proxy with a remote server."
 	<gtExample>
@@ -277,7 +277,7 @@ GtRemoteDeclarativeExamples >> remoteObject [
 ]
 
 { #category : #private }
-GtRemoteDeclarativeExamples >> runningServer [
+GtRemoteDeclarativeViewsExamples >> runningServer [
 	"Answer a running server.
 	No server is required running the examples in a single image.
 	Subclasses should overwrite this to start the server"
@@ -287,7 +287,7 @@ GtRemoteDeclarativeExamples >> runningServer [
 ]
 
 { #category : #private }
-GtRemoteDeclarativeExamples >> stopServer [ 
+GtRemoteDeclarativeViewsExamples >> stopServer [ 
 
 	server ifNotNil: 
 		[ server stop.
@@ -295,7 +295,7 @@ GtRemoteDeclarativeExamples >> stopServer [
 ]
 
 { #category : #'examples - views' }
-GtRemoteDeclarativeExamples >> textEditorViewWithExplicitStyler [
+GtRemoteDeclarativeViewsExamples >> textEditorViewWithExplicitStyler [
 	<gtExample>
 	<after: #stopServer>
 	| viewedObjectProxy viewDictionary view viewSpecification |
@@ -315,7 +315,7 @@ GtRemoteDeclarativeExamples >> textEditorViewWithExplicitStyler [
 ]
 
 { #category : #'examples - views' }
-GtRemoteDeclarativeExamples >> textEditorViewWithParserStylerClass [
+GtRemoteDeclarativeViewsExamples >> textEditorViewWithParserStylerClass [
 	<gtExample>
 	<after: #stopServer>
 	| viewedObjectProxy viewDictionary view viewSpecification |
@@ -335,7 +335,7 @@ GtRemoteDeclarativeExamples >> textEditorViewWithParserStylerClass [
 ]
 
 { #category : #'examples - views' }
-GtRemoteDeclarativeExamples >> textEditorViewWithSimpleString [
+GtRemoteDeclarativeViewsExamples >> textEditorViewWithSimpleString [
 	<gtExample>
 	<after: #stopServer>
 	| viewedObjectProxy viewDictionary view viewSpecification |
@@ -355,7 +355,7 @@ GtRemoteDeclarativeExamples >> textEditorViewWithSimpleString [
 ]
 
 { #category : #'examples - views' }
-GtRemoteDeclarativeExamples >> textEditorViewWithStyledPhlowText [
+GtRemoteDeclarativeViewsExamples >> textEditorViewWithStyledPhlowText [
 	<gtExample>
 	<after: #stopServer>
 	| view |
@@ -371,7 +371,7 @@ GtRemoteDeclarativeExamples >> textEditorViewWithStyledPhlowText [
 ]
 
 { #category : #'examples - views' }
-GtRemoteDeclarativeExamples >> textEditorViewWithStyledText [
+GtRemoteDeclarativeViewsExamples >> textEditorViewWithStyledText [
 	<gtExample>
 	<after: #stopServer>
 	| view |
@@ -387,7 +387,7 @@ GtRemoteDeclarativeExamples >> textEditorViewWithStyledText [
 ]
 
 { #category : #'examples - views' }
-GtRemoteDeclarativeExamples >> textViewWithSimpleString [
+GtRemoteDeclarativeViewsExamples >> textViewWithSimpleString [
 	<gtExample>
 	<after: #stopServer>
 	| viewedObjectProxy viewDictionary view viewSpecification |
@@ -406,7 +406,7 @@ GtRemoteDeclarativeExamples >> textViewWithSimpleString [
 ]
 
 { #category : #'examples - views' }
-GtRemoteDeclarativeExamples >> textViewWithStyledPhlowText [
+GtRemoteDeclarativeViewsExamples >> textViewWithStyledPhlowText [
 	<gtExample>
 	<after: #stopServer>
 	| view |
@@ -420,7 +420,7 @@ GtRemoteDeclarativeExamples >> textViewWithStyledPhlowText [
 ]
 
 { #category : #'examples - views' }
-GtRemoteDeclarativeExamples >> textViewWithStyledText [
+GtRemoteDeclarativeViewsExamples >> textViewWithStyledText [
 	<gtExample>
 	<after: #stopServer>
 	
@@ -431,7 +431,7 @@ GtRemoteDeclarativeExamples >> textViewWithStyledText [
 ]
 
 { #category : #examples }
-GtRemoteDeclarativeExamples >> viewedObjectProxy [
+GtRemoteDeclarativeViewsExamples >> viewedObjectProxy [
 	"Answer the GtRemotePhlowViewedObject proxy for the remote object"
 	<gtExample>
 	<after: #stopServer>
