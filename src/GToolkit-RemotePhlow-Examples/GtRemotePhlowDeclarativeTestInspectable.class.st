@@ -92,7 +92,9 @@ GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListWithStyledTextFor: aVie
 			self styledText.
 			self styledPhlowText} ];
 		column: 'Plain' text: [ :anObject | anObject asString ];
-		column: 'Styled' text: [ :anObject | anObject ].
+		column: 'Styled' text: [ :anObject | anObject ];
+		column: 'Number' 
+			number: [ :anObject :index | (index*100) asRopedText bold  ].
 ]
 
 { #category : #inspecting }
