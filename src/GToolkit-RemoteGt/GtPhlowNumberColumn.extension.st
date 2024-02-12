@@ -17,5 +17,5 @@ GtPhlowNumberColumn >> updateValue: aCellValue forComputedItem: aComputedItem ro
 				withEnoughArguments: { rowIndex . columnIndex } ].
 
 	aCellValue 
-		itemText: itemText gtDisplayText.
+		itemText: (self phlowTextOrStringFrom: itemText).
 ]

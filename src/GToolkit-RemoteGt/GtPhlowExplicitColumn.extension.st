@@ -17,7 +17,7 @@ GtPhlowExplicitColumn >> computeItemValuesFor: anObject rowIndex: rowIndex colum
 		withEnoughArguments: { rowIndex . columnIndex }.
 
 	cellValue 
-		itemText: itemValue gtDisplayString.
+		itemText: (self phlowTextOrStringFrom: itemValue).
 
 	self hasBackgroundComputation ifTrue: [
 		cellValue 

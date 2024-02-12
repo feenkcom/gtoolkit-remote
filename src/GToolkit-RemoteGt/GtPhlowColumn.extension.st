@@ -14,3 +14,10 @@ GtPhlowColumn >> canBeForGtDeclarativeView [
 GtPhlowColumn >> computeItemValuesFor: anObject rowIndex: rowIndex columnIndex: columnIndex [
 	^ self subclassResponsibility
 ]
+
+{ #category : #'*GToolkit-RemoteGt' }
+GtPhlowColumn >> phlowTextOrStringFrom: aComputedItem [ 
+	^ aComputedItem isString
+		ifTrue: [ aComputedItem ]
+		ifFalse: [ aComputedItem gtDisplayText ]
+]

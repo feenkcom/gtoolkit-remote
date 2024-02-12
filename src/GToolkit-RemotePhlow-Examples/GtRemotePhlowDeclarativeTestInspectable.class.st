@@ -124,6 +124,28 @@ GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListWithTypedColumnsFor: aV
 ]
 
 { #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListWithTypedColumnsInGenericColumnFor: aView [
+	<gtView>
+
+	^aView columnedList
+		title: 'Columned list with typed columns - generic';
+		priority: 24.1;
+		items: [ 1 to: 500 ];
+		column: 'Text' do: [ :aColumn | 
+			aColumn 
+				item: [ :aNumber | aNumber asFloat ];
+				text: [ :aFloat | 
+				thisContext stack copy inspectOnce.
+					'+',aFloat asString ] ];
+		column: 'Icon Name' do: [ :aColumn | 
+			aColumn 
+				item: [ :aNumber | aNumber asFloat ];
+				iconName: [ :aFloat | 
+					aFloat gtSystemIconName ];
+				width: 75 ]
+]
+
+{ #category : #inspecting }
 GtRemotePhlowDeclarativeTestInspectable >> gtColumnedTreeFor: aView [
 	<gtView>
 
