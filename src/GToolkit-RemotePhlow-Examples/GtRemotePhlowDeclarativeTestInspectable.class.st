@@ -45,8 +45,8 @@ GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListFor: aView [
 		title: 'Columned list';
 		priority: 20;
 		items: [ collectionOfObjects ];
-		column: 'Plain' text: [ :anObject | anObject asString ];
-		column: 'Styled' text: [ :anObject | anObject ].
+		column: 'Value' text: [ :anObject | anObject ];
+		column: 'Lowercase' text: [ :anObject | anObject asString asLowercase ] width: 100.
 ]
 
 { #category : #inspecting }
