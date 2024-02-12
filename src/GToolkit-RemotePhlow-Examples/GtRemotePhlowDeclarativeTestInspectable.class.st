@@ -405,6 +405,30 @@ GtRemotePhlowDeclarativeTestInspectable >> gtTreeFor: aView [
 		itemText: [ :x | x asString, ' number']
 ]
 
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtTreeWithStyledTextFor: aView [
+	<gtView>
+
+	^aView tree
+		title: 'Tree - with styled text';
+		priority: 30.1;
+		items: [ 1 to: 5 ];
+		children: [ :aNumber | 
+			(aNumber // 2 = aNumber)
+				ifTrue: [ #() ] 
+				ifFalse: [
+					aNumber // 2 to: (aNumber - 1) ] ];
+		itemText: [ :x | 
+			| computedString|
+			computedString := x asString, ' number'.
+			(x \\ 2) = 0 
+				ifTrue: [
+					computedString := computedString asRopedText
+						bold;
+						highlight: (GtPhlowColor named: #yellow) asColor ].
+			computedString ]
+]
+
 { #category : #initialization }
 GtRemotePhlowDeclarativeTestInspectable >> initialize [ 
 
