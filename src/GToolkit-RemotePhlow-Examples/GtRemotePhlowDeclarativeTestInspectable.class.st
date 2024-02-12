@@ -45,8 +45,8 @@ GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListFor: aView [
 		title: 'Columned list';
 		priority: 20;
 		items: [ collectionOfObjects ];
-		column: 'Value' text: [ :anObject | anObject ];
-		column: 'Lowercase' text: [ :anObject | anObject asString asLowercase ] width: 100.
+		column: 'Plain' text: [ :anObject | anObject asString ];
+		column: 'Styled' text: [ :anObject | anObject ].
 ]
 
 { #category : #inspecting }
@@ -55,7 +55,7 @@ GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListSpawnTextFor: aView [
 
 	^aView columnedList
 		title: 'Spawn text columned list';
-		priority: 20;
+		priority: 20.2;
 		items: [ collectionOfObjects ];
 		column: 'Value' text: [ :anObject | anObject ];
 		column: 'Class' 
@@ -77,6 +77,22 @@ GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListWithHorizontalScrolling
 		column: 'Value + 2' text: [ :anInteger | anInteger + 2 ] width: 250;
 		column: 'Value + 3' text: [ :anInteger | anInteger + 3 ] width: 250;
 		column: 'Value + 4' text: [ :anInteger | anInteger + 4 ] width: 250.
+]
+
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListWithStyledTextFor: aView [
+	<gtView>
+
+	^aView columnedList
+		title: 'Columned list - styled text';
+		priority: 20.1;
+		items: [ { 
+			'42' asRopedText bold.
+			self styledHelloWorld.
+			self styledText.
+			self styledPhlowText} ];
+		column: 'Plain' text: [ :anObject | anObject asString ];
+		column: 'Styled' text: [ :anObject | anObject ].
 ]
 
 { #category : #inspecting }
@@ -264,7 +280,7 @@ GtRemotePhlowDeclarativeTestInspectable >> gtListWithFormattedTextFor: aView [
 	<gtView>
 
 	^aView list
-		title: 'List - formatted text';
+		title: 'List - styled text';
 		priority: 15.1;
 		items: [ { 
 			'42' asRopedText bold.
@@ -280,7 +296,7 @@ GtRemotePhlowDeclarativeTestInspectable >> gtListWithSendFor: aView [
 
 	^aView list
 		title: 'List with send';
-		priority: 15.1;
+		priority: 15.2;
 		items: [ collectionOfObjects ];
 		itemText: [ :item | item ];
 		send: [ :item | {item. item. item }]
