@@ -94,6 +94,13 @@ GtRemotePhlowColumn >> itemComputation [
 		itemComputation := [ :item | item ] ]
 ]
 
+{ #category : #computation }
+GtRemotePhlowColumn >> phlowTextOrStringFrom: aComputedItem [ 
+	^ aComputedItem isString
+		ifTrue: [ aComputedItem ]
+		ifFalse: [ aComputedItem gtDisplayText ]
+]
+
 { #category : #'private - accessing' }
 GtRemotePhlowColumn >> rowStencil [
 	^ nil
@@ -112,7 +119,7 @@ GtRemotePhlowColumn >> title: anObject [
 { #category : #computation }
 GtRemotePhlowColumn >> updateValue: aCellValue forComputedItem: aComputedItem rowIndex: rowIndex columnIndex: columnIndex [
 	aCellValue 
-		itemText: aComputedItem gtDisplayString.
+		itemText: (self phlowTextOrStringFrom: aComputedItem).
 ]
 
 { #category : #accessing }

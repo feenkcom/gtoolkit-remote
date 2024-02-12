@@ -35,5 +35,5 @@ GtRemotePhlowNumberColumn >> updateValue: aCellValue forComputedItem: aComputedI
 				cull: columnIndex ].
 				
 	aCellValue 
-		itemText: itemText gtDisplayString.
+		itemText: (self phlowTextOrStringFrom: itemText).
 ]

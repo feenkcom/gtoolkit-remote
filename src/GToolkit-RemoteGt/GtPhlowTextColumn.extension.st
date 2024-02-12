@@ -17,7 +17,7 @@ GtPhlowTextColumn >> updateValue: aCellValue forComputedItem: aComputedItem rowI
 				withEnoughArguments: { rowIndex . columnIndex } ].
 
 	aCellValue 
-		itemText: itemText gtDisplayString.
+		itemText: itemText gtDisplayText.
 
 	^ aCellValue
 ]
