@@ -13,14 +13,15 @@ GtRemotePhlowItemTextualValue class >> valueTypeName [
 GtRemotePhlowItemTextualValue >> asDictionaryForExport [
 	"Answer the receiver as a dictionary ready for JSON serialisation"
 
-	| data currentText | 
+	| data currentText currentTextData | 
 	
 	data := super asDictionaryForExport.
 	currentText := self itemText.
-	currentText := (currentText notNil and: [currentText isString not])
-		ifTrue: [ currentText asDictionaryForExport ].
+	currentTextData := (currentText isNil or: [currentText isString])
+		ifTrue: [ currentText ] 
+		ifFalse: [ currentText asDictionaryForExport ].
 	
-	data at: #itemText put: currentText.
+	data at: #itemText put: currentTextData.
 	
 	^ data
 ]
