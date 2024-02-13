@@ -47,7 +47,7 @@ GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListFor: aView [
 		items: [ collectionOfObjects ];
 		column: 'Value' text: [ :anObject | anObject ];
 		column: 'Lowercase' text: [ :anObject | 
-			anObject printString asLowercase ] width: 100.
+			anObject gtDisplayString asLowercase ] width: 100.
 ]
 
 { #category : #inspecting }
