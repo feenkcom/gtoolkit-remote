@@ -135,7 +135,6 @@ GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListWithTypedColumnsInGener
 			aColumn 
 				item: [ :aNumber | aNumber asFloat ];
 				text: [ :aFloat | 
-				thisContext stack copy inspectOnce.
 					'+',aFloat asString ] ];
 		column: 'Icon Name' do: [ :aColumn | 
 			aColumn 
