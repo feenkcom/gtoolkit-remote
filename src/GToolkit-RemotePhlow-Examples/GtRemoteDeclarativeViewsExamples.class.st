@@ -264,7 +264,7 @@ GtRemoteDeclarativeViewsExamples >> createListNodesWithTextValues: aCollectionOf
 	^ aCollectionOfValues withIndexCollect: [ :aText :anIndex | 
 		| convertedText |
 		convertedText := aText.
-		convertedText class = BlRunRopedText ifTrue: [
+		convertedText class name = #BlRunRopedText ifTrue: [
 			convertedText := convertedText asGtPlowText ]. 
 	 	GtRemotePhlowDataNode new
 	 		nodeId: anIndex;
