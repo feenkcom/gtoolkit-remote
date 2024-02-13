@@ -470,6 +470,16 @@ GtRemotePhlowDeclarativeTestInspectable >> objectsForListWithStyledText [
 ]
 
 { #category : #accessing }
+GtRemotePhlowDeclarativeTestInspectable >> objectsForListWithStyledTextForRemoteComparison [
+	^ { 
+			'42' asRopedText bold.
+			self styledHelloWorldForRemoteComparison.
+			self styledPhlowTextForRemoteComparison.
+			self styledPhlowTextForRemoteComparison
+		}
+]
+
+{ #category : #accessing }
 GtRemotePhlowDeclarativeTestInspectable >> printStringFor: anObject [
 	^ anObject printString
 ]
@@ -498,6 +508,18 @@ GtRemotePhlowDeclarativeTestInspectable >> styledHelloWorld [
 ]
 
 { #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> styledHelloWorldForRemoteComparison [
+	| text |
+	text := GtPhlowText forString: 'Hello World'.
+	
+	(text from: 1 to: 5)
+		highlight: (GtPhlowColor named: #yellow) "asColor";
+		fontSize: 20.
+		
+	^ text
+]
+
+{ #category : #inspecting }
 GtRemotePhlowDeclarativeTestInspectable >> styledPhlowText [
 	| text |
 	text := GtPhlowText forString: 'Now is the time'.
@@ -506,6 +528,21 @@ GtRemotePhlowDeclarativeTestInspectable >> styledPhlowText [
 	(text from: 5 to: 6) highlight: (GtPhlowColor named: #yellow) asColor.
 	(text from: 1 to: 4) bold.
 	(text from: 8 to: 10) foreground: (GtPhlowColor named: #red) asColor.
+	(text from: 12 to: 12) glamorousRegularFont.
+	(text from: 1 to: 6) italic.
+	(text from: 8 to: 15) thin.
+	^ text
+]
+
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> styledPhlowTextForRemoteComparison [
+	| text |
+	text := GtPhlowText forString: 'Now is the time'.
+	text glamorousCodeFont.
+	(text from: 12 to: 15) fontSize: 20.
+	(text from: 5 to: 6) highlight: (GtPhlowColor named: #yellow) "asColor".
+	(text from: 1 to: 4) bold.
+	(text from: 8 to: 10) foreground: (GtPhlowColor named: #red) "asColor".
 	(text from: 12 to: 12) glamorousRegularFont.
 	(text from: 1 to: 6) italic.
 	(text from: 8 to: 15) thin.

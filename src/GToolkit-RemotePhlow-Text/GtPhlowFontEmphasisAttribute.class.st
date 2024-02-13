@@ -49,7 +49,7 @@ GtPhlowFontEmphasisAttribute >> equals: anAnotherAttribute [
 GtPhlowFontEmphasisAttribute >> hash [
 	"Answer an integer value that is related to the identity of the receiver."
 
-	^ super hash bitXor: self size emphasis
+	^ super hash bitXor: self emphasis hash
 ]
 
 { #category : #initialization }

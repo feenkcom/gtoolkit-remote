@@ -64,7 +64,7 @@ GtPhlowRun >> attributes [
 
 { #category : #accessing }
 GtPhlowRun >> attributes: aCollection [
-	attributes := aCollection
+	attributes := aCollection asOrderedCollection
 ]
 
 { #category : #printing }
@@ -117,7 +117,7 @@ GtPhlowRun >> hash [
 GtPhlowRun >> initializeFrom: aStartIndex to: aEndIndex attributes: aCollectionOfAttributes [ 
 	startIndex := aStartIndex.
 	endIndex := aEndIndex.
-	attributes := aCollectionOfAttributes.
+	self attributes: aCollectionOfAttributes.
 ]
 
 { #category : #initialization }
@@ -126,7 +126,7 @@ GtPhlowRun >> initializeFromJSONDictionary: aRunData [
 		initializeFrom: (aRunData at: 'startIndex')
 		to: (aRunData at: 'endIndex')
 		attributes: ((aRunData at: 'attributes') collect: [ :anAttributeData |
-		 GtPhlowTextAttribute fromJSONDictionary: anAttributeData ]) asArray
+			GtPhlowTextAttribute fromJSONDictionary: anAttributeData ]) 
 ]
 
 { #category : #printing }

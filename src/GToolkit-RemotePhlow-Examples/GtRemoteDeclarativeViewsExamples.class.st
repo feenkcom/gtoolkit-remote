@@ -254,7 +254,7 @@ GtRemoteDeclarativeViewsExamples >> columnedListWithTypedColumns [
 GtRemoteDeclarativeViewsExamples >> createListNodesWithObjectValues: aCollectionOfObjects [
 	^ self createListNodesWithTextValues: (aCollectionOfObjects 
 		collect: [ :anObject | 
-			(anObject isString)
+			(anObject isString or: [anObject class = GtPhlowRunBasedText])
 				ifTrue: [ anObject ]
 				ifFalse: [ anObject gtDisplayText ] ])
 ]
@@ -276,7 +276,7 @@ GtRemoteDeclarativeViewsExamples >> createListNodesWithTextValues: aCollectionOf
 GtRemoteDeclarativeViewsExamples >> createTreeNodesWithObjectValues: aCollectionOfObjects [
 	^ self createTreeNodesWithTextValues: (aCollectionOfObjects 
 		collect: [ :anObject | 
-			(anObject isString)
+			(anObject isString or: [anObject class = GtPhlowRunBasedText])
 				ifTrue: [ anObject ]
 				ifFalse: [ anObject gtDisplayText ] ])
 ]
@@ -376,7 +376,7 @@ GtRemoteDeclarativeViewsExamples >> listViewWithStyledText [
 	self 
 		asserNodesInListViewDatasource: viewDatasource 
 		forObjects: (GtRemotePhlowDeclarativeTestInspectable new 
-			objectsForListWithStyledText).
+			objectsForListWithStyledTextForRemoteComparison).
 	
 	^ viewSpecification
 ]
@@ -634,10 +634,9 @@ GtRemoteDeclarativeViewsExamples >> treeViewWithStyledTextLazyCheck: viewProxy [
 			computedString := x asString, ' number'.
 			(x \\ 2) = 0 
 				ifTrue: [
-					computedString := (computedString asRopedText
+					computedString := (GtPhlowText forString: computedString)
 						bold;
-						highlight: (GtPhlowColor named: #yellow) asColor)
-							asGtPlowText ].
+						highlight: (GtPhlowColor named: #yellow) ].
 			computedString ]).
 			
 	self 
@@ -649,10 +648,9 @@ GtRemoteDeclarativeViewsExamples >> treeViewWithStyledTextLazyCheck: viewProxy [
 				computedString := x asString, ' number'.
 				(x \\ 2) = 0 
 					ifTrue: [
-						computedString := (computedString asRopedText
+						computedString := (GtPhlowText forString: computedString)
 							bold;
-							highlight: (GtPhlowColor named: #yellow) asColor)
-								asGtPlowText ].
+							highlight: (GtPhlowColor named: #yellow) ].
 				computedString ]).
 ]
 
