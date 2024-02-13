@@ -62,6 +62,12 @@ GtPhlowRunsGroup >> detect: aBlock ifNone: exceptionBlock [
 	^ self items detect: aBlock ifNone: exceptionBlock
 ]
 
+{ #category : #accessing }
+GtPhlowRunsGroup >> hash [
+
+	^ self items hash
+]
+
 { #category : #initialization }
 GtPhlowRunsGroup >> initializeFromJSONDictionary: aRunsData [
 	items := ((aRunsData at: 'items') collect: [ :aRunData |

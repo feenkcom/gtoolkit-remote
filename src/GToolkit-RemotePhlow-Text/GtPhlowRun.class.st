@@ -6,7 +6,7 @@ Class {
 		'startIndex',
 		'endIndex'
 	],
-	#category : 'GToolkit-RemotePhlow-Text'
+	#category : #'GToolkit-RemotePhlow-Text'
 }
 
 { #category : #'instance creation' }
@@ -18,6 +18,19 @@ GtPhlowRun class >> fromJSONDictionary: anAttributeData [
 { #category : #accessing }
 GtPhlowRun class >> typeLabel [
 	^ 'phlowRun'
+]
+
+{ #category : #comparing }
+GtPhlowRun >> = anObject [
+	
+	self == anObject
+		ifTrue: [ ^ true ].
+	(anObject class = self class)
+		ifFalse: [ ^ false ].
+
+	^ (self startIndex = anObject startIndex) and: [
+		self endIndex = anObject endIndex and: [ 
+			self attributes = anObject attributes ] ]
 ]
 
 { #category : #accessing }
@@ -90,6 +103,14 @@ GtPhlowRun >> gtViewAttributesFor: aView [
 		items: [ self attributes ];
 		column: 'Attribute' text: [ :anAttribute | anAttribute printString];
 		column: 'Range ' text: [ :_ | self rangeDescription ]
+]
+
+{ #category : #comparing }
+GtPhlowRun >> hash [
+
+	^ (self startIndex hash 
+		bitXor: self endIndex hash)
+		bitXor: self attributes hash
 ]
 
 { #category : #initialization }

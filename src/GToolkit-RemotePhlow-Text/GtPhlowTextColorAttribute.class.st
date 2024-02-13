@@ -29,6 +29,18 @@ GtPhlowTextColorAttribute >> color: anObject [
 	color := anObject
 ]
 
+{ #category : #comparing }
+GtPhlowTextColorAttribute >> equals: anAnotherAttribute [
+	^ self color = anAnotherAttribute color
+]
+
+{ #category : #comparing }
+GtPhlowTextColorAttribute >> hash [
+	"Answer an integer value that is related to the identity of the receiver."
+
+	^ super hash bitXor: self color hash
+]
+
 { #category : #initialization }
 GtPhlowTextColorAttribute >> initializeFromJSONDictionary: aTextAttributeData [
 	super initializeFromJSONDictionary: aTextAttributeData.

@@ -32,6 +32,19 @@ GtPhlowTextAttribute class >> typeLabel [
 	^ 'unknown'
 ]
 
+{ #category : #comparing }
+GtPhlowTextAttribute >> = anObject [
+	"Return true if I am equal to a given object"
+	<return: #Boolean>
+	
+	self == anObject
+		ifTrue: [ ^ true ].
+	(anObject class = self class)
+		ifFalse: [ ^ false ].
+
+	^ self equals: anObject
+]
+
 { #category : #styling }
 GtPhlowTextAttribute >> applyStyleToText: aText [
 	self subclassResponsibility
@@ -45,6 +58,17 @@ GtPhlowTextAttribute >> asDictionaryForExport [
 	^ Dictionary new 
 		at: '__typeLabel' put: self class typeLabel;
 		yourself
+]
+
+{ #category : #comparing }
+GtPhlowTextAttribute >> equals: anAttribute [
+	^ anAttribute class = self class
+]
+
+{ #category : #comparing }
+GtPhlowTextAttribute >> hash [
+	"Should be overriden by subclasses"
+	^ 31 hash
 ]
 
 { #category : #initialization }

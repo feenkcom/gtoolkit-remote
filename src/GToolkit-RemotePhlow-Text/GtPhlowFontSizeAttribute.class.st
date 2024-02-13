@@ -25,6 +25,18 @@ GtPhlowFontSizeAttribute >> asDictionaryForExport [
 		yourself
 ]
 
+{ #category : #comparing }
+GtPhlowFontSizeAttribute >> equals: anAnotherAttribute [
+	^ self sizeValue = anAnotherAttribute sizeValue
+]
+
+{ #category : #comparing }
+GtPhlowFontSizeAttribute >> hash [
+	"Answer an integer value that is related to the identity of the receiver."
+
+	^ super hash bitXor: self sizeValue hash
+]
+
 { #category : #initialization }
 GtPhlowFontSizeAttribute >> initializeFromJSONDictionary: aTextAttributeData [ 
 	super initializeFromJSONDictionary: aTextAttributeData .
