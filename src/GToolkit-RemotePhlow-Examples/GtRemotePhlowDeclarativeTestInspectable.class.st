@@ -300,7 +300,19 @@ GtRemotePhlowDeclarativeTestInspectable >> gtListFor: aView [
 ]
 
 { #category : #inspecting }
-GtRemotePhlowDeclarativeTestInspectable >> gtListWithFormattedTextFor: aView [
+GtRemotePhlowDeclarativeTestInspectable >> gtListWithSendFor: aView [
+	<gtView>
+
+	^aView list
+		title: 'List with send';
+		priority: 15.2;
+		items: [ collectionOfObjects ];
+		itemText: [ :item | item ];
+		send: [ :item | {item. item. item }]
+]
+
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtListWithStyledTextFor: aView [
 	<gtView>
 
 	^aView list
@@ -312,18 +324,6 @@ GtRemotePhlowDeclarativeTestInspectable >> gtListWithFormattedTextFor: aView [
 			self styledText.
 			self styledPhlowText} ];
 		itemText: [ :item | item ]
-]
-
-{ #category : #inspecting }
-GtRemotePhlowDeclarativeTestInspectable >> gtListWithSendFor: aView [
-	<gtView>
-
-	^aView list
-		title: 'List with send';
-		priority: 15.2;
-		items: [ collectionOfObjects ];
-		itemText: [ :item | item ];
-		send: [ :item | {item. item. item }]
 ]
 
 { #category : #inspecting }

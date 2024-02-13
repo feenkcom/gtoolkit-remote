@@ -20,6 +20,22 @@ GtRemoteDeclarativeViewsExamples >> assertBasicTextAttributedRunStyleSpecificati
 ]
 
 { #category : #assertions }
+GtRemoteDeclarativeViewsExamples >> assertListingNode: anObtainedObject equals: anExpectedNode [ 
+	self assert: anObtainedObject nodeId = anExpectedNode nodeId.
+	self assert: (anObtainedObject matchesNodeContentWith: anExpectedNode)
+]
+
+{ #category : #assertions }
+GtRemoteDeclarativeViewsExamples >> assertListingNodes: obtainedNodes equals: expectedNodes [
+	self assert:  obtainedNodes size equals: expectedNodes size.
+	
+	expectedNodes withIndexDo: [ :anExpectedNode :anIndex |
+		self 
+			assertListingNode: (obtainedNodes at: anIndex) 
+			equals: anExpectedNode ]
+]
+
+{ #category : #assertions }
 GtRemoteDeclarativeViewsExamples >> assertSimpleUnstyledStringInViewSpecification: aViewSpecification [
 	| stylableText |
 	
@@ -55,7 +71,7 @@ GtRemoteDeclarativeViewsExamples >> assertStyledTextInViewSpecification: aViewSp
 		assertBasicTextAttributedRunStyleSpecification: stylableText stylerSpecification.
 ]
 
-{ #category : #'examples - views' }
+{ #category : #assertions }
 GtRemoteDeclarativeViewsExamples >> assertTextualViewWithBasicStyledTextWithSelector: aViewSelector title: aTitle priority: aPriority [
 	| viewedObjectProxy viewDictionary initialSpecification dataSource |
 
@@ -176,11 +192,12 @@ GtRemoteDeclarativeViewsExamples >> columnedListWithTypedColumns [
 ]
 
 { #category : #private }
-GtRemoteDeclarativeViewsExamples >> declarativeViewNames [
-	"Answer the expected array of declarative views from the remote.
-	Subclasses may overwrite this if the set of views is different."
-
-	^ #('gtLargeListFor:' 'gtStringFor:' 'gtListFor:' 'gtLargeColumnedListWithIndexFor:' 'gtColumnedListFor:' 'gtLargeColumnedListFor:' 'gtRemotePrintFor:')
+GtRemoteDeclarativeViewsExamples >> createTreeNodesWithTextValues: aCollectionOfValues [
+	^ aCollectionOfValues withIndexCollect: [ :aText :anIndex | 
+	 GtRemotePhlowTreeNode new
+	 	nodeId: anIndex;
+	 	nodeValue: (GtRemotePhlowItemTextualValue new
+	 		itemText: aText)]
 ]
 
 { #category : #accessing }
@@ -458,6 +475,42 @@ GtRemoteDeclarativeViewsExamples >> textViewWithStyledText [
 		assertTextualViewWithBasicStyledTextWithSelector: #gtStyledTextFor: 
 		title: 'Styled text'
 		priority: 10.1.
+]
+
+{ #category : #'examples - views' }
+GtRemoteDeclarativeViewsExamples >> treeView [
+	<gtExample>
+	<after: #stopServer>
+	| viewedObjectProxy viewDictionary view |
+
+	viewedObjectProxy := self viewedObjectProxy.
+	viewDictionary := viewedObjectProxy getViewDeclaration: #gtTreeFor: .
+	view := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
+	self assert: view title equals: 'Tree'.
+	self assert: view priority equals: 30.
+	
+	self treeViewLazyCheck: viewedObjectProxy.
+	
+	^ view
+]
+
+{ #category : #private }
+GtRemoteDeclarativeViewsExamples >> treeViewLazyCheck: viewProxy [
+	| declarativeView obtainedNodes |
+
+	declarativeView := viewProxy getDeclarativeViewFor: #gtTreeFor:.
+	self assert: declarativeView retrieveTotalItemsCount equals: 5.
+	
+	obtainedNodes := declarativeView retrieveFormattedItems 
+		collect: [ :aNodeValueDictionary |
+			GtRemotePhlowTreeNode 
+				fromJSONDictionary: aNodeValueDictionary ].
+	
+	self 
+		assertListingNodes: obtainedNodes 
+		equals: (self createTreeNodesWithTextValues: ((1 to: 5) 
+			collect: [ :x | x asString, ' number' ]))
 ]
 
 { #category : #examples }
