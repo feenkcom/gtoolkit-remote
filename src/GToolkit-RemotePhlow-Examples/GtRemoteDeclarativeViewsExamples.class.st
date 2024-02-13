@@ -473,20 +473,23 @@ GtRemoteDeclarativeViewsExamples >> printForString [
 
 { #category : #'examples - views' }
 GtRemoteDeclarativeViewsExamples >> printView [
-	"Disable since this relies on having GToolkit-RemotePhlow-InspectorExtensions,
-	which is currently not the case in the CI"
-	"<gtExample>"
+	<gtExample>
 	<after: #stopServer>
-	| viewProxy viewDictionary view |
+	| viewedObjectProxy viewDictionary viewSpecification viewDataSource |
 
-	viewProxy := self viewedObjectProxy.
-	viewDictionary :=  viewProxy getViewDeclaration: #gtRemotePrintFor:.
-	view := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	viewedObjectProxy := self viewedObjectProxy.
+	viewDictionary :=  viewedObjectProxy getViewDeclaration: #gtPrintFor:.
+	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
 	
-	self assert: view title equals: #Print.
-	self assert: view string equals: self printForString.
+	self assert: viewSpecification title equals: #Print.
+	self assert: viewSpecification string equals: nil "self printForString".
 	
-	^ view
+	viewDataSource := viewedObjectProxy getDeclarativeViewFor: #gtPrintFor: .
+	self 
+		assertUnstyledStringInViewSpecification: viewDataSource 
+		equals: self printForString.
+	
+	^ viewSpecification
 ]
 
 { #category : #examples }
