@@ -23,6 +23,11 @@ GtRemotePhlowTextAttributeRunsStylerSpecification >> asDictionaryForExport [
 ]
 
 { #category : #accessing }
+GtRemotePhlowTextAttributeRunsStylerSpecification >> attributeRuns [
+	^ attributeRuns
+]
+
+{ #category : #accessing }
 GtRemotePhlowTextAttributeRunsStylerSpecification >> attributeRuns: aCollection [
 	attributeRuns := aCollection
 ]
