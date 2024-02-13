@@ -34,7 +34,7 @@ GtProxyRemoteInspectionExamples >> assertBothSidesInspectionForProxy: aProxyObje
 	^ scripter
 ]
 
-{ #category : #'examples - inspection' }
+{ #category : #'asserting - inspection' }
 GtProxyRemoteInspectionExamples >> assertDatabaseAfterLocalAndRemoteInspectionFor: aDatabase withTypeName: aTypeName [.
 	self assert: aDatabase pageCount equals: 2.
 	self assertPageOnTestProxyFor: aDatabase pages first withTypeName: aTypeName.
@@ -47,55 +47,13 @@ GtProxyRemoteInspectionExamples >> assertDatabaseAfterLocalAndRemoteInspectionFo
 		inPage: aDatabase pagesByDate first.
 ]
 
-{ #category : #'examples - inspection' }
+{ #category : #'asserting - inspection' }
 GtProxyRemoteInspectionExamples >> assertDatabaseBeforeCompositeToolInspectionFor: aDatabase withTypeName: aTypeName [.
 	self assert: aDatabase pageCount equals: 1.
 	self assertPageOnTestProxyFor: aDatabase pages first withTypeName: aTypeName.
 	self 
 		assertSingleEmptyCodeSnippetOfType: self remoteCodeSnippetType 
 		inPage: aDatabase pages first.
-]
-
-{ #category : #'examples - inspection' }
-GtProxyRemoteInspectionExamples >> assertInspectorTabContentsUsing: aScripter [
-	| queryResult tabGroup |
-	queryResult := (aScripter element query // GtPhlowCompositeViewElementId)
-			result.
-	self assert: queryResult size equals: 1.
-	tabGroup := queryResult first.
-
-	aScripter
-		substeps: 'Check tabs content'
-		do: [ :aStep | 
-			tabGroup tabs
-				withIndexDo: [  "aStep do
-				label: 'Select Tab';
-				// GtPhlowCompositeViewElementId;
-				block: [ :aTabGroup | 
-					self halt.
-					aTabGroup viewModel 
-						selectTab: (aTabGroup tabs 
-							at: anIndex) ];
-				play.":aTab :anIndex | 
-					aStep
-						clickStep: [ :s | 
-							s
-								label: 'Click tab ' , aTab tabLabel text asString;
-								// GtPhlowCompositeViewElementId;
-								@ 1;
-								id: #header;
-								id: #scrolltabbar;
-								id: #tabbar;
-								onChildAt: anIndex ].
-
-					aStep
-						checkStep: [ :s | 
-							s
-								label: 'Clicked tab selected';
-								// GtPhlowCompositeViewElementId;
-								@ 1;
-								value: [ :aTabGroup | aTabGroup viewModel indexOf: aTabGroup viewModel selectedTab ]
-									equals: anIndex ] ] ]
 ]
 
 { #category : #'asserting - inspection' }
@@ -150,6 +108,12 @@ GtProxyRemoteInspectionExamples >> assertInspectorToolLabelUsing: aScripter atIn
 						value: [ :aTab | aTab viewModel isSelected ] equals:aBoolean ] ]
 ]
 
+{ #category : #'asserting - views' }
+GtProxyRemoteInspectionExamples >> assertLocalAndRemotePhlowViewsFor: aProxyObject [.
+	self assertObjectPhlowViewsFor: aProxyObject.
+	self assertRemoteSideObjectPhlowViewsFor: aProxyObject.
+]
+
 { #category : #'asserting - inspection' }
 GtProxyRemoteInspectionExamples >> assertLocalInspectorToolLabelUsing: aScripter selected: aBoolean [
 	self 
@@ -175,11 +139,17 @@ GtProxyRemoteInspectionExamples >> assertLocalPlaygroundPageUsing: aScripter [
 ]
 
 { #category : #'asserting - inspection' }
-GtProxyRemoteInspectionExamples >> assertObjectInspectionFor: codeString withTypeName: anObjectType [
+GtProxyRemoteInspectionExamples >> assertObjectInspectionFor: codeStringOrBlockClosure withTypeName: anObjectType [
 	| proxyObject |
 	
-	proxyObject := self convertToTargetProxy: (self runningServer 
-		evaluateAndWait: codeString).
+	proxyObject := self convertToTargetProxy: (codeStringOrBlockClosure 
+		gtIsBlockClosure 
+			ifTrue: [ self runningServer 
+				evaluateBlockAndWait: codeStringOrBlockClosure ]
+			ifFalse: [ self runningServer 
+				evaluateAndWait: codeStringOrBlockClosure ]).
+		
+	self assertLocalAndRemotePhlowViewsFor: proxyObject.
 	
 	^ self 
 		assertObjectInspectionForProxy: proxyObject
@@ -299,6 +269,13 @@ GtProxyRemoteInspectionExamples >> assertRemotePlaygroundPageUsing: aScripter [
 			using: aStep ]
 ]
 
+{ #category : #'asserting - inspection' }
+GtProxyRemoteInspectionExamples >> assertRemoteSideObjectPhlowViewsFor: aProxyObject [ 
+	^ GtPhlowViewTester new 
+		assertObject: aProxyObject 
+		withViewsSelector: #gtViewsForRemoteSideInContext:
+]
+
 { #category : #asserting }
 GtProxyRemoteInspectionExamples >> assertSingleEmptyCodeSnippetOfType: aSnippetType inPage: aPage [ 
 	| initialSnippet |
@@ -374,6 +351,12 @@ GtProxyRemoteInspectionExamples >> compositeInspectorToolForBothProxySidesForPro
 		aTool databasesRegistry: databasesRegistry ].
 	
 	^ compositeTool
+]
+
+{ #category : #converting }
+GtProxyRemoteInspectionExamples >> convertToTargetProxy: anObject [ 
+	"Allow subclasses to transform the type of proxy instead of assuming that the server computes the right type."
+	^ anObject
 ]
 
 { #category : #accessing }
@@ -712,4 +695,11 @@ GtProxyRemoteInspectionExamples >> targetProxyObjectForInspection [
 	
 	^ GtRemotePhlowSimulationExamples new 
 		simulationOnRemoteObject
+]
+
+{ #category : #'examples - inspection' }
+GtProxyRemoteInspectionExamples >> targetProxyObjectForInspection_viewsAreOk [
+	<gtExample>
+	
+	^ self assertLocalAndRemotePhlowViewsFor: self targetProxyObjectForInspection
 ]
