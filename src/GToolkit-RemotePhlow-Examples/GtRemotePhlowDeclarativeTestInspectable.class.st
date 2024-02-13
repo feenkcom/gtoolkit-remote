@@ -452,7 +452,7 @@ GtRemotePhlowDeclarativeTestInspectable >> initialize [
 	collectionOfObjects := { 
 		42. 
 		'Hello World'. 
-		DateAndTime readFrom: '2021-04-06T14:43:49.623384+02:00' readStream }.
+		DateAndTime readFrom: '2021-04-06T14:43:50+02:00' readStream }.
 ]
 
 { #category : #accessing }

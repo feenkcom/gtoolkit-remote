@@ -185,32 +185,31 @@ GtRemoteDeclarativeViewsExamples >> assertUnstyledStringInViewSpecification: aVi
 { #category : #'examples - views' }
 GtRemoteDeclarativeViewsExamples >> columnedListView [
 	<gtExample>
-	| viewProxy viewDictionary view |
+	| viewProxy viewDictionary viewSpecification viewDatasource |
 
 	viewProxy := self viewedObjectProxy.
 	viewDictionary :=  viewProxy getViewDeclaration: #gtColumnedListFor:.
-	view := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
 	
-	self assert: view title equals: 'Columned list'.
-	self assert: view columnTitles equals: #(Value Lowercase).
-	self assert: view columnWidths equals: #(nil 100).
+	self assert: viewSpecification title equals: 'Columned list'.
+	self assert: viewSpecification columnTitles equals: #(Value Lowercase).
+	self assert: viewSpecification columnWidths equals: #(nil 100).
 	self 
-		assert: (view columnTypes collect: #typeLabel) 
+		assert: (viewSpecification columnTypes collect: #typeLabel) 
 		equals: #(text text).
 	
-	self assert: view dataTransport equals: GtPhlowViewSpecification dataLazy.
-	self columnedListViewLazyCheck: viewProxy.
+	self assert: viewSpecification dataTransport equals: GtPhlowViewSpecification dataLazy.
 	
-	^ view
-]
-
-{ #category : #private }
-GtRemoteDeclarativeViewsExamples >> columnedListViewLazyCheck: viewProxy [
-	| declarativeView |
-
-	declarativeView := viewProxy getDeclarativeViewFor: #gtColumnedListFor:.
-	self assert: declarativeView retrieveTotalItemsCount equals: 3.
-
+	viewDatasource := viewProxy getDeclarativeViewFor: #gtColumnedListFor:.
+	self 
+		assertNodesInColumnedViewDatasource: viewDatasource 
+		forObjects: (GtRemotePhlowDeclarativeTestInspectable new 
+			collectionOfObjects) 
+		andColumnsComputation: {
+			[ :anObject | anObject  ].
+			[ :anObject | anObject asString asLowercase ] }.
+	
+	^ viewSpecification
 ]
 
 { #category : #'examples - views' }
