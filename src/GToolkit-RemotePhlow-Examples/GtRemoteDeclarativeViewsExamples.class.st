@@ -251,12 +251,24 @@ GtRemoteDeclarativeViewsExamples >> columnedListWithTypedColumns [
 ]
 
 { #category : #private }
+GtRemoteDeclarativeViewsExamples >> computeStyledTextForTreeNumber: anInteger [
+	| computedString|
+	computedString := anInteger asString, ' number'.
+	(anInteger \\ 2) = 0 
+		ifTrue: [
+			computedString :=  computedString asRopedText
+				bold;
+				highlight: (GtPhlowColor named: #yellow) asColor ].
+	^ computedString
+]
+
+{ #category : #private }
 GtRemoteDeclarativeViewsExamples >> createListNodesWithObjectValues: aCollectionOfObjects [
 	^ self createListNodesWithTextValues: (aCollectionOfObjects 
 		collect: [ :anObject | 
-			(anObject isString or: [anObject class = GtPhlowRunBasedText])
-				ifTrue: [ anObject ]
-				ifFalse: [ anObject gtDisplayText ] ])
+			(self shouldConvertUsingDisplayTextObject: anObject)
+				ifTrue: [ anObject gtDisplayText ]
+				ifFalse: [ anObject ] ])
 ]
 
 { #category : #private }
@@ -276,9 +288,9 @@ GtRemoteDeclarativeViewsExamples >> createListNodesWithTextValues: aCollectionOf
 GtRemoteDeclarativeViewsExamples >> createTreeNodesWithObjectValues: aCollectionOfObjects [
 	^ self createTreeNodesWithTextValues: (aCollectionOfObjects 
 		collect: [ :anObject | 
-			(anObject isString or: [anObject class = GtPhlowRunBasedText])
-				ifTrue: [ anObject ]
-				ifFalse: [ anObject gtDisplayText ] ])
+			(self shouldConvertUsingDisplayTextObject: anObject)
+				ifTrue: [ anObject gtDisplayText ]
+				ifFalse: [ anObject ] ])
 ]
 
 { #category : #private }
@@ -375,10 +387,15 @@ GtRemoteDeclarativeViewsExamples >> listViewWithStyledText [
 	viewDatasource := viewedObjectProxy getDeclarativeViewFor: #gtListWithStyledTextFor:.
 	self 
 		asserNodesInListViewDatasource: viewDatasource 
-		forObjects: (GtRemotePhlowDeclarativeTestInspectable new 
-			objectsForListWithStyledTextForRemoteComparison).
+		forObjects: self objectsForListWithStyledTextComparison.
 	
 	^ viewSpecification
+]
+
+{ #category : #'examples - views' }
+GtRemoteDeclarativeViewsExamples >> objectsForListWithStyledTextComparison [
+	^ GtRemotePhlowDeclarativeTestInspectable new 
+			objectsForListWithStyledText
 ]
 
 { #category : #private }
@@ -436,6 +453,14 @@ GtRemoteDeclarativeViewsExamples >> runningServer [
 	<gtExample>
 	<after: #stopServer>
 
+]
+
+{ #category : #private }
+GtRemoteDeclarativeViewsExamples >> shouldConvertUsingDisplayTextObject: anObject [ 
+	"When doing local inspection Phlow text objects are not special.
+	They are just like any other normal objects and we convert them 
+	as any other object"
+	^ anObject isString not
 ]
 
 { #category : #private }
@@ -629,29 +654,13 @@ GtRemoteDeclarativeViewsExamples >> treeViewWithStyledTextLazyCheck: viewProxy [
 	obtainedNodes := self 
 		assertNodesInTreeViewDatasource: viewDatasource 
 		forObjects: ((1 to: 5) 
-			collect: [ :x | 
-			| computedString|
-			computedString := x asString, ' number'.
-			(x \\ 2) = 0 
-				ifTrue: [
-					computedString := (GtPhlowText forString: computedString)
-						bold;
-						highlight: (GtPhlowColor named: #yellow) ].
-			computedString ]).
+			collect: [ :aNumber | self computeStyledTextForTreeNumber: aNumber ]).
 			
 	self 
 		assertChildTreeNodesInViewDatasource: viewDatasource 
 		forParentNode:  obtainedNodes third
 		forObjects: ((1 to: 2) 
-			collect: [ :x | 
-				| computedString|
-				computedString := x asString, ' number'.
-				(x \\ 2) = 0 
-					ifTrue: [
-						computedString := (GtPhlowText forString: computedString)
-							bold;
-							highlight: (GtPhlowColor named: #yellow) ].
-				computedString ]).
+			collect: [ :aNumber | self computeStyledTextForTreeNumber: aNumber  ]).
 ]
 
 { #category : #'examples - views' }
