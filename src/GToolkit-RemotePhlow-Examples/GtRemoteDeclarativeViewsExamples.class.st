@@ -92,7 +92,7 @@ GtRemoteDeclarativeViewsExamples >> assertNodesInColumnedViewDatasource: viewDat
 
 { #category : #assertions }
 GtRemoteDeclarativeViewsExamples >> assertNodesInListViewDatasource: viewDatasource forObjects: anCollectionOfObjects [
-	self 
+	^ self 
 		assertNodesInViewDatasource: viewDatasource 
 		ofType: GtRemotePhlowDataNode
 		equalNodes: (self 
