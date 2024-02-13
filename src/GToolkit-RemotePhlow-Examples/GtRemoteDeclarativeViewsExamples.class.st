@@ -31,6 +31,17 @@ GtRemoteDeclarativeViewsExamples >> assertBasicStyledTextInViewSpecification: aV
 ]
 
 { #category : #assertions }
+GtRemoteDeclarativeViewsExamples >> assertChildColumnedTreeNodesInViewDatasource: viewDatasource forParentNode: aParentNode  forObjects: anExpectedCollectionOfObjects andColumnsComputation: aCollectionOfBlockClosures [
+	^ self 
+		assertChildNodesInViewDatasource: viewDatasource 
+		forParentNode:  aParentNode
+		ofType: GtRemotePhlowColumnedTreeNode
+		equalNodes: (self 
+			createColumnedNodesWithObjectValues: anExpectedCollectionOfObjects
+			andColumnsComputation: aCollectionOfBlockClosures)
+]
+
+{ #category : #assertions }
 GtRemoteDeclarativeViewsExamples >> assertChildNodesInViewDatasource: viewDatasource forParentNode: aParentNode ofType: aPhlowDataNodeClass equalNodes: anExpectedCollectionOfNodes [ 
 	| obtainedChildNodes |
 	obtainedChildNodes := (viewDatasource 
@@ -71,7 +82,7 @@ GtRemoteDeclarativeViewsExamples >> assertListingNodes: obtainedNodes equals: ex
 
 { #category : #assertions }
 GtRemoteDeclarativeViewsExamples >> assertNodesInColumnedViewDatasource: viewDatasource forObjects: aCollectionOfObjects andColumnsComputation: aCollectionOfBlockClosures [
-	self 
+	^ self 
 		assertNodesInViewDatasource: viewDatasource 
 		ofType: GtRemotePhlowColumnedTreeNode
 		equalNodes: (self 
@@ -281,6 +292,45 @@ GtRemoteDeclarativeViewsExamples >> columnedListWithTypedColumns [
 			[ :aNumber | '+',aNumber asFloat asString ].
 			[ :aNumber | '+',(aNumber + 1) asString].
 			[ :aNumber | aNumber asFloat gtSystemIconName ] }.
+	
+	^ viewSpecification
+]
+
+{ #category : #'examples - views' }
+GtRemoteDeclarativeViewsExamples >> columnedTreeView [
+	<gtExample>
+	| viewedObjectProxy viewDictionary viewSpecification viewDatasource obtainedNodes |
+
+	viewedObjectProxy := self viewedObjectProxy.
+	viewDictionary :=  viewedObjectProxy getViewDeclaration: #gtColumnedTreeFor:.
+	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
+	self assert: viewSpecification title equals: 'Columned Tree'.
+	self assert: viewSpecification columnTitles equals: {'x' . 'x * x'}.
+	self assert: viewSpecification columnWidths equals: #(nil nil).
+	self 
+		assert: (viewSpecification columnTypes collect: #typeLabel) 
+		equals: #(text text).
+	self 
+		assert: viewSpecification dataTransport 
+		equals: GtPhlowViewSpecification dataLazy.
+	
+	viewDatasource := viewedObjectProxy getDeclarativeViewFor: #gtColumnedTreeFor:.
+	
+	obtainedNodes := self 
+		assertNodesInColumnedViewDatasource: viewDatasource 
+		forObjects: (1 to: 5 ) 
+		andColumnsComputation: {
+			[ :aNumber | aNumber ].
+			[ :aNumber | aNumber * aNumber ] }.
+			
+	self 
+		assertChildColumnedTreeNodesInViewDatasource: viewDatasource 
+		forParentNode:  obtainedNodes third
+		forObjects: (1 to: 2 ) 
+		andColumnsComputation: {
+			[ :aNumber | aNumber ].
+			[ :aNumber | aNumber * aNumber ] }.
 	
 	^ viewSpecification
 ]
