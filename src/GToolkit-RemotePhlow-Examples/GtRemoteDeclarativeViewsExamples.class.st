@@ -497,7 +497,7 @@ GtRemoteDeclarativeViewsExamples >> treeView [
 
 { #category : #private }
 GtRemoteDeclarativeViewsExamples >> treeViewLazyCheck: viewProxy [
-	| declarativeView obtainedNodes |
+	| declarativeView obtainedNodes obtainedChildNodes|
 
 	declarativeView := viewProxy getDeclarativeViewFor: #gtTreeFor:.
 	self assert: declarativeView retrieveTotalItemsCount equals: 5.
@@ -506,11 +506,20 @@ GtRemoteDeclarativeViewsExamples >> treeViewLazyCheck: viewProxy [
 		collect: [ :aNodeValueDictionary |
 			GtRemotePhlowTreeNode 
 				fromJSONDictionary: aNodeValueDictionary ].
-	
 	self 
 		assertListingNodes: obtainedNodes 
 		equals: (self createTreeNodesWithTextValues: ((1 to: 5) 
-			collect: [ :x | x asString, ' number' ]))
+			collect: [ :x | x asString, ' number' ])).
+			
+	obtainedChildNodes := (declarativeView 
+		retrieveChildrenForNodeAtPath:  obtainedNodes third  nodePath)
+			collect: [ :aNodeValueDictionary |
+				GtRemotePhlowTreeNode 
+					fromJSONDictionary: aNodeValueDictionary ].
+	self 
+		assertListingNodes: obtainedChildNodes 
+		equals: (self createTreeNodesWithTextValues: ((1 to: 2) 
+			collect: [ :x | x asString, ' number' ])).
 ]
 
 { #category : #examples }
