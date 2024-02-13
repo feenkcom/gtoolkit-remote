@@ -18,6 +18,17 @@ GtPhlowRunsGroup class >> withRuns: aCollectionOfRuns [
 		initializeWithRuns: aCollectionOfRuns
 ]
 
+{ #category : #accessing }
+GtPhlowRunsGroup >> = anObject [
+	
+	self == anObject
+		ifTrue: [ ^ true ].
+	(anObject class = self class)
+		ifFalse: [ ^ false ].
+
+	^ self items = anObject items
+]
+
 { #category : #adding }
 GtPhlowRunsGroup >> add: aRun [
 	self addRun: aRun

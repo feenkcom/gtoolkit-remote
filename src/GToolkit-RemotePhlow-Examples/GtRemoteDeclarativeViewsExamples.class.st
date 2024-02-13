@@ -192,6 +192,19 @@ GtRemoteDeclarativeViewsExamples >> columnedListWithTypedColumns [
 ]
 
 { #category : #private }
+GtRemoteDeclarativeViewsExamples >> createListNodesWithTextValues: aCollectionOfValues [
+	^ aCollectionOfValues withIndexCollect: [ :aText :anIndex | 
+		| convertedText |
+		convertedText := aText.
+		convertedText class = BlRunRopedText ifTrue: [
+			convertedText := convertedText asGtPlowText ]. 
+	 	GtRemotePhlowDataNode new
+	 		nodeId: anIndex;
+	 		nodeValue: (GtRemotePhlowItemTextualValue new
+	 			itemText: convertedText)]
+]
+
+{ #category : #private }
 GtRemoteDeclarativeViewsExamples >> createTreeNodesWithTextValues: aCollectionOfValues [
 	^ aCollectionOfValues withIndexCollect: [ :aText :anIndex | 
 	 GtRemotePhlowTreeNode new
@@ -270,10 +283,23 @@ GtRemoteDeclarativeViewsExamples >> listViewDisplayArray [
 
 { #category : #private }
 GtRemoteDeclarativeViewsExamples >> listViewLazyCheck: viewProxy [
-	| declarativeView |
+	| declarativeView obtainedNodes |
 
 	declarativeView := viewProxy getDeclarativeViewFor: #gtListFor:.
 	self assert: declarativeView retrieveTotalItemsCount equals: 3.
+	
+	obtainedNodes := declarativeView retrieveFormattedItems 
+		collect: [ :aNodeValueDictionary |
+			GtRemotePhlowDataNode 
+				fromJSONDictionary: aNodeValueDictionary ].
+	
+	self 
+		assertListingNodes: obtainedNodes 
+		equals: (self createListNodesWithTextValues: (GtRemotePhlowDeclarativeTestInspectable new 
+			collectionOfObjects
+				collect: [ :anObject | anObject isString
+					ifTrue: [ anObject ]
+					ifFalse: [ anObject gtDisplayText]  ])).
 ]
 
 { #category : #private }

@@ -19,6 +19,18 @@ GtPhlowRunBasedText class >> typeLabel [
 	^ 'gtPhlowRunBasedText'
 ]
 
+{ #category : #comparing }
+GtPhlowRunBasedText >> = anObject [
+	
+	self == anObject
+		ifTrue: [ ^ true ].
+	(anObject class = self class)
+		ifFalse: [ ^ false ].
+
+	^ self asString = anObject asString and: [
+		self attributeRuns = anObject attributeRuns ]
+]
+
 { #category : #attributes }
 GtPhlowRunBasedText >> addAttribute: aPhlowAttribute from: aStartIndex to: anEndIndex [
 	| targetRun | 
@@ -209,6 +221,12 @@ GtPhlowRunBasedText >> gtViewPlainRunsFor: aView [
 		priority: 11;
 		object: [ attributeRuns ];
 		view: #gtViewIntervalsFor: 
+]
+
+{ #category : #comparing }
+GtPhlowRunBasedText >> hash [
+	^ self asString hash 
+		bitXor: self attributeRuns hash
 ]
 
 { #category : #initialization }
