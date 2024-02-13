@@ -86,11 +86,7 @@ GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListWithStyledTextFor: aVie
 	^aView columnedList
 		title: 'Columned list - styled text';
 		priority: 20.1;
-		items: [ { 
-			'42' asRopedText bold.
-			self styledHelloWorld.
-			self styledText.
-			self styledPhlowText} ];
+		items: [ self objectsForListWithStyledText ];
 		column: 'Plain' text: [ :anObject | anObject asString ];
 		column: 'Styled' text: [ :anObject | anObject ];
 		column: 'Number' 

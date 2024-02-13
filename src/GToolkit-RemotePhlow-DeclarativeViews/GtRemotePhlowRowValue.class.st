@@ -21,6 +21,14 @@ GtRemotePhlowRowValue class >> fromJSONDictionary: aDictionary [
 		yourself
 ]
 
+{ #category : #comparing }
+GtRemotePhlowRowValue >> = anObject [
+	self == anObject ifTrue: [ ^ true ].
+	self class = anObject class ifFalse: [ ^ false ].
+	
+	^ self columnValues = anObject columnValues
+]
+
 { #category : #converting }
 GtRemotePhlowRowValue >> asDictionaryForExport [
 	"Answer the receiver as a dictionary ready for JSON serialisation"
@@ -47,4 +55,26 @@ GtRemotePhlowRowValue >> columnValues [
 { #category : #accessing }
 GtRemotePhlowRowValue >> columnValues: anObject [
 	columnValues := anObject
+]
+
+{ #category : #printing }
+GtRemotePhlowRowValue >> descriptionOn: aStream [ 
+	aStream 
+		print: self columnValues size;
+		<< ' columns'
+]
+
+{ #category : #'gt - extensions' }
+GtRemotePhlowRowValue >> gtViewColumnValuesFor: aView [
+	<gtView>
+	
+	^ aView list
+		title: 'Column Values';
+		priority: 10;
+		items: [ self columnValues]
+]
+
+{ #category : #comparing }
+GtRemotePhlowRowValue >> hash [ 
+	^ self columnValues hash
 ]

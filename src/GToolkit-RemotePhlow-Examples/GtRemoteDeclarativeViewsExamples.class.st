@@ -13,15 +13,6 @@ Class {
 }
 
 { #category : #assertions }
-GtRemoteDeclarativeViewsExamples >> asserNodesInListViewDatasource: viewDatasource forObjects: anCollectionOfObjects [
-	self 
-		assertNodesInViewDatasource: viewDatasource 
-		ofType: GtRemotePhlowDataNode
-		equalNodes: (self 
-			createListNodesWithObjectValues: anCollectionOfObjects).
-]
-
-{ #category : #assertions }
 GtRemoteDeclarativeViewsExamples >> assertBasicStyledTextInViewSpecification: aViewSpecification expectedText: anExpectedText [
 	| obtainedStylableText |
 	
@@ -79,6 +70,25 @@ GtRemoteDeclarativeViewsExamples >> assertListingNodes: obtainedNodes equals: ex
 ]
 
 { #category : #assertions }
+GtRemoteDeclarativeViewsExamples >> assertNodesInColumnedViewDatasource: viewDatasource forObjects: aCollectionOfObjects andColumnsComputation: aCollectionOfBlockClosures [
+	self 
+		assertNodesInViewDatasource: viewDatasource 
+		ofType: GtRemotePhlowColumnedTreeNode
+		equalNodes: (self 
+			createColumnedNodesWithObjectValues: aCollectionOfObjects
+			andColumnsComputation: aCollectionOfBlockClosures).
+]
+
+{ #category : #assertions }
+GtRemoteDeclarativeViewsExamples >> assertNodesInListViewDatasource: viewDatasource forObjects: anCollectionOfObjects [
+	self 
+		assertNodesInViewDatasource: viewDatasource 
+		ofType: GtRemotePhlowDataNode
+		equalNodes: (self 
+			createListNodesWithObjectValues: anCollectionOfObjects).
+]
+
+{ #category : #assertions }
 GtRemoteDeclarativeViewsExamples >> assertNodesInTreeViewDatasource: viewDatasource forObjects: anCollectionOfObjects [
 	^ self 
 		assertNodesInViewDatasource: viewDatasource 
@@ -91,7 +101,9 @@ GtRemoteDeclarativeViewsExamples >> assertNodesInTreeViewDatasource: viewDatasou
 GtRemoteDeclarativeViewsExamples >> assertNodesInViewDatasource: viewSpecification ofType: aPhlowDataNodeClass equalNodes: anExpectedCollectionOfNodes [ 
 	| obtainedNodes |
 	
-	self assert: viewSpecification retrieveTotalItemsCount equals: anExpectedCollectionOfNodes size.
+	self 
+		assert: viewSpecification retrieveTotalItemsCount 
+		equals: anExpectedCollectionOfNodes size.
 	
 	obtainedNodes := viewSpecification retrieveFormattedItems 
 		collect: [ :aNodeValueDictionary |
@@ -190,34 +202,36 @@ GtRemoteDeclarativeViewsExamples >> columnedListViewLazyCheck: viewProxy [
 
 ]
 
-{ #category : #private }
-GtRemoteDeclarativeViewsExamples >> columnedListViewWithStyledTextLazyCheck: viewProxy [
-	| declarativeView |
-
-	declarativeView := viewProxy getDeclarativeViewFor: #gtColumnedListWithStyledTextFor:.
-	self assert: declarativeView retrieveTotalItemsCount equals: 4.
-]
-
 { #category : #'examples - views' }
 GtRemoteDeclarativeViewsExamples >> columnedListWithStyledText [
 	<gtExample>
-	| viewProxy viewDictionary view |
+	| viewedObjectProxy viewDictionary viewDataSource viewDatasource |
 
-	viewProxy := self viewedObjectProxy.
-	viewDictionary :=  viewProxy getViewDeclaration: #gtColumnedListWithStyledTextFor:.
-	view := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	viewedObjectProxy := self viewedObjectProxy.
+	viewDictionary :=  viewedObjectProxy getViewDeclaration: #gtColumnedListWithStyledTextFor:.
+	viewDataSource := GtPhlowViewSpecification fromDictionary: viewDictionary.
 	
-	self assert: view title equals: 'Columned list - styled text'.
-	self assert: view columnTitles equals: {'Plain' . 'Styled' . 'Number'}.
-	self assert: view columnWidths equals: #(nil nil nil).
+	self assert: viewDataSource title equals: 'Columned list - styled text'.
+	self assert: viewDataSource columnTitles equals: {'Plain' . 'Styled' . 'Number'}.
+	self assert: viewDataSource columnWidths equals: #(nil nil nil).
 	self 
-		assert: (view columnTypes collect: #typeLabel) 
+		assert: (viewDataSource columnTypes collect: #typeLabel) 
 		equals: #(text text number).
+	self assert: viewDataSource dataTransport equals: GtPhlowViewSpecification dataLazy.
 	
-	self assert: view dataTransport equals: GtPhlowViewSpecification dataLazy.
-	self columnedListViewWithStyledTextLazyCheck: viewProxy.
+	viewDatasource := viewedObjectProxy getDeclarativeViewFor: #gtColumnedListWithStyledTextFor:.
 	
-	^ view
+	self 
+		assertNodesInColumnedViewDatasource: viewDatasource 
+		forObjects: self objectsForListWithStyledTextComparison 
+		andColumnsComputation: {
+			[ :anObject | anObject asString ].
+			[ :anObject | anObject ].
+			[ :anObject :index | 
+				"(GtPhlowText forString: (index*100) asString) bold"
+				(index*100) asRopedText bold ] }.
+	
+	^ viewDataSource
 ]
 
 { #category : #'examples - views' }
@@ -285,6 +299,27 @@ GtRemoteDeclarativeViewsExamples >> convertIfNeededUsingDisplayTextObject: anObj
 ]
 
 { #category : #private }
+GtRemoteDeclarativeViewsExamples >> createColumnedNodesWithObjectValues: aCollectionOfObjects andColumnsComputation: aCollectionOfBlockClosures [
+	^ self createColumnedNodesWithRowValues:  (aCollectionOfObjects 
+		withIndexCollect: [ :anObject :aRowIndex | 
+			GtRemotePhlowRowValue new
+				columnValues: (aCollectionOfBlockClosures 
+					collect: [ :aColumnComputation |
+						| columnedText |
+						columnedText := self convertIfNeededUsingDisplayTextObject: (aColumnComputation 
+							cull: anObject cull: aRowIndex).
+						self createPhlowTextValueFromText: columnedText ]) ])
+]
+
+{ #category : #private }
+GtRemoteDeclarativeViewsExamples >> createColumnedNodesWithRowValues: aCollectionOfRowValues [
+	^ aCollectionOfRowValues withIndexCollect: [ :aRowValue :anIndex | 
+	 	GtRemotePhlowColumnedTreeNode new
+	 		nodeId: anIndex;
+	 		nodeValue: aRowValue ]
+]
+
+{ #category : #private }
 GtRemoteDeclarativeViewsExamples >> createListNodesWithObjectValues: aCollectionOfObjects [
 	^ self createListNodesWithTextValues: (aCollectionOfObjects 
 		collect: [ :anObject | 
@@ -294,14 +329,20 @@ GtRemoteDeclarativeViewsExamples >> createListNodesWithObjectValues: aCollection
 { #category : #private }
 GtRemoteDeclarativeViewsExamples >> createListNodesWithTextValues: aCollectionOfValues [
 	^ aCollectionOfValues withIndexCollect: [ :aText :anIndex | 
-		| convertedText |
-		convertedText := aText.
-		convertedText class name = #BlRunRopedText ifTrue: [
-			convertedText := convertedText asGtPlowText ]. 
 	 	GtRemotePhlowDataNode new
 	 		nodeId: anIndex;
-	 		nodeValue: (GtRemotePhlowItemTextualValue new
-	 			itemText: convertedText)]
+	 		nodeValue: (self createPhlowTextValueFromText: aText) ]
+]
+
+{ #category : #private }
+GtRemoteDeclarativeViewsExamples >> createPhlowTextValueFromText: aText [
+	| convertedText |
+	convertedText := aText.
+	convertedText class name = #BlRunRopedText ifTrue: [
+		convertedText := convertedText asGtPlowText ]. 
+	
+	^ (GtRemotePhlowItemTextualValue new
+	 	itemText: convertedText)
 ]
 
 { #category : #private }
@@ -388,7 +429,7 @@ GtRemoteDeclarativeViewsExamples >> listView [
 	
 	viewDatasource := viewedObjectProxy getDeclarativeViewFor: #gtListFor:.
 	self 
-		asserNodesInListViewDatasource: viewDatasource 
+		assertNodesInListViewDatasource: viewDatasource 
 		forObjects: (GtRemotePhlowDeclarativeTestInspectable new 
 			collectionOfObjects).
 	
@@ -410,7 +451,7 @@ GtRemoteDeclarativeViewsExamples >> listViewWithStyledText [
 	 
 	viewDatasource := viewedObjectProxy getDeclarativeViewFor: #gtListWithStyledTextFor:.
 	self 
-		asserNodesInListViewDatasource: viewDatasource 
+		assertNodesInListViewDatasource: viewDatasource 
 		forObjects: self objectsForListWithStyledTextComparison.
 	
 	^ viewSpecification

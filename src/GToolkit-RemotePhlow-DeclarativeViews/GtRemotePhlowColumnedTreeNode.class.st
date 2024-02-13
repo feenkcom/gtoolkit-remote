@@ -13,3 +13,14 @@ GtRemotePhlowColumnedTreeNode class >> valueType [
 GtRemotePhlowColumnedTreeNode >> columnValueAt: anIndex [
 	^ self nodeValue columnValueAt: anIndex
 ]
+
+{ #category : #'gt - extensions' }
+GtRemotePhlowColumnedTreeNode >> gtViewColumnValuesFor: aView [
+	<gtView>
+	
+	^ aView forward
+		title: 'Column Values';
+		priority: 10;
+		object: [ self nodeValue ];
+		view: #gtViewColumnValuesFor:
+]

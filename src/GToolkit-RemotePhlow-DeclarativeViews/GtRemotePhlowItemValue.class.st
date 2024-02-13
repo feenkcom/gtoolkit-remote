@@ -113,11 +113,3 @@ GtRemotePhlowItemValue >> printBackgroundOn: aStream [
 			<< ', background: ';
 			print: aBackground ]
 ]
-
-{ #category : #printing }
-GtRemotePhlowItemValue >> printOn: aStream [ 
-	super printOn: aStream .
-	
-	aStream parenthesize: [
-		self descriptionOn: aStream ]
-]
