@@ -238,7 +238,7 @@ GtRemoteDeclarativeViewsExamples >> columnedListWithStyledText [
 GtRemoteDeclarativeViewsExamples >> columnedListWithTypedColumns [
 	<gtExample>
 	<after: #stopServer>
-	| viewProxy viewDictionary viewSpecification |
+	| viewProxy viewDictionary viewSpecification viewDatasource |
 
 	viewProxy := self viewedObjectProxy.
 	viewDictionary := viewProxy getViewDeclaration: #gtColumnedListWithTypedColumnsFor:.
@@ -272,6 +272,15 @@ GtRemoteDeclarativeViewsExamples >> columnedListWithTypedColumns [
 				self expectedColumnedListTypedColumnsTwoItemsPharo11]
 			forPharo10: [
 				self expectedColumnedListTypedColumnsTwoItems ]).
+				
+	viewDatasource := viewProxy getDeclarativeViewFor: #gtColumnedListWithTypedColumnsFor:.
+	self 
+		assertNodesInColumnedViewDatasource: viewDatasource 
+		forObjects: (1 to: 500)
+		andColumnsComputation: {
+			[ :aNumber | '+',aNumber asFloat asString ].
+			[ :aNumber | '+',(aNumber + 1) asString].
+			[ :aNumber | aNumber asFloat gtSystemIconName ] }.
 	
 	^ viewSpecification
 ]
