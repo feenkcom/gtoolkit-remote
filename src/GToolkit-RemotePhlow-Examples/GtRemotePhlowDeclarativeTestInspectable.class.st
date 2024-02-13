@@ -46,7 +46,8 @@ GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListFor: aView [
 		priority: 20;
 		items: [ collectionOfObjects ];
 		column: 'Value' text: [ :anObject | anObject ];
-		column: 'Lowercase' text: [ :anObject | anObject asString asLowercase ] width: 100.
+		column: 'Lowercase' text: [ :anObject | 
+			anObject printString asLowercase ] width: 100.
 ]
 
 { #category : #inspecting }
@@ -452,7 +453,7 @@ GtRemotePhlowDeclarativeTestInspectable >> initialize [
 	collectionOfObjects := { 
 		42. 
 		'Hello World'. 
-		DateAndTime readFrom: '2021-04-06T14:43:50+02:00' readStream }.
+		DateAndTime readFrom: '2021-04-06T14:43:50.123456+02:00' readStream }.
 ]
 
 { #category : #accessing }

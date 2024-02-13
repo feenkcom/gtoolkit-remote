@@ -207,7 +207,7 @@ GtRemoteDeclarativeViewsExamples >> columnedListView [
 			collectionOfObjects) 
 		andColumnsComputation: {
 			[ :anObject | anObject  ].
-			[ :anObject | anObject asString asLowercase ] }.
+			[ :anObject | anObject gtDisplayString asLowercase ] }.
 	
 	^ viewSpecification
 ]
