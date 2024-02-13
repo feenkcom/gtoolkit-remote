@@ -53,6 +53,23 @@ GtPhlowColor class >> transparent [
 	^ self named: #transparent
 ]
 
+{ #category : #comparing }
+GtPhlowColor >> = anObject [
+	"For now make this equal only to instances of other phlow colors"
+	<return: #Boolean>
+	
+	self == anObject
+		ifTrue: [ ^ true ].
+	(anObject class = self class)
+		ifFalse: [ ^ false ].
+
+	^ self red = anObject red and: [
+		self green = anObject green and: [
+			self blue = anObject blue and: [
+				self alpha = anObject alpha and: [
+					self name = anObject name ] ] ] ]
+]
+
 { #category : #accessing }
 GtPhlowColor >> alpha [
 	^ alpha ifNil: [ 0 ]
@@ -90,6 +107,16 @@ GtPhlowColor >> green [
 	^ green
 ]
 
+{ #category : #comparing }
+GtPhlowColor >> hash [
+
+	^ self red hash 
+		bitXor: (self green hash 
+		bitXor: (self blue hash 
+		bitXor: (self alpha hash 
+		bitXor: self name hash )))
+]
+
 { #category : #testing }
 GtPhlowColor >> isColor [
 	^ true
@@ -98,6 +125,11 @@ GtPhlowColor >> isColor [
 { #category : #testing }
 GtPhlowColor >> isTransparent [
 	^ alpha = 0 or: [ name= #transparent ]
+]
+
+{ #category : #accessing }
+GtPhlowColor >> name [
+	^ name
 ]
 
 { #category : #accessing }
