@@ -9,6 +9,13 @@ GtRemotePhlowItemTextualValue class >> valueTypeName [
 	^ 'textualValue'
 ]
 
+{ #category : #comparing }
+GtRemotePhlowItemTextualValue >> = anObject [
+	super = anObject  ifFalse: [ ^ false ].
+	
+	^ self itemText = anObject itemText
+]
+
 { #category : #converting }
 GtRemotePhlowItemTextualValue >> asDictionaryForExport [
 	"Answer the receiver as a dictionary ready for JSON serialisation"
@@ -31,6 +38,11 @@ GtRemotePhlowItemTextualValue >> descriptionOn: aStream [
 	
 	aStream print: self itemText.
 	super descriptionOn: aStream 
+]
+
+{ #category : #comparing }
+GtRemotePhlowItemTextualValue >> hash [ 
+	^ super hash bitXor: self itemText hash
 ]
 
 { #category : #initialization }

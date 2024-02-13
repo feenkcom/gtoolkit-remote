@@ -47,6 +47,14 @@ GtRemotePhlowItemValue class >> valueTypeName [
 	^ 'item'
 ]
 
+{ #category : #comparing }
+GtRemotePhlowItemValue >> = anObject [
+	self == anObject ifTrue: [ ^ true ].
+	self class = anObject class ifFalse: [ ^ false ].
+	
+	^ self background = anObject background
+]
+
 { #category : #converting }
 GtRemotePhlowItemValue >> asDictionaryForExport [
 	"Answer the receiver as a dictionary ready for JSON serialisation"
@@ -78,6 +86,11 @@ GtRemotePhlowItemValue >> background: anObject [
 { #category : #printing }
 GtRemotePhlowItemValue >> descriptionOn: aStream [ 
 	self printBackgroundOn: aStream.
+]
+
+{ #category : #comparing }
+GtRemotePhlowItemValue >> hash [ 
+	^ 31 hash bitXor: self background hash
 ]
 
 { #category : #initialization }

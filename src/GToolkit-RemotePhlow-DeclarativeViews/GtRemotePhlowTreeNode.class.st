@@ -53,6 +53,26 @@ GtRemotePhlowTreeNode >> gtViewChildrenFor: aView [
 		column: 'Value' text: [ :aNode | aNode nodeValue ]
 ]
 
+{ #category : #comparing }
+GtRemotePhlowTreeNode >> matchesNodeContentWith: aNode [
+	(super matchesNodeContentWith: aNode) ifFalse: [ ^ false ].
+	
+	(self parentNode
+		ifNil: [ aNode parentNode isNil ]
+		ifNotNil: [ :aParentNode |
+			aParentNode matchesNodeContentWith: aNode parentNode ]) ifFalse: [ ^ false ].
+			
+	self childNodes 
+		ifNil: [ ^ aNode childNodes isNil ].
+	self childNodes size = aNode childNodes size ifFalse: [ ^ false ].
+	
+	self childNodes withIndexDo: [ :aChildNode :anIndex |
+		(aChildNode matchesNodeContentWith: (aNode childNodes at: anIndex))
+			ifFalse: [ ^ false ] ].
+			
+	^ true
+]
+
 { #category : #accessing }
 GtRemotePhlowTreeNode >> nodePath [
 	^ Array streamContents: [ :aStream | 
