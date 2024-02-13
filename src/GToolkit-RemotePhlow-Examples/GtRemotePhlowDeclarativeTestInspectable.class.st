@@ -318,11 +318,7 @@ GtRemotePhlowDeclarativeTestInspectable >> gtListWithStyledTextFor: aView [
 	^aView list
 		title: 'List - styled text';
 		priority: 15.1;
-		items: [ { 
-			'42' asRopedText bold.
-			self styledHelloWorld.
-			self styledText.
-			self styledPhlowText} ];
+		items: [ self objectsForListWithStyledText ];
 		itemText: [ :item | item ]
 ]
 
@@ -462,6 +458,16 @@ GtRemotePhlowDeclarativeTestInspectable >> initialize [
 		42. 
 		'Hello World'. 
 		DateAndTime readFrom: '2021-04-06T14:43:49.623384+02:00' readStream }.
+]
+
+{ #category : #accessing }
+GtRemotePhlowDeclarativeTestInspectable >> objectsForListWithStyledText [
+	^ { 
+			'42' asRopedText bold.
+			self styledHelloWorld.
+			self styledText.
+			self styledPhlowText
+		}
 ]
 
 { #category : #accessing }
