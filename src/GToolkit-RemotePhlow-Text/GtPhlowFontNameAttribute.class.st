@@ -24,6 +24,11 @@ GtPhlowFontNameAttribute >> asDictionaryForExport [
 		yourself
 ]
 
+{ #category : #comparing }
+GtPhlowFontNameAttribute >> equals: anAnotherAttribute [
+	^ self fontName = anAnotherAttribute fontName
+]
+
 { #category : #accessing }
 GtPhlowFontNameAttribute >> fontName [
 	^ fontName
@@ -32,6 +37,13 @@ GtPhlowFontNameAttribute >> fontName [
 { #category : #accessing }
 GtPhlowFontNameAttribute >> fontName: aString [
 	fontName := aString
+]
+
+{ #category : #comparing }
+GtPhlowFontNameAttribute >> hash [
+	"Answer an integer value that is related to the identity of the receiver."
+
+	^ super hash bitXor: self fontName hash
 ]
 
 { #category : #initialization }

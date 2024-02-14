@@ -40,6 +40,18 @@ GtPhlowFontEmphasisAttribute >> emphasis: anObject [
 	emphasis := anObject
 ]
 
+{ #category : #comparing }
+GtPhlowFontEmphasisAttribute >> equals: anAnotherAttribute [
+	^ self emphasis = anAnotherAttribute emphasis
+]
+
+{ #category : #comparing }
+GtPhlowFontEmphasisAttribute >> hash [
+	"Answer an integer value that is related to the identity of the receiver."
+
+	^ super hash bitXor: self emphasis hash
+]
+
 { #category : #initialization }
 GtPhlowFontEmphasisAttribute >> initializeFromJSONDictionary: aTextAttributeData [
 	super initializeFromJSONDictionary: aTextAttributeData.

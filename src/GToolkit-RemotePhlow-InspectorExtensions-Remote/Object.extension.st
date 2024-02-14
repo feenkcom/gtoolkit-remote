@@ -1,7 +1,7 @@
 Extension { #name : #Object }
 
 { #category : #'*GToolkit-RemotePhlow-InspectorExtensions-Remote' }
-Object >> gtRemotePrintFor: aView [
+Object >> gtPrintFor: aView [
 	<gtView>
 	^ aView textEditor
 		title: 'Print';
@@ -10,7 +10,7 @@ Object >> gtRemotePrintFor: aView [
 ]
 
 { #category : #'*GToolkit-RemotePhlow-InspectorExtensions-Remote' }
-Object >> gtRemoteRawFor: aView [
+Object >> gtRawFor: aView [
 	<gtView>
 	^ aView columnedList
 		title: 'Raw';

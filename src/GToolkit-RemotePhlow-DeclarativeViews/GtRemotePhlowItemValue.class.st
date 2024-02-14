@@ -2,8 +2,7 @@ Class {
 	#name : #GtRemotePhlowItemValue,
 	#superclass : #GtRemotePhlowNodeValue,
 	#instVars : [
-		'background',
-		'itemText'
+		'background'
 	],
 	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
@@ -33,10 +32,10 @@ GtRemotePhlowItemValue class >> valueTypeFrom: aDictionary [
 				ifTrue: [ detectedType := GtRemotePhlowItemTextualValue ].
 			aTypeName = GtRemotePhlowItemErrorValue valueTypeName
 				ifTrue: [ detectedType := GtRemotePhlowItemErrorValue ].
+			detectedType ifNotNil: [ ^ detectedType ].
 				
-			detectedType ifNil: [
-				GtRemotePhlowItemValue allSubclasses do: [ :aSubclass |
-					aSubclass valueTypeName = aTypeName ifTrue: [ ^ aSubclass] ] ].
+			GtRemotePhlowItemValue allSubclasses do: [ :aSubclass |
+				aSubclass valueTypeName = aTypeName ifTrue: [ ^ aSubclass] ].
 					
 			GtRemotePhlowItemValue ]
 		ifAbsent: [ GtRemotePhlowItemValue ])
@@ -47,6 +46,14 @@ GtRemotePhlowItemValue class >> valueTypeName [
 	^ 'item'
 ]
 
+{ #category : #comparing }
+GtRemotePhlowItemValue >> = anObject [
+	self == anObject ifTrue: [ ^ true ].
+	self class = anObject class ifFalse: [ ^ false ].
+	
+	^ self background = anObject background
+]
+
 { #category : #converting }
 GtRemotePhlowItemValue >> asDictionaryForExport [
 	"Answer the receiver as a dictionary ready for JSON serialisation"
@@ -54,7 +61,6 @@ GtRemotePhlowItemValue >> asDictionaryForExport [
 	| data | 
 	
 	data := Dictionary new 
-		at: #itemText put: self itemText;
 		at: #valueTypeName put: self class valueTypeName;
 		yourself.
 		
@@ -76,10 +82,18 @@ GtRemotePhlowItemValue >> background: anObject [
 	background := anObject
 ]
 
+{ #category : #printing }
+GtRemotePhlowItemValue >> descriptionOn: aStream [ 
+	self printBackgroundOn: aStream.
+]
+
+{ #category : #comparing }
+GtRemotePhlowItemValue >> hash [ 
+	^ 31 hash bitXor: self background hash
+]
+
 { #category : #initialization }
 GtRemotePhlowItemValue >> initializeFromJSONDictionary: aDictionary [
-	self itemText: (aDictionary at: #itemText).
-	
 	aDictionary 
 		at: #background 
 		ifPresent: [ :aBackgroundValue |
@@ -91,29 +105,10 @@ GtRemotePhlowItemValue >> isErrorItemValue [
 	^ false
 ]
 
-{ #category : #accessing }
-GtRemotePhlowItemValue >> itemText [
-	^ itemText
-]
-
-{ #category : #accessing }
-GtRemotePhlowItemValue >> itemText: anObject [
-	itemText := anObject
-]
-
 { #category : #printing }
 GtRemotePhlowItemValue >> printBackgroundOn: aStream [ 
 	self background ifNotNil: [ :aBackground |
 		aStream 
 			<< ', background: ';
 			print: aBackground ]
-]
-
-{ #category : #printing }
-GtRemotePhlowItemValue >> printOn: aStream [ 
-	super printOn: aStream .
-	
-	aStream parenthesize: [
-		aStream << self itemText.
-		self printBackgroundOn: aStream ]
 ]

@@ -10,7 +10,7 @@ GtPhlowRuns class >> fromJSONDictionary: aRunsData [
  	typeLabel := aRunsData at: '__typeLabel'.
 			
 	typeLabel = GtPhlowRunsGroup typeLabel ifTrue: [
- 		runsClass :=  GtPhlowRunsGroup ].
+ 		runsClass := GtPhlowRunsGroup ].
 		
 	^ runsClass 
 		ifNil: [ nil ]
@@ -45,7 +45,7 @@ GtPhlowRuns >> gtViewIntervalsFor: aView [
 	<gtView>
 	
 	^ aView columnedList 
-		title: 'Runs';
+		title: 'Intervals';
 		priority: 10;
 		items: [ 
 			| collectedRuns |

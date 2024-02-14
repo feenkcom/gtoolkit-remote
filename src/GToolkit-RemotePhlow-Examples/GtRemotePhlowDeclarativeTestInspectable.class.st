@@ -46,7 +46,8 @@ GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListFor: aView [
 		priority: 20;
 		items: [ collectionOfObjects ];
 		column: 'Value' text: [ :anObject | anObject ];
-		column: 'Lowercase' text: [ :anObject | anObject asString asLowercase ] width: 100.
+		column: 'Lowercase' text: [ :anObject | 
+			anObject gtDisplayString asLowercase ] width: 100.
 ]
 
 { #category : #inspecting }
@@ -55,7 +56,7 @@ GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListSpawnTextFor: aView [
 
 	^aView columnedList
 		title: 'Spawn text columned list';
-		priority: 20;
+		priority: 20.2;
 		items: [ collectionOfObjects ];
 		column: 'Value' text: [ :anObject | anObject ];
 		column: 'Class' 
@@ -80,6 +81,20 @@ GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListWithHorizontalScrolling
 ]
 
 { #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListWithStyledTextFor: aView [
+	<gtView>
+
+	^aView columnedList
+		title: 'Columned list - styled text';
+		priority: 20.1;
+		items: [ self objectsForListWithStyledText ];
+		column: 'Plain' text: [ :anObject | anObject asString ];
+		column: 'Styled' text: [ :anObject | anObject ];
+		column: 'Number' 
+			number: [ :anObject :index | (index*100) asRopedText bold  ].
+]
+
+{ #category : #inspecting }
 GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListWithTypedColumnsFor: aView [
 	<gtView>
 
@@ -98,6 +113,27 @@ GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListWithTypedColumnsFor: aV
 				format: [ :aNumber | '+',aNumber asString ];
 				width: 100 ];
 		column: 'Icon Name' iconNameDo: [ :aColumn | 
+			aColumn 
+				item: [ :aNumber | aNumber asFloat ];
+				iconName: [ :aFloat | 
+					aFloat gtSystemIconName ];
+				width: 75 ]
+]
+
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListWithTypedColumnsInGenericColumnFor: aView [
+	<gtView>
+
+	^aView columnedList
+		title: 'Columned list with typed columns - generic';
+		priority: 24.1;
+		items: [ 1 to: 500 ];
+		column: 'Text' do: [ :aColumn | 
+			aColumn 
+				item: [ :aNumber | aNumber asFloat ];
+				text: [ :aFloat | 
+					'+',aFloat asString ] ];
+		column: 'Icon Name' do: [ :aColumn | 
 			aColumn 
 				item: [ :aNumber | aNumber asFloat ];
 				iconName: [ :aFloat | 
@@ -265,10 +301,21 @@ GtRemotePhlowDeclarativeTestInspectable >> gtListWithSendFor: aView [
 
 	^aView list
 		title: 'List with send';
-		priority: 15.1;
+		priority: 15.2;
 		items: [ collectionOfObjects ];
 		itemText: [ :item | item ];
 		send: [ :item | {item. item. item }]
+]
+
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtListWithStyledTextFor: aView [
+	<gtView>
+
+	^aView list
+		title: 'List - styled text';
+		priority: 15.1;
+		items: [ self objectsForListWithStyledText ];
+		itemText: [ :item | item ]
 ]
 
 { #category : #inspecting }
@@ -374,6 +421,30 @@ GtRemotePhlowDeclarativeTestInspectable >> gtTreeFor: aView [
 		itemText: [ :x | x asString, ' number']
 ]
 
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtTreeWithStyledTextFor: aView [
+	<gtView>
+
+	^aView tree
+		title: 'Tree - with styled text';
+		priority: 30.1;
+		items: [ 1 to: 5 ];
+		children: [ :aNumber | 
+			(aNumber // 2 = aNumber)
+				ifTrue: [ #() ] 
+				ifFalse: [
+					aNumber // 2 to: (aNumber - 1) ] ];
+		itemText: [ :x | 
+			| computedString|
+			computedString := x asString, ' number'.
+			(x \\ 2) = 0 
+				ifTrue: [
+					computedString := computedString asRopedText
+						bold;
+						highlight: (GtPhlowColor named: #yellow) asColor ].
+			computedString ]
+]
+
 { #category : #initialization }
 GtRemotePhlowDeclarativeTestInspectable >> initialize [ 
 
@@ -382,7 +453,27 @@ GtRemotePhlowDeclarativeTestInspectable >> initialize [
 	collectionOfObjects := { 
 		42. 
 		'Hello World'. 
-		DateAndTime readFrom: '2021-04-06T14:43:49.623384+02:00' readStream }.
+		DateAndTime readFrom: '2021-04-06T14:43:50.123456+02:00' readStream }.
+]
+
+{ #category : #accessing }
+GtRemotePhlowDeclarativeTestInspectable >> objectsForListWithStyledText [
+	^ { 
+			'42' asRopedText bold.
+			self styledHelloWorld.
+			self styledText.
+			self styledPhlowText
+		}
+]
+
+{ #category : #accessing }
+GtRemotePhlowDeclarativeTestInspectable >> objectsForListWithStyledTextForRemoteComparison [
+	^ { 
+			'42' asRopedText bold.
+			self styledHelloWorldForRemoteComparison.
+			self styledPhlowTextForRemoteComparison.
+			self styledPhlowTextForRemoteComparison
+		}
 ]
 
 { #category : #accessing }
@@ -402,14 +493,53 @@ GtRemotePhlowDeclarativeTestInspectable >> string: anObject [
 ]
 
 { #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> styledHelloWorld [
+	| text |
+	text := 'Hello World' asRopedText.
+	
+	(text from: 1 to: 5)
+		highlight: (GtPhlowColor named: #yellow) asColor;
+		fontSize: 20.
+		
+	^ text
+]
+
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> styledHelloWorldForRemoteComparison [
+	| text |
+	text := GtPhlowText forString: 'Hello World'.
+	
+	(text from: 1 to: 5)
+		highlight: (GtPhlowColor named: #yellow) "asColor";
+		fontSize: 20.
+		
+	^ text
+]
+
+{ #category : #inspecting }
 GtRemotePhlowDeclarativeTestInspectable >> styledPhlowText [
 	| text |
 	text := GtPhlowText forString: 'Now is the time'.
 	text glamorousCodeFont.
 	(text from: 12 to: 15) fontSize: 20.
-	(text from: 5 to: 6) highlight: (GtPhlowColor named: #yellow) asColor.
+	(text from: 5 to: 6) highlight: (GtPhlowColor named: #yellow) .
 	(text from: 1 to: 4) bold.
-	(text from: 8 to: 10) foreground: (GtPhlowColor named: #red) asColor.
+	(text from: 8 to: 10) foreground: (GtPhlowColor named: #red) .
+	(text from: 12 to: 12) glamorousRegularFont.
+	(text from: 1 to: 6) italic.
+	(text from: 8 to: 15) thin.
+	^ text
+]
+
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> styledPhlowTextForRemoteComparison [
+	| text |
+	text := GtPhlowText forString: 'Now is the time'.
+	text glamorousCodeFont.
+	(text from: 12 to: 15) fontSize: 20.
+	(text from: 5 to: 6) highlight: (GtPhlowColor named: #yellow) "asColor".
+	(text from: 1 to: 4) bold.
+	(text from: 8 to: 10) foreground: (GtPhlowColor named: #red) "asColor".
 	(text from: 12 to: 12) glamorousRegularFont.
 	(text from: 1 to: 6) italic.
 	(text from: 8 to: 15) thin.

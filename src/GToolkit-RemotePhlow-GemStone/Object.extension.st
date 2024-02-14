@@ -36,6 +36,14 @@ Object >> gtDisplayString [
 ]
 
 { #category : #'*GToolkit-RemotePhlow-GemStone' }
+Object >> gtDisplayText [
+	^ [ self gtDisplayString asRopedText ]
+		on: Error 
+		do: [ :e | e printString asRopedText 
+			foreground: (GtPhlowColor named: #red) ]
+]
+
+{ #category : #'*GToolkit-RemotePhlow-GemStone' }
 Object >> gtGsInspectorIconName [
 	^ #classIcon
 ]

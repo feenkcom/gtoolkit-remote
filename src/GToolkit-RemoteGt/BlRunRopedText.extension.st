@@ -1,10 +1,22 @@
 Extension { #name : #BlRunRopedText }
 
 { #category : #'*GToolkit-RemoteGt' }
+BlRunRopedText >> asDictionaryForExport [
+	^ self asGtPlowText asDictionaryForExport
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
+BlRunRopedText >> asGtPlowText [
+	^ (GtPhlowRunBasedText new
+		forString: self asString)
+			attributeRuns: self extractRemotePhlowRuns
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
 BlRunRopedText >> extractRemotePhlowRuns [
 	| rangesByAttributes attributesByRanges  runsGroup |
 
-	rangesByAttributes := Dictionary new.
+	rangesByAttributes := OrderedDictionary new.
 	self attributeRunsDo: [ :from :to :attrs | 
 		attrs do: [ :each | 
 			| locations |
@@ -15,7 +27,7 @@ BlRunRopedText >> extractRemotePhlowRuns [
 					locations at: locations size put: (locations last first to: to) ]
 				ifFalse: [ locations add: (from to: to) ] ] ].
 	
-	attributesByRanges := Dictionary new.
+	attributesByRanges := OrderedDictionary new.
 	rangesByAttributes keysAndValuesDo:  [ :anAttribute :currentRanges  |
 		currentRanges do: [ :aRange |
 			| attributes | 

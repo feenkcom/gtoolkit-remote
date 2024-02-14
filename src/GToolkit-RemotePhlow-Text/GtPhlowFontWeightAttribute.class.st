@@ -36,6 +36,18 @@ GtPhlowFontWeightAttribute >> asDictionaryForExport [
 		yourself
 ]
 
+{ #category : #comparing }
+GtPhlowFontWeightAttribute >> equals: anAnotherAttribute [
+	^ self weight = anAnotherAttribute weight
+]
+
+{ #category : #comparing }
+GtPhlowFontWeightAttribute >> hash [
+	"Answer an integer value that is related to the identity of the receiver."
+
+	^ super hash bitXor: self weight hash
+]
+
 { #category : #initialization }
 GtPhlowFontWeightAttribute >> initializeFromJSONDictionary: aTextAttributeData [
 	super initializeFromJSONDictionary: aTextAttributeData.

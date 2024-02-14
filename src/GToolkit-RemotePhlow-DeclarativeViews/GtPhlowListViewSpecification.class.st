@@ -18,8 +18,6 @@ GtPhlowListViewSpecification class >> fromJSONDictionary: aDictionary [
 	| list |
 
 	list := super fromJSONDictionary: aDictionary.
-	"list dataTransport = self dataIncluded ifTrue: 
-		[ list items: (aDictionary at: #items) ]."
 	^list
 ]
 

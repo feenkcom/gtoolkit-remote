@@ -6,7 +6,7 @@ Class {
 		'startIndex',
 		'endIndex'
 	],
-	#category : 'GToolkit-RemotePhlow-Text'
+	#category : #'GToolkit-RemotePhlow-Text'
 }
 
 { #category : #'instance creation' }
@@ -18,6 +18,19 @@ GtPhlowRun class >> fromJSONDictionary: anAttributeData [
 { #category : #accessing }
 GtPhlowRun class >> typeLabel [
 	^ 'phlowRun'
+]
+
+{ #category : #comparing }
+GtPhlowRun >> = anObject [
+	
+	self == anObject
+		ifTrue: [ ^ true ].
+	(anObject class = self class)
+		ifFalse: [ ^ false ].
+
+	^ (self startIndex = anObject startIndex) and: [
+		self endIndex = anObject endIndex and: [ 
+			self attributes = anObject attributes ] ]
 ]
 
 { #category : #accessing }
@@ -51,7 +64,7 @@ GtPhlowRun >> attributes [
 
 { #category : #accessing }
 GtPhlowRun >> attributes: aCollection [
-	attributes := aCollection
+	attributes := aCollection asOrderedCollection
 ]
 
 { #category : #printing }
@@ -92,11 +105,19 @@ GtPhlowRun >> gtViewAttributesFor: aView [
 		column: 'Range ' text: [ :_ | self rangeDescription ]
 ]
 
+{ #category : #comparing }
+GtPhlowRun >> hash [
+
+	^ (self startIndex hash 
+		bitXor: self endIndex hash)
+		bitXor: self attributes hash
+]
+
 { #category : #initialization }
 GtPhlowRun >> initializeFrom: aStartIndex to: aEndIndex attributes: aCollectionOfAttributes [ 
 	startIndex := aStartIndex.
 	endIndex := aEndIndex.
-	attributes := aCollectionOfAttributes.
+	self attributes: aCollectionOfAttributes.
 ]
 
 { #category : #initialization }
@@ -105,7 +126,7 @@ GtPhlowRun >> initializeFromJSONDictionary: aRunData [
 		initializeFrom: (aRunData at: 'startIndex')
 		to: (aRunData at: 'endIndex')
 		attributes: ((aRunData at: 'attributes') collect: [ :anAttributeData |
-		 GtPhlowTextAttribute fromJSONDictionary: anAttributeData ]) asArray
+			GtPhlowTextAttribute fromJSONDictionary: anAttributeData ]) 
 ]
 
 { #category : #printing }

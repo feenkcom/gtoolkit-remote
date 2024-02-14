@@ -88,6 +88,7 @@ GtRemotePhlowDeclarativeTreeExamples >> treeViewWithItemsAndChildren [
 	aView := self emptyTree.
 	aView 
 		items: [ 1 to: 4 ];
+		itemText: [ :aNumber | aNumber asString ];
 		children: [ :aNumber | 
 			aNumber = 0
 				ifTrue: [ #() ]

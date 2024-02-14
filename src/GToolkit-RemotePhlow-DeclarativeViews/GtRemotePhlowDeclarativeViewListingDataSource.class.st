@@ -90,7 +90,7 @@ GtRemotePhlowDeclarativeViewListingDataSource >> gtViewCachedNodesFor: aView [
 		column: 'Value' text: [ :aNode | aNode nodeValue ]
 ]
 
-{ #category : #accessing }
+{ #category : #'gt - extensions' }
 GtRemotePhlowDeclarativeViewListingDataSource >> instantiateNode [
 	^ self subclassResponsibility
 ]

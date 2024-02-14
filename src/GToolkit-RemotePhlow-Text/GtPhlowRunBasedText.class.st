@@ -5,8 +5,31 @@ Class {
 		'sourceString',
 		'attributeRuns'
 	],
-	#category : 'GToolkit-RemotePhlow-Text'
+	#category : #'GToolkit-RemotePhlow-Text'
 }
+
+{ #category : #'instance creation' }
+GtPhlowRunBasedText class >> fromJSONDictionary: aDictionary [
+	^ self new
+		initializeFromJSONDictionary: aDictionary
+]
+
+{ #category : #accessing }
+GtPhlowRunBasedText class >> typeLabel [
+	^ 'gtPhlowRunBasedText'
+]
+
+{ #category : #comparing }
+GtPhlowRunBasedText >> = anObject [
+	
+	self == anObject
+		ifTrue: [ ^ true ].
+	(anObject class = self class)
+		ifFalse: [ ^ false ].
+
+	^ self asString = anObject asString and: [
+		self attributeRuns = anObject attributeRuns ]
+]
 
 { #category : #attributes }
 GtPhlowRunBasedText >> addAttribute: aPhlowAttribute from: aStartIndex to: anEndIndex [
@@ -24,6 +47,23 @@ GtPhlowRunBasedText >> addAttribute: aPhlowAttribute from: aStartIndex to: anEnd
 			attributeRuns addRun: newRun.
 			newRun ].
 	targetRun addAttribute: aPhlowAttribute
+]
+
+{ #category : #converting }
+GtPhlowRunBasedText >> asDictionaryForExport [
+	"Answer the receiver as a dictionary ready for JSON serialisation.
+	Subclasses will override and add to the dictionary"
+	| dataForExport|
+	dataForExport := Dictionary new.
+	dataForExport
+		at: '__typeLabel' put: self class typeLabel;
+		at: 'sourceString' put: sourceString.
+	attributeRuns ifNotNil: [ :currentAttributeRuns | 
+		dataForExport
+			at: 'attributeRuns' 
+			put: currentAttributeRuns asDictionaryForExport ].
+
+	^ dataForExport
 ]
 
 { #category : #converting }
@@ -148,26 +188,54 @@ GtPhlowRunBasedText >> gtAttributeTreeFor: aView [
 ]
 
 { #category : #'gt - extensions' }
-GtPhlowRunBasedText >> gtStringFor: aView [
-	<gtView>
-	self isEmpty ifTrue: [ ^ aView empty ].
-	
-	^ aView forward 
-		title: 'String';
-		priority: 5;
-		object: [ sourceString ];
-		view: #gtLiveFor:
-]
-
-{ #category : #'gt - extensions' }
 GtPhlowRunBasedText >> gtViewIntervalsFor: aView [
 	<gtView>
 	
-	^ aView forward 
-		title: 'Runs';
+	^ aView columnedList 
+		title: 'Intervals';
 		priority: 10;
+		items: [ 
+			| collectedRuns |
+			collectedRuns := OrderedCollection new.
+			attributeRuns runsDo: [ :aRun |
+				collectedRuns add: aRun ].
+			collectedRuns ];
+		column: 'Interval' 
+			text: [ :aRun | aRun rangeDescription ]
+			width: 150;
+		column: 'Text' 
+			text: [ :aRun | 
+				self 
+					copyFrom: aRun startIndex
+					to: aRun endIndex ];
+		column: 'Attributes' 
+			text: [ :aRun | aRun attributesDescription ]
+]
+
+{ #category : #'gt - extensions' }
+GtPhlowRunBasedText >> gtViewPlainRunsFor: aView [
+	<gtView>
+	
+	^ aView forward 
+		title: 'Plain Runs';
+		priority: 11;
 		object: [ attributeRuns ];
 		view: #gtViewIntervalsFor: 
+]
+
+{ #category : #comparing }
+GtPhlowRunBasedText >> hash [
+	^ self asString hash 
+		bitXor: self attributeRuns hash
+]
+
+{ #category : #initialization }
+GtPhlowRunBasedText >> initializeFromJSONDictionary: aDictionary [
+	self initializeWithString: (aDictionary at: 'sourceString').
+		
+	(aDictionary includesKey: 'attributeRuns') ifTrue: [
+		self attributeRuns: (GtPhlowRuns
+				fromJSONDictionary: (aDictionary at: 'attributeRuns')) ]
 ]
 
 { #category : #initialization }
