@@ -2,8 +2,7 @@ Class {
 	#name : #GtRemotePhlowItemValue,
 	#superclass : #GtRemotePhlowNodeValue,
 	#instVars : [
-		'background',
-		'itemText'
+		'background'
 	],
 	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }

@@ -1,6 +1,9 @@
 Class {
 	#name : #GtRemotePhlowItemTextualValue,
 	#superclass : #GtRemotePhlowItemValue,
+	#instVars : [
+		'itemText'
+	],
 	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
