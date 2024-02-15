@@ -1,11 +1,11 @@
 Class {
-	#name : #GtRemoteForwarderViewInspectionExamples,
+	#name : #GtRemotePhlowForwarderViewInspectionExamples,
 	#superclass : #Object,
-	#category : #'GToolkit-RemoteGt-Examples'
+	#category : #'GToolkit-RemotePhlow-Examples'
 }
 
 { #category : #assertions }
-GtRemoteForwarderViewInspectionExamples >> assertBasicForwarderView: aView [
+GtRemotePhlowForwarderViewInspectionExamples >> assertBasicForwarderView: aView [
 	| aPhlowView |
 	self assert: aView priority isNumber.
 	self assert: aView object isNotNil.
@@ -30,19 +30,19 @@ GtRemoteForwarderViewInspectionExamples >> assertBasicForwarderView: aView [
 ]
 
 { #category : #assertions }
-GtRemoteForwarderViewInspectionExamples >> assertTransformedValueInListFor: aTransformedValue [ 
+GtRemotePhlowForwarderViewInspectionExamples >> assertTransformedValueInListFor: aTransformedValue [ 
 	self assert:  aTransformedValue = { 42 . 42 } 
 ]
 
 { #category : #accessing }
-GtRemoteForwarderViewInspectionExamples >> computeObject [
+GtRemotePhlowForwarderViewInspectionExamples >> computeObject [
 	<gtExample>
 	^ GtRemoteInspectionSimulation 
 		openOn: GtRemotePhlowDeclarativeTestInspectable new
 ]
 
 { #category : #examples }
-GtRemoteForwarderViewInspectionExamples >> remoteForwardedViewToListView [
+GtRemotePhlowForwarderViewInspectionExamples >> remoteForwardedViewToListView [
 	<gtExample>
 	| forwarderView  |
 	forwarderView := GtPhlowRemoteForwarderView new
@@ -63,7 +63,7 @@ GtRemoteForwarderViewInspectionExamples >> remoteForwardedViewToListView [
 ]
 
 { #category : #examples }
-GtRemoteForwarderViewInspectionExamples >> remoteForwardedViewWithLocalSendToListView [
+GtRemotePhlowForwarderViewInspectionExamples >> remoteForwardedViewWithLocalSendToListView [
 	<gtExample>
 	| forwarderView  phlowView |
 	forwarderView := GtPhlowRemoteForwarderView new
@@ -93,6 +93,6 @@ GtRemoteForwarderViewInspectionExamples >> remoteForwardedViewWithLocalSendToLis
 ]
 
 { #category : #accessing }
-GtRemoteForwarderViewInspectionExamples >> targetProxyClass [
+GtRemotePhlowForwarderViewInspectionExamples >> targetProxyClass [
 	^ GtRemoteInspectionSimulation
 ]

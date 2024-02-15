@@ -1,25 +1,25 @@
 Class {
-	#name : #GtRemoteLocalObjectForForwardedViews,
+	#name : #GtRemotePhlowLocalObjectForForwardedViews,
 	#superclass : #Object,
 	#instVars : [
 		'objectComputation'
 	],
-	#category : #'GToolkit-RemoteGt-Examples'
+	#category : #'GToolkit-RemotePhlow-Examples'
 }
 
 { #category : #'instance creation' }
-GtRemoteLocalObjectForForwardedViews class >> withObjectComputation: aBlock [
+GtRemotePhlowLocalObjectForForwardedViews class >> withObjectComputation: aBlock [
 	^ self new
 		objectComputation: aBlock
 ]
 
 { #category : #accessing }
-GtRemoteLocalObjectForForwardedViews >> computeObject [
+GtRemotePhlowLocalObjectForForwardedViews >> computeObject [
 	^ self objectComputation value
 ]
 
 { #category : #'gt - extensions' }
-GtRemoteLocalObjectForForwardedViews >> gtViewRemoteForwardListViewFor: aView [
+GtRemotePhlowLocalObjectForForwardedViews >> gtViewRemoteForwardListViewFor: aView [
 	<gtView>
 	
 	^ aView remoteForward
@@ -30,7 +30,7 @@ GtRemoteLocalObjectForForwardedViews >> gtViewRemoteForwardListViewFor: aView [
 ]
 
 { #category : #'gt - extensions' }
-GtRemoteLocalObjectForForwardedViews >> gtViewRemoteForwardListViewWithLocalSendFor: aView [
+GtRemotePhlowLocalObjectForForwardedViews >> gtViewRemoteForwardListViewWithLocalSendFor: aView [
 	<gtView>
 	
 	^ aView remoteForward
@@ -43,7 +43,7 @@ GtRemoteLocalObjectForForwardedViews >> gtViewRemoteForwardListViewWithLocalSend
 ]
 
 { #category : #'gt - extensions' }
-GtRemoteLocalObjectForForwardedViews >> gtViewRemoteForwardToForwardListWithSendViewFor: aView [
+GtRemotePhlowLocalObjectForForwardedViews >> gtViewRemoteForwardToForwardListWithSendViewFor: aView [
 	<gtView>
 	
 	^ aView remoteForward
@@ -54,7 +54,7 @@ GtRemoteLocalObjectForForwardedViews >> gtViewRemoteForwardToForwardListWithSend
 ]
 
 { #category : #'gt - extensions' }
-GtRemoteLocalObjectForForwardedViews >> gtViewRemoteForwardToListWithSendViewFor: aView [
+GtRemotePhlowLocalObjectForForwardedViews >> gtViewRemoteForwardToListWithSendViewFor: aView [
 	<gtView>
 	
 	^ aView remoteForward
@@ -65,18 +65,18 @@ GtRemoteLocalObjectForForwardedViews >> gtViewRemoteForwardToListWithSendViewFor
 ]
 
 { #category : #accessing }
-GtRemoteLocalObjectForForwardedViews >> objectComputation [
+GtRemotePhlowLocalObjectForForwardedViews >> objectComputation [
 	^ objectComputation ifNil: [
 		self simulationObjectComputation ]
 ]
 
 { #category : #accessing }
-GtRemoteLocalObjectForForwardedViews >> objectComputation: aBlock [ 
+GtRemotePhlowLocalObjectForForwardedViews >> objectComputation: aBlock [ 
 	objectComputation := aBlock
 ]
 
 { #category : #accessing }
-GtRemoteLocalObjectForForwardedViews >> simulationObjectComputation [
+GtRemotePhlowLocalObjectForForwardedViews >> simulationObjectComputation [
 	^ [ GtRemoteInspectionSimulation 
 			openOn: GtRemotePhlowDeclarativeTestInspectable new ]
 ]
