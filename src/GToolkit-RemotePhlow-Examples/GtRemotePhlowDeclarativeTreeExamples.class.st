@@ -1,8 +1,6 @@
 Class {
 	#name : #GtRemotePhlowDeclarativeTreeExamples,
 	#superclass : #Object,
-	#traits : 'TAssertable',
-	#classTraits : 'TAssertable classTrait',
 	#category : #'GToolkit-RemotePhlow-Examples'
 }
 
