@@ -1,7 +1,7 @@
 Class {
 	#name : #GtRemotePhlowForwarderViewInspectionExamples,
 	#superclass : #Object,
-	#category : #'GToolkit-RemotePhlow-Examples'
+	#category : #'GToolkit-RemoteGt-Examples-Views'
 }
 
 { #category : #assertions }
