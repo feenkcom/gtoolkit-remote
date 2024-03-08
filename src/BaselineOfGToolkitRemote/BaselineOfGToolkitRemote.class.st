@@ -15,7 +15,7 @@ BaselineOfGToolkitRemote >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'GToolkitPhlow' with: [
-				spec repository: 'github://feenkcom/gtoolkit-phlow:v0.8.1244/src' ].
+				spec repository: 'github://feenkcom/gtoolkit-phlow:v0.8.1245/src' ].
 
 		spec package: 'GToolkit-RemotePhlow-Text'.
 		spec package: 'GToolkit-RemotePhlow-DeclarativeViews' with: [
