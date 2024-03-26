@@ -3,7 +3,8 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'string',
-		'stylerSpecification'
+		'stylerSpecification',
+		'highlight'
 	],
 	#category : #'GToolkit-RemotePhlow-Text'
 }
@@ -23,16 +24,20 @@ GtRemotePhlowStylableText class >> typeLabel [
 GtRemotePhlowStylableText >> asDictionaryForExport [
 	"Answer the receiver as a dictionary ready for JSON serialisation.
 	Subclasses will override and add to the dictionary"
-	| dataForExport|
+
+	| dataForExport |
 	dataForExport := Dictionary new.
 	dataForExport
 		at: '__typeLabel' put: self class typeLabel;
 		at: 'string' put: self string.
-	self stylerSpecification ifNotNil: [ :aStylerSpecification |
-		dataForExport 
-			at: 'stylerSpecification' 
-			put: aStylerSpecification asDictionaryForExport ].
-		
+	self stylerSpecification
+		ifNotNil: [ :aStylerSpecification | 
+			dataForExport
+				at: 'stylerSpecification'
+				put: aStylerSpecification asDictionaryForExport ].
+	highlight
+		ifNotNil: [ dataForExport at: 'highlight' put: highlight asDictionaryForExport ].
+
 	^ dataForExport
 ]
 
@@ -45,13 +50,27 @@ GtRemotePhlowStylableText >> createStyledText [
 				style: string asRopedText]
 ]
 
+{ #category : #accessing }
+GtRemotePhlowStylableText >> highlight [
+	^ highlight
+]
+
+{ #category : #accessing }
+GtRemotePhlowStylableText >> highlight: aGtPhlowTextHighlight [
+	highlight := aGtPhlowTextHighlight
+]
+
 { #category : #initialization }
 GtRemotePhlowStylableText >> initializeFromJSONDictionary: aDictionary [
 	self string: (aDictionary at: 'string').
-		
-	(aDictionary includesKey: 'stylerSpecification') ifTrue: [
-		self stylerSpecification: (GtRemotePhlowTextStylerSpecification
-				fromJSONDictionary: (aDictionary at: 'stylerSpecification')) ]
+
+	(aDictionary includesKey: 'stylerSpecification')
+		ifTrue: [ self
+				stylerSpecification: (GtRemotePhlowTextStylerSpecification
+						fromJSONDictionary: (aDictionary at: 'stylerSpecification')) ].
+	aDictionary
+		at: 'highlight'
+		ifPresent: [ :dict | self highlight: (GtPhlowTextHighlight fromJSONDictionary: dict) ]
 ]
 
 { #category : #accessing }

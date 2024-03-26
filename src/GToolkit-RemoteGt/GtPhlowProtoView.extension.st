@@ -19,9 +19,7 @@ GtPhlowProtoView >> canBeGtDeclarativeView [
 
 { #category : #'*GToolkit-RemoteGt' }
 GtPhlowProtoView >> remoteForward [
-	^ GtPhlowRemoteForwarderView new 
+	^ GtPhlowRemoteForwarderView new
 		originalView: self;
-		definingMethod: (GtPhlowDefiningMethodsCollector new 
-			stack: thisContext stack;
-			collect)
+		definingMethod: (GtPhlowDefiningMethodsCollector forContext: thisContext) collect
 ]
