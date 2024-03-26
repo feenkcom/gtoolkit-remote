@@ -5,19 +5,23 @@ Class {
 }
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeTextualViewDataSource >> computeText [ 
-	| computedText stylerSpecification |
+GtRemotePhlowDeclarativeTextualViewDataSource >> computeText [
+	| computedText stylerSpecification highlight |
 	computedText := self phlowView textBuilder value asRopedText.
-	stylerSpecification := self 
-		createRemotePhlowStylerSpecificationForText: computedText.
-		
-	stylerSpecification ifNil: [
-		stylerSpecification := GtRemotePhlowTextAttributeRunsStylerSpecification new 
-			attributeRuns: computedText extractRemotePhlowRuns ].
+	stylerSpecification := self
+			createRemotePhlowStylerSpecificationForText: computedText.
+
+	stylerSpecification
+		ifNil: [ stylerSpecification := GtRemotePhlowTextAttributeRunsStylerSpecification new
+					attributeRuns: computedText extractRemotePhlowRuns ].
+
+	self phlowView highlighterSpecification
+		ifNotNil: [ :spec | highlight := spec value ].
 
 	^ GtRemotePhlowStylableText new
 		string: computedText asString;
-		stylerSpecification: stylerSpecification
+		stylerSpecification: stylerSpecification;
+		highlight: highlight
 ]
 
 { #category : #accessing }
