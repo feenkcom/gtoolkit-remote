@@ -13,6 +13,11 @@ GtRemotePhlowTextualView >> aptitude: anAptitude [
 ]
 
 { #category : #accessing }
+GtRemotePhlowTextualView >> highlighterSpecification [
+	^ nil
+]
+
+{ #category : #accessing }
 GtRemotePhlowTextualView >> text: aBlockClosure [
 	"Set the BlockClosure that will generate the string to be displayed.
 	The result of the BlockClosure must be a String (not a BlText)."
