@@ -278,7 +278,7 @@ GtRemotePhlowDeclarativeViewsExamples >> columnedListWithTypedColumns [
 	self 
 		assert: (viewSpecification retrieveItems: 2 fromIndex: 1)
 		equals: (self 
-			forPharo11: [
+			forPharo11AndPharo12: [
 				self expectedColumnedListTypedColumnsTwoItemsPharo11]
 			forPharo10: [
 				self expectedColumnedListTypedColumnsTwoItems ]).
