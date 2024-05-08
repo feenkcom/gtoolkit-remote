@@ -290,7 +290,8 @@ GtRemotePhlowDeclarativeViewsExamples >> columnedListWithTypedColumns [
 		andColumnsComputation: {
 			[ :aNumber | '+',aNumber asFloat asString ].
 			[ :aNumber | '+',(aNumber + 1) asString].
-			[ :aNumber | aNumber asFloat gtSystemIconName ] }.
+			[ :aNumber | 
+				self formatExpectedIconName: aNumber asFloat gtSystemIconName ] }.
 	
 	^ viewSpecification
 ]
@@ -456,6 +457,11 @@ GtRemotePhlowDeclarativeViewsExamples >> expectedNumberOfRunsForBasicStyledText 
 GtRemotePhlowDeclarativeViewsExamples >> expectedStyledText [
 	^ GtRemotePhlowDeclarativeTestInspectable new  
 			styledText
+]
+
+{ #category : #utils }
+GtRemotePhlowDeclarativeViewsExamples >> formatExpectedIconName: anIconName [
+	^ anIconName
 ]
 
 { #category : #private }
