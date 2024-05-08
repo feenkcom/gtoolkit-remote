@@ -290,7 +290,8 @@ GtRemotePhlowDeclarativeViewsExamples >> columnedListWithTypedColumns [
 		andColumnsComputation: {
 			[ :aNumber | '+',aNumber asFloat asString ].
 			[ :aNumber | '+',(aNumber + 1) asString].
-			[ :aNumber | aNumber asFloat gtSystemIconName ] }.
+			[ :aNumber | 
+				aNumber asFloat gtSystemIconName, #Icon ] }.
 	
 	^ viewSpecification
 ]
