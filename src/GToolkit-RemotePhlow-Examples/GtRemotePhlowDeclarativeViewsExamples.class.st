@@ -740,6 +740,22 @@ GtRemotePhlowDeclarativeViewsExamples >> textViewWithStyledPhlowText [
 ]
 
 { #category : #'examples - views' }
+GtRemotePhlowDeclarativeViewsExamples >> textViewWithStyledPhlowTextWithDecorations [
+	<gtExample>
+	<after: #stopServer>
+	| view |
+	
+	view := self 
+		assertTextualViewWithBasicStyledTextWithSelector: #gtStyledPhlowTextWithDecorationsFor: 
+		title: 'Styled phlow text with decorations'
+		priority: 10.6
+		expectedText: GtRemotePhlowDeclarativeTextTestInspectable new  
+			styledPhlowTextWithDecorations.
+	
+	^ view 
+]
+
+{ #category : #'examples - views' }
 GtRemotePhlowDeclarativeViewsExamples >> textViewWithStyledText [
 	<gtExample>
 	<after: #stopServer>
@@ -788,6 +804,24 @@ GtRemotePhlowDeclarativeViewsExamples >> treeViewLazyCheck: viewProxy [
 			collect: [ :x | x asString, ' number' ]).
 ]
 
+{ #category : #'examples - views' }
+GtRemotePhlowDeclarativeViewsExamples >> treeViewWithStyledText [
+	<gtExample>
+	<after: #stopServer>
+	| viewedObjectProxy viewDictionary viewSpecification |
+
+	viewedObjectProxy := self viewedObjectProxy.
+	viewDictionary := viewedObjectProxy getViewDeclaration: #gtTreeWithStyledTextFor:.
+	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
+	self assert: viewSpecification title equals: 'Tree - with styled text'.
+	self assert: viewSpecification priority equals: 30.1.
+	
+	self treeViewWithStyledTextLazyCheck: viewedObjectProxy.
+	
+	^ viewSpecification
+]
+
 { #category : #private }
 GtRemotePhlowDeclarativeViewsExamples >> treeViewWithStyledTextLazyCheck: viewProxy [
 	| viewDatasource obtainedNodes|
@@ -805,24 +839,6 @@ GtRemotePhlowDeclarativeViewsExamples >> treeViewWithStyledTextLazyCheck: viewPr
 		forParentNode:  obtainedNodes third
 		forObjects: ((1 to: 2) 
 			collect: [ :aNumber | self computeStyledTextForTreeNumber: aNumber  ]).
-]
-
-{ #category : #'examples - views' }
-GtRemotePhlowDeclarativeViewsExamples >> treeViewWithStyledtext [
-	<gtExample>
-	<after: #stopServer>
-	| viewedObjectProxy viewDictionary viewSpecification |
-
-	viewedObjectProxy := self viewedObjectProxy.
-	viewDictionary := viewedObjectProxy getViewDeclaration: #gtTreeWithStyledTextFor:.
-	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
-	
-	self assert: viewSpecification title equals: 'Tree - with styled text'.
-	self assert: viewSpecification priority equals: 30.1.
-	
-	self treeViewWithStyledTextLazyCheck: viewedObjectProxy.
-	
-	^ viewSpecification
 ]
 
 { #category : #examples }

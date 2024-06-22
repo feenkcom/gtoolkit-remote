@@ -28,6 +28,15 @@ GtPhlowText >> bold [
 	^ self addAttribute: GtPhlowFontWeightAttribute bold
 ]
 
+{ #category : #'api - text style' }
+GtPhlowText >> decorationDo: aBlock [
+	| anAttribute |
+	
+	anAttribute := GtPhlowTextDecorationAttribute new.
+	aBlock value: anAttribute.
+	self addAttribute: anAttribute
+]
+
 { #category : #accessing }
 GtPhlowText >> endIndex [
 	^ self subclassResponsibility
@@ -112,9 +121,19 @@ GtPhlowText >> italic [
 	^ self addAttribute: GtPhlowFontEmphasisAttribute italic
 ]
 
+{ #category : #'api - text style' }
+GtPhlowText >> normal [
+	^ self addAttribute: GtPhlowFontEmphasisAttribute normal
+]
+
 { #category : #testing }
 GtPhlowText >> notEmpty [
 	^ self isEmpty not
+]
+
+{ #category : #'api - text style' }
+GtPhlowText >> oblique [
+	^ self addAttribute: GtPhlowFontEmphasisAttribute oblique
 ]
 
 { #category : #'test - accessing' }
