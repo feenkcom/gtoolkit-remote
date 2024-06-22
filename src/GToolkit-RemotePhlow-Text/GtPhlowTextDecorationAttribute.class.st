@@ -8,6 +8,11 @@ Class {
 }
 
 { #category : #accessing }
+GtPhlowTextDecorationAttribute class >> new [
+	^ self basicNew initialize
+]
+
+{ #category : #accessing }
 GtPhlowTextDecorationAttribute class >> typeLabel [
 	^ #phlowTextDecorationAttribute
 ]

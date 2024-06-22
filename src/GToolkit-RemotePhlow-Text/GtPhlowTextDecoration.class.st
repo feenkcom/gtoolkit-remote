@@ -16,6 +16,11 @@ GtPhlowTextDecoration class >> fromJSONDictionary: aTextAttributeData [
 		initializeFromJSONDictionary: aTextAttributeData  
 ]
 
+{ #category : #accessing }
+GtPhlowTextDecoration class >> new [
+	^ self basicNew initialize
+]
+
 { #category : #comparing }
 GtPhlowTextDecoration >> = anObject [
 	"Answer whether the receiver and anObject represent the same object."
