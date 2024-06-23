@@ -454,6 +454,12 @@ GtRemotePhlowDeclarativeViewsExamples >> expectedNumberOfRunsForBasicStyledText 
 ]
 
 { #category : #'accessing - expected' }
+GtRemotePhlowDeclarativeViewsExamples >> expectedStyledPhlowTextWithDecorations [
+	^ GtRemotePhlowDeclarativeTextTestInspectable new  
+		styledPhlowTextWithDecorations
+]
+
+{ #category : #'accessing - expected' }
 GtRemotePhlowDeclarativeViewsExamples >> expectedStyledText [
 	^ GtRemotePhlowDeclarativeTestInspectable new  
 			styledText
@@ -749,8 +755,7 @@ GtRemotePhlowDeclarativeViewsExamples >> textViewWithStyledPhlowTextWithDecorati
 		assertTextualViewWithBasicStyledTextWithSelector: #gtStyledPhlowTextWithDecorationsFor: 
 		title: 'Styled phlow text with decorations'
 		priority: 10.6
-		expectedText: GtRemotePhlowDeclarativeTextTestInspectable new  
-			styledPhlowTextWithDecorations.
+		expectedText: self expectedStyledPhlowTextWithDecorations.
 	
 	^ view 
 ]
