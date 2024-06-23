@@ -4,9 +4,9 @@
 doit
 (Object
 	subclass: 'GtPhlowBasicRun'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -22,9 +22,9 @@ removeallclassmethods GtPhlowBasicRun
 doit
 (GtPhlowBasicRun
 	subclass: 'GtPhlowRun'
-	instVarNames: #( attributes startIndex endIndex )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(attributes startIndex endIndex)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -40,9 +40,9 @@ removeallclassmethods GtPhlowRun
 doit
 (Object
 	subclass: 'GtPhlowColor'
-	instVarNames: #( name red green blue alpha )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(name red green blue alpha)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -58,9 +58,9 @@ removeallclassmethods GtPhlowColor
 doit
 (Object
 	subclass: 'GtPhlowDeclarativeListingType'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -76,9 +76,9 @@ removeallclassmethods GtPhlowDeclarativeListingType
 doit
 (GtPhlowDeclarativeListingType
 	subclass: 'GtPhlowNumberDeclarativeListingType'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -94,9 +94,9 @@ removeallclassmethods GtPhlowNumberDeclarativeListingType
 doit
 (GtPhlowDeclarativeListingType
 	subclass: 'GtPhlowTextDeclarativeListingType'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -112,9 +112,9 @@ removeallclassmethods GtPhlowTextDeclarativeListingType
 doit
 (GtPhlowDeclarativeListingType
 	subclass: 'GtPhlowTextLinkDeclarativeListingType'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -130,9 +130,9 @@ removeallclassmethods GtPhlowTextLinkDeclarativeListingType
 doit
 (GtPhlowDeclarativeListingType
 	subclass: 'GtPhlowThemeIconNameDeclarativeListingType'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -148,9 +148,9 @@ removeallclassmethods GtPhlowThemeIconNameDeclarativeListingType
 doit
 (GtPhlowDeclarativeListingType
 	subclass: 'GtPhlowUnknownDeclarativeListingType'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -166,9 +166,9 @@ removeallclassmethods GtPhlowUnknownDeclarativeListingType
 doit
 (Object
 	subclass: 'GtPhlowRuns'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -184,9 +184,9 @@ removeallclassmethods GtPhlowRuns
 doit
 (GtPhlowRuns
 	subclass: 'GtPhlowRunsGroup'
-	instVarNames: #( items )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(items)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -202,9 +202,9 @@ removeallclassmethods GtPhlowRunsGroup
 doit
 (Object
 	subclass: 'GtPhlowText'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -220,9 +220,9 @@ removeallclassmethods GtPhlowText
 doit
 (GtPhlowText
 	subclass: 'GtPhlowRunBasedText'
-	instVarNames: #( sourceString attributeRuns )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(sourceString attributeRuns)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -238,9 +238,9 @@ removeallclassmethods GtPhlowRunBasedText
 doit
 (GtPhlowText
 	subclass: 'GtPhlowSubText'
-	instVarNames: #( parentText startIndex endIndex )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(parentText startIndex endIndex)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -256,9 +256,9 @@ removeallclassmethods GtPhlowSubText
 doit
 (Object
 	subclass: 'GtPhlowTextAttribute'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -274,9 +274,9 @@ removeallclassmethods GtPhlowTextAttribute
 doit
 (GtPhlowTextAttribute
 	subclass: 'GtPhlowFontEmphasisAttribute'
-	instVarNames: #( emphasis )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(emphasis)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -292,9 +292,9 @@ removeallclassmethods GtPhlowFontEmphasisAttribute
 doit
 (GtPhlowTextAttribute
 	subclass: 'GtPhlowFontNameAttribute'
-	instVarNames: #( fontName )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(fontName)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -310,9 +310,9 @@ removeallclassmethods GtPhlowFontNameAttribute
 doit
 (GtPhlowTextAttribute
 	subclass: 'GtPhlowFontSizeAttribute'
-	instVarNames: #( sizeValue )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(sizeValue)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -328,9 +328,9 @@ removeallclassmethods GtPhlowFontSizeAttribute
 doit
 (GtPhlowTextAttribute
 	subclass: 'GtPhlowFontWeightAttribute'
-	instVarNames: #( weight )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(weight)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -346,9 +346,9 @@ removeallclassmethods GtPhlowFontWeightAttribute
 doit
 (GtPhlowTextAttribute
 	subclass: 'GtPhlowTextColorAttribute'
-	instVarNames: #( color )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(color)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -364,9 +364,9 @@ removeallclassmethods GtPhlowTextColorAttribute
 doit
 (GtPhlowTextColorAttribute
 	subclass: 'GtPhlowTextForegroundAttribute'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -382,9 +382,9 @@ removeallclassmethods GtPhlowTextForegroundAttribute
 doit
 (GtPhlowTextColorAttribute
 	subclass: 'GtPhlowTextHighlightAttribute'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -399,10 +399,28 @@ removeallclassmethods GtPhlowTextHighlightAttribute
 
 doit
 (GtPhlowTextAttribute
+	subclass: 'GtPhlowTextDecorationAttribute'
+	instVarNames: #(decoration)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Text';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowTextDecorationAttribute
+removeallclassmethods GtPhlowTextDecorationAttribute
+
+doit
+(GtPhlowTextAttribute
 	subclass: 'GtPhlowTextUnknownAttribute'
-	instVarNames: #( rawData )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(rawData)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -417,10 +435,28 @@ removeallclassmethods GtPhlowTextUnknownAttribute
 
 doit
 (Object
+	subclass: 'GtPhlowTextDecoration'
+	instVarNames: #(thickness color styleName typeNames)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Text';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowTextDecoration
+removeallclassmethods GtPhlowTextDecoration
+
+doit
+(Object
 	subclass: 'GtPhlowTextHighlight'
-	instVarNames: #( color startPosition endPosition )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(color startPosition endPosition)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -436,9 +472,9 @@ removeallclassmethods GtPhlowTextHighlight
 doit
 (Object
 	subclass: 'GtPhlowViewSpecification'
-	instVarNames: #( phlowDataSource methodSelector title priority dataTransport )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(phlowDataSource methodSelector title priority dataTransport)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -480,9 +516,9 @@ removeallclassmethods GtPhlowViewSpecification
 doit
 (GtPhlowViewSpecification
 	subclass: 'GtPhlowForwardViewSpecification'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -498,9 +534,9 @@ removeallclassmethods GtPhlowForwardViewSpecification
 doit
 (GtPhlowViewSpecification
 	subclass: 'GtPhlowListingViewSpecification'
-	instVarNames: #( totalItemsCount )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(totalItemsCount)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -521,9 +557,9 @@ removeallclassmethods GtPhlowListingViewSpecification
 doit
 (GtPhlowListingViewSpecification
 	subclass: 'GtPhlowBasicColumnedViewSpecification'
-	instVarNames: #( columnSpecifications )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(columnSpecifications)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -539,9 +575,9 @@ removeallclassmethods GtPhlowBasicColumnedViewSpecification
 doit
 (GtPhlowBasicColumnedViewSpecification
 	subclass: 'GtPhlowColumnedListViewSpecification'
-	instVarNames: #( horizontalScrollingEnabled )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(horizontalScrollingEnabled)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -573,9 +609,9 @@ removeallclassmethods GtPhlowColumnedListViewSpecification
 doit
 (GtPhlowBasicColumnedViewSpecification
 	subclass: 'GtPhlowColumnedTreeViewSpecification'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -591,9 +627,9 @@ removeallclassmethods GtPhlowColumnedTreeViewSpecification
 doit
 (GtPhlowListingViewSpecification
 	subclass: 'GtPhlowListViewSpecification'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -616,9 +652,9 @@ removeallclassmethods GtPhlowListViewSpecification
 doit
 (GtPhlowListingViewSpecification
 	subclass: 'GtPhlowTreeViewSpecification'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -634,9 +670,9 @@ removeallclassmethods GtPhlowTreeViewSpecification
 doit
 (GtPhlowViewSpecification
 	subclass: 'GtPhlowTextualViewSpecification'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -652,9 +688,9 @@ removeallclassmethods GtPhlowTextualViewSpecification
 doit
 (GtPhlowTextualViewSpecification
 	subclass: 'GtPhlowTextEditorViewSpecification'
-	instVarNames: #( string dataSource textStylerSpecification )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(string dataSource textStylerSpecification)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -670,9 +706,9 @@ removeallclassmethods GtPhlowTextEditorViewSpecification
 doit
 (GtPhlowTextualViewSpecification
 	subclass: 'GtPhlowTextViewSpecification'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -688,9 +724,9 @@ removeallclassmethods GtPhlowTextViewSpecification
 doit
 (GtPhlowViewSpecification
 	subclass: 'GtPhlowViewErrorViewSpecification'
-	instVarNames: #( errorMessage )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(errorMessage)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -706,9 +742,9 @@ removeallclassmethods GtPhlowViewErrorViewSpecification
 doit
 (Object
 	subclass: 'GtRemotePhlowCollectionIterator'
-	instVarNames: #( targetCollection )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(targetCollection)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -724,9 +760,9 @@ removeallclassmethods GtRemotePhlowCollectionIterator
 doit
 (GtRemotePhlowCollectionIterator
 	subclass: 'GtRemotePhlowSequenceableCollectionIterator'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -742,9 +778,9 @@ removeallclassmethods GtRemotePhlowSequenceableCollectionIterator
 doit
 (GtRemotePhlowCollectionIterator
 	subclass: 'GtRemotePhlowUnindexedCollectionIterator'
-	instVarNames: #( iterationSelector )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(iterationSelector)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -760,9 +796,9 @@ removeallclassmethods GtRemotePhlowUnindexedCollectionIterator
 doit
 (GtRemotePhlowUnindexedCollectionIterator
 	subclass: 'GtRemotePhlowDictionaryAssociationsIterator'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -778,9 +814,9 @@ removeallclassmethods GtRemotePhlowDictionaryAssociationsIterator
 doit
 (GtRemotePhlowUnindexedCollectionIterator
 	subclass: 'GtRemotePhlowDictionaryKeysIterator'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -796,9 +832,9 @@ removeallclassmethods GtRemotePhlowDictionaryKeysIterator
 doit
 (GtRemotePhlowUnindexedCollectionIterator
 	subclass: 'GtRemotePhlowGenericCollectionIterator'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -814,9 +850,9 @@ removeallclassmethods GtRemotePhlowGenericCollectionIterator
 doit
 (GtRemotePhlowUnindexedCollectionIterator
 	subclass: 'GtRemotePhlowPluggableCollectionIterator'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -832,9 +868,9 @@ removeallclassmethods GtRemotePhlowPluggableCollectionIterator
 doit
 (Object
 	subclass: 'GtRemotePhlowColumn'
-	instVarNames: #( index title width itemComputation backgroundComputation )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(index title width itemComputation backgroundComputation)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -850,9 +886,9 @@ removeallclassmethods GtRemotePhlowColumn
 doit
 (GtRemotePhlowColumn
 	subclass: 'GtRemotePhlowExplicitColumn'
-	instVarNames: #( spawnObjectComputation type )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(spawnObjectComputation type)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -868,9 +904,9 @@ removeallclassmethods GtRemotePhlowExplicitColumn
 doit
 (GtRemotePhlowColumn
 	subclass: 'GtRemotePhlowTypedColumn'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -886,9 +922,9 @@ removeallclassmethods GtRemotePhlowTypedColumn
 doit
 (GtRemotePhlowTypedColumn
 	subclass: 'GtRemotePhlowIconNameColumn'
-	instVarNames: #( iconNameComputation )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(iconNameComputation)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -904,9 +940,9 @@ removeallclassmethods GtRemotePhlowIconNameColumn
 doit
 (GtRemotePhlowIconNameColumn
 	subclass: 'GtRemotePhlowThemeIconNameColumn'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -922,9 +958,9 @@ removeallclassmethods GtRemotePhlowThemeIconNameColumn
 doit
 (GtRemotePhlowTypedColumn
 	subclass: 'GtRemotePhlowNumberColumn'
-	instVarNames: #( formatComputation )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(formatComputation)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -940,9 +976,9 @@ removeallclassmethods GtRemotePhlowNumberColumn
 doit
 (GtRemotePhlowTypedColumn
 	subclass: 'GtRemotePhlowTextColumn'
-	instVarNames: #( formatComputation )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(formatComputation)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -958,9 +994,9 @@ removeallclassmethods GtRemotePhlowTextColumn
 doit
 (Object
 	subclass: 'GtRemotePhlowColumnSpecification'
-	instVarNames: #( title cellWidth type spawnsObjects properties )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(title cellWidth type spawnsObjects properties)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -976,9 +1012,9 @@ removeallclassmethods GtRemotePhlowColumnSpecification
 doit
 (Object
 	subclass: 'GtRemotePhlowDataNode'
-	instVarNames: #( targetObject nodeId nodeValue )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(targetObject nodeId nodeValue)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -994,9 +1030,9 @@ removeallclassmethods GtRemotePhlowDataNode
 doit
 (GtRemotePhlowDataNode
 	subclass: 'GtRemotePhlowTreeNode'
-	instVarNames: #( childNodes parentNode )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(childNodes parentNode)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1012,9 +1048,9 @@ removeallclassmethods GtRemotePhlowTreeNode
 doit
 (GtRemotePhlowTreeNode
 	subclass: 'GtRemotePhlowColumnedTreeNode'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1030,9 +1066,9 @@ removeallclassmethods GtRemotePhlowColumnedTreeNode
 doit
 (Object
 	subclass: 'GtRemotePhlowDeclarativeErrorTestInspectable'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1048,9 +1084,9 @@ removeallclassmethods GtRemotePhlowDeclarativeErrorTestInspectable
 doit
 (Object
 	subclass: 'GtRemotePhlowDeclarativeTestInspectable'
-	instVarNames: #( string collectionOfObjects )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(string collectionOfObjects)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1076,10 +1112,28 @@ removeallclassmethods GtRemotePhlowDeclarativeTestInspectable
 
 doit
 (Object
+	subclass: 'GtRemotePhlowDeclarativeTextTestInspectable'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Examples';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowDeclarativeTextTestInspectable
+removeallclassmethods GtRemotePhlowDeclarativeTextTestInspectable
+
+doit
+(Object
 	subclass: 'GtRemotePhlowDeclarativeTreeExamples'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1095,9 +1149,9 @@ removeallclassmethods GtRemotePhlowDeclarativeTreeExamples
 doit
 (Object
 	subclass: 'GtRemotePhlowDeclarativeViewDataSource'
-	instVarNames: #( phlowView )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(phlowView)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1113,9 +1167,9 @@ removeallclassmethods GtRemotePhlowDeclarativeViewDataSource
 doit
 (GtRemotePhlowDeclarativeViewDataSource
 	subclass: 'GtRemotePhlowDeclarativeForwardViewDataSource'
-	instVarNames: #( cachedViewSpecification )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(cachedViewSpecification)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1131,9 +1185,9 @@ removeallclassmethods GtRemotePhlowDeclarativeForwardViewDataSource
 doit
 (GtRemotePhlowDeclarativeViewDataSource
 	subclass: 'GtRemotePhlowDeclarativeTextualViewDataSource'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1149,9 +1203,9 @@ removeallclassmethods GtRemotePhlowDeclarativeTextualViewDataSource
 doit
 (GtRemotePhlowDeclarativeViewDataSource
 	subclass: 'GtRemotePhlowDeclarativeViewListingDataSource'
-	instVarNames: #( itemsIterator cachedNodes cachedValueBuilder )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(itemsIterator cachedNodes cachedValueBuilder)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1167,9 +1221,9 @@ removeallclassmethods GtRemotePhlowDeclarativeViewListingDataSource
 doit
 (GtRemotePhlowDeclarativeViewListingDataSource
 	subclass: 'GtRemotePhlowDeclarativeViewColumnedListDataSource'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1185,9 +1239,9 @@ removeallclassmethods GtRemotePhlowDeclarativeViewColumnedListDataSource
 doit
 (GtRemotePhlowDeclarativeViewListingDataSource
 	subclass: 'GtRemotePhlowDeclarativeViewListDataSource'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1203,9 +1257,9 @@ removeallclassmethods GtRemotePhlowDeclarativeViewListDataSource
 doit
 (GtRemotePhlowDeclarativeViewListingDataSource
 	subclass: 'GtRemotePhlowDeclarativeViewTreeDataSource'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1221,9 +1275,9 @@ removeallclassmethods GtRemotePhlowDeclarativeViewTreeDataSource
 doit
 (GtRemotePhlowDeclarativeViewTreeDataSource
 	subclass: 'GtRemotePhlowDeclarativeViewColumnedTreeDataSource'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1239,9 +1293,9 @@ removeallclassmethods GtRemotePhlowDeclarativeViewColumnedTreeDataSource
 doit
 (Object
 	subclass: 'GtRemotePhlowDeclarativeViewsExamples'
-	instVarNames: #( server )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(server)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1260,9 +1314,9 @@ removeallclassmethods GtRemotePhlowDeclarativeViewsExamples
 doit
 (Object
 	subclass: 'GtRemotePhlowDummyTextStyler'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1278,9 +1332,9 @@ removeallclassmethods GtRemotePhlowDummyTextStyler
 doit
 (Object
 	subclass: 'GtRemotePhlowNodeValue'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1296,9 +1350,9 @@ removeallclassmethods GtRemotePhlowNodeValue
 doit
 (GtRemotePhlowNodeValue
 	subclass: 'GtRemotePhlowItemValue'
-	instVarNames: #( background )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(background)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1314,9 +1368,9 @@ removeallclassmethods GtRemotePhlowItemValue
 doit
 (GtRemotePhlowItemValue
 	subclass: 'GtRemotePhlowItemTextualValue'
-	instVarNames: #( itemText )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(itemText)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1332,9 +1386,9 @@ removeallclassmethods GtRemotePhlowItemTextualValue
 doit
 (GtRemotePhlowItemTextualValue
 	subclass: 'GtRemotePhlowItemErrorValue'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1351,9 +1405,9 @@ removeallclassmethods GtRemotePhlowItemErrorValue
 doit
 (GtRemotePhlowNodeValue
 	subclass: 'GtRemotePhlowRowValue'
-	instVarNames: #( columnValues )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(columnValues)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1369,9 +1423,9 @@ removeallclassmethods GtRemotePhlowRowValue
 doit
 (Object
 	subclass: 'GtRemotePhlowNodeValueBuilder'
-	instVarNames: #( phlowView )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(phlowView)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1387,9 +1441,9 @@ removeallclassmethods GtRemotePhlowNodeValueBuilder
 doit
 (GtRemotePhlowNodeValueBuilder
 	subclass: 'GtRemotePhlowItemBuilder'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1405,9 +1459,9 @@ removeallclassmethods GtRemotePhlowItemBuilder
 doit
 (GtRemotePhlowNodeValueBuilder
 	subclass: 'GtRemotePhlowRowBuilder'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1423,9 +1477,9 @@ removeallclassmethods GtRemotePhlowRowBuilder
 doit
 (Object
 	subclass: 'GtRemotePhlowProtoView'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1441,9 +1495,9 @@ removeallclassmethods GtRemotePhlowProtoView
 doit
 (GtRemotePhlowProtoView
 	subclass: 'GtRemotePhlowView'
-	instVarNames: #( title priority definingSelector )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(title priority definingSelector)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1483,9 +1537,9 @@ removeallclassmethods GtRemotePhlowView
 doit
 (GtRemotePhlowView
 	subclass: 'GtRemotePhlowEmptyView'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1501,9 +1555,9 @@ removeallclassmethods GtRemotePhlowEmptyView
 doit
 (GtRemotePhlowView
 	subclass: 'GtRemotePhlowForwarderView'
-	instVarNames: #( viewSelector objectComputation transformation )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(viewSelector objectComputation transformation)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1519,9 +1573,9 @@ removeallclassmethods GtRemotePhlowForwarderView
 doit
 (GtRemotePhlowView
 	subclass: 'GtRemotePhlowListingView'
-	instVarNames: #( itemsProviderComputation transformation )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(itemsProviderComputation transformation)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1537,9 +1591,9 @@ removeallclassmethods GtRemotePhlowListingView
 doit
 (GtRemotePhlowListingView
 	subclass: 'GtRemotePhlowBasicColumnedView'
-	instVarNames: #( columns )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(columns)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1556,9 +1610,9 @@ removeallclassmethods GtRemotePhlowBasicColumnedView
 doit
 (GtRemotePhlowBasicColumnedView
 	subclass: 'GtRemotePhlowColumnedListView'
-	instVarNames: #( horizontalScrollingEnabled )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(horizontalScrollingEnabled)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1579,9 +1633,9 @@ removeallclassmethods GtRemotePhlowColumnedListView
 doit
 (GtRemotePhlowBasicColumnedView
 	subclass: 'GtRemotePhlowColumnedTreeView'
-	instVarNames: #( itemTextBlock childrenBuilder )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(itemTextBlock childrenBuilder)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1600,9 +1654,9 @@ removeallclassmethods GtRemotePhlowColumnedTreeView
 doit
 (GtRemotePhlowListingView
 	subclass: 'GtRemotePhlowListView'
-	instVarNames: #( itemTextBlock )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(itemTextBlock)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1631,9 +1685,9 @@ removeallclassmethods GtRemotePhlowListView
 doit
 (GtRemotePhlowListingView
 	subclass: 'GtRemotePhlowTreeView'
-	instVarNames: #( itemTextBlock childrenBuilder )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(itemTextBlock childrenBuilder)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1656,9 +1710,9 @@ removeallclassmethods GtRemotePhlowTreeView
 doit
 (GtRemotePhlowView
 	subclass: 'GtRemotePhlowTextualView'
-	instVarNames: #( textBuilder )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(textBuilder)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1674,9 +1728,9 @@ removeallclassmethods GtRemotePhlowTextualView
 doit
 (GtRemotePhlowTextualView
 	subclass: 'GtRemotePhlowTextEditorView'
-	instVarNames: #( stylerSpecification )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(stylerSpecification)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1692,9 +1746,9 @@ removeallclassmethods GtRemotePhlowTextEditorView
 doit
 (GtRemotePhlowTextualView
 	subclass: 'GtRemotePhlowTextView'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1710,9 +1764,9 @@ removeallclassmethods GtRemotePhlowTextView
 doit
 (GtRemotePhlowView
 	subclass: 'GtRemotePhlowViewErrorView'
-	instVarNames: #( errorMessage )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(errorMessage)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1728,9 +1782,9 @@ removeallclassmethods GtRemotePhlowViewErrorView
 doit
 (Object
 	subclass: 'GtRemotePhlowSendObjectTransformation'
-	instVarNames: #( valuable )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(valuable)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1746,9 +1800,9 @@ removeallclassmethods GtRemotePhlowSendObjectTransformation
 doit
 (Object
 	subclass: 'GtRemotePhlowStylableText'
-	instVarNames: #( string stylerSpecification highlight )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(string stylerSpecification highlight)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1764,9 +1818,9 @@ removeallclassmethods GtRemotePhlowStylableText
 doit
 (Object
 	subclass: 'GtRemotePhlowTextStylerSpecification'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1782,9 +1836,9 @@ removeallclassmethods GtRemotePhlowTextStylerSpecification
 doit
 (GtRemotePhlowTextStylerSpecification
 	subclass: 'GtRemotePhlowTextAttributeRunsStylerSpecification'
-	instVarNames: #( attributeRuns )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(attributeRuns)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1800,9 +1854,9 @@ removeallclassmethods GtRemotePhlowTextAttributeRunsStylerSpecification
 doit
 (GtRemotePhlowTextStylerSpecification
 	subclass: 'GtRemotePhlowTextNamedStylerSpecification'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1818,9 +1872,9 @@ removeallclassmethods GtRemotePhlowTextNamedStylerSpecification
 doit
 (GtRemotePhlowTextNamedStylerSpecification
 	subclass: 'GtRemotePhlowTextClassStylerSpecification'
-	instVarNames: #( stylerClassName )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(stylerClassName)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1836,9 +1890,9 @@ removeallclassmethods GtRemotePhlowTextClassStylerSpecification
 doit
 (GtRemotePhlowTextNamedStylerSpecification
 	subclass: 'GtRemotePhlowTextParserStylerSpecification'
-	instVarNames: #( parserClassName )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(parserClassName)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1854,9 +1908,9 @@ removeallclassmethods GtRemotePhlowTextParserStylerSpecification
 doit
 (GtRemotePhlowTextStylerSpecification
 	subclass: 'GtRemotePhlowTextNullStylerSpecification'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1872,9 +1926,9 @@ removeallclassmethods GtRemotePhlowTextNullStylerSpecification
 doit
 (GtRemotePhlowTextStylerSpecification
 	subclass: 'GtRemoteTextStylerComputableSpecification'
-	instVarNames: #( stylerComputation )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(stylerComputation)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1890,9 +1944,9 @@ removeallclassmethods GtRemoteTextStylerComputableSpecification
 doit
 (Object
 	subclass: 'GtRemotePhlowViewedObject'
-	instVarNames: #( object declarativeViewsBySelector )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(object declarativeViewsBySelector)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1909,9 +1963,9 @@ removeallclassmethods GtRemotePhlowViewedObject
 doit
 (Object
 	subclass: 'GtRemotePhlowViewSpecificationConversionExamples'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1927,9 +1981,9 @@ removeallclassmethods GtRemotePhlowViewSpecificationConversionExamples
 doit
 (Object
 	subclass: 'GtRmGeoGpsGroup'
-	instVarNames: #( items cache )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(items cache)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1945,9 +1999,9 @@ removeallclassmethods GtRmGeoGpsGroup
 doit
 (GtRmGeoGpsGroup
 	subclass: 'GtRmGeoGpsRecordsGroup'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1963,9 +2017,9 @@ removeallclassmethods GtRmGeoGpsRecordsGroup
 doit
 (GtRmGeoGpsGroup
 	subclass: 'GtRmGeoGpsTrajectoriesGroup'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1981,9 +2035,9 @@ removeallclassmethods GtRmGeoGpsTrajectoriesGroup
 doit
 (GtRmGeoGpsGroup
 	subclass: 'GtRmGeoGpsUsersGroup'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -1999,9 +2053,9 @@ removeallclassmethods GtRmGeoGpsUsersGroup
 doit
 (Object
 	subclass: 'GtRmGeoGpsRecord'
-	instVarNames: #( timestamp latitude longitude )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(timestamp latitude longitude)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -2017,9 +2071,9 @@ removeallclassmethods GtRmGeoGpsRecord
 doit
 (Object
 	subclass: 'GtRmGeoGpsTrajectory'
-	instVarNames: #( records targetFolderName )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(records targetFolderName)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -2035,9 +2089,9 @@ removeallclassmethods GtRmGeoGpsTrajectory
 doit
 (Object
 	subclass: 'GtRmGeolife'
-	instVarNames: #( users )
-	classVars: #( DEFAULT )
-	classInstVars: #(  )
+	instVarNames: #(users)
+	classVars: #(DEFAULT)
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -2053,9 +2107,9 @@ removeallclassmethods GtRmGeolife
 doit
 (Object
 	subclass: 'GtRmGeolifeBaseImporter'
-	instVarNames: #( currentDirectory usersCount )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(currentDirectory usersCount)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -2071,9 +2125,9 @@ removeallclassmethods GtRmGeolifeBaseImporter
 doit
 (GtRmGeolifeBaseImporter
 	subclass: 'GtRmGeolifeLocalImporter'
-	instVarNames: #(  )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -2089,9 +2143,9 @@ removeallclassmethods GtRmGeolifeLocalImporter
 doit
 (Object
 	subclass: 'GtRmGeoUser'
-	instVarNames: #( trajectories id )
-	classVars: #(  )
-	classInstVars: #(  )
+	instVarNames: #(trajectories id)
+	classVars: #()
+	classInstVars: #()
 	poolDictionaries: #()
 	inDictionary: Globals
 	options: #( #logCreation )
@@ -2927,6 +2981,16 @@ bold
 	^ self addAttribute: GtPhlowFontWeightAttribute bold
 %
 
+category: 'api - text style'
+method: GtPhlowText
+decorationDo: aBlock
+	| anAttribute |
+	
+	anAttribute := GtPhlowTextDecorationAttribute new.
+	aBlock value: anAttribute.
+	self addAttribute: anAttribute
+%
+
 category: 'accessing'
 method: GtPhlowText
 endIndex
@@ -3024,10 +3088,22 @@ italic
 	^ self addAttribute: GtPhlowFontEmphasisAttribute italic
 %
 
+category: 'api - text style'
+method: GtPhlowText
+normal
+	^ self addAttribute: GtPhlowFontEmphasisAttribute normal
+%
+
 category: 'testing'
 method: GtPhlowText
 notEmpty
 	^ self isEmpty not
+%
+
+category: 'api - text style'
+method: GtPhlowText
+oblique
+	^ self addAttribute: GtPhlowFontEmphasisAttribute oblique
 %
 
 category: 'test - accessing'
@@ -3553,6 +3629,20 @@ italic
 		emphasis: #italic
 %
 
+category: 'instance creation'
+classmethod: GtPhlowFontEmphasisAttribute
+normal
+	^ self new 
+		emphasis: #normal
+%
+
+category: 'instance creation'
+classmethod: GtPhlowFontEmphasisAttribute
+oblique
+	^ self new 
+		emphasis: #oblique
+%
+
 category: 'accessing'
 classmethod: GtPhlowFontEmphasisAttribute
 typeLabel
@@ -3936,6 +4026,148 @@ printOn: aStream
 		nextPutAll: self color printString
 %
 
+! Class implementation for 'GtPhlowTextDecorationAttribute'
+
+!		Class methods for 'GtPhlowTextDecorationAttribute'
+
+category: 'accessing'
+classmethod: GtPhlowTextDecorationAttribute
+new
+	^ self basicNew initialize
+%
+
+category: 'accessing'
+classmethod: GtPhlowTextDecorationAttribute
+typeLabel
+	^ #phlowTextDecorationAttribute
+%
+
+!		Instance methods for 'GtPhlowTextDecorationAttribute'
+
+category: 'styling'
+method: GtPhlowTextDecorationAttribute
+applyStyleToText: aText
+	aText decorationDo: [ :aTextDecorationAttribute |
+		decoration applyPropertiesTo: aTextDecorationAttribute ]
+%
+
+category: 'converting'
+method: GtPhlowTextDecorationAttribute
+asDictionaryForExport
+	^ super asDictionaryForExport
+		at: 'decoration' put: decoration asDictionaryForExport;
+		yourself
+%
+
+category: 'accessing'
+method: GtPhlowTextDecorationAttribute
+color
+	^ decoration color
+%
+
+category: 'accessing'
+method: GtPhlowTextDecorationAttribute
+color: aColor
+	decoration color: aColor
+%
+
+category: 'api - decoration'
+method: GtPhlowTextDecorationAttribute
+dashed
+	decoration dashed
+%
+
+category: 'accessing'
+method: GtPhlowTextDecorationAttribute
+decoration
+	<return: #GtPhlowTextDecoration>
+
+	^ decoration
+%
+
+category: 'accessing'
+method: GtPhlowTextDecorationAttribute
+decoration: aGTPhlowTextDecoration
+	decoration := aGTPhlowTextDecoration
+%
+
+category: 'api - decoration'
+method: GtPhlowTextDecorationAttribute
+dotted
+	decoration dotted
+%
+
+category: 'api - decoration'
+method: GtPhlowTextDecorationAttribute
+double
+	decoration double
+%
+
+category: 'comparing'
+method: GtPhlowTextDecorationAttribute
+equals: anAnotherAttribute
+	^ self decoration = anAnotherAttribute decoration
+%
+
+category: 'initialization'
+method: GtPhlowTextDecorationAttribute
+initialize
+	super initialize.
+	
+	decoration := GtPhlowTextDecoration new
+%
+
+category: 'initialization'
+method: GtPhlowTextDecorationAttribute
+initializeFromJSONDictionary: aTextAttributeData
+	super initializeFromJSONDictionary: aTextAttributeData.
+	
+	decoration := GtPhlowTextDecoration 
+		fromJSONDictionary: (aTextAttributeData at: 'decoration')
+%
+
+category: 'api - decoration'
+method: GtPhlowTextDecorationAttribute
+lineThrough
+	decoration withLineThrough
+%
+
+category: 'api - decoration'
+method: GtPhlowTextDecorationAttribute
+overline
+	decoration withOverline
+%
+
+category: 'api - decoration'
+method: GtPhlowTextDecorationAttribute
+solid
+	decoration solid
+%
+
+category: 'accessing'
+method: GtPhlowTextDecorationAttribute
+thickness
+	^ decoration thickness
+%
+
+category: 'accessing'
+method: GtPhlowTextDecorationAttribute
+thickness: aNumber
+	decoration thickness: aNumber
+%
+
+category: 'api - decoration'
+method: GtPhlowTextDecorationAttribute
+underline
+	decoration withUnderline
+%
+
+category: 'api - decoration'
+method: GtPhlowTextDecorationAttribute
+wavy
+	decoration wavy
+%
+
 ! Class implementation for 'GtPhlowTextUnknownAttribute'
 
 !		Class methods for 'GtPhlowTextUnknownAttribute'
@@ -3977,6 +4209,220 @@ category: 'accessing'
 method: GtPhlowTextUnknownAttribute
 rawData: aTextStylerData 
 	rawData := aTextStylerData
+%
+
+! Class implementation for 'GtPhlowTextDecoration'
+
+!		Class methods for 'GtPhlowTextDecoration'
+
+category: 'instance creation'
+classmethod: GtPhlowTextDecoration
+fromJSONDictionary: aTextAttributeData 
+	^ self new
+		initializeFromJSONDictionary: aTextAttributeData  
+%
+
+category: 'accessing'
+classmethod: GtPhlowTextDecoration
+new
+	^ self basicNew initialize
+%
+
+!		Instance methods for 'GtPhlowTextDecoration'
+
+category: 'comparing'
+method: GtPhlowTextDecoration
+= anObject
+	"Answer whether the receiver and anObject represent the same object."
+
+	self == anObject
+		ifTrue: [ ^ true ].
+	self class = anObject class
+		ifFalse: [ ^ false ].
+		
+	^ color = anObject color
+		and: [ styleName = anObject styleName
+				and: [ thickness = anObject thickness 
+					and: [ typeNames = anObject typeNames ]  ] ]
+%
+
+category: 'styling'
+method: GtPhlowTextDecoration
+applyPropertiesTo: aBlTextDecorationAttribute
+	styleName ifNotNil: [
+		aBlTextDecorationAttribute perform: styleName asSymbol ].
+	typeNames do: [ :aTypeName | 
+		aBlTextDecorationAttribute perform: aTypeName asSymbol ].
+	color ifNotNil: [ :aColor |
+		aBlTextDecorationAttribute color: aColor asColor ].
+	thickness ifNotNil: [ :aNumber |
+		aBlTextDecorationAttribute thickness: aNumber ].
+%
+
+category: 'converting'
+method: GtPhlowTextDecoration
+asDictionaryForExport
+	| dictionaryForExport |
+	dictionaryForExport := Dictionary new.
+	
+	dictionaryForExport
+		at: 'styleName' put: self styleName;
+		at: 'typeNames' put: self typeNames asArray.
+		
+	self color ifNotNil: [
+		dictionaryForExport 
+			at: 'color' 
+			put: self color asDictionaryForExport ].
+	self thickness ifNotNil: [
+		dictionaryForExport 
+			at: 'thickness' 
+			put: self thickness ].
+		
+	^ dictionaryForExport
+%
+
+category: 'accessing'
+method: GtPhlowTextDecoration
+color
+	^ color
+%
+
+category: 'accessing'
+method: GtPhlowTextDecoration
+color: anObject
+	color := anObject
+%
+
+category: 'api - decoration'
+method: GtPhlowTextDecoration
+dashed
+	styleName := #dashed
+%
+
+category: 'api - decoration'
+method: GtPhlowTextDecoration
+dotted
+	styleName := #dotted
+%
+
+category: 'api - decoration'
+method: GtPhlowTextDecoration
+double
+	styleName := #double
+%
+
+category: 'gt - extensions'
+method: GtPhlowTextDecoration
+gtPreviewFor: aView
+	<gtView>
+
+	^ aView text
+		title: 'Preview';
+		priority: 1;
+		text: [
+			'Decoration' asRopedText
+				fontSize: 20;
+				decorationDo: [ :aTextDecorationAttribute | 
+					self applyPropertiesTo: aTextDecorationAttribute ] ]
+%
+
+category: 'comparing'
+method: GtPhlowTextDecoration
+hash
+	"Answer an integer value that is related to the identity of the receiver."
+
+	^ color hash
+		bitXor: (styleName hash 
+			bitXor: (thickness hash 
+				bitXor: typeNames hash))
+%
+
+category: 'initialization'
+method: GtPhlowTextDecoration
+initialize
+	super initialize.
+	
+	typeNames := Set new.
+	self solid.
+	thickness := 1.
+%
+
+category: 'initialization'
+method: GtPhlowTextDecoration
+initializeFromJSONDictionary: aTextDecorationData 
+	styleName := aTextDecorationData at: 'styleName'.
+	typeNames := (aTextDecorationData at: 'typeNames') asSet.
+	
+	aTextDecorationData at: 'color' ifPresent: [ :aColorData |
+		color := GtPhlowColor fromJSONDictionary: aColorData ].
+	aTextDecorationData at: 'thickness' ifPresent: [ :aNumber |
+		thickness := aNumber ].
+%
+
+category: 'api - decoration'
+method: GtPhlowTextDecoration
+solid
+	styleName := #solid
+%
+
+category: 'accessing'
+method: GtPhlowTextDecoration
+styleName
+	^ styleName
+%
+
+category: 'accessing'
+method: GtPhlowTextDecoration
+styleName: anObject
+	styleName := anObject
+%
+
+category: 'accessing'
+method: GtPhlowTextDecoration
+thickness
+	^ thickness
+%
+
+category: 'accessing'
+method: GtPhlowTextDecoration
+thickness: anObject
+	thickness := anObject
+%
+
+category: 'accessing'
+method: GtPhlowTextDecoration
+typeNames
+	^ typeNames
+%
+
+category: 'accessing'
+method: GtPhlowTextDecoration
+typeNames: anObject
+	typeNames := anObject
+%
+
+category: 'api - decoration'
+method: GtPhlowTextDecoration
+wavy
+	styleName := #wavy
+%
+
+category: 'api - decoration'
+method: GtPhlowTextDecoration
+withLineThrough
+	typeNames add: #lineThrough
+%
+
+category: 'api - decoration'
+method: GtPhlowTextDecoration
+withOverline
+	typeNames add: #overline
+%
+
+category: 'api - decoration'
+method: GtPhlowTextDecoration
+withUnderline
+	typeNames add: #underline
 %
 
 ! Class implementation for 'GtPhlowTextHighlight'
@@ -6086,6 +6532,18 @@ gtStyledPhlowTextInEditorFor: aView
 
 category: 'inspecting'
 method: GtRemotePhlowDeclarativeTestInspectable
+gtStyledPhlowTextWithDecorationsFor: aView
+	<gtView>
+	
+	^ aView text
+		title: 'Styled phlow text with decorations';
+		priority: 10.6;
+		text: [ GtRemotePhlowDeclarativeTextTestInspectable new
+			styledPhlowTextWithDecorations ]
+%
+
+category: 'inspecting'
+method: GtRemotePhlowDeclarativeTestInspectable
 gtStyledStringJsonInEditorFor: aView
 	<gtView>
 	
@@ -6309,6 +6767,140 @@ method: GtRemotePhlowDeclarativeTestInspectable
 text
 
 	^string asRopedText 
+%
+
+! Class implementation for 'GtRemotePhlowDeclarativeTextTestInspectable'
+
+!		Instance methods for 'GtRemotePhlowDeclarativeTextTestInspectable'
+
+category: 'views'
+method: GtRemotePhlowDeclarativeTextTestInspectable
+gtStyledPhlowTextWithDecorationsFor: aView
+	<gtView>
+	
+	^ aView text
+		title: 'Styled phlow text with decorations';
+		priority: 10.3;
+		text: [ self styledPhlowTextWithDecorations ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeTextTestInspectable
+styledPhlowTextWithDecorations
+	<gtExample>
+	| text |
+	text := GtPhlowText forString: 'Examples of text decorations:
+
+Different styles:
+	Solid style
+	Dashed style
+	Dotted style
+	Wavy style
+	
+Different types:
+	Line Through
+	Overline
+	Underline
+	
+Different color:
+	Blue color
+	
+Different thickness:
+	Thickness 3
+	
+Combined decorations:
+	Several decorations
+'.
+
+	(text from: 51 to: 61)  decorationDo: [ :aDecoration |
+		aDecoration solid; underline ].
+	(text from: 64 to: 75)  decorationDo: [ :aDecoration |
+		aDecoration dashed; underline  ].
+	(text from: 78 to: 89)  decorationDo: [ :aDecoration |
+		aDecoration dotted; underline  ].
+	(text from: 92 to: 101)  decorationDo: [ :aDecoration |
+		aDecoration wavy; underline  ].
+	
+	(text from: 123 to: 134)  decorationDo: [ :aDecoration |
+		aDecoration solid; lineThrough ].
+	(text from: 137 to: 144)  decorationDo: [ :aDecoration |
+		aDecoration solid; overline ].
+	(text from: 147 to: 155)  decorationDo: [ :aDecoration |
+		aDecoration solid; underline ].
+	
+	(text from: 177 to: 186)  decorationDo: [ :aDecoration |
+		aDecoration underline; color: (GtPhlowColor named: #blue) ].
+	
+	(text from: 212 to: 222)  decorationDo: [ :aDecoration |
+		aDecoration underline; thickness: 3 ].
+	
+	(text from: 249 to: 267)  decorationDo: [ :aDecoration |
+		aDecoration 
+			underline;
+			overline;
+			dashed; 
+			thickness: 3;
+			color: (GtPhlowColor named: #blue) ].
+	
+	^ text
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeTextTestInspectable
+styledPhlowTextWithHighlights
+	<gtExample>
+	| text |
+	text := GtPhlowText forString: 'Examples of text styling:
+
+Emphases:
+	Italic text
+	Oblique text
+	Normal text
+
+Colors:
+	Blue foreground
+	Green highlight
+	
+Weight:
+	Thin text
+	Bold text
+	
+Size:
+	8px text
+	28px text
+	
+Fonts:
+	Helvetica font
+	Source Sans Pro font
+	
+Combined styles:
+	Several styles
+'.
+
+	(text from: 39 to: 49) italic.
+	(text from: 52 to: 63) oblique.
+	(text from: 66 to: 76) normal.
+	
+	(text from: 88 to: 102) foreground:  (GtPhlowColor named: #blue).
+	(text from: 105 to: 119) highlight: (GtPhlowColor named: #green).
+		
+	(text from: 132 to: 140) thin.
+	(text from: 143 to: 152) bold.
+	
+	(text from: 162 to: 169) fontSize: 8.
+	(text from: 172 to: 180) fontSize: 28.
+	
+	(text from: 191 to: 205) fontName: 'Helvetica'.
+	(text from: 208 to: 226) fontName: 'Source Sans Pro'.
+	
+	(text from: 249 to: 262)  
+		oblique;
+		bold;
+		fontSize: 18; 
+		foreground:  (GtPhlowColor named: #red);
+		fontName: 'Source Sans Pro'.
+	
+	^ text
 %
 
 ! Class implementation for 'GtRemotePhlowDeclarativeTreeExamples'
@@ -7161,7 +7753,7 @@ columnedListWithTypedColumns
 	self 
 		assert: (viewSpecification retrieveItems: 2 fromIndex: 1)
 		equals: (self 
-			forPharo11: [
+			forPharo11AndPharo12: [
 				self expectedColumnedListTypedColumnsTwoItemsPharo11]
 			forPharo10: [
 				self expectedColumnedListTypedColumnsTwoItems ]).
@@ -7173,7 +7765,8 @@ columnedListWithTypedColumns
 		andColumnsComputation: {
 			[ :aNumber | '+',aNumber asFloat asString ].
 			[ :aNumber | '+',(aNumber + 1) asString].
-			[ :aNumber | aNumber asFloat gtSystemIconName ] }.
+			[ :aNumber | 
+				self formatExpectedIconName: aNumber asFloat gtSystemIconName ] }.
 	
 	^ viewSpecification
 %
@@ -7355,6 +7948,12 @@ method: GtRemotePhlowDeclarativeViewsExamples
 expectedStyledText
 	^ GtRemotePhlowDeclarativeTestInspectable new  
 			styledText
+%
+
+category: 'utils'
+method: GtRemotePhlowDeclarativeViewsExamples
+formatExpectedIconName: anIconName
+	^ anIconName
 %
 
 category: 'private'
@@ -7650,6 +8249,23 @@ textViewWithStyledPhlowText
 
 category: 'examples - views'
 method: GtRemotePhlowDeclarativeViewsExamples
+textViewWithStyledPhlowTextWithDecorations
+	<gtExample>
+	<after: #stopServer>
+	| view |
+	
+	view := self 
+		assertTextualViewWithBasicStyledTextWithSelector: #gtStyledPhlowTextWithDecorationsFor: 
+		title: 'Styled phlow text with decorations'
+		priority: 10.6
+		expectedText: GtRemotePhlowDeclarativeTextTestInspectable new  
+			styledPhlowTextWithDecorations.
+	
+	^ view 
+%
+
+category: 'examples - views'
+method: GtRemotePhlowDeclarativeViewsExamples
 textViewWithStyledText
 	<gtExample>
 	<after: #stopServer>
@@ -7702,7 +8318,7 @@ treeViewLazyCheck: viewProxy
 
 category: 'examples - views'
 method: GtRemotePhlowDeclarativeViewsExamples
-treeViewWithStyledtext
+treeViewWithStyledText
 	<gtExample>
 	<after: #stopServer>
 	| viewedObjectProxy viewDictionary viewSpecification |
@@ -10440,7 +11056,7 @@ category: 'adding'
 method: GtRmGeolife
 ensureUserWithId: anId
 	^ self users 
-		detect: [ :aUser | aUser id = anId ];
+		detect: [ :aUser | aUser id = anId ]
 		ifNone: [ 
 			| newUser |
 			newUser := GtRmGeoUser new 

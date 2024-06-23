@@ -359,6 +359,17 @@ GtRemotePhlowDeclarativeTestInspectable >> gtStyledPhlowTextInEditorFor: aView [
 ]
 
 { #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtStyledPhlowTextWithDecorationsFor: aView [
+	<gtView>
+	
+	^ aView text
+		title: 'Styled phlow text with decorations';
+		priority: 10.6;
+		text: [ GtRemotePhlowDeclarativeTextTestInspectable new
+			styledPhlowTextWithDecorations ]
+]
+
+{ #category : #inspecting }
 GtRemotePhlowDeclarativeTestInspectable >> gtStyledStringJsonInEditorFor: aView [
 	<gtView>
 	

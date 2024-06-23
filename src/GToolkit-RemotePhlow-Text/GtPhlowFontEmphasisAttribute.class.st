@@ -13,6 +13,18 @@ GtPhlowFontEmphasisAttribute class >> italic [
 		emphasis: #italic
 ]
 
+{ #category : #'instance creation' }
+GtPhlowFontEmphasisAttribute class >> normal [
+	^ self new 
+		emphasis: #normal
+]
+
+{ #category : #'instance creation' }
+GtPhlowFontEmphasisAttribute class >> oblique [
+	^ self new 
+		emphasis: #oblique
+]
+
 { #category : #accessing }
 GtPhlowFontEmphasisAttribute class >> typeLabel [
 	^ 'phlowFontEmphasisAttribute'
