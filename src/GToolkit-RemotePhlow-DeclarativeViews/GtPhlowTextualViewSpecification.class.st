@@ -14,7 +14,8 @@ GtPhlowTextualViewSpecification >> initializeFromInspector: anInspector [
 	self dataTransport = self class dataIncluded ifTrue: [ ^ self ].
 	
 	phlowDataSource ifNil: [
-		self phlowDataSource: (anInspector getDeclarativeViewFor: self methodSelector) ]
+		self phlowDataSource: (anInspector 
+			getDeclarativeViewFor: self methodSelector) ]
 ]
 
 { #category : #'api - accessing' }

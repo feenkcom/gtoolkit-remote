@@ -72,6 +72,21 @@ GtRemotePhlowViewedObject >> getViewsDeclarations [
 		yourself
 ]
 
+{ #category : #'api - accessing' }
+GtRemotePhlowViewedObject >> getViewsDeclarationsWithPhlowDataSource [
+	| viewDeclarations |
+	viewDeclarations := (self declarativeViewsBySelector 
+		collect: [ :aDeclarativeView |
+			(self getViewDeclarationForView: aDeclarativeView)
+				ifNotNil: [ :aDictionary |
+					aDictionary 
+						at: 'phlowDataSource' put: aDeclarativeView;
+						yourself ] ]).
+	^ Dictionary new
+		at: 'views' put: viewDeclarations asArray;
+		yourself
+]
+
 { #category : #initialization }
 GtRemotePhlowViewedObject >> initializeDeclarativeViews [
 	| phlowViews |
