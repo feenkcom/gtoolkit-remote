@@ -2,6 +2,42 @@
 ! Generated file, do not Edit
 
 doit
+(GtRsrSerializationStrategy
+	subclass: 'GtRsrInspectorProxySerializationStrategy'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-InspectorCore';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRsrInspectorProxySerializationStrategy
+removeallclassmethods GtRsrInspectorProxySerializationStrategy
+
+doit
+(GtRsrInspectorProxySerializationStrategy
+	subclass: 'GtRsrInspectorProxyDataSerializationStrategy'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-InspectorCore';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRsrInspectorProxyDataSerializationStrategy
+removeallclassmethods GtRsrInspectorProxyDataSerializationStrategy
+
+doit
 (Object
 	subclass: 'GtPhlowBasicRun'
 	instVarNames: #()
@@ -2157,6 +2193,57 @@ true.
 
 removeallmethods GtRmGeoUser
 removeallclassmethods GtRmGeoUser
+
+! Class implementation for 'GtRsrInspectorProxySerializationStrategy'
+
+!		Instance methods for 'GtRsrInspectorProxySerializationStrategy'
+
+category: 'accessing'
+method: GtRsrInspectorProxySerializationStrategy
+deserialize: viewProxyData
+	^ (viewProxyData at: 'proxyObject')
+		initializeFromProxyData: (viewProxyData at: 'proxyData');
+		yourself
+%
+
+category: 'accessing'
+method: GtRsrInspectorProxySerializationStrategy
+serialize: anObject
+	"Called from GemStone. We defined is also for GT as it does not references GemStone specific classes"
+	| inspectorWrapper |
+	inspectorWrapper := GtRemotePhlowViewedObject object: anObject.
+	^ self serializedDataForInspectorWrapper: inspectorWrapper
+%
+
+category: 'accessing'
+method: GtRsrInspectorProxySerializationStrategy
+serializedDataForInspectorWrapper: anInspectorWrapper
+	"Called from GemStone. We defined is also for GT as it does not references GemStone specific classes"
+	| dictionaryData proxyData |
+	
+	dictionaryData := Dictionary new.
+	
+	dictionaryData 
+		at: 'proxyObject'
+		put: anInspectorWrapper.
+		
+	proxyData := anInspectorWrapper getViewsDeclarationsWithPhlowDataSource.
+	dictionaryData 
+		at: 'proxyData'
+		put: proxyData.
+	
+	^ dictionaryData asGtRsrProxyObjectForConnection: nil
+%
+
+! Class implementation for 'GtRsrInspectorProxyDataSerializationStrategy'
+
+!		Instance methods for 'GtRsrInspectorProxyDataSerializationStrategy'
+
+category: 'accessing'
+method: GtRsrInspectorProxyDataSerializationStrategy
+deserialize: viewProxyData
+	^ viewProxyData
+%
 
 ! Class implementation for 'GtPhlowBasicRun'
 
@@ -4544,10 +4631,12 @@ fromJSONDictionary: aDictionary
 	Subclasses will override this to add their specific attributes"
 
 	^self new 
-		title: (aDictionary at: #title);
-		priority: (aDictionary at: #priority);
-		dataTransport: (aDictionary at: #dataTransport);
-		methodSelector: (aDictionary at: #methodSelector);
+		title: (aDictionary at: 'title');
+		priority: (aDictionary at: 'priority');
+		dataTransport: (aDictionary at: 'dataTransport');
+		methodSelector: (aDictionary at: 'methodSelector');
+		phlowDataSource: (aDictionary 
+			at: 'phlowDataSource' ifAbsent: [ nil ]);
 		yourself
 %
 
@@ -4560,11 +4649,11 @@ asDictionaryForExport
 	Subclasses will override and add to the dictionary"
 
 	^ Dictionary new 
-		at: #viewName put: self viewName;
-		at: #title put: title;
-		at: #priority put: priority;
-		at: #dataTransport put: dataTransport;
-		at: #methodSelector put: methodSelector;
+		at: 'viewName' put: self viewName;
+		at: 'title' put: title;
+		at: 'priority' put: priority;
+		at: 'dataTransport' put: dataTransport;
+		at: 'methodSelector' put: methodSelector;
 		yourself
 %
 
@@ -4677,8 +4766,9 @@ getDeclarativeViewFor: aViewSelector
 category: 'accessing'
 method: GtPhlowForwardViewSpecification
 initializeFromInspector: anInspector
-	self phlowDataSource: (anInspector 
-		getDeclarativeViewFor: self methodSelector)
+	self phlowDataSource ifNil: [
+		self phlowDataSource: (anInspector 
+			getDeclarativeViewFor: self methodSelector) ]
 %
 
 category: 'api - accessing'
@@ -4727,7 +4817,9 @@ flushItemsIterator
 category: 'initialization'
 method: GtPhlowListingViewSpecification
 initializeFromInspector: anInspector
-	self phlowDataSource: (anInspector getDeclarativeViewFor: self methodSelector)
+	self phlowDataSource ifNil: [
+		self phlowDataSource: (anInspector 
+			getDeclarativeViewFor: self methodSelector) ]
 %
 
 category: 'accessing'
@@ -4794,7 +4886,7 @@ fromJSONDictionary: aDictionary
 
 	list := super fromJSONDictionary: aDictionary.
 	list
-		columnSpecifications: ((aDictionary at: #columnSpecifications)
+		columnSpecifications: ((aDictionary at: 'columnSpecifications')
 			collect: [ :aColumnSpecificationJson |
 				GtRemotePhlowColumnSpecification 
 					fromJSONDictionary: aColumnSpecificationJson ]).
@@ -4808,7 +4900,7 @@ category: 'converting'
 method: GtPhlowBasicColumnedViewSpecification
 asDictionaryForExport 
 	^ super asDictionaryForExport 
-		at: #columnSpecifications put: (self columnSpecifications
+		at: 'columnSpecifications' put: (self columnSpecifications
 			collect: [ :aColumnSpecification |
 				aColumnSpecification asDictionaryForExport ]);
 		yourself
@@ -4881,7 +4973,7 @@ classmethod: GtPhlowColumnedListViewSpecification
 fromJSONDictionary: aDictionary
 	^ (super fromJSONDictionary: aDictionary)
 		horizontalScrollingEnabled: (aDictionary 
-			at: #horizontalScrollingEnabled 
+			at: 'horizontalScrollingEnabled' 
 			ifAbsent: [ nil ])
 %
 
@@ -4891,7 +4983,7 @@ category: 'converting'
 method: GtPhlowColumnedListViewSpecification
 asDictionaryForExport 
 	^ super asDictionaryForExport 
-		at: #horizontalScrollingEnabled put: horizontalScrollingEnabled;
+		at: 'horizontalScrollingEnabled' put: horizontalScrollingEnabled;
 		yourself
 %
 
@@ -5005,8 +5097,9 @@ method: GtPhlowTextualViewSpecification
 initializeFromInspector: anInspector
 	self dataTransport = self class dataIncluded ifTrue: [ ^ self ].
 	
-	phlowDataSource ifNil: [
-		self phlowDataSource: (anInspector getDeclarativeViewFor: self methodSelector) ]
+	self phlowDataSource ifNil: [
+		self phlowDataSource: (anInspector 
+			getDeclarativeViewFor: self methodSelector) ]
 %
 
 category: 'api - accessing'
@@ -5109,7 +5202,7 @@ classmethod: GtPhlowViewErrorViewSpecification
 fromJSONDictionary: aDictionary
 
 	^ (super fromJSONDictionary: aDictionary)
-		errorMessage: (aDictionary at: #errorMessage ifAbsent: [ nil ])
+		errorMessage: (aDictionary at: 'errorMessage' ifAbsent: [ nil ])
 %
 
 !		Instance methods for 'GtPhlowViewErrorViewSpecification'
@@ -5118,7 +5211,7 @@ category: 'converting'
 method: GtPhlowViewErrorViewSpecification
 asDictionaryForExport 
 	^ super asDictionaryForExport
-		at: #errorMessage put: errorMessage;
+		at: 'errorMessage' put: errorMessage;
 		yourself
 %
 
@@ -6847,6 +6940,67 @@ Combined decorations:
 
 category: 'accessing'
 method: GtRemotePhlowDeclarativeTextTestInspectable
+styledPhlowTextWithDecorationsForRemoteComparison
+	<gtExample>
+	| text |
+	text := GtPhlowText forString: ('Examples of text decorations:
+
+Different styles:
+	Solid style
+	Dashed style
+	Dotted style
+	Wavy style
+	
+Different types:
+	Line Through
+	Overline
+	Underline
+	
+Different color:
+	Blue color
+	
+Different thickness:
+	Thickness 3
+	
+Combined decorations:
+	Several decorations
+' copyReplaceAll: String cr with: String lf).
+
+	(text from: 51 to: 61)  decorationDo: [ :aDecoration |
+		aDecoration solid; underline ].
+	(text from: 64 to: 75)  decorationDo: [ :aDecoration |
+		aDecoration dashed; underline  ].
+	(text from: 78 to: 89)  decorationDo: [ :aDecoration |
+		aDecoration dotted; underline  ].
+	(text from: 92 to: 101)  decorationDo: [ :aDecoration |
+		aDecoration wavy; underline  ].
+	
+	(text from: 123 to: 134)  decorationDo: [ :aDecoration |
+		aDecoration solid; lineThrough ].
+	(text from: 137 to: 144)  decorationDo: [ :aDecoration |
+		aDecoration solid; overline ].
+	(text from: 147 to: 155)  decorationDo: [ :aDecoration |
+		aDecoration solid; underline ].
+	
+	(text from: 177 to: 186)  decorationDo: [ :aDecoration |
+		aDecoration underline; color: (GtPhlowColor named: #blue) ].
+	
+	(text from: 212 to: 222)  decorationDo: [ :aDecoration |
+		aDecoration underline; thickness: 3 ].
+	
+	(text from: 249 to: 267)  decorationDo: [ :aDecoration |
+		aDecoration 
+			underline;
+			overline;
+			dashed; 
+			thickness: 3;
+			color: (GtPhlowColor named: #blue) ].
+	
+	^ text
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeTextTestInspectable
 styledPhlowTextWithHighlights
 	<gtExample>
 	| text |
@@ -7945,6 +8099,13 @@ expectedNumberOfRunsForBasicStyledText
 
 category: 'accessing - expected'
 method: GtRemotePhlowDeclarativeViewsExamples
+expectedStyledPhlowTextWithDecorations
+	^ GtRemotePhlowDeclarativeTextTestInspectable new  
+		styledPhlowTextWithDecorations
+%
+
+category: 'accessing - expected'
+method: GtRemotePhlowDeclarativeViewsExamples
 expectedStyledText
 	^ GtRemotePhlowDeclarativeTestInspectable new  
 			styledText
@@ -8258,8 +8419,7 @@ textViewWithStyledPhlowTextWithDecorations
 		assertTextualViewWithBasicStyledTextWithSelector: #gtStyledPhlowTextWithDecorationsFor: 
 		title: 'Styled phlow text with decorations'
 		priority: 10.6
-		expectedText: GtRemotePhlowDeclarativeTextTestInspectable new  
-			styledPhlowTextWithDecorations.
+		expectedText: self expectedStyledPhlowTextWithDecorations.
 	
 	^ view 
 %
@@ -10209,6 +10369,22 @@ getViewsDeclarations
 	viewDeclarations := (self declarativeViewsBySelector 
 		collect: [ :aDeclarativeView |
 			self getViewDeclarationForView: aDeclarativeView ]).
+	^ Dictionary new
+		at: 'views' put: viewDeclarations asArray;
+		yourself
+%
+
+category: 'api - accessing'
+method: GtRemotePhlowViewedObject
+getViewsDeclarationsWithPhlowDataSource
+	| viewDeclarations |
+	viewDeclarations := (self declarativeViewsBySelector 
+		collect: [ :aDeclarativeView |
+			(self getViewDeclarationForView: aDeclarativeView)
+				ifNotNil: [ :aDictionary |
+					aDictionary 
+						at: 'phlowDataSource' put: aDeclarativeView;
+						yourself ] ]).
 	^ Dictionary new
 		at: 'views' put: viewDeclarations asArray;
 		yourself
