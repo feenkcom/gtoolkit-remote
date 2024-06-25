@@ -13,7 +13,7 @@ GtPhlowTextualViewSpecification >> getText [
 GtPhlowTextualViewSpecification >> initializeFromInspector: anInspector [
 	self dataTransport = self class dataIncluded ifTrue: [ ^ self ].
 	
-	phlowDataSource ifNil: [
+	self phlowDataSource ifNil: [
 		self phlowDataSource: (anInspector 
 			getDeclarativeViewFor: self methodSelector) ]
 ]

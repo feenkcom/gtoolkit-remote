@@ -13,7 +13,7 @@ GtPhlowBitmapViewSpecification class >> fromJSONDictionary: aDictionary [
 
 	editor := super fromJSONDictionary: aDictionary.
 	editor dataTransport = self dataIncluded
-		ifTrue: [ editor bitmap: (GtRemotePhlowBitmapSpecification fromJSONDictionary: (aDictionary at: #bitmap)) ].
+		ifTrue: [ editor bitmap: (GtRemotePhlowBitmapSpecification fromJSONDictionary: (aDictionary at: 'bitmap')) ].
 
 	^ editor
 ]
@@ -25,7 +25,7 @@ GtPhlowBitmapViewSpecification >> asDictionaryForExport [
 
 	dictionary := super asDictionaryForExport.
 	self dataTransport = self class dataIncluded ifTrue: [ 
-		dictionary at: #bitmap put: bitmap asDictionaryForExport ].
+		dictionary at: 'bitmap' put: bitmap asDictionaryForExport ].
 		
 	^ dictionary
 ]

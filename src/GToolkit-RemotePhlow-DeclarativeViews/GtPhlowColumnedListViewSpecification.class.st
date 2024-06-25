@@ -29,14 +29,14 @@ Class {
 GtPhlowColumnedListViewSpecification class >> fromJSONDictionary: aDictionary [
 	^ (super fromJSONDictionary: aDictionary)
 		horizontalScrollingEnabled: (aDictionary 
-			at: #horizontalScrollingEnabled 
+			at: 'horizontalScrollingEnabled' 
 			ifAbsent: [ nil ])
 ]
 
 { #category : #converting }
 GtPhlowColumnedListViewSpecification >> asDictionaryForExport [ 
 	^ super asDictionaryForExport 
-		at: #horizontalScrollingEnabled put: horizontalScrollingEnabled;
+		at: 'horizontalScrollingEnabled' put: horizontalScrollingEnabled;
 		yourself
 ]
 

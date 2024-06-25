@@ -14,7 +14,7 @@ GtPhlowBasicColumnedViewSpecification class >> fromJSONDictionary: aDictionary [
 
 	list := super fromJSONDictionary: aDictionary.
 	list
-		columnSpecifications: ((aDictionary at: #columnSpecifications)
+		columnSpecifications: ((aDictionary at: 'columnSpecifications')
 			collect: [ :aColumnSpecificationJson |
 				GtRemotePhlowColumnSpecification 
 					fromJSONDictionary: aColumnSpecificationJson ]).
@@ -25,7 +25,7 @@ GtPhlowBasicColumnedViewSpecification class >> fromJSONDictionary: aDictionary [
 { #category : #converting }
 GtPhlowBasicColumnedViewSpecification >> asDictionaryForExport [ 
 	^ super asDictionaryForExport 
-		at: #columnSpecifications put: (self columnSpecifications
+		at: 'columnSpecifications' put: (self columnSpecifications
 			collect: [ :aColumnSpecification |
 				aColumnSpecification asDictionaryForExport ]);
 		yourself

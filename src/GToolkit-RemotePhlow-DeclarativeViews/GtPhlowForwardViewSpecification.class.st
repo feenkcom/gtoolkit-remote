@@ -16,8 +16,9 @@ GtPhlowForwardViewSpecification >> getDeclarativeViewFor: aViewSelector [
 
 { #category : #accessing }
 GtPhlowForwardViewSpecification >> initializeFromInspector: anInspector [
-	self phlowDataSource: (anInspector 
-		getDeclarativeViewFor: self methodSelector)
+	self phlowDataSource ifNil: [
+		self phlowDataSource: (anInspector 
+			getDeclarativeViewFor: self methodSelector) ]
 ]
 
 { #category : #'api - accessing' }
