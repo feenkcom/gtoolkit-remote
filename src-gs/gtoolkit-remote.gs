@@ -2,42 +2,6 @@
 ! Generated file, do not Edit
 
 doit
-(GtRsrSerializationStrategy
-	subclass: 'GtRsrInspectorProxySerializationStrategy'
-	instVarNames: #()
-	classVars: #()
-	classInstVars: #()
-	poolDictionaries: #()
-	inDictionary: Globals
-	options: #( #logCreation )
-)
-		category: 'GToolkit-RemotePhlow-InspectorCore';
-		immediateInvariant.
-true.
-%
-
-removeallmethods GtRsrInspectorProxySerializationStrategy
-removeallclassmethods GtRsrInspectorProxySerializationStrategy
-
-doit
-(GtRsrInspectorProxySerializationStrategy
-	subclass: 'GtRsrInspectorProxyDataSerializationStrategy'
-	instVarNames: #()
-	classVars: #()
-	classInstVars: #()
-	poolDictionaries: #()
-	inDictionary: Globals
-	options: #( #logCreation )
-)
-		category: 'GToolkit-RemotePhlow-InspectorCore';
-		immediateInvariant.
-true.
-%
-
-removeallmethods GtRsrInspectorProxyDataSerializationStrategy
-removeallclassmethods GtRsrInspectorProxyDataSerializationStrategy
-
-doit
 (Object
 	subclass: 'GtPhlowBasicRun'
 	instVarNames: #()
@@ -2194,56 +2158,41 @@ true.
 removeallmethods GtRmGeoUser
 removeallclassmethods GtRmGeoUser
 
-! Class implementation for 'GtRsrInspectorProxySerializationStrategy'
-
-!		Instance methods for 'GtRsrInspectorProxySerializationStrategy'
-
-category: 'accessing'
-method: GtRsrInspectorProxySerializationStrategy
-deserialize: viewProxyData
-	^ (viewProxyData at: 'proxyObject')
-		initializeFromProxyData: (viewProxyData at: 'proxyData');
-		yourself
+doit
+(Object
+	subclass: 'GtRsrInspectorProxySerializationStrategy'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-InspectorCore';
+		immediateInvariant.
+true.
 %
 
-category: 'accessing'
-method: GtRsrInspectorProxySerializationStrategy
-serialize: anObject
-	"Called from GemStone. We defined is also for GT as it does not references GemStone specific classes"
-	| inspectorWrapper |
-	inspectorWrapper := GtRemotePhlowViewedObject object: anObject.
-	^ self serializedDataForInspectorWrapper: inspectorWrapper
+removeallmethods GtRsrInspectorProxySerializationStrategy
+removeallclassmethods GtRsrInspectorProxySerializationStrategy
+
+doit
+(GtRsrInspectorProxySerializationStrategy
+	subclass: 'GtRsrInspectorProxyDataSerializationStrategy'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-InspectorCore';
+		immediateInvariant.
+true.
 %
 
-category: 'accessing'
-method: GtRsrInspectorProxySerializationStrategy
-serializedDataForInspectorWrapper: anInspectorWrapper
-	"Called from GemStone. We defined is also for GT as it does not references GemStone specific classes"
-	| dictionaryData proxyData |
-	
-	dictionaryData := Dictionary new.
-	
-	dictionaryData 
-		at: 'proxyObject'
-		put: anInspectorWrapper.
-		
-	proxyData := anInspectorWrapper getViewsDeclarationsWithPhlowDataSource.
-	dictionaryData 
-		at: 'proxyData'
-		put: proxyData.
-	
-	^ dictionaryData asGtRsrProxyObjectForConnection: nil
-%
-
-! Class implementation for 'GtRsrInspectorProxyDataSerializationStrategy'
-
-!		Instance methods for 'GtRsrInspectorProxyDataSerializationStrategy'
-
-category: 'accessing'
-method: GtRsrInspectorProxyDataSerializationStrategy
-deserialize: viewProxyData
-	^ viewProxyData
-%
+removeallmethods GtRsrInspectorProxyDataSerializationStrategy
+removeallclassmethods GtRsrInspectorProxyDataSerializationStrategy
 
 ! Class implementation for 'GtPhlowBasicRun'
 
@@ -11522,6 +11471,57 @@ method: GtRmGeoUser
 trajectories
 	^ trajectories ifNil: [
 		trajectories := GtRmGeoGpsTrajectoriesGroup new ]
+%
+
+! Class implementation for 'GtRsrInspectorProxySerializationStrategy'
+
+!		Instance methods for 'GtRsrInspectorProxySerializationStrategy'
+
+category: 'accessing'
+method: GtRsrInspectorProxySerializationStrategy
+deserialize: viewProxyData
+	^ (viewProxyData at: 'proxyObject')
+		initializeFromProxyData: (viewProxyData at: 'proxyData');
+		yourself
+%
+
+category: 'accessing'
+method: GtRsrInspectorProxySerializationStrategy
+serialize: anObject
+	"Called from GemStone. We defined is also for GT as it does not references GemStone specific classes"
+	| inspectorWrapper |
+	inspectorWrapper := GtRemotePhlowViewedObject object: anObject.
+	^ self serializedDataForInspectorWrapper: inspectorWrapper
+%
+
+category: 'accessing'
+method: GtRsrInspectorProxySerializationStrategy
+serializedDataForInspectorWrapper: anInspectorWrapper
+	"Called from GemStone. We defined is also for GT as it does not references GemStone specific classes"
+	| dictionaryData proxyData |
+	
+	dictionaryData := Dictionary new.
+	
+	dictionaryData 
+		at: 'proxyObject'
+		put: anInspectorWrapper.
+		
+	proxyData := anInspectorWrapper getViewsDeclarationsWithPhlowDataSource.
+	dictionaryData 
+		at: 'proxyData'
+		put: proxyData.
+	
+	^ dictionaryData asGtRsrProxyObjectForConnection: nil
+%
+
+! Class implementation for 'GtRsrInspectorProxyDataSerializationStrategy'
+
+!		Instance methods for 'GtRsrInspectorProxyDataSerializationStrategy'
+
+category: 'accessing'
+method: GtRsrInspectorProxyDataSerializationStrategy
+deserialize: viewProxyData
+	^ viewProxyData
 %
 
 ! Class extensions for 'AbstractDictionary'
