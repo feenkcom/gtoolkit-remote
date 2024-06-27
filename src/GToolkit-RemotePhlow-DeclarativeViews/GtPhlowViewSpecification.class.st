@@ -59,10 +59,12 @@ GtPhlowViewSpecification class >> fromJSONDictionary: aDictionary [
 	Subclasses will override this to add their specific attributes"
 
 	^self new 
-		title: (aDictionary at: #title);
-		priority: (aDictionary at: #priority);
-		dataTransport: (aDictionary at: #dataTransport);
-		methodSelector: (aDictionary at: #methodSelector);
+		title: (aDictionary at: 'title');
+		priority: (aDictionary at: 'priority');
+		dataTransport: (aDictionary at: 'dataTransport');
+		methodSelector: (aDictionary at: 'methodSelector');
+		phlowDataSource: (aDictionary 
+			at: 'phlowDataSource' ifAbsent: [ nil ]);
 		yourself
 ]
 
@@ -72,11 +74,11 @@ GtPhlowViewSpecification >> asDictionaryForExport [
 	Subclasses will override and add to the dictionary"
 
 	^ Dictionary new 
-		at: #viewName put: self viewName;
-		at: #title put: title;
-		at: #priority put: priority;
-		at: #dataTransport put: dataTransport;
-		at: #methodSelector put: methodSelector;
+		at: 'viewName' put: self viewName;
+		at: 'title' put: title;
+		at: 'priority' put: priority;
+		at: 'dataTransport' put: dataTransport;
+		at: 'methodSelector' put: methodSelector;
 		yourself
 ]
 

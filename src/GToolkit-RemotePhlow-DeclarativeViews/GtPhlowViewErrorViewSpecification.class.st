@@ -11,13 +11,13 @@ Class {
 GtPhlowViewErrorViewSpecification class >> fromJSONDictionary: aDictionary [
 
 	^ (super fromJSONDictionary: aDictionary)
-		errorMessage: (aDictionary at: #errorMessage ifAbsent: [ nil ])
+		errorMessage: (aDictionary at: 'errorMessage' ifAbsent: [ nil ])
 ]
 
 { #category : #converting }
 GtPhlowViewErrorViewSpecification >> asDictionaryForExport [ 
 	^ super asDictionaryForExport
-		at: #errorMessage put: errorMessage;
+		at: 'errorMessage' put: errorMessage;
 		yourself
 ]
 

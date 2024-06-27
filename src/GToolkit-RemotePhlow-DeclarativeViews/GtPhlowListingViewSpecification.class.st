@@ -22,7 +22,9 @@ GtPhlowListingViewSpecification >> flushItemsIterator [
 
 { #category : #initialization }
 GtPhlowListingViewSpecification >> initializeFromInspector: anInspector [
-	self phlowDataSource: (anInspector getDeclarativeViewFor: self methodSelector)
+	self phlowDataSource ifNil: [
+		self phlowDataSource: (anInspector 
+			getDeclarativeViewFor: self methodSelector) ]
 ]
 
 { #category : #accessing }
