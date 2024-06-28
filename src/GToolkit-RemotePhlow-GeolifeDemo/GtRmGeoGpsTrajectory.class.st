@@ -33,9 +33,11 @@ GtRmGeoGpsTrajectory >> distance [
 
 { #category : #'gt - extensions' }
 GtRmGeoGpsTrajectory >> gtViewGpsRecordsFor: aView [
-
+	<gtView>
+	
 	^ aView columnedList
 		title: 'Records';
+		priority: 10;
 		items: [ self records items ];
 		column: 'Timestamp' text: [ :aRecord | aRecord timestamp ];
 		column: 'Latitude' text: [ :aRecord | aRecord latitude ];
@@ -44,7 +46,8 @@ GtRmGeoGpsTrajectory >> gtViewGpsRecordsFor: aView [
 
 { #category : #accessing }
 GtRmGeoGpsTrajectory >> gtViewMapFor: aView [
-
+	<gtView>
+	
 	^ aView explicit
 		title: 'OSM';
 		priority: 20;
