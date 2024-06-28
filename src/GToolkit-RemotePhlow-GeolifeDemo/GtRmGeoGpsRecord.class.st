@@ -29,6 +29,13 @@ GtRmGeoGpsRecord >> asPoint [
 	^ self longitude @ self latitude
 ]
 
+{ #category : #accessing }
+GtRmGeoGpsRecord >> googleMapsUrl [
+	^ ('https://www.google.com/maps/search/?api=1&query={lat}%2C{long}' format: {
+				'lat' -> self latitude printString.
+				'long' -> self longitude printString} asDictionary)
+]
+
 { #category : #initialization }
 GtRmGeoGpsRecord >> initializeFomJsonDictionary: aDictionary [
 	self latitude: (aDictionary at: #latitude).

@@ -1,6 +1,19 @@
 Extension { #name : #GtRmGeoGpsRecord }
 
 { #category : #'*GToolkit-RemotePhlow-GeolifeDemo-GTSpecific' }
+GtRmGeoGpsRecord >> gtViewOnGoogleMapFor: aView [ 
+	<gtView>
+	
+	^ aView forward
+		title: 'On Google Map';
+		priority: 56;
+		object: [ 
+			GtWebViewElement new 
+				url: self googleMapsUrl ];
+		view: #gtLiveFor:
+]
+
+{ #category : #'*GToolkit-RemotePhlow-GeolifeDemo-GTSpecific' }
 GtRmGeoGpsRecord >> gtViewOnMapFor: aView [ 
 	<gtView>
 	
