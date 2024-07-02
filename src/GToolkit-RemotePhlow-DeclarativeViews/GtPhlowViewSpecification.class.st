@@ -75,6 +75,7 @@ GtPhlowViewSpecification >> asDictionaryForExport [
 
 	^ Dictionary new 
 		at: 'viewName' put: self viewName;
+		at: '__typeName' put: self class name;
 		at: 'title' put: title;
 		at: 'priority' put: priority;
 		at: 'dataTransport' put: dataTransport;

@@ -13,7 +13,6 @@ GtPhlowViewSpecification class >> fromDictionary: viewDictionary [
 	| viewName |
 
 	viewName := viewDictionary at: 'viewName'.
-	(viewName -> viewDictionary) asBeaconSignal emit.
 	^(Smalltalk globals at: viewName asSymbol) fromJSONDictionary: viewDictionary.
 ]
 

@@ -1,6 +1,11 @@
 Extension { #name : #Object }
 
 { #category : #'*GToolkit-RemoteGt' }
+Object >> gtActionsInCurrentContext [
+	^ self gtActionsInContext: GtPhlowContext new
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
 Object >> gtRemoteGtRawFor: aView [
 	"Define a fallback Raw view for use by PharoLink.
 	This will be called explicitly if needed."

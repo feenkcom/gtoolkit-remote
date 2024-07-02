@@ -25,6 +25,23 @@ TGtRemoteLanguageProxySpecificViews >> gtRawFor: aView [
 ]
 
 { #category : #'gt - extensions' }
+TGtRemoteLanguageProxySpecificViews >> gtRemoteActionSpecificationsFor: aView [
+	"<gtProxy>"
+	
+	^ aView columnedList
+		title: 'Remote action specifications';
+		priority: 10002;
+		items: [ self declarativeActionSpecifications 
+			sorted: #priority ascending];
+		column: 'Title' text: [ :aViewAccessor | aViewAccessor title ];
+		column: 'Selector' text: [ :aViewAccessor | aViewAccessor methodSelector ];
+		column: 'View' text: [ :aViewAccessor | aViewAccessor viewName ];
+		column: 'Priority' text: [ :aViewAccessor | aViewAccessor priority ] weight: 0.5;
+		column: 'Transport' text: [ :aViewAccessor | aViewAccessor dataTransport ] weight: 0.5;
+		send: [ :aDeclarativeView | aDeclarativeView ]
+]
+
+{ #category : #'gt - extensions' }
 TGtRemoteLanguageProxySpecificViews >> gtRemoteViewSpecificationsFor: aView [
 	<gtProxy>
 	

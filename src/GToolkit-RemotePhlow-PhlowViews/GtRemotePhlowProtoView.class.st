@@ -21,7 +21,6 @@ GtRemotePhlowProtoView >> declarativeViewOfType: aGtDeclarativeViewClass [
 	"Answer a new declarative view instance"
 
 	^ aGtDeclarativeViewClass new.
-
 ]
 
 { #category : #decorating }

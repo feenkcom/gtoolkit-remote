@@ -21,8 +21,8 @@ To open a inspector using the declarative views:
 Class {
 	#name : #GtRemoteInspectionSimulation,
 	#superclass : #Object,
-	#traits : 'TGtRemoteLanguageProxyViewsAttachment + TGtRemoteLanguageProxySpecificViews',
-	#classTraits : 'TGtRemoteLanguageProxyViewsAttachment classTrait + TGtRemoteLanguageProxySpecificViews classTrait',
+	#traits : 'TGtRemoteLanguageProxyViewsAttachment + TGtRemoteLanguageProxySpecificViews + TGtRemoteLanguageProxyActionsAttachment + TGtRemoteLanguageProxySpecificActions',
+	#classTraits : 'TGtRemoteLanguageProxyViewsAttachment classTrait + TGtRemoteLanguageProxySpecificViews classTrait + TGtRemoteLanguageProxyActionsAttachment classTrait + TGtRemoteLanguageProxySpecificActions classTrait',
 	#instVars : [
 		'object',
 		'inspectorProxy'
@@ -42,6 +42,11 @@ GtRemoteInspectionSimulation class >> openOn: anObject [
 ]
 
 { #category : #simulation }
+GtRemoteInspectionSimulation >> createActionBuilder [
+	^ GtPhlowNoAction new
+]
+
+{ #category : #simulation }
 GtRemoteInspectionSimulation >> createViewBuilder [
 	^ GtPhlowEmptyView new
 ]
@@ -49,6 +54,11 @@ GtRemoteInspectionSimulation >> createViewBuilder [
 { #category : #accessing }
 GtRemoteInspectionSimulation >> createViewedObjectFor: anObject [ 
 	^ GtRemotePhlowViewedObject object: anObject
+]
+
+{ #category : #accessing }
+GtRemoteInspectionSimulation >> getDeclarativeActionDataSourceFor: anActionSelector [
+	^ inspectorProxy getDeclarativeActionDataSourceFor: anActionSelector
 ]
 
 { #category : #accessing }
@@ -85,6 +95,23 @@ GtRemoteInspectionSimulation >> gtRemoteSideInitialPlaygroundSnippet [
 ]
 
 { #category : #accessing }
+GtRemoteInspectionSimulation >> gtRemoteViewsFor: aView [
+	"This is the default entry method for retrieving the wrapper view containing all non-proxy views for the object."
+	<return: #GtPhlowLabelledView>
+	
+	^ GtPhlowLabelledViewBuilder new
+		object: self;
+		view: aView;
+		context: GtPhlowContext new;
+		viewsSelector: #gtViewsForRemoteSideInContext:;
+		actionsSelector: #gtActionsForRemoteSideInContext:;
+		titleComputation: [
+			String streamContents: [ :aStream |
+				self gtInspectorRemoteSideTitleStringOn: aStream ] ];
+		build 
+]
+
+{ #category : #accessing }
 GtRemoteInspectionSimulation >> object [
 	^ object
 ]
@@ -94,6 +121,12 @@ GtRemoteInspectionSimulation >> object: anObject [
 
 	object := anObject.
 	inspectorProxy := self createViewedObjectFor: anObject
+]
+
+{ #category : #'gt inspector' }
+GtRemoteInspectionSimulation >> remoteActionsFor: anAction inContext: aContext [
+	^ self declarativeActionSpecifications collect: [ :anActionSpecification | 
+		anActionSpecification actionFor: anAction ].
 ]
 
 { #category : #accessing }
