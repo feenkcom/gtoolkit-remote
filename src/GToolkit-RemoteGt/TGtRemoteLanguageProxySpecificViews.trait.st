@@ -26,7 +26,7 @@ TGtRemoteLanguageProxySpecificViews >> gtRawFor: aView [
 
 { #category : #'gt - extensions' }
 TGtRemoteLanguageProxySpecificViews >> gtRemoteActionSpecificationsFor: aView [
-	<gtProxy>
+	"<gtProxy>"
 	
 	^ aView columnedList
 		title: 'Remote action specifications';
