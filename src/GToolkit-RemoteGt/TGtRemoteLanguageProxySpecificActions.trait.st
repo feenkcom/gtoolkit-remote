@@ -9,3 +9,10 @@ TGtRemoteLanguageProxySpecificActions >> gtActionBrowseFor: anAction [
 
 	^ super gtActionBrowseFor: anAction
 ]
+
+{ #category : #'gt - extensions' }
+TGtRemoteLanguageProxySpecificActions >> gtActionInspectFor: anAction [
+	<gtProxyAction>
+
+	^ super gtActionInspectFor: anAction
+]
