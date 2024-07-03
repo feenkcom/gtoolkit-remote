@@ -4,6 +4,21 @@ Trait {
 }
 
 { #category : #accessing }
+TGtPharoLinkRemoteViewedObjectProxy >> getActionSpecifications [
+	^ self newCommandFactory
+		setByValueOnly;
+		<< 'self getActionSpecifications';
+		sendAndWait.
+]
+
+{ #category : #accessing }
+TGtPharoLinkRemoteViewedObjectProxy >> getDeclarativeActionDataSourceFor: aViewSelector [
+	^ self
+		proxyPerform: #getDeclarativeActionDataSourceFor:
+		withPrimitiveArguments: { aViewSelector asSymbol }
+]
+
+{ #category : #accessing }
 TGtPharoLinkRemoteViewedObjectProxy >> getDeclarativeViewFor: aViewSelector [
 	^ self
 		proxyPerform: #getDeclarativeViewFor:
