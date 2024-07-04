@@ -8,6 +8,27 @@ LanguageLinkProxyObject >> addPlaygroundBindingsTo: aCommandFactory [
 ]
 
 { #category : #'*Gt4PharoLink' }
+LanguageLinkProxyObject >> declarativeActionSpecifications [
+	"Answer the views for the receiver"
+	| actionSpecifications |
+
+	self viewProxyDo: [ :remoteInspectorProxy |
+		| specificationData specificationActionsData |
+		specificationData := remoteInspectorProxy getActionSpecifications.
+		specificationActionsData := specificationData at: 'actions' ifAbsent: [ #() ].
+		actionSpecifications := specificationActionsData 
+			collect: [ :anActionSpecificationData |
+				| actionSpecification |
+				actionSpecification := GtPhlowActionSpecification 
+					fromDictionary: anActionSpecificationData.
+				actionSpecification
+					initializeFromInspector: remoteInspectorProxy.
+				actionSpecification ] ].
+
+	^ actionSpecifications
+]
+
+{ #category : #'*Gt4PharoLink' }
 LanguageLinkProxyObject >> declarativeViews [
 	"Answer the views for the receiver"
 	| rawViews  |
@@ -38,6 +59,14 @@ LanguageLinkProxyObject >> evaluateSourceSequence: aString [
 ]
 
 { #category : #'*Gt4PharoLink' }
+LanguageLinkProxyObject >> filterLocalProxyActions: localActions [ 
+	"When showing local actions for the object, we remove all actions where the method is annotated with #gtProxyAction. Those actions will only be shown for the proxy object."
+	^ localActions reject: [ :each |
+		each definingMethod compiledMethod 
+			hasPragmaNamed: #gtProxyAction ].
+]
+
+{ #category : #'*Gt4PharoLink' }
 LanguageLinkProxyObject >> filterLocalProxyViews: localViews [ 
 	"When showing local views for the object, we remove all views where the method is annotated with gtProxy. Those views will only be shown for the proxy object."
 	^ localViews reject: [ :each |
@@ -49,6 +78,41 @@ LanguageLinkProxyObject >> getViewProxy [
 	"Answer a GtViewedProxy on the receiver"
 
 	^ self evaluateAndWait: 'GtRemotePhlowViewedObject object: self'
+]
+
+{ #category : #'*Gt4PharoLink' }
+LanguageLinkProxyObject >> gtActionBrowseFor: anAction [
+	<gtProxyAction>
+
+	^ super gtActionBrowseFor: anAction
+]
+
+{ #category : #'*Gt4PharoLink' }
+LanguageLinkProxyObject >> gtActionInspectFor: anAction [
+	<gtProxyAction>
+
+	^ super gtActionInspectFor: anAction
+]
+
+{ #category : #'*Gt4PharoLink' }
+LanguageLinkProxyObject >> gtActionsForRemoteSideInContext: aContext [
+	"This collects all actions for the current object. This excludes the proxy-specific actions (annotated with #gtProxyAction), and includes all remote actions for the object, as well as all custom actions defined locally"
+ 
+	| localActions collectedActions |
+	
+	"Get the actions using the super call. 
+	This will use #gtAction to compute the list of actions for the local object."
+	localActions := super gtActionsInContext: aContext.
+	
+	collectedActions := OrderedCollection new
+		addAll: (self filterLocalProxyActions: localActions);
+		addAll: (self 
+			remoteActionsFor: GtPhlowNoAction new
+			inContext: aContext);
+		yourself.
+	GtPhlowUtility sortByPriority: collectedActions.
+	
+	^ collectedActions
 ]
 
 { #category : #'*Gt4PharoLink' }
@@ -126,6 +190,7 @@ LanguageLinkProxyObject >> gtRemoteViewsFor: aView [
 		view: aView;
 		context: GtPhlowContext new;
 		viewsSelector: #gtViewsForRemoteSideInContext:;
+		actionsSelector: #gtActionsForRemoteSideInContext:;
 		titleComputation: [
 			String streamContents: [ :stream |
 				stream
@@ -164,6 +229,22 @@ LanguageLinkProxyObject >> gtViewsInContext: aContext [
 		context: aContext;
 		pragmaName: #gtProxy;
 		collect.
+]
+
+{ #category : #'*Gt4PharoLink' }
+LanguageLinkProxyObject >> remoteActionsFor: aView inContext: aContext [
+	"Should be all views, but just get Raw and Print views for now"
+
+	^ [ 
+		self declarativeActionSpecifications 
+			collect: [ :anActionSpecification | 
+				anActionSpecification actionFor: aView ] 
+	]
+		on: LanguageLinkServerNotRunningError, LanguageLinkCommunicationError
+		do: [ :ex | application isRunning
+			ifTrue: [ ex pass ]
+			ifFalse: [ #() ] ].
+
 ]
 
 { #category : #'*Gt4PharoLink' }

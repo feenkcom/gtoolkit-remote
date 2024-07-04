@@ -15,11 +15,11 @@ GtRemotePhlowSpawnObjectAction class >> forObject: anObject [
 
 { #category : #converting }
 GtRemotePhlowSpawnObjectAction >> asDictionaryForExport [
-	"Answer the receiver as a dictionary ready for JSON serialisation.
-	Subclasses will override and add to the dictionary"
+	"Answer the receiver as a dictionary ready for JSON serialisation"
 
 	^ super asDictionaryForExport
-		at: 'targetObject' put: targetObject;
+		at: 'objectWrapper' put: (GtRemotePhlowSpawnObjectWrapper new
+				targetObject: targetObject );
 		yourself
 ]
 
@@ -27,8 +27,9 @@ GtRemotePhlowSpawnObjectAction >> asDictionaryForExport [
 GtRemotePhlowSpawnObjectAction >> initializeFromJSONDictionary: aDictionary [
 	super initializeFromJSONDictionary: aDictionary.
 
-	self
-		targetObject: (aDictionary at: 'targetObject')
+	aDictionary at: 'objectWrapper' ifPresent: [ :anObjectWrapper |
+		self
+			targetObject: (aDictionary at: 'objectWrapper') targetObject ].
 ]
 
 { #category : #accessing }

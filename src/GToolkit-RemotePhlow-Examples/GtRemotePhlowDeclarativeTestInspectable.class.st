@@ -37,16 +37,17 @@ GtRemotePhlowDeclarativeTestInspectable >> collectionOfObjects: anObject [
 	collectionOfObjects := anObject
 ]
 
-{ #category : #accessing }
+{ #category : #actions }
 GtRemotePhlowDeclarativeTestInspectable >> gtButtonActionFor: anAction [
 	<gtAction>
 	
 	^ anAction button
-		tooltip: 'Inspect object';
+		tooltip: 'Inspect objects';
 		priority: 10;
-		label: 'Inspect';
+		label: 'Inspect objects';
 		action: [ :aButton |
-			aButton phlow spawnObject: self ]
+			aButton phlow 
+				spawnObject: collectionOfObjects ]
 ]
 
 { #category : #inspecting }
