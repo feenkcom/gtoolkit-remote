@@ -19,12 +19,7 @@ GtRmMovieCollectionGemstoneImporter >> gemStoneSession [
 GtRmMovieCollectionGemstoneImporter >> importFromCsvFile: aDataCsvFile [
 	| fullData |
 	
-	fullData := (FileLocator gtResource 
-	/ 'feenkcom' 
-	/ 'gtoolkit-demos' 
-	/ 'data' 
-	/ 'imdb' 
-	/ 'Movies.csv') readStreamDo: [ :aStream |
+	fullData := aDataCsvFile readStreamDo: [ :aStream |
 		(NeoCSVReader on: aStream)
 			upToEnd ].
 			
@@ -33,5 +28,4 @@ GtRmMovieCollectionGemstoneImporter >> importFromCsvFile: aDataCsvFile [
 		propertyNames: fullData first.
 		
 	self gemStoneSession commitTransaction
-	
 ]
