@@ -35,14 +35,28 @@ GtRmMovieCollection >> directors [
 ]
 
 { #category : #accessing }
+GtRmMovieCollection >> groupDataBy: aBlock [
+	| groups |
+	groups := Dictionary new.
+	rawData do: [ :each |
+		| key |
+		key := aBlock value: each.
+		key ifNotNil: [
+		(groups 
+			at: key
+			ifAbsentPut: [ OrderedCollection new ]) add: each ] ].
+	^ groups
+]
+
+{ #category : #accessing }
 GtRmMovieCollection >> groupedByPropertyNamed: aPropertyName [ 
-	^ ((rawData groupedBy: [ :aRow | 
+	^ ((self groupDataBy: [ :aRow | 
 		self 
 			propertyNamed: aPropertyName
-			inData: aRow ]) associations
+			inData: aRow ]) asGPhlowAssociationsIterator retrieveAllItems
 		collect: [ :assoc | 
 			assoc key -> (self movieCollectionFrom: assoc value)])
-		sorted: [ :a :b | 
+		sort: [ :a :b | 
 			a key asString < b key asString ]
 ]
 
