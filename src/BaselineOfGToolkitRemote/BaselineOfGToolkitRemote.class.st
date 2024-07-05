@@ -39,6 +39,9 @@ BaselineOfGToolkitRemote >> baseline: spec [
 				spec requires: #('GToolkit-RemoteGt') ];
 			package: 'GToolkit-RemotePhlow-GeolifeDemo';
 			package: 'GToolkit-RemotePhlow-GeolifeDemo-GTSpecific' with: [
-				spec requires: #('GToolkit-RemotePhlow-GeolifeDemo') ] ].
+				spec requires: #('GToolkit-RemotePhlow-GeolifeDemo') ];
+			package: 'GToolkit-RemotePhlow-MoviesDemo';
+			package: 'GToolkit-RemotePhlow-MoviesDemo-GTSpecific' with: [
+				spec requires: #('GToolkit-RemotePhlow-MoviesDemo') ] ].
 
 ]
