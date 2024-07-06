@@ -24,6 +24,13 @@ GtRemotePhlowCollectionIterator >> forElementsFrom: startIndex to: endIndex with
 ]
 
 { #category : #iterating }
+GtRemotePhlowCollectionIterator >> retrieveAllItems [
+	^ self 
+		retrieveItems: self totalItemsCount
+		fromIndex: 1
+]
+
+{ #category : #iterating }
 GtRemotePhlowCollectionIterator >> retrieveItems: anItemsCount fromIndex: startIndex [
 	| computedElements endIndex |
 
