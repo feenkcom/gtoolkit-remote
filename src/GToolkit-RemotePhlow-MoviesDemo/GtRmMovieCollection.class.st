@@ -217,7 +217,7 @@ GtRmMovieCollection >> size [
 GtRmMovieCollection >> transformData: aCollection [
 	^ aCollection collect: [ :each |
 		String streamContents: [ :aStream |
-			aStream << each ]  ]
+			each ifNotNil: [ aStream << each ] ] ]
 ]
 
 { #category : #accessing }
