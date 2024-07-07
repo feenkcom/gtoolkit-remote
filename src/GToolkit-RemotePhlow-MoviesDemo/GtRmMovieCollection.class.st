@@ -18,6 +18,12 @@ GtRmMovieCollection class >> defaultInstance [
 ]
 
 { #category : #'instance creation' }
+GtRmMovieCollection class >> fromFullData: anArray [ 
+	^ self new 
+		initializeFromFullData: anArray 
+]
+
+{ #category : #'instance creation' }
 GtRmMovieCollection class >> fromRawData: aRawData withProperties: aCollectionOfPropertyNames [
 	^ self new 
 		initializeFromData: aRawData
@@ -146,6 +152,13 @@ GtRmMovieCollection >> initializeFromData: aRawData propertyNames: aCollectionOf
 	self
 		rawData: aRawData;
 		propertyNames:aCollectionOfPropertyNames
+]
+
+{ #category : #initialization }
+GtRmMovieCollection >> initializeFromFullData: fullData [ 
+	self 
+		initializeFromData:  fullData copyWithoutFirst
+		propertyNames: (fullData copyFrom: 1 to: fullData size + 1)
 ]
 
 { #category : #accessing }
