@@ -157,8 +157,9 @@ GtRmMovieCollection >> initializeFromData: aRawData propertyNames: aCollectionOf
 { #category : #initialization }
 GtRmMovieCollection >> initializeFromFullData: fullData [ 
 	self 
-		initializeFromData:  fullData copyWithoutFirst
-		propertyNames: (fullData copyFrom: 1 to: fullData size + 1)
+		initializeFromData:  ((fullData copyFrom: 1 to: fullData size + 1)
+			collect: [ :each | self transformData: each ])
+		propertyNames: (self transformData: fullData first )
 ]
 
 { #category : #accessing }
@@ -210,6 +211,13 @@ GtRmMovieCollection >> rawData: anObject [
 { #category : #accessing }
 GtRmMovieCollection >> size [
 	^ rawData size
+]
+
+{ #category : #initialization }
+GtRmMovieCollection >> transformData: aCollection [
+	^ aCollection collect: [ :each |
+		String streamContents: [ :aStream |
+			aStream << each ]  ]
 ]
 
 { #category : #accessing }
