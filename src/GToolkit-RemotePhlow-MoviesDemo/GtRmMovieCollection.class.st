@@ -18,6 +18,12 @@ GtRmMovieCollection class >> defaultInstance [
 ]
 
 { #category : #'instance creation' }
+GtRmMovieCollection class >> fromFullData: anArray [ 
+	^ self new 
+		initializeFromFullData: anArray 
+]
+
+{ #category : #'instance creation' }
 GtRmMovieCollection class >> fromRawData: aRawData withProperties: aCollectionOfPropertyNames [
 	^ self new 
 		initializeFromData: aRawData
@@ -148,6 +154,14 @@ GtRmMovieCollection >> initializeFromData: aRawData propertyNames: aCollectionOf
 		propertyNames:aCollectionOfPropertyNames
 ]
 
+{ #category : #initialization }
+GtRmMovieCollection >> initializeFromFullData: fullData [ 
+	self 
+		initializeFromData:  ((fullData copyFrom: 2 to: fullData size + 1)
+			collect: [ :each | self transformData: each ])
+		propertyNames: (self transformData: fullData first )
+]
+
 { #category : #accessing }
 GtRmMovieCollection >> movieAtIndex: anIndex [ 
 	^ GtRmMovie 
@@ -197,6 +211,13 @@ GtRmMovieCollection >> rawData: anObject [
 { #category : #accessing }
 GtRmMovieCollection >> size [
 	^ rawData size
+]
+
+{ #category : #initialization }
+GtRmMovieCollection >> transformData: aCollection [
+	^ aCollection collect: [ :each |
+		String streamContents: [ :aStream |
+			each ifNotNil: [ aStream << each ] ] ]
 ]
 
 { #category : #accessing }
