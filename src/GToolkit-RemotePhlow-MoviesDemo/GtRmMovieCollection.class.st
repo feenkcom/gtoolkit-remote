@@ -156,9 +156,11 @@ GtRmMovieCollection >> initializeFromData: aRawData propertyNames: aCollectionOf
 
 { #category : #initialization }
 GtRmMovieCollection >> initializeFromFullData: fullData [ 
+	| data transformedData |
+	data := fullData copyFrom: 2 to: fullData size + 1.
+	transformedData := data collect: [ :each | self transformData: each ].
 	self 
-		initializeFromData:  ((fullData copyFrom: 2 to: fullData size + 1)
-			collect: [ :each | self transformData: each ])
+		initializeFromData:  transformedData
 		propertyNames: (self transformData: fullData first )
 ]
 
