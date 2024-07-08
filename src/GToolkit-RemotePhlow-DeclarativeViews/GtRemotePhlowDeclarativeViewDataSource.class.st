@@ -15,6 +15,7 @@ GtRemotePhlowDeclarativeViewDataSource class >> forPhlowView: aView [
 
 { #category : #accessing }
 GtRemotePhlowDeclarativeViewDataSource >> definingMethod [
+	^ self phlowView definingMethod
 ]
 
 { #category : #accessing }

@@ -31,7 +31,7 @@ Class {
 		'title',
 		'priority',
 		'definingSelector',
-		'definingClassName'
+		'definingClass'
 	],
 	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
@@ -64,13 +64,18 @@ GtRemotePhlowView >> copyTransformationFrom: aSendBlock [
 ]
 
 { #category : #accessing }
-GtRemotePhlowView >> definingClassName [
-	^ definingClassName
+GtRemotePhlowView >> definingClass [
+	^ definingClass
 ]
 
 { #category : #accessing }
-GtRemotePhlowView >> definingClassName: aClassName [
-	definingClassName := aClassName
+GtRemotePhlowView >> definingClass: aClass [
+	definingClass := aClass
+]
+
+{ #category : #accessing }
+GtRemotePhlowView >> definingMethod [
+	^ definingClass compiledMethodAt: definingSelector
 ]
 
 { #category : #accessing }
