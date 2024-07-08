@@ -32,6 +32,7 @@ GtRemotePlainInspectionViewedObject >> gtViewsInCurrentContextForObject: anObjec
 				perform: methodSelector.
 		
 			phlowView definingSelector: methodSelector.
+			phlowView definingClassName: anObject class name.
 			phlowView ]
 ]
 

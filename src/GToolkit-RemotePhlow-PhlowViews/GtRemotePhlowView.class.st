@@ -30,7 +30,8 @@ Class {
 	#instVars : [
 		'title',
 		'priority',
-		'definingSelector'
+		'definingSelector',
+		'definingClassName'
 	],
 	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
@@ -60,6 +61,16 @@ GtRemotePhlowView >> canBeGtDeclarativeView [
 { #category : #copying }
 GtRemotePhlowView >> copyTransformationFrom: aSendBlock [
 	"Do nothing by default. This is a callback used by forward views that define #send: to still work in case the view that we forward to does not support #send:"
+]
+
+{ #category : #accessing }
+GtRemotePhlowView >> definingClassName [
+	^ definingClassName
+]
+
+{ #category : #accessing }
+GtRemotePhlowView >> definingClassName: aClassName [
+	definingClassName := aClassName
 ]
 
 { #category : #accessing }
