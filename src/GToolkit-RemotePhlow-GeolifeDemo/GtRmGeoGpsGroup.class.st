@@ -68,6 +68,12 @@ GtRmGeoGpsGroup >> printOn: aStream [
 ]
 
 { #category : #accessing }
+GtRmGeoGpsGroup >> select: aBlock [
+	^ self class new 
+		addAll: (self items  select: aBlock)
+]
+
+{ #category : #accessing }
 GtRmGeoGpsGroup >> size [
 	^ self items size
 ]
