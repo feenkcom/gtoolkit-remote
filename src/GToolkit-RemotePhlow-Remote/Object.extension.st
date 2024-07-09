@@ -23,5 +23,6 @@ Object >> gtViewsInCurrentContext [
 			perform: methodSelector.
 		
 		phlowView definingSelector: methodSelector.
+		phlowView definingClass: self class.
 		phlowView ]
 ]

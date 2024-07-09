@@ -93,6 +93,12 @@ GtPhlowViewSpecification >> dataTransport: anObject [
 	dataTransport := anObject
 ]
 
+{ #category : #accessing }
+GtPhlowViewSpecification >> definingMethod [
+	^ phlowDataSource ifNotNil: [ :aDataSource | 
+		aDataSource definingMethod ]
+]
+
 { #category : #initialization }
 GtPhlowViewSpecification >> initializeFromInspector: anInspector [
 ]
