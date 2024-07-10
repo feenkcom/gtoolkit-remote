@@ -11,16 +11,6 @@ Class {
 	#category : #'GToolkit-RemotePhlow-DeclarativeActions'
 }
 
-{ #category : #'instance creation' }
-GtPhlowActionSpecification class >> fromDictionary: aSpecificationDictionary [
-	"Answer the specification based on its exported data"
-	| typeName |
-
-	typeName := aSpecificationDictionary at: '__typeName'.
-	^(Smalltalk globals at: typeName asSymbol) 
-		fromJSONDictionary: aSpecificationDictionary.
-]
-
 { #category : #accessing }
 GtPhlowActionSpecification class >> typeLabel [
 	^ nil

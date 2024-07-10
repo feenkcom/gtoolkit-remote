@@ -31,9 +31,10 @@ GtRmGeoGpsRecord >> asPoint [
 
 { #category : #accessing }
 GtRmGeoGpsRecord >> googleMapsUrl [
-	^ ('https://www.google.com/maps/search/?api=1&query={lat}%2C{long}' format: {
-				'lat' -> self latitude printString.
-				'long' -> self longitude printString} asDictionary)
+	^ 'https://www.google.com/maps/search/?api=1&query='
+		,self latitude printString
+		,'%2C'
+		, self longitude printString 
 ]
 
 { #category : #initialization }

@@ -8,6 +8,12 @@ Class {
 	#category : #'GToolkit-RemotePhlow-GeolifeDemo'
 }
 
+{ #category : #accessing }
+GtRmGeoUser class >> fromJsonDictionary: aDictionary [
+	^ self new 
+		initializeFomJsonDictionary: aDictionary
+]
+
 { #category : #adding }
 GtRmGeoUser >> addTrajectory: aTrajectory [ 
 	self trajectories add: aTrajectory
@@ -23,6 +29,13 @@ GtRmGeoUser >> addTrajectoryFromJsonData: aJsonData [
 GtRmGeoUser >> allRecords [
 	
 	^ self trajectories allRecords
+]
+
+{ #category : #accessing }
+GtRmGeoUser >> asJsonDictionary [
+	^ {
+		'id' -> self id.
+		'trajectories' -> self trajectoriesAsJsonData  } asDictionary
 ]
 
 { #category : #'gt - extensions' }
@@ -70,6 +83,15 @@ GtRmGeoUser >> id: anObject [
 	id := anObject
 ]
 
+{ #category : #initialization }
+GtRmGeoUser >> initializeFomJsonDictionary: aDictionary [
+	self id: (aDictionary at: 'id').
+	
+	(aDictionary at: 'trajectories') do: [ :aTrajectoryData |
+		self addTrajectory:  (GtRmGeoGpsTrajectory 
+			fromJsonDictionary: aTrajectoryData) ].
+]
+
 { #category : #accessing }
 GtRmGeoUser >> numberOfRecords [
 	^ self trajectories sumNumbers: [ :aTrajectory |
@@ -106,4 +128,10 @@ GtRmGeoUser >> summaryData [
 GtRmGeoUser >> trajectories [
 	^ trajectories ifNil: [
 		trajectories := GtRmGeoGpsTrajectoriesGroup new ]
+]
+
+{ #category : #accessing }
+GtRmGeoUser >> trajectoriesAsJsonData [
+	^ (self trajectories collect: [ :aTrajectory |
+			aTrajectory asJsonDictionary ]) asArray
 ]

@@ -1,6 +1,16 @@
 Extension { #name : #GtRmGeoGpsTrajectory }
 
 { #category : #'*GToolkit-RemotePhlow-GeolifeDemo-GTSpecific' }
+GtRmGeoGpsTrajectory >> gtViewMapFor: aView [
+	<gtView>
+	
+	^ aView explicit
+		title: 'OSM';
+		priority: 20;
+		stencil: [ self osmMap ]
+]
+
+{ #category : #'*GToolkit-RemotePhlow-GeolifeDemo-GTSpecific' }
 GtRmGeoGpsTrajectory >> gtViewPathShapeFor: aView [ 
 	<gtView>
 	

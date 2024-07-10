@@ -26,6 +26,11 @@ GtRmGeolife >> addUser: aUser [
 	self users add: aUser
 ]
 
+{ #category : #adding }
+GtRmGeolife >> addUsers: aCollection [
+	self users addAll: aCollection
+]
+
 { #category : #accessing }
 GtRmGeolife >> allRecords [
 	

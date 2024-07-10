@@ -44,16 +44,6 @@ GtRmGeoGpsTrajectory >> gtViewGpsRecordsFor: aView [
 		column: 'Longitude' text: [ :aRecord | aRecord longitude ]
 ]
 
-{ #category : #accessing }
-GtRmGeoGpsTrajectory >> gtViewMapFor: aView [
-	<gtView>
-	
-	^ aView explicit
-		title: 'OSM';
-		priority: 20;
-		stencil: [ self osmMap ]
-]
-
 { #category : #initialization }
 GtRmGeoGpsTrajectory >> initializeFomJsonDictionary: aDictionary [
 	self targetFolderName: (aDictionary at: 'targetFolderName').
