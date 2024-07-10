@@ -26,3 +26,16 @@ GtPhlowListingViewSpecification >> configureViewSendFor: aView withLocalTransfor
 GtPhlowListingViewSpecification >> extractRemoteSendObjectFromNode: aTreeNode atSelection: aSelection [ 
 	self subclassResponsibility
 ]
+
+{ #category : #'*GToolkit-RemoteGt' }
+GtPhlowListingViewSpecification >> gtViewDataJSONFor: aView [
+	<gtView>
+	
+	^ aView forward
+		title: 'Data';
+		priority: 15;
+		object: [ GtJson
+			forJsonString: (NeoJSONWriter 
+				toStringPretty:  self retriveFormattedItems) ];
+		view: #gtJsonStringFor:
+]

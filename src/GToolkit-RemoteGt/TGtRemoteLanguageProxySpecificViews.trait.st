@@ -42,6 +42,19 @@ TGtRemoteLanguageProxySpecificViews >> gtRemoteActionSpecificationsFor: aView [
 ]
 
 { #category : #'gt - extensions' }
+TGtRemoteLanguageProxySpecificViews >> gtRemoteInspectorSpecificationsFor: aView [
+	<gtProxy>
+	
+	^ aView forward
+		title: 'Remote specification';
+		priority: 10002;
+		object: [ GtJson
+			forJsonString: (NeoJSONWriter 
+				toStringPretty:  self getViewProxy getViewsDeclarations) ];
+		view: #gtJsonStringFor:
+]
+
+{ #category : #'gt - extensions' }
 TGtRemoteLanguageProxySpecificViews >> gtRemoteViewSpecificationsFor: aView [
 	<gtProxy>
 	

@@ -61,6 +61,17 @@ GtRmGeolife >> ensureUserWithId: anId [
 ]
 
 { #category : #'gt - extensions' }
+GtRmGeolife >> gtViewAllTrajectoriesFor: aView [
+	<gtView>
+	
+	^ aView forward
+		title: 'Trajectories';
+		priority: 45;
+		object: [ self allTrajectories ];
+		view: #gtItemsFor:
+]
+
+{ #category : #'gt - extensions' }
 GtRmGeolife >> gtViewSummaryDataFor: aView [
 	<gtView>
 	
