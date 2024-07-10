@@ -17,6 +17,18 @@ GtRmGeoGpsRecordsGroup >> computeDistance [
 ]
 
 { #category : #accessing }
+GtRmGeoGpsRecordsGroup >> computeDistanceWithBug [
+	| distance |
+	self size = 1 ifTrue: [ ^ 0 ].
+	distance := 0.
+	1 to: self size + 1 do: [ :anIndex |
+		distance := distance + (self
+			distanceFrom: (self items at: anIndex)
+			to: (self items at: anIndex + 1)) ].
+	^ distance
+]
+
+{ #category : #accessing }
 GtRmGeoGpsRecordsGroup >> distance [
 	^ self 
 		cacheAt: 'distance' 

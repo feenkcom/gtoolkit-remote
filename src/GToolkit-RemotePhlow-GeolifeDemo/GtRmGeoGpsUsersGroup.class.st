@@ -30,12 +30,24 @@ GtRmGeoGpsUsersGroup >> gtItemsFor: aView [
 	
 	^ aView columnedList
 		title: 'Users';
+		priority: 5;
 		items: [ self items ];
 		column: 'Id' text: [ :aUser | aUser id ];
 		column: 'Number of trajectories' 
 			text: [ :aUser | aUser numberOfTrajectories ];
 		column: 'Number of records' 
 			text: [ :aUser | aUser numberOfRecords  ]
+]
+
+{ #category : #'gt - extensions' }
+GtRmGeoGpsUsersGroup >> gtViewAllTrajectoriesFor: aView [
+	<gtView>
+	
+	^ aView forward
+		title: 'All trajectories';
+		priority: 45;
+		object: [ self allTrajectories ];
+		view: #gtItemsFor:
 ]
 
 { #category : #accessing }
@@ -47,4 +59,10 @@ GtRmGeoGpsUsersGroup >> removeUser: aString [
 		detect: [ :user | user id = aString ]
 		ifNone: [ nil ]) ifNotNil:
 			[ :user | items remove: user ]
+]
+
+{ #category : #accessing }
+GtRmGeoGpsUsersGroup >> shortDistancesWithBug [
+	^ self allTrajectories select: [ :aTrajectory |
+		aTrajectory distanceWithBug < 5 ]
 ]
