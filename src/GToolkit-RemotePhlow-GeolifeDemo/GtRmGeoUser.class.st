@@ -42,11 +42,19 @@ GtRmGeoUser >> asJsonDictionary [
 GtRmGeoUser >> gtViewRecordsFor: aView [
 	<gtView>
 	
-	^ aView forward
+	^ aView columnedList
+		title: 'Records';
+		priority: 10;
+		items: [ self allRecords items ];
+		column: 'Timestamp' text: [ :aRecord | aRecord timestamp ];
+		column: 'Lat' text: [ :aRecord | aRecord latitude ];
+		column: 'Lon' text: [ :aRecord | aRecord longitude ]
+		
+	"^ aView forward
 		title: 'Records';
 		priority: 10;
 		object: [ self allRecords ];
-		view: #gtItemsFor: 
+		view: #gtItemsFor: "
 ]
 
 { #category : #'gt - extensions' }
