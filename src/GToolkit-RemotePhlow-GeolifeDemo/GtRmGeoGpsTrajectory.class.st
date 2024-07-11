@@ -31,6 +31,11 @@ GtRmGeoGpsTrajectory >> distance [
 	^ self records distance
 ]
 
+{ #category : #accessing }
+GtRmGeoGpsTrajectory >> distanceWithBug [
+	^ self records computeDistanceWithBug
+]
+
 { #category : #'gt - extensions' }
 GtRmGeoGpsTrajectory >> gtViewGpsRecordsFor: aView [
 	<gtView>
