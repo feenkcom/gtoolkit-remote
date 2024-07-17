@@ -72,7 +72,7 @@ GtRemotePhlowColumn >> localBackgroundComputation [
 { #category : #'*GToolkit-RemoteGt-LocalPhlow' }
 GtRemotePhlowColumn >> localCellWidth [
 	^ self cellWidth 
-		ifNil: [ GtPhlowColumnProportionalWidth new ]
+		ifNil: [ BrColumnProportionalWidth new ]
 		ifNotNil: [ :aValue |
 			BrColumnFixedWidth new 
 				width: aValue ]
