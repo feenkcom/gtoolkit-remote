@@ -16,3 +16,9 @@ GtRemotePhlowDefiningMethodProvider >> declarativeView: aDeclarativeView [
 GtRemotePhlowDefiningMethodProvider >> definingMethod [ 
 	^ declarativeView definingMethod
 ]
+
+{ #category : #accessing }
+GtRemotePhlowDefiningMethodProvider >> gtPhlowIncludesCompiledMethod: aCompiledMethod [
+	"No need to trigger updates of remote views when local methods change"
+	^ false
+]
