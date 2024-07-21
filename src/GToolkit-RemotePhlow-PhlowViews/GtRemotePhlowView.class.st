@@ -75,7 +75,9 @@ GtRemotePhlowView >> definingClass: aClass [
 
 { #category : #accessing }
 GtRemotePhlowView >> definingMethod [
-	^ definingClass compiledMethodAt: definingSelector
+	^ (definingClass whichClassIncludesSelector: definingSelector) 
+		ifNil: [ nil ]
+		ifNotNil: [ :aClass | aClass compiledMethodAt: definingSelector ]
 ]
 
 { #category : #accessing }
