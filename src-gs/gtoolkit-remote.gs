@@ -1495,7 +1495,7 @@ removeallclassmethods GtRemotePhlowProtoView
 doit
 (GtRemotePhlowProtoView
 	subclass: 'GtRemotePhlowView'
-	instVarNames: #(title priority definingSelector)
+	instVarNames: #(title priority definingSelector definingClass)
 	classVars: #()
 	classInstVars: #()
 	poolDictionaries: #()
@@ -1944,7 +1944,7 @@ removeallclassmethods GtRemoteTextStylerComputableSpecification
 doit
 (Object
 	subclass: 'GtRemotePhlowViewedObject'
-	instVarNames: #(object declarativeViewsBySelector)
+	instVarNames: #(object declarativeViewsBySelector actionSpecificationsBySelector)
 	classVars: #()
 	classInstVars: #()
 	poolDictionaries: #()
@@ -2157,6 +2157,42 @@ true.
 
 removeallmethods GtRmGeoUser
 removeallclassmethods GtRmGeoUser
+
+doit
+(Object
+	subclass: 'GtRmMovie'
+	instVarNames: #(rawData propertyNames)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-MoviesDemo';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRmMovie
+removeallclassmethods GtRmMovie
+
+doit
+(Object
+	subclass: 'GtRmMovieCollection'
+	instVarNames: #(rawData propertyNames)
+	classVars: #(DEFAULT)
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-MoviesDemo';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRmMovieCollection
+removeallclassmethods GtRmMovieCollection
 
 doit
 (Object
@@ -4599,6 +4635,7 @@ asDictionaryForExport
 
 	^ Dictionary new 
 		at: 'viewName' put: self viewName;
+		at: '__typeName' put: self class name;
 		at: 'title' put: title;
 		at: 'priority' put: priority;
 		at: 'dataTransport' put: dataTransport;
@@ -4616,6 +4653,13 @@ category: 'accessing'
 method: GtPhlowViewSpecification
 dataTransport: anObject
 	dataTransport := anObject
+%
+
+category: 'accessing'
+method: GtPhlowViewSpecification
+definingMethod
+	^ phlowDataSource ifNotNil: [ :aDataSource | 
+		aDataSource definingMethod ]
 %
 
 category: 'initialization'
@@ -4712,7 +4756,7 @@ getDeclarativeViewFor: aViewSelector
 		getDeclarativeViewFor: aViewSelector
 %
 
-category: 'accessing'
+category: 'initialization'
 method: GtPhlowForwardViewSpecification
 initializeFromInspector: anInspector
 	self phlowDataSource ifNil: [
@@ -5199,6 +5243,14 @@ category: 'iterating'
 method: GtRemotePhlowCollectionIterator
 forElementsFrom: startIndex to: endIndex withIndexDo: aBlock
 	self subclassResponsibility
+%
+
+category: 'iterating'
+method: GtRemotePhlowCollectionIterator
+retrieveAllItems
+	^ self 
+		retrieveItems: self totalItemsCount
+		fromIndex: 1
 %
 
 category: 'iterating'
@@ -6229,6 +6281,20 @@ collectionOfObjects: anObject
 	collectionOfObjects := anObject
 %
 
+category: 'actions'
+method: GtRemotePhlowDeclarativeTestInspectable
+gtButtonActionFor: anAction
+	<gtAction>
+	
+	^ anAction button
+		tooltip: 'Inspect objects';
+		priority: 10;
+		label: 'Inspect objects';
+		action: [ :aButton |
+			aButton phlow 
+				spawnObject: collectionOfObjects ]
+%
+
 category: 'inspecting'
 method: GtRemotePhlowDeclarativeTestInspectable
 gtColumnedListFor: aView
@@ -7125,6 +7191,12 @@ forPhlowView: aView
 %
 
 !		Instance methods for 'GtRemotePhlowDeclarativeViewDataSource'
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeViewDataSource
+definingMethod
+	^ self phlowView definingMethod
+%
 
 category: 'accessing'
 method: GtRemotePhlowDeclarativeViewDataSource
@@ -9043,6 +9115,26 @@ copyTransformationFrom: aSendBlock
 
 category: 'accessing'
 method: GtRemotePhlowView
+definingClass
+	^ definingClass
+%
+
+category: 'accessing'
+method: GtRemotePhlowView
+definingClass: aClass
+	definingClass := aClass
+%
+
+category: 'accessing'
+method: GtRemotePhlowView
+definingMethod
+	^ (definingClass whichClassIncludesSelector: definingSelector) 
+		ifNil: [ nil ]
+		ifNotNil: [ :aClass | aClass compiledMethodAt: definingSelector ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowView
 definingSelector
 
 	^ definingSelector
@@ -10261,6 +10353,27 @@ object: anObject
 
 !		Instance methods for 'GtRemotePhlowViewedObject'
 
+category: 'accessing'
+method: GtRemotePhlowViewedObject
+actionSpecificationsBySelector
+	actionSpecificationsBySelector ifNil: [ 
+		self initializeActionSpecifications ].
+	^ actionSpecificationsBySelector
+%
+
+category: 'initialization'
+method: GtRemotePhlowViewedObject
+computeActionSpecificationForPhlowAction: aPhlowAction
+	^ [ aPhlowAction asGtDeclarativeAction ] 
+		on: Error do: [ :anError |
+			| errorView |
+			errorView := aPhlowAction phlowErrorViewWithException: anError.
+			errorView title: aPhlowAction title.
+			errorView priority: aPhlowAction priority.
+			
+			errorView asGtDeclarativeAction ]
+%
+
 category: 'initialization'
 method: GtRemotePhlowViewedObject
 computeViewSpecificationForPhlowView: aPhlowView
@@ -10280,6 +10393,32 @@ declarativeViewsBySelector
 	declarativeViewsBySelector ifNil: [ 
 		self initializeDeclarativeViews ].
 	^ declarativeViewsBySelector
+%
+
+category: 'api - accessing'
+method: GtRemotePhlowViewedObject
+getActionSpecificationDataForAction: anActionSpecification
+
+	^ anActionSpecification asDictionaryForExport
+%
+
+category: 'api - accessing'
+method: GtRemotePhlowViewedObject
+getActionSpecifications
+	| actionsSpecifications |
+	actionsSpecifications := (self actionSpecificationsBySelector 
+		collect: [ :anActionSpecification |
+			self getActionSpecificationDataForAction: anActionSpecification ]).
+	^ Dictionary new
+		at: 'actions' put: actionsSpecifications asArray;
+		yourself
+%
+
+category: 'api - accessing'
+method: GtRemotePhlowViewedObject
+getDeclarativeActionDataSourceFor: anActionSelector
+	^ (self actionSpecificationsBySelector 
+		at: anActionSelector) phlowDataSource
 %
 
 category: 'api - accessing'
@@ -10341,6 +10480,26 @@ getViewsDeclarationsWithPhlowDataSource
 
 category: 'initialization'
 method: GtRemotePhlowViewedObject
+initializeActionSpecifications
+	| phlowActions |
+	actionSpecificationsBySelector := Dictionary new.
+
+	phlowActions := self phlowDeclarativeActions.
+	phlowActions
+		do: [ :aPhlowAction | 
+			| actionSpecification |
+			actionSpecification := self 
+				computeActionSpecificationForPhlowAction: aPhlowAction.
+			actionSpecification
+				ifNotNil: [ 
+					actionSpecification methodSelector: aPhlowAction definingSelector.
+					actionSpecificationsBySelector
+						at: aPhlowAction definingSelector
+						put: actionSpecification ] ]
+%
+
+category: 'initialization'
+method: GtRemotePhlowViewedObject
 initializeDeclarativeViews
 	| phlowViews |
 	declarativeViewsBySelector := Dictionary new.
@@ -10368,6 +10527,14 @@ method: GtRemotePhlowViewedObject
 object
 
 	^ object
+%
+
+category: 'initialization'
+method: GtRemotePhlowViewedObject
+phlowDeclarativeActions
+	"Retrieve the declarative phlow actions of the current object."
+	
+	 ^ object gtDeclarativePhlowActions.
 %
 
 category: 'initialization'
@@ -10762,6 +10929,13 @@ printOn: aStream
 
 category: 'accessing'
 method: GtRmGeoGpsGroup
+select: aBlock
+	^ self class new 
+		addAll: (self items  select: aBlock)
+%
+
+category: 'accessing'
+method: GtRmGeoGpsGroup
 size
 	^ self items size
 %
@@ -10785,6 +10959,19 @@ computeDistance
 	self size = 1 ifTrue: [ ^ 0 ].
 	distance := 0.
 	1 to: self size - 1 do: [ :anIndex |
+		distance := distance + (self
+			distanceFrom: (self items at: anIndex)
+			to: (self items at: anIndex + 1)) ].
+	^ distance
+%
+
+category: 'accessing'
+method: GtRmGeoGpsRecordsGroup
+computeDistanceWithBug
+	| distance |
+	self size = 1 ifTrue: [ ^ 0 ].
+	distance := 0.
+	1 to: self size + 1 do: [ :anIndex |
 		distance := distance + (self
 			distanceFrom: (self items at: anIndex)
 			to: (self items at: anIndex + 1)) ].
@@ -10913,12 +11100,25 @@ gtItemsFor: aView
 	
 	^ aView columnedList
 		title: 'Users';
+		priority: 5;
 		items: [ self items ];
 		column: 'Id' text: [ :aUser | aUser id ];
 		column: 'Number of trajectories' 
 			text: [ :aUser | aUser numberOfTrajectories ];
 		column: 'Number of records' 
 			text: [ :aUser | aUser numberOfRecords  ]
+%
+
+category: 'gt - extensions'
+method: GtRmGeoGpsUsersGroup
+gtViewAllTrajectoriesFor: aView
+	<gtView>
+	
+	^ aView forward
+		title: 'All trajectories';
+		priority: 45;
+		object: [ self allTrajectories ];
+		view: #gtItemsFor:
 %
 
 category: 'accessing'
@@ -10931,6 +11131,13 @@ removeUser: aString
 		detect: [ :user | user id = aString ]
 		ifNone: [ nil ]) ifNotNil:
 			[ :user | items remove: user ]
+%
+
+category: 'accessing'
+method: GtRmGeoGpsUsersGroup
+shortDistancesWithBug
+	^ self allTrajectories select: [ :aTrajectory |
+		aTrajectory distanceWithBug < 5 ]
 %
 
 ! Class implementation for 'GtRmGeoGpsRecord'
@@ -10960,6 +11167,15 @@ method: GtRmGeoGpsRecord
 asPoint
 
 	^ self longitude @ self latitude
+%
+
+category: 'accessing'
+method: GtRmGeoGpsRecord
+googleMapsUrl
+	^ 'https://www.google.com/maps/search/?api=1&query='
+		,self latitude printString
+		,'%2C'
+		, self longitude printString 
 %
 
 category: 'initialization'
@@ -11054,26 +11270,24 @@ distance
 	^ self records distance
 %
 
+category: 'accessing'
+method: GtRmGeoGpsTrajectory
+distanceWithBug
+	^ self records computeDistanceWithBug
+%
+
 category: 'gt - extensions'
 method: GtRmGeoGpsTrajectory
 gtViewGpsRecordsFor: aView
-
+	<gtView>
+	
 	^ aView columnedList
 		title: 'Records';
+		priority: 10;
 		items: [ self records items ];
 		column: 'Timestamp' text: [ :aRecord | aRecord timestamp ];
 		column: 'Latitude' text: [ :aRecord | aRecord latitude ];
 		column: 'Longitude' text: [ :aRecord | aRecord longitude ]
-%
-
-category: 'accessing'
-method: GtRmGeoGpsTrajectory
-gtViewMapFor: aView
-
-	^ aView explicit
-		title: 'OSM';
-		priority: 20;
-		stencil: [ self osmMap ]
 %
 
 category: 'initialization'
@@ -11157,6 +11371,12 @@ addUser: aUser
 	self users add: aUser
 %
 
+category: 'adding'
+method: GtRmGeolife
+addUsers: aCollection
+	self users addAll: aCollection
+%
+
 category: 'accessing'
 method: GtRmGeolife
 allRecords
@@ -11188,6 +11408,18 @@ ensureUserWithId: anId
 				id: anId.
 			self addUser: newUser.
 			newUser ]
+%
+
+category: 'gt - extensions'
+method: GtRmGeolife
+gtViewAllTrajectoriesFor: aView
+	<gtView>
+	
+	^ aView forward
+		title: 'Trajectories';
+		priority: 45;
+		object: [ self allTrajectories ];
+		view: #gtItemsFor:
 %
 
 category: 'gt - extensions'
@@ -11358,6 +11590,15 @@ importUserFromDirectory: aUserFolder into: aGeolife
 
 ! Class implementation for 'GtRmGeoUser'
 
+!		Class methods for 'GtRmGeoUser'
+
+category: 'accessing'
+classmethod: GtRmGeoUser
+fromJsonDictionary: aDictionary
+	^ self new 
+		initializeFomJsonDictionary: aDictionary
+%
+
 !		Instance methods for 'GtRmGeoUser'
 
 category: 'adding'
@@ -11380,16 +11621,32 @@ allRecords
 	^ self trajectories allRecords
 %
 
+category: 'accessing'
+method: GtRmGeoUser
+asJsonDictionary
+	^ {
+		'id' -> self id.
+		'trajectories' -> self trajectoriesAsJsonData  } asDictionary
+%
+
 category: 'gt - extensions'
 method: GtRmGeoUser
 gtViewRecordsFor: aView
 	<gtView>
 	
-	^ aView forward
+	^ aView columnedList
+		title: 'Records';
+		priority: 10;
+		items: [ self allRecords items ];
+		column: 'Timestamp' text: [ :aRecord | aRecord timestamp ];
+		column: 'Lat' text: [ :aRecord | aRecord latitude ];
+		column: 'Lon' text: [ :aRecord | aRecord longitude ]
+		
+	"^ aView forward
 		title: 'Records';
 		priority: 10;
 		object: [ self allRecords ];
-		view: #gtItemsFor: 
+		view: #gtItemsFor: "
 %
 
 category: 'gt - extensions'
@@ -11428,6 +11685,16 @@ category: 'accessing'
 method: GtRmGeoUser
 id: anObject
 	id := anObject
+%
+
+category: 'initialization'
+method: GtRmGeoUser
+initializeFomJsonDictionary: aDictionary
+	self id: (aDictionary at: 'id').
+	
+	(aDictionary at: 'trajectories') do: [ :aTrajectoryData |
+		self addTrajectory:  (GtRmGeoGpsTrajectory 
+			fromJsonDictionary: aTrajectoryData) ].
 %
 
 category: 'accessing'
@@ -11471,6 +11738,311 @@ method: GtRmGeoUser
 trajectories
 	^ trajectories ifNil: [
 		trajectories := GtRmGeoGpsTrajectoriesGroup new ]
+%
+
+category: 'accessing'
+method: GtRmGeoUser
+trajectoriesAsJsonData
+	^ (self trajectories collect: [ :aTrajectory |
+			aTrajectory asJsonDictionary ]) asArray
+%
+
+! Class implementation for 'GtRmMovie'
+
+!		Class methods for 'GtRmMovie'
+
+category: 'instance creation'
+classmethod: GtRmMovie
+fromRawData: aRawData withProperties: aCollectionOfPropertyNames
+	^ self new 
+		rawData: aRawData;
+		propertyNames:aCollectionOfPropertyNames
+%
+
+!		Instance methods for 'GtRmMovie'
+
+category: 'gt - extensions'
+method: GtRmMovie
+gtViewDetailsFor: aView 
+	<gtView>
+	
+	^ aView columnedList 
+		title: 'Details';
+		priority: 20;
+		items: [ 1 to: propertyNames size ];
+		column: 'Key' text: [ :anIndex | propertyNames at: anIndex ];
+		column: 'Value' text: [ :anIndex | rawData at: anIndex ];
+		send: [ :anIndex | rawData at: anIndex ]
+%
+
+category: 'accessing'
+method: GtRmMovie
+propertyNames
+	^ propertyNames
+%
+
+category: 'accessing'
+method: GtRmMovie
+propertyNames: aCollectionOfPropertyNames
+	propertyNames := aCollectionOfPropertyNames
+%
+
+category: 'accessing'
+method: GtRmMovie
+rawData
+	^ rawData
+%
+
+category: 'accessing'
+method: GtRmMovie
+rawData: anObject
+	rawData := anObject
+%
+
+! Class implementation for 'GtRmMovieCollection'
+
+!		Class methods for 'GtRmMovieCollection'
+
+category: 'accessing'
+classmethod: GtRmMovieCollection
+defaultInstance
+	^ DEFAULT ifNil: [
+		DEFAULT := self new ]
+%
+
+category: 'instance creation'
+classmethod: GtRmMovieCollection
+fromFullData: anArray 
+	^ self new 
+		initializeFromFullData: anArray 
+%
+
+category: 'instance creation'
+classmethod: GtRmMovieCollection
+fromRawData: aRawData withProperties: aCollectionOfPropertyNames
+	^ self new 
+		initializeFromData: aRawData
+		propertyNames:aCollectionOfPropertyNames
+%
+
+category: 'accessing'
+classmethod: GtRmMovieCollection
+resetDefaultInstance
+	DEFAULT := nil
+%
+
+!		Instance methods for 'GtRmMovieCollection'
+
+category: 'accessing'
+method: GtRmMovieCollection
+directors
+	^ self groupedByPropertyNamed: 'Directors'
+%
+
+category: 'accessing'
+method: GtRmMovieCollection
+groupDataBy: aBlock
+	| groups |
+	groups := Dictionary new.
+	rawData do: [ :each |
+		| key |
+		key := aBlock value: each.
+		key ifNotNil: [
+		(groups 
+			at: key
+			ifAbsentPut: [ OrderedCollection new ]) add: each ] ].
+	^ groups
+%
+
+category: 'accessing'
+method: GtRmMovieCollection
+groupedByPropertyNamed: aPropertyName 
+	^ ((self groupDataBy: [ :aRow | 
+		self 
+			propertyNamed: aPropertyName
+			inData: aRow ]) asGPhlowAssociationsIterator retrieveAllItems
+		collect: [ :assoc | 
+			assoc key -> (self movieCollectionFrom: assoc value)])
+		sort: [ :a :b | 
+			a key asString < b key asString ]
+%
+
+category: 'gt - extensions'
+method: GtRmMovieCollection
+gtViewDirectorsFor: aView
+	<gtView>
+	
+	^ aView columnedList 
+		title: 'Directors';
+		priority: 20;
+		items: [ self directors ];
+		column: 'Director' text: [ :each | 
+			each key  ];
+		column: 'Count' text: [ :each | 
+			each value size ];
+		send: [ :each | each value ]
+%
+
+category: 'gt - extensions'
+method: GtRmMovieCollection
+gtViewMoviesFor: aView
+	<gtView>
+	
+	^ aView columnedList 
+		title: 'Movies';
+		priority: 40;
+		items: [ 1 to: self rawData size ];
+		column: 'Title' text: [ :anIndex | 
+			self 
+				propertyNamed: 'Title' 
+				atDataIndex: anIndex ];
+		column: 'Release Date' text: [ :anIndex | 
+			self 
+				propertyNamed: 'Release Date' 
+				atDataIndex: anIndex ];
+		column: 'Directors' text: [ :anIndex |
+			self 
+				propertyNamed: 'Release Date' 
+				atDataIndex: anIndex  ];
+		column: 'Genres' text: [ :anIndex | 
+			self 
+				propertyNamed: 'Genres' 
+				atDataIndex: anIndex ];
+		send: [ :anIndex |
+			self movieAtIndex: anIndex ]
+%
+
+category: 'gt - extensions'
+method: GtRmMovieCollection
+gtViewMoviesWithDetailsFor: aView
+	<gtView>
+	| currentView |
+	
+	currentView := aView columnedList 
+		title: 'Movies with details';
+		priority: 45;
+		items: [ 1 to: self rawData size ].
+		
+	propertyNames do: [ :aPropertyName |
+		currentView 
+			column: aPropertyName 
+			text: [ :anIndex |
+				self 
+					propertyNamed: aPropertyName
+					atDataIndex: anIndex ] ].
+	currentView send: [ :anIndex |
+		self movieAtIndex: anIndex ].
+	
+	^ currentView
+%
+
+category: 'gt - extensions'
+method: GtRmMovieCollection
+gtViewYearsFor: aView
+	<gtView>
+	
+	^ aView columnedList 
+		title: 'Years';
+		priority: 30;
+		items: [ self years ];
+		column: 'Year' text: [ :each | 
+			each key  ];
+		column: 'Count' text: [ :each | 
+			each value size ];
+		send: [ :each | each value ]
+%
+
+category: 'initialization'
+method: GtRmMovieCollection
+initializeFromData: aRawData propertyNames: aCollectionOfPropertyNames 
+	self
+		rawData: aRawData;
+		propertyNames:aCollectionOfPropertyNames
+%
+
+category: 'initialization'
+method: GtRmMovieCollection
+initializeFromFullData: fullData 
+	| data transformedData |
+	data := fullData copyFrom: 2 to: fullData size + 1.
+	transformedData := data collect: [ :each | self transformData: each ].
+	self 
+		initializeFromData:  transformedData
+		propertyNames: (self transformData: fullData first )
+%
+
+category: 'accessing'
+method: GtRmMovieCollection
+movieAtIndex: anIndex 
+	^ GtRmMovie 
+		fromRawData: (rawData at: anIndex)
+		withProperties: propertyNames
+%
+
+category: 'accessing'
+method: GtRmMovieCollection
+movieCollectionFrom: aCollectionOfMoviesData
+	^ GtRmMovieCollection
+		 fromRawData: aCollectionOfMoviesData 
+		 withProperties: propertyNames 
+%
+
+category: 'accessing - properties'
+method: GtRmMovieCollection
+propertyNamed: aPropertyName atDataIndex: anIndex 
+	^ self 
+		propertyNamed: aPropertyName 
+		inData: (rawData at: anIndex).
+%
+
+category: 'accessing - properties'
+method: GtRmMovieCollection
+propertyNamed: aPropertyName inData: aDataRow
+	^ aDataRow at: (propertyNames indexOf: aPropertyName)
+%
+
+category: 'accessing'
+method: GtRmMovieCollection
+propertyNames
+	^ propertyNames
+%
+
+category: 'accessing'
+method: GtRmMovieCollection
+propertyNames: aCollectionOfPropertyNames
+	propertyNames := aCollectionOfPropertyNames
+%
+
+category: 'accessing'
+method: GtRmMovieCollection
+rawData
+	^ rawData
+%
+
+category: 'accessing'
+method: GtRmMovieCollection
+rawData: anObject
+	rawData := anObject
+%
+
+category: 'accessing'
+method: GtRmMovieCollection
+size
+	^ rawData size
+%
+
+category: 'initialization'
+method: GtRmMovieCollection
+transformData: aCollection
+	^ aCollection collect: [ :each |
+		String streamContents: [ :aStream |
+			each ifNotNil: [ aStream << each ] ] ]
+%
+
+category: 'accessing'
+method: GtRmMovieCollection
+years
+	^ self groupedByPropertyNamed: 'Year'
 %
 
 ! Class implementation for 'GtRsrInspectorProxySerializationStrategy'
@@ -11765,6 +12337,15 @@ asRopedText
 
 category: '*GToolkit-RemotePhlow-InspectorCore'
 method: Object
+gtDeclarativePhlowActions
+	"Answer a collection of the object's declarative phlow actions"
+	
+	^ self gtActionsInCurrentContext
+		select: [ :aPhlowAction | aPhlowAction canBeGtDeclarativeAction ]
+%
+
+category: '*GToolkit-RemotePhlow-InspectorCore'
+method: Object
 gtDeclarativePhlowViews
 	"Answer a collection of the object's declarative phlow view"
 	
@@ -11899,6 +12480,7 @@ gtViewsInCurrentContext
 			perform: methodSelector.
 		
 		phlowView definingSelector: methodSelector.
+		phlowView definingClass: self class.
 		phlowView ]
 %
 
