@@ -38,13 +38,40 @@ GtRemotePhlowDeclarativeTestInspectable >> collectionOfObjects: anObject [
 ]
 
 { #category : #actions }
-GtRemotePhlowDeclarativeTestInspectable >> gtButtonActionFor: anAction [
+GtRemotePhlowDeclarativeTestInspectable >> gtButtonActionWithBothIconAndLabelFor: anAction [
+	<gtAction>
+	
+	^ anAction button
+		tooltip: 'Inspect';
+		priority: 10;
+		label: 'Inspect';
+		icon: nil;
+		action: [ :aButton |
+			aButton phlow 
+				spawnObject: collectionOfObjects ]
+]
+
+{ #category : #actions }
+GtRemotePhlowDeclarativeTestInspectable >> gtButtonActionWithIconFor: anAction [
+	<gtAction>
+	
+	^ anAction button
+		tooltip: 'Inspect';
+		priority: 10;
+		icon: nil;
+		action: [ :aButton |
+			aButton phlow 
+				spawnObject: collectionOfObjects ]
+]
+
+{ #category : #actions }
+GtRemotePhlowDeclarativeTestInspectable >> gtButtonActionWithLabelFor: anAction [
 	<gtAction>
 	
 	^ anAction button
 		tooltip: 'Inspect objects';
 		priority: 10;
-		label: 'Inspect objects';
+		label: 'Inspect';
 		action: [ :aButton |
 			aButton phlow 
 				spawnObject: collectionOfObjects ]
