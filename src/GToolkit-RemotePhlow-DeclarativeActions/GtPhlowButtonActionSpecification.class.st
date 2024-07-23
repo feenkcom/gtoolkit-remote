@@ -13,7 +13,7 @@ GtPhlowButtonActionSpecification class >> typeLabel [
 	^ 'phlowButtonActionSpecification'
 ]
 
-{ #category : #accessing }
+{ #category : #converting }
 GtPhlowButtonActionSpecification >> asDictionaryForExport [
 	| dictionaryForExport|
 	dictionaryForExport := super asDictionaryForExport.
