@@ -47,7 +47,13 @@ GtPhlowViewSpecification >> gtViewJSONFor: aView [
 		object: [ GtJson
 			forJsonString: (NeoJSONWriter 
 				toStringPretty:  self asDictionaryForExport) ];
-		view: #gtJsonStringFor:
+		view: #gtJsonStringFor:;
+		actionButtonIcon: BrGlamorousVectorIcons inspect 
+			label: 'Json'
+			tooltip: 'Inspect the JSON object'
+			action: [ :aButton |
+				aButton phlow 
+					spawnObject: aButton phlow forwardViewObjectFromViewAction ]
 ]
 
 { #category : #'*GToolkit-RemoteGt' }

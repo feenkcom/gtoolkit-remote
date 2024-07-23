@@ -3,7 +3,8 @@ Class {
 	#superclass : #GtRemotePhlowAction,
 	#instVars : [
 		'actionBlock',
-		'label'
+		'label',
+		'iconStencil'
 	],
 	#category : #'GToolkit-RemotePhlow-PhlowActions'
 }
@@ -24,9 +25,20 @@ GtRemotePhlowButtonAction >> asGtDeclarativeAction [
 		priority: self priority;
 		tooltipText: self tooltipText;
 		label: self label;
+		iconStencil: self iconStencil;
 		phlowDataSource: (GtRemotePhlowDeclarativeBlockActionDataSource new
 			phlowAction: self;
 			targetBlock: self actionBlock)
+]
+
+{ #category : #accessing }
+GtRemotePhlowButtonAction >> icon: anIconStencil [
+	iconStencil := anIconStencil
+]
+
+{ #category : #accessing }
+GtRemotePhlowButtonAction >> iconStencil [
+	^ iconStencil
 ]
 
 { #category : #initialization }

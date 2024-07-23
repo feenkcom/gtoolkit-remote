@@ -42,10 +42,11 @@ GtRemotePhlowDeclarativeTestInspectable >> gtButtonActionWithBothIconAndLabelFor
 	<gtAction>
 	
 	^ anAction button
-		tooltip: 'Inspect';
+		tooltip: 'Inspect objects';
 		priority: 10;
 		label: 'Inspect';
-		icon: nil;
+		icon: (GtPhlowGlamorousVectorIconNameStencil new 
+			iconName: #playinspect);
 		action: [ :aButton |
 			aButton phlow 
 				spawnObject: collectionOfObjects ]
@@ -56,9 +57,10 @@ GtRemotePhlowDeclarativeTestInspectable >> gtButtonActionWithIconFor: anAction [
 	<gtAction>
 	
 	^ anAction button
-		tooltip: 'Inspect';
+		tooltip: 'Inspect objects';
 		priority: 10;
-		icon: nil;
+		icon: (GtPhlowGlamorousVectorIconNameStencil new 
+			iconName: #playinspect);
 		action: [ :aButton |
 			aButton phlow 
 				spawnObject: collectionOfObjects ]
