@@ -6,6 +6,9 @@ GtPhlowButtonAction >> asGtDeclarativeAction [
 		priority: self priority;
 		label: label;
 		iconStencil: icon;
+		in: [ :aSpecification | 
+			self tooltipBuilder 
+				applyToActionSpecification: aSpecification ];
 		phlowDataSource: (GtRemotePhlowDeclarativeBlockActionDataSource new
 			phlowAction: self;
 			targetBlock: self actionBlock)
