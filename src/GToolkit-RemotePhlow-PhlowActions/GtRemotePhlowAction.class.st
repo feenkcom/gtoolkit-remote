@@ -28,6 +28,11 @@ GtRemotePhlowAction >> button [
 	^ GtRemotePhlowButtonAction new
 ]
 
+{ #category : #testing }
+GtRemotePhlowAction >> canBeGtDeclarativeAction [
+	^ true
+]
+
 { #category : #accessing }
 GtRemotePhlowAction >> definingClass [
 	^ definingClass
