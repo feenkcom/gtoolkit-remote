@@ -29,6 +29,35 @@ GtRemotePhlowAction >> button [
 ]
 
 { #category : #accessing }
+GtRemotePhlowAction >> definingClass [
+	^ definingClass
+]
+
+{ #category : #accessing }
+GtRemotePhlowAction >> definingClass: aClass [
+	definingClass := aClass
+]
+
+{ #category : #accessing }
+GtRemotePhlowAction >> definingMethod [
+	^ (definingClass whichClassIncludesSelector: definingSelector) 
+		ifNil: [ nil ]
+		ifNotNil: [ :aClass | aClass compiledMethodAt: definingSelector ]
+]
+
+{ #category : #accessing }
+GtRemotePhlowAction >> definingSelector [
+
+	^ definingSelector
+]
+
+{ #category : #accessing }
+GtRemotePhlowAction >> definingSelector: aSelector [
+
+	definingSelector := aSelector
+]
+
+{ #category : #accessing }
 GtRemotePhlowAction >> id [
 	^ id
 ]
