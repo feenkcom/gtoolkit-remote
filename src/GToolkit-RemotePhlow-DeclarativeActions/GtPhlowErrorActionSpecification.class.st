@@ -36,6 +36,11 @@ GtPhlowErrorActionSpecification >> errorMessage: aStringMessage [
 ]
 
 { #category : #accessing }
+GtPhlowErrorActionSpecification >> iconStencil [ 
+	^ nil
+]
+
+{ #category : #accessing }
 GtPhlowErrorActionSpecification >> initializeFromJSONDictionary: aDictionary [
 	super initializeFromJSONDictionary: aDictionary.
 	
@@ -47,4 +52,9 @@ GtPhlowErrorActionSpecification >> initializeFromJSONDictionary: aDictionary [
 		at: 'tooltipText' 
 		ifPresent: [ :aText |
 			self tooltipText: aText ].
+]
+
+{ #category : #accessing }
+GtPhlowErrorActionSpecification >> label [
+	^ 'Error'
 ]

@@ -13,7 +13,7 @@ GtPhlowErrorActionSpecification >> actionFor: anAction [
 						+ BrGlamorousButtonLabelAptitude);
 				action:  [ :aButton | 
 					aButton phlow spawnObject: self ];
-				label: 'Error'  ];
+				label: self label  ];
 		in: [ :currentAction |
 			(self tooltipText ifNil: [ self errorMessage])
 				ifNotNil: [ :aText |
