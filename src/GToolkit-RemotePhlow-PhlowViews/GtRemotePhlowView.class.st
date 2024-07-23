@@ -92,11 +92,14 @@ GtRemotePhlowView >> definingSelector: aSelector [
 	definingSelector := aSelector
 ]
 
-{ #category : #'message performning' }
+{ #category : #'message performing' }
 GtRemotePhlowView >> on: anObject perform: aMessageSymbol [ 
 	<return: #GtRemotePhlowView>
 	
-	^ self on: anObject perform: aMessageSymbol withArguments: { self }
+	^ self 
+		on: anObject 
+		perform: aMessageSymbol 
+		withArguments: { self }
 ]
 
 { #category : #'message performning' }
@@ -127,7 +130,7 @@ GtRemotePhlowView >> phlowErrorViewWithException: anException [
 		errorMessage: anException description
 ]
 
-{ #category : #'message performning' }
+{ #category : #'error handling' }
 GtRemotePhlowView >> phlowErrorViewWithException: anException forBuildContext: aContext andSelector: aMessageSymbol [
 	| aPhlow | 
 
