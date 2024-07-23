@@ -8,8 +8,3 @@ Class {
 GtPhlowGlamorousVectorIconNameStencil class >> typeLabel [
 	^ 'phlowGlamorousVectorIconNameStencil'
 ]
-
-{ #category : #accessing }
-GtPhlowGlamorousVectorIconNameStencil >> iconsClass [
-	^ BrGlamorousVectorIcons
-]
