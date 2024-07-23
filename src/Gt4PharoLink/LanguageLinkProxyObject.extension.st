@@ -20,7 +20,7 @@ LanguageLinkProxyObject >> declarativeActionSpecifications [
 			collect: [ :anActionSpecificationData |
 				| actionSpecification |
 				actionSpecification := GtPhlowActionSpecification 
-					fromDictionary: anActionSpecificationData.
+					phlowActionFromDictionary: anActionSpecificationData.
 				actionSpecification
 					initializeFromInspector: remoteInspectorProxy.
 				actionSpecification ] ].

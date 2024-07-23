@@ -9,7 +9,7 @@ Class {
 
 { #category : #accessing }
 GtPhlowErrorActionSpecification class >> typeLabel [
-	^ 'errorAction'
+	^ 'phlowErrorActionSpecification'
 ]
 
 { #category : #accessing }

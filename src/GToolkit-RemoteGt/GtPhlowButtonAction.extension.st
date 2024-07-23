@@ -5,6 +5,7 @@ GtPhlowButtonAction >> asGtDeclarativeAction [
 	^ GtPhlowButtonActionSpecification new
 		priority: self priority;
 		label: label;
+		"iconStencil: icon;"
 		phlowDataSource: (GtRemotePhlowDeclarativeBlockActionDataSource new
 			phlowAction: self;
 			targetBlock: self actionBlock)

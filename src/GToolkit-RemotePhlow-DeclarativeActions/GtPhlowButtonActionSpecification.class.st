@@ -2,14 +2,15 @@ Class {
 	#name : #GtPhlowButtonActionSpecification,
 	#superclass : #GtPhlowActionSpecification,
 	#instVars : [
-		'label'
+		'label',
+		'iconStencil'
 	],
 	#category : #'GToolkit-RemotePhlow-DeclarativeActions'
 }
 
 { #category : #accessing }
 GtPhlowButtonActionSpecification class >> typeLabel [
-	^ 'buttonAction'
+	^ 'phlowButtonActionSpecification'
 ]
 
 { #category : #accessing }

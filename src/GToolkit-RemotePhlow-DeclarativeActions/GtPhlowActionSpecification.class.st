@@ -11,18 +11,12 @@ Class {
 	#category : #'GToolkit-RemotePhlow-DeclarativeActions'
 }
 
-{ #category : #accessing }
-GtPhlowActionSpecification class >> typeLabel [
-	^ nil
-]
-
 { #category : #converting }
 GtPhlowActionSpecification >> asDictionaryForExport [
 	"Answer the receiver as a dictionary ready for JSON serialisation.
 	Subclasses will override and add to the dictionary"
 
 	^ super asDictionaryForExport
-		at: '__typeLabel' put: self class typeLabel;
 		at: 'priority' put: priority;
 		at: 'methodSelector' put: methodSelector;
 		yourself
