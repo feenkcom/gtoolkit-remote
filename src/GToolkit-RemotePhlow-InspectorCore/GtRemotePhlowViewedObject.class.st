@@ -100,7 +100,8 @@ GtRemotePhlowViewedObject >> getInspectorSpecificationWithPhlowDataSource [
 		at: 'views' put:   (self getViewSpecificationWithPhlowDataSource
 			at: 'views');
 		at: 'actions' put: (self getActionSpecificationsPhlowDataSource
-			at: 'actions')
+			at: 'actions');
+		yourself
 ]
 
 { #category : #'api - views deprecated' }
