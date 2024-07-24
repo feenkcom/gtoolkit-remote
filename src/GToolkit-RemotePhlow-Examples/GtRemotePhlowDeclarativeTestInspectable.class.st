@@ -43,7 +43,7 @@ GtRemotePhlowDeclarativeTestInspectable >> gtButtonActionWithBothIconAndLabelFor
 	
 	^ anAction button
 		tooltip: 'Inspect objects';
-		priority: 10;
+		priority: 12;
 		label: 'Inspect';
 		icon: (GtPhlowGlamorousVectorIconNameStencil new 
 			iconName: #playinspect);
@@ -58,7 +58,7 @@ GtRemotePhlowDeclarativeTestInspectable >> gtButtonActionWithIconFor: anAction [
 	
 	^ anAction button
 		tooltip: 'Inspect objects';
-		priority: 10;
+		priority: 11;
 		icon: (GtPhlowGlamorousVectorIconNameStencil new 
 			iconName: #playinspect);
 		action: [ :aButton |
