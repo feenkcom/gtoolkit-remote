@@ -521,7 +521,7 @@ GtProxyRemoteInspectionExamples >> localCodeSnippetType [
 
 { #category : #'examples - inspection' }
 GtProxyRemoteInspectionExamples >> localSideExpectedNumberOfViews [
-	^ 5
+	^ 6
 ]
 
 { #category : #'examples - page strategy' }
