@@ -5,6 +5,34 @@ Class {
 }
 
 { #category : #accessing }
+GtRemotePlainInspectionViewedObject >> gtActionsInCurrentContextForObject: anObject [ 
+	"Answer a collection of the object's declarative actions"
+
+	^ ((self gtDeclarativeActionPragmsForObject: anObject))
+		collect: [ :aPragma |
+			| methodSelector phlowAction |
+			methodSelector := aPragma method selector.
+			
+			phlowAction := GtRemotePhlowAction new  noAction
+				on: anObject 
+				perform: methodSelector.
+		
+			phlowAction definingSelector: methodSelector.
+			phlowAction definingClass: anObject class.
+			phlowAction ]
+]
+
+{ #category : #accessing }
+GtRemotePlainInspectionViewedObject >> gtDeclarativeActionPragmsForObject: anObject [
+	"Answer a collection of the object's declarative action selectors"
+
+	^ Pragma 
+		allNamed: #gtAction
+		from: anObject class
+		to: Object
+]
+
+{ #category : #accessing }
 GtRemotePlainInspectionViewedObject >> gtDeclarativeViewPragmsForObject: anObject [
 	"Answer a collection of the object's declarative view selectors"
 
@@ -37,8 +65,15 @@ GtRemotePlainInspectionViewedObject >> gtViewsInCurrentContextForObject: anObjec
 ]
 
 { #category : #accessing }
+GtRemotePlainInspectionViewedObject >> phlowDeclarativeActions [
+	"Retrieve the object's declarative action using the remote phlow API."
+	
+	^ self  gtActionsInCurrentContextForObject: object.
+]
+
+{ #category : #accessing }
 GtRemotePlainInspectionViewedObject >> phlowDeclarativeViews [
-	"Retrieve the objects declarative views.
+	"Retrieve the objects declarative views using the remote phlow API.
 	If the default Raw view can't be declarative, provide one that is."
 	| views |
 	

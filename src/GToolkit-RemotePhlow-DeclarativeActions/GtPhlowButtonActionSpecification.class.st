@@ -2,21 +2,42 @@ Class {
 	#name : #GtPhlowButtonActionSpecification,
 	#superclass : #GtPhlowActionSpecification,
 	#instVars : [
-		'label'
+		'label',
+		'iconStencil'
 	],
 	#category : #'GToolkit-RemotePhlow-DeclarativeActions'
 }
 
 { #category : #accessing }
 GtPhlowButtonActionSpecification class >> typeLabel [
-	^ 'buttonAction'
+	^ 'phlowButtonActionSpecification'
+]
+
+{ #category : #converting }
+GtPhlowButtonActionSpecification >> asDictionaryForExport [
+	| dictionaryForExport|
+	dictionaryForExport := super asDictionaryForExport.
+	
+	label ifNotNil: [ :aText |
+		dictionaryForExport at: 'label' put: aText ].
+	iconStencil ifNotNil: [ :anIconStencil |
+		dictionaryForExport 
+			at: 'iconStencil' 
+			put: anIconStencil asDictionaryForExport ].
+	tooltipText ifNotNil: [ :aText |
+		dictionaryForExport at: 'tooltipText' put: aText ].
+
+	^ dictionaryForExport
 ]
 
 { #category : #accessing }
-GtPhlowButtonActionSpecification >> asDictionaryForExport [
-	^ super asDictionaryForExport
-		at: 'label' put: label;
-		yourself
+GtPhlowButtonActionSpecification >> iconStencil [
+	^ iconStencil
+]
+
+{ #category : #accessing }
+GtPhlowButtonActionSpecification >> iconStencil: anIconStencil [
+	iconStencil := anIconStencil
 ]
 
 { #category : #initialization }
@@ -30,8 +51,20 @@ GtPhlowButtonActionSpecification >> initializeFromInspector: anInspector [
 GtPhlowButtonActionSpecification >> initializeFromJSONDictionary: aDictionary [
 	super initializeFromJSONDictionary: aDictionary.
 	
-	self
-		label: (aDictionary at: 'label' ifAbsent: [ nil ])
+	aDictionary 
+		at: 'label' 
+		ifPresent: [ :aText |
+			self label: aText ].
+	aDictionary 
+		at: 'tooltipText' 
+		ifPresent: [ :aText |
+			self tooltipText: aText ].
+	aDictionary 
+		at: 'iconStencil' 
+		ifPresent: [ :anIconStencilData |
+			anIconStencilData ifNotNil: [
+				self iconStencil: (GtPhlowIconStencil 
+					phlowIconStencilFromDictionary: anIconStencilData) ] ].
 ]
 
 { #category : #accessing }

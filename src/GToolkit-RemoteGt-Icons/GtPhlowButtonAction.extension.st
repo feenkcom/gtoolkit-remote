@@ -1,16 +1,21 @@
 Extension { #name : #GtPhlowButtonAction }
 
-{ #category : #'*GToolkit-RemoteGt' }
+{ #category : #'*GToolkit-RemoteGt-Icons' }
 GtPhlowButtonAction >> asGtDeclarativeAction [
 	^ GtPhlowButtonActionSpecification new
 		priority: self priority;
 		label: label;
+		iconStencil: icon;
+		in: [ :aSpecification | 
+			self tooltipBuilder 
+				applyToActionSpecification: aSpecification ];
 		phlowDataSource: (GtRemotePhlowDeclarativeBlockActionDataSource new
 			phlowAction: self;
 			targetBlock: self actionBlock)
 ]
 
-{ #category : #'*GToolkit-RemoteGt' }
+{ #category : #'*GToolkit-RemoteGt-Icons' }
 GtPhlowButtonAction >> canBeGtDeclarativeAction [
-	^ true
+	^ icon isNil or: [
+		icon isKindOf: GtPhlowIconStencil ]
 ]

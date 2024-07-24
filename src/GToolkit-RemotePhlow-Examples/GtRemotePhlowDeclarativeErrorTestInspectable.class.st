@@ -5,6 +5,20 @@ Class {
 }
 
 { #category : #accessing }
+GtRemotePhlowDeclarativeErrorTestInspectable >> gtButtonErrorActionFor: anAction [
+	<gtAction>
+	
+	1/0.
+	^ anAction button
+		tooltip: 'Inspect objects';
+		priority: 10;
+		label: 'Inspect';
+		action: [ :aButton |
+			aButton phlow 
+				spawnObject: {1 . 2} ]
+]
+
+{ #category : #accessing }
 GtRemotePhlowDeclarativeErrorTestInspectable >> gtColumnedListWithFormatErrorsFor: aView [
 	<gtView>
 

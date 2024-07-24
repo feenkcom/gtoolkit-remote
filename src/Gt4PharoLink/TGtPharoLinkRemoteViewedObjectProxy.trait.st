@@ -12,10 +12,10 @@ TGtPharoLinkRemoteViewedObjectProxy >> getActionSpecifications [
 ]
 
 { #category : #accessing }
-TGtPharoLinkRemoteViewedObjectProxy >> getDeclarativeActionDataSourceFor: aViewSelector [
+TGtPharoLinkRemoteViewedObjectProxy >> getDeclarativeActionDataSourceFor: anActionSelector [
 	^ self
 		proxyPerform: #getDeclarativeActionDataSourceFor:
-		withPrimitiveArguments: { aViewSelector asSymbol }
+		withPrimitiveArguments: { anActionSelector asSymbol }
 ]
 
 { #category : #accessing }

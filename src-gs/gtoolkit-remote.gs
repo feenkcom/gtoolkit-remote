@@ -165,6 +165,222 @@ removeallclassmethods GtPhlowUnknownDeclarativeListingType
 
 doit
 (Object
+	subclass: 'GtPhlowDeclarativeSpecification'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeSpecification';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowDeclarativeSpecification
+removeallclassmethods GtPhlowDeclarativeSpecification
+
+doit
+(GtPhlowDeclarativeSpecification
+	subclass: 'GtPhlowActionSpecification'
+	instVarNames: #(id priority tooltipText methodSelector phlowDataSource)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeActions';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowActionSpecification
+removeallclassmethods GtPhlowActionSpecification
+
+doit
+(GtPhlowActionSpecification
+	subclass: 'GtPhlowButtonActionSpecification'
+	instVarNames: #(label iconStencil)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeActions';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowButtonActionSpecification
+removeallclassmethods GtPhlowButtonActionSpecification
+
+doit
+(GtPhlowActionSpecification
+	subclass: 'GtPhlowErrorActionSpecification'
+	instVarNames: #(errorMessage)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeActions';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowErrorActionSpecification
+removeallclassmethods GtPhlowErrorActionSpecification
+
+doit
+(GtPhlowDeclarativeSpecification
+	subclass: 'GtPhlowIconStencil'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Icons';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowIconStencil
+removeallclassmethods GtPhlowIconStencil
+
+doit
+(GtPhlowIconStencil
+	subclass: 'GtPhlowNamedIconStencil'
+	instVarNames: #(iconName)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Icons';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowNamedIconStencil
+removeallclassmethods GtPhlowNamedIconStencil
+
+doit
+(GtPhlowNamedIconStencil
+	subclass: 'GtPhlowBasicGlamorousIconNameStencil'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Icons';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowBasicGlamorousIconNameStencil
+removeallclassmethods GtPhlowBasicGlamorousIconNameStencil
+
+doit
+(GtPhlowBasicGlamorousIconNameStencil
+	subclass: 'GtPhlowGlamorousIconNameStencil'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Icons';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowGlamorousIconNameStencil
+removeallclassmethods GtPhlowGlamorousIconNameStencil
+
+doit
+(GtPhlowBasicGlamorousIconNameStencil
+	subclass: 'GtPhlowGlamorousVectorIconNameStencil'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Icons';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowGlamorousVectorIconNameStencil
+removeallclassmethods GtPhlowGlamorousVectorIconNameStencil
+
+doit
+(GtPhlowNamedIconStencil
+	subclass: 'GtPhlowThemeIconNameStencil'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Icons';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowThemeIconNameStencil
+removeallclassmethods GtPhlowThemeIconNameStencil
+
+doit
+(GtPhlowDeclarativeSpecification
+	subclass: 'GtRemotePhlowNavigationAction'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeActions';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowNavigationAction
+removeallclassmethods GtRemotePhlowNavigationAction
+
+doit
+(GtRemotePhlowNavigationAction
+	subclass: 'GtRemotePhlowSpawnObjectAction'
+	instVarNames: #(targetObject)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeActions';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowSpawnObjectAction
+removeallclassmethods GtRemotePhlowSpawnObjectAction
+
+doit
+(Object
 	subclass: 'GtPhlowRuns'
 	instVarNames: #()
 	classVars: #()
@@ -741,6 +957,96 @@ removeallclassmethods GtPhlowViewErrorViewSpecification
 
 doit
 (Object
+	subclass: 'GtRemotePhlowAction'
+	instVarNames: #(id priority tooltipText definingSelector definingClass)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowActions';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowAction
+removeallclassmethods GtRemotePhlowAction
+
+doit
+(GtRemotePhlowAction
+	subclass: 'GtRemotePhlowButtonAction'
+	instVarNames: #(actionBlock label iconStencil)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowActions';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowButtonAction
+removeallclassmethods GtRemotePhlowButtonAction
+
+doit
+(GtRemotePhlowAction
+	subclass: 'GtRemotePhlowErrorAction'
+	instVarNames: #(errorMessage)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowActions';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowErrorAction
+removeallclassmethods GtRemotePhlowErrorAction
+
+doit
+(GtRemotePhlowAction
+	subclass: 'GtRemotePhlowNoAction'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowActions';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowNoAction
+removeallclassmethods GtRemotePhlowNoAction
+
+doit
+(Object
+	subclass: 'GtRemotePhlowApiWrapper'
+	instVarNames: #(currentAction)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeActions';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowApiWrapper
+removeallclassmethods GtRemotePhlowApiWrapper
+
+doit
+(Object
 	subclass: 'GtRemotePhlowCollectionIterator'
 	instVarNames: #(targetCollection)
 	classVars: #()
@@ -1062,6 +1368,42 @@ true.
 
 removeallmethods GtRemotePhlowColumnedTreeNode
 removeallclassmethods GtRemotePhlowColumnedTreeNode
+
+doit
+(Object
+	subclass: 'GtRemotePhlowDeclarativeActionDataSource'
+	instVarNames: #(phlowAction)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeActions';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowDeclarativeActionDataSource
+removeallclassmethods GtRemotePhlowDeclarativeActionDataSource
+
+doit
+(GtRemotePhlowDeclarativeActionDataSource
+	subclass: 'GtRemotePhlowDeclarativeBlockActionDataSource'
+	instVarNames: #(targetBlock)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeActions';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowDeclarativeBlockActionDataSource
+removeallclassmethods GtRemotePhlowDeclarativeBlockActionDataSource
 
 doit
 (Object
@@ -1796,6 +2138,24 @@ true.
 
 removeallmethods GtRemotePhlowSendObjectTransformation
 removeallclassmethods GtRemotePhlowSendObjectTransformation
+
+doit
+(Object
+	subclass: 'GtRemotePhlowSpawnObjectWrapper'
+	instVarNames: #(targetObject)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeActions';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowSpawnObjectWrapper
+removeallclassmethods GtRemotePhlowSpawnObjectWrapper
 
 doit
 (Object
@@ -2786,6 +3146,383 @@ category: 'testing'
 method: GtPhlowUnknownDeclarativeListingType
 isUnknown
 	^ true
+%
+
+! Class implementation for 'GtPhlowDeclarativeSpecification'
+
+!		Class methods for 'GtPhlowDeclarativeSpecification'
+
+category: 'instance creation'
+classmethod: GtPhlowDeclarativeSpecification
+fromJSONDictionary: aDictionary
+	"Answer an instance of the receiver from the supplied dictionary."
+
+	^self new 
+		initializeFromJSONDictionary: aDictionary
+%
+
+category: 'accessing'
+classmethod: GtPhlowDeclarativeSpecification
+typeLabel
+	^ nil
+%
+
+!		Instance methods for 'GtPhlowDeclarativeSpecification'
+
+category: 'converting'
+method: GtPhlowDeclarativeSpecification
+asDictionaryForExport
+	"Answer the receiver as a dictionary ready for JSON serialisation.
+	Subclasses will override and add to the dictionary"
+	| dictionaryForExport |
+	
+	dictionaryForExport :=  Dictionary new 
+		at: '__typeName' put: self class name;
+		yourself.
+	
+	self class typeLabel ifNotNil: [ :aLabel |
+		dictionaryForExport at: '__typeLabel' put: aLabel ].
+		
+	^ dictionaryForExport
+%
+
+category: 'initialization'
+method: GtPhlowDeclarativeSpecification
+initializeFromJSONDictionary: aDictionary
+%
+
+! Class implementation for 'GtPhlowActionSpecification'
+
+!		Instance methods for 'GtPhlowActionSpecification'
+
+category: 'converting'
+method: GtPhlowActionSpecification
+asDictionaryForExport
+	"Answer the receiver as a dictionary ready for JSON serialisation.
+	Subclasses will override and add to the dictionary"
+
+	^ super asDictionaryForExport
+		at: 'priority' put: priority;
+		at: 'methodSelector' put: methodSelector;
+		yourself
+%
+
+category: 'initialization'
+method: GtPhlowActionSpecification
+initializeFromInspector: anInspector
+%
+
+category: 'initialization'
+method: GtPhlowActionSpecification
+initializeFromJSONDictionary: aDictionary
+	super initializeFromJSONDictionary: aDictionary.
+
+	self
+		priority: (aDictionary at: 'priority' ifAbsent: [ nil ]);
+		methodSelector: (aDictionary at: 'methodSelector' ifAbsent: [ nil ]);
+		tooltipText: (aDictionary  at: 'tooltipText' ifAbsent: [ nil ])
+%
+
+category: 'accessing'
+method: GtPhlowActionSpecification
+methodSelector
+	^ methodSelector
+%
+
+category: 'accessing'
+method: GtPhlowActionSpecification
+methodSelector: aSelector
+	methodSelector := aSelector
+%
+
+category: 'accessing'
+method: GtPhlowActionSpecification
+phlowDataSource
+	^ phlowDataSource
+%
+
+category: 'accessing'
+method: GtPhlowActionSpecification
+phlowDataSource: aDataSource
+	phlowDataSource := aDataSource
+%
+
+category: 'accessing'
+method: GtPhlowActionSpecification
+priority
+	^ priority
+%
+
+category: 'accessing'
+method: GtPhlowActionSpecification
+priority: aNumber
+	priority := aNumber
+%
+
+category: 'accessing'
+method: GtPhlowActionSpecification
+tooltipText
+	^ tooltipText
+%
+
+category: 'accessing'
+method: GtPhlowActionSpecification
+tooltipText: aTextOrString
+	tooltipText := aTextOrString
+%
+
+! Class implementation for 'GtPhlowButtonActionSpecification'
+
+!		Class methods for 'GtPhlowButtonActionSpecification'
+
+category: 'accessing'
+classmethod: GtPhlowButtonActionSpecification
+typeLabel
+	^ 'phlowButtonActionSpecification'
+%
+
+!		Instance methods for 'GtPhlowButtonActionSpecification'
+
+category: 'converting'
+method: GtPhlowButtonActionSpecification
+asDictionaryForExport
+	| dictionaryForExport|
+	dictionaryForExport := super asDictionaryForExport.
+	
+	label ifNotNil: [ :aText |
+		dictionaryForExport at: 'label' put: aText ].
+	iconStencil ifNotNil: [ :anIconStencil |
+		dictionaryForExport 
+			at: 'iconStencil' 
+			put: anIconStencil asDictionaryForExport ].
+	tooltipText ifNotNil: [ :aText |
+		dictionaryForExport at: 'tooltipText' put: aText ].
+
+	^ dictionaryForExport
+%
+
+category: 'accessing'
+method: GtPhlowButtonActionSpecification
+iconStencil
+	^ iconStencil
+%
+
+category: 'accessing'
+method: GtPhlowButtonActionSpecification
+iconStencil: anIconStencil
+	iconStencil := anIconStencil
+%
+
+category: 'initialization'
+method: GtPhlowButtonActionSpecification
+initializeFromInspector: anInspector
+	self phlowDataSource ifNil: [
+		self phlowDataSource: (anInspector 
+			getDeclarativeActionDataSourceFor: self methodSelector) ]
+%
+
+category: 'initialization'
+method: GtPhlowButtonActionSpecification
+initializeFromJSONDictionary: aDictionary
+	super initializeFromJSONDictionary: aDictionary.
+	
+	aDictionary 
+		at: 'label' 
+		ifPresent: [ :aText |
+			self label: aText ].
+	aDictionary 
+		at: 'tooltipText' 
+		ifPresent: [ :aText |
+			self tooltipText: aText ].
+	aDictionary 
+		at: 'iconStencil' 
+		ifPresent: [ :anIconStencilData |
+			anIconStencilData ifNotNil: [
+				self iconStencil: (GtPhlowIconStencil 
+					phlowIconStencilFromDictionary: anIconStencilData) ] ].
+%
+
+category: 'accessing'
+method: GtPhlowButtonActionSpecification
+label
+	^ label
+%
+
+category: 'accessing'
+method: GtPhlowButtonActionSpecification
+label: aLabel
+	label := aLabel
+%
+
+! Class implementation for 'GtPhlowErrorActionSpecification'
+
+!		Class methods for 'GtPhlowErrorActionSpecification'
+
+category: 'accessing'
+classmethod: GtPhlowErrorActionSpecification
+typeLabel
+	^ 'phlowErrorActionSpecification'
+%
+
+!		Instance methods for 'GtPhlowErrorActionSpecification'
+
+category: 'converting'
+method: GtPhlowErrorActionSpecification
+asDictionaryForExport
+	| dictionaryForExport|
+	dictionaryForExport := super asDictionaryForExport.
+	
+	errorMessage ifNotNil: [ :aText |
+		dictionaryForExport at: 'errorMessage' put: aText ].
+	tooltipText ifNotNil: [ :aText |
+		dictionaryForExport at: 'tooltipText' put: aText ].
+
+	^ dictionaryForExport
+%
+
+category: 'accessing'
+method: GtPhlowErrorActionSpecification
+errorMessage
+	^ errorMessage
+%
+
+category: 'accessing'
+method: GtPhlowErrorActionSpecification
+errorMessage: aStringMessage
+	errorMessage := aStringMessage
+%
+
+category: 'accessing'
+method: GtPhlowErrorActionSpecification
+iconStencil 
+	^ nil
+%
+
+category: 'accessing'
+method: GtPhlowErrorActionSpecification
+initializeFromJSONDictionary: aDictionary
+	super initializeFromJSONDictionary: aDictionary.
+	
+	aDictionary 
+		at: 'errorMessage' 
+		ifPresent: [ :aText |
+			self errorMessage: aText ].
+	aDictionary 
+		at: 'tooltipText' 
+		ifPresent: [ :aText |
+			self tooltipText: aText ].
+%
+
+category: 'accessing'
+method: GtPhlowErrorActionSpecification
+label
+	^ 'Error'
+%
+
+! Class implementation for 'GtPhlowNamedIconStencil'
+
+!		Instance methods for 'GtPhlowNamedIconStencil'
+
+category: 'accessing'
+method: GtPhlowNamedIconStencil
+asDictionaryForExport
+	^ super asDictionaryForExport
+		at: 'iconName' put: self iconName;
+		yourself
+%
+
+category: 'accessing'
+method: GtPhlowNamedIconStencil
+iconName
+	^ iconName
+%
+
+category: 'accessing'
+method: GtPhlowNamedIconStencil
+iconName: anIconName
+	iconName := anIconName
+%
+
+category: 'accessing'
+method: GtPhlowNamedIconStencil
+initializeFromJSONDictionary: aDictionary
+	super initializeFromJSONDictionary: aDictionary.
+	
+	aDictionary 
+		at: 'iconName' 
+		ifPresent: [ :anIconName | 
+			anIconName ifNotNil: [ 
+				self iconName: anIconName ] ]
+%
+
+! Class implementation for 'GtPhlowGlamorousIconNameStencil'
+
+!		Class methods for 'GtPhlowGlamorousIconNameStencil'
+
+category: 'accessing'
+classmethod: GtPhlowGlamorousIconNameStencil
+typeLabel
+	^ 'phlowGlamorousIconNameStencil'
+%
+
+! Class implementation for 'GtPhlowGlamorousVectorIconNameStencil'
+
+!		Class methods for 'GtPhlowGlamorousVectorIconNameStencil'
+
+category: 'accessing'
+classmethod: GtPhlowGlamorousVectorIconNameStencil
+typeLabel
+	^ 'phlowGlamorousVectorIconNameStencil'
+%
+
+! Class implementation for 'GtPhlowThemeIconNameStencil'
+
+!		Class methods for 'GtPhlowThemeIconNameStencil'
+
+category: 'accessing'
+classmethod: GtPhlowThemeIconNameStencil
+typeLabel
+	^ 'phlowThemeIconNameStencil'
+%
+
+! Class implementation for 'GtRemotePhlowSpawnObjectAction'
+
+!		Class methods for 'GtRemotePhlowSpawnObjectAction'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowSpawnObjectAction
+forObject: anObject 
+	^ self new 
+		targetObject: anObject 
+%
+
+!		Instance methods for 'GtRemotePhlowSpawnObjectAction'
+
+category: 'converting'
+method: GtRemotePhlowSpawnObjectAction
+asDictionaryForExport
+	"Answer the receiver as a dictionary ready for JSON serialisation"
+
+	^ super asDictionaryForExport
+		at: 'objectWrapper' put: (GtRemotePhlowSpawnObjectWrapper new
+				targetObject: targetObject );
+		yourself
+%
+
+category: 'initialization'
+method: GtRemotePhlowSpawnObjectAction
+initializeFromJSONDictionary: aDictionary
+	super initializeFromJSONDictionary: aDictionary.
+
+	aDictionary at: 'objectWrapper' ifPresent: [ :anObjectWrapper |
+		self
+			targetObject: (aDictionary at: 'objectWrapper') targetObject ].
+%
+
+category: 'accessing'
+method: GtRemotePhlowSpawnObjectAction
+targetObject: anObject 
+	targetObject := anObject 
 %
 
 ! Class implementation for 'GtPhlowRuns'
@@ -5220,6 +5957,278 @@ errorMessage: anObject
 	errorMessage := anObject
 %
 
+! Class implementation for 'GtRemotePhlowAction'
+
+!		Instance methods for 'GtRemotePhlowAction'
+
+category: 'accessing'
+method: GtRemotePhlowAction
+asGtDeclarativeAction
+	^ nil
+%
+
+category: 'message performing'
+method: GtRemotePhlowAction
+basicOn: anObject perform: aMessageSymbol withArguments: aCollectionOfArguments 
+	^ anObject  
+		perform: aMessageSymbol
+		with: aCollectionOfArguments first
+%
+
+category: 'decorating'
+method: GtRemotePhlowAction
+button
+	^ GtRemotePhlowButtonAction new
+%
+
+category: 'testing'
+method: GtRemotePhlowAction
+canBeGtDeclarativeAction
+	^ true
+%
+
+category: 'accessing'
+method: GtRemotePhlowAction
+definingClass
+	^ definingClass
+%
+
+category: 'accessing'
+method: GtRemotePhlowAction
+definingClass: aClass
+	definingClass := aClass
+%
+
+category: 'accessing'
+method: GtRemotePhlowAction
+definingMethod
+	^ (definingClass whichClassIncludesSelector: definingSelector) 
+		ifNil: [ nil ]
+		ifNotNil: [ :aClass | aClass compiledMethodAt: definingSelector ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowAction
+definingSelector
+
+	^ definingSelector
+%
+
+category: 'accessing'
+method: GtRemotePhlowAction
+definingSelector: aSelector
+
+	definingSelector := aSelector
+%
+
+category: 'accessing'
+method: GtRemotePhlowAction
+id
+	^ id
+%
+
+category: 'accessing'
+method: GtRemotePhlowAction
+id: anId
+	id := anId
+%
+
+category: 'decorating'
+method: GtRemotePhlowAction
+noAction
+	^ GtRemotePhlowNoAction new
+%
+
+category: 'message performing'
+method: GtRemotePhlowAction
+on: anObject perform: aMessageSymbol 
+	<return: #GtRemotePhlowAction>
+	
+	^ self 
+		on: anObject 
+		perform: aMessageSymbol 
+		withArguments: { self }
+%
+
+category: 'message performing'
+method: GtRemotePhlowAction
+on: anObject perform: aMessageSymbol withArguments: aCollectionOfArguments
+	<return: #GtRemotePhlowAction>
+	
+	^ [ 
+			self 
+				basicOn: anObject 
+				perform: aMessageSymbol 
+				withArguments: aCollectionOfArguments
+		
+	] on: Error do: [ :anError |
+			self 
+				phlowErrorActionWithException: anError 
+				forBuildContext: nil "(GtPhlowBuildContext new 
+					object: anObject; 
+					arguments: aCollectionOfArguments) "
+				andSelector: aMessageSymbol ]
+%
+
+category: 'error handling'
+method: GtRemotePhlowAction
+phlowErrorActionWithException: anException 
+	^ GtRemotePhlowErrorAction new
+		errorMessage: anException description
+%
+
+category: 'error handling'
+method: GtRemotePhlowAction
+phlowErrorActionWithException: anException forBuildContext: aContext andSelector: aMessageSymbol
+	| phlowErrorAction | 
+
+	phlowErrorAction := self phlowErrorActionWithException: anException.
+	
+	"aPhlow buildContext: aContext.
+	aPhlow failedComputation: aFailedComputation."
+
+	^ phlowErrorAction
+%
+
+category: 'accessing'
+method: GtRemotePhlowAction
+priority
+	^ priority
+%
+
+category: 'accessing'
+method: GtRemotePhlowAction
+priority: aNumber
+	priority := aNumber
+%
+
+category: 'accessing'
+method: GtRemotePhlowAction
+tooltip: aTextOrString
+	self tooltipText: aTextOrString
+%
+
+category: 'accessing'
+method: GtRemotePhlowAction
+tooltipText
+	^ tooltipText
+%
+
+category: 'accessing'
+method: GtRemotePhlowAction
+tooltipText: aTextOrString
+	tooltipText := aTextOrString
+%
+
+! Class implementation for 'GtRemotePhlowButtonAction'
+
+!		Instance methods for 'GtRemotePhlowButtonAction'
+
+category: 'accessing'
+method: GtRemotePhlowButtonAction
+action: aValuable
+	actionBlock := aValuable
+%
+
+category: 'accessing'
+method: GtRemotePhlowButtonAction
+actionBlock
+	^ actionBlock
+%
+
+category: 'converting'
+method: GtRemotePhlowButtonAction
+asGtDeclarativeAction
+	^ GtPhlowButtonActionSpecification new
+		priority: self priority;
+		tooltipText: self tooltipText;
+		label: self label;
+		iconStencil: self iconStencil;
+		phlowDataSource: (GtRemotePhlowDeclarativeBlockActionDataSource new
+			phlowAction: self;
+			targetBlock: self actionBlock)
+%
+
+category: 'accessing'
+method: GtRemotePhlowButtonAction
+icon: anIconStencil
+	iconStencil := anIconStencil
+%
+
+category: 'accessing'
+method: GtRemotePhlowButtonAction
+iconStencil
+	^ iconStencil
+%
+
+category: 'initialization'
+method: GtRemotePhlowButtonAction
+initialize
+	super initialize.
+
+	actionBlock := [ :aButton | 
+		"do nothing" ].
+%
+
+category: 'accessing'
+method: GtRemotePhlowButtonAction
+label
+	^ label
+%
+
+category: 'accessing'
+method: GtRemotePhlowButtonAction
+label: aStringOrText
+	label := aStringOrText
+%
+
+! Class implementation for 'GtRemotePhlowErrorAction'
+
+!		Instance methods for 'GtRemotePhlowErrorAction'
+
+category: 'converting'
+method: GtRemotePhlowErrorAction
+asGtDeclarativeAction
+	^ GtPhlowErrorActionSpecification new
+		priority: self priority;
+		errorMessage: self errorMessage;
+		tooltipText: self tooltipText
+%
+
+category: 'accessing'
+method: GtRemotePhlowErrorAction
+errorMessage
+	^ errorMessage
+%
+
+category: 'accessing'
+method: GtRemotePhlowErrorAction
+errorMessage: aStringMessage
+	errorMessage := aStringMessage
+%
+
+! Class implementation for 'GtRemotePhlowApiWrapper'
+
+!		Instance methods for 'GtRemotePhlowApiWrapper'
+
+category: 'accessing'
+method: GtRemotePhlowApiWrapper
+currentAction
+	^ currentAction
+%
+
+category: 'accessing'
+method: GtRemotePhlowApiWrapper
+phlow 
+	^ self
+%
+
+category: 'accessing'
+method: GtRemotePhlowApiWrapper
+spawnObject: anObject
+	currentAction := GtRemotePhlowSpawnObjectAction forObject: anObject
+%
+
 ! Class implementation for 'GtRemotePhlowCollectionIterator'
 
 !		Class methods for 'GtRemotePhlowCollectionIterator'
@@ -6110,9 +7119,76 @@ gtViewColumnValuesFor: aView
 		view: #gtViewColumnValuesFor:
 %
 
+! Class implementation for 'GtRemotePhlowDeclarativeActionDataSource'
+
+!		Class methods for 'GtRemotePhlowDeclarativeActionDataSource'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowDeclarativeActionDataSource
+forPhlowAction: aPhlowAction
+	^ self new
+		phlowAction: aPhlowAction
+%
+
+!		Instance methods for 'GtRemotePhlowDeclarativeActionDataSource'
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeActionDataSource
+phlowAction: aPhlowAction 
+	phlowAction := aPhlowAction 
+%
+
+! Class implementation for 'GtRemotePhlowDeclarativeBlockActionDataSource'
+
+!		Instance methods for 'GtRemotePhlowDeclarativeBlockActionDataSource'
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeBlockActionDataSource
+executeRemoteActionWithPhlowResult
+	| phlowApiWrapper |
+	
+	phlowApiWrapper := self phlowApiWrapper.
+	self targetBlock value: phlowApiWrapper.
+	
+	^ phlowApiWrapper currentAction asDictionaryForExport
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeBlockActionDataSource
+phlowApiWrapper
+	^ GtRemotePhlowApiWrapper new
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeBlockActionDataSource
+targetBlock
+	^ targetBlock
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeBlockActionDataSource
+targetBlock: aBlockClosure
+	targetBlock := aBlockClosure
+%
+
 ! Class implementation for 'GtRemotePhlowDeclarativeErrorTestInspectable'
 
 !		Instance methods for 'GtRemotePhlowDeclarativeErrorTestInspectable'
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeErrorTestInspectable
+gtButtonErrorActionFor: anAction
+	<gtAction>
+	
+	1/0.
+	^ anAction button
+		tooltip: 'Inspect objects';
+		priority: 10;
+		label: 'Inspect';
+		action: [ :aButton |
+			aButton phlow 
+				spawnObject: {1 . 2} ]
+%
 
 category: 'accessing'
 method: GtRemotePhlowDeclarativeErrorTestInspectable
@@ -6283,13 +7359,44 @@ collectionOfObjects: anObject
 
 category: 'actions'
 method: GtRemotePhlowDeclarativeTestInspectable
-gtButtonActionFor: anAction
+gtButtonActionWithBothIconAndLabelFor: anAction
 	<gtAction>
 	
 	^ anAction button
 		tooltip: 'Inspect objects';
 		priority: 10;
-		label: 'Inspect objects';
+		label: 'Inspect';
+		icon: (GtPhlowGlamorousVectorIconNameStencil new 
+			iconName: #playinspect);
+		action: [ :aButton |
+			aButton phlow 
+				spawnObject: collectionOfObjects ]
+%
+
+category: 'actions'
+method: GtRemotePhlowDeclarativeTestInspectable
+gtButtonActionWithIconFor: anAction
+	<gtAction>
+	
+	^ anAction button
+		tooltip: 'Inspect objects';
+		priority: 10;
+		icon: (GtPhlowGlamorousVectorIconNameStencil new 
+			iconName: #playinspect);
+		action: [ :aButton |
+			aButton phlow 
+				spawnObject: collectionOfObjects ]
+%
+
+category: 'actions'
+method: GtRemotePhlowDeclarativeTestInspectable
+gtButtonActionWithLabelFor: anAction
+	<gtAction>
+	
+	^ anAction button
+		tooltip: 'Inspect objects';
+		priority: 10;
+		label: 'Inspect';
 		action: [ :aButton |
 			aButton phlow 
 				spawnObject: collectionOfObjects ]
@@ -9147,12 +10254,15 @@ definingSelector: aSelector
 	definingSelector := aSelector
 %
 
-category: 'message performning'
+category: 'message performing'
 method: GtRemotePhlowView
 on: anObject perform: aMessageSymbol 
 	<return: #GtRemotePhlowView>
 	
-	^ self on: anObject perform: aMessageSymbol withArguments: { self }
+	^ self 
+		on: anObject 
+		perform: aMessageSymbol 
+		withArguments: { self }
 %
 
 category: 'message performning'
@@ -9185,7 +10295,7 @@ phlowErrorViewWithException: anException
 		errorMessage: anException description
 %
 
-category: 'message performning'
+category: 'error handling'
 method: GtRemotePhlowView
 phlowErrorViewWithException: anException forBuildContext: aContext andSelector: aMessageSymbol
 	| aPhlow | 
@@ -9967,6 +11077,22 @@ category: 'accessing'
 method: GtRemotePhlowSendObjectTransformation
 valuable: anObject
 	valuable := anObject
+%
+
+! Class implementation for 'GtRemotePhlowSpawnObjectWrapper'
+
+!		Instance methods for 'GtRemotePhlowSpawnObjectWrapper'
+
+category: 'accessing'
+method: GtRemotePhlowSpawnObjectWrapper
+targetObject
+	^ targetObject
+%
+
+category: 'accessing'
+method: GtRemotePhlowSpawnObjectWrapper
+targetObject: anObject
+	targetObject := anObject
 %
 
 ! Class implementation for 'GtRemotePhlowStylableText'
@@ -12335,6 +13461,35 @@ asRopedText
 	^ GtPhlowText forString: self asString
 %
 
+category: '*GToolkit-RemotePhlow-Remote'
+method: Object
+gtActionsInCurrentContext
+	"Answer a collection of the object's declarative actions"
+
+	^ self gtDeclarativeActionPragmas collect: [ :aPragma |
+		| methodSelector phlowAction |
+		methodSelector := aPragma method selector.
+			
+		phlowAction := GtRemotePhlowAction new  noAction
+			on: self
+			perform: methodSelector.
+		
+		phlowAction definingSelector: methodSelector.
+		phlowAction definingClass: self class.
+		phlowAction ]
+%
+
+category: '*GToolkit-RemotePhlow-Remote'
+method: Object
+gtDeclarativeActionPragmas
+	"Answer a collection of the object's declarative view selectors"
+
+	^ Pragma 
+		allNamed: #gtAction
+		from: self class
+		to: Object
+%
+
 category: '*GToolkit-RemotePhlow-InspectorCore'
 method: Object
 gtDeclarativePhlowActions
@@ -12350,7 +13505,18 @@ gtDeclarativePhlowViews
 	"Answer a collection of the object's declarative phlow view"
 	
 	^ self gtViewsInCurrentContext
-		select: [ :view | view canBeGtDeclarativeView ]
+		select: [ :aPhlowView | aPhlowView canBeGtDeclarativeView ]
+%
+
+category: '*GToolkit-RemotePhlow-Remote'
+method: Object
+gtDeclarativeViewPragmas
+	"Answer a collection of the object's declarative view selectors"
+
+	^ Pragma 
+		allNamed: #gtView
+		from: self class
+		to: Object
 %
 
 category: '*GToolkit-RemotePhlow-Remote'
@@ -12358,10 +13524,7 @@ method: Object
 gtDeclarativeViewPragms
 	"Answer a collection of the object's declarative view selectors"
 
-	^ Pragma 
-		allNamed: #gtView
-		from: self class
-		to: Object
+	^ self gtDeclarativeViewPragmas
 %
 
 category: '*GToolkit-RemotePhlow-GemStone'
@@ -12471,7 +13634,7 @@ method: Object
 gtViewsInCurrentContext
 	"Answer a collection of the object's declarative views"
 
-	^ self gtDeclarativeViewPragms collect: [ :aPragma |
+	^ self gtDeclarativeViewPragmas collect: [ :aPragma |
 		| methodSelector phlowView |
 		methodSelector := aPragma method selector.
 			

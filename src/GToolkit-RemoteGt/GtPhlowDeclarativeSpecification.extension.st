@@ -8,6 +8,16 @@ GtPhlowDeclarativeSpecification >> asJSONForExport [
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
+GtPhlowDeclarativeSpecification class >> fromDictionary: aSpecificationDictionary [
+	"Answer the specification based on its exported data"
+	| typeName |
+
+	typeName := aSpecificationDictionary at: '__typeName'.
+	^(Smalltalk globals at: typeName asSymbol) 
+		fromJSONDictionary: aSpecificationDictionary.
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
 GtPhlowDeclarativeSpecification class >> fromJSONString: aString [
 	"Answer the view specified by aString"
 

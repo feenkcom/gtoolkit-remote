@@ -1,6 +1,6 @@
 Extension { #name : #GtRemotePhlowSpawnObjectAction }
 
-{ #category : #'*GToolkit-RemoteGt' }
+{ #category : #'*GToolkit-RemoteGt-Icons' }
 GtRemotePhlowSpawnObjectAction >> applyOn: aLocalElement [ 
 	aLocalElement phlow spawnObject: targetObject
 ]
