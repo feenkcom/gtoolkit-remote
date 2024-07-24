@@ -73,10 +73,10 @@ GtRemotePhlowDeclarativeTestInspectable >> gtButtonActionWithLabelFor: anAction 
 	^ anAction button
 		tooltip: 'Inspect objects';
 		priority: 10;
-		label: 'Inspect';
+		label: 'Inspect 1';
 		action: [ :aButton |
 			aButton phlow 
-				spawnObject: collectionOfObjects ]
+				spawnObject: 1 ]
 ]
 
 { #category : #inspecting }
