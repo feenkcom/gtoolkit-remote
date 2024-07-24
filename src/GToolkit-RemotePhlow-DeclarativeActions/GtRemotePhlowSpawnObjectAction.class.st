@@ -19,7 +19,7 @@ GtRemotePhlowSpawnObjectAction >> asDictionaryForExport [
 
 	^ super asDictionaryForExport
 		at: 'objectWrapper' put: (GtRemotePhlowSpawnObjectWrapper new
-				targetObject: targetObject );
+				targetObject: targetObject);
 		yourself
 ]
 
@@ -29,7 +29,8 @@ GtRemotePhlowSpawnObjectAction >> initializeFromJSONDictionary: aDictionary [
 
 	aDictionary at: 'objectWrapper' ifPresent: [ :anObjectWrapper |
 		self
-			targetObject: (aDictionary at: 'objectWrapper') targetObject ].
+			targetObject: (aDictionary 
+				at: 'objectWrapper') targetObject asGtBareProxyObject ].
 ]
 
 { #category : #accessing }
