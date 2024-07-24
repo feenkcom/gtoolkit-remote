@@ -37,5 +37,11 @@ GtPhlowListingViewSpecification >> gtViewDataJSONFor: aView [
 		object: [ GtJson
 			forJsonString: (NeoJSONWriter 
 				toStringPretty:  self retriveFormattedItems) ];
-		view: #gtJsonStringFor:
+		view: #gtJsonStringFor:;
+		actionButtonIcon: BrGlamorousVectorIcons inspect 
+			label: 'Json'
+			tooltip: 'Inspect the JSON object'
+			action: [ :aButton |
+				aButton phlow 
+					spawnObject: aButton phlow forwardViewObjectFromViewAction ]
 ]

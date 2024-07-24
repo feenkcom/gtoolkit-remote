@@ -5,6 +5,11 @@ Class {
 }
 
 { #category : #accessing }
+GtRsrInspectorProxySerializationStrategy class >> strategyLabel [
+	^ 'InspectorProxy'
+]
+
+{ #category : #accessing }
 GtRsrInspectorProxySerializationStrategy >> deserialize: viewProxyData [
 	^ (viewProxyData at: 'proxyObject')
 		initializeFromProxyData: (viewProxyData at: 'proxyData');
@@ -30,7 +35,7 @@ GtRsrInspectorProxySerializationStrategy >> serializedDataForInspectorWrapper: a
 		at: 'proxyObject'
 		put: anInspectorWrapper.
 		
-	proxyData := anInspectorWrapper getViewsDeclarationsWithPhlowDataSource.
+	proxyData := anInspectorWrapper getInspectorSpecificationWithPhlowDataSource.
 	dictionaryData 
 		at: 'proxyData'
 		put: proxyData.
