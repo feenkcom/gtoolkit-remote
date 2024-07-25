@@ -8,18 +8,10 @@ TGtRemoteLanguageProxyActionsAttachment >> declarativeActionSpecifications [
 	"Answer the views for the receiver"
 	| actionSpecifications |
 
+	actionSpecifications := #().
 	self viewProxyDo: [ :remoteInspectorProxy |
-		| specificationData specificationActionsData |
-		specificationData := remoteInspectorProxy getActionSpecifications.
-		specificationActionsData := specificationData at: 'actions' ifAbsent: [ #() ].
-		actionSpecifications := specificationActionsData 
-			collect: [ :anActionSpecificationData |
-				| actionSpecification |
-				actionSpecification := GtPhlowActionSpecification 
-					phlowActionFromDictionary: anActionSpecificationData.
-				actionSpecification
-					initializeFromInspector: remoteInspectorProxy.
-				actionSpecification ] ].
+		actionSpecifications := remoteInspectorProxy
+			declarativeActionsSpecificationsForCurrentObject ].
 
 	^ actionSpecifications
 ]
