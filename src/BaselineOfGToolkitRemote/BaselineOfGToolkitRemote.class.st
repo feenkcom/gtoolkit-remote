@@ -45,6 +45,8 @@ BaselineOfGToolkitRemote >> baseline: spec [
 				spec requires: #('GToolkit-RemoteGt' 'GToolkit-RemotePhlow-DeclarativeActions') ];
 			package: 'GToolkit-RemoteGt-Lepiter' with: [
 				spec requires: #('GToolkit-RemoteGt') ];
+			package: 'GToolkit-RemoteGt-InspectorCore' with: [
+				spec requires: #('GToolkit-RemoteGt') ];
 			package: 'GToolkit-RemotePhlow-GeolifeDemo';
 			package: 'GToolkit-RemotePhlow-GeolifeDemo-GTSpecific' with: [
 				spec requires: #('GToolkit-RemotePhlow-GeolifeDemo') ];
