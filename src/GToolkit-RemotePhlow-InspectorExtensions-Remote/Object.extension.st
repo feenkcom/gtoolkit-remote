@@ -1,6 +1,34 @@
 Extension { #name : 'Object' }
 
 { #category : '*GToolkit-RemotePhlow-InspectorExtensions-Remote' }
+Object >> gtActionBrowseFor: anAction [
+	<gtAction>
+	
+	^ anAction button
+		tooltip: 'Browse class for current object';
+		priority: 70;
+		icon: (GtPhlowGlamorousVectorIconNameStencil new 
+			iconName: #playinspect);
+		action: [ :aButton |
+			aButton phlow 
+				spawnObject: self class ]
+]
+
+{ #category : '*GToolkit-RemotePhlow-InspectorExtensions-Remote' }
+Object >> gtActionInspectFor: anAction [
+	<gtAction>
+	
+	^ anAction button
+		tooltip:'Inspect current object';
+		priority: 75;
+		icon: (GtPhlowGlamorousVectorIconNameStencil new 
+			iconName: #playinspect);
+		action: [ :aButton |
+			aButton phlow 
+				spawnObject: self class ]
+]
+
+{ #category : '*GToolkit-RemotePhlow-InspectorExtensions-Remote' }
 Object >> gtPrintFor: aView [
 	<gtView>
 	^ aView textEditor
