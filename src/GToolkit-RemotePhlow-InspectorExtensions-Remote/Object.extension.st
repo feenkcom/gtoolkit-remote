@@ -8,7 +8,7 @@ Object >> gtActionBrowseFor: anAction [
 		tooltip: 'Browse class for current object';
 		priority: 70;
 		icon: (GtPhlowGlamorousVectorIconNameStencil new 
-			iconName: #playinspect);
+			iconName: #emphasizedBrowse);
 		action: [ :aButton |
 			aButton phlow 
 				spawnObject: self class ]
@@ -22,7 +22,7 @@ Object >> gtActionInspectFor: anAction [
 		tooltip:'Inspect current object';
 		priority: 75;
 		icon: (GtPhlowGlamorousVectorIconNameStencil new 
-			iconName: #playinspect);
+			iconName: #inspect);
 		action: [ :aButton |
 			aButton phlow 
 				spawnObject: self class ]
