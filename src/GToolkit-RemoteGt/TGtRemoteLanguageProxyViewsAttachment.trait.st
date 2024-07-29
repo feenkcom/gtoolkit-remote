@@ -20,7 +20,7 @@ TGtRemoteLanguageProxyViewsAttachment >> declarativeViews [
 
 	rawViews := #().
 	self viewProxyDo: [ :remoteInspectorProxy |
-		rawViews := remoteInspectorProxy declarativeViewSpecificationsForCurrentObject ].
+		rawViews := remoteInspectorProxy currentDeclarativeViewSpecifications ].
 
 	^ rawViews
 ]
