@@ -14,7 +14,7 @@ GtPhlowRemoteForwarderView >> computeTargetViewForObject: aForwardedObject [
 	| computedView |
 	computedView := nil.
 	 
-	aForwardedObject object viewProxyDo: [ :remoteInspectorProxy |
+	aForwardedObject object remoteInspectorProxyDo: [ :remoteInspectorProxy |
 		| forwarderViewData forwarderSpecification |
 		"Using #getViewDeclaration: has the disadvantage that
 		it creates all views of the remote object. Ideally we should introduce a new

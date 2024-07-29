@@ -54,7 +54,7 @@ TGtRemoteLanguageProxySpecificViews >> gtRemoteInspectorSpecificationsFor: aView
 		priority: 10002;
 		object: [ GtJson
 			forJsonString: (NeoJSONWriter 
-				toStringPretty:  self getProxyInspector getViewsDeclarations) ];
+				toStringPretty:  self getLocalProxyInspector getViewsDeclarations) ];
 		view: #gtJsonStringFor:;
 		actionButtonIcon: BrGlamorousVectorIcons inspect 
 			label: 'Json'

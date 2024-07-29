@@ -117,16 +117,16 @@ TGtRemoteLanguageProxyViewsAttachment >> proxyInspectorDo: aBlock [
 
 	| proxyInspector |
 
-	proxyInspector := self getProxyInspector.
+	proxyInspector := self getLocalProxyInspector.
 	^ aBlock value: proxyInspector.
 ]
 
 { #category : #'gt inspector' }
-TGtRemoteLanguageProxyViewsAttachment >> viewProxyDo: aBlock [
+TGtRemoteLanguageProxyViewsAttachment >> remoteInspectorProxyDo: aBlock [
 	"Evaluate the supplied block ensuring that the receiver is a GtRemotePhlowViewedObject"
 
 	| viewProxy |
 
-	viewProxy := self getViewProxy.
+	viewProxy := self getRemoteInspectorProxy.
 	^ aBlock value: viewProxy.
 ]

@@ -64,18 +64,18 @@ GtRemoteInspectionSimulation >> getDeclarativeActionDataSourceFor: anActionSelec
 ]
 
 { #category : #'as yet unclassified' }
-GtRemoteInspectionSimulation >> getProxyInspector [
+GtRemoteInspectionSimulation >> getLocalProxyInspector [
 	^ localProxyInspector
+]
+
+{ #category : #'as yet unclassified' }
+GtRemoteInspectionSimulation >> getRemoteInspectorProxy [
+	^ remoteInspectorProxy
 ]
 
 { #category : #accessing }
 GtRemoteInspectionSimulation >> getViewDeclaration: aViewSelector [
 	^ localProxyInspector getViewDeclaration: aViewSelector
-]
-
-{ #category : #'as yet unclassified' }
-GtRemoteInspectionSimulation >> getViewProxy [
-	^ remoteInspectorProxy
 ]
 
 { #category : #accessing }
