@@ -26,7 +26,7 @@ TGtRemoteLanguageProxySpecificViews >> gtRawFor: aView [
 
 { #category : #'gt - extensions' }
 TGtRemoteLanguageProxySpecificViews >> gtRemoteActionSpecificationsFor: aView [
-	"<gtProxy>"
+	<gtProxy>
 	
 	^ aView columnedList
 		title: 'Remote action specifications';
@@ -54,7 +54,7 @@ TGtRemoteLanguageProxySpecificViews >> gtRemoteInspectorSpecificationsFor: aView
 		priority: 10002;
 		object: [ GtJson
 			forJsonString: (NeoJSONWriter 
-				toStringPretty:  self getViewProxy getViewsDeclarations) ];
+				toStringPretty:  self getProxyInspector getViewsDeclarations) ];
 		view: #gtJsonStringFor:;
 		actionButtonIcon: BrGlamorousVectorIcons inspect 
 			label: 'Json'

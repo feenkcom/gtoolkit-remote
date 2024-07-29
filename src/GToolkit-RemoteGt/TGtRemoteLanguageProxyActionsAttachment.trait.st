@@ -9,7 +9,7 @@ TGtRemoteLanguageProxyActionsAttachment >> declarativeActionSpecifications [
 	| actionSpecifications |
 
 	actionSpecifications := #().
-	self viewProxyDo: [ :remoteInspectorProxy |
+	self proxyInspectorDo: [ :remoteInspectorProxy |
 		actionSpecifications := remoteInspectorProxy
 			currentDeclarativeActionsSpecifications ].
 

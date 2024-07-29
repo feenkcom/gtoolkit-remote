@@ -10,13 +10,6 @@ GtRsrInspectorProxySerializationStrategy class >> strategyLabel [
 ]
 
 { #category : #accessing }
-GtRsrInspectorProxySerializationStrategy >> deserialize: viewProxyData [
-	^ (viewProxyData at: 'proxyObject')
-		initializeFromProxyData: (viewProxyData at: 'proxyData');
-		yourself
-]
-
-{ #category : #accessing }
 GtRsrInspectorProxySerializationStrategy >> serialize: anObject [
 	"Called from GemStone. We defined is also for GT as it does not references GemStone specific classes"
 	| inspectorWrapper |

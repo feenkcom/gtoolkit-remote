@@ -25,7 +25,8 @@ Class {
 	#classTraits : 'TGtRemoteLanguageProxyViewsAttachment classTrait + TGtRemoteLanguageProxySpecificViews classTrait + TGtRemoteLanguageProxyActionsAttachment classTrait + TGtRemoteLanguageProxySpecificActions classTrait',
 	#instVars : [
 		'object',
-		'inspectorProxy'
+		'localProxyInspector',
+		'remoteInspectorProxy'
 	],
 	#category : #'GToolkit-RemoteGt-Development'
 }
@@ -38,7 +39,8 @@ GtRemoteInspectionSimulation class >> leProxyTypeForPlaygroundPage [
 { #category : #'instance creation' }
 GtRemoteInspectionSimulation class >> openOn: anObject [
 
-	^ self new object: anObject
+	^ self new 
+		object: anObject
 ]
 
 { #category : #simulation }
@@ -58,27 +60,27 @@ GtRemoteInspectionSimulation >> createViewedObjectFor: anObject [
 
 { #category : #accessing }
 GtRemoteInspectionSimulation >> getDeclarativeActionDataSourceFor: anActionSelector [
-	^ inspectorProxy getDeclarativeActionDataSourceFor: anActionSelector
+	^ localProxyInspector getDeclarativeActionDataSourceFor: anActionSelector
 ]
 
-{ #category : #accessing }
-GtRemoteInspectionSimulation >> getDeclarativeViewFor: aViewSelector [
-	^ inspectorProxy getDeclarativeViewFor: aViewSelector
+{ #category : #'as yet unclassified' }
+GtRemoteInspectionSimulation >> getProxyInspector [
+	^ localProxyInspector
 ]
 
 { #category : #accessing }
 GtRemoteInspectionSimulation >> getViewDeclaration: aViewSelector [
-	^ inspectorProxy getViewDeclaration: aViewSelector
+	^ localProxyInspector getViewDeclaration: aViewSelector
 ]
 
-{ #category : #'gt inspector' }
+{ #category : #'as yet unclassified' }
 GtRemoteInspectionSimulation >> getViewProxy [
-	^ inspectorProxy
+	^ remoteInspectorProxy
 ]
 
 { #category : #accessing }
 GtRemoteInspectionSimulation >> getViewsDeclarations [
-	^ inspectorProxy getViewsDeclarations
+	^ localProxyInspector getViewsDeclarations
 ]
 
 { #category : #simulation }
@@ -120,7 +122,10 @@ GtRemoteInspectionSimulation >> object [
 GtRemoteInspectionSimulation >> object: anObject [
 
 	object := anObject.
-	inspectorProxy := self createViewedObjectFor: anObject
+	
+	remoteInspectorProxy := self createViewedObjectFor: anObject.
+	localProxyInspector := GtLocalPhlowViewedObject  
+		remoteViewedObject:  remoteInspectorProxy
 ]
 
 { #category : #'gt inspector' }
@@ -131,7 +136,7 @@ GtRemoteInspectionSimulation >> remoteActionsFor: anAction inContext: aContext [
 
 { #category : #accessing }
 GtRemoteInspectionSimulation >> remoteClass [
-	^ inspectorProxy object class name
+	^ remoteInspectorProxy object class name
 ]
 
 { #category : #'gt inspector' }
@@ -140,9 +145,4 @@ GtRemoteInspectionSimulation >> remoteViewsFor: aView inContext: aContext [
 	
 	^ self declarativeViews collect: [ :declarativeView | 
 		declarativeView viewFor: aView ].
-]
-
-{ #category : #'gt inspector' }
-GtRemoteInspectionSimulation >> viewProxyDo: aBlock [
-	^ aBlock value: self getViewProxy.
 ]

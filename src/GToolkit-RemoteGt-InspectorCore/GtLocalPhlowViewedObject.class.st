@@ -10,9 +10,9 @@ Class {
 }
 
 { #category : #'instance creation' }
-GtLocalPhlowViewedObject class >> fromProxyWithData: aDictionary [
+GtLocalPhlowViewedObject class >> fromProxy: aProxy withData: aDictionary [
 	^ self new 
-		initializeFromProxyWithData: aDictionary
+		initializeFromProxy: aProxy withData: aDictionary
 ]
 
 { #category : #'instance creation' }
@@ -73,6 +73,35 @@ GtLocalPhlowViewedObject >> getActionSpecifications [
 	^ remoteViewedObject getActionSpecifications
 ]
 
+{ #category : #accessing }
+GtLocalPhlowViewedObject >> getDeclarativeActionDataSourceFor: anActionSelector [
+
+	(actionSpecificationsBySelector notNil and: [
+		actionSpecificationsBySelector includesKey: anActionSelector ])
+			ifTrue: [ 
+				^ (actionSpecificationsBySelector at: anActionSelector)
+					phlowDataSource ].
+	
+	^ remoteViewedObject 
+		getDeclarativeActionDataSourceFor: anActionSelector
+]
+
+{ #category : #accessing }
+GtLocalPhlowViewedObject >> getDeclarativeViewFor: aViewSelector [
+	^ self getViewSpecificationFor: aViewSelector
+]
+
+{ #category : #accessing }
+GtLocalPhlowViewedObject >> getViewSpecificationFor: aViewSelector [
+
+	(viewSpecificationsBySelector notNil and: [
+		viewSpecificationsBySelector includesKey: aViewSelector ])
+			ifTrue: [ 
+				^ viewSpecificationsBySelector at: aViewSelector ].
+	
+	^ remoteViewedObject getDeclarativeViewFor: aViewSelector
+]
+
 { #category : #'api - views' }
 GtLocalPhlowViewedObject >> getViewsDeclarations [
 	^ remoteViewedObject getViewsDeclarations
@@ -92,6 +121,13 @@ GtLocalPhlowViewedObject >> initializeActionSpecifications [
 			actionSpecificationsBySelector
 				at: anActionSpecification methodSelector
 				put: anActionSpecification  ]
+]
+
+{ #category : #initialization }
+GtLocalPhlowViewedObject >> initializeFromProxy: aProxy withData: aDictionary [
+	remoteViewedObject := aProxy.
+	
+	self initializeFromProxyData: aDictionary
 ]
 
 { #category : #initialization }
@@ -115,13 +151,6 @@ GtLocalPhlowViewedObject >> initializeFromProxyData: aDictionary [
 				actionSpecification := GtPhlowActionSpecification 
 					phlowActionFromDictionary: actionSpecificationData.
 				actionSpecification methodSelector -> actionSpecification ]) asDictionary ]
-]
-
-{ #category : #initialization }
-GtLocalPhlowViewedObject >> initializeFromProxyWithData: inspectorProxyData [
-	remoteViewedObject := inspectorProxyData at: 'proxyObject'.
-	
-	self initializeFromProxyData: (inspectorProxyData at: 'proxyData')
 ]
 
 { #category : #accessing }

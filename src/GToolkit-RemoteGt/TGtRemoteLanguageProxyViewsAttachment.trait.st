@@ -19,7 +19,7 @@ TGtRemoteLanguageProxyViewsAttachment >> declarativeViews [
 	| rawViews |
 
 	rawViews := #().
-	self viewProxyDo: [ :remoteInspectorProxy |
+	self proxyInspectorDo: [ :remoteInspectorProxy |
 		rawViews := remoteInspectorProxy currentDeclarativeViewSpecifications ].
 
 	^ rawViews
@@ -30,13 +30,6 @@ TGtRemoteLanguageProxyViewsAttachment >> filterLocalProxyViews: localViews [
 	"When showing local views for the object, we remove all views where the method is annotated with gtProxy. Those views will only be shown for the proxy object."
 	^ localViews reject: [ :each |
 		each definingMethod compiledMethod hasPragmaNamed: #gtProxy ].
-]
-
-{ #category : #'gt inspector' }
-TGtRemoteLanguageProxyViewsAttachment >> getViewProxy [
-	"Answer a GtViewedProxy on the receiver"
-
-	^ self evaluateAndWait: 'GtRemotePhlowViewedObject object: self'
 ]
 
 { #category : #'gt inspector' }
@@ -119,13 +112,21 @@ TGtRemoteLanguageProxyViewsAttachment >> gtViewsInContext: aContext [
 ]
 
 { #category : #'gt inspector' }
+TGtRemoteLanguageProxyViewsAttachment >> proxyInspectorDo: aBlock [
+	"Evaluate the supplied block returning a GtLocalPhlowViewedObject"
+
+	| proxyInspector |
+
+	proxyInspector := self getProxyInspector.
+	^ aBlock value: proxyInspector.
+]
+
+{ #category : #'gt inspector' }
 TGtRemoteLanguageProxyViewsAttachment >> viewProxyDo: aBlock [
 	"Evaluate the supplied block ensuring that the receiver is a GtRemotePhlowViewedObject"
 
 	| viewProxy |
 
-	viewProxy := (#(GtRemotePhlowViewedObject) includes: self remoteClass)
-		ifTrue: [ self ]
-		ifFalse: [ self getViewProxy ].
+	viewProxy := self getViewProxy.
 	^ aBlock value: viewProxy.
 ]
