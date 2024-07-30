@@ -1,31 +1,31 @@
 Trait {
-	#name : #TGtRemoteLanguageProxySpecificViews,
+	#name : #TGtRemoteProxySpecificViews,
 	#category : #'GToolkit-RemoteGt'
 }
 
 { #category : #'gt - extensions' }
-TGtRemoteLanguageProxySpecificViews >> gtMetaFor: aView [
+TGtRemoteProxySpecificViews >> gtMetaFor: aView [
 	<gtProxy>
 
 	^ super gtMetaFor: aView
 ]
 
 { #category : #'gt - extensions' }
-TGtRemoteLanguageProxySpecificViews >> gtPrintFor: aView [
+TGtRemoteProxySpecificViews >> gtPrintFor: aView [
 	<gtProxy>
 
 	^ super gtPrintFor: aView
 ]
 
 { #category : #'gt - extensions' }
-TGtRemoteLanguageProxySpecificViews >> gtRawFor: aView [
+TGtRemoteProxySpecificViews >> gtRawFor: aView [
 	<gtProxy>
 
 	^ super gtRawFor: aView
 ]
 
 { #category : #'gt - extensions' }
-TGtRemoteLanguageProxySpecificViews >> gtRemoteActionSpecificationsFor: aView [
+TGtRemoteProxySpecificViews >> gtRemoteActionSpecificationsFor: aView [
 	<gtProxy>
 	
 	^ aView columnedList
@@ -46,9 +46,8 @@ TGtRemoteLanguageProxySpecificViews >> gtRemoteActionSpecificationsFor: aView [
 ]
 
 { #category : #'gt - extensions' }
-TGtRemoteLanguageProxySpecificViews >> gtRemoteInspectorSpecificationsFor: aView [
+TGtRemoteProxySpecificViews >> gtRemoteInspectorSpecificationsFor: aView [
 	<gtProxy>
-	
 	^ aView forward
 		title: 'Remote specification';
 		priority: 10002;
@@ -65,7 +64,7 @@ TGtRemoteLanguageProxySpecificViews >> gtRemoteInspectorSpecificationsFor: aView
 ]
 
 { #category : #'gt - extensions' }
-TGtRemoteLanguageProxySpecificViews >> gtRemoteViewSpecificationsFor: aView [
+TGtRemoteProxySpecificViews >> gtRemoteViewSpecificationsFor: aView [
 	<gtProxy>
 	
 	^ aView columnedList

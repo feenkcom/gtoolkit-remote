@@ -59,7 +59,7 @@ GtLocalPhlowViewedObject >> computeDeclarativeViewSpecifications [
 ]
 
 { #category : #'api - specifications' }
-GtLocalPhlowViewedObject >> currentDeclarativeActionsSpecifications [
+GtLocalPhlowViewedObject >> currentDeclarativeActionSpecifications [
 	^ self actionSpecificationsBySelector values 
 ]
 
