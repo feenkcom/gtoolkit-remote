@@ -20,7 +20,7 @@ TGtRemoteProxyViewsDirectObjectAttachment >> gtViewsForRemoteSideInContext: aCon
 	
 	"Get the views using the super call. 
 	This will use #gtView to compute the list of views for the local object."
-	localViews := super gtViewsInContext: aContext.
+	localViews := self gtLocalProxyViewsForRemoteSideInContext: aContext.
 	
 	collectedViews := OrderedCollection new
 		addAll: (self filterLocalProxyViews: localViews);
@@ -28,6 +28,7 @@ TGtRemoteProxyViewsDirectObjectAttachment >> gtViewsForRemoteSideInContext: aCon
 			remoteViewsFor: GtPhlowEmptyView new
 			inContext: aContext);
 		yourself.
+	
 	GtPhlowUtility sortByPriority: collectedViews.
 	
 	^ collectedViews
