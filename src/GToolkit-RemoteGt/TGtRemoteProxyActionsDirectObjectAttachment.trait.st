@@ -33,3 +33,16 @@ TGtRemoteProxyActionsDirectObjectAttachment >> gtActionsForRemoteSideInContext: 
 	
 	^ collectedActions
 ]
+
+{ #category : #accessing }
+TGtRemoteProxyActionsDirectObjectAttachment >> remoteActionsFor: aView inContext: aContext [
+	
+	^ self 
+		runComputation:  [ self declarativeActionSpecifications 
+			collect: [ :anActionSpecification | 
+				self 
+					remoteActionFromSpecification: anActionSpecification 
+					for: aView 
+					inContext: aContext ] ]
+		ifFalse: [ #() ]
+]

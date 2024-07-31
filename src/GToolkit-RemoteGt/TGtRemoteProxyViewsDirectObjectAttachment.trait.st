@@ -33,3 +33,15 @@ TGtRemoteProxyViewsDirectObjectAttachment >> gtViewsForRemoteSideInContext: aCon
 	
 	^ collectedViews
 ]
+
+{ #category : #'gt - views' }
+TGtRemoteProxyViewsDirectObjectAttachment >> remoteViewsFor: aView inContext: aContext [
+	^ self 
+		runComputation: [
+			self declarativeViews collect: [ :aViewSpecification | 
+				self 
+					remoteViewFromSpecification: aViewSpecification 
+					for: aView 
+					inContext: aContext ] ]
+		ifFailure: [ #() ].
+]

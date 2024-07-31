@@ -3,7 +3,7 @@ Trait {
 	#category : #'GToolkit-RemoteGt'
 }
 
-{ #category : #accessing }
+{ #category : #'gt - actions' }
 TGtRemoteProxyActionsAttachment >> declarativeActionSpecifications [
 	"Answer the views for the receiver"
 	| actionSpecifications |
@@ -16,14 +16,14 @@ TGtRemoteProxyActionsAttachment >> declarativeActionSpecifications [
 	^ actionSpecifications
 ]
 
-{ #category : #accessing }
+{ #category : #'gt - actions' }
 TGtRemoteProxyActionsAttachment >> gtActionsInContext: aContext [
 	"Change the actions of the proxy object to only those annotated with gtProxy."
 	
 	^ self gtLocalProxyActionsForLocalSideInContext: aContext
 ]
 
-{ #category : #accessing }
+{ #category : #'gt - actions' }
 TGtRemoteProxyActionsAttachment >> gtLocalProxyActionsForLocalSideInContext: aPhlowContext [ 
 
 	^ GtPhlowActionsCollector new
@@ -33,7 +33,7 @@ TGtRemoteProxyActionsAttachment >> gtLocalProxyActionsForLocalSideInContext: aPh
 		collect.
 ]
 
-{ #category : #accessing }
+{ #category : #'gt - actions' }
 TGtRemoteProxyActionsAttachment >> gtLocalProxyActionsForRemoteSideInContext: aContext [
 	"Get from the proxy object only those actions annotated with gtAction."
 	

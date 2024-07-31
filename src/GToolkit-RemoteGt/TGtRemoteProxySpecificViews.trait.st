@@ -48,6 +48,7 @@ TGtRemoteProxySpecificViews >> gtRemoteActionSpecificationsFor: aView [
 { #category : #'gt - extensions' }
 TGtRemoteProxySpecificViews >> gtRemoteInspectorSpecificationsFor: aView [
 	<gtProxy>
+	
 	^ aView forward
 		title: 'Remote specification';
 		priority: 10002;

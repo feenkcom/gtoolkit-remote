@@ -3,7 +3,7 @@ Trait {
 	#category : #'GToolkit-RemoteGt'
 }
 
-{ #category : #accessing }
+{ #category : #'gt - views' }
 TGtRemoteProxyViewsAttachment >> buildLocalViewSpecificationFor: aViewSelector [ 
 	"Used in documentation"
 	| viewSpecificationData viewSpecification |
@@ -14,7 +14,7 @@ TGtRemoteProxyViewsAttachment >> buildLocalViewSpecificationFor: aViewSelector [
 	^ viewSpecification
 ]
 
-{ #category : #accessing }
+{ #category : #'gt - views' }
 TGtRemoteProxyViewsAttachment >> declarativeViews [
 	"Answer the views for the receiver"
 	| rawViews |
@@ -26,7 +26,7 @@ TGtRemoteProxyViewsAttachment >> declarativeViews [
 	^ rawViews
 ]
 
-{ #category : #'gt - inspector' }
+{ #category : #'gt - views' }
 TGtRemoteProxyViewsAttachment >> gtLocalProxyViewsForLocalSideInContext: aContext [
 	"Change the views of the proxy object to only those annotated with gtProxy."
  
@@ -37,7 +37,7 @@ TGtRemoteProxyViewsAttachment >> gtLocalProxyViewsForLocalSideInContext: aContex
 		collect.
 ]
 
-{ #category : #'gt - inspector' }
+{ #category : #'gt - views' }
 TGtRemoteProxyViewsAttachment >> gtLocalProxyViewsForRemoteSideInContext: aContext [
 	"Change the views of the proxy object to only those annotated with gtProxy."
  
@@ -48,7 +48,7 @@ TGtRemoteProxyViewsAttachment >> gtLocalProxyViewsForRemoteSideInContext: aConte
 		collect.
 ]
 
-{ #category : #'gt - inspector' }
+{ #category : #'gt - views' }
 TGtRemoteProxyViewsAttachment >> gtViewsInContext: aContext [
 	"Change the views of the proxy object to only those annotated with gtProxy."
  

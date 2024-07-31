@@ -124,12 +124,6 @@ GtRemoteInspectionSimulation >> remoteActionFromSpecification: anActionSpecifica
 	^ anActionSpecification actionFor: anAction 
 ]
 
-{ #category : #'gt inspector' }
-GtRemoteInspectionSimulation >> remoteActionsFor: anAction inContext: aContext [
-	^ self declarativeActionSpecifications collect: [ :anActionSpecification | 
-		anActionSpecification actionFor: anAction ].
-]
-
 { #category : #accessing }
 GtRemoteInspectionSimulation >> remoteClass [
 	^ remoteInspectorProxy object class name
@@ -140,10 +134,8 @@ GtRemoteInspectionSimulation >> remoteViewFromSpecification: aViewSpecification 
 	^ aViewSpecification viewFor: aView.
 ]
 
-{ #category : #'gt inspector' }
-GtRemoteInspectionSimulation >> remoteViewsFor: aView inContext: aContext [
-	"Should be all views, but just get Raw and Print views for now"
-	
-	^ self declarativeViews collect: [ :declarativeView | 
-		declarativeView viewFor: aView ].
+{ #category : #utils }
+GtRemoteInspectionSimulation >> runComputation: aBlock ifFailure: aFailureBlock [
+	"Proxies simulations are allways valid"
+	^ aBlock value
 ]

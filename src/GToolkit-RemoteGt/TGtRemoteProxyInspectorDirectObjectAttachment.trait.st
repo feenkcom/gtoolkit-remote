@@ -11,7 +11,7 @@ TGtRemoteProxyInspectorDirectObjectAttachment >> gtInspectorRemoteSideTitleStrin
 	self explicitRequirement 
 ]
 
-{ #category : #accessing }
+{ #category : #'gt - inspector' }
 TGtRemoteProxyInspectorDirectObjectAttachment >> gtRemoteInspectorTargetObject [
 	"Views are obtained directly from the current object"
 	^ self

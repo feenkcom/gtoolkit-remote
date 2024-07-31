@@ -5,13 +5,13 @@ Trait {
 	#category : #'GToolkit-RemoteGt'
 }
 
-{ #category : #accessing }
+{ #category : #'gt - inspector' }
 TGtRemoteProxyInspectorWrappedObjectAttachment >> gtRemoteInspectorTargetObject [
 	^ GtRemotePhlowViewedObjectInspectorAdaptor
 		forTargetObject: self
 ]
 
-{ #category : #accessing }
+{ #category : #'gt - inspector' }
 TGtRemoteProxyInspectorWrappedObjectAttachment >> remoteActionsFor: aView inContext: aContext from: anInspectorProxy [
 
 	^ anInspectorProxy currentDeclarativeActionSpecifications 
@@ -22,7 +22,7 @@ TGtRemoteProxyInspectorWrappedObjectAttachment >> remoteActionsFor: aView inCont
 				inContext: aContext ] 
 ]
 
-{ #category : #accessing }
+{ #category : #'gt - inspector' }
 TGtRemoteProxyInspectorWrappedObjectAttachment >> remoteViewsFor: aView inContext: aContext from: anInspectorProxy [
 
 	^ anInspectorProxy currentDeclarativeViewSpecifications 

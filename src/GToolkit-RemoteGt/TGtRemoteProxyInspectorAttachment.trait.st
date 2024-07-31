@@ -3,7 +3,7 @@ Trait {
 	#category : #'GToolkit-RemoteGt'
 }
 
-{ #category : #accessing }
+{ #category : #'gt - inspector' }
 TGtRemoteProxyInspectorAttachment >> gtDefaultInspectorTool [
 	"We extent the inspector by adding a custom tool showing object specific views."
 	^ GtPhlowCompositeTool new
@@ -19,19 +19,19 @@ TGtRemoteProxyInspectorAttachment >> gtDefaultInspectorTool [
 			withLabelAndIconAptitude)
 ]
 
-{ #category : #accessing }
+{ #category : #'gt - inspector' }
 TGtRemoteProxyInspectorAttachment >> gtRemoteInspectorTargetObject [
 	^ self explicitRequirement
 ]
 
-{ #category : #accessing }
+{ #category : #'gt - inspector' }
 TGtRemoteProxyInspectorAttachment >> gtRemoteSideInspectorTool [
 	^ GtInspectorTool 
 		forObject: self 
 		viewSelector: #gtRemoteViewsFor: 
 ]
 
-{ #category : #accessing }
+{ #category : #'gt - inspector' }
 TGtRemoteProxyInspectorAttachment >> gtRemoteViewsFor: aView [
 	"This is the default entry method for retrieving the wrapper view containing all non-proxy views for the object."
 	<return: #GtPhlowLabelledView>
@@ -48,7 +48,7 @@ TGtRemoteProxyInspectorAttachment >> gtRemoteViewsFor: aView [
 		build 
 ]
 
-{ #category : #accessing }
+{ #category : #'gt - inspector' }
 TGtRemoteProxyInspectorAttachment >> localProxyInspectorDo: aBlock [
 	"Evaluate the supplied block returning a GtLocalPhlowViewedObject"
 
@@ -58,12 +58,13 @@ TGtRemoteProxyInspectorAttachment >> localProxyInspectorDo: aBlock [
 	^ aBlock value: proxyInspector.
 ]
 
-{ #category : #accessing }
+{ #category : #'gt - inspector' }
 TGtRemoteProxyInspectorAttachment >> remoteInspectorProxyDo: aBlock [
 	"Evaluate the supplied block ensuring that the receiver is a GtRemotePhlowViewedObject"
 
-	| viewProxy |
+	| inspectorProxy |
 
-	viewProxy := self getRemoteInspectorProxy.
-	^ aBlock value: viewProxy.
+	inspectorProxy := self getRemoteInspectorProxy.
+	inspectorProxy ifNil: [ ^ nil ].
+	^ aBlock value: inspectorProxy.
 ]

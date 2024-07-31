@@ -17,8 +17,13 @@ GtRemotePhlowViewedObjectInspectorAdaptor class >> forTargetObject: anObject [
 { #category : #'gt inspector' }
 GtRemotePhlowViewedObjectInspectorAdaptor >> currentRemoteInspectorProxyDo: aBlock [
 	 proxyInspector ifNil: [
-	 	targetObject localProxyInspectorDo: [ :aRemoteInspectorProxy |
-	 		proxyInspector := aRemoteInspectorProxy ] ].
+	 	targetObject 
+	 		runComputation: [
+	 			targetObject localProxyInspectorDo: [ :aRemoteInspectorProxy |
+	 				proxyInspector := aRemoteInspectorProxy ]] 
+	 		ifFailure: [ 
+	 			"If the proxy or the communication channel is invalid 
+	 			we have no local inspector" ] ].
 	 		
 	 proxyInspector ifNotNil: [ :aRemoteInspectorProxy |
 	 	aBlock value: aRemoteInspectorProxy ]
