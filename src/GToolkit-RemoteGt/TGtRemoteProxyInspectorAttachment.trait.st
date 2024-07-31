@@ -4,6 +4,20 @@ Trait {
 }
 
 { #category : #'gt - inspector' }
+TGtRemoteProxyInspectorAttachment >> gtActionInspectLocalProxyInspectorFor: anAction [
+	<gtProxyAction>
+	
+	^ anAction button
+		tooltip: 'Inspect the local proxy inspector for this object';
+		priority: 1020;
+		icon: BrGlamorousIcons inspect;
+		label: 'Inspector';
+		action: [ :aButton |
+			self localProxyInspectorDo: [ :aLocalProxyInspector |
+				aButton phlow spawnObject: aLocalProxyInspector  ] ]
+]
+
+{ #category : #'gt - inspector' }
 TGtRemoteProxyInspectorAttachment >> gtDefaultInspectorTool [
 	"We extent the inspector by adding a custom tool showing object specific views."
 	^ GtPhlowCompositeTool new

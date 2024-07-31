@@ -107,6 +107,64 @@ GtLocalPhlowViewedObject >> getViewsDeclarations [
 	^ remoteViewedObject getViewsDeclarations
 ]
 
+{ #category : #'gt - extensions' }
+GtLocalPhlowViewedObject >> gtRemoteActionSpecificationsFor: aView [
+	<gtView>
+	
+	^ aView columnedList
+		title: 'Remote action specifications';
+		priority: 20;
+		items: [ self currentDeclarativeActionSpecifications 
+			sorted: #priority ascending];
+		column: 'Tooltip' text: [ :aViewAccessor | aViewAccessor tooltipText ];
+		column: 'Label' text: [ :aViewAccessor | aViewAccessor label ];
+		column: 'Icon' 
+			icon: [ :aViewAccessor | 
+				aViewAccessor iconStencil ifNil: [BlElement new
+					size: 0@0] ] 
+			width: 75;
+		column: 'Selector' text: [ :aViewAccessor | aViewAccessor methodSelector ];
+		column: 'Priority' text: [ :aViewAccessor | aViewAccessor priority ] weight: 0.5;
+		send: [ :aDeclarativeView | aDeclarativeView ]
+]
+
+{ #category : #'gt - extensions' }
+GtLocalPhlowViewedObject >> gtRemoteInspectorSpecificationsFor: aView [
+	<gtView>
+	
+	^ aView forward
+		title: 'Remote specification';
+		priority: 30;
+		object: [ GtJson
+			forJsonString: (NeoJSONWriter 
+				toStringPretty:  self getViewsDeclarations) ];
+		view: #gtJsonStringFor:;
+		actionButtonIcon: BrGlamorousVectorIcons inspect 
+			label: 'Json'
+			tooltip: 'Inspect the JSON object'
+			action: [ :aButton |
+				aButton phlow 
+					spawnObject: aButton phlow forwardViewObjectFromViewAction ]
+]
+
+{ #category : #'gt - extensions' }
+GtLocalPhlowViewedObject >> gtRemoteViewSpecificationsFor: aView [
+	<gtView>
+	
+	^ aView columnedList
+		title: 'Remote view specifications';
+		priority: 10;
+		items: [ 
+			self currentDeclarativeViewSpecifications 
+				sorted: #priority ascending];
+		column: 'Title' text: [ :aViewAccessor | aViewAccessor title ];
+		column: 'Selector' text: [ :aViewAccessor | aViewAccessor methodSelector ];
+		column: 'View' text: [ :aViewAccessor | aViewAccessor viewName ];
+		column: 'Priority' text: [ :aViewAccessor | aViewAccessor priority ] weight: 0.5;
+		column: 'Transport' text: [ :aViewAccessor | aViewAccessor dataTransport ] weight: 0.5;
+		send: [ :aDeclarativeView | aDeclarativeView ]
+]
+
 { #category : #accessing }
 GtLocalPhlowViewedObject >> hasCachedViewSpecifications [
 	^ viewSpecificationsBySelector notNil

@@ -216,6 +216,46 @@ GtRemotePhlowViewedObject >> getViewsDeclarationsWithPhlowDataSource [
 	^ self getViewSpecificationWithPhlowDataSource
 ]
 
+{ #category : #'gt - extensions' }
+GtRemotePhlowViewedObject >> gtViewCurrentViewsFor: aView [
+	<gtView>
+	
+	^ aView columnedList
+		title: 'Current views';
+		priority: 10;
+		items: [ (viewSpecificationsBySelector
+			ifNil: [ #() ] ifNotNil: [ :aDictionary | aDictionary value ]) 
+				sort: [ :a :b |  a priority < b priority ]];
+		column: 'Title' text: [ :aViewAccessor | aViewAccessor title ];
+		column: 'Selector' text: [ :aViewAccessor | aViewAccessor methodSelector ];
+		column: 'View' text: [ :aViewAccessor | aViewAccessor viewName ];
+		column: 'Priority' text: [ :aViewAccessor | aViewAccessor priority ] width: 75;
+		column: 'Transport' text: [ :aViewAccessor | aViewAccessor dataTransport ] width: 75;
+		send: [ :aDeclarativeView | aDeclarativeView ]
+]
+
+{ #category : #'gt - extensions' }
+GtRemotePhlowViewedObject >> gtViewsCurrentActionsFor: aView [
+	<gtView>
+	
+	^ aView columnedList
+		title: 'Current actions';
+		priority: 20;
+		items: [ (actionSpecificationsBySelector
+			ifNil: [ #() ] ifNotNil: [ :aDictionary | aDictionary value ]) 
+				sort: [ :a :b |  a priority < b priority ]];
+		column: 'Tooltip' text: [ :aViewAccessor | aViewAccessor tooltipText ];
+		column: 'Label' text: [ :aViewAccessor | aViewAccessor label ];
+		"column: 'Icon' 
+			icon: [ :aViewAccessor | 
+				aViewAccessor iconStencil ifNil: [BlElement new
+					size: 0@0] ] 
+			width: 75;"
+		column: 'Selector' text: [ :aViewAccessor | aViewAccessor methodSelector ];
+		column: 'Priority' text: [ :aViewAccessor | aViewAccessor priority ] width: 70;
+		send: [ :aDeclarativeView | aDeclarativeView ]
+]
+
 { #category : #initialization }
 GtRemotePhlowViewedObject >> initializeActionSpecifications [
 	actionSpecificationsBySelector := Dictionary new.
