@@ -179,6 +179,25 @@ LanguageLinkProxyObject >> gtRemoteActionSpecificationsFor: aView [
 ]
 
 { #category : #'*Gt4PharoLink' }
+LanguageLinkProxyObject >> gtRemoteInspectorContentFor: aView [
+	"This is the default entry method for retrieving the wrapper view containing all non-proxy views for the object."
+	<return: #GtPhlowLabelledView>
+	
+	^ GtPhlowLabelledViewBuilder new
+		object: self;
+		view: aView;
+		context: GtPhlowContext new;
+		viewsSelector: #gtViewsForRemoteSideInContext:;
+		actionsSelector: #gtActionsForRemoteSideInContext:;
+		titleComputation: [
+			String streamContents: [ :stream |
+				stream
+					<< 'a(n): ';
+					<< (remoteClass ifNil: [ '<None>' ]) ]];
+		build 
+]
+
+{ #category : #'*Gt4PharoLink' }
 LanguageLinkProxyObject >> gtRemoteInspectorSpecificationsFor: aView [
 	<gtProxy>
 	
@@ -201,7 +220,7 @@ LanguageLinkProxyObject >> gtRemoteInspectorSpecificationsFor: aView [
 LanguageLinkProxyObject >> gtRemoteSideInspectorTool [
 	^ GtInspectorTool 
 		forObject: self 
-		viewSelector: #gtRemoteViewsFor: 
+		viewSelector: #gtRemoteInspectorContentFor: 
 ]
 
 { #category : #'*Gt4PharoLink' }
@@ -218,25 +237,6 @@ LanguageLinkProxyObject >> gtRemoteViewSpecificationsFor: aView [
 		column: 'Priority' text: [ :aViewAccessor | aViewAccessor priority ] weight: 0.5;
 		column: 'Transport' text: [ :aViewAccessor | aViewAccessor dataTransport ] weight: 0.5;
 		send: [ :aDeclarativeView | aDeclarativeView ]
-]
-
-{ #category : #'*Gt4PharoLink' }
-LanguageLinkProxyObject >> gtRemoteViewsFor: aView [
-	"This is the default entry method for retrieving the wrapper view containing all non-proxy views for the object."
-	<return: #GtPhlowLabelledView>
-	
-	^ GtPhlowLabelledViewBuilder new
-		object: self;
-		view: aView;
-		context: GtPhlowContext new;
-		viewsSelector: #gtViewsForRemoteSideInContext:;
-		actionsSelector: #gtActionsForRemoteSideInContext:;
-		titleComputation: [
-			String streamContents: [ :stream |
-				stream
-					<< 'a(n): ';
-					<< (remoteClass ifNil: [ '<None>' ]) ]];
-		build 
 ]
 
 { #category : #'*Gt4PharoLink' }
