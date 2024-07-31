@@ -9,7 +9,7 @@ Trait {
 TGtRemoteProxyViewsDirectObjectAttachment >> filterLocalProxyViews: localViews [ 
 	"When showing local views for the object, we remove all views where the method is annotated with gtProxy. Those views will only be shown for the proxy object."
 	^ localViews reject: [ :each |
-		each definingMethod compiledMethod hasPragmaNamed: #gtProxy ].
+		each definingMethod compiledMethod hasPragmaNamed: #gtProxyView ].
 ]
 
 { #category : #'gt inspector' }

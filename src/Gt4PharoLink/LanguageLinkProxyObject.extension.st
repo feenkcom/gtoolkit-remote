@@ -70,7 +70,7 @@ LanguageLinkProxyObject >> filterLocalProxyActions: localActions [
 LanguageLinkProxyObject >> filterLocalProxyViews: localViews [ 
 	"When showing local views for the object, we remove all views where the method is annotated with gtProxy. Those views will only be shown for the proxy object."
 	^ localViews reject: [ :each |
-		each definingMethod compiledMethod hasPragmaNamed: #gtProxy ].
+		each definingMethod compiledMethod hasPragmaNamed: #gtProxyView ].
 ]
 
 { #category : #'*Gt4PharoLink' }
@@ -138,28 +138,28 @@ LanguageLinkProxyObject >> gtInspectorTitleString [
 
 { #category : #'*Gt4PharoLink' }
 LanguageLinkProxyObject >> gtMetaFor: aView [
-	<gtProxy>
+	<gtProxyView>
 
 	^ super gtMetaFor: aView
 ]
 
 { #category : #'*Gt4PharoLink' }
 LanguageLinkProxyObject >> gtPrintFor: aView [
-	<gtProxy>
+	<gtProxyView>
 
 	^ super gtPrintFor: aView
 ]
 
 { #category : #'*Gt4PharoLink' }
 LanguageLinkProxyObject >> gtRawFor: aView [
-	<gtProxy>
+	<gtProxyView>
 
 	^ super gtRawFor: aView
 ]
 
 { #category : #'*Gt4PharoLink' }
 LanguageLinkProxyObject >> gtRemoteActionSpecificationsFor: aView [
-	<gtProxy>
+	<gtProxyView>
 	
 	^ aView columnedList
 		title: 'Remote action specifications';
@@ -199,7 +199,7 @@ LanguageLinkProxyObject >> gtRemoteInspectorContentFor: aView [
 
 { #category : #'*Gt4PharoLink' }
 LanguageLinkProxyObject >> gtRemoteInspectorSpecificationsFor: aView [
-	<gtProxy>
+	<gtProxyView>
 	
 	^ aView forward
 		title: 'Remote specification';
@@ -225,7 +225,7 @@ LanguageLinkProxyObject >> gtRemoteSideInspectorTool [
 
 { #category : #'*Gt4PharoLink' }
 LanguageLinkProxyObject >> gtRemoteViewSpecificationsFor: aView [
-	<gtProxy>
+	<gtProxyView>
 	
 	^ aView columnedList
 		title: 'Remote view specifications';
@@ -267,7 +267,7 @@ LanguageLinkProxyObject >> gtViewsInContext: aContext [
 	^ GtPhlowViewsCollector new
 		fromObject: self;
 		context: aContext;
-		pragmaName: #gtProxy;
+		pragmaName: #gtProxyView;
 		collect.
 ]
 

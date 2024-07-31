@@ -33,7 +33,7 @@ TGtRemoteProxyViewsAttachment >> gtLocalProxyViewsForLocalSideInContext: aContex
 	^ GtPhlowViewsCollector new
 		fromObject: self;
 		context: aContext;
-		pragmaName: #gtProxy;
+		pragmaName: #gtProxyView;
 		collect.
 ]
 
