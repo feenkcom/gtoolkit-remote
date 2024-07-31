@@ -70,7 +70,9 @@ GtProxyRemoteInspectionExamples >> assertInspectorTabLabelsUsing: scripter [
 			s
 				label: 'View Tab Labels Without Error label';
 				// GtPhlowCompositeViewElementId;
-				satisfies: [ :aTabGroup | aTabGroup tabs noneSatisfy: [ :aTab | aTab tabLabel text asString = 'Error' ] ] ]
+				satisfies: [ :aTabGroup | 
+					aTabGroup tabs noneSatisfy: [ :aTab | 
+						aTab tabLabel text asString = 'Error' ] ] ]
 ]
 
 { #category : #'asserting - inspection' }
@@ -251,7 +253,7 @@ GtProxyRemoteInspectionExamples >> assertRemoteInspectorToolLabelUsing: aScripte
 		assertInspectorToolLabelUsing: aScripter 
 		atIndex: 1
 		selected: aBoolean
-		equals: 'Remote'
+		equals: self remoteInspectorToolLabel
 ]
 
 { #category : #'asserting - inspection' }
@@ -272,7 +274,8 @@ GtProxyRemoteInspectionExamples >> assertRemotePlaygroundPageUsing: aScripter [
 { #category : #'asserting - inspection' }
 GtProxyRemoteInspectionExamples >> assertRemoteSideObjectPhlowViewsFor: aProxyObject [ 
 	^ GtPhlowViewTester new 
-		assertObject: aProxyObject 
+		assertObject: (GtRemotePhlowViewedObjectInspectorAdaptor
+			forTargetObject: aProxyObject)
 		withViewsSelector: #gtViewsForRemoteSideInContext:
 ]
 
@@ -521,7 +524,7 @@ GtProxyRemoteInspectionExamples >> localCodeSnippetType [
 
 { #category : #'examples - inspection' }
 GtProxyRemoteInspectionExamples >> localSideExpectedNumberOfViews [
-	^ 5
+	^ 3
 ]
 
 { #category : #'examples - page strategy' }
@@ -652,6 +655,11 @@ GtProxyRemoteInspectionExamples >> playgroundProxyPageRemoteStrategy_pageCreatio
 { #category : #'accessing - remote side' }
 GtProxyRemoteInspectionExamples >> remoteCodeSnippetType [
 	^ LePharoSnippet
+]
+
+{ #category : #accessing }
+GtProxyRemoteInspectionExamples >> remoteInspectorToolLabel [
+	^ 'Remote'
 ]
 
 { #category : #'accessing - remote side' }
