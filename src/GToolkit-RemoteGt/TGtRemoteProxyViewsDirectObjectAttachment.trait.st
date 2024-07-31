@@ -39,9 +39,11 @@ TGtRemoteProxyViewsDirectObjectAttachment >> remoteViewsFor: aView inContext: aC
 	^ self 
 		runComputation: [
 			self declarativeViews collect: [ :aViewSpecification | 
+				| phlowView |
+				phlowView := aViewSpecification viewFor: aView.
 				self 
-					remoteViewFromSpecification: aViewSpecification 
-					for: aView 
-					inContext: aContext ] ]
+					configurePhlowView: phlowView 
+					withSpecification: aViewSpecification.
+				phlowView ] ]
 		ifFailure: [ #() ].
 ]

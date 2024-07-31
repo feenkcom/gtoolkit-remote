@@ -43,6 +43,14 @@ GtRemoteInspectionSimulation class >> openOn: anObject [
 		object: anObject
 ]
 
+{ #category : #'gt inspector' }
+GtRemoteInspectionSimulation >> configurePhlowAction: aPhlowAction withSpecification: anActionSpecification [
+]
+
+{ #category : #'gt inspector' }
+GtRemoteInspectionSimulation >> configurePhlowView: aPhlowView withSpecification: aViewSpecification [
+]
+
 { #category : #simulation }
 GtRemoteInspectionSimulation >> createActionBuilder [
 	^ GtPhlowNoAction new
@@ -119,19 +127,9 @@ GtRemoteInspectionSimulation >> object: anObject [
 		remoteViewedObject:  remoteInspectorProxy
 ]
 
-{ #category : #'gt inspector' }
-GtRemoteInspectionSimulation >> remoteActionFromSpecification: anActionSpecification for: anAction inContext: aContext [ 
-	^ anActionSpecification actionFor: anAction 
-]
-
 { #category : #accessing }
 GtRemoteInspectionSimulation >> remoteClass [
 	^ remoteInspectorProxy object class name
-]
-
-{ #category : #'gt inspector' }
-GtRemoteInspectionSimulation >> remoteViewFromSpecification: aViewSpecification for: aView inContext: aContext [ 
-	^ aViewSpecification viewFor: aView.
 ]
 
 { #category : #utils }

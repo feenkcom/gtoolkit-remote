@@ -35,14 +35,16 @@ TGtRemoteProxyActionsDirectObjectAttachment >> gtActionsForRemoteSideInContext: 
 ]
 
 { #category : #accessing }
-TGtRemoteProxyActionsDirectObjectAttachment >> remoteActionsFor: aView inContext: aContext [
+TGtRemoteProxyActionsDirectObjectAttachment >> remoteActionsFor: anAction inContext: aContext [
 	
 	^ self 
 		runComputation:  [ self declarativeActionSpecifications 
 			collect: [ :anActionSpecification | 
+				| phlowAction |
+				phlowAction := anActionSpecification actionFor: anAction.
 				self 
-					remoteActionFromSpecification: anActionSpecification 
-					for: aView 
-					inContext: aContext ] ]
+					configurePhlowAction: phlowAction 
+					withSpecification: anActionSpecification.
+				phlowAction] ]
 		ifFalse: [ #() ]
 ]
