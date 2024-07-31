@@ -236,7 +236,7 @@ GtRemotePhlowViewedObject >> gtViewCurrentViewsFor: aView [
 		title: 'Current views';
 		priority: 10;
 		items: [ (viewSpecificationsBySelector
-			ifNil: [ #() ] ifNotNil: [ :aDictionary | aDictionary value ]) 
+			ifNil: [ #() ] ifNotNil: [ :aDictionary | aDictionary values ]) 
 				sort: [ :a :b |  a priority < b priority ]];
 		column: 'Title' text: [ :aViewAccessor | aViewAccessor title ];
 		column: 'Selector' text: [ :aViewAccessor | aViewAccessor methodSelector ];
@@ -254,7 +254,7 @@ GtRemotePhlowViewedObject >> gtViewsCurrentActionsFor: aView [
 		title: 'Current actions';
 		priority: 20;
 		items: [ (actionSpecificationsBySelector
-			ifNil: [ #() ] ifNotNil: [ :aDictionary | aDictionary value ]) 
+			ifNil: [ #() ] ifNotNil: [ :aDictionary | aDictionary values ]) 
 				sort: [ :a :b |  a priority < b priority ]];
 		column: 'Tooltip' text: [ :aViewAccessor | aViewAccessor tooltipText ];
 		column: 'Label' text: [ :aViewAccessor | aViewAccessor label ];

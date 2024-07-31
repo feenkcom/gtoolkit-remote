@@ -25,6 +25,8 @@ GtRemotePhlowDeclarativeActionsExamples >> buttonActionWithLabel [
 	"GtRemotePhlowDeclarativeBlockActionDataSource."
 	actionDatasource := inspectorProxy 
 		getDeclarativeActionDataSourceFor: #gtButtonActionWithLabelFor:.
+		
+	actionDatasource executeRemoteActionWithPhlowResult.
 	
 	^ actionSpecification
 ]

@@ -40,7 +40,7 @@ GtRemotePhlowDeclarativeExamples >> remoteInspectorProxy [
 	just check that a common view is present."
 	declarativeViews :=  inspectorProxy getDeclarativeViewMethodNames.
 	self assert: (declarativeViews includes: #gtListFor:).
-
+ 
 	^ inspectorProxy
 ]
 
