@@ -1,13 +1,13 @@
 Class {
-	#name : 'GtRemotePhlowDeclarativeTestForCustomProxyInspectable',
-	#superclass : 'Object',
+	#name : #GtRemotePhlowDeclarativeTestForCustomProxyInspectable,
+	#superclass : #Object,
 	#instVars : [
 		'collectionOfObjects'
 	],
-	#category : 'GToolkit-RemotePhlow-Examples'
+	#category : #'GToolkit-RemotePhlow-Examples'
 }
 
-{ #category : 'inspection' }
+{ #category : #inspection }
 GtRemotePhlowDeclarativeTestForCustomProxyInspectable >> gtButtonActionWithBothIconAndLabelFor: anAction [
 	<gtAction>
 	
@@ -22,7 +22,7 @@ GtRemotePhlowDeclarativeTestForCustomProxyInspectable >> gtButtonActionWithBothI
 				spawnObject: self ]
 ]
 
-{ #category : 'inspection' }
+{ #category : #inspection }
 GtRemotePhlowDeclarativeTestForCustomProxyInspectable >> gtColumnedListFor: aView [
 	<gtView>
 
@@ -35,7 +35,18 @@ GtRemotePhlowDeclarativeTestForCustomProxyInspectable >> gtColumnedListFor: aVie
 			anObject gtDisplayString asLowercase ] width: 100.
 ]
 
-{ #category : 'initialization' }
+{ #category : #inspection }
+GtRemotePhlowDeclarativeTestForCustomProxyInspectable >> gtListFor: aView [
+	<gtView>
+
+	^aView list
+		title: 'List';
+		priority: 15;
+		items: [ collectionOfObjects ];
+		itemText: [ :item | item ]
+]
+
+{ #category : #initialization }
 GtRemotePhlowDeclarativeTestForCustomProxyInspectable >> initialize [  
 
 	super initialize.

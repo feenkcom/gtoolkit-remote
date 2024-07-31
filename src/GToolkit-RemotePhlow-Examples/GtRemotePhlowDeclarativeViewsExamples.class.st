@@ -5,10 +5,7 @@ This class runs the examples within the one image, and thus can be run without a
 "
 Class {
 	#name : #GtRemotePhlowDeclarativeViewsExamples,
-	#superclass : #Object,
-	#instVars : [
-		'server'
-	],
+	#superclass : #GtRemotePhlowDeclarativeExamples,
 	#category : #'GToolkit-RemotePhlow-Examples'
 }
 
@@ -540,7 +537,7 @@ GtRemotePhlowDeclarativeViewsExamples >> printView [
 	| inspectorProxy viewDictionary viewSpecification viewDataSource |
 
 	inspectorProxy := self remoteInspectorProxy.
-	viewDictionary :=  inspectorProxy getViewDeclaration: #gtPrintFor:.
+	viewDictionary := inspectorProxy getViewDeclaration: #gtPrintFor:.
 	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
 	
 	self assert: viewSpecification title equals: #Print.
@@ -554,76 +551,12 @@ GtRemotePhlowDeclarativeViewsExamples >> printView [
 	^ viewSpecification
 ]
 
-{ #category : #examples }
-GtRemotePhlowDeclarativeViewsExamples >> remoteInspectorProxy [
-	"Answer the GtRemotePhlowViewedObject proxy for the remote object"
-	<gtExample>
-	<after: #stopServer>
-	| inspectorProxy declarativeViews |
-
-	inspectorProxy :=  self rertieveRemoteInspectorProxy.
-
-	"The set of views can vary depending on configuration,
-	just check that a common view is present."
-	declarativeViews :=  inspectorProxy getDeclarativeViewMethodNames.
-	self assert: (declarativeViews includes: #gtListFor:).
-
-	^ inspectorProxy
-]
-
-{ #category : #examples }
-GtRemotePhlowDeclarativeViewsExamples >> remoteObject [
-	"Answer the remote GtDeclarativeTestInspectable instance.
-	This will be a proxy with a remote server."
-	<gtExample>
-	<after: #stopServer>
-	| remoteObject collection |
-
-	remoteObject :=  self getRemoteObject.
-
-	self assert: remoteObject string equals: 'hello world'.
-
-	collection :=  remoteObject collectionOfObjects.
-	"Check the size and immediate value objects, but assume that proxies are working correctly"
-	self assert: collection size equals: 3.
-	self assert: collection first equals: 42.
-	self assert: collection second equals: 'Hello World'.
-
-	^ remoteObject
-]
-
-{ #category : #private }
-GtRemotePhlowDeclarativeViewsExamples >> rertieveRemoteInspectorProxy [
-	"Answer the GtRemotePhlowViewedObject proxy for the remote object"
-
-	^ GtRemotePhlowViewedObject object: self remoteObject.
-
-]
-
-{ #category : #private }
-GtRemotePhlowDeclarativeViewsExamples >> runningServer [
-	"Answer a running server.
-	No server is required running the examples in a single image.
-	Subclasses should overwrite this to start the server"
-	<gtExample>
-	<after: #stopServer>
-
-]
-
 { #category : #private }
 GtRemotePhlowDeclarativeViewsExamples >> shouldConvertUsingDisplayTextObject: anObject [ 
 	"When doing local inspection Phlow text objects are not special.
 	They are just like any other normal objects and we convert them 
 	as any other object"
 	^ anObject isString not
-]
-
-{ #category : #private }
-GtRemotePhlowDeclarativeViewsExamples >> stopServer [ 
-
-	server ifNotNil: 
-		[ server stop.
-		server := nil ]
 ]
 
 { #category : #'examples - views' }

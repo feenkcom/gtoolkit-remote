@@ -87,6 +87,19 @@ GtRemotePhlowViewedObject >> computeViewSpecificationForPhlowView: aPhlowView [
 			errorView asGtDeclarativeView ]
 ]
 
+{ #category : #'api - views' }
+GtRemotePhlowViewedObject >> getActionSpecificationDataFor: anActionSelector [
+	| declarativeAction |
+	declarativeAction := self getActionSpecificationFor: anActionSelector.
+	^ self specificationDataForAction: declarativeAction
+]
+
+{ #category : #'api - actions' }
+GtRemotePhlowViewedObject >> getActionSpecificationFor: anActionSelector [
+	^ self actionSpecificationsBySelector 
+		at: anActionSelector
+]
+
 { #category : #'api - actions' }
 GtRemotePhlowViewedObject >> getActionSpecifications [
 	^ self getActionSpecificationsData
@@ -137,8 +150,7 @@ GtRemotePhlowViewedObject >> getActionSpecificationsWithPhlowDataSource [
 
 { #category : #'api - actions' }
 GtRemotePhlowViewedObject >> getDeclarativeActionDataSourceFor: anActionSelector [
-	^ (self actionSpecificationsBySelector 
-		at: anActionSelector) phlowDataSource
+	^ (self getActionSpecificationFor: anActionSelector) phlowDataSource
 ]
 
 { #category : #'api - views deprecated' }
