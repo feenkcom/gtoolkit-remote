@@ -23,22 +23,3 @@ TGtRemoteProxySpecificViews >> gtRawFor: aView [
 
 	^ super gtRawFor: aView
 ]
-
-{ #category : #'as yet unclassified' }
-TGtRemoteProxySpecificViews >> gtRemoteInspectorSpecificationsFor: aView [
-	<gtProxyView>
-	
-	^ aView forward
-		title: 'Remote specification';
-		priority: 10002;
-		object: [ GtJson
-			forJsonString: (NeoJSONWriter 
-				toStringPretty:  self getLocalProxyInspector getViewsDeclarations) ];
-		view: #gtJsonStringFor:;
-		actionButtonIcon: BrGlamorousVectorIcons inspect 
-			label: 'Json'
-			tooltip: 'Inspect the JSON object'
-			action: [ :aButton |
-				aButton phlow 
-					spawnObject: aButton phlow forwardViewObjectFromViewAction ]
-]
