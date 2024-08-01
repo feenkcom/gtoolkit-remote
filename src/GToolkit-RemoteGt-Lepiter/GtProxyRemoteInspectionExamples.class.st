@@ -147,9 +147,9 @@ GtProxyRemoteInspectionExamples >> assertObjectInspectionFor: codeStringOrBlockC
 	proxyObject := self convertToTargetProxy: (codeStringOrBlockClosure 
 		gtIsBlockClosure 
 			ifTrue: [ self runningServer 
-				evaluateBlockAndWait: codeStringOrBlockClosure ]
+				evaluateBlockAndWaitReturnProxy: codeStringOrBlockClosure ]
 			ifFalse: [ self runningServer 
-				evaluateAndWait: codeStringOrBlockClosure ]).
+				evaluateAndWaitReturnProxy: codeStringOrBlockClosure ]).
 		
 	self assertLocalAndRemotePhlowViewsFor: proxyObject.
 	
