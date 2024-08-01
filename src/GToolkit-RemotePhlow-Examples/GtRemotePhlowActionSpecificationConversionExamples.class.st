@@ -1,6 +1,6 @@
 Class {
 	#name : #GtRemotePhlowActionSpecificationConversionExamples,
-	#superclass : #Object,
+	#superclass : #GtRemotePhlowSpecificationConversionExamples,
 	#category : #'GToolkit-RemotePhlow-Examples'
 }
 
