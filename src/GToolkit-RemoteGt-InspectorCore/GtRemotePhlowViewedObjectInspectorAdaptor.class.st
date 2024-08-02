@@ -20,7 +20,7 @@ GtRemotePhlowViewedObjectInspectorAdaptor >> currentRemoteInspectorProxyDo: aBlo
 	 	targetObject 
 	 		runComputation: [
 	 			targetObject localProxyInspectorDo: [ :aRemoteInspectorProxy |
-	 				proxyInspector := aRemoteInspectorProxy ]] 
+	 				proxyInspector := aRemoteInspectorProxy ] ] 
 	 		ifFailure: [ 
 	 			"If the proxy or the communication channel is invalid 
 	 			we have no local inspector" ] ].
@@ -98,4 +98,9 @@ GtRemotePhlowViewedObjectInspectorAdaptor >> gtViewsForRemoteSideInContext: aCon
 { #category : #accessing }
 GtRemotePhlowViewedObjectInspectorAdaptor >> initialiseForTargetObject: anObject [
 	targetObject := anObject
+]
+
+{ #category : #accessing }
+GtRemotePhlowViewedObjectInspectorAdaptor >> proxyInspector [
+	^ proxyInspector
 ]

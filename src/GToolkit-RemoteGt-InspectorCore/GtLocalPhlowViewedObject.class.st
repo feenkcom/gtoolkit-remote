@@ -250,6 +250,16 @@ GtLocalPhlowViewedObject >> initializeWithRemoteViewedObject: aViewedObject [
 	remoteViewedObject := aViewedObject
 ]
 
+{ #category : #accessing }
+GtLocalPhlowViewedObject >> rawActionSpecificationsBySelector [
+	^ actionSpecificationsBySelector
+]
+
+{ #category : #accessing }
+GtLocalPhlowViewedObject >> rawViewSpecificationsBySelector [
+	^ viewSpecificationsBySelector
+]
+
 { #category : #'api - specifications' }
 GtLocalPhlowViewedObject >> viewSpecificationsBySelector [
 	viewSpecificationsBySelector ifNil: [ 

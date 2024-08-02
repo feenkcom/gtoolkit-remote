@@ -124,7 +124,8 @@ GtRemoteInspectionSimulation >> object: anObject [
 	
 	remoteInspectorProxy := self createViewedObjectFor: anObject.
 	localProxyInspector := GtLocalPhlowViewedObject  
-		remoteViewedObject:  remoteInspectorProxy
+		fromProxy: remoteInspectorProxy 
+		withData: remoteInspectorProxy getInspectorSpecificationWithPhlowDataSource
 ]
 
 { #category : #accessing }
