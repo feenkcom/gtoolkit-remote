@@ -1,7 +1,7 @@
 Class {
 	#name : #GtRmGeolifeGemstoneImporter,
 	#superclass : #GtRmGeolifeBaseImporter,
-	#category : #'GToolkit-RemotePhlow-GeolifeDemo-GTSpecific'
+	#category : #'GToolkit-RemotePhlow-GeolifeDemo-GTSpecific-Importing'
 }
 
 { #category : #accessing }

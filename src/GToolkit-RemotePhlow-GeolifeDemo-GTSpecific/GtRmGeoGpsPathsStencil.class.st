@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'pathPoints'
 	],
-	#category : #'GToolkit-RemotePhlow-GeolifeDemo-GTSpecific'
+	#category : #'GToolkit-RemotePhlow-GeolifeDemo-GTSpecific-UI'
 }
 
 { #category : #accessing }

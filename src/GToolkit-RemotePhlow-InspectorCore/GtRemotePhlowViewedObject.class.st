@@ -6,8 +6,8 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'object',
-		'declarativeViewsBySelector',
-		'actionSpecificationsBySelector'
+		'actionSpecificationsBySelector',
+		'viewSpecificationsBySelector'
 	],
 	#category : #'GToolkit-RemotePhlow-InspectorCore'
 }
@@ -38,6 +38,44 @@ GtRemotePhlowViewedObject >> computeActionSpecificationForPhlowAction: aPhlowAct
 ]
 
 { #category : #initialization }
+GtRemotePhlowViewedObject >> computeDeclarativeActionSpecifications [
+	| specifications phlowActions |
+	
+	specifications := OrderedCollection new. 
+
+	phlowActions := self phlowDeclarativeActions.
+	phlowActions
+		do: [ :aPhlowAction | 
+			| actionSpecification |
+			actionSpecification := self 
+				computeActionSpecificationForPhlowAction: aPhlowAction.
+			actionSpecification
+				ifNotNil: [ 
+					actionSpecification methodSelector: aPhlowAction definingSelector.
+					specifications add: actionSpecification ] ].
+					
+	^ specifications
+]
+
+{ #category : #initialization }
+GtRemotePhlowViewedObject >> computeDeclarativeViewSpecifications [
+	| specifications phlowViews |
+
+	specifications := OrderedCollection new. 
+	
+	phlowViews := self phlowDeclarativeViews.
+	phlowViews do: [ :aPhlowView | 
+		| viewSpecification |
+		viewSpecification := self computeViewSpecificationForPhlowView: aPhlowView.
+		viewSpecification
+			ifNotNil: [ 
+				viewSpecification methodSelector: aPhlowView definingSelector.
+				specifications add: viewSpecification ] ].
+					 
+	^ specifications
+]
+
+{ #category : #initialization }
 GtRemotePhlowViewedObject >> computeViewSpecificationForPhlowView: aPhlowView [
 	^ [ aPhlowView asGtDeclarativeView ] 
 		on: Error do: [ :anError |
@@ -49,121 +87,207 @@ GtRemotePhlowViewedObject >> computeViewSpecificationForPhlowView: aPhlowView [
 			errorView asGtDeclarativeView ]
 ]
 
-{ #category : #accessing }
-GtRemotePhlowViewedObject >> declarativeViewsBySelector [
-	declarativeViewsBySelector ifNil: [ 
-		self initializeDeclarativeViews ].
-	^ declarativeViewsBySelector
+{ #category : #'api - views' }
+GtRemotePhlowViewedObject >> getActionSpecificationDataFor: anActionSelector [
+	| declarativeAction |
+	declarativeAction := self getActionSpecificationFor: anActionSelector.
+	^ self specificationDataForAction: declarativeAction
 ]
 
-{ #category : #'api - accessing' }
-GtRemotePhlowViewedObject >> getActionSpecificationDataForAction: anActionSpecification [
-
-	^ anActionSpecification asDictionaryForExport
+{ #category : #'api - actions' }
+GtRemotePhlowViewedObject >> getActionSpecificationFor: anActionSelector [
+	^ self actionSpecificationsBySelector 
+		at: anActionSelector
 ]
 
-{ #category : #'api - accessing' }
+{ #category : #'api - actions' }
 GtRemotePhlowViewedObject >> getActionSpecifications [
+	^ self getActionSpecificationsData
+]
+
+{ #category : #'api - actions' }
+GtRemotePhlowViewedObject >> getActionSpecificationsData [
 	| actionsSpecifications |
-	actionsSpecifications := (self actionSpecificationsBySelector 
+	actionsSpecifications := self actionSpecificationsBySelector 
 		collect: [ :anActionSpecification |
-			self getActionSpecificationDataForAction: anActionSpecification ]).
+			self specificationDataForAction: anActionSpecification ].
 	^ Dictionary new
 		at: 'actions' put: actionsSpecifications asArray;
 		yourself
 ]
 
-{ #category : #'api - accessing' }
-GtRemotePhlowViewedObject >> getDeclarativeActionDataSourceFor: anActionSelector [
-	^ (self actionSpecificationsBySelector 
-		at: anActionSelector) phlowDataSource
-]
-
-{ #category : #'api - accessing' }
-GtRemotePhlowViewedObject >> getDeclarativeViewFor: viewSelector [
-	^ self declarativeViewsBySelector at: viewSelector
-]
-
-{ #category : #'api - accessing' }
-GtRemotePhlowViewedObject >> getDeclarativeViewMethodNames [
-	"Answer the set of declarative view selectors provided by the object"
-
-	^ self declarativeViewsBySelector keys
-]
-
-{ #category : #'api - accessing' }
-GtRemotePhlowViewedObject >> getViewDeclaration: aViewSelector [
-	| declarativeView |
-	declarativeView := self getDeclarativeViewFor: aViewSelector.
-	^ self getViewDeclarationForView: declarativeView
-]
-
-{ #category : #'api - accessing' }
-GtRemotePhlowViewedObject >> getViewDeclarationForView: aDeclarativeView [
-
-	^ aDeclarativeView asDictionaryForExport
-]
-
-{ #category : #'api - accessing' }
-GtRemotePhlowViewedObject >> getViewsDeclarations [
-	| viewDeclarations |
-	viewDeclarations := (self declarativeViewsBySelector 
-		collect: [ :aDeclarativeView |
-			self getViewDeclarationForView: aDeclarativeView ]).
+{ #category : #'api - actions' }
+GtRemotePhlowViewedObject >> getActionSpecificationsPhlowDataSource [
+	| actionsSpecifications |
+	actionsSpecifications := (self actionSpecificationsBySelector 
+		collect: [ :anActionSpecification |
+			(self specificationDataForAction: anActionSpecification)
+				ifNotNil: [ :aDictionary |
+					aDictionary 
+						at: 'phlowDataSource' 
+							put: anActionSpecification phlowDataSource;
+						yourself ] ]).
 	^ Dictionary new
-		at: 'views' put: viewDeclarations asArray;
+		at: 'actions' put: actionsSpecifications asArray;
 		yourself
 ]
 
-{ #category : #'api - accessing' }
-GtRemotePhlowViewedObject >> getViewsDeclarationsWithPhlowDataSource [
-	| viewDeclarations |
-	viewDeclarations := (self declarativeViewsBySelector 
-		collect: [ :aDeclarativeView |
-			(self getViewDeclarationForView: aDeclarativeView)
+{ #category : #'api - actions' }
+GtRemotePhlowViewedObject >> getActionSpecificationsWithPhlowDataSource [
+	| actionsSpecifications |
+	actionsSpecifications := (self actionSpecificationsBySelector 
+		collect: [ :anActionSpecification |
+			(self specificationDataForAction: anActionSpecification)
 				ifNotNil: [ :aDictionary |
 					aDictionary 
-						at: 'phlowDataSource' put: aDeclarativeView;
+						at: 'phlowDataSource' 
+							put: anActionSpecification phlowDataSource;
+						yourself ] ]).
+	^ Dictionary new
+		at: 'actions' put: actionsSpecifications asArray;
+		yourself
+]
+
+{ #category : #'api - actions' }
+GtRemotePhlowViewedObject >> getDeclarativeActionDataSourceFor: anActionSelector [
+	^ (self getActionSpecificationFor: anActionSelector) phlowDataSource
+]
+
+{ #category : #'api - views deprecated' }
+GtRemotePhlowViewedObject >> getDeclarativeViewFor: viewSelector [
+	^ self getViewSpecificationFor: viewSelector
+]
+
+{ #category : #'api - views' }
+GtRemotePhlowViewedObject >> getDeclarativeViewMethodNames [
+	"Answer the set of declarative view selectors provided by the object"
+
+	^ self viewSpecificationsBySelector keys
+]
+
+{ #category : #'api  - inspector' }
+GtRemotePhlowViewedObject >> getInspectorSpecificationWithPhlowDataSource [
+	^ Dictionary new 
+		at: 'views' put:   (self getViewSpecificationWithPhlowDataSource
+			at: 'views');
+		at: 'actions' put: (self getActionSpecificationsWithPhlowDataSource
+			at: 'actions');
+		yourself
+]
+
+{ #category : #'api - views deprecated' }
+GtRemotePhlowViewedObject >> getViewDeclaration: aViewSelector [
+	^ self getViewSpecificationDataFor: aViewSelector
+]
+
+{ #category : #'api - views' }
+GtRemotePhlowViewedObject >> getViewSpecificationDataFor: aViewSelector [
+	| declarativeView |
+	declarativeView := self getViewSpecificationFor: aViewSelector.
+	^ self specificationDataForView: declarativeView
+]
+
+{ #category : #'api - views' }
+GtRemotePhlowViewedObject >> getViewSpecificationFor: viewSelector [
+	^ self viewSpecificationsBySelector at: viewSelector
+]
+
+{ #category : #'api  - inspector' }
+GtRemotePhlowViewedObject >> getViewSpecificationWithPhlowDataSource [
+	| viewDeclarations |
+	viewDeclarations := (self viewSpecificationsBySelector 
+		collect: [ :aViewSpecification |
+			(self specificationDataForView: aViewSpecification)
+				ifNotNil: [ :aDictionary |
+					aDictionary 
+						at: 'phlowDataSource' put: aViewSpecification;
 						yourself ] ]).
 	^ Dictionary new
 		at: 'views' put: viewDeclarations asArray;
 		yourself
 ]
 
-{ #category : #initialization }
-GtRemotePhlowViewedObject >> initializeActionSpecifications [
-	| phlowActions |
-	actionSpecificationsBySelector := Dictionary new.
+{ #category : #'api - views' }
+GtRemotePhlowViewedObject >> getViewSpecificationsData [
+	| viewDeclarations |
+	viewDeclarations := (self viewSpecificationsBySelector 
+		collect: [ :aViewSpecification |
+			self specificationDataForView: aViewSpecification ]).
+	^ Dictionary new
+		at: 'views' put: viewDeclarations asArray;
+		yourself
+]
 
-	phlowActions := self phlowDeclarativeActions.
-	phlowActions
-		do: [ :aPhlowAction | 
-			| actionSpecification |
-			actionSpecification := self 
-				computeActionSpecificationForPhlowAction: aPhlowAction.
-			actionSpecification
-				ifNotNil: [ 
-					actionSpecification methodSelector: aPhlowAction definingSelector.
-					actionSpecificationsBySelector
-						at: aPhlowAction definingSelector
-						put: actionSpecification ] ]
+{ #category : #'api - views deprecated' }
+GtRemotePhlowViewedObject >> getViewsDeclarations [
+	^ self getViewSpecificationsData
+]
+
+{ #category : #'api - views deprecated' }
+GtRemotePhlowViewedObject >> getViewsDeclarationsWithPhlowDataSource [
+	^ self getViewSpecificationWithPhlowDataSource
+]
+
+{ #category : #'gt - extensions' }
+GtRemotePhlowViewedObject >> gtViewCurrentViewsFor: aView [
+	<gtView>
+	
+	^ aView columnedList
+		title: 'Current views';
+		priority: 10;
+		items: [ (viewSpecificationsBySelector
+			ifNil: [ #() ] ifNotNil: [ :aDictionary | aDictionary values ]) 
+				sort: [ :a :b |  a priority < b priority ]];
+		column: 'Title' text: [ :aViewAccessor | aViewAccessor title ];
+		column: 'Selector' text: [ :aViewAccessor | aViewAccessor methodSelector ];
+		column: 'View' text: [ :aViewAccessor | aViewAccessor viewName ];
+		column: 'Priority' text: [ :aViewAccessor | aViewAccessor priority ] width: 75;
+		column: 'Transport' text: [ :aViewAccessor | aViewAccessor dataTransport ] width: 75;
+		send: [ :aDeclarativeView | aDeclarativeView ]
+]
+
+{ #category : #'gt - extensions' }
+GtRemotePhlowViewedObject >> gtViewsCurrentActionsFor: aView [
+	<gtView>
+	
+	^ aView columnedList
+		title: 'Current actions';
+		priority: 20;
+		items: [ (actionSpecificationsBySelector
+			ifNil: [ #() ] ifNotNil: [ :aDictionary | aDictionary values ]) 
+				sort: [ :a :b |  a priority < b priority ]];
+		column: 'Tooltip' text: [ :aViewAccessor | aViewAccessor tooltipText ];
+		column: 'Label' text: [ :aViewAccessor | aViewAccessor label ];
+		"column: 'Icon' 
+			icon: [ :aViewAccessor | 
+				aViewAccessor iconStencil ifNil: [BlElement new
+					size: 0@0] ] 
+			width: 75;"
+		column: 'Selector' text: [ :aViewAccessor | aViewAccessor methodSelector ];
+		column: 'Priority' text: [ :aViewAccessor | aViewAccessor priority ] width: 70;
+		send: [ :aDeclarativeView | aDeclarativeView ]
 ]
 
 { #category : #initialization }
-GtRemotePhlowViewedObject >> initializeDeclarativeViews [
-	| phlowViews |
-	declarativeViewsBySelector := Dictionary new.
+GtRemotePhlowViewedObject >> initializeActionSpecifications [
+	actionSpecificationsBySelector := Dictionary new.
 
-	phlowViews := self phlowDeclarativeViews.
-	phlowViews
-		do: [ :aPhlowView | 
-			| viewSpecification |
-			viewSpecification := self computeViewSpecificationForPhlowView: aPhlowView.
-			viewSpecification
-				ifNotNil: [ viewSpecification methodSelector: aPhlowView definingSelector.
-					declarativeViewsBySelector
-						at: aPhlowView definingSelector
-						put: viewSpecification ] ]
+	self computeDeclarativeActionSpecifications
+		do: [ :anActionSpecification |
+			actionSpecificationsBySelector
+				at: anActionSpecification methodSelector
+				put: anActionSpecification ] 
+]
+
+{ #category : #initialization }
+GtRemotePhlowViewedObject >> initializeViewSpecifications [
+	viewSpecificationsBySelector := Dictionary new.
+
+	self computeDeclarativeViewSpecifications
+		do: [ :aViewSpecification| 
+			viewSpecificationsBySelector
+				at: aViewSpecification methodSelector
+				put: aViewSpecification ] 
 ]
 
 { #category : #initialization }
@@ -197,4 +321,23 @@ GtRemotePhlowViewedObject >> phlowDeclarativeViews [
 			gtRemoteGtRawFor: #GtPhlowView asClass empty)) ].
 	
 	^ views
+]
+
+{ #category : #utils }
+GtRemotePhlowViewedObject >> specificationDataForAction: anActionSpecification [
+
+	^ anActionSpecification asDictionaryForExport
+]
+
+{ #category : #utils }
+GtRemotePhlowViewedObject >> specificationDataForView: aViewSpecification [
+
+	^ aViewSpecification asDictionaryForExport
+]
+
+{ #category : #accessing }
+GtRemotePhlowViewedObject >> viewSpecificationsBySelector [
+	viewSpecificationsBySelector ifNil: [ 
+		self initializeViewSpecifications ].
+	^ viewSpecificationsBySelector
 ]

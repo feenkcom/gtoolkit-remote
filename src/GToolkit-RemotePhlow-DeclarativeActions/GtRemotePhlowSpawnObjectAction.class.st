@@ -34,6 +34,11 @@ GtRemotePhlowSpawnObjectAction >> initializeFromJSONDictionary: aDictionary [
 ]
 
 { #category : #accessing }
+GtRemotePhlowSpawnObjectAction >> targetObject [
+	^ targetObject
+]
+
+{ #category : #accessing }
 GtRemotePhlowSpawnObjectAction >> targetObject: anObject [ 
 	targetObject := anObject 
 ]

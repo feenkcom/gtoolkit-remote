@@ -1425,6 +1425,81 @@ removeallclassmethods GtRemotePhlowDeclarativeErrorTestInspectable
 
 doit
 (Object
+	subclass: 'GtRemotePhlowDeclarativeExamples'
+	instVarNames: #(server)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Examples';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowDeclarativeExamples
+removeallclassmethods GtRemotePhlowDeclarativeExamples
+
+doit
+(GtRemotePhlowDeclarativeExamples
+	subclass: 'GtRemotePhlowDeclarativeActionsExamples'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Examples';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowDeclarativeActionsExamples
+removeallclassmethods GtRemotePhlowDeclarativeActionsExamples
+
+doit
+(GtRemotePhlowDeclarativeExamples
+	subclass: 'GtRemotePhlowDeclarativeViewsExamples'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Examples';
+		comment: 'GtRemoteDeclarativeGtExamples demonstrates the use of declarative views in Gtoolkit.
+
+This class runs the examples within the one image, and thus can be run without any external server setup.  Subclasses overwrite various methods to run the examples connecting to the remote server.';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowDeclarativeViewsExamples
+removeallclassmethods GtRemotePhlowDeclarativeViewsExamples
+
+doit
+(Object
+	subclass: 'GtRemotePhlowDeclarativeTestForCustomProxyInspectable'
+	instVarNames: #(collectionOfObjects)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Examples';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowDeclarativeTestForCustomProxyInspectable
+removeallclassmethods GtRemotePhlowDeclarativeTestForCustomProxyInspectable
+
+doit
+(Object
 	subclass: 'GtRemotePhlowDeclarativeTestInspectable'
 	instVarNames: #(string collectionOfObjects)
 	classVars: #()
@@ -1631,27 +1706,6 @@ true.
 
 removeallmethods GtRemotePhlowDeclarativeViewColumnedTreeDataSource
 removeallclassmethods GtRemotePhlowDeclarativeViewColumnedTreeDataSource
-
-doit
-(Object
-	subclass: 'GtRemotePhlowDeclarativeViewsExamples'
-	instVarNames: #(server)
-	classVars: #()
-	classInstVars: #()
-	poolDictionaries: #()
-	inDictionary: Globals
-	options: #( #logCreation )
-)
-		category: 'GToolkit-RemotePhlow-Examples';
-		comment: 'GtRemoteDeclarativeGtExamples demonstrates the use of declarative views in Gtoolkit.
-
-This class runs the examples within the one image, and thus can be run without any external server setup.  Subclasses overwrite various methods to run the examples connecting to the remote server.';
-		immediateInvariant.
-true.
-%
-
-removeallmethods GtRemotePhlowDeclarativeViewsExamples
-removeallclassmethods GtRemotePhlowDeclarativeViewsExamples
 
 doit
 (Object
@@ -2159,6 +2213,60 @@ removeallclassmethods GtRemotePhlowSpawnObjectWrapper
 
 doit
 (Object
+	subclass: 'GtRemotePhlowSpecificationConversionExamples'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Examples';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowSpecificationConversionExamples
+removeallclassmethods GtRemotePhlowSpecificationConversionExamples
+
+doit
+(GtRemotePhlowSpecificationConversionExamples
+	subclass: 'GtRemotePhlowActionSpecificationConversionExamples'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Examples';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowActionSpecificationConversionExamples
+removeallclassmethods GtRemotePhlowActionSpecificationConversionExamples
+
+doit
+(GtRemotePhlowSpecificationConversionExamples
+	subclass: 'GtRemotePhlowViewSpecificationConversionExamples'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Examples';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowViewSpecificationConversionExamples
+removeallclassmethods GtRemotePhlowViewSpecificationConversionExamples
+
+doit
+(Object
 	subclass: 'GtRemotePhlowStylableText'
 	instVarNames: #(string stylerSpecification highlight)
 	classVars: #()
@@ -2304,7 +2412,7 @@ removeallclassmethods GtRemoteTextStylerComputableSpecification
 doit
 (Object
 	subclass: 'GtRemotePhlowViewedObject'
-	instVarNames: #(object declarativeViewsBySelector actionSpecificationsBySelector)
+	instVarNames: #(object actionSpecificationsBySelector viewSpecificationsBySelector)
 	classVars: #()
 	classInstVars: #()
 	poolDictionaries: #()
@@ -2319,24 +2427,6 @@ true.
 
 removeallmethods GtRemotePhlowViewedObject
 removeallclassmethods GtRemotePhlowViewedObject
-
-doit
-(Object
-	subclass: 'GtRemotePhlowViewSpecificationConversionExamples'
-	instVarNames: #()
-	classVars: #()
-	classInstVars: #()
-	poolDictionaries: #()
-	inDictionary: Globals
-	options: #( #logCreation )
-)
-		category: 'GToolkit-RemotePhlow-Examples';
-		immediateInvariant.
-true.
-%
-
-removeallmethods GtRemotePhlowViewSpecificationConversionExamples
-removeallclassmethods GtRemotePhlowViewSpecificationConversionExamples
 
 doit
 (Object
@@ -3220,7 +3310,9 @@ initializeFromJSONDictionary: aDictionary
 	self
 		priority: (aDictionary at: 'priority' ifAbsent: [ nil ]);
 		methodSelector: (aDictionary at: 'methodSelector' ifAbsent: [ nil ]);
-		tooltipText: (aDictionary  at: 'tooltipText' ifAbsent: [ nil ])
+		tooltipText: (aDictionary  at: 'tooltipText' ifAbsent: [ nil ]);
+		phlowDataSource: (aDictionary 
+			at: 'phlowDataSource' ifAbsent: [ nil ])
 %
 
 category: 'accessing'
@@ -3421,7 +3513,29 @@ label
 
 ! Class implementation for 'GtPhlowNamedIconStencil'
 
+!		Class methods for 'GtPhlowNamedIconStencil'
+
+category: 'instance creation'
+classmethod: GtPhlowNamedIconStencil
+forIconName: anIconName
+	^ self new 
+		iconName: anIconName
+%
+
 !		Instance methods for 'GtPhlowNamedIconStencil'
+
+category: 'comparing'
+method: GtPhlowNamedIconStencil
+= anObject
+	"Answer whether the receiver and anObject represent the same object."
+
+	self == anObject
+		ifTrue: [ ^ true ].
+	self class = anObject class
+		ifFalse: [ ^ false ].
+		
+	^ iconName = anObject iconName
+%
 
 category: 'accessing'
 method: GtPhlowNamedIconStencil
@@ -3429,6 +3543,14 @@ asDictionaryForExport
 	^ super asDictionaryForExport
 		at: 'iconName' put: self iconName;
 		yourself
+%
+
+category: 'comparing'
+method: GtPhlowNamedIconStencil
+hash
+	"Answer an integer value that is related to the identity of the receiver."
+
+	^ iconName hash
 %
 
 category: 'accessing'
@@ -3505,7 +3627,7 @@ asDictionaryForExport
 
 	^ super asDictionaryForExport
 		at: 'objectWrapper' put: (GtRemotePhlowSpawnObjectWrapper new
-				targetObject: targetObject );
+				targetObject: targetObject);
 		yourself
 %
 
@@ -3516,7 +3638,14 @@ initializeFromJSONDictionary: aDictionary
 
 	aDictionary at: 'objectWrapper' ifPresent: [ :anObjectWrapper |
 		self
-			targetObject: (aDictionary at: 'objectWrapper') targetObject ].
+			targetObject: (aDictionary 
+				at: 'objectWrapper') targetObject asGtBareProxyObject ].
+%
+
+category: 'accessing'
+method: GtRemotePhlowSpawnObjectAction
+targetObject
+	^ targetObject
 %
 
 category: 'accessing'
@@ -7334,6 +7463,1116 @@ gtTreeWithItemsErrorsFor: aView
 			x asString, ' number']
 %
 
+! Class implementation for 'GtRemotePhlowDeclarativeExamples'
+
+!		Class methods for 'GtRemotePhlowDeclarativeExamples'
+
+category: 'testing'
+classmethod: GtRemotePhlowDeclarativeExamples
+isAbstract
+	^ self name = #GtRemotePhlowDeclarativeExamples
+%
+
+!		Instance methods for 'GtRemotePhlowDeclarativeExamples'
+
+category: 'private'
+method: GtRemotePhlowDeclarativeExamples
+basicServer
+	^ server
+%
+
+category: 'private'
+method: GtRemotePhlowDeclarativeExamples
+basicServer: aServer
+	server := aServer
+%
+
+category: 'private'
+method: GtRemotePhlowDeclarativeExamples
+getRemoteObject
+	^ self subclassResponsibility
+%
+
+category: 'examples'
+method: GtRemotePhlowDeclarativeExamples
+remoteInspectorProxy
+	"Answer the GtRemotePhlowViewedObject proxy for the remote object"
+	<gtExample>
+	<after: #stopServer>
+	| inspectorProxy declarativeViews |
+
+	inspectorProxy :=  self retrieveRemoteInspectorProxy.
+
+	"The set of views can vary depending on configuration,
+	just check that a common view is present."
+	declarativeViews :=  inspectorProxy getDeclarativeViewMethodNames.
+	self assert: (declarativeViews includes: #gtListFor:).
+ 
+	^ inspectorProxy
+%
+
+category: 'examples'
+method: GtRemotePhlowDeclarativeExamples
+remoteObject
+	"Answer the remote GtRemotePhlowDeclarativeTestInspectable instance.
+	This will be a proxy with a remote server."
+	<gtExample>
+	<after: #stopServer>
+	| remoteObject collection |
+
+	remoteObject :=  self getRemoteObject.
+
+	self assert: remoteObject string equals: 'hello world'.
+
+	collection :=  remoteObject collectionOfObjects.
+	"Check the size and immediate value objects, but assume that proxies are working correctly"
+	self assert: collection size equals: 3.
+	self assert: collection first equals: 42.
+	self assert: collection second equals: 'Hello World'.
+
+	^ remoteObject
+%
+
+category: 'private'
+method: GtRemotePhlowDeclarativeExamples
+retrieveRemoteInspectorProxy
+	"Answer the GtRemotePhlowViewedObject proxy for the remote object"
+
+	^ GtRemotePhlowViewedObject object: self remoteObject.
+%
+
+category: 'private'
+method: GtRemotePhlowDeclarativeExamples
+runningServer
+	"Answer a running server.
+	No server is required running the examples in a single image.
+	Subclasses should overwrite this to start the server"
+	<gtExample>
+	<after: #stopServer>
+%
+
+category: 'private'
+method: GtRemotePhlowDeclarativeExamples
+stopServer 
+
+	server ifNotNil: 
+		[ server stop.
+		server := nil ]
+%
+
+! Class implementation for 'GtRemotePhlowDeclarativeActionsExamples'
+
+!		Instance methods for 'GtRemotePhlowDeclarativeActionsExamples'
+
+category: 'assertions'
+method: GtRemotePhlowDeclarativeActionsExamples
+assertActionResultForDatasource: actionDatasource
+	| actionResult |
+	actionResult := GtRemotePhlowNavigationAction
+			navigationActionFromDictionary: actionDatasource executeRemoteActionWithPhlowResult.
+	self assert: actionResult targetObject notNil
+%
+
+category: 'examples - actions'
+method: GtRemotePhlowDeclarativeActionsExamples
+buttonActionWithIcon
+	<gtExample>
+	| inspectorProxy actionSpeficificationData actionSpecification actionDatasource |
+	
+	inspectorProxy := self remoteInspectorProxy.
+	actionSpeficificationData := inspectorProxy
+			getActionSpecificationDataFor: #gtButtonActionWithIconFor:.
+	actionSpecification := GtPhlowActionSpecification
+			phlowActionFromDictionary: actionSpeficificationData.
+			
+	self assert: actionSpecification label equals: nil.
+	self assert: actionSpecification priority equals: 11.
+	self
+		assert: actionSpecification iconStencil
+		equals: (GtPhlowGlamorousVectorIconNameStencil forIconName: #playinspect).
+	self assert: actionSpecification tooltipText equals: 'Inspect objects'.
+	self assert: actionSpecification phlowDataSource equals: nil.
+	self
+		assert: actionSpecification methodSelector
+		equals: #gtButtonActionWithIconFor:.
+		
+	actionDatasource := inspectorProxy
+			getDeclarativeActionDataSourceFor: #gtButtonActionWithIconFor:.
+			
+	self assertActionResultForDatasource: actionDatasource.
+	
+	^ actionSpecification
+%
+
+category: 'examples - actions'
+method: GtRemotePhlowDeclarativeActionsExamples
+buttonActionWithIconAndLabel
+	<gtExample>
+	| inspectorProxy actionSpeficificationData actionSpecification actionDatasource |
+	
+	inspectorProxy := self remoteInspectorProxy.
+	actionSpeficificationData := inspectorProxy
+			getActionSpecificationDataFor: #gtButtonActionWithBothIconAndLabelFor: .
+	actionSpecification := GtPhlowActionSpecification
+			phlowActionFromDictionary: actionSpeficificationData.
+			
+	self assert: actionSpecification label equals: 'Inspect'.
+	self assert: actionSpecification priority equals: 12.
+	self
+		assert: actionSpecification iconStencil
+		equals: (GtPhlowGlamorousVectorIconNameStencil forIconName: #playinspect).
+	self assert: actionSpecification tooltipText equals: 'Inspect objects'.
+	self assert: actionSpecification phlowDataSource equals: nil.
+	self
+		assert: actionSpecification methodSelector
+		equals: #gtButtonActionWithBothIconAndLabelFor:.
+		
+	actionDatasource := inspectorProxy
+			getDeclarativeActionDataSourceFor: #gtButtonActionWithBothIconAndLabelFor:.
+			
+	self assertActionResultForDatasource: actionDatasource.
+	
+	^ actionSpecification
+%
+
+category: 'examples - actions'
+method: GtRemotePhlowDeclarativeActionsExamples
+buttonActionWithLabel
+	<gtExample>
+	| inspectorProxy actionSpeficificationData actionSpecification actionDatasource actionResult |
+
+	inspectorProxy := self remoteInspectorProxy.
+	actionSpeficificationData := inspectorProxy 
+		getActionSpecificationDataFor: #gtButtonActionWithLabelFor:.
+	actionSpecification := GtPhlowActionSpecification 
+		phlowActionFromDictionary: actionSpeficificationData.
+	
+	self assert: actionSpecification label equals: 'Inspect 1'.
+	self assert: actionSpecification priority equals: 10.
+	self assert: actionSpecification iconStencil equals: nil.
+	self assert: actionSpecification tooltipText equals: 'Inspect objects'.
+	self assert: actionSpecification phlowDataSource equals: nil.
+	self assert: actionSpecification methodSelector equals: #gtButtonActionWithLabelFor:.
+	
+	actionDatasource := inspectorProxy 
+		getDeclarativeActionDataSourceFor: #gtButtonActionWithLabelFor:.
+		
+	self assertActionResultForDatasource: actionDatasource.
+	
+	^ actionSpecification
+%
+
+category: 'private'
+method: GtRemotePhlowDeclarativeActionsExamples
+getRemoteObject
+
+	^ GtRemotePhlowDeclarativeTestInspectable new
+%
+
+! Class implementation for 'GtRemotePhlowDeclarativeViewsExamples'
+
+!		Instance methods for 'GtRemotePhlowDeclarativeViewsExamples'
+
+category: 'assertions'
+method: GtRemotePhlowDeclarativeViewsExamples
+assertBasicStyledTextInViewSpecification: aViewSpecification expectedText: anExpectedText
+	| obtainedStylableText |
+	
+	obtainedStylableText := (GtRemotePhlowStylableText 
+			fromJSONDictionary: aViewSpecification getText).
+			
+
+	self assert: obtainedStylableText string equals: anExpectedText asString.
+	self assert: obtainedStylableText stylerSpecification canAffectText.
+	
+	self 
+		assertTextAttributedRunStyleSpecification: obtainedStylableText stylerSpecification
+		equalsRuns: ((self shouldConvertUsingDisplayTextObject: anExpectedText)
+			ifTrue: [ anExpectedText asRopedText extractRemotePhlowRuns ]
+			ifFalse: [ anExpectedText attributeRuns ]).
+%
+
+category: 'assertions'
+method: GtRemotePhlowDeclarativeViewsExamples
+assertChildColumnedTreeNodesInViewDatasource: viewDatasource forParentNode: aParentNode  forObjects: anExpectedCollectionOfObjects andColumnsComputation: aCollectionOfBlockClosures
+	^ self 
+		assertChildNodesInViewDatasource: viewDatasource 
+		forParentNode:  aParentNode
+		ofType: GtRemotePhlowColumnedTreeNode
+		equalNodes: (self 
+			createColumnedNodesWithObjectValues: anExpectedCollectionOfObjects
+			andColumnsComputation: aCollectionOfBlockClosures)
+%
+
+category: 'assertions'
+method: GtRemotePhlowDeclarativeViewsExamples
+assertChildNodesInViewDatasource: viewDatasource forParentNode: aParentNode ofType: aPhlowDataNodeClass equalNodes: anExpectedCollectionOfNodes 
+	| obtainedChildNodes |
+	obtainedChildNodes := (viewDatasource 
+		retrieveChildrenForNodeAtPath:  aParentNode  nodePath)
+			collect: [ :aNodeValueDictionary |
+				aPhlowDataNodeClass 
+					fromJSONDictionary: aNodeValueDictionary ].
+	self 
+		assertListingNodes: obtainedChildNodes 
+		equals: anExpectedCollectionOfNodes.
+%
+
+category: 'assertions'
+method: GtRemotePhlowDeclarativeViewsExamples
+assertChildTreeNodesInViewDatasource: viewDatasource forParentNode: aParentNode  forObjects: anExpectedCollectionOfObjects
+	^ self 
+		assertChildNodesInViewDatasource: viewDatasource 
+		forParentNode:  aParentNode
+		ofType: GtRemotePhlowTreeNode
+		equalNodes: (self 
+			createTreeNodesWithObjectValues: anExpectedCollectionOfObjects)
+%
+
+category: 'assertions'
+method: GtRemotePhlowDeclarativeViewsExamples
+assertListingNode: anObtainedObject equals: anExpectedNode 
+	self assert: anObtainedObject nodeId = anExpectedNode nodeId.
+	self assert: (anObtainedObject matchesNodeContentWith: anExpectedNode)
+%
+
+category: 'assertions'
+method: GtRemotePhlowDeclarativeViewsExamples
+assertListingNodes: obtainedNodes equals: expectedNodes
+	self assert:  obtainedNodes size equals: expectedNodes size.
+	
+	expectedNodes withIndexDo: [ :anExpectedNode :anIndex |
+		self 
+			assertListingNode: (obtainedNodes at: anIndex) 
+			equals: anExpectedNode ]
+%
+
+category: 'assertions'
+method: GtRemotePhlowDeclarativeViewsExamples
+assertNodesInColumnedViewDatasource: viewDatasource forObjects: aCollectionOfObjects andColumnsComputation: aCollectionOfBlockClosures
+	^ self 
+		assertNodesInViewDatasource: viewDatasource 
+		ofType: GtRemotePhlowColumnedTreeNode
+		equalNodes: (self 
+			createColumnedNodesWithObjectValues: aCollectionOfObjects
+			andColumnsComputation: aCollectionOfBlockClosures).
+%
+
+category: 'assertions'
+method: GtRemotePhlowDeclarativeViewsExamples
+assertNodesInListViewDatasource: viewDatasource forObjects: anCollectionOfObjects
+	^ self 
+		assertNodesInViewDatasource: viewDatasource 
+		ofType: GtRemotePhlowDataNode
+		equalNodes: (self 
+			createListNodesWithObjectValues: anCollectionOfObjects).
+%
+
+category: 'assertions'
+method: GtRemotePhlowDeclarativeViewsExamples
+assertNodesInTreeViewDatasource: viewDatasource forObjects: anCollectionOfObjects
+	^ self 
+		assertNodesInViewDatasource: viewDatasource 
+		ofType: GtRemotePhlowTreeNode
+		equalNodes: (self 
+			createTreeNodesWithObjectValues: anCollectionOfObjects).
+%
+
+category: 'assertions'
+method: GtRemotePhlowDeclarativeViewsExamples
+assertNodesInViewDatasource: viewSpecification ofType: aPhlowDataNodeClass equalNodes: anExpectedCollectionOfNodes 
+	| obtainedNodes |
+	
+	self 
+		assert: viewSpecification retrieveTotalItemsCount 
+		equals: anExpectedCollectionOfNodes size.
+	
+	obtainedNodes := viewSpecification retrieveFormattedItems 
+		collect: [ :aNodeValueDictionary |
+			aPhlowDataNodeClass 
+				fromJSONDictionary: aNodeValueDictionary ].
+	
+	self 
+		assertListingNodes: obtainedNodes 
+		equals: anExpectedCollectionOfNodes.
+	
+	^ obtainedNodes
+%
+
+category: 'assertions'
+method: GtRemotePhlowDeclarativeViewsExamples
+assertStyledJsonTextInViewSpecification: aViewSpecification
+	| stylableText |
+	
+	stylableText := (GtRemotePhlowStylableText 
+			fromJSONDictionary: aViewSpecification getText).
+	self 
+		assert: stylableText string withUnixLineEndings 
+		equals: self expectedJsonString withUnixLineEndings.
+	self assert: stylableText stylerSpecification canAffectText.
+	self 
+		assert: stylableText stylerSpecification parserClassName equals: #JSONParser.
+%
+
+category: 'assertions'
+method: GtRemotePhlowDeclarativeViewsExamples
+assertTextAttributedRunStyleSpecification: aStyleSpecification equalsRuns: aRunsCollection
+	self 
+		assert: aStyleSpecification numberOfRuns 
+		equals: aRunsCollection size.
+	
+	self 
+		assert: aStyleSpecification attributeRuns
+		equals: aRunsCollection
+%
+
+category: 'assertions'
+method: GtRemotePhlowDeclarativeViewsExamples
+assertTextualViewWithBasicStyledTextWithSelector: aViewSelector title: aTitle priority: aPriority expectedText: anExpectedText
+	| inspectorProxy viewDictionary viewSpecification dataSource |
+
+	inspectorProxy := self remoteInspectorProxy.
+	viewDictionary :=  inspectorProxy getViewDeclaration: aViewSelector.
+	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
+	self assert: viewSpecification title equals: aTitle.
+	self assert: viewSpecification priority equals: aPriority.
+	
+	dataSource := inspectorProxy getDeclarativeViewFor: aViewSelector.
+	self 
+		assertBasicStyledTextInViewSpecification: dataSource
+		expectedText: anExpectedText.
+	
+	^ viewSpecification
+%
+
+category: 'assertions'
+method: GtRemotePhlowDeclarativeViewsExamples
+assertUnstyledStringInViewSpecification: aViewSpecification equals: aString
+	| stylableText |
+	
+	stylableText := (GtRemotePhlowStylableText 
+		fromJSONDictionary: aViewSpecification getText).
+	self assert: stylableText string equals: aString.
+	self assert: stylableText stylerSpecification canAffectText not.
+%
+
+category: 'examples - views'
+method: GtRemotePhlowDeclarativeViewsExamples
+columnedListView
+	<gtExample>
+	| inspectorProxy viewDictionary viewSpecification viewDatasource |
+
+	inspectorProxy := self remoteInspectorProxy.
+	viewDictionary :=  inspectorProxy getViewDeclaration: #gtColumnedListFor:.
+	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
+	self assert: viewSpecification title equals: 'Columned list'.
+	self assert: viewSpecification columnTitles equals: #(Value Lowercase).
+	self assert: viewSpecification columnWidths equals: #(nil 100).
+	self 
+		assert: (viewSpecification columnTypes collect: #typeLabel) 
+		equals: #(text text).
+	
+	self assert: viewSpecification dataTransport equals: GtPhlowViewSpecification dataLazy.
+	
+	viewDatasource := inspectorProxy getDeclarativeViewFor: #gtColumnedListFor:.
+	self 
+		assertNodesInColumnedViewDatasource: viewDatasource 
+		forObjects: (GtRemotePhlowDeclarativeTestInspectable new 
+			collectionOfObjects) 
+		andColumnsComputation: {
+			[ :anObject | anObject  ].
+			[ :anObject | anObject gtDisplayString asLowercase ] }.
+	
+	^ viewSpecification
+%
+
+category: 'examples - views'
+method: GtRemotePhlowDeclarativeViewsExamples
+columnedListWithStyledText
+	<gtExample>
+	| inspectorProxy viewDictionary viewDataSource viewDatasource |
+
+	inspectorProxy := self remoteInspectorProxy.
+	viewDictionary :=  inspectorProxy getViewDeclaration: #gtColumnedListWithStyledTextFor:.
+	viewDataSource := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
+	self assert: viewDataSource title equals: 'Columned list - styled text'.
+	self assert: viewDataSource columnTitles equals: {'Plain' . 'Styled' . 'Number'}.
+	self assert: viewDataSource columnWidths equals: #(nil nil nil).
+	self 
+		assert: (viewDataSource columnTypes collect: #typeLabel) 
+		equals: #(text text number).
+	self assert: viewDataSource dataTransport equals: GtPhlowViewSpecification dataLazy.
+	
+	viewDatasource := inspectorProxy getDeclarativeViewFor: #gtColumnedListWithStyledTextFor:.
+	
+	self 
+		assertNodesInColumnedViewDatasource: viewDatasource 
+		forObjects: self objectsForListWithStyledTextComparison 
+		andColumnsComputation: {
+			[ :anObject | anObject asString ].
+			[ :anObject | anObject ].
+			[ :anObject :index | 
+				"(GtPhlowText forString: (index*100) asString) bold"
+				(index*100) asRopedText bold ] }.
+	
+	^ viewDataSource
+%
+
+category: 'examples - views'
+method: GtRemotePhlowDeclarativeViewsExamples
+columnedListWithTypedColumns
+	<gtExample>
+	<after: #stopServer>
+	| inspectorProxy viewDictionary viewSpecification viewDatasource |
+
+	inspectorProxy := self remoteInspectorProxy.
+	viewDictionary := inspectorProxy getViewDeclaration: #gtColumnedListWithTypedColumnsFor:.
+	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
+	viewSpecification initializeFromInspector: inspectorProxy.
+	
+	self assert: viewSpecification title equals: 'Columned list with typed columns'.
+	self assert: viewSpecification priority equals: 24.
+	
+	self 
+		assert: viewSpecification methodSelector 
+		equals: #gtColumnedListWithTypedColumnsFor:.
+	self 
+		assert: (viewSpecification columnSpecifications 
+			collect: [ :aColumnSpecification | aColumnSpecification typeLabel ])
+		equals: #('text' 'number' 'icon').
+	self 
+		assert: viewSpecification columnTitles 
+		equals: #('Text' 'Number' 'Icon Name').
+	self 
+		assert: viewSpecification columnWidths 
+		equals: #(nil 100 75).
+	
+	self assert: viewSpecification totalItemsCount equals: 500.
+	
+	self 
+		assert: (viewSpecification retrieveItems: 2 fromIndex: 1)
+		equals: (self 
+			forPharo11AndPharo12: [
+				self expectedColumnedListTypedColumnsTwoItemsPharo11]
+			forPharo10: [
+				self expectedColumnedListTypedColumnsTwoItems ]).
+				
+	viewDatasource := inspectorProxy getDeclarativeViewFor: #gtColumnedListWithTypedColumnsFor:.
+	self 
+		assertNodesInColumnedViewDatasource: viewDatasource 
+		forObjects: (1 to: 500)
+		andColumnsComputation: {
+			[ :aNumber | '+',aNumber asFloat asString ].
+			[ :aNumber | '+',(aNumber + 1) asString].
+			[ :aNumber | 
+				self formatExpectedIconName: aNumber asFloat gtSystemIconName ] }.
+	
+	^ viewSpecification
+%
+
+category: 'examples - views'
+method: GtRemotePhlowDeclarativeViewsExamples
+columnedTreeView
+	<gtExample>
+	| inspectorProxy viewDictionary viewSpecification viewDatasource obtainedNodes |
+
+	inspectorProxy := self remoteInspectorProxy.
+	viewDictionary :=  inspectorProxy getViewDeclaration: #gtColumnedTreeFor:.
+	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
+	self assert: viewSpecification title equals: 'Columned Tree'.
+	self assert: viewSpecification columnTitles equals: {'x' . 'x * x'}.
+	self assert: viewSpecification columnWidths equals: #(nil nil).
+	self 
+		assert: (viewSpecification columnTypes collect: #typeLabel) 
+		equals: #(text text).
+	self 
+		assert: viewSpecification dataTransport 
+		equals: GtPhlowViewSpecification dataLazy.
+	
+	viewDatasource := inspectorProxy getDeclarativeViewFor: #gtColumnedTreeFor:.
+	
+	obtainedNodes := self 
+		assertNodesInColumnedViewDatasource: viewDatasource 
+		forObjects: (1 to: 5 ) 
+		andColumnsComputation: {
+			[ :aNumber | aNumber ].
+			[ :aNumber | aNumber * aNumber ] }.
+			
+	self 
+		assertChildColumnedTreeNodesInViewDatasource: viewDatasource 
+		forParentNode:  obtainedNodes third
+		forObjects: (1 to: 2 ) 
+		andColumnsComputation: {
+			[ :aNumber | aNumber ].
+			[ :aNumber | aNumber * aNumber ] }.
+	
+	^ viewSpecification
+%
+
+category: 'private'
+method: GtRemotePhlowDeclarativeViewsExamples
+computeStyledTextForTreeNumber: anInteger
+	| computedString|
+	computedString := anInteger asString, ' number'.
+	(anInteger \\ 2) = 0 
+		ifTrue: [
+			computedString :=  computedString asRopedText
+				bold;
+				highlight: (GtPhlowColor named: #yellow) asColor ].
+	^ computedString
+%
+
+category: 'private'
+method: GtRemotePhlowDeclarativeViewsExamples
+convertIfNeededUsingDisplayTextObject: anObject 
+	"When doing local inspection Phlow text objects are not special.
+	They are just like any other normal objects and we convert them 
+	as any other object"
+	^ (self shouldConvertUsingDisplayTextObject: anObject)
+			ifTrue: [ anObject gtDisplayText ]
+			ifFalse: [ anObject ]
+%
+
+category: 'private'
+method: GtRemotePhlowDeclarativeViewsExamples
+createColumnedNodesWithObjectValues: aCollectionOfObjects andColumnsComputation: aCollectionOfBlockClosures
+	^ self createColumnedNodesWithRowValues:  (aCollectionOfObjects 
+		withIndexCollect: [ :anObject :aRowIndex | 
+			GtRemotePhlowRowValue new
+				columnValues: (aCollectionOfBlockClosures 
+					collect: [ :aColumnComputation |
+						| columnedText |
+						columnedText := self convertIfNeededUsingDisplayTextObject: (aColumnComputation 
+							cull: anObject cull: aRowIndex).
+						self createPhlowTextValueFromText: columnedText ]) ])
+%
+
+category: 'private'
+method: GtRemotePhlowDeclarativeViewsExamples
+createColumnedNodesWithRowValues: aCollectionOfRowValues
+	^ aCollectionOfRowValues withIndexCollect: [ :aRowValue :anIndex | 
+	 	GtRemotePhlowColumnedTreeNode new
+	 		nodeId: anIndex;
+	 		nodeValue: aRowValue ]
+%
+
+category: 'private'
+method: GtRemotePhlowDeclarativeViewsExamples
+createListNodesWithObjectValues: aCollectionOfObjects
+	^ self createListNodesWithTextValues: (aCollectionOfObjects 
+		collect: [ :anObject | 
+			self convertIfNeededUsingDisplayTextObject: anObject ])
+%
+
+category: 'private'
+method: GtRemotePhlowDeclarativeViewsExamples
+createListNodesWithTextValues: aCollectionOfValues
+	^ aCollectionOfValues withIndexCollect: [ :aText :anIndex | 
+	 	GtRemotePhlowDataNode new
+	 		nodeId: anIndex;
+	 		nodeValue: (self createPhlowTextValueFromText: aText) ]
+%
+
+category: 'private'
+method: GtRemotePhlowDeclarativeViewsExamples
+createPhlowTextValueFromText: aText
+	| convertedText |
+	convertedText := aText.
+	convertedText class name = #BlRunRopedText ifTrue: [
+		convertedText := convertedText asGtPlowText ]. 
+	
+	^ (GtRemotePhlowItemTextualValue new
+	 	itemText: convertedText)
+%
+
+category: 'private'
+method: GtRemotePhlowDeclarativeViewsExamples
+createTreeNodesWithObjectValues: aCollectionOfObjects
+	^ self createTreeNodesWithTextValues: (aCollectionOfObjects 
+		collect: [ :anObject | 
+			self convertIfNeededUsingDisplayTextObject: anObject ])
+%
+
+category: 'private'
+method: GtRemotePhlowDeclarativeViewsExamples
+createTreeNodesWithTextValues: aCollectionOfValues
+	^ aCollectionOfValues withIndexCollect: [ :aText :anIndex | 
+		| convertedText |
+		convertedText := aText.
+		convertedText class name = #BlRunRopedText ifTrue: [
+			convertedText := convertedText asGtPlowText ]. 
+		 GtRemotePhlowTreeNode new
+	 		nodeId: anIndex;
+	 		nodeValue: (GtRemotePhlowItemTextualValue new
+	 			itemText: convertedText)]
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeViewsExamples
+expectedBasicString
+	^ 'Now is the time'
+%
+
+category: 'accessing - expected'
+method: GtRemotePhlowDeclarativeViewsExamples
+expectedColumnedListTypedColumnsTwoItems
+	^ ((Array new: 2) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+1.0'); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+2'); yourself); at: 3 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->#classIcon); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+2.0'); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+3'); yourself); at: 3 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->#classIcon); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); yourself)
+%
+
+category: 'accessing - expected'
+method: GtRemotePhlowDeclarativeViewsExamples
+expectedColumnedListTypedColumnsTwoItemsPharo11
+	^ ((Array new: 2) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+1.0'); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+2'); yourself); at: 3 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->#class); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+2.0'); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+3'); yourself); at: 3 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->#class); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); yourself)
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeViewsExamples
+expectedJsonString
+	^ '{
+	"name":"Me", 
+	"age":30, 
+	"data":null
+}'
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeViewsExamples
+expectedNumberOfRunsForBasicStyledText
+	^ 9
+%
+
+category: 'accessing - expected'
+method: GtRemotePhlowDeclarativeViewsExamples
+expectedStyledPhlowTextWithDecorations
+	^ GtRemotePhlowDeclarativeTextTestInspectable new  
+		styledPhlowTextWithDecorations
+%
+
+category: 'accessing - expected'
+method: GtRemotePhlowDeclarativeViewsExamples
+expectedStyledText
+	^ GtRemotePhlowDeclarativeTestInspectable new  
+			styledText
+%
+
+category: 'utils'
+method: GtRemotePhlowDeclarativeViewsExamples
+formatExpectedIconName: anIconName
+	^ anIconName
+%
+
+category: 'private'
+method: GtRemotePhlowDeclarativeViewsExamples
+getRemoteObject
+
+	^ GtRemotePhlowDeclarativeTestInspectable new
+%
+
+category: 'examples - views'
+method: GtRemotePhlowDeclarativeViewsExamples
+listView
+	<gtExample>
+	<after: #stopServer>
+	| inspectorProxy viewDictionary viewSpecification viewDatasource |
+
+	inspectorProxy := self remoteInspectorProxy.
+	viewDictionary := inspectorProxy getViewDeclaration: #gtListFor:.
+	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
+	self assert: viewSpecification title equals: #List.
+	self assert: viewSpecification priority equals: 15.
+	
+	viewDatasource := inspectorProxy getDeclarativeViewFor: #gtListFor:.
+	self 
+		assertNodesInListViewDatasource: viewDatasource 
+		forObjects: (GtRemotePhlowDeclarativeTestInspectable new 
+			collectionOfObjects).
+	
+	^ viewSpecification
+%
+
+category: 'examples - views'
+method: GtRemotePhlowDeclarativeViewsExamples
+listViewWithStyledText
+	<gtExample>
+	<after: #stopServer>
+	| inspectorProxy viewDictionary viewSpecification viewDatasource |
+
+	inspectorProxy := self remoteInspectorProxy.
+	viewDictionary := inspectorProxy getViewDeclaration: #gtListWithStyledTextFor:.
+	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
+	self assert: viewSpecification title equals: 'List - styled text'.
+	self assert: viewSpecification priority equals: 15.1.
+	 
+	viewDatasource := inspectorProxy getDeclarativeViewFor: #gtListWithStyledTextFor:.
+	self 
+		assertNodesInListViewDatasource: viewDatasource 
+		forObjects: self objectsForListWithStyledTextComparison.
+	
+	^ viewSpecification
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeViewsExamples
+objectsForListWithStyledTextComparison
+	^ GtRemotePhlowDeclarativeTestInspectable new 
+			objectsForListWithStyledText
+%
+
+category: 'private'
+method: GtRemotePhlowDeclarativeViewsExamples
+printForString
+	"Answer the string returned in the #gtPrintFor: view.
+	Subclasses may overwrite this as appropriate."
+
+	^ 'a GtRemotePhlowDeclarativeTestInspectable'
+%
+
+category: 'examples - views'
+method: GtRemotePhlowDeclarativeViewsExamples
+printView
+	<gtExample>
+	<after: #stopServer>
+	| inspectorProxy viewDictionary viewSpecification viewDataSource |
+
+	inspectorProxy := self remoteInspectorProxy.
+	viewDictionary := inspectorProxy getViewDeclaration: #gtPrintFor:.
+	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
+	self assert: viewSpecification title equals: #Print.
+	self assert: viewSpecification string equals: nil "self printForString".
+	
+	viewDataSource := inspectorProxy getDeclarativeViewFor: #gtPrintFor: .
+	self 
+		assertUnstyledStringInViewSpecification: viewDataSource 
+		equals: self printForString.
+	
+	^ viewSpecification
+%
+
+category: 'private'
+method: GtRemotePhlowDeclarativeViewsExamples
+shouldConvertUsingDisplayTextObject: anObject 
+	"When doing local inspection Phlow text objects are not special.
+	They are just like any other normal objects and we convert them 
+	as any other object"
+	^ anObject isString not
+%
+
+category: 'examples - views'
+method: GtRemotePhlowDeclarativeViewsExamples
+textEditorViewWithExplicitStyler
+	<gtExample>
+	<after: #stopServer>
+	| inspectorProxy viewDictionary viewSpecification viewDataSource |
+
+	inspectorProxy := self remoteInspectorProxy.
+	viewDictionary :=  inspectorProxy getViewDeclaration: #gtStyledStringUsingStylerFor: .
+	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
+	self assert: viewSpecification title equals: 'Styled text (styler)'.
+	self assert: viewSpecification priority equals: 11.2.
+	self assert: viewSpecification string equals: nil.
+	
+	viewDataSource := inspectorProxy getDeclarativeViewFor: #gtStyledStringUsingStylerFor: .
+	self 
+		assertBasicStyledTextInViewSpecification: viewDataSource
+		expectedText: self expectedStyledText.
+	
+	^ viewSpecification
+%
+
+category: 'examples - views'
+method: GtRemotePhlowDeclarativeViewsExamples
+textEditorViewWithParserStylerClass
+	<gtExample>
+	<after: #stopServer>
+	| inspectorProxy viewDictionary viewSpecification viewDataSource |
+
+	inspectorProxy := self remoteInspectorProxy.
+	viewDictionary :=  inspectorProxy getViewDeclaration: #gtStyledStringJsonInEditorFor:.
+	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
+	self assert: viewSpecification title equals: 'Styled JSON'.
+	self assert: viewSpecification priority equals: 11.5.
+	self assert: viewSpecification string equals: nil.
+	
+	viewDataSource := inspectorProxy getDeclarativeViewFor: #gtStyledStringJsonInEditorFor:.
+	self assertStyledJsonTextInViewSpecification:  viewDataSource.
+	
+	^ viewSpecification
+%
+
+category: 'examples - views'
+method: GtRemotePhlowDeclarativeViewsExamples
+textEditorViewWithSimpleString
+	<gtExample>
+	<after: #stopServer>
+	| inspectorProxy viewDictionary viewSpecification viewDataSource |
+
+	inspectorProxy := self remoteInspectorProxy.
+	viewDictionary :=  inspectorProxy getViewDeclaration: #gtStringInTextEditorViewFor: .
+	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
+	self assert: viewSpecification title equals: 'String (editor)'.
+	self assert: viewSpecification priority equals: 11.
+	self assert: viewSpecification string equals: nil.
+	
+	viewDataSource := inspectorProxy getDeclarativeViewFor: #gtStringInTextEditorViewFor: .
+	self 
+		assertUnstyledStringInViewSpecification: viewDataSource 
+		equals: 'hello world'.
+	
+	^ viewSpecification
+%
+
+category: 'examples - views'
+method: GtRemotePhlowDeclarativeViewsExamples
+textEditorViewWithStyledPhlowText
+	<gtExample>
+	<after: #stopServer>
+	| view |
+
+	view := self 
+		assertTextualViewWithBasicStyledTextWithSelector: #gtStyledPhlowTextInEditorFor: 
+		title: 'Styled phlow text (editor)'
+		priority: 11.3
+		expectedText: GtRemotePhlowDeclarativeTestInspectable new  
+			styledPhlowText.
+	
+	self assert: view string equals: nil.
+	
+	^ view
+%
+
+category: 'examples - views'
+method: GtRemotePhlowDeclarativeViewsExamples
+textEditorViewWithStyledText
+	<gtExample>
+	<after: #stopServer>
+	| view |
+	
+	view := self 
+		assertTextualViewWithBasicStyledTextWithSelector: #gtStyledTextInEditorFor: 
+		title: 'Styled text (editor)' 
+		priority: 11.1
+		expectedText:  self expectedStyledText.
+		
+	self assert: view string equals: nil.
+	
+	^ view
+%
+
+category: 'examples - views'
+method: GtRemotePhlowDeclarativeViewsExamples
+textViewWithSimpleString
+	<gtExample>
+	<after: #stopServer>
+	| inspectorProxy viewDictionary viewSpecification viewDataSource |
+
+	inspectorProxy := self remoteInspectorProxy.
+	viewDictionary :=  inspectorProxy getViewDeclaration: #gtStringInTextViewFor:.
+	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
+	self assert: viewSpecification title equals: 'String (text)'.
+	self assert: viewSpecification priority equals: 10.
+	
+	viewDataSource := inspectorProxy getDeclarativeViewFor: #gtStringInTextViewFor: .
+	self 
+		assertUnstyledStringInViewSpecification: viewDataSource 
+		equals: 'hello world'.
+	
+	^ viewSpecification
+%
+
+category: 'examples - views'
+method: GtRemotePhlowDeclarativeViewsExamples
+textViewWithStyledPhlowText
+	<gtExample>
+	<after: #stopServer>
+	| view |
+	
+	view := self 
+		assertTextualViewWithBasicStyledTextWithSelector: #gtStyledPhlowTextFor: 
+		title: 'Styled phlow text'
+		priority: 10.3
+		expectedText: GtRemotePhlowDeclarativeTestInspectable new  
+			styledPhlowText.
+	
+	^ view
+%
+
+category: 'examples - views'
+method: GtRemotePhlowDeclarativeViewsExamples
+textViewWithStyledPhlowTextWithDecorations
+	<gtExample>
+	<after: #stopServer>
+	| view |
+	
+	view := self 
+		assertTextualViewWithBasicStyledTextWithSelector: #gtStyledPhlowTextWithDecorationsFor: 
+		title: 'Styled phlow text with decorations'
+		priority: 10.6
+		expectedText: self expectedStyledPhlowTextWithDecorations.
+	
+	^ view 
+%
+
+category: 'examples - views'
+method: GtRemotePhlowDeclarativeViewsExamples
+textViewWithStyledText
+	<gtExample>
+	<after: #stopServer>
+	
+	^ self 
+		assertTextualViewWithBasicStyledTextWithSelector: #gtStyledTextFor: 
+		title: 'Styled text'
+		priority: 10.1
+		expectedText:  self expectedStyledText.
+%
+
+category: 'examples - views'
+method: GtRemotePhlowDeclarativeViewsExamples
+treeView
+	<gtExample>
+	<after: #stopServer>
+	| inspectorProxy viewDictionary viewSpecification |
+
+	inspectorProxy := self remoteInspectorProxy.
+	viewDictionary := inspectorProxy getViewDeclaration: #gtTreeFor: .
+	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
+	self assert: viewSpecification title equals: 'Tree'.
+	self assert: viewSpecification priority equals: 30.
+	
+	self treeViewLazyCheck: inspectorProxy.
+	
+	^ viewSpecification
+%
+
+category: 'private'
+method: GtRemotePhlowDeclarativeViewsExamples
+treeViewLazyCheck: viewProxy
+	| viewDatasource obtainedNodes|
+
+	viewDatasource := viewProxy getDeclarativeViewFor: #gtTreeFor:.
+	self assert: viewDatasource retrieveTotalItemsCount equals: 5.
+	
+	obtainedNodes := self 
+		assertNodesInTreeViewDatasource: viewDatasource 
+		forObjects: ((1 to: 5) 
+			collect: [ :x | x asString, ' number' ]).
+			
+	self 
+		assertChildTreeNodesInViewDatasource: viewDatasource 
+		forParentNode:  obtainedNodes third
+		forObjects:  ((1 to: 2) 
+			collect: [ :x | x asString, ' number' ]).
+%
+
+category: 'examples - views'
+method: GtRemotePhlowDeclarativeViewsExamples
+treeViewWithStyledText
+	<gtExample>
+	<after: #stopServer>
+	| inspectorProxy viewDictionary viewSpecification |
+
+	inspectorProxy := self remoteInspectorProxy.
+	viewDictionary := inspectorProxy getViewDeclaration: #gtTreeWithStyledTextFor:.
+	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
+	
+	self assert: viewSpecification title equals: 'Tree - with styled text'.
+	self assert: viewSpecification priority equals: 30.1.
+	
+	self treeViewWithStyledTextLazyCheck: inspectorProxy.
+	
+	^ viewSpecification
+%
+
+category: 'private'
+method: GtRemotePhlowDeclarativeViewsExamples
+treeViewWithStyledTextLazyCheck: viewProxy
+	| viewDatasource obtainedNodes|
+
+	viewDatasource := viewProxy getDeclarativeViewFor: #gtTreeWithStyledTextFor:.
+	self assert: viewDatasource retrieveTotalItemsCount equals: 5.
+	
+	obtainedNodes := self 
+		assertNodesInTreeViewDatasource: viewDatasource 
+		forObjects: ((1 to: 5) 
+			collect: [ :aNumber | self computeStyledTextForTreeNumber: aNumber ]).
+			
+	self 
+		assertChildTreeNodesInViewDatasource: viewDatasource 
+		forParentNode:  obtainedNodes third
+		forObjects: ((1 to: 2) 
+			collect: [ :aNumber | self computeStyledTextForTreeNumber: aNumber  ]).
+%
+
+! Class implementation for 'GtRemotePhlowDeclarativeTestForCustomProxyInspectable'
+
+!		Instance methods for 'GtRemotePhlowDeclarativeTestForCustomProxyInspectable'
+
+category: 'inspection'
+method: GtRemotePhlowDeclarativeTestForCustomProxyInspectable
+gtButtonActionWithBothIconAndLabelFor: anAction
+	<gtAction>
+	
+	^ anAction button
+		tooltip: 'Inspect object';
+		priority: 12;
+		label: 'Remote';
+		icon: (GtPhlowGlamorousVectorIconNameStencil new 
+			iconName: #playinspect);
+		action: [ :aButton |
+			aButton phlow 
+				spawnObject: self ]
+%
+
+category: 'inspection'
+method: GtRemotePhlowDeclarativeTestForCustomProxyInspectable
+gtColumnedListFor: aView
+	<gtView>
+
+	^aView columnedList
+		title: 'Columned list';
+		priority: 20;
+		items: [ collectionOfObjects ];
+		column: 'Value' text: [ :anObject | anObject ];
+		column: 'Lowercase' text: [ :anObject | 
+			anObject gtDisplayString asLowercase ] width: 100.
+%
+
+category: 'inspection'
+method: GtRemotePhlowDeclarativeTestForCustomProxyInspectable
+gtListFor: aView
+	<gtView>
+
+	^aView list
+		title: 'List';
+		priority: 15;
+		items: [ collectionOfObjects ];
+		itemText: [ :item | item ]
+%
+
+category: 'initialization'
+method: GtRemotePhlowDeclarativeTestForCustomProxyInspectable
+initialize  
+
+	super initialize.
+
+	collectionOfObjects := { 
+		42. 
+		'Hello World'. 
+		DateAndTime readFrom: '2021-04-06T14:43:50.123456+02:00' readStream }.
+%
+
 ! Class implementation for 'GtRemotePhlowDeclarativeTestInspectable'
 
 !		Instance methods for 'GtRemotePhlowDeclarativeTestInspectable'
@@ -7364,7 +8603,7 @@ gtButtonActionWithBothIconAndLabelFor: anAction
 	
 	^ anAction button
 		tooltip: 'Inspect objects';
-		priority: 10;
+		priority: 12;
 		label: 'Inspect';
 		icon: (GtPhlowGlamorousVectorIconNameStencil new 
 			iconName: #playinspect);
@@ -7380,7 +8619,7 @@ gtButtonActionWithIconFor: anAction
 	
 	^ anAction button
 		tooltip: 'Inspect objects';
-		priority: 10;
+		priority: 11;
 		icon: (GtPhlowGlamorousVectorIconNameStencil new 
 			iconName: #playinspect);
 		action: [ :aButton |
@@ -7396,10 +8635,10 @@ gtButtonActionWithLabelFor: anAction
 	^ anAction button
 		tooltip: 'Inspect objects';
 		priority: 10;
-		label: 'Inspect';
+		label: 'Inspect 1';
 		action: [ :aButton |
 			aButton phlow 
-				spawnObject: collectionOfObjects ]
+				spawnObject: 1 ]
 %
 
 category: 'inspecting'
@@ -8746,919 +9985,6 @@ category: 'accessing'
 method: GtRemotePhlowDeclarativeViewColumnedTreeDataSource
 instantiateValueBuilder
 	^ GtRemotePhlowRowBuilder new
-%
-
-! Class implementation for 'GtRemotePhlowDeclarativeViewsExamples'
-
-!		Instance methods for 'GtRemotePhlowDeclarativeViewsExamples'
-
-category: 'assertions'
-method: GtRemotePhlowDeclarativeViewsExamples
-assertBasicStyledTextInViewSpecification: aViewSpecification expectedText: anExpectedText
-	| obtainedStylableText |
-	
-	obtainedStylableText := (GtRemotePhlowStylableText 
-			fromJSONDictionary: aViewSpecification getText).
-			
-
-	self assert: obtainedStylableText string equals: anExpectedText asString.
-	self assert: obtainedStylableText stylerSpecification canAffectText.
-	
-	self 
-		assertTextAttributedRunStyleSpecification: obtainedStylableText stylerSpecification
-		equalsRuns: ((self shouldConvertUsingDisplayTextObject: anExpectedText)
-			ifTrue: [ anExpectedText asRopedText extractRemotePhlowRuns ]
-			ifFalse: [ anExpectedText attributeRuns ]).
-%
-
-category: 'assertions'
-method: GtRemotePhlowDeclarativeViewsExamples
-assertChildColumnedTreeNodesInViewDatasource: viewDatasource forParentNode: aParentNode  forObjects: anExpectedCollectionOfObjects andColumnsComputation: aCollectionOfBlockClosures
-	^ self 
-		assertChildNodesInViewDatasource: viewDatasource 
-		forParentNode:  aParentNode
-		ofType: GtRemotePhlowColumnedTreeNode
-		equalNodes: (self 
-			createColumnedNodesWithObjectValues: anExpectedCollectionOfObjects
-			andColumnsComputation: aCollectionOfBlockClosures)
-%
-
-category: 'assertions'
-method: GtRemotePhlowDeclarativeViewsExamples
-assertChildNodesInViewDatasource: viewDatasource forParentNode: aParentNode ofType: aPhlowDataNodeClass equalNodes: anExpectedCollectionOfNodes 
-	| obtainedChildNodes |
-	obtainedChildNodes := (viewDatasource 
-		retrieveChildrenForNodeAtPath:  aParentNode  nodePath)
-			collect: [ :aNodeValueDictionary |
-				aPhlowDataNodeClass 
-					fromJSONDictionary: aNodeValueDictionary ].
-	self 
-		assertListingNodes: obtainedChildNodes 
-		equals: anExpectedCollectionOfNodes.
-%
-
-category: 'assertions'
-method: GtRemotePhlowDeclarativeViewsExamples
-assertChildTreeNodesInViewDatasource: viewDatasource forParentNode: aParentNode  forObjects: anExpectedCollectionOfObjects
-	^ self 
-		assertChildNodesInViewDatasource: viewDatasource 
-		forParentNode:  aParentNode
-		ofType: GtRemotePhlowTreeNode
-		equalNodes: (self 
-			createTreeNodesWithObjectValues: anExpectedCollectionOfObjects)
-%
-
-category: 'assertions'
-method: GtRemotePhlowDeclarativeViewsExamples
-assertListingNode: anObtainedObject equals: anExpectedNode 
-	self assert: anObtainedObject nodeId = anExpectedNode nodeId.
-	self assert: (anObtainedObject matchesNodeContentWith: anExpectedNode)
-%
-
-category: 'assertions'
-method: GtRemotePhlowDeclarativeViewsExamples
-assertListingNodes: obtainedNodes equals: expectedNodes
-	self assert:  obtainedNodes size equals: expectedNodes size.
-	
-	expectedNodes withIndexDo: [ :anExpectedNode :anIndex |
-		self 
-			assertListingNode: (obtainedNodes at: anIndex) 
-			equals: anExpectedNode ]
-%
-
-category: 'assertions'
-method: GtRemotePhlowDeclarativeViewsExamples
-assertNodesInColumnedViewDatasource: viewDatasource forObjects: aCollectionOfObjects andColumnsComputation: aCollectionOfBlockClosures
-	^ self 
-		assertNodesInViewDatasource: viewDatasource 
-		ofType: GtRemotePhlowColumnedTreeNode
-		equalNodes: (self 
-			createColumnedNodesWithObjectValues: aCollectionOfObjects
-			andColumnsComputation: aCollectionOfBlockClosures).
-%
-
-category: 'assertions'
-method: GtRemotePhlowDeclarativeViewsExamples
-assertNodesInListViewDatasource: viewDatasource forObjects: anCollectionOfObjects
-	^ self 
-		assertNodesInViewDatasource: viewDatasource 
-		ofType: GtRemotePhlowDataNode
-		equalNodes: (self 
-			createListNodesWithObjectValues: anCollectionOfObjects).
-%
-
-category: 'assertions'
-method: GtRemotePhlowDeclarativeViewsExamples
-assertNodesInTreeViewDatasource: viewDatasource forObjects: anCollectionOfObjects
-	^ self 
-		assertNodesInViewDatasource: viewDatasource 
-		ofType: GtRemotePhlowTreeNode
-		equalNodes: (self 
-			createTreeNodesWithObjectValues: anCollectionOfObjects).
-%
-
-category: 'assertions'
-method: GtRemotePhlowDeclarativeViewsExamples
-assertNodesInViewDatasource: viewSpecification ofType: aPhlowDataNodeClass equalNodes: anExpectedCollectionOfNodes 
-	| obtainedNodes |
-	
-	self 
-		assert: viewSpecification retrieveTotalItemsCount 
-		equals: anExpectedCollectionOfNodes size.
-	
-	obtainedNodes := viewSpecification retrieveFormattedItems 
-		collect: [ :aNodeValueDictionary |
-			aPhlowDataNodeClass 
-				fromJSONDictionary: aNodeValueDictionary ].
-	
-	self 
-		assertListingNodes: obtainedNodes 
-		equals: anExpectedCollectionOfNodes.
-	
-	^ obtainedNodes
-%
-
-category: 'assertions'
-method: GtRemotePhlowDeclarativeViewsExamples
-assertStyledJsonTextInViewSpecification: aViewSpecification
-	| stylableText |
-	
-	stylableText := (GtRemotePhlowStylableText 
-			fromJSONDictionary: aViewSpecification getText).
-	self 
-		assert: stylableText string withUnixLineEndings 
-		equals: self expectedJsonString withUnixLineEndings.
-	self assert: stylableText stylerSpecification canAffectText.
-	self 
-		assert: stylableText stylerSpecification parserClassName equals: #JSONParser.
-%
-
-category: 'assertions'
-method: GtRemotePhlowDeclarativeViewsExamples
-assertTextAttributedRunStyleSpecification: aStyleSpecification equalsRuns: aRunsCollection
-	self 
-		assert: aStyleSpecification numberOfRuns 
-		equals: aRunsCollection size.
-	
-	self 
-		assert: aStyleSpecification attributeRuns
-		equals: aRunsCollection
-%
-
-category: 'assertions'
-method: GtRemotePhlowDeclarativeViewsExamples
-assertTextualViewWithBasicStyledTextWithSelector: aViewSelector title: aTitle priority: aPriority expectedText: anExpectedText
-	| viewedObjectProxy viewDictionary viewSpecification dataSource |
-
-	viewedObjectProxy := self viewedObjectProxy.
-	viewDictionary :=  viewedObjectProxy getViewDeclaration: aViewSelector.
-	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
-	
-	self assert: viewSpecification title equals: aTitle.
-	self assert: viewSpecification priority equals: aPriority.
-	
-	dataSource := viewedObjectProxy getDeclarativeViewFor: aViewSelector.
-	self 
-		assertBasicStyledTextInViewSpecification: dataSource
-		expectedText: anExpectedText.
-	
-	^ viewSpecification
-%
-
-category: 'assertions'
-method: GtRemotePhlowDeclarativeViewsExamples
-assertUnstyledStringInViewSpecification: aViewSpecification equals: aString
-	| stylableText |
-	
-	stylableText := (GtRemotePhlowStylableText 
-		fromJSONDictionary: aViewSpecification getText).
-	self assert: stylableText string equals: aString.
-	self assert: stylableText stylerSpecification canAffectText not.
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-columnedListView
-	<gtExample>
-	| viewProxy viewDictionary viewSpecification viewDatasource |
-
-	viewProxy := self viewedObjectProxy.
-	viewDictionary :=  viewProxy getViewDeclaration: #gtColumnedListFor:.
-	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
-	
-	self assert: viewSpecification title equals: 'Columned list'.
-	self assert: viewSpecification columnTitles equals: #(Value Lowercase).
-	self assert: viewSpecification columnWidths equals: #(nil 100).
-	self 
-		assert: (viewSpecification columnTypes collect: #typeLabel) 
-		equals: #(text text).
-	
-	self assert: viewSpecification dataTransport equals: GtPhlowViewSpecification dataLazy.
-	
-	viewDatasource := viewProxy getDeclarativeViewFor: #gtColumnedListFor:.
-	self 
-		assertNodesInColumnedViewDatasource: viewDatasource 
-		forObjects: (GtRemotePhlowDeclarativeTestInspectable new 
-			collectionOfObjects) 
-		andColumnsComputation: {
-			[ :anObject | anObject  ].
-			[ :anObject | anObject gtDisplayString asLowercase ] }.
-	
-	^ viewSpecification
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-columnedListWithStyledText
-	<gtExample>
-	| viewedObjectProxy viewDictionary viewDataSource viewDatasource |
-
-	viewedObjectProxy := self viewedObjectProxy.
-	viewDictionary :=  viewedObjectProxy getViewDeclaration: #gtColumnedListWithStyledTextFor:.
-	viewDataSource := GtPhlowViewSpecification fromDictionary: viewDictionary.
-	
-	self assert: viewDataSource title equals: 'Columned list - styled text'.
-	self assert: viewDataSource columnTitles equals: {'Plain' . 'Styled' . 'Number'}.
-	self assert: viewDataSource columnWidths equals: #(nil nil nil).
-	self 
-		assert: (viewDataSource columnTypes collect: #typeLabel) 
-		equals: #(text text number).
-	self assert: viewDataSource dataTransport equals: GtPhlowViewSpecification dataLazy.
-	
-	viewDatasource := viewedObjectProxy getDeclarativeViewFor: #gtColumnedListWithStyledTextFor:.
-	
-	self 
-		assertNodesInColumnedViewDatasource: viewDatasource 
-		forObjects: self objectsForListWithStyledTextComparison 
-		andColumnsComputation: {
-			[ :anObject | anObject asString ].
-			[ :anObject | anObject ].
-			[ :anObject :index | 
-				"(GtPhlowText forString: (index*100) asString) bold"
-				(index*100) asRopedText bold ] }.
-	
-	^ viewDataSource
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-columnedListWithTypedColumns
-	<gtExample>
-	<after: #stopServer>
-	| viewProxy viewDictionary viewSpecification viewDatasource |
-
-	viewProxy := self viewedObjectProxy.
-	viewDictionary := viewProxy getViewDeclaration: #gtColumnedListWithTypedColumnsFor:.
-	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
-	
-	viewSpecification initializeFromInspector: viewProxy.
-	
-	self assert: viewSpecification title equals: 'Columned list with typed columns'.
-	self assert: viewSpecification priority equals: 24.
-	
-	self 
-		assert: viewSpecification methodSelector 
-		equals: #gtColumnedListWithTypedColumnsFor:.
-	self 
-		assert: (viewSpecification columnSpecifications 
-			collect: [ :aColumnSpecification | aColumnSpecification typeLabel ])
-		equals: #('text' 'number' 'icon').
-	self 
-		assert: viewSpecification columnTitles 
-		equals: #('Text' 'Number' 'Icon Name').
-	self 
-		assert: viewSpecification columnWidths 
-		equals: #(nil 100 75).
-	
-	self assert: viewSpecification totalItemsCount equals: 500.
-	
-	self 
-		assert: (viewSpecification retrieveItems: 2 fromIndex: 1)
-		equals: (self 
-			forPharo11AndPharo12: [
-				self expectedColumnedListTypedColumnsTwoItemsPharo11]
-			forPharo10: [
-				self expectedColumnedListTypedColumnsTwoItems ]).
-				
-	viewDatasource := viewProxy getDeclarativeViewFor: #gtColumnedListWithTypedColumnsFor:.
-	self 
-		assertNodesInColumnedViewDatasource: viewDatasource 
-		forObjects: (1 to: 500)
-		andColumnsComputation: {
-			[ :aNumber | '+',aNumber asFloat asString ].
-			[ :aNumber | '+',(aNumber + 1) asString].
-			[ :aNumber | 
-				self formatExpectedIconName: aNumber asFloat gtSystemIconName ] }.
-	
-	^ viewSpecification
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-columnedTreeView
-	<gtExample>
-	| viewedObjectProxy viewDictionary viewSpecification viewDatasource obtainedNodes |
-
-	viewedObjectProxy := self viewedObjectProxy.
-	viewDictionary :=  viewedObjectProxy getViewDeclaration: #gtColumnedTreeFor:.
-	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
-	
-	self assert: viewSpecification title equals: 'Columned Tree'.
-	self assert: viewSpecification columnTitles equals: {'x' . 'x * x'}.
-	self assert: viewSpecification columnWidths equals: #(nil nil).
-	self 
-		assert: (viewSpecification columnTypes collect: #typeLabel) 
-		equals: #(text text).
-	self 
-		assert: viewSpecification dataTransport 
-		equals: GtPhlowViewSpecification dataLazy.
-	
-	viewDatasource := viewedObjectProxy getDeclarativeViewFor: #gtColumnedTreeFor:.
-	
-	obtainedNodes := self 
-		assertNodesInColumnedViewDatasource: viewDatasource 
-		forObjects: (1 to: 5 ) 
-		andColumnsComputation: {
-			[ :aNumber | aNumber ].
-			[ :aNumber | aNumber * aNumber ] }.
-			
-	self 
-		assertChildColumnedTreeNodesInViewDatasource: viewDatasource 
-		forParentNode:  obtainedNodes third
-		forObjects: (1 to: 2 ) 
-		andColumnsComputation: {
-			[ :aNumber | aNumber ].
-			[ :aNumber | aNumber * aNumber ] }.
-	
-	^ viewSpecification
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeViewsExamples
-computeStyledTextForTreeNumber: anInteger
-	| computedString|
-	computedString := anInteger asString, ' number'.
-	(anInteger \\ 2) = 0 
-		ifTrue: [
-			computedString :=  computedString asRopedText
-				bold;
-				highlight: (GtPhlowColor named: #yellow) asColor ].
-	^ computedString
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeViewsExamples
-convertIfNeededUsingDisplayTextObject: anObject 
-	"When doing local inspection Phlow text objects are not special.
-	They are just like any other normal objects and we convert them 
-	as any other object"
-	^ (self shouldConvertUsingDisplayTextObject: anObject)
-			ifTrue: [ anObject gtDisplayText ]
-			ifFalse: [ anObject ]
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeViewsExamples
-createColumnedNodesWithObjectValues: aCollectionOfObjects andColumnsComputation: aCollectionOfBlockClosures
-	^ self createColumnedNodesWithRowValues:  (aCollectionOfObjects 
-		withIndexCollect: [ :anObject :aRowIndex | 
-			GtRemotePhlowRowValue new
-				columnValues: (aCollectionOfBlockClosures 
-					collect: [ :aColumnComputation |
-						| columnedText |
-						columnedText := self convertIfNeededUsingDisplayTextObject: (aColumnComputation 
-							cull: anObject cull: aRowIndex).
-						self createPhlowTextValueFromText: columnedText ]) ])
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeViewsExamples
-createColumnedNodesWithRowValues: aCollectionOfRowValues
-	^ aCollectionOfRowValues withIndexCollect: [ :aRowValue :anIndex | 
-	 	GtRemotePhlowColumnedTreeNode new
-	 		nodeId: anIndex;
-	 		nodeValue: aRowValue ]
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeViewsExamples
-createListNodesWithObjectValues: aCollectionOfObjects
-	^ self createListNodesWithTextValues: (aCollectionOfObjects 
-		collect: [ :anObject | 
-			self convertIfNeededUsingDisplayTextObject: anObject ])
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeViewsExamples
-createListNodesWithTextValues: aCollectionOfValues
-	^ aCollectionOfValues withIndexCollect: [ :aText :anIndex | 
-	 	GtRemotePhlowDataNode new
-	 		nodeId: anIndex;
-	 		nodeValue: (self createPhlowTextValueFromText: aText) ]
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeViewsExamples
-createPhlowTextValueFromText: aText
-	| convertedText |
-	convertedText := aText.
-	convertedText class name = #BlRunRopedText ifTrue: [
-		convertedText := convertedText asGtPlowText ]. 
-	
-	^ (GtRemotePhlowItemTextualValue new
-	 	itemText: convertedText)
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeViewsExamples
-createTreeNodesWithObjectValues: aCollectionOfObjects
-	^ self createTreeNodesWithTextValues: (aCollectionOfObjects 
-		collect: [ :anObject | 
-			self convertIfNeededUsingDisplayTextObject: anObject ])
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeViewsExamples
-createTreeNodesWithTextValues: aCollectionOfValues
-	^ aCollectionOfValues withIndexCollect: [ :aText :anIndex | 
-		| convertedText |
-		convertedText := aText.
-		convertedText class name = #BlRunRopedText ifTrue: [
-			convertedText := convertedText asGtPlowText ]. 
-		 GtRemotePhlowTreeNode new
-	 		nodeId: anIndex;
-	 		nodeValue: (GtRemotePhlowItemTextualValue new
-	 			itemText: convertedText)]
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeViewsExamples
-expectedBasicString
-	^ 'Now is the time'
-%
-
-category: 'accessing - expected'
-method: GtRemotePhlowDeclarativeViewsExamples
-expectedColumnedListTypedColumnsTwoItems
-	^ ((Array new: 2) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+1.0'); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+2'); yourself); at: 3 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->#classIcon); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+2.0'); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+3'); yourself); at: 3 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->#classIcon); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); yourself)
-%
-
-category: 'accessing - expected'
-method: GtRemotePhlowDeclarativeViewsExamples
-expectedColumnedListTypedColumnsTwoItemsPharo11
-	^ ((Array new: 2) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+1.0'); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+2'); yourself); at: 3 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->#class); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+2.0'); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+3'); yourself); at: 3 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->#class); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); yourself)
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeViewsExamples
-expectedJsonString
-	^ '{
-	"name":"Me", 
-	"age":30, 
-	"data":null
-}'
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeViewsExamples
-expectedNumberOfRunsForBasicStyledText
-	^ 9
-%
-
-category: 'accessing - expected'
-method: GtRemotePhlowDeclarativeViewsExamples
-expectedStyledPhlowTextWithDecorations
-	^ GtRemotePhlowDeclarativeTextTestInspectable new  
-		styledPhlowTextWithDecorations
-%
-
-category: 'accessing - expected'
-method: GtRemotePhlowDeclarativeViewsExamples
-expectedStyledText
-	^ GtRemotePhlowDeclarativeTestInspectable new  
-			styledText
-%
-
-category: 'utils'
-method: GtRemotePhlowDeclarativeViewsExamples
-formatExpectedIconName: anIconName
-	^ anIconName
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeViewsExamples
-getRemoteObject
-
-	^ GtRemotePhlowDeclarativeTestInspectable new
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeViewsExamples
-getViewedObjectProxy
-	"Answer the GtRemotePhlowViewedObject proxy for the remote object"
-
-	^ GtRemotePhlowViewedObject object: self remoteObject.
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-listView
-	<gtExample>
-	<after: #stopServer>
-	| viewedObjectProxy viewDictionary viewSpecification viewDatasource |
-
-	viewedObjectProxy := self viewedObjectProxy.
-	viewDictionary := viewedObjectProxy getViewDeclaration: #gtListFor:.
-	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
-	
-	self assert: viewSpecification title equals: #List.
-	self assert: viewSpecification priority equals: 15.
-	
-	viewDatasource := viewedObjectProxy getDeclarativeViewFor: #gtListFor:.
-	self 
-		assertNodesInListViewDatasource: viewDatasource 
-		forObjects: (GtRemotePhlowDeclarativeTestInspectable new 
-			collectionOfObjects).
-	
-	^ viewSpecification
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-listViewWithStyledText
-	<gtExample>
-	<after: #stopServer>
-	| viewedObjectProxy viewDictionary viewSpecification viewDatasource |
-
-	viewedObjectProxy := self viewedObjectProxy.
-	viewDictionary := viewedObjectProxy getViewDeclaration: #gtListWithStyledTextFor:.
-	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
-	
-	self assert: viewSpecification title equals: 'List - styled text'.
-	self assert: viewSpecification priority equals: 15.1.
-	 
-	viewDatasource := viewedObjectProxy getDeclarativeViewFor: #gtListWithStyledTextFor:.
-	self 
-		assertNodesInListViewDatasource: viewDatasource 
-		forObjects: self objectsForListWithStyledTextComparison.
-	
-	^ viewSpecification
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeViewsExamples
-objectsForListWithStyledTextComparison
-	^ GtRemotePhlowDeclarativeTestInspectable new 
-			objectsForListWithStyledText
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeViewsExamples
-printForString
-	"Answer the string returned in the #gtPrintFor: view.
-	Subclasses may overwrite this as appropriate."
-
-	^ 'a GtRemotePhlowDeclarativeTestInspectable'
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-printView
-	<gtExample>
-	<after: #stopServer>
-	| viewedObjectProxy viewDictionary viewSpecification viewDataSource |
-
-	viewedObjectProxy := self viewedObjectProxy.
-	viewDictionary :=  viewedObjectProxy getViewDeclaration: #gtPrintFor:.
-	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
-	
-	self assert: viewSpecification title equals: #Print.
-	self assert: viewSpecification string equals: nil "self printForString".
-	
-	viewDataSource := viewedObjectProxy getDeclarativeViewFor: #gtPrintFor: .
-	self 
-		assertUnstyledStringInViewSpecification: viewDataSource 
-		equals: self printForString.
-	
-	^ viewSpecification
-%
-
-category: 'examples'
-method: GtRemotePhlowDeclarativeViewsExamples
-remoteObject
-	"Answer the remote GtDeclarativeTestInspectable instance.
-	This will be a proxy with a remote server."
-	<gtExample>
-	<after: #stopServer>
-	| remoteObject collection |
-
-	remoteObject :=  self getRemoteObject.
-
-	self assert: remoteObject string equals: 'hello world'.
-
-	collection :=  remoteObject collectionOfObjects.
-	"Check the size and immediate value objects, but assume that proxies are working correctly"
-	self assert: collection size equals: 3.
-	self assert: collection first equals: 42.
-	self assert: collection second equals: 'Hello World'.
-
-	^ remoteObject
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeViewsExamples
-runningServer
-	"Answer a running server.
-	No server is required running the examples in a single image.
-	Subclasses should overwrite this to start the server"
-	<gtExample>
-	<after: #stopServer>
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeViewsExamples
-shouldConvertUsingDisplayTextObject: anObject 
-	"When doing local inspection Phlow text objects are not special.
-	They are just like any other normal objects and we convert them 
-	as any other object"
-	^ anObject isString not
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeViewsExamples
-stopServer 
-
-	server ifNotNil: 
-		[ server stop.
-		server := nil ]
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-textEditorViewWithExplicitStyler
-	<gtExample>
-	<after: #stopServer>
-	| viewedObjectProxy viewDictionary viewSpecification viewDataSource |
-
-	viewedObjectProxy := self viewedObjectProxy.
-	viewDictionary :=  viewedObjectProxy getViewDeclaration: #gtStyledStringUsingStylerFor: .
-	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
-	
-	self assert: viewSpecification title equals: 'Styled text (styler)'.
-	self assert: viewSpecification priority equals: 11.2.
-	self assert: viewSpecification string equals: nil.
-	
-	viewDataSource := viewedObjectProxy getDeclarativeViewFor: #gtStyledStringUsingStylerFor: .
-	self 
-		assertBasicStyledTextInViewSpecification: viewDataSource
-		expectedText: self expectedStyledText.
-	
-	^ viewSpecification
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-textEditorViewWithParserStylerClass
-	<gtExample>
-	<after: #stopServer>
-	| viewedObjectProxy viewDictionary viewSpecification viewDataSource |
-
-	viewedObjectProxy := self viewedObjectProxy.
-	viewDictionary :=  viewedObjectProxy getViewDeclaration: #gtStyledStringJsonInEditorFor:.
-	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
-	
-	self assert: viewSpecification title equals: 'Styled JSON'.
-	self assert: viewSpecification priority equals: 11.5.
-	self assert: viewSpecification string equals: nil.
-	
-	viewDataSource := viewedObjectProxy getDeclarativeViewFor: #gtStyledStringJsonInEditorFor:.
-	self assertStyledJsonTextInViewSpecification:  viewDataSource.
-	
-	^ viewSpecification
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-textEditorViewWithSimpleString
-	<gtExample>
-	<after: #stopServer>
-	| viewedObjectProxy viewDictionary viewSpecification viewDataSource |
-
-	viewedObjectProxy := self viewedObjectProxy.
-	viewDictionary :=  viewedObjectProxy getViewDeclaration: #gtStringInTextEditorViewFor: .
-	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
-	
-	self assert: viewSpecification title equals: 'String (editor)'.
-	self assert: viewSpecification priority equals: 11.
-	self assert: viewSpecification string equals: nil.
-	
-	viewDataSource := viewedObjectProxy getDeclarativeViewFor: #gtStringInTextEditorViewFor: .
-	self 
-		assertUnstyledStringInViewSpecification: viewDataSource 
-		equals: 'hello world'.
-	
-	^ viewSpecification
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-textEditorViewWithStyledPhlowText
-	<gtExample>
-	<after: #stopServer>
-	| view |
-
-	view := self 
-		assertTextualViewWithBasicStyledTextWithSelector: #gtStyledPhlowTextInEditorFor: 
-		title: 'Styled phlow text (editor)'
-		priority: 11.3
-		expectedText: GtRemotePhlowDeclarativeTestInspectable new  
-			styledPhlowText.
-	
-	self assert: view string equals: nil.
-	
-	^ view
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-textEditorViewWithStyledText
-	<gtExample>
-	<after: #stopServer>
-	| view |
-	
-	view := self 
-		assertTextualViewWithBasicStyledTextWithSelector: #gtStyledTextInEditorFor: 
-		title: 'Styled text (editor)' 
-		priority: 11.1
-		expectedText:  self expectedStyledText.
-		
-	self assert: view string equals: nil.
-	
-	^ view
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-textViewWithSimpleString
-	<gtExample>
-	<after: #stopServer>
-	| viewedObjectProxy viewDictionary viewSpecification viewDataSource |
-
-	viewedObjectProxy := self viewedObjectProxy.
-	viewDictionary :=  viewedObjectProxy getViewDeclaration: #gtStringInTextViewFor:.
-	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
-	
-	self assert: viewSpecification title equals: 'String (text)'.
-	self assert: viewSpecification priority equals: 10.
-	
-	viewDataSource := viewedObjectProxy getDeclarativeViewFor: #gtStringInTextViewFor: .
-	self 
-		assertUnstyledStringInViewSpecification: viewDataSource 
-		equals: 'hello world'.
-	
-	^ viewSpecification
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-textViewWithStyledPhlowText
-	<gtExample>
-	<after: #stopServer>
-	| view |
-	
-	view := self 
-		assertTextualViewWithBasicStyledTextWithSelector: #gtStyledPhlowTextFor: 
-		title: 'Styled phlow text'
-		priority: 10.3
-		expectedText: GtRemotePhlowDeclarativeTestInspectable new  
-			styledPhlowText.
-	
-	^ view
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-textViewWithStyledPhlowTextWithDecorations
-	<gtExample>
-	<after: #stopServer>
-	| view |
-	
-	view := self 
-		assertTextualViewWithBasicStyledTextWithSelector: #gtStyledPhlowTextWithDecorationsFor: 
-		title: 'Styled phlow text with decorations'
-		priority: 10.6
-		expectedText: self expectedStyledPhlowTextWithDecorations.
-	
-	^ view 
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-textViewWithStyledText
-	<gtExample>
-	<after: #stopServer>
-	
-	^ self 
-		assertTextualViewWithBasicStyledTextWithSelector: #gtStyledTextFor: 
-		title: 'Styled text'
-		priority: 10.1
-		expectedText:  self expectedStyledText.
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-treeView
-	<gtExample>
-	<after: #stopServer>
-	| viewedObjectProxy viewDictionary viewSpecification |
-
-	viewedObjectProxy := self viewedObjectProxy.
-	viewDictionary := viewedObjectProxy getViewDeclaration: #gtTreeFor: .
-	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
-	
-	self assert: viewSpecification title equals: 'Tree'.
-	self assert: viewSpecification priority equals: 30.
-	
-	self treeViewLazyCheck: viewedObjectProxy.
-	
-	^ viewSpecification
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeViewsExamples
-treeViewLazyCheck: viewProxy
-	| viewDatasource obtainedNodes|
-
-	viewDatasource := viewProxy getDeclarativeViewFor: #gtTreeFor:.
-	self assert: viewDatasource retrieveTotalItemsCount equals: 5.
-	
-	obtainedNodes := self 
-		assertNodesInTreeViewDatasource: viewDatasource 
-		forObjects: ((1 to: 5) 
-			collect: [ :x | x asString, ' number' ]).
-			
-	self 
-		assertChildTreeNodesInViewDatasource: viewDatasource 
-		forParentNode:  obtainedNodes third
-		forObjects:  ((1 to: 2) 
-			collect: [ :x | x asString, ' number' ]).
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-treeViewWithStyledText
-	<gtExample>
-	<after: #stopServer>
-	| viewedObjectProxy viewDictionary viewSpecification |
-
-	viewedObjectProxy := self viewedObjectProxy.
-	viewDictionary := viewedObjectProxy getViewDeclaration: #gtTreeWithStyledTextFor:.
-	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
-	
-	self assert: viewSpecification title equals: 'Tree - with styled text'.
-	self assert: viewSpecification priority equals: 30.1.
-	
-	self treeViewWithStyledTextLazyCheck: viewedObjectProxy.
-	
-	^ viewSpecification
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeViewsExamples
-treeViewWithStyledTextLazyCheck: viewProxy
-	| viewDatasource obtainedNodes|
-
-	viewDatasource := viewProxy getDeclarativeViewFor: #gtTreeWithStyledTextFor:.
-	self assert: viewDatasource retrieveTotalItemsCount equals: 5.
-	
-	obtainedNodes := self 
-		assertNodesInTreeViewDatasource: viewDatasource 
-		forObjects: ((1 to: 5) 
-			collect: [ :aNumber | self computeStyledTextForTreeNumber: aNumber ]).
-			
-	self 
-		assertChildTreeNodesInViewDatasource: viewDatasource 
-		forParentNode:  obtainedNodes third
-		forObjects: ((1 to: 2) 
-			collect: [ :aNumber | self computeStyledTextForTreeNumber: aNumber  ]).
-%
-
-category: 'examples'
-method: GtRemotePhlowDeclarativeViewsExamples
-viewedObjectProxy
-	"Answer the GtRemotePhlowViewedObject proxy for the remote object"
-	<gtExample>
-	<after: #stopServer>
-	| viewedObject declarativeViews |
-
-	viewedObject :=  self getViewedObjectProxy.
-
-	"The set of views can vary depending on configuration,
-	just check that a common view is present."
-	declarativeViews :=  viewedObject getDeclarativeViewMethodNames.
-	self assert: (declarativeViews includes: #gtListFor:).
-
-	^ viewedObject
 %
 
 ! Class implementation for 'GtRemotePhlowDummyTextStyler'
@@ -11095,6 +11421,455 @@ targetObject: anObject
 	targetObject := anObject
 %
 
+! Class implementation for 'GtRemotePhlowActionSpecificationConversionExamples'
+
+!		Instance methods for 'GtRemotePhlowActionSpecificationConversionExamples'
+
+category: 'examples'
+method: GtRemotePhlowActionSpecificationConversionExamples
+convertButtonActionWithIcon
+	"Demonstrate converting a button action to a declarative specification"
+	<gtExample>
+	| phlowAction declarativeSpecification |
+
+	phlowAction := self createProtoActions button
+		tooltip: 'Inspect objects';
+		priority: 12;
+		icon: (GtPhlowGlamorousVectorIconNameStencil new 
+			iconName: #playinspect).
+			
+	declarativeSpecification := phlowAction asGtDeclarativeAction.
+
+	self assert: declarativeSpecification tooltipText equals: 'Inspect objects'.
+	self assert: declarativeSpecification label equals: nil.
+	self 
+		assert: declarativeSpecification iconStencil 
+		equals: (GtPhlowGlamorousVectorIconNameStencil 
+			forIconName: #playinspect).
+	self assert: declarativeSpecification priority equals: 12.
+	
+	self 
+		assert: declarativeSpecification asDictionaryForExport 
+		equals: self expectedButtonActionWithIconSpecification.
+
+	^ declarativeSpecification.
+%
+
+category: 'examples'
+method: GtRemotePhlowActionSpecificationConversionExamples
+convertButtonActionWithIconAndLabel
+	"Demonstrate converting a button action to a declarative specification"
+	<gtExample>
+	| phlowAction declarativeSpecification |
+
+	phlowAction := self createProtoActions button
+		tooltip: 'Inspect objects';
+		priority: 12;
+		label: 'Inspect';
+		icon: (GtPhlowGlamorousVectorIconNameStencil new 
+			iconName: #playinspect).
+			
+	declarativeSpecification := phlowAction asGtDeclarativeAction.
+
+	self assert: declarativeSpecification tooltipText equals: 'Inspect objects'.
+	self assert: declarativeSpecification label equals: 'Inspect'.
+	self 
+		assert: declarativeSpecification iconStencil 
+		equals: (GtPhlowGlamorousVectorIconNameStencil 
+			forIconName: #playinspect).
+	self assert: declarativeSpecification priority equals: 12.
+	
+	self 
+		assert: declarativeSpecification asDictionaryForExport 
+		equals: self expectedButtonActionWithIconAndLabelSpecification.
+
+	^ declarativeSpecification.
+%
+
+category: 'examples'
+method: GtRemotePhlowActionSpecificationConversionExamples
+convertButtonActionWithLabelAndNoTooltip
+	"Demonstrate converting a button action to a declarative specification"
+	<gtExample>
+	| phlowAction declarativeSpecification |
+
+	phlowAction := self createProtoActions button
+		label: 'Inspect';
+		priority: 12.
+			
+	declarativeSpecification := phlowAction asGtDeclarativeAction.
+
+	self assert: declarativeSpecification tooltipText equals: nil.
+	self assert: declarativeSpecification label equals: 'Inspect'.
+	self 
+		assert: declarativeSpecification iconStencil 
+		equals: nil.
+	self assert: declarativeSpecification priority equals: 12.
+	
+	self 
+		assert: declarativeSpecification asDictionaryForExport 
+		equals: self expectedButtonActionWithLabelAndNoTooltipSpecification.
+
+	^ declarativeSpecification.
+%
+
+category: 'accessing'
+method: GtRemotePhlowActionSpecificationConversionExamples
+createProtoActions
+	^ GtRemotePhlowAction new
+%
+
+category: 'data'
+method: GtRemotePhlowActionSpecificationConversionExamples
+expectedButtonActionWithIconAndLabelSpecification
+	^ Dictionary new
+		add: '__typeName' -> #GtPhlowButtonActionSpecification;
+		add: '__typeLabel' -> 'phlowButtonActionSpecification';
+		add: 'iconStencil'
+				-> (Dictionary new
+						add: '__typeName' -> #GtPhlowGlamorousVectorIconNameStencil;
+						add: '__typeLabel' -> 'phlowGlamorousVectorIconNameStencil';
+						add: 'iconName' -> #playinspect;
+						yourself);
+		add: 'priority' -> 12;
+		add: 'tooltipText' -> 'Inspect objects';
+		add: 'methodSelector' -> nil;
+		add: 'label' -> 'Inspect';
+		yourself
+%
+
+category: 'data'
+method: GtRemotePhlowActionSpecificationConversionExamples
+expectedButtonActionWithIconSpecification
+	^ Dictionary new
+		add: '__typeName' -> #GtPhlowButtonActionSpecification;
+		add: '__typeLabel' -> 'phlowButtonActionSpecification';
+		add: 'iconStencil'
+				-> (Dictionary new
+						add: 'iconName' -> #playinspect;
+						add: '__typeName' -> #GtPhlowGlamorousVectorIconNameStencil;
+						add: '__typeLabel' -> 'phlowGlamorousVectorIconNameStencil';
+						yourself);
+		add: 'priority' -> 12;
+		add: 'tooltipText' -> 'Inspect objects';
+		add: 'methodSelector' -> nil;
+		yourself
+%
+
+category: 'data'
+method: GtRemotePhlowActionSpecificationConversionExamples
+expectedButtonActionWithLabelAndNoTooltipSpecification
+	^ Dictionary new
+		add: '__typeName' -> #GtPhlowButtonActionSpecification;
+		add: '__typeLabel' -> 'phlowButtonActionSpecification';
+		add: 'priority' -> 12;
+		add: 'methodSelector' -> nil;
+		add: 'label' -> 'Inspect';
+		yourself
+%
+
+! Class implementation for 'GtRemotePhlowViewSpecificationConversionExamples'
+
+!		Instance methods for 'GtRemotePhlowViewSpecificationConversionExamples'
+
+category: 'examples'
+method: GtRemotePhlowViewSpecificationConversionExamples
+convertColumnedList
+	"Demonstrate converting a columned list phlow view to a declarative specification"
+
+	<gtExample>
+	| phlowView declarativeSpecification |
+	phlowView := self createProtoViews columnedList
+			title: #Test;
+			priority: 10;
+			items: [ #(1 2 3) ];
+			column: 'One' text: [ :item | item ];
+			column: 'Two'
+				text: [ :item | item asString ]
+				width: 100.
+	declarativeSpecification := phlowView asGtDeclarativeView.
+
+	self assert: declarativeSpecification title equals: #Test.
+	self assert: declarativeSpecification priority equals: 10.
+	self assert: declarativeSpecification columnTitles equals: #('One' 'Two').
+	self assert: declarativeSpecification columnWidths equals: #(nil 100).
+	
+	self
+		assert: declarativeSpecification retriveFormattedItems
+		equals: self expectedColumnedListWithNumbersItems.
+
+	^ declarativeSpecification
+%
+
+category: 'examples'
+method: GtRemotePhlowViewSpecificationConversionExamples
+convertColumnedListWithTextColumns
+	"Check the conversion to declarative specification with data"
+	<gtExample>
+	| declarativeSpecification |
+
+	declarativeSpecification := (GtRemotePhlowDeclarativeTestInspectable new 
+		gtColumnedListFor: self createProtoViews) asGtDeclarativeView.
+
+	self assert: declarativeSpecification title equals: 'Columned list'.
+	self assert: declarativeSpecification priority equals: 20.
+	self assert: declarativeSpecification columnTitles equals: #('Value' 'Lowercase').
+	self assert: declarativeSpecification columnWidths equals: #(nil 100).
+	
+	self 
+		assert: declarativeSpecification retriveFormattedItems 
+		equals: self expectedColumnedListForExampleObjectItems.
+	
+	^ declarativeSpecification
+%
+
+category: 'examples'
+method: GtRemotePhlowViewSpecificationConversionExamples
+convertColumnedListWithTypedColumns
+	"Check the conversion to declarative specification with data"
+	<gtExample>
+	| declarativeSpecification |
+
+	declarativeSpecification := (GtRemotePhlowDeclarativeTestInspectable new 
+		gtColumnedListWithTypedColumnsFor: self createProtoViews)
+			asGtDeclarativeView.
+
+	self assert: declarativeSpecification title equals: 'Columned list with typed columns'.
+	self assert: declarativeSpecification priority equals: 24.
+	self 
+		assert: (declarativeSpecification columnSpecifications 
+			collect: [ :aColumnSpecification | aColumnSpecification typeLabel ])
+		equals: #('text' 'number' 'icon').
+	self 
+		assert: declarativeSpecification columnTitles 
+		equals: #('Text' 'Number' 'Icon Name').
+	self 
+		assert: declarativeSpecification columnWidths 
+		equals: #(nil 100 75).
+	
+	^ declarativeSpecification
+%
+
+category: 'examples'
+method: GtRemotePhlowViewSpecificationConversionExamples
+convertColumnedTree
+	"Demonstrate converting a columned tree phlow view to a declarative specification"
+	<gtExample>
+	| phlowView declarativeSpecification |
+
+	phlowView := self createProtoViews columnedTree
+		title: #Test;
+		priority: 10;
+		items: [ 1 to: 4 ];
+		children: [ :aNumber | 
+			aNumber = 0
+				ifTrue: [ #() ]
+				ifFalse: [ 1 to: aNumber // 2 ] ];
+		column: 'One' text: [ :item | item ];
+		column: 'Two' text: [ :item | (item + 1) asString ] width: 100.
+	declarativeSpecification := phlowView asGtDeclarativeView.
+
+	self assert: declarativeSpecification title equals: #Test.
+	self assert: declarativeSpecification priority equals: 10.
+	self assert: declarativeSpecification columnTitles equals: #('One' 'Two').
+	self assert: declarativeSpecification columnWidths equals: #(nil 100).
+	
+	self 
+		assert: declarativeSpecification retriveFormattedItems 
+		equals: self expectedColumnedTreeWithNumberItems.
+
+	^ declarativeSpecification.
+%
+
+category: 'examples'
+method: GtRemotePhlowViewSpecificationConversionExamples
+convertListWithNumbers
+	"Demonstrate converting a columned list phlow view to a declarative specification"
+	<gtExample>
+	| phlowView declarativeSpecification |
+
+	phlowView := self createProtoViews list
+		title: #Test;
+		priority: 10;
+		items: [ #(1 2 3) ];
+		itemText: [ :item | 'Number: ', item asString ].
+	declarativeSpecification := phlowView asGtDeclarativeView.
+
+	self assert: declarativeSpecification title equals: #Test.
+	self assert: declarativeSpecification priority equals: 10.
+	self 
+		assert: declarativeSpecification retriveFormattedItems 
+		equals: self expectedListWithNumberItems.
+
+	^ declarativeSpecification.
+%
+
+category: 'examples'
+method: GtRemotePhlowViewSpecificationConversionExamples
+convertListWithObjects
+	"Check the conversion to declarative specification with data"
+	<gtExample>
+	| phlowView declarativeSpecification |
+
+	phlowView := GtRemotePhlowDeclarativeTestInspectable new 
+		gtListFor: self createProtoViews.
+	declarativeSpecification := phlowView asGtDeclarativeView.
+	
+	self assert: declarativeSpecification title equals: 'List'.
+	self assert: declarativeSpecification priority equals: 15.
+	self 
+		assert: declarativeSpecification retriveFormattedItems 
+		equals: self expectedListForExampleObjectItems.
+
+	^ declarativeSpecification
+%
+
+category: 'examples'
+method: GtRemotePhlowViewSpecificationConversionExamples
+convertListWithStyledText
+	<gtExample>
+	| phlowView declarativeSpecification |
+
+	phlowView := GtRemotePhlowDeclarativeTestInspectable new 
+		gtListWithStyledTextFor: self createProtoViews.
+	declarativeSpecification := phlowView asGtDeclarativeView.
+	
+	self assert: declarativeSpecification title equals: 'List - styled text'.
+	self assert: declarativeSpecification priority equals: 15.1.
+	self 
+		assert: declarativeSpecification retriveFormattedItems 
+		equals: self expectedListForStyledText.
+
+	^ declarativeSpecification
+%
+
+category: 'examples'
+method: GtRemotePhlowViewSpecificationConversionExamples
+convertText
+	"Demonstrate converting a columned list phlow view to a declarative specification"
+	<gtExample>
+	| phlowView declarativeSpecification |
+
+	phlowView := self createProtoViews text
+		title: #Test;
+		priority: 11;
+		text: [ 'hello world' ].
+	declarativeSpecification := phlowView asGtDeclarativeView.
+
+	self assert: declarativeSpecification title equals: #Test.
+	self assert: declarativeSpecification priority equals: 11.
+	
+	self 
+		assert: declarativeSpecification retrieveStylableText 
+		equals: self expectedTextEditorBasicStringStylableTextData.
+
+	^ declarativeSpecification.
+%
+
+category: 'examples'
+method: GtRemotePhlowViewSpecificationConversionExamples
+convertTextEditor
+	"Demonstrate converting a columned list phlow view to a declarative specification"
+	<gtExample>
+	| phlowView declarativeSpecification |
+
+	phlowView := self createProtoViews textEditor
+		title: 'String (editor)';
+		priority: 11;
+		text: [ 'hello world' ].
+	declarativeSpecification := phlowView asGtDeclarativeView.
+
+	self assert: declarativeSpecification title equals: 'String (editor)'.
+	self assert: declarativeSpecification priority equals: 11.
+	self assert: declarativeSpecification string equals: nil.
+	
+	self 
+		assert: declarativeSpecification retrieveStylableText 
+		equals: self expectedTextEditorBasicStringStylableTextData.
+
+	^ declarativeSpecification.
+%
+
+category: 'examples'
+method: GtRemotePhlowViewSpecificationConversionExamples
+convertTree
+	"Demonstrate converting a tree phlow view to a declarative specification"
+	<gtExample>
+	| phlowView declarativeSpecification |
+
+	phlowView := self createProtoViews tree
+		title: #Test;
+		priority: 10;
+		items: [ 1 to: 4 ];
+		children: [ :aNumber | 
+			aNumber = 0
+				ifTrue: [ #() ]
+				ifFalse: [ 1 to: aNumber // 2 ] ].
+	declarativeSpecification := phlowView asGtDeclarativeView.
+
+	self assert: declarativeSpecification title equals: #Test.
+	self assert: declarativeSpecification priority equals: 10.
+	self 
+		assert: declarativeSpecification retriveFormattedItems 
+		equals: self expectedTreeWithNumberItems.
+
+	^ declarativeSpecification.
+%
+
+category: 'accessing'
+method: GtRemotePhlowViewSpecificationConversionExamples
+createProtoViews
+	^ GtRemotePhlowProtoView new
+%
+
+category: 'accessing - data'
+method: GtRemotePhlowViewSpecificationConversionExamples
+expectedColumnedListForExampleObjectItems
+	^ ((Array new: 3) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'42'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'42'); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'Hello World'); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'hello world'); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2021-04-06T14:43:50.123456+02:00'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'2021-04-06t14:43:50.123456+02:00'); yourself); yourself)); yourself)); add: (#nodeId->3); yourself); yourself)
+%
+
+category: 'accessing - data'
+method: GtRemotePhlowViewSpecificationConversionExamples
+expectedColumnedListWithNumbersItems
+	^ ((Array new: 3) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'1'); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'2'); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'3'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'3'); yourself); yourself)); yourself)); add: (#nodeId->3); yourself); yourself)
+%
+
+category: 'accessing - data'
+method: GtRemotePhlowViewSpecificationConversionExamples
+expectedColumnedTreeWithNumberItems
+	^ ((Array new: 4) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'2'); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'3'); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'3'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'4'); yourself); yourself)); yourself)); add: (#nodeId->3); yourself); at: 4 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'4'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'5'); yourself); yourself)); yourself)); add: (#nodeId->4); yourself); yourself)
+%
+
+category: 'accessing - data'
+method: GtRemotePhlowViewSpecificationConversionExamples
+expectedListForExampleObjectItems
+	^ ((Array new: 3) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'42'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'Hello World'); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2021-04-06T14:43:50.123456+02:00'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->3); yourself); yourself)
+%
+
+category: 'accessing - data'
+method: GtRemotePhlowViewSpecificationConversionExamples
+expectedListForStyledText
+	^ ((Array new: 4) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'42'); add: ('attributeRuns'->((Dictionary new) add: ('items'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->2); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontWeightAttribute'); add: ('weight'->#bold); yourself); yourself)); yourself); yourself)); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'Hello World'); add: ('attributeRuns'->((Dictionary new) add: ('items'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->5); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('color'->((Dictionary new) add: (#a->1.0); add: (#r->1.0); add: (#g->1.0); add: (#b->0.0); yourself)); add: ('__typeLabel'->'phlowTextHighlightAttribute'); yourself); at: 2 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontSizeAttribute'); add: ('size'->20); yourself); yourself)); yourself); yourself)); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'Now is the time'); add: ('attributeRuns'->((Dictionary new) add: ('items'->((Array new: 9) at: 1 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->11); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('name'->'Source Code Pro'); add: ('__typeLabel'->'phlowFontNameAttribute'); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('startIndex'->13); add: ('endIndex'->15); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('name'->'Source Code Pro'); add: ('__typeLabel'->'phlowFontNameAttribute'); yourself); yourself)); yourself); at: 3 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->4); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontWeightAttribute'); add: ('weight'->#bold); yourself); yourself)); yourself); at: 4 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->6); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontEmphasisAttribute'); add: ('emphasis'->'italic'); yourself); yourself)); yourself); at: 5 put: ((Dictionary new) add: ('startIndex'->5); add: ('endIndex'->6); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('color'->((Dictionary new) add: (#a->1.0); add: (#r->1.0); add: (#g->1.0); add: (#b->0.0); yourself)); add: ('__typeLabel'->'phlowTextHighlightAttribute'); yourself); yourself)); yourself); at: 6 put: ((Dictionary new) add: ('startIndex'->8); add: ('endIndex'->10); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('color'->((Dictionary new) add: (#a->1.0); add: (#r->1.0); add: (#g->0.0); add: (#b->0.0); yourself)); add: ('__typeLabel'->'phlowTextForegroundAttribute'); yourself); yourself)); yourself); at: 7 put: ((Dictionary new) add: ('startIndex'->8); add: ('endIndex'->15); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontWeightAttribute'); add: ('weight'->#thin); yourself); yourself)); yourself); at: 8 put: ((Dictionary new) add: ('startIndex'->12); add: ('endIndex'->12); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('name'->'Source Sans Pro'); add: ('__typeLabel'->'phlowFontNameAttribute'); yourself); yourself)); yourself); at: 9 put: ((Dictionary new) add: ('startIndex'->12); add: ('endIndex'->15); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontSizeAttribute'); add: ('size'->20); yourself); yourself)); yourself); yourself)); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->3); yourself); at: 4 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'Now is the time'); add: ('attributeRuns'->((Dictionary new) add: ('items'->((Array new: 9) at: 1 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->11); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('name'->'Source Code Pro'); add: ('__typeLabel'->'phlowFontNameAttribute'); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('startIndex'->13); add: ('endIndex'->15); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('name'->'Source Code Pro'); add: ('__typeLabel'->'phlowFontNameAttribute'); yourself); yourself)); yourself); at: 3 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->4); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontWeightAttribute'); add: ('weight'->#bold); yourself); yourself)); yourself); at: 4 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->6); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontEmphasisAttribute'); add: ('emphasis'->'italic'); yourself); yourself)); yourself); at: 5 put: ((Dictionary new) add: ('startIndex'->5); add: ('endIndex'->6); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('color'->((Dictionary new) add: (#a->1.0); add: (#r->1.0); add: (#g->1.0); add: (#b->0.0); yourself)); add: ('__typeLabel'->'phlowTextHighlightAttribute'); yourself); yourself)); yourself); at: 6 put: ((Dictionary new) add: ('startIndex'->8); add: ('endIndex'->10); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('color'->((Dictionary new) add: (#a->1.0); add: (#r->1.0); add: (#g->0.0); add: (#b->0.0); yourself)); add: ('__typeLabel'->'phlowTextForegroundAttribute'); yourself); yourself)); yourself); at: 7 put: ((Dictionary new) add: ('startIndex'->8); add: ('endIndex'->15); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontWeightAttribute'); add: ('weight'->#thin); yourself); yourself)); yourself); at: 8 put: ((Dictionary new) add: ('startIndex'->12); add: ('endIndex'->12); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('name'->'Source Sans Pro'); add: ('__typeLabel'->'phlowFontNameAttribute'); yourself); yourself)); yourself); at: 9 put: ((Dictionary new) add: ('startIndex'->12); add: ('endIndex'->15); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontSizeAttribute'); add: ('size'->20); yourself); yourself)); yourself); yourself)); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->4); yourself); yourself)
+%
+
+category: 'accessing - data'
+method: GtRemotePhlowViewSpecificationConversionExamples
+expectedListWithNumberItems
+	^ ((Array new: 3) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'Number: 1'); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'Number: 2'); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'Number: 3'); yourself)); add: (#nodeId->3); yourself); yourself)
+%
+
+category: 'accessing - data'
+method: GtRemotePhlowViewSpecificationConversionExamples
+expectedTextEditorBasicStringStylableTextData
+	^ ((Dictionary new) add: ('string'->'hello world'); add: ('__typeLabel'->'remotePhlowText'); add: ('stylerSpecification'->((Dictionary new) add: ('__typeLabel'->'remotePhlowTextAttributeRunsStylerSpecification'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)
+%
+
+category: 'accessing - data'
+method: GtRemotePhlowViewSpecificationConversionExamples
+expectedTreeWithNumberItems
+	^ ((Array new: 4) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'3'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->3); yourself); at: 4 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'4'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->4); yourself); yourself)
+%
+
 ! Class implementation for 'GtRemotePhlowStylableText'
 
 !		Class methods for 'GtRemotePhlowStylableText'
@@ -11502,6 +12277,46 @@ computeActionSpecificationForPhlowAction: aPhlowAction
 
 category: 'initialization'
 method: GtRemotePhlowViewedObject
+computeDeclarativeActionSpecifications
+	| specifications phlowActions |
+	
+	specifications := OrderedCollection new. 
+
+	phlowActions := self phlowDeclarativeActions.
+	phlowActions
+		do: [ :aPhlowAction | 
+			| actionSpecification |
+			actionSpecification := self 
+				computeActionSpecificationForPhlowAction: aPhlowAction.
+			actionSpecification
+				ifNotNil: [ 
+					actionSpecification methodSelector: aPhlowAction definingSelector.
+					specifications add: actionSpecification ] ].
+					
+	^ specifications
+%
+
+category: 'initialization'
+method: GtRemotePhlowViewedObject
+computeDeclarativeViewSpecifications
+	| specifications phlowViews |
+
+	specifications := OrderedCollection new. 
+	
+	phlowViews := self phlowDeclarativeViews.
+	phlowViews do: [ :aPhlowView | 
+		| viewSpecification |
+		viewSpecification := self computeViewSpecificationForPhlowView: aPhlowView.
+		viewSpecification
+			ifNotNil: [ 
+				viewSpecification methodSelector: aPhlowView definingSelector.
+				specifications add: viewSpecification ] ].
+					 
+	^ specifications
+%
+
+category: 'initialization'
+method: GtRemotePhlowViewedObject
 computeViewSpecificationForPhlowView: aPhlowView
 	^ [ aPhlowView asGtDeclarativeView ] 
 		on: Error do: [ :anError |
@@ -11513,133 +12328,228 @@ computeViewSpecificationForPhlowView: aPhlowView
 			errorView asGtDeclarativeView ]
 %
 
-category: 'accessing'
+category: 'api - views'
 method: GtRemotePhlowViewedObject
-declarativeViewsBySelector
-	declarativeViewsBySelector ifNil: [ 
-		self initializeDeclarativeViews ].
-	^ declarativeViewsBySelector
+getActionSpecificationDataFor: anActionSelector
+	| declarativeAction |
+	declarativeAction := self getActionSpecificationFor: anActionSelector.
+	^ self specificationDataForAction: declarativeAction
 %
 
-category: 'api - accessing'
+category: 'api - actions'
 method: GtRemotePhlowViewedObject
-getActionSpecificationDataForAction: anActionSpecification
-
-	^ anActionSpecification asDictionaryForExport
+getActionSpecificationFor: anActionSelector
+	^ self actionSpecificationsBySelector 
+		at: anActionSelector
 %
 
-category: 'api - accessing'
+category: 'api - actions'
 method: GtRemotePhlowViewedObject
 getActionSpecifications
+	^ self getActionSpecificationsData
+%
+
+category: 'api - actions'
+method: GtRemotePhlowViewedObject
+getActionSpecificationsData
 	| actionsSpecifications |
-	actionsSpecifications := (self actionSpecificationsBySelector 
+	actionsSpecifications := self actionSpecificationsBySelector 
 		collect: [ :anActionSpecification |
-			self getActionSpecificationDataForAction: anActionSpecification ]).
+			self specificationDataForAction: anActionSpecification ].
 	^ Dictionary new
 		at: 'actions' put: actionsSpecifications asArray;
 		yourself
 %
 
-category: 'api - accessing'
+category: 'api - actions'
+method: GtRemotePhlowViewedObject
+getActionSpecificationsPhlowDataSource
+	| actionsSpecifications |
+	actionsSpecifications := (self actionSpecificationsBySelector 
+		collect: [ :anActionSpecification |
+			(self specificationDataForAction: anActionSpecification)
+				ifNotNil: [ :aDictionary |
+					aDictionary 
+						at: 'phlowDataSource' 
+							put: anActionSpecification phlowDataSource;
+						yourself ] ]).
+	^ Dictionary new
+		at: 'actions' put: actionsSpecifications asArray;
+		yourself
+%
+
+category: 'api - actions'
+method: GtRemotePhlowViewedObject
+getActionSpecificationsWithPhlowDataSource
+	| actionsSpecifications |
+	actionsSpecifications := (self actionSpecificationsBySelector 
+		collect: [ :anActionSpecification |
+			(self specificationDataForAction: anActionSpecification)
+				ifNotNil: [ :aDictionary |
+					aDictionary 
+						at: 'phlowDataSource' 
+							put: anActionSpecification phlowDataSource;
+						yourself ] ]).
+	^ Dictionary new
+		at: 'actions' put: actionsSpecifications asArray;
+		yourself
+%
+
+category: 'api - actions'
 method: GtRemotePhlowViewedObject
 getDeclarativeActionDataSourceFor: anActionSelector
-	^ (self actionSpecificationsBySelector 
-		at: anActionSelector) phlowDataSource
+	^ (self getActionSpecificationFor: anActionSelector) phlowDataSource
 %
 
-category: 'api - accessing'
+category: 'api - views deprecated'
 method: GtRemotePhlowViewedObject
 getDeclarativeViewFor: viewSelector
-	^ self declarativeViewsBySelector at: viewSelector
+	^ self getViewSpecificationFor: viewSelector
 %
 
-category: 'api - accessing'
+category: 'api - views'
 method: GtRemotePhlowViewedObject
 getDeclarativeViewMethodNames
 	"Answer the set of declarative view selectors provided by the object"
 
-	^ self declarativeViewsBySelector keys
+	^ self viewSpecificationsBySelector keys
 %
 
-category: 'api - accessing'
+category: 'api  - inspector'
+method: GtRemotePhlowViewedObject
+getInspectorSpecificationWithPhlowDataSource
+	^ Dictionary new 
+		at: 'views' put:   (self getViewSpecificationWithPhlowDataSource
+			at: 'views');
+		at: 'actions' put: (self getActionSpecificationsWithPhlowDataSource
+			at: 'actions');
+		yourself
+%
+
+category: 'api - views deprecated'
 method: GtRemotePhlowViewedObject
 getViewDeclaration: aViewSelector
-	| declarativeView |
-	declarativeView := self getDeclarativeViewFor: aViewSelector.
-	^ self getViewDeclarationForView: declarativeView
+	^ self getViewSpecificationDataFor: aViewSelector
 %
 
-category: 'api - accessing'
-method: GtRemotePhlowViewedObject
-getViewDeclarationForView: aDeclarativeView
-
-	^ aDeclarativeView asDictionaryForExport
-%
-
-category: 'api - accessing'
+category: 'api - views deprecated'
 method: GtRemotePhlowViewedObject
 getViewsDeclarations
+	^ self getViewSpecificationsData
+%
+
+category: 'api - views deprecated'
+method: GtRemotePhlowViewedObject
+getViewsDeclarationsWithPhlowDataSource
+	^ self getViewSpecificationWithPhlowDataSource
+%
+
+category: 'api - views'
+method: GtRemotePhlowViewedObject
+getViewSpecificationDataFor: aViewSelector
+	| declarativeView |
+	declarativeView := self getViewSpecificationFor: aViewSelector.
+	^ self specificationDataForView: declarativeView
+%
+
+category: 'api - views'
+method: GtRemotePhlowViewedObject
+getViewSpecificationFor: viewSelector
+	^ self viewSpecificationsBySelector at: viewSelector
+%
+
+category: 'api - views'
+method: GtRemotePhlowViewedObject
+getViewSpecificationsData
 	| viewDeclarations |
-	viewDeclarations := (self declarativeViewsBySelector 
-		collect: [ :aDeclarativeView |
-			self getViewDeclarationForView: aDeclarativeView ]).
+	viewDeclarations := (self viewSpecificationsBySelector 
+		collect: [ :aViewSpecification |
+			self specificationDataForView: aViewSpecification ]).
 	^ Dictionary new
 		at: 'views' put: viewDeclarations asArray;
 		yourself
 %
 
-category: 'api - accessing'
+category: 'api  - inspector'
 method: GtRemotePhlowViewedObject
-getViewsDeclarationsWithPhlowDataSource
+getViewSpecificationWithPhlowDataSource
 	| viewDeclarations |
-	viewDeclarations := (self declarativeViewsBySelector 
-		collect: [ :aDeclarativeView |
-			(self getViewDeclarationForView: aDeclarativeView)
+	viewDeclarations := (self viewSpecificationsBySelector 
+		collect: [ :aViewSpecification |
+			(self specificationDataForView: aViewSpecification)
 				ifNotNil: [ :aDictionary |
 					aDictionary 
-						at: 'phlowDataSource' put: aDeclarativeView;
+						at: 'phlowDataSource' put: aViewSpecification;
 						yourself ] ]).
 	^ Dictionary new
 		at: 'views' put: viewDeclarations asArray;
 		yourself
 %
 
-category: 'initialization'
+category: 'gt - extensions'
 method: GtRemotePhlowViewedObject
-initializeActionSpecifications
-	| phlowActions |
-	actionSpecificationsBySelector := Dictionary new.
+gtViewCurrentViewsFor: aView
+	<gtView>
+	
+	^ aView columnedList
+		title: 'Current views';
+		priority: 10;
+		items: [ (viewSpecificationsBySelector
+			ifNil: [ #() ] ifNotNil: [ :aDictionary | aDictionary values ]) 
+				sort: [ :a :b |  a priority < b priority ]];
+		column: 'Title' text: [ :aViewAccessor | aViewAccessor title ];
+		column: 'Selector' text: [ :aViewAccessor | aViewAccessor methodSelector ];
+		column: 'View' text: [ :aViewAccessor | aViewAccessor viewName ];
+		column: 'Priority' text: [ :aViewAccessor | aViewAccessor priority ] width: 75;
+		column: 'Transport' text: [ :aViewAccessor | aViewAccessor dataTransport ] width: 75;
+		send: [ :aDeclarativeView | aDeclarativeView ]
+%
 
-	phlowActions := self phlowDeclarativeActions.
-	phlowActions
-		do: [ :aPhlowAction | 
-			| actionSpecification |
-			actionSpecification := self 
-				computeActionSpecificationForPhlowAction: aPhlowAction.
-			actionSpecification
-				ifNotNil: [ 
-					actionSpecification methodSelector: aPhlowAction definingSelector.
-					actionSpecificationsBySelector
-						at: aPhlowAction definingSelector
-						put: actionSpecification ] ]
+category: 'gt - extensions'
+method: GtRemotePhlowViewedObject
+gtViewsCurrentActionsFor: aView
+	<gtView>
+	
+	^ aView columnedList
+		title: 'Current actions';
+		priority: 20;
+		items: [ (actionSpecificationsBySelector
+			ifNil: [ #() ] ifNotNil: [ :aDictionary | aDictionary values ]) 
+				sort: [ :a :b |  a priority < b priority ]];
+		column: 'Tooltip' text: [ :aViewAccessor | aViewAccessor tooltipText ];
+		column: 'Label' text: [ :aViewAccessor | aViewAccessor label ];
+		"column: 'Icon' 
+			icon: [ :aViewAccessor | 
+				aViewAccessor iconStencil ifNil: [BlElement new
+					size: 0@0] ] 
+			width: 75;"
+		column: 'Selector' text: [ :aViewAccessor | aViewAccessor methodSelector ];
+		column: 'Priority' text: [ :aViewAccessor | aViewAccessor priority ] width: 70;
+		send: [ :aDeclarativeView | aDeclarativeView ]
 %
 
 category: 'initialization'
 method: GtRemotePhlowViewedObject
-initializeDeclarativeViews
-	| phlowViews |
-	declarativeViewsBySelector := Dictionary new.
+initializeActionSpecifications
+	actionSpecificationsBySelector := Dictionary new.
 
-	phlowViews := self phlowDeclarativeViews.
-	phlowViews
-		do: [ :aPhlowView | 
-			| viewSpecification |
-			viewSpecification := self computeViewSpecificationForPhlowView: aPhlowView.
-			viewSpecification
-				ifNotNil: [ viewSpecification methodSelector: aPhlowView definingSelector.
-					declarativeViewsBySelector
-						at: aPhlowView definingSelector
-						put: viewSpecification ] ]
+	self computeDeclarativeActionSpecifications
+		do: [ :anActionSpecification |
+			actionSpecificationsBySelector
+				at: anActionSpecification methodSelector
+				put: anActionSpecification ] 
+%
+
+category: 'initialization'
+method: GtRemotePhlowViewedObject
+initializeViewSpecifications
+	viewSpecificationsBySelector := Dictionary new.
+
+	self computeDeclarativeViewSpecifications
+		do: [ :aViewSpecification| 
+			viewSpecificationsBySelector
+				at: aViewSpecification methodSelector
+				put: aViewSpecification ] 
 %
 
 category: 'initialization'
@@ -11679,306 +12589,26 @@ phlowDeclarativeViews
 	^ views
 %
 
-! Class implementation for 'GtRemotePhlowViewSpecificationConversionExamples'
+category: 'utils'
+method: GtRemotePhlowViewedObject
+specificationDataForAction: anActionSpecification
 
-!		Instance methods for 'GtRemotePhlowViewSpecificationConversionExamples'
-
-category: 'examples'
-method: GtRemotePhlowViewSpecificationConversionExamples
-convertColumnedList
-	"Demonstrate converting a columned list phlow view to a declarative specification"
-
-	<gtExample>
-	| phlowView declarativeSpecification |
-	phlowView := self createProtoViews columnedList
-			title: #Test;
-			priority: 10;
-			items: [ #(1 2 3) ];
-			column: 'One' text: [ :item | item ];
-			column: 'Two'
-				text: [ :item | item asString ]
-				width: 100.
-	declarativeSpecification := phlowView asGtDeclarativeView.
-
-	self assert: declarativeSpecification title equals: #Test.
-	self assert: declarativeSpecification priority equals: 10.
-	self assert: declarativeSpecification columnTitles equals: #('One' 'Two').
-	self assert: declarativeSpecification columnWidths equals: #(nil 100).
-	
-	self
-		assert: declarativeSpecification retriveFormattedItems
-		equals: self expectedColumnedListWithNumbersItems.
-
-	^ declarativeSpecification
+	^ anActionSpecification asDictionaryForExport
 %
 
-category: 'examples'
-method: GtRemotePhlowViewSpecificationConversionExamples
-convertColumnedListWithTextColumns
-	"Check the conversion to declarative specification with data"
-	<gtExample>
-	| declarativeSpecification |
+category: 'utils'
+method: GtRemotePhlowViewedObject
+specificationDataForView: aViewSpecification
 
-	declarativeSpecification := (GtRemotePhlowDeclarativeTestInspectable new 
-		gtColumnedListFor: self createProtoViews) asGtDeclarativeView.
-
-	self assert: declarativeSpecification title equals: 'Columned list'.
-	self assert: declarativeSpecification priority equals: 20.
-	self assert: declarativeSpecification columnTitles equals: #('Value' 'Lowercase').
-	self assert: declarativeSpecification columnWidths equals: #(nil 100).
-	
-	self 
-		assert: declarativeSpecification retriveFormattedItems 
-		equals: self expectedColumnedListForExampleObjectItems.
-	
-	^ declarativeSpecification
-%
-
-category: 'examples'
-method: GtRemotePhlowViewSpecificationConversionExamples
-convertColumnedListWithTypedColumns
-	"Check the conversion to declarative specification with data"
-	<gtExample>
-	| declarativeSpecification |
-
-	declarativeSpecification := (GtRemotePhlowDeclarativeTestInspectable new 
-		gtColumnedListWithTypedColumnsFor: self createProtoViews)
-			asGtDeclarativeView.
-
-	self assert: declarativeSpecification title equals: 'Columned list with typed columns'.
-	self assert: declarativeSpecification priority equals: 24.
-	self 
-		assert: (declarativeSpecification columnSpecifications 
-			collect: [ :aColumnSpecification | aColumnSpecification typeLabel ])
-		equals: #('text' 'number' 'icon').
-	self 
-		assert: declarativeSpecification columnTitles 
-		equals: #('Text' 'Number' 'Icon Name').
-	self 
-		assert: declarativeSpecification columnWidths 
-		equals: #(nil 100 75).
-	
-	^ declarativeSpecification
-%
-
-category: 'examples'
-method: GtRemotePhlowViewSpecificationConversionExamples
-convertColumnedTree
-	"Demonstrate converting a columned tree phlow view to a declarative specification"
-	<gtExample>
-	| phlowView declarativeSpecification |
-
-	phlowView := self createProtoViews columnedTree
-		title: #Test;
-		priority: 10;
-		items: [ 1 to: 4 ];
-		children: [ :aNumber | 
-			aNumber = 0
-				ifTrue: [ #() ]
-				ifFalse: [ 1 to: aNumber // 2 ] ];
-		column: 'One' text: [ :item | item ];
-		column: 'Two' text: [ :item | (item + 1) asString ] width: 100.
-	declarativeSpecification := phlowView asGtDeclarativeView.
-
-	self assert: declarativeSpecification title equals: #Test.
-	self assert: declarativeSpecification priority equals: 10.
-	self assert: declarativeSpecification columnTitles equals: #('One' 'Two').
-	self assert: declarativeSpecification columnWidths equals: #(nil 100).
-	
-	self 
-		assert: declarativeSpecification retriveFormattedItems 
-		equals: self expectedColumnedTreeWithNumberItems.
-
-	^ declarativeSpecification.
-%
-
-category: 'examples'
-method: GtRemotePhlowViewSpecificationConversionExamples
-convertListWithNumbers
-	"Demonstrate converting a columned list phlow view to a declarative specification"
-	<gtExample>
-	| phlowView declarativeSpecification |
-
-	phlowView := self createProtoViews list
-		title: #Test;
-		priority: 10;
-		items: [ #(1 2 3) ];
-		itemText: [ :item | 'Number: ', item asString ].
-	declarativeSpecification := phlowView asGtDeclarativeView.
-
-	self assert: declarativeSpecification title equals: #Test.
-	self assert: declarativeSpecification priority equals: 10.
-	self 
-		assert: declarativeSpecification retriveFormattedItems 
-		equals: self expectedListWithNumberItems.
-
-	^ declarativeSpecification.
-%
-
-category: 'examples'
-method: GtRemotePhlowViewSpecificationConversionExamples
-convertListWithObjects
-	"Check the conversion to declarative specification with data"
-	<gtExample>
-	| phlowView declarativeSpecification |
-
-	phlowView := GtRemotePhlowDeclarativeTestInspectable new 
-		gtListFor: self createProtoViews.
-	declarativeSpecification := phlowView asGtDeclarativeView.
-	
-	self assert: declarativeSpecification title equals: 'List'.
-	self assert: declarativeSpecification priority equals: 15.
-	self 
-		assert: declarativeSpecification retriveFormattedItems 
-		equals: self expectedListForExampleObjectItems.
-
-	^ declarativeSpecification
-%
-
-category: 'examples'
-method: GtRemotePhlowViewSpecificationConversionExamples
-convertListWithStyledText
-	<gtExample>
-	| phlowView declarativeSpecification |
-
-	phlowView := GtRemotePhlowDeclarativeTestInspectable new 
-		gtListWithStyledTextFor: self createProtoViews.
-	declarativeSpecification := phlowView asGtDeclarativeView.
-	
-	self assert: declarativeSpecification title equals: 'List - styled text'.
-	self assert: declarativeSpecification priority equals: 15.1.
-	self 
-		assert: declarativeSpecification retriveFormattedItems 
-		equals: self expectedListForStyledText.
-
-	^ declarativeSpecification
-%
-
-category: 'examples'
-method: GtRemotePhlowViewSpecificationConversionExamples
-convertText
-	"Demonstrate converting a columned list phlow view to a declarative specification"
-	<gtExample>
-	| phlowView declarativeSpecification |
-
-	phlowView := self createProtoViews text
-		title: #Test;
-		priority: 11;
-		text: [ 'hello world' ].
-	declarativeSpecification := phlowView asGtDeclarativeView.
-
-	self assert: declarativeSpecification title equals: #Test.
-	self assert: declarativeSpecification priority equals: 11.
-	
-	self 
-		assert: declarativeSpecification retrieveStylableText 
-		equals: self expectedTextEditorBasicStringStylableTextData.
-
-	^ declarativeSpecification.
-%
-
-category: 'examples'
-method: GtRemotePhlowViewSpecificationConversionExamples
-convertTextEditor
-	"Demonstrate converting a columned list phlow view to a declarative specification"
-	<gtExample>
-	| phlowView declarativeSpecification |
-
-	phlowView := self createProtoViews textEditor
-		title: 'String (editor)';
-		priority: 11;
-		text: [ 'hello world' ].
-	declarativeSpecification := phlowView asGtDeclarativeView.
-
-	self assert: declarativeSpecification title equals: 'String (editor)'.
-	self assert: declarativeSpecification priority equals: 11.
-	self assert: declarativeSpecification string equals: nil.
-	
-	self 
-		assert: declarativeSpecification retrieveStylableText 
-		equals: self expectedTextEditorBasicStringStylableTextData.
-
-	^ declarativeSpecification.
-%
-
-category: 'examples'
-method: GtRemotePhlowViewSpecificationConversionExamples
-convertTree
-	"Demonstrate converting a tree phlow view to a declarative specification"
-	<gtExample>
-	| phlowView declarativeSpecification |
-
-	phlowView := self createProtoViews tree
-		title: #Test;
-		priority: 10;
-		items: [ 1 to: 4 ];
-		children: [ :aNumber | 
-			aNumber = 0
-				ifTrue: [ #() ]
-				ifFalse: [ 1 to: aNumber // 2 ] ].
-	declarativeSpecification := phlowView asGtDeclarativeView.
-
-	self assert: declarativeSpecification title equals: #Test.
-	self assert: declarativeSpecification priority equals: 10.
-	self 
-		assert: declarativeSpecification retriveFormattedItems 
-		equals: self expectedTreeWithNumberItems.
-
-	^ declarativeSpecification.
+	^ aViewSpecification asDictionaryForExport
 %
 
 category: 'accessing'
-method: GtRemotePhlowViewSpecificationConversionExamples
-createProtoViews
-	^ GtRemotePhlowProtoView new
-%
-
-category: 'accessing - data'
-method: GtRemotePhlowViewSpecificationConversionExamples
-expectedColumnedListForExampleObjectItems
-	^ ((Array new: 3) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'42'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'42'); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'Hello World'); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'hello world'); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2021-04-06T14:43:50.123456+02:00'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'2021-04-06t14:43:50.123456+02:00'); yourself); yourself)); yourself)); add: (#nodeId->3); yourself); yourself)
-%
-
-category: 'accessing - data'
-method: GtRemotePhlowViewSpecificationConversionExamples
-expectedColumnedListWithNumbersItems
-	^ ((Array new: 3) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'1'); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'2'); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'3'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'3'); yourself); yourself)); yourself)); add: (#nodeId->3); yourself); yourself)
-%
-
-category: 'accessing - data'
-method: GtRemotePhlowViewSpecificationConversionExamples
-expectedColumnedTreeWithNumberItems
-	^ ((Array new: 4) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'2'); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'3'); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'3'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'4'); yourself); yourself)); yourself)); add: (#nodeId->3); yourself); at: 4 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'4'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'5'); yourself); yourself)); yourself)); add: (#nodeId->4); yourself); yourself)
-%
-
-category: 'accessing - data'
-method: GtRemotePhlowViewSpecificationConversionExamples
-expectedListForExampleObjectItems
-	^ ((Array new: 3) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'42'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'Hello World'); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2021-04-06T14:43:50.123456+02:00'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->3); yourself); yourself)
-%
-
-category: 'accessing - data'
-method: GtRemotePhlowViewSpecificationConversionExamples
-expectedListForStyledText
-	^ ((Array new: 4) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'42'); add: ('attributeRuns'->((Dictionary new) add: ('items'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->2); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontWeightAttribute'); add: ('weight'->#bold); yourself); yourself)); yourself); yourself)); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'Hello World'); add: ('attributeRuns'->((Dictionary new) add: ('items'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->5); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('color'->((Dictionary new) add: (#a->1.0); add: (#r->1.0); add: (#g->1.0); add: (#b->0.0); yourself)); add: ('__typeLabel'->'phlowTextHighlightAttribute'); yourself); at: 2 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontSizeAttribute'); add: ('size'->20); yourself); yourself)); yourself); yourself)); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'Now is the time'); add: ('attributeRuns'->((Dictionary new) add: ('items'->((Array new: 9) at: 1 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->11); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('name'->'Source Code Pro'); add: ('__typeLabel'->'phlowFontNameAttribute'); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('startIndex'->13); add: ('endIndex'->15); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('name'->'Source Code Pro'); add: ('__typeLabel'->'phlowFontNameAttribute'); yourself); yourself)); yourself); at: 3 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->4); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontWeightAttribute'); add: ('weight'->#bold); yourself); yourself)); yourself); at: 4 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->6); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontEmphasisAttribute'); add: ('emphasis'->'italic'); yourself); yourself)); yourself); at: 5 put: ((Dictionary new) add: ('startIndex'->5); add: ('endIndex'->6); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('color'->((Dictionary new) add: (#a->1.0); add: (#r->1.0); add: (#g->1.0); add: (#b->0.0); yourself)); add: ('__typeLabel'->'phlowTextHighlightAttribute'); yourself); yourself)); yourself); at: 6 put: ((Dictionary new) add: ('startIndex'->8); add: ('endIndex'->10); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('color'->((Dictionary new) add: (#a->1.0); add: (#r->1.0); add: (#g->0.0); add: (#b->0.0); yourself)); add: ('__typeLabel'->'phlowTextForegroundAttribute'); yourself); yourself)); yourself); at: 7 put: ((Dictionary new) add: ('startIndex'->8); add: ('endIndex'->15); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontWeightAttribute'); add: ('weight'->#thin); yourself); yourself)); yourself); at: 8 put: ((Dictionary new) add: ('startIndex'->12); add: ('endIndex'->12); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('name'->'Source Sans Pro'); add: ('__typeLabel'->'phlowFontNameAttribute'); yourself); yourself)); yourself); at: 9 put: ((Dictionary new) add: ('startIndex'->12); add: ('endIndex'->15); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontSizeAttribute'); add: ('size'->20); yourself); yourself)); yourself); yourself)); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->3); yourself); at: 4 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'Now is the time'); add: ('attributeRuns'->((Dictionary new) add: ('items'->((Array new: 9) at: 1 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->11); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('name'->'Source Code Pro'); add: ('__typeLabel'->'phlowFontNameAttribute'); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('startIndex'->13); add: ('endIndex'->15); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('name'->'Source Code Pro'); add: ('__typeLabel'->'phlowFontNameAttribute'); yourself); yourself)); yourself); at: 3 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->4); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontWeightAttribute'); add: ('weight'->#bold); yourself); yourself)); yourself); at: 4 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->6); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontEmphasisAttribute'); add: ('emphasis'->'italic'); yourself); yourself)); yourself); at: 5 put: ((Dictionary new) add: ('startIndex'->5); add: ('endIndex'->6); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('color'->((Dictionary new) add: (#a->1.0); add: (#r->1.0); add: (#g->1.0); add: (#b->0.0); yourself)); add: ('__typeLabel'->'phlowTextHighlightAttribute'); yourself); yourself)); yourself); at: 6 put: ((Dictionary new) add: ('startIndex'->8); add: ('endIndex'->10); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('color'->((Dictionary new) add: (#a->1.0); add: (#r->1.0); add: (#g->0.0); add: (#b->0.0); yourself)); add: ('__typeLabel'->'phlowTextForegroundAttribute'); yourself); yourself)); yourself); at: 7 put: ((Dictionary new) add: ('startIndex'->8); add: ('endIndex'->15); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontWeightAttribute'); add: ('weight'->#thin); yourself); yourself)); yourself); at: 8 put: ((Dictionary new) add: ('startIndex'->12); add: ('endIndex'->12); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('name'->'Source Sans Pro'); add: ('__typeLabel'->'phlowFontNameAttribute'); yourself); yourself)); yourself); at: 9 put: ((Dictionary new) add: ('startIndex'->12); add: ('endIndex'->15); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontSizeAttribute'); add: ('size'->20); yourself); yourself)); yourself); yourself)); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->4); yourself); yourself)
-%
-
-category: 'accessing - data'
-method: GtRemotePhlowViewSpecificationConversionExamples
-expectedListWithNumberItems
-	^ ((Array new: 3) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'Number: 1'); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'Number: 2'); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'Number: 3'); yourself)); add: (#nodeId->3); yourself); yourself)
-%
-
-category: 'accessing - data'
-method: GtRemotePhlowViewSpecificationConversionExamples
-expectedTextEditorBasicStringStylableTextData
-	^ ((Dictionary new) add: ('string'->'hello world'); add: ('__typeLabel'->'remotePhlowText'); add: ('stylerSpecification'->((Dictionary new) add: ('__typeLabel'->'remotePhlowTextAttributeRunsStylerSpecification'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)
-%
-
-category: 'accessing - data'
-method: GtRemotePhlowViewSpecificationConversionExamples
-expectedTreeWithNumberItems
-	^ ((Array new: 4) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'3'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->3); yourself); at: 4 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'4'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->4); yourself); yourself)
+method: GtRemotePhlowViewedObject
+viewSpecificationsBySelector
+	viewSpecificationsBySelector ifNil: [ 
+		self initializeViewSpecifications ].
+	^ viewSpecificationsBySelector
 %
 
 ! Class implementation for 'GtRmGeoGpsGroup'
@@ -13173,15 +13803,15 @@ years
 
 ! Class implementation for 'GtRsrInspectorProxySerializationStrategy'
 
-!		Instance methods for 'GtRsrInspectorProxySerializationStrategy'
+!		Class methods for 'GtRsrInspectorProxySerializationStrategy'
 
 category: 'accessing'
-method: GtRsrInspectorProxySerializationStrategy
-deserialize: viewProxyData
-	^ (viewProxyData at: 'proxyObject')
-		initializeFromProxyData: (viewProxyData at: 'proxyData');
-		yourself
+classmethod: GtRsrInspectorProxySerializationStrategy
+strategyLabel
+	^ 'InspectorProxy'
 %
+
+!		Instance methods for 'GtRsrInspectorProxySerializationStrategy'
 
 category: 'accessing'
 method: GtRsrInspectorProxySerializationStrategy
@@ -13204,7 +13834,7 @@ serializedDataForInspectorWrapper: anInspectorWrapper
 		at: 'proxyObject'
 		put: anInspectorWrapper.
 		
-	proxyData := anInspectorWrapper getViewsDeclarationsWithPhlowDataSource.
+	proxyData := anInspectorWrapper getInspectorSpecificationWithPhlowDataSource.
 	dictionaryData 
 		at: 'proxyData'
 		put: proxyData.
@@ -13213,6 +13843,14 @@ serializedDataForInspectorWrapper: anInspectorWrapper
 %
 
 ! Class implementation for 'GtRsrInspectorProxyDataSerializationStrategy'
+
+!		Class methods for 'GtRsrInspectorProxyDataSerializationStrategy'
+
+category: 'accessing'
+classmethod: GtRsrInspectorProxyDataSerializationStrategy
+strategyLabel
+	^ 'InspectorProxyData'
+%
 
 !		Instance methods for 'GtRsrInspectorProxyDataSerializationStrategy'
 
@@ -13389,6 +14027,17 @@ writeJsonString: aJsonObject
 	^ aJsonObject asJson
 %
 
+! Class extensions for 'GtRemotePhlowDeclarativeTestForCustomProxyInspectable'
+
+!		Class methods for 'GtRemotePhlowDeclarativeTestForCustomProxyInspectable'
+
+category: '*GToolkit-RemotePhlow-GemStone'
+classmethod: GtRemotePhlowDeclarativeTestForCustomProxyInspectable
+new
+
+	^ super new initialize
+%
+
 ! Class extensions for 'GtRemotePhlowDeclarativeTestInspectable'
 
 !		Class methods for 'GtRemotePhlowDeclarativeTestInspectable'
@@ -13459,6 +14108,36 @@ category: '*GToolkit-RemotePhlow-GemStone'
 method: Object
 asRopedText
 	^ GtPhlowText forString: self asString
+%
+
+category: '*GToolkit-RemotePhlow-InspectorExtensions-Remote'
+method: Object
+gtActionBrowseFor: anAction
+	<gtAction>
+	
+	^ anAction button
+		tooltip: 'Browse class for current object';
+		priority: 70;
+		icon: (GtPhlowGlamorousVectorIconNameStencil new 
+			iconName: #emphasizedBrowse);
+		action: [ :aButton |
+			aButton phlow 
+				spawnObject: self class ]
+%
+
+category: '*GToolkit-RemotePhlow-InspectorExtensions-Remote'
+method: Object
+gtActionInspectFor: anAction
+	<gtAction>
+	
+	^ anAction button
+		tooltip:'Inspect current object';
+		priority: 75;
+		icon: (GtPhlowGlamorousVectorIconNameStencil new 
+			iconName: #inspect);
+		action: [ :aButton |
+			aButton phlow 
+				spawnObject: self class ]
 %
 
 category: '*GToolkit-RemotePhlow-Remote'

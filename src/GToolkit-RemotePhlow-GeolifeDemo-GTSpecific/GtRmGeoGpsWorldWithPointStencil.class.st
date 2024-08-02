@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'targetPoint'
 	],
-	#category : #'GToolkit-RemotePhlow-GeolifeDemo-GTSpecific'
+	#category : #'GToolkit-RemotePhlow-GeolifeDemo-GTSpecific-UI'
 }
 
 { #category : #accessing }

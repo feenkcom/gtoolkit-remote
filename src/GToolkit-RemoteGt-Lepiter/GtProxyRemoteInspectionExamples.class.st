@@ -9,6 +9,14 @@ Class {
 }
 
 { #category : #'asserting - inspection' }
+GtProxyRemoteInspectionExamples >> assertActionDatasourcesInProxyInspector: aProxyInspector [
+	self assert: aProxyInspector rawActionSpecificationsBySelector notNil.
+	
+	aProxyInspector rawActionSpecificationsBySelector do: [ :anActionSpecification |
+		self assert: anActionSpecification phlowDataSource notNil ].
+]
+
+{ #category : #'asserting - inspection' }
 GtProxyRemoteInspectionExamples >> assertBothSidesInspectionForProxy: aProxyObject withTypeName: aTypeName [
 	| targetDatabase inspectorTool scripter |
 	targetDatabase := self databaseWithMonitor.
@@ -70,7 +78,9 @@ GtProxyRemoteInspectionExamples >> assertInspectorTabLabelsUsing: scripter [
 			s
 				label: 'View Tab Labels Without Error label';
 				// GtPhlowCompositeViewElementId;
-				satisfies: [ :aTabGroup | aTabGroup tabs noneSatisfy: [ :aTab | aTab tabLabel text asString = 'Error' ] ] ]
+				satisfies: [ :aTabGroup | 
+					aTabGroup tabs noneSatisfy: [ :aTab | 
+						aTab tabLabel text asString = 'Error' ] ] ]
 ]
 
 { #category : #'asserting - inspection' }
@@ -145,9 +155,9 @@ GtProxyRemoteInspectionExamples >> assertObjectInspectionFor: codeStringOrBlockC
 	proxyObject := self convertToTargetProxy: (codeStringOrBlockClosure 
 		gtIsBlockClosure 
 			ifTrue: [ self runningServer 
-				evaluateBlockAndWait: codeStringOrBlockClosure ]
+				evaluateBlockAndWaitReturnProxy: codeStringOrBlockClosure ]
 			ifFalse: [ self runningServer 
-				evaluateAndWait: codeStringOrBlockClosure ]).
+				evaluateAndWaitReturnProxy: codeStringOrBlockClosure ]).
 		
 	self assertLocalAndRemotePhlowViewsFor: proxyObject.
 	
@@ -251,7 +261,7 @@ GtProxyRemoteInspectionExamples >> assertRemoteInspectorToolLabelUsing: aScripte
 		assertInspectorToolLabelUsing: aScripter 
 		atIndex: 1
 		selected: aBoolean
-		equals: 'Remote'
+		equals: self remoteInspectorToolLabel
 ]
 
 { #category : #'asserting - inspection' }
@@ -271,9 +281,15 @@ GtProxyRemoteInspectionExamples >> assertRemotePlaygroundPageUsing: aScripter [
 
 { #category : #'asserting - inspection' }
 GtProxyRemoteInspectionExamples >> assertRemoteSideObjectPhlowViewsFor: aProxyObject [ 
-	^ GtPhlowViewTester new 
-		assertObject: aProxyObject 
-		withViewsSelector: #gtViewsForRemoteSideInContext:
+	| objectAdapter |
+	objectAdapter := GtRemotePhlowViewedObjectInspectorAdaptor
+		forTargetObject: aProxyObject.
+	GtPhlowViewTester new 
+		assertObject: objectAdapter
+		withViewsSelector: #gtViewsForRemoteSideInContext:.
+	
+	self assert: objectAdapter proxyInspector notNil.
+	self assertViewDatasourcesInProxyInspector: objectAdapter proxyInspector.
 ]
 
 { #category : #asserting }
@@ -285,6 +301,13 @@ GtProxyRemoteInspectionExamples >> assertSingleEmptyCodeSnippetOfType: aSnippetT
 	initialSnippet := aPage children first.
 	self assert: initialSnippet class equals: aSnippetType.
 	self assert: initialSnippet code isEmpty.
+]
+
+{ #category : #'asserting - inspection' }
+GtProxyRemoteInspectionExamples >> assertViewDatasourcesInProxyInspector: aProxyInspector [
+	self assert: aProxyInspector rawViewSpecificationsBySelector notNil.
+	aProxyInspector rawViewSpecificationsBySelector do: [ :aViewSpecification |
+		self assert: aViewSpecification phlowDataSource notNil ]
 ]
 
 { #category : #'examples - database' }
@@ -520,8 +543,24 @@ GtProxyRemoteInspectionExamples >> localCodeSnippetType [
 ]
 
 { #category : #'examples - inspection' }
+GtProxyRemoteInspectionExamples >> localProxyInspector [
+	<gtExample>
+	| localProxyInspector |
+	localProxyInspector := nil.
+	self targetProxyObjectForInspection 
+		localProxyInspectorDo: [ :aLocalProxyInspector |
+			localProxyInspector := aLocalProxyInspector ].
+			
+	self assert: localProxyInspector notNil.
+	self assertViewDatasourcesInProxyInspector: localProxyInspector.
+	self assertActionDatasourcesInProxyInspector: localProxyInspector.
+	
+	^ localProxyInspector
+]
+
+{ #category : #'examples - inspection' }
 GtProxyRemoteInspectionExamples >> localSideExpectedNumberOfViews [
-	^ 5
+	^ 3
 ]
 
 { #category : #'examples - page strategy' }
@@ -652,6 +691,11 @@ GtProxyRemoteInspectionExamples >> playgroundProxyPageRemoteStrategy_pageCreatio
 { #category : #'accessing - remote side' }
 GtProxyRemoteInspectionExamples >> remoteCodeSnippetType [
 	^ LePharoSnippet
+]
+
+{ #category : #accessing }
+GtProxyRemoteInspectionExamples >> remoteInspectorToolLabel [
+	^ 'Remote'
 ]
 
 { #category : #'accessing - remote side' }

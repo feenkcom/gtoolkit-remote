@@ -1,17 +1,17 @@
 Trait {
-	#name : #TGtRemoteLanguageProxySpecificActions,
+	#name : #TGtRemoteProxySpecificActions,
 	#category : #'GToolkit-RemoteGt'
 }
 
 { #category : #'gt - extensions' }
-TGtRemoteLanguageProxySpecificActions >> gtActionBrowseFor: anAction [
+TGtRemoteProxySpecificActions >> gtActionBrowseFor: anAction [
 	<gtProxyAction>
 
 	^ super gtActionBrowseFor: anAction
 ]
 
 { #category : #'gt - extensions' }
-TGtRemoteLanguageProxySpecificActions >> gtActionInspectFor: anAction [
+TGtRemoteProxySpecificActions >> gtActionInspectFor: anAction [
 	<gtProxyAction>
 
 	^ super gtActionInspectFor: anAction

@@ -33,7 +33,9 @@ GtPhlowActionSpecification >> initializeFromJSONDictionary: aDictionary [
 	self
 		priority: (aDictionary at: 'priority' ifAbsent: [ nil ]);
 		methodSelector: (aDictionary at: 'methodSelector' ifAbsent: [ nil ]);
-		tooltipText: (aDictionary  at: 'tooltipText' ifAbsent: [ nil ])
+		tooltipText: (aDictionary  at: 'tooltipText' ifAbsent: [ nil ]);
+		phlowDataSource: (aDictionary 
+			at: 'phlowDataSource' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

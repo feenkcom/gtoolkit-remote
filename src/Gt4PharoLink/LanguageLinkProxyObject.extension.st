@@ -12,7 +12,7 @@ LanguageLinkProxyObject >> declarativeActionSpecifications [
 	"Answer the views for the receiver"
 	| actionSpecifications |
 
-	self viewProxyDo: [ :remoteInspectorProxy |
+	self remoteInspectorProxyDo: [ :remoteInspectorProxy |
 		| specificationData specificationActionsData |
 		specificationData := remoteInspectorProxy getActionSpecifications.
 		specificationActionsData := specificationData at: 'actions' ifAbsent: [ #() ].
@@ -33,7 +33,7 @@ LanguageLinkProxyObject >> declarativeViews [
 	"Answer the views for the receiver"
 	| rawViews  |
 
-	self viewProxyDo: [ :remoteInspectorProxy |
+	self remoteInspectorProxyDo: [ :remoteInspectorProxy |
 		| viewSelectors |
 		viewSelectors := remoteInspectorProxy getDeclarativeViewMethodNames.
 		rawViews := viewSelectors collect: [ :viewSelector |
@@ -70,11 +70,11 @@ LanguageLinkProxyObject >> filterLocalProxyActions: localActions [
 LanguageLinkProxyObject >> filterLocalProxyViews: localViews [ 
 	"When showing local views for the object, we remove all views where the method is annotated with gtProxy. Those views will only be shown for the proxy object."
 	^ localViews reject: [ :each |
-		each definingMethod compiledMethod hasPragmaNamed: #gtProxy ].
+		each definingMethod compiledMethod hasPragmaNamed: #gtProxyView ].
 ]
 
 { #category : #'*Gt4PharoLink' }
-LanguageLinkProxyObject >> getViewProxy [
+LanguageLinkProxyObject >> getRemoteInspectorProxy [
 	"Answer a GtViewedProxy on the receiver"
 
 	^ self evaluateAndWait: 'GtRemotePhlowViewedObject object: self'
@@ -138,28 +138,28 @@ LanguageLinkProxyObject >> gtInspectorTitleString [
 
 { #category : #'*Gt4PharoLink' }
 LanguageLinkProxyObject >> gtMetaFor: aView [
-	<gtProxy>
+	<gtProxyView>
 
 	^ super gtMetaFor: aView
 ]
 
 { #category : #'*Gt4PharoLink' }
 LanguageLinkProxyObject >> gtPrintFor: aView [
-	<gtProxy>
+	<gtProxyView>
 
 	^ super gtPrintFor: aView
 ]
 
 { #category : #'*Gt4PharoLink' }
 LanguageLinkProxyObject >> gtRawFor: aView [
-	<gtProxy>
+	<gtProxyView>
 
 	^ super gtRawFor: aView
 ]
 
 { #category : #'*Gt4PharoLink' }
 LanguageLinkProxyObject >> gtRemoteActionSpecificationsFor: aView [
-	<gtProxy>
+	<gtProxyView>
 	
 	^ aView columnedList
 		title: 'Remote action specifications';
@@ -179,49 +179,7 @@ LanguageLinkProxyObject >> gtRemoteActionSpecificationsFor: aView [
 ]
 
 { #category : #'*Gt4PharoLink' }
-LanguageLinkProxyObject >> gtRemoteInspectorSpecificationsFor: aView [
-	<gtProxy>
-	
-	^ aView forward
-		title: 'Remote specification';
-		priority: 10002;
-		object: [ GtJson
-			forJsonString: (NeoJSONWriter 
-				toStringPretty:  self getViewProxy getViewsDeclarations) ];
-		view: #gtJsonStringFor:;
-		actionButtonIcon: BrGlamorousVectorIcons inspect 
-			label: 'Json'
-			tooltip: 'Inspect the JSON object'
-			action: [ :aButton |
-				aButton phlow 
-					spawnObject: aButton phlow forwardViewObjectFromViewAction ]
-]
-
-{ #category : #'*Gt4PharoLink' }
-LanguageLinkProxyObject >> gtRemoteSideInspectorTool [
-	^ GtInspectorTool 
-		forObject: self 
-		viewSelector: #gtRemoteViewsFor: 
-]
-
-{ #category : #'*Gt4PharoLink' }
-LanguageLinkProxyObject >> gtRemoteViewSpecificationsFor: aView [
-	<gtProxy>
-	
-	^ aView columnedList
-		title: 'Remote view specifications';
-		priority: 10001;
-		items: [ self declarativeViews sorted: #priority ascending];
-		column: 'Title' text: [ :aViewAccessor | aViewAccessor title ];
-		column: 'Selector' text: [ :aViewAccessor | aViewAccessor methodSelector ];
-		column: 'View' text: [ :aViewAccessor | aViewAccessor viewName ];
-		column: 'Priority' text: [ :aViewAccessor | aViewAccessor priority ] weight: 0.5;
-		column: 'Transport' text: [ :aViewAccessor | aViewAccessor dataTransport ] weight: 0.5;
-		send: [ :aDeclarativeView | aDeclarativeView ]
-]
-
-{ #category : #'*Gt4PharoLink' }
-LanguageLinkProxyObject >> gtRemoteViewsFor: aView [
+LanguageLinkProxyObject >> gtRemoteInspectorContentFor: aView [
 	"This is the default entry method for retrieving the wrapper view containing all non-proxy views for the object."
 	<return: #GtPhlowLabelledView>
 	
@@ -237,6 +195,48 @@ LanguageLinkProxyObject >> gtRemoteViewsFor: aView [
 					<< 'a(n): ';
 					<< (remoteClass ifNil: [ '<None>' ]) ]];
 		build 
+]
+
+{ #category : #'*Gt4PharoLink' }
+LanguageLinkProxyObject >> gtRemoteInspectorSpecificationsFor: aView [
+	<gtProxyView>
+	
+	^ aView forward
+		title: 'Remote specification';
+		priority: 10002;
+		object: [ GtJson
+			forJsonString: (NeoJSONWriter 
+				toStringPretty:  self getRemoteInspectorProxy getViewsDeclarations) ];
+		view: #gtJsonStringFor:;
+		actionButtonIcon: BrGlamorousVectorIcons inspect 
+			label: 'Json'
+			tooltip: 'Inspect the JSON object'
+			action: [ :aButton |
+				aButton phlow 
+					spawnObject: aButton phlow forwardViewObjectFromViewAction ]
+]
+
+{ #category : #'*Gt4PharoLink' }
+LanguageLinkProxyObject >> gtRemoteSideInspectorTool [
+	^ GtInspectorTool 
+		forObject: self 
+		viewSelector: #gtRemoteInspectorContentFor: 
+]
+
+{ #category : #'*Gt4PharoLink' }
+LanguageLinkProxyObject >> gtRemoteViewSpecificationsFor: aView [
+	<gtProxyView>
+	
+	^ aView columnedList
+		title: 'Remote view specifications';
+		priority: 10001;
+		items: [ self declarativeViews sorted: #priority ascending];
+		column: 'Title' text: [ :aViewAccessor | aViewAccessor title ];
+		column: 'Selector' text: [ :aViewAccessor | aViewAccessor methodSelector ];
+		column: 'View' text: [ :aViewAccessor | aViewAccessor viewName ];
+		column: 'Priority' text: [ :aViewAccessor | aViewAccessor priority ] weight: 0.5;
+		column: 'Transport' text: [ :aViewAccessor | aViewAccessor dataTransport ] weight: 0.5;
+		send: [ :aDeclarativeView | aDeclarativeView ]
 ]
 
 { #category : #'*Gt4PharoLink' }
@@ -267,7 +267,7 @@ LanguageLinkProxyObject >> gtViewsInContext: aContext [
 	^ GtPhlowViewsCollector new
 		fromObject: self;
 		context: aContext;
-		pragmaName: #gtProxy;
+		pragmaName: #gtProxyView;
 		collect.
 ]
 
@@ -288,6 +288,19 @@ LanguageLinkProxyObject >> remoteActionsFor: aView inContext: aContext [
 ]
 
 { #category : #'*Gt4PharoLink' }
+LanguageLinkProxyObject >> remoteInspectorProxyDo: aBlock [
+	"Evaluate the supplied block ensuring that the receiver is a GtRemotePhlowViewedObject"
+
+	| viewProxy |
+
+	viewProxy := (#(GtRemotePhlowViewedObject) includes: remoteClass)
+		ifTrue: [ self ]
+		ifFalse: [ self getRemoteInspectorProxy ].
+	^ aBlock value: viewProxy.
+
+]
+
+{ #category : #'*Gt4PharoLink' }
 LanguageLinkProxyObject >> remoteViewsFor: aView inContext: aContext [
 	"Should be all views, but just get Raw and Print views for now"
 
@@ -300,18 +313,5 @@ LanguageLinkProxyObject >> remoteViewsFor: aView inContext: aContext [
 		do: [ :ex | application isRunning
 			ifTrue: [ ex pass ]
 			ifFalse: [ #() ] ].
-
-]
-
-{ #category : #'*Gt4PharoLink' }
-LanguageLinkProxyObject >> viewProxyDo: aBlock [
-	"Evaluate the supplied block ensuring that the receiver is a GtRemotePhlowViewedObject"
-
-	| viewProxy |
-
-	viewProxy := (#(GtRemotePhlowViewedObject) includes: remoteClass)
-		ifTrue: [ self ]
-		ifFalse: [ self getViewProxy ].
-	^ aBlock value: viewProxy.
 
 ]

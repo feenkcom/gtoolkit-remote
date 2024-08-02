@@ -5,7 +5,7 @@ PharoLinkProxyObject >> declarativeViews [
 	"Answer the views for the receiver"
 	| rawViews |
 
-	self viewProxyDo: [ :remoteInspectorProxy |
+	self remoteInspectorProxyDo: [ :remoteInspectorProxy |
 		| declarativeData declarativeViewDeclarations |
 		declarativeData := remoteInspectorProxy getViewsDeclarations.
 		declarativeViewDeclarations := declarativeData at: 'views' ifAbsent: [ #() ].
