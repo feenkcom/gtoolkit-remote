@@ -260,6 +260,11 @@ GtLocalPhlowViewedObject >> rawViewSpecificationsBySelector [
 	^ viewSpecificationsBySelector
 ]
 
+{ #category : #accessing }
+GtLocalPhlowViewedObject >> remoteClass [
+	^ remoteViewedObject remoteClass
+]
+
 { #category : #'api - specifications' }
 GtLocalPhlowViewedObject >> viewSpecificationsBySelector [
 	viewSpecificationsBySelector ifNil: [ 
