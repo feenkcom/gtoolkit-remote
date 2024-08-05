@@ -80,7 +80,7 @@ GtRemoteInspectorListingBufferedStream >> pollNext: anAsynchronousContext [
 				ifNil: [
 					bufferFuture := [ declarativeView 
 						retrieveItems: self bufferSize 
-						fromIndex: index ] asAsyncFuture ]
+						fromIndex: index ] asAsyncForkedFuture ]
 				ifNotNil: [
 					(bufferFuture poll: anAsynchronousContext)
 						ifReady: [ :aReadyPoll | buffer := LinkedList newFrom: aReadyPoll value ]
