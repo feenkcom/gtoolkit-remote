@@ -22,7 +22,7 @@ GtPhlowNamedIconStencil >> = anObject [
 	self class = anObject class
 		ifFalse: [ ^ false ].
 		
-	^ iconName = anObject iconName
+	^ self iconName = anObject iconName
 ]
 
 { #category : #accessing }
@@ -36,7 +36,7 @@ GtPhlowNamedIconStencil >> asDictionaryForExport [
 GtPhlowNamedIconStencil >> hash [
 	"Answer an integer value that is related to the identity of the receiver."
 
-	^ iconName hash
+	^ self iconName hash
 ]
 
 { #category : #accessing }
