@@ -191,25 +191,9 @@ GtLocalPhlowViewedObject >> initializeActionSpecifications [
 ]
 
 { #category : #initialization }
-GtLocalPhlowViewedObject >> initializeFromProxy: aProxy withData: aDictionary [
-	remoteViewedObject := aProxy.
-	
-	self initializeFromProxyData: aDictionary
-]
-
-{ #category : #initialization }
-GtLocalPhlowViewedObject >> initializeFromProxyData: aDictionary [
-	| declarativeViewSpecifications declarativeActionsSpecifications |
-	declarativeViewSpecifications := aDictionary at: 'views' ifAbsent: [ nil ].
+GtLocalPhlowViewedObject >> initializeActionsFromProxyData: aDictionary [
+	|  declarativeActionsSpecifications |
 	declarativeActionsSpecifications := aDictionary at: 'actions' ifAbsent: [ nil ].
-	
-	declarativeViewSpecifications ifNotNil: [
-		viewSpecificationsBySelector := (declarativeViewSpecifications 
-			collect: [ :viewSpecificationData |
-				| viewSpecification |
-				viewSpecification := GtPhlowViewSpecification 
-					fromDictionary: viewSpecificationData.
-				viewSpecification methodSelector -> viewSpecification ]) asDictionary ].
 				
 	declarativeActionsSpecifications ifNotNil: [
 		actionSpecificationsBySelector := (declarativeActionsSpecifications 
@@ -218,6 +202,25 @@ GtLocalPhlowViewedObject >> initializeFromProxyData: aDictionary [
 				actionSpecification := GtPhlowActionSpecification 
 					phlowActionFromDictionary: actionSpecificationData.
 				actionSpecification methodSelector -> actionSpecification ]) asDictionary ]
+]
+
+{ #category : #initialization }
+GtLocalPhlowViewedObject >> initializeDisplayStringFromProxyData: aDictionary [
+	gtDisplayString := aDictionary at: 'gtDisplayString' ifAbsent: [ nil ].
+]
+
+{ #category : #initialization }
+GtLocalPhlowViewedObject >> initializeFromProxy: aProxy withData: aDictionary [
+	remoteViewedObject := aProxy.
+	
+	self initializeFromProxyData: aDictionary
+]
+
+{ #category : #initialization }
+GtLocalPhlowViewedObject >> initializeFromProxyData: aDictionary [
+	self initializeDisplayStringFromProxyData: aDictionary.
+	self initializeViewsFromProxyData: aDictionary.
+	self initializeActionsFromProxyData: aDictionary.
 ]
 
 { #category : #accessing }
@@ -233,9 +236,8 @@ GtLocalPhlowViewedObject >> initializeViewSpecifications [
 
 { #category : #initialization }
 GtLocalPhlowViewedObject >> initializeViewsFromProxyData: aDictionary [
-	| declarativeViewSpecifications declarativeActionsSpecifications |
+	| declarativeViewSpecifications |
 	declarativeViewSpecifications := aDictionary at: 'views' ifAbsent: [ nil ].
-	declarativeActionsSpecifications := aDictionary at: 'actions' ifAbsent: [ nil ].
 	
 	declarativeViewSpecifications ifNotNil: [
 		viewSpecificationsBySelector := (declarativeViewSpecifications 
@@ -244,14 +246,6 @@ GtLocalPhlowViewedObject >> initializeViewsFromProxyData: aDictionary [
 				viewSpecification := GtPhlowViewSpecification 
 					fromDictionary: viewSpecificationData.
 				viewSpecification methodSelector -> viewSpecification ]) asDictionary ].
-				
-	declarativeActionsSpecifications ifNotNil: [
-		actionSpecificationsBySelector := (declarativeActionsSpecifications 
-			collect: [ :actionSpecificationData |
-				| actionSpecification |
-				actionSpecification := GtPhlowActionSpecification 
-					phlowActionFromDictionary: actionSpecificationData.
-				actionSpecification methodSelector -> actionSpecification ]) asDictionary ]
 ]
 
 { #category : #initialization }

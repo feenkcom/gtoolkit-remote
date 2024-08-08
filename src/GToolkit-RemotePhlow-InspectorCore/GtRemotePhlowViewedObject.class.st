@@ -168,6 +168,8 @@ GtRemotePhlowViewedObject >> getDeclarativeViewMethodNames [
 { #category : #'api  - inspector' }
 GtRemotePhlowViewedObject >> getInspectorSpecificationWithPhlowDataSource [
 	^ Dictionary new 
+		at: 'gtDisplayString' put: (
+			self getRemoteObjectGtDisplayString);
 		at: 'views' put:   (self getViewSpecificationWithPhlowDataSource
 			at: 'views');
 		at: 'actions' put: (self getActionSpecificationsWithPhlowDataSource
