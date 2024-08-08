@@ -12419,11 +12419,19 @@ category: 'api  - inspector'
 method: GtRemotePhlowViewedObject
 getInspectorSpecificationWithPhlowDataSource
 	^ Dictionary new 
+		at: 'gtDisplayString' put: (
+			self getRemoteObjectGtDisplayString);
 		at: 'views' put:   (self getViewSpecificationWithPhlowDataSource
 			at: 'views');
 		at: 'actions' put: (self getActionSpecificationsWithPhlowDataSource
 			at: 'actions');
 		yourself
+%
+
+category: 'api - printing'
+method: GtRemotePhlowViewedObject
+getRemoteObjectGtDisplayString
+	^ object gtDisplayString
 %
 
 category: 'api - views deprecated'
