@@ -66,7 +66,7 @@ GtRemoteInspectionSimulation >> createViewedObjectFor: anObject [
 	^ GtRemotePhlowViewedObject object: anObject
 ]
 
-{ #category : #accessing }
+{ #category : #'gt - actions' }
 GtRemoteInspectionSimulation >> getDeclarativeActionDataSourceFor: anActionSelector [
 	^ localProxyInspector getDeclarativeActionDataSourceFor: anActionSelector
 ]
@@ -81,14 +81,23 @@ GtRemoteInspectionSimulation >> getRemoteInspectorProxy [
 	^ remoteInspectorProxy
 ]
 
-{ #category : #accessing }
+{ #category : #'gt inspector' }
+GtRemoteInspectionSimulation >> getRemoteObjectGtDisplayString [
+	^ 1
+]
+
+{ #category : #'gt - views' }
 GtRemoteInspectionSimulation >> getViewDeclaration: aViewSelector [
 	^ localProxyInspector getViewDeclaration: aViewSelector
 ]
 
-{ #category : #accessing }
+{ #category : #'gt - views' }
 GtRemoteInspectionSimulation >> getViewsDeclarations [
 	^ localProxyInspector getViewsDeclarations
+]
+
+{ #category : #'gt inspector' }
+GtRemoteInspectionSimulation >> gtInspectorConnectionDetailsOn: aStream [
 ]
 
 { #category : #'as yet unclassified' }
@@ -110,6 +119,11 @@ GtRemoteInspectionSimulation >> gtInspectorTitleString [
 { #category : #simulation }
 GtRemoteInspectionSimulation >> gtRemoteSideInitialPlaygroundSnippet [
 	^ LePharoSnippet new
+]
+
+{ #category : #utils }
+GtRemoteInspectionSimulation >> isProxyObjectActive [
+	^ true
 ]
 
 { #category : #accessing }

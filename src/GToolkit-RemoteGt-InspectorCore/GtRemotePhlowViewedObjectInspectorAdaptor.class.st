@@ -67,9 +67,31 @@ GtRemotePhlowViewedObjectInspectorAdaptor >> gtActionsForRemoteSideInContext: aC
 	^ collectedActions
 ]
 
-{ #category : #accessing }
+{ #category : #'gt inspector' }
+GtRemotePhlowViewedObjectInspectorAdaptor >> gtBasicDisplayOn: aStream [
+	| gtDisplayString |
+
+	targetObject isProxyObjectActive ifFalse:[ 
+		aStream << '<not connected>'.
+		^ self ].
+
+	gtDisplayString := 'Error printing bare proxy'.
+	[ 
+		self currentRemoteInspectorProxyDo: [ :aRemoteInspectorProxy |
+			gtDisplayString := aRemoteInspectorProxy getRemoteObjectGtDisplayString ]
+	] on: Error do: [ :ex | 
+		gtDisplayString := 'Error printing bare proxy: ', ex class name ].
+		
+	aStream << gtDisplayString.
+	
+	targetObject gtInspectorConnectionDetailsOn: aStream.
+]
+
+{ #category : #'gt inspector' }
 GtRemotePhlowViewedObjectInspectorAdaptor >> gtInspectorRemoteSideTitleStringOn: aStream [
-	targetObject gtInspectorRemoteSideTitleStringOn: aStream
+	self gtBasicDisplayOn: aStream.
+	
+	targetObject gtInspectorConnectionDetailsOn: aStream.
 ]
 
 { #category : #'gt inspector' }

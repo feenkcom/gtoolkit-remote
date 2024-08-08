@@ -175,6 +175,11 @@ GtRemotePhlowViewedObject >> getInspectorSpecificationWithPhlowDataSource [
 		yourself
 ]
 
+{ #category : #'api - printing' }
+GtRemotePhlowViewedObject >> getRemoteObjectGtDisplayString [
+	^ object gtDisplayString
+]
+
 { #category : #'api - views deprecated' }
 GtRemotePhlowViewedObject >> getViewDeclaration: aViewSelector [
 	^ self getViewSpecificationDataFor: aViewSelector

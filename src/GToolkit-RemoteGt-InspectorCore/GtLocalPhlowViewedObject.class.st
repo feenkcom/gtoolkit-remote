@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'remoteViewedObject',
 		'viewSpecificationsBySelector',
-		'actionSpecificationsBySelector'
+		'actionSpecificationsBySelector',
+		'gtDisplayString'
 	],
 	#category : #'GToolkit-RemoteGt-InspectorCore'
 }
@@ -89,6 +90,14 @@ GtLocalPhlowViewedObject >> getDeclarativeActionDataSourceFor: anActionSelector 
 { #category : #accessing }
 GtLocalPhlowViewedObject >> getDeclarativeViewFor: aViewSelector [
 	^ self getViewSpecificationFor: aViewSelector
+]
+
+{ #category : #accessing }
+GtLocalPhlowViewedObject >> getRemoteObjectGtDisplayString [
+	gtDisplayString ifNil: [
+		gtDisplayString := remoteViewedObject getRemoteObjectGtDisplayString ].
+	
+	^ gtDisplayString
 ]
 
 { #category : #accessing }
