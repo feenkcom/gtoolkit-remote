@@ -45,9 +45,9 @@ GtRemotePhlowAction >> definingClass: aClass [
 
 { #category : #accessing }
 GtRemotePhlowAction >> definingMethod [
-	^ (definingClass whichClassIncludesSelector: definingSelector) 
+	^ (self definingClass whichClassIncludesSelector: self definingSelector) 
 		ifNil: [ nil ]
-		ifNotNil: [ :aClass | aClass compiledMethodAt: definingSelector ]
+		ifNotNil: [ :aClass | aClass compiledMethodAt: self definingSelector ]
 ]
 
 { #category : #accessing }

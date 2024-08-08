@@ -75,7 +75,7 @@ GtRemotePhlowDeclarativeActionsExamples >> buttonActionWithIconAndLabel [
 { #category : #'examples - actions' }
 GtRemotePhlowDeclarativeActionsExamples >> buttonActionWithLabel [
 	<gtExample>
-	| inspectorProxy actionSpeficificationData actionSpecification actionDatasource actionResult |
+	| inspectorProxy actionSpeficificationData actionSpecification actionDatasource |
 
 	inspectorProxy := self remoteInspectorProxy.
 	actionSpeficificationData := inspectorProxy 

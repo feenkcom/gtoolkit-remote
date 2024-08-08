@@ -3534,7 +3534,7 @@ method: GtPhlowNamedIconStencil
 	self class = anObject class
 		ifFalse: [ ^ false ].
 		
-	^ iconName = anObject iconName
+	^ self iconName = anObject iconName
 %
 
 category: 'accessing'
@@ -3550,7 +3550,7 @@ method: GtPhlowNamedIconStencil
 hash
 	"Answer an integer value that is related to the identity of the receiver."
 
-	^ iconName hash
+	^ self iconName hash
 %
 
 category: 'accessing'
@@ -6131,9 +6131,9 @@ definingClass: aClass
 category: 'accessing'
 method: GtRemotePhlowAction
 definingMethod
-	^ (definingClass whichClassIncludesSelector: definingSelector) 
+	^ (self definingClass whichClassIncludesSelector: self definingSelector) 
 		ifNil: [ nil ]
-		ifNotNil: [ :aClass | aClass compiledMethodAt: definingSelector ]
+		ifNotNil: [ :aClass | aClass compiledMethodAt: self definingSelector ]
 %
 
 category: 'accessing'
@@ -7639,7 +7639,7 @@ category: 'examples - actions'
 method: GtRemotePhlowDeclarativeActionsExamples
 buttonActionWithLabel
 	<gtExample>
-	| inspectorProxy actionSpeficificationData actionSpecification actionDatasource actionResult |
+	| inspectorProxy actionSpeficificationData actionSpecification actionDatasource |
 
 	inspectorProxy := self remoteInspectorProxy.
 	actionSpeficificationData := inspectorProxy 
@@ -12419,11 +12419,19 @@ category: 'api  - inspector'
 method: GtRemotePhlowViewedObject
 getInspectorSpecificationWithPhlowDataSource
 	^ Dictionary new 
+		at: 'gtDisplayString' put: (
+			self getRemoteObjectGtDisplayString);
 		at: 'views' put:   (self getViewSpecificationWithPhlowDataSource
 			at: 'views');
 		at: 'actions' put: (self getActionSpecificationsWithPhlowDataSource
 			at: 'actions');
 		yourself
+%
+
+category: 'api - printing'
+method: GtRemotePhlowViewedObject
+getRemoteObjectGtDisplayString
+	^ object gtDisplayString
 %
 
 category: 'api - views deprecated'
