@@ -89,9 +89,10 @@ GtRemotePhlowViewedObjectInspectorAdaptor >> gtBasicDisplayOn: aStream [
 
 { #category : #'gt inspector' }
 GtRemotePhlowViewedObjectInspectorAdaptor >> gtInspectorRemoteSideTitleStringOn: aStream [
-	self gtBasicDisplayOn: aStream.
-	
-	targetObject gtInspectorConnectionDetailsOn: aStream.
+	targetObject gtInspectorRemoteSideTitleStringOn: aStream.
+
+	"self gtBasicDisplayOn: aStream.
+	targetObject gtInspectorConnectionDetailsOn: aStream."
 ]
 
 { #category : #'gt inspector' }
