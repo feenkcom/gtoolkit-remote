@@ -83,7 +83,7 @@ GtRemoteInspectionSimulation >> getRemoteInspectorProxy [
 
 { #category : #'gt inspector' }
 GtRemoteInspectionSimulation >> getRemoteObjectGtDisplayString [
-	^ 1
+	^ localProxyInspector getRemoteObjectGtDisplayString
 ]
 
 { #category : #'gt - views' }
