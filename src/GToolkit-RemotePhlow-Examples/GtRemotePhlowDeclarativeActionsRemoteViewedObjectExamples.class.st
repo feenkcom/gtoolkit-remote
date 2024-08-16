@@ -5,7 +5,7 @@ Class {
 }
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeActionsRemoteViewedObjectExamples >> retrieveRemoteInspectorProxy [
+GtRemotePhlowDeclarativeActionsRemoteViewedObjectExamples >> retrieveRemotePhlowSpecificationsProvider [
 	"Answer the GtRemotePhlowViewedObject proxy for the remote object"
 
 	^ GtRemotePhlowViewedObject object: self remoteObject.

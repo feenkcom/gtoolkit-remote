@@ -20,10 +20,10 @@ GtRemotePhlowDeclarativeActionsExamples >> assertActionResultForDatasource: acti
 { #category : #'examples - actions' }
 GtRemotePhlowDeclarativeActionsExamples >> buttonActionWithIcon [
 	<gtExample>
-	| inspectorProxy actionSpeficificationData actionSpecification actionDatasource |
+	| phlowSpecificationsProvider actionSpeficificationData actionSpecification actionDatasource |
 	
-	inspectorProxy := self remoteInspectorProxy.
-	actionSpeficificationData := inspectorProxy
+	phlowSpecificationsProvider := self remotePhlowSpecificationsProvider.
+	actionSpeficificationData := phlowSpecificationsProvider
 			getActionSpecificationDataFor: #gtButtonActionWithIconFor:.
 	actionSpecification := GtPhlowActionSpecification
 			phlowActionFromDictionary: actionSpeficificationData.
@@ -39,7 +39,7 @@ GtRemotePhlowDeclarativeActionsExamples >> buttonActionWithIcon [
 		assert: actionSpecification methodSelector
 		equals: #gtButtonActionWithIconFor:.
 		
-	actionDatasource := inspectorProxy
+	actionDatasource := phlowSpecificationsProvider
 			getDeclarativeActionDataSourceFor: #gtButtonActionWithIconFor:.
 			
 	self assertActionResultForDatasource: actionDatasource.
@@ -50,10 +50,10 @@ GtRemotePhlowDeclarativeActionsExamples >> buttonActionWithIcon [
 { #category : #'examples - actions' }
 GtRemotePhlowDeclarativeActionsExamples >> buttonActionWithIconAndLabel [
 	<gtExample>
-	| inspectorProxy actionSpeficificationData actionSpecification actionDatasource |
+	| phlowSpecificationsProvider actionSpeficificationData actionSpecification actionDatasource |
 	
-	inspectorProxy := self remoteInspectorProxy.
-	actionSpeficificationData := inspectorProxy
+	phlowSpecificationsProvider := self remotePhlowSpecificationsProvider.
+	actionSpeficificationData := phlowSpecificationsProvider
 			getActionSpecificationDataFor: #gtButtonActionWithBothIconAndLabelFor: .
 	actionSpecification := GtPhlowActionSpecification
 			phlowActionFromDictionary: actionSpeficificationData.
@@ -69,7 +69,7 @@ GtRemotePhlowDeclarativeActionsExamples >> buttonActionWithIconAndLabel [
 		assert: actionSpecification methodSelector
 		equals: #gtButtonActionWithBothIconAndLabelFor:.
 		
-	actionDatasource := inspectorProxy
+	actionDatasource := phlowSpecificationsProvider
 			getDeclarativeActionDataSourceFor: #gtButtonActionWithBothIconAndLabelFor:.
 			
 	self assertActionResultForDatasource: actionDatasource.
@@ -80,10 +80,10 @@ GtRemotePhlowDeclarativeActionsExamples >> buttonActionWithIconAndLabel [
 { #category : #'examples - actions' }
 GtRemotePhlowDeclarativeActionsExamples >> buttonActionWithLabel [
 	<gtExample>
-	| inspectorProxy actionSpeficificationData actionSpecification actionDatasource |
+	| phlowSpecificationsProvider actionSpeficificationData actionSpecification actionDatasource |
 
-	inspectorProxy := self remoteInspectorProxy.
-	actionSpeficificationData := inspectorProxy 
+	phlowSpecificationsProvider := self remotePhlowSpecificationsProvider.
+	actionSpeficificationData := phlowSpecificationsProvider 
 		getActionSpecificationDataFor: #gtButtonActionWithLabelFor:.
 	actionSpecification := GtPhlowActionSpecification 
 		phlowActionFromDictionary: actionSpeficificationData.
@@ -95,7 +95,7 @@ GtRemotePhlowDeclarativeActionsExamples >> buttonActionWithLabel [
 	self assert: actionSpecification phlowDataSource equals: nil.
 	self assert: actionSpecification methodSelector equals: #gtButtonActionWithLabelFor:.
 	
-	actionDatasource := inspectorProxy 
+	actionDatasource := phlowSpecificationsProvider 
 		getDeclarativeActionDataSourceFor: #gtButtonActionWithLabelFor:.
 		
 	self assertActionResultForDatasource: actionDatasource.

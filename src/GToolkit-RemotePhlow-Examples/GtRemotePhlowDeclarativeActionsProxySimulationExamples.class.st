@@ -22,8 +22,9 @@ GtRemotePhlowDeclarativeActionsProxySimulationExamples >> remoteObject [
 ]
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeActionsProxySimulationExamples >> retrieveRemoteInspectorProxy [
+GtRemotePhlowDeclarativeActionsProxySimulationExamples >> retrieveRemotePhlowSpecificationsProvider [
 
-	self remoteObject remoteInspectorProxyDo: [ :aProxy | ^ aProxy ].
+	self remoteObject 
+		remoteInspectorProxyDo: [ :aProxy | ^ aProxy ].
 	^ nil
 ]

@@ -10,7 +10,7 @@ GtRemotePhlowDeclarativeViewsLocalViewedObjectExamples >> remoteViewedObject [
 ]
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeViewsLocalViewedObjectExamples >> retrieveRemoteInspectorProxy [
+GtRemotePhlowDeclarativeViewsLocalViewedObjectExamples >> retrieveRemotePhlowSpecificationsProvider [
 	"Answer the GtRemotePhlowViewedObject proxy for the remote object"
 
 	^ GtLocalPhlowViewedObject remoteViewedObject: self remoteViewedObject
