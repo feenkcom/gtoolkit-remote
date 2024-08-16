@@ -55,7 +55,7 @@ GtRemotePhlowDeclarativeActionsExamples >> buttonActionWithIconAndLabel [
 			
 	self assert: actionSpecification label equals: 'Inspect'.
 	self assert: actionSpecification priority equals: 12.
-	self
+	self 
 		assert: actionSpecification iconStencil
 		equals: (GtPhlowGlamorousVectorIconNameStencil forIconName: #playinspect).
 	self assert: actionSpecification tooltipText equals: 'Inspect objects'.

@@ -70,6 +70,19 @@ GtLocalPhlowViewedObject >> currentDeclarativeViewSpecifications [
 ]
 
 { #category : #'api - actions' }
+GtLocalPhlowViewedObject >> getActionSpecificationDataFor: anActionSelector [
+	| declarativeAction |
+	declarativeAction := self getActionSpecificationFor: anActionSelector.
+	^ self specificationDataForAction: declarativeAction
+]
+
+{ #category : #'api - actions' }
+GtLocalPhlowViewedObject >> getActionSpecificationFor: anActionSelector [
+	^ self actionSpecificationsBySelector 
+		at: anActionSelector
+]
+
+{ #category : #'api - actions' }
 GtLocalPhlowViewedObject >> getActionSpecifications [
 	^ remoteViewedObject getActionSpecifications
 ]
@@ -285,6 +298,12 @@ GtLocalPhlowViewedObject >> rawViewSpecificationsBySelector [
 { #category : #accessing }
 GtLocalPhlowViewedObject >> remoteClass [
 	^ remoteViewedObject remoteClass
+]
+
+{ #category : #utils }
+GtLocalPhlowViewedObject >> specificationDataForAction: anActionSpecification [
+
+	^ anActionSpecification asDictionaryForExport
 ]
 
 { #category : #utils }
