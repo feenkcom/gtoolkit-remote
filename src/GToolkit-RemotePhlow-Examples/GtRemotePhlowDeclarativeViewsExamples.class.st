@@ -9,6 +9,11 @@ Class {
 	#category : #'GToolkit-RemotePhlow-Examples'
 }
 
+{ #category : #testing }
+GtRemotePhlowDeclarativeViewsExamples class >> isAbstract [
+	^ self name = #GtRemotePhlowDeclarativeViewsExamples
+]
+
 { #category : #assertions }
 GtRemotePhlowDeclarativeViewsExamples >> assertBasicStyledTextInViewSpecification: aViewSpecification expectedText: anExpectedText [
 	| obtainedStylableText |
@@ -465,12 +470,6 @@ GtRemotePhlowDeclarativeViewsExamples >> expectedStyledText [
 { #category : #utils }
 GtRemotePhlowDeclarativeViewsExamples >> formatExpectedIconName: anIconName [
 	^ anIconName
-]
-
-{ #category : #private }
-GtRemotePhlowDeclarativeViewsExamples >> getRemoteObject [
-
-	^ GtRemotePhlowDeclarativeTestInspectable new
 ]
 
 { #category : #'examples - views' }

@@ -92,12 +92,31 @@ GtLocalPhlowViewedObject >> getDeclarativeViewFor: aViewSelector [
 	^ self getViewSpecificationFor: aViewSelector
 ]
 
+{ #category : #'api - views' }
+GtLocalPhlowViewedObject >> getDeclarativeViewMethodNames [
+	"Answer the set of declarative view selectors provided by the object"
+
+	^ self viewSpecificationsBySelector keys
+]
+
 { #category : #accessing }
 GtLocalPhlowViewedObject >> getRemoteObjectGtDisplayString [
 	gtDisplayString ifNil: [
 		gtDisplayString := remoteViewedObject getRemoteObjectGtDisplayString ].
 	
 	^ gtDisplayString
+]
+
+{ #category : #'api - views deprecated' }
+GtLocalPhlowViewedObject >> getViewDeclaration: aViewSelector [
+	^ self getViewSpecificationDataFor: aViewSelector
+]
+
+{ #category : #'api - views' }
+GtLocalPhlowViewedObject >> getViewSpecificationDataFor: aViewSelector [
+	| declarativeView |
+	declarativeView := self getViewSpecificationFor: aViewSelector.
+	^ self specificationDataForView: declarativeView
 ]
 
 { #category : #accessing }
@@ -266,6 +285,12 @@ GtLocalPhlowViewedObject >> rawViewSpecificationsBySelector [
 { #category : #accessing }
 GtLocalPhlowViewedObject >> remoteClass [
 	^ remoteViewedObject remoteClass
+]
+
+{ #category : #utils }
+GtLocalPhlowViewedObject >> specificationDataForView: aViewSpecification [
+
+	^ aViewSpecification asDictionaryForExport
 ]
 
 { #category : #'api - specifications' }
