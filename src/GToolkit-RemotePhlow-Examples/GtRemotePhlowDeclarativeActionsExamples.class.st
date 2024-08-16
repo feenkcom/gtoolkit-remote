@@ -4,6 +4,11 @@ Class {
 	#category : #'GToolkit-RemotePhlow-Examples'
 }
 
+{ #category : #testing }
+GtRemotePhlowDeclarativeActionsExamples class >> isAbstract [
+	^ self name = #GtRemotePhlowDeclarativeActionsExamples
+]
+
 { #category : #assertions }
 GtRemotePhlowDeclarativeActionsExamples >> assertActionResultForDatasource: actionDatasource [
 	| actionResult |
@@ -96,10 +101,4 @@ GtRemotePhlowDeclarativeActionsExamples >> buttonActionWithLabel [
 	self assertActionResultForDatasource: actionDatasource.
 	
 	^ actionSpecification
-]
-
-{ #category : #private }
-GtRemotePhlowDeclarativeActionsExamples >> getRemoteObject [
-
-	^ GtRemotePhlowDeclarativeTestInspectable new
 ]
