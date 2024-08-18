@@ -44,7 +44,7 @@ GtRemotePhlowViewedObjectInspectorAdaptor >> filterLocalProxyViews: localViews [
 		each definingMethod compiledMethod hasPragmaNamed: #gtProxyView ].
 ]
 
-{ #category : #accessing }
+{ #category : #'gt inspector' }
 GtRemotePhlowViewedObjectInspectorAdaptor >> gtActionsForRemoteSideInContext: aContext [
 	"This collects all actions for the current object. This excludes the proxy-specific actions (annotated with #gtProxyAction), and includes all remote actions for the object, as well as all custom actions defined locally"
   
@@ -89,10 +89,8 @@ GtRemotePhlowViewedObjectInspectorAdaptor >> gtBasicDisplayOn: aStream [
 
 { #category : #'gt inspector' }
 GtRemotePhlowViewedObjectInspectorAdaptor >> gtInspectorRemoteSideTitleStringOn: aStream [
-	targetObject gtInspectorRemoteSideTitleStringOn: aStream.
-
-	"self gtBasicDisplayOn: aStream.
-	targetObject gtInspectorConnectionDetailsOn: aStream."
+	self gtBasicDisplayOn: aStream.
+	targetObject gtInspectorConnectionDetailsOn: aStream.
 ]
 
 { #category : #'gt inspector' }
@@ -118,7 +116,7 @@ GtRemotePhlowViewedObjectInspectorAdaptor >> gtViewsForRemoteSideInContext: aCon
 	^ collectedViews
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 GtRemotePhlowViewedObjectInspectorAdaptor >> initialiseForTargetObject: anObject [
 	targetObject := anObject
 ]

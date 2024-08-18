@@ -28,23 +28,6 @@ GtRemotePhlowDeclarativeExamples >> getRemoteObject [
 ]
 
 { #category : #examples }
-GtRemotePhlowDeclarativeExamples >> remoteInspectorProxy [
-	"Answer the GtRemotePhlowViewedObject proxy for the remote object"
-	<gtExample>
-	<after: #stopServer>
-	| inspectorProxy declarativeViews |
-
-	inspectorProxy :=  self retrieveRemoteInspectorProxy.
-
-	"The set of views can vary depending on configuration,
-	just check that a common view is present."
-	declarativeViews :=  inspectorProxy getDeclarativeViewMethodNames.
-	self assert: (declarativeViews includes: #gtListFor:).
- 
-	^ inspectorProxy
-]
-
-{ #category : #examples }
 GtRemotePhlowDeclarativeExamples >> remoteObject [
 	"Answer the remote GtRemotePhlowDeclarativeTestInspectable instance.
 	This will be a proxy with a remote server."
@@ -65,9 +48,26 @@ GtRemotePhlowDeclarativeExamples >> remoteObject [
 	^ remoteObject
 ]
 
+{ #category : #examples }
+GtRemotePhlowDeclarativeExamples >> remotePhlowSpecificationsProvider [
+	"Answer the object for returning phlow specifications for the object"
+	<gtExample>
+	<after: #stopServer>
+	| phlowSpecificationsProvider declarativeViews |
+
+	phlowSpecificationsProvider :=  self retrieveRemotePhlowSpecificationsProvider.
+
+	"The set of views can vary depending on configuration,
+	just check that a common view is present."
+	declarativeViews :=  phlowSpecificationsProvider getDeclarativeViewMethodNames.
+	self assert: (declarativeViews includes: #gtListFor:).
+ 
+	^ phlowSpecificationsProvider
+]
+
 { #category : #private }
-GtRemotePhlowDeclarativeExamples >> retrieveRemoteInspectorProxy [
-	"Answer the GtRemotePhlowViewedObject proxy for the remote object"
+GtRemotePhlowDeclarativeExamples >> retrieveRemotePhlowSpecificationsProvider [
+	"Answer the object that will be used to get phlow specifications"
 
 	^ GtRemotePhlowViewedObject object: self remoteObject.
 ]
