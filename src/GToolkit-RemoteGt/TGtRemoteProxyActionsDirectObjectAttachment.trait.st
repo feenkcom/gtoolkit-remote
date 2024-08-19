@@ -5,7 +5,7 @@ Trait {
 	#category : #'GToolkit-RemoteGt'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #filtering }
 TGtRemoteProxyActionsDirectObjectAttachment >> filterLocalProxyActions: localActions [ 
 	"When showing local actions for the object, we remove all actions where the method is annotated with #gtProxyAction. Those actions will only be shown for the proxy object."
 	^ localActions reject: [ :each  |
@@ -13,7 +13,7 @@ TGtRemoteProxyActionsDirectObjectAttachment >> filterLocalProxyActions: localAct
 			hasPragmaNamed: #gtProxyAction ].
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'gt - actions' }
 TGtRemoteProxyActionsDirectObjectAttachment >> gtActionsForRemoteSideInContext: aContext [
 	"This collects all actions for the current object. This excludes the proxy-specific actions (annotated with #gtProxyAction), and includes all remote actions for the object, as well as all custom actions defined locally"
  
