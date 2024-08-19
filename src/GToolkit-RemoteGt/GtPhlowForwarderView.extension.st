@@ -18,7 +18,7 @@ GtPhlowForwarderView >> asGtDeclarativeView [
 GtPhlowForwarderView >> canBeGtDeclarativeView [
 	"Answer a boolean indicating whether the receiver can be represented as a GtDeclarativeView"
 
-	^ self phlowView wait canBeGtDeclarativeView
+	^ self phlowView asAsyncPromise wait canBeGtDeclarativeView
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
@@ -33,7 +33,7 @@ GtPhlowForwarderView >> computeForwardedView [
 	computedView := self on: targetObject perform: self viewSymbol.
 	
 	computedView class = self class ifTrue: [
-		"If we the forward is to another forwarder view we follow the chain
+		"If this forward is to another forward view we follow the chain
 		to reach the first view that is now a forward view."
 		^ computedView computeForwardedView ].
 		
