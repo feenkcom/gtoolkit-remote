@@ -1,6 +1,6 @@
 Extension { #name : #GtRemotePhlowDeclarativeViewsLocalViewedObjectExamples }
 
-{ #category : #'*GToolkit-RemoteGt-LocalPhlow' }
+{ #category : #'*GToolkit-RemoteGt' }
 GtRemotePhlowDeclarativeViewsLocalViewedObjectExamples >> retrieveRemotePhlowSpecificationsProvider [
 	"Answer the GtRemotePhlowViewedObject proxy for the remote object"
 

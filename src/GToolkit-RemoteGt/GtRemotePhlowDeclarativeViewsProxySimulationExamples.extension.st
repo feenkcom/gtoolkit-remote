@@ -1,6 +1,6 @@
 Extension { #name : #GtRemotePhlowDeclarativeViewsProxySimulationExamples }
 
-{ #category : #'*GToolkit-RemoteGt-LocalPhlow' }
+{ #category : #'*GToolkit-RemoteGt' }
 GtRemotePhlowDeclarativeViewsProxySimulationExamples >> getRemoteObject [
 	^ GtRemoteInspectionSimulation 
 		openOn: GtRemotePhlowDeclarativeTestInspectable new
