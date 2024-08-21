@@ -5,12 +5,6 @@ Class {
 }
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeActionsProxySimulationExamples >> getRemoteObject [
-	^ GtRemoteInspectionSimulation 
-		openOn: GtRemotePhlowDeclarativeTestInspectable new
-]
-
-{ #category : #accessing }
 GtRemotePhlowDeclarativeActionsProxySimulationExamples >> remoteObject [
 	<gtExample>
 	<after: #stopServer>

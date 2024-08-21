@@ -24,7 +24,7 @@ GtRemotePhlowForwarderViewInspectionExamples >> assertBasicForwarderView: aView 
 	self assert: aView title equals: 'Forwarded view'.
 
 	self assert: aView actions size equals: 0.
-	self assert: aView allActionsPromise wait size equals: 0.
+	self assert: aView allActionsFuture wait size equals: 0.
 	self assert: aView actions size equals: 0.
 	self assert: ((aView asElementDo: [ :anElement | anElement ]) isKindOf: BrFromFuture). 
 ]
