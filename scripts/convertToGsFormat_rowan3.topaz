@@ -1,0 +1,46 @@
+	iferr 1 stk
+	iferr 2 stack
+	iferr 3 exit
+
+	expectvalue true
+	run
+| warnings projectSetModification visitor gsDirectory project repositoryRoot projectSetDefinition  |
+warnings := String new.
+
+	repositoryRoot := '$ROWAN_PROJECTS_HOME/gtoolkit-remote'.
+	gsDirectory := repositoryRoot asFileReference / 'src-gs'.
+	project := Rowan 
+		projectFromUrl: 'file:', repositoryRoot, '/rowan/specs/gtoolkit-remote.ston'
+		gitUrl: 'file:', repositoryRoot.
+	projectSetDefinition := RwProjectSetDefinition new
+		addProject: project _concreteProject;
+		yourself.
+	projectSetModification := projectSetDefinition compareAgainstBase: RwProjectSetDefinition new.
+
+	projectSetModification findAddedMethods values do: [ :each |
+		each methodsModification elementsModified values do: [ :another | 
+			another after protocol: another after protocol asString ] ].
+
+	projectSetModification findAddedClasses values do: [ :each |
+		each classesModification elementsModified values collect: [ :another | 
+			another after instanceMethodDefinitions values do: [ :aMethodDefinition |
+				aMethodDefinition protocol: aMethodDefinition protocol asString ].
+			another after classMethodDefinitions values do: [ :aMethodDefinition |
+				aMethodDefinition protocol: aMethodDefinition protocol asString ] ] ].
+
+	visitor := RwGsModificationTopazWriterVisitorV2 new
+		logCreation: true;
+		repositoryRootPath: gsDirectory;
+		topazFilename: 'gtoolkit-remote';
+		yourself.
+	visitor visit: projectSetModification.
+
+
+warnings isEmpty
+	ifTrue: [ true ]
+	ifFalse: [ warnings ]
+%
+	abort
+
+	errorCount
+	exit
