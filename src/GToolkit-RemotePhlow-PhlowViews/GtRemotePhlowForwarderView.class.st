@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'viewSelector',
 		'objectComputation',
-		'transformation'
+		'transformation',
+		'isDeclarative'
 	],
 	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
@@ -19,6 +20,11 @@ GtRemotePhlowForwarderView >> asGtDeclarativeView [
 		phlowDataSource: (GtRemotePhlowDeclarativeForwardViewDataSource 
 			forPhlowView: self);
 		dataTransport: GtPhlowViewSpecification dataLazy
+]
+
+{ #category : #testing }
+GtRemotePhlowForwarderView >> canBeGtDeclarativeView [
+	^ isDeclarative ifNil: [ true ] 
 ]
 
 { #category : #converting }
@@ -49,6 +55,11 @@ GtRemotePhlowForwarderView >> defaultTransformation [
 GtRemotePhlowForwarderView >> hasTransformation [
 	<return: #Boolean>
 	^ transformation notNil
+]
+
+{ #category : #configuring }
+GtRemotePhlowForwarderView >> markAsNotDeclarative [
+	isDeclarative := false
 ]
 
 { #category : #'api - scripting' }

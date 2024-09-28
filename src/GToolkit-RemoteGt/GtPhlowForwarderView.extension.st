@@ -18,7 +18,7 @@ GtPhlowForwarderView >> asGtDeclarativeView [
 GtPhlowForwarderView >> canBeGtDeclarativeView [
 	"Answer a boolean indicating whether the receiver can be represented as a GtDeclarativeView"
 
-	^ self phlowView asAsyncPromise wait canBeGtDeclarativeView
+	^ isDeclarative ifNil: [ true ] 
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
@@ -38,4 +38,9 @@ GtPhlowForwarderView >> computeForwardedView [
 		^ computedView computeForwardedView ].
 		
 	^ computedView
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
+GtPhlowForwarderView >> markAsNotDeclarative [
+	isDeclarative := false
 ]
