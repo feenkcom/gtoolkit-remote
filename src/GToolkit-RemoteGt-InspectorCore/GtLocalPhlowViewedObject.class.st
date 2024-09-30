@@ -130,6 +130,11 @@ GtLocalPhlowViewedObject >> getDeclarativeViewMethodNames [
 	^ self viewSpecificationsBySelector keys
 ]
 
+{ #category : #'api - views' }
+GtLocalPhlowViewedObject >> getInspectorSpecificationData [
+	^ remoteViewedObject getInspectorSpecificationData
+]
+
 { #category : #accessing }
 GtLocalPhlowViewedObject >> getRemoteObjectGtDisplayString [
 	gtDisplayString ifNil: [
