@@ -66,6 +66,11 @@ GtRemoteInspectionSimulation >> createViewedObjectFor: anObject [
 	^ GtRemotePhlowViewedObject object: anObject
 ]
 
+{ #category : #'gt inspector' }
+GtRemoteInspectionSimulation >> getClassSpecificationData [
+	^ localProxyInspector getClassSpecificationData
+]
+
 { #category : #'gt - actions' }
 GtRemoteInspectionSimulation >> getDeclarativeActionDataSourceFor: anActionSelector [
 	^ localProxyInspector getDeclarativeActionDataSourceFor: anActionSelector

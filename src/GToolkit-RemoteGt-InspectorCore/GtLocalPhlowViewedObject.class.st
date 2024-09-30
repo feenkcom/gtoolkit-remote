@@ -5,7 +5,8 @@ Class {
 		'remoteViewedObject',
 		'viewSpecificationsBySelector',
 		'actionSpecificationsBySelector',
-		'gtDisplayString'
+		'gtDisplayString',
+		'classSpecification'
 	],
 	#category : #'GToolkit-RemoteGt-InspectorCore'
 }
@@ -60,6 +61,12 @@ GtLocalPhlowViewedObject >> computeDeclarativeViewSpecifications [
 ]
 
 { #category : #'api - specifications' }
+GtLocalPhlowViewedObject >> currentClassSpecifications [
+	^ classSpecification ifNil: [
+		classSpecification := self getClassSpecification]
+]
+
+{ #category : #'api - specifications' }
 GtLocalPhlowViewedObject >> currentDeclarativeActionSpecifications [
 	^ self actionSpecificationsBySelector values 
 ]
@@ -85,6 +92,17 @@ GtLocalPhlowViewedObject >> getActionSpecificationFor: anActionSelector [
 { #category : #'api - actions' }
 GtLocalPhlowViewedObject >> getActionSpecifications [
 	^ remoteViewedObject getActionSpecifications
+]
+
+{ #category : #accessing }
+GtLocalPhlowViewedObject >> getClassSpecification [
+	^ GtRemotePhlowViewedObjectClassSpecification fromDictionary: self getClassSpecificationData
+]
+
+{ #category : #accessing }
+GtLocalPhlowViewedObject >> getClassSpecificationData [
+	
+	^ remoteViewedObject getClassSpecificationData
 ]
 
 { #category : #accessing }
@@ -237,6 +255,16 @@ GtLocalPhlowViewedObject >> initializeActionsFromProxyData: aDictionary [
 ]
 
 { #category : #initialization }
+GtLocalPhlowViewedObject >> initializeClassSpecificationFromProxyData: aDictionary [
+	|  classSpecificationData |
+	classSpecificationData := aDictionary at: 'class' ifAbsent: [ nil ].
+				
+	classSpecificationData ifNotNil: [
+		classSpecification := GtRemotePhlowViewedObjectClassSpecification
+			fromDictionary: classSpecificationData ]
+]
+
+{ #category : #initialization }
 GtLocalPhlowViewedObject >> initializeDisplayStringFromProxyData: aDictionary [
 	gtDisplayString := aDictionary at: 'gtDisplayString' ifAbsent: [ nil ].
 ]
@@ -253,6 +281,7 @@ GtLocalPhlowViewedObject >> initializeFromProxyData: aDictionary [
 	self initializeDisplayStringFromProxyData: aDictionary.
 	self initializeViewsFromProxyData: aDictionary.
 	self initializeActionsFromProxyData: aDictionary.
+	self initializeClassSpecificationFromProxyData: aDictionary.
 ]
 
 { #category : #accessing }
