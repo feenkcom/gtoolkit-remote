@@ -128,7 +128,7 @@ GtRemoteInspectionSimulation >> gtRemoteSideInitialPlaygroundSnippet [
 
 { #category : #'gt inspector' }
 GtRemoteInspectionSimulation >> gtRemoteSideInspectorObjectHolder [
-	^ GtInspectorObject new 
+	^ GtRemotePhlowInspectorObject new 
 ]
 
 { #category : #utils }
