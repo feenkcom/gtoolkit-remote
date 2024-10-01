@@ -201,7 +201,7 @@ GtLocalPhlowViewedObject >> gtRemoteInspectorSpecificationsFor: aView [
 		priority: 30;
 		object: [ GtJson
 			forJsonString: (NeoJSONWriter 
-				toStringPretty:  self getViewsDeclarations) ];
+				toStringPretty:  self getInspectorSpecificationData) ];
 		view: #gtJsonStringFor:;
 		actionButtonIcon: BrGlamorousVectorIcons inspect 
 			label: 'Json'

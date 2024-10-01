@@ -126,6 +126,11 @@ GtRemoteInspectionSimulation >> gtRemoteSideInitialPlaygroundSnippet [
 	^ LePharoSnippet new
 ]
 
+{ #category : #'gt inspector' }
+GtRemoteInspectionSimulation >> gtRemoteSideInspectorObjectHolder [
+	^ GtInspectorObject new 
+]
+
 { #category : #utils }
 GtRemoteInspectionSimulation >> isProxyObjectActive [
 	^ true

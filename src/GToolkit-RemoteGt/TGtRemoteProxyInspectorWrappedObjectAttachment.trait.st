@@ -6,9 +6,16 @@ Trait {
 }
 
 { #category : #'gt - inspector' }
-TGtRemoteProxyInspectorWrappedObjectAttachment >> gtRemoteInspectorTargetObject [
-	^ GtRemotePhlowViewedObjectInspectorAdaptor
-		forTargetObject: self
+TGtRemoteProxyInspectorWrappedObjectAttachment >> gtRemoteSideInspectorObjectHolder [
+	^ self explicitRequirement
+]
+
+{ #category : #'gt - inspector' }
+TGtRemoteProxyInspectorWrappedObjectAttachment >> gtRemoteSideInspectorTool [
+	^ GtInspectorTool new 
+		objectHolder: (self gtRemoteSideInspectorObjectHolder
+			object: self; 
+			viewSelector: #gtRemoteInspectorContentFor:)
 ]
 
 { #category : #'gt - inspector' }
