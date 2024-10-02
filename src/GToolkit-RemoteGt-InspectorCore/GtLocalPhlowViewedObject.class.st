@@ -62,8 +62,8 @@ GtLocalPhlowViewedObject >> computeDeclarativeViewSpecifications [
 
 { #category : #'api - specifications' }
 GtLocalPhlowViewedObject >> currentClassSpecifications [
-	^ classSpecification ifNil: [
-		classSpecification := self getClassSpecification]
+	^ classSpecification "ifNil: [
+		classSpecification := self getClassSpecification]"
 ]
 
 { #category : #'api - specifications' }
