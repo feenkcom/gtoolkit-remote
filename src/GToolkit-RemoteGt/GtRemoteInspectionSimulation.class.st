@@ -66,6 +66,11 @@ GtRemoteInspectionSimulation >> createViewedObjectFor: anObject [
 	^ GtRemotePhlowViewedObject object: anObject
 ]
 
+{ #category : #'gt inspector' }
+GtRemoteInspectionSimulation >> getClassSpecificationData [
+	^ localProxyInspector getClassSpecificationData
+]
+
 { #category : #'gt - actions' }
 GtRemoteInspectionSimulation >> getDeclarativeActionDataSourceFor: anActionSelector [
 	^ localProxyInspector getDeclarativeActionDataSourceFor: anActionSelector
@@ -119,6 +124,11 @@ GtRemoteInspectionSimulation >> gtInspectorTitleString [
 { #category : #simulation }
 GtRemoteInspectionSimulation >> gtRemoteSideInitialPlaygroundSnippet [
 	^ LePharoSnippet new
+]
+
+{ #category : #'gt inspector' }
+GtRemoteInspectionSimulation >> gtRemoteSideInspectorObjectHolder [
+	^ GtRemotePhlowInspectorObject new 
 ]
 
 { #category : #utils }

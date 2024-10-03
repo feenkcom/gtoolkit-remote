@@ -94,6 +94,30 @@ GtRemotePhlowViewedObjectInspectorAdaptor >> gtInspectorRemoteSideTitleStringOn:
 ]
 
 { #category : #'gt inspector' }
+GtRemotePhlowViewedObjectInspectorAdaptor >> gtRemoteBehaviourSpecification [
+	self currentRemoteInspectorProxyDo: [ :aRemoteInspectorProxy |
+		^ aRemoteInspectorProxy currentClassSpecifications ].
+	^ nil
+]
+
+{ #category : #'gt inspector' }
+GtRemotePhlowViewedObjectInspectorAdaptor >> gtRemoteInspectorContentFor:  aView [
+	"Main entry method for retrieving the wrapper view containing all non-proxy views for the given object. It receives the object as a parameter to allow passing objects wrapping the initial object."
+	<return: #GtPhlowLabelledView>
+	
+	^ GtPhlowLabelledViewBuilder new
+		object: self;
+		view: aView;
+		context: GtPhlowContext new;
+		viewsSelector: #gtViewsForRemoteSideInContext:;
+		actionsSelector: #gtActionsForRemoteSideInContext:;
+		titleComputation: [ :anObject |
+			String streamContents: [ :aStream |
+				anObject gtInspectorRemoteSideTitleStringOn: aStream ] ];
+		build 
+]
+
+{ #category : #'gt inspector' }
 GtRemotePhlowViewedObjectInspectorAdaptor >> gtViewsForRemoteSideInContext: aContext [
 	"This collects all views for the current object. This excludes the proxy-specific views (annotated with #gtProxy), and includes all remote views for the object, as well as all custom views defined locally"
  

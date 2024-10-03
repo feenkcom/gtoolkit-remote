@@ -148,6 +148,16 @@ GtRemotePhlowViewedObject >> getActionSpecificationsWithPhlowDataSource [
 		yourself
 ]
 
+{ #category : #'api  - inspector' }
+GtRemotePhlowViewedObject >> getClassSpecification [
+	^ GtRemotePhlowViewedObjectClassSpecification forClass: object class
+]
+
+{ #category : #'api  - inspector' }
+GtRemotePhlowViewedObject >> getClassSpecificationData [ 
+	^ self getClassSpecification asDictionaryForExport
+]
+
 { #category : #'api - actions' }
 GtRemotePhlowViewedObject >> getDeclarativeActionDataSourceFor: anActionSelector [
 	^ (self getActionSpecificationFor: anActionSelector) phlowDataSource
@@ -166,6 +176,19 @@ GtRemotePhlowViewedObject >> getDeclarativeViewMethodNames [
 ]
 
 { #category : #'api  - inspector' }
+GtRemotePhlowViewedObject >> getInspectorSpecificationData [
+	^ Dictionary new 
+		at: 'gtDisplayString' put: (
+			self getRemoteObjectGtDisplayString);
+		at: 'views' put:   (self getViewSpecificationsData
+			at: 'views');
+		at: 'actions' put: (self getActionSpecificationsData
+			at: 'actions');
+		at:'class' put: self getClassSpecificationData;
+		yourself
+]
+
+{ #category : #'api  - inspector' }
 GtRemotePhlowViewedObject >> getInspectorSpecificationWithPhlowDataSource [
 	^ Dictionary new 
 		at: 'gtDisplayString' put: (
@@ -174,6 +197,7 @@ GtRemotePhlowViewedObject >> getInspectorSpecificationWithPhlowDataSource [
 			at: 'views');
 		at: 'actions' put: (self getActionSpecificationsWithPhlowDataSource
 			at: 'actions');
+		at:'class' put: self getClassSpecificationData;
 		yourself
 ]
 

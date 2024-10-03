@@ -380,6 +380,24 @@ removeallmethods GtRemotePhlowSpawnObjectAction
 removeallclassmethods GtRemotePhlowSpawnObjectAction
 
 doit
+(GtPhlowDeclarativeSpecification
+	subclass: 'GtRemotePhlowViewedObjectClassSpecification'
+	instVarNames: #(viewObjectClassName viewObjectInstanceVariableNames)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-InspectorCore';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowViewedObjectClassSpecification
+removeallclassmethods GtRemotePhlowViewedObjectClassSpecification
+
+doit
 (Object
 	subclass: 'GtPhlowRuns'
 	instVarNames: #()
@@ -2095,7 +2113,7 @@ removeallclassmethods GtRemotePhlowEmptyView
 doit
 (GtRemotePhlowView
 	subclass: 'GtRemotePhlowForwarderView'
-	instVarNames: #(viewSelector objectComputation transformation)
+	instVarNames: #(viewSelector objectComputation transformation isDeclarative)
 	classVars: #()
 	classInstVars: #()
 	poolDictionaries: #()
@@ -3796,6 +3814,84 @@ category: 'accessing'
 method: GtRemotePhlowSpawnObjectAction
 targetObject: anObject 
 	targetObject := anObject 
+%
+
+! Class implementation for 'GtRemotePhlowViewedObjectClassSpecification'
+
+!		Class methods for 'GtRemotePhlowViewedObjectClassSpecification'
+
+category: 'accessing'
+classmethod: GtRemotePhlowViewedObjectClassSpecification
+forClass: aClass
+	^ self new 
+		initializeFromClass: aClass
+%
+
+category: 'accessing'
+classmethod: GtRemotePhlowViewedObjectClassSpecification
+typeLabel
+	^ 'phlowViewedObjectClassSpecification'
+%
+
+!		Instance methods for 'GtRemotePhlowViewedObjectClassSpecification'
+
+category: 'converting'
+method: GtRemotePhlowViewedObjectClassSpecification
+asDictionaryForExport
+	| dictionaryForExport|
+	dictionaryForExport := super asDictionaryForExport.
+	
+	dictionaryForExport at: 'viewObjectClassName' put: viewObjectClassName.
+	dictionaryForExport 
+		at: 'viewObjectInstanceVariableNames' 
+		put: viewObjectInstanceVariableNames.
+	
+	^ dictionaryForExport
+%
+
+category: 'initialization'
+method: GtRemotePhlowViewedObjectClassSpecification
+initializeFromClass: aClass
+	self viewObjectClassName: aClass name.
+	self viewObjectInstanceVariableNames: aClass instVarNames
+%
+
+category: 'initialization'
+method: GtRemotePhlowViewedObjectClassSpecification
+initializeFromJSONDictionary: aDictionary
+	super initializeFromJSONDictionary: aDictionary.
+
+	self
+		viewObjectClassName: (aDictionary 
+			at: 'viewObjectClassName' 
+			ifAbsent: [ nil ]);
+		viewObjectInstanceVariableNames: (aDictionary 
+			at: 'viewObjectInstanceVariableNames' 
+			ifAbsent: [ nil ])
+%
+
+category: 'accessing'
+method: GtRemotePhlowViewedObjectClassSpecification
+viewObjectClassName
+	^ viewObjectClassName
+%
+
+category: 'accessing'
+method: GtRemotePhlowViewedObjectClassSpecification
+viewObjectClassName: anObject
+	viewObjectClassName := anObject
+%
+
+category: 'accessing'
+method: GtRemotePhlowViewedObjectClassSpecification
+viewObjectInstanceVariableNames
+	^ viewObjectInstanceVariableNames
+%
+
+category: 'accessing'
+method: GtRemotePhlowViewedObjectClassSpecification
+viewObjectInstanceVariableNames: anObject
+	viewObjectInstanceVariableNames := anObject
 %
 
 ! Class implementation for 'GtPhlowRuns'
@@ -10962,6 +11058,12 @@ asGtDeclarativeView
 		dataTransport: GtPhlowViewSpecification dataLazy
 %
 
+category: 'testing'
+method: GtRemotePhlowForwarderView
+canBeGtDeclarativeView
+	^ isDeclarative ifNil: [ true ] 
+%
+
 category: 'converting'
 method: GtRemotePhlowForwarderView
 computeForwardedView
@@ -10993,6 +11095,12 @@ method: GtRemotePhlowForwarderView
 hasTransformation
 	<return: #Boolean>
 	^ transformation notNil
+%
+
+category: 'configuring'
+method: GtRemotePhlowForwarderView
+markAsNotDeclarative
+	isDeclarative := false
 %
 
 category: 'api - scripting'
@@ -12673,6 +12781,18 @@ getActionSpecificationsWithPhlowDataSource
 		yourself
 %
 
+category: 'api  - inspector'
+method: GtRemotePhlowViewedObject
+getClassSpecification
+	^ GtRemotePhlowViewedObjectClassSpecification forClass: object class
+%
+
+category: 'api  - inspector'
+method: GtRemotePhlowViewedObject
+getClassSpecificationData 
+	^ self getClassSpecification asDictionaryForExport
+%
+
 category: 'api - actions'
 method: GtRemotePhlowViewedObject
 getDeclarativeActionDataSourceFor: anActionSelector
@@ -12695,6 +12815,20 @@ getDeclarativeViewMethodNames
 
 category: 'api  - inspector'
 method: GtRemotePhlowViewedObject
+getInspectorSpecificationData
+	^ Dictionary new 
+		at: 'gtDisplayString' put: (
+			self getRemoteObjectGtDisplayString);
+		at: 'views' put:   (self getViewSpecificationsData
+			at: 'views');
+		at: 'actions' put: (self getActionSpecificationsData
+			at: 'actions');
+		at:'class' put: self getClassSpecificationData;
+		yourself
+%
+
+category: 'api  - inspector'
+method: GtRemotePhlowViewedObject
 getInspectorSpecificationWithPhlowDataSource
 	^ Dictionary new 
 		at: 'gtDisplayString' put: (
@@ -12703,6 +12837,7 @@ getInspectorSpecificationWithPhlowDataSource
 			at: 'views');
 		at: 'actions' put: (self getActionSpecificationsWithPhlowDataSource
 			at: 'actions');
+		at:'class' put: self getClassSpecificationData;
 		yourself
 %
 
