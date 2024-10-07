@@ -8,6 +8,12 @@ Class {
 }
 
 { #category : #accessing }
+GtRemotePhlowInspectorObject >> clearCachedData [
+	
+	objectInspectorAdaptor clearProxyInspector
+]
+
+{ #category : #accessing }
 GtRemotePhlowInspectorObject >> object: anObject [
 	super object: anObject.
 	
