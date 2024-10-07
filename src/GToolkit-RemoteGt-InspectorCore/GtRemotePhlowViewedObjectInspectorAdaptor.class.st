@@ -14,6 +14,11 @@ GtRemotePhlowViewedObjectInspectorAdaptor class >> forTargetObject: anObject [
 		initialiseForTargetObject: anObject
 ]
 
+{ #category : #actions }
+GtRemotePhlowViewedObjectInspectorAdaptor >> clearProxyInspector [
+	proxyInspector := nil
+]
+
 { #category : #'gt inspector' }
 GtRemotePhlowViewedObjectInspectorAdaptor >> currentRemoteInspectorProxyDo: aBlock [
 	 proxyInspector ifNil: [
