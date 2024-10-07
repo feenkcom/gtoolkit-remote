@@ -1691,6 +1691,24 @@ removeallclassmethods GtRemotePhlowDeclarativeTestInspectable
 
 doit
 (Object
+	subclass: 'GtRemotePhlowDeclarativeTestWithViewIncrement'
+	instVarNames: #(counter)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Examples';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowDeclarativeTestWithViewIncrement
+removeallclassmethods GtRemotePhlowDeclarativeTestWithViewIncrement
+
+doit
+(Object
 	subclass: 'GtRemotePhlowDeclarativeTextTestInspectable'
 	instVarNames: #()
 	classVars: #()
@@ -9595,6 +9613,53 @@ method: GtRemotePhlowDeclarativeTestInspectable
 text
 
 	^string asRopedText 
+%
+
+! Class implementation for 'GtRemotePhlowDeclarativeTestWithViewIncrement'
+
+!		Instance methods for 'GtRemotePhlowDeclarativeTestWithViewIncrement'
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeTestWithViewIncrement
+gtViewCurrentCounterColumnedListFor: aView
+	<gtView>
+	
+	^ aView columnedList
+		title: 'Counter (columned list)';
+		priority: 3;
+		items: [ { self nextCounter } ];
+		column: 'Counter' text: [ 'Counter' ];
+		column: 'Value' text: [ :each | each ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeTestWithViewIncrement
+gtViewCurrentCounterFor: aView
+	<gtView>
+	
+	^ aView text
+		title: 'Counter (text)';
+		priority: 1;
+		text: [ self nextCounter asString ] 
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeTestWithViewIncrement
+gtViewCurrentCounterListFor: aView
+	<gtView>
+	
+	^ aView list
+		title: 'Counter (list)';
+		priority: 2;
+		items: [ {self nextCounter} ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeTestWithViewIncrement
+nextCounter
+	^ counter := counter 
+		ifNil: [ 1 ]
+		ifNotNil: [ counter + 1.]
 %
 
 ! Class implementation for 'GtRemotePhlowDeclarativeTextTestInspectable'
