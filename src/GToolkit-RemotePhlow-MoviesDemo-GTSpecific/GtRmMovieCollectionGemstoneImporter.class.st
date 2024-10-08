@@ -27,5 +27,5 @@ GtRmMovieCollectionGemstoneImporter >> importFromCsvFile: aDataCsvFile [
 		initializeFromData: fullData copyWithoutFirst 
 		propertyNames: fullData first.
 		
-	self gemStoneSession commitTransaction
+	self gemStoneSession commitTransactionWithErrorChecking
 ]
