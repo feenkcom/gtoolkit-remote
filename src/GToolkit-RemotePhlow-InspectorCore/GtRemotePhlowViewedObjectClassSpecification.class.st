@@ -35,7 +35,7 @@ GtRemotePhlowViewedObjectClassSpecification >> asDictionaryForExport [
 { #category : #initialization }
 GtRemotePhlowViewedObjectClassSpecification >> initializeFromClass: aClass [
 	self viewObjectClassName: aClass name.
-	self viewObjectInstanceVariableNames: aClass instVarNames
+	self viewObjectInstanceVariableNames: aClass allInstVarNames
 ]
 
 { #category : #initialization }
