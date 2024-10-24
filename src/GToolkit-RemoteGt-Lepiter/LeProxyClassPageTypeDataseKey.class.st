@@ -26,7 +26,7 @@ LeProxyClassPageTypeDataseKey >> = anObject [
 	self class = anObject class
 		ifFalse: [ ^ false ].
 		
-	^ pageClassName = anObject pageClassName and: [
+	^ (pageClassName sameContentAs: anObject pageClassName) and: [
 		pageProxySide = anObject pageProxySide and: [
 			proxyTypeName = anObject proxyTypeName ] ]
 ]
