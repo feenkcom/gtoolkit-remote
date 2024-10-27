@@ -25,7 +25,7 @@ Object >> gtActionInspectFor: anAction [
 			iconName: #inspect);
 		action: [ :aButton |
 			aButton phlow 
-				spawnObject: self class ]
+				spawnObject: self ]
 ]
 
 { #category : #'*GToolkit-RemotePhlow-InspectorExtensions-Remote' }
