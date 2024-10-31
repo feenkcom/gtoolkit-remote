@@ -50,15 +50,17 @@ Object >> gtGsInspectorIconName [
 
 { #category : '*GToolkit-RemotePhlow-GemStone' }
 Object >> gtRemoteVariableValuePairsWithSelfIf: aBoolean [
-	| instVarNames bindings indexedVarsSize |
+	| instVarNames bindings instanceVariables indexedVarsSize |
 	instVarNames := self class allInstVarNames.
 	indexedVarsSize := self basicSize - instVarNames size.
 	bindings := OrderedCollection new: instVarNames size + 1.
+	instanceVariables := OrderedCollection new: instVarNames size + 1.
 	
 	aBoolean ifTrue: [ bindings add: 'self' -> self ].
 	
 	instVarNames doWithIndex: [ :each :index | 
-		bindings add: (each -> (self instVarAt: index))].
+		instanceVariables add: (each -> (self instVarAt: index))].
+	bindings addAll: (instanceVariables sort: [ :a :b | a key < b key ]).
 	
 	1 to: (indexedVarsSize min: 21) do: [ :index | 
 		bindings add: (index asString -> (self _at: index)) ].
