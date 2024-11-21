@@ -34,7 +34,7 @@ GtRmGeoGpsPathsStencil >> create [
 	
 	pathElement := BlElement new
 		size: projectedPolygons extent;
-		geometry: (BlPolyline vertices: translatedPolygons first);
+		geometry: (BlPolylineGeometry vertices: translatedPolygons first);
 		background: (Color transparent);
 		border: (BlBorder builder paint: Color red; width: 0.0001; build).
 	
