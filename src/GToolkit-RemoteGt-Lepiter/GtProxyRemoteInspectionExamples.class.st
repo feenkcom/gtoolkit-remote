@@ -159,6 +159,19 @@ GtProxyRemoteInspectionExamples >> assertObjectInspectionFor: codeStringOrBlockC
 ]
 
 { #category : #'asserting - inspection' }
+GtProxyRemoteInspectionExamples >> assertObjectInspectionFor: codeStringOrBlockClosure withTypeName: anObjectType inspectorTitle: anInspectorTitle [
+	| proxyObject |
+	proxyObject := self createProxyObjectFor: codeStringOrBlockClosure.
+
+	self assertLocalAndRemotePhlowViewsFor: proxyObject.
+	self 
+		assertRemoteInspectorTitle: anInspectorTitle
+		for: proxyObject.
+
+	^ self assertObjectInspectionForProxy: proxyObject withTypeName: anObjectType
+]
+
+{ #category : #'asserting - inspection' }
 GtProxyRemoteInspectionExamples >> assertObjectInspectionForProxy: aProxyObject withTypeName: anObjectType [
 	^ self 
 		assertBothSidesInspectionForProxy: aProxyObject
@@ -245,6 +258,25 @@ GtProxyRemoteInspectionExamples >> assertProxyPlaygroundPageTypeUsing: aScripter
 				id: #playground;
 				value: [ :aPlaygroundElement | aPlaygroundElement page type proxyTypeName ]
 					equals: self currentProxyTypeName ]
+]
+
+{ #category : #'asserting - inspection' }
+GtProxyRemoteInspectionExamples >> assertRemoteInspectorTitle: aString for: proxyObject [
+	| expectedTitle objectAdapter objectAdapterRemoteTitle |
+	
+	expectedTitle := aString, ' [<unnamed>:nil]'.
+	
+	"Check the title at the level of the adaptor"
+	objectAdapter := GtRemotePhlowViewedObjectInspectorAdaptor
+		forTargetObject:proxyObject.
+	objectAdapterRemoteTitle := String streamContents: [ :aStream |
+		objectAdapter gtInspectorRemoteSideTitleStringOn: aStream ].
+	self assert: objectAdapterRemoteTitle equals: expectedTitle.
+		
+	"Check the title as returned by the inspector"
+	self 
+		assert: proxyObject gtRemoteSideInspectorTool objectHolder view newLabel  
+		equals:expectedTitle.
 ]
 
 { #category : #'asserting - inspection' }
