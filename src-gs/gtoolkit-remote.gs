@@ -14467,6 +14467,19 @@ gtItemsFor: aView
 		itemText: [ :eachItem | eachItem gtDisplayString ]
 %
 
+! Class extensions for 'Dictionary'
+
+!		Instance methods for 'Dictionary'
+
+category: '*GToolkit-RemotePhlow-GemStone'
+method: Dictionary
+gtDisplayOn: aStream
+
+	GtGemStoneRemotePhlowDictionaryPrinter
+		displayStringFor: self 
+		on: aStream
+%
+
 ! Class extensions for 'GtPhlowColor'
 
 !		Instance methods for 'GtPhlowColor'
