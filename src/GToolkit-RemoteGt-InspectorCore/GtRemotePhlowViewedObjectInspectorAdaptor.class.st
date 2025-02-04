@@ -88,8 +88,6 @@ GtRemotePhlowViewedObjectInspectorAdaptor >> gtBasicDisplayOn: aStream [
 		gtDisplayString := 'Error printing bare proxy: ', ex class name ].
 		
 	aStream << gtDisplayString.
-	
-	targetObject gtInspectorConnectionDetailsOn: aStream.
 ]
 
 { #category : #'gt inspector' }
