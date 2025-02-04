@@ -151,19 +151,11 @@ GtProxyRemoteInspectionExamples >> assertLocalPlaygroundPageUsing: aScripter [
 { #category : #'asserting - inspection' }
 GtProxyRemoteInspectionExamples >> assertObjectInspectionFor: codeStringOrBlockClosure withTypeName: anObjectType [
 	| proxyObject |
-	
-	proxyObject := self convertToTargetProxy: (codeStringOrBlockClosure 
-		gtIsBlockClosure 
-			ifTrue: [ self runningServer 
-				evaluateBlockAndWaitReturnProxy: codeStringOrBlockClosure ]
-			ifFalse: [ self runningServer 
-				evaluateAndWaitReturnProxy: codeStringOrBlockClosure ]).
-		
+	proxyObject := self createProxyObjectFor: codeStringOrBlockClosure.
+
 	self assertLocalAndRemotePhlowViewsFor: proxyObject.
-	
-	^ self 
-		assertObjectInspectionForProxy: proxyObject
-		withTypeName: anObjectType
+
+	^ self assertObjectInspectionForProxy: proxyObject withTypeName: anObjectType
 ]
 
 { #category : #'asserting - inspection' }
@@ -380,6 +372,14 @@ GtProxyRemoteInspectionExamples >> compositeInspectorToolForBothProxySidesForPro
 GtProxyRemoteInspectionExamples >> convertToTargetProxy: anObject [ 
 	"Allow subclasses to transform the type of proxy instead of assuming that the server computes the right type."
 	^ anObject
+]
+
+{ #category : #utils }
+GtProxyRemoteInspectionExamples >> createProxyObjectFor: codeStringOrBlockClosure [
+	^ self
+		convertToTargetProxy: (codeStringOrBlockClosure gtIsBlockClosure
+				ifTrue: [ self runningServer evaluateBlockAndWaitReturnProxy: codeStringOrBlockClosure ]
+				ifFalse: [ self runningServer evaluateAndWaitReturnProxy: codeStringOrBlockClosure ])
 ]
 
 { #category : #accessing }
