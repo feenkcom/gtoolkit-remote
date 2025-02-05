@@ -14467,6 +14467,19 @@ gtItemsFor: aView
 		itemText: [ :eachItem | eachItem gtDisplayString ]
 %
 
+! Class extensions for 'Dictionary'
+
+!		Instance methods for 'Dictionary'
+
+category: '*GToolkit-RemotePhlow-GemStone'
+method: Dictionary
+gtDisplayOn: aStream
+
+	GtGemStoneRemotePhlowDictionaryPrinter
+		displayStringFor: self 
+		on: aStream
+%
+
 ! Class extensions for 'GtPhlowColor'
 
 !		Instance methods for 'GtPhlowColor'
@@ -14814,6 +14827,19 @@ gtViewsInCurrentContext
 		phlowView ]
 %
 
+! Class extensions for 'OrderedCollection'
+
+!		Instance methods for 'OrderedCollection'
+
+category: '*GToolkit-RemotePhlow-GemStone'
+method: OrderedCollection
+gtDisplayOn: aStream
+
+	GtGemStoneRemotePhlowCollectionPrinter
+		displayStringFor: self 
+		on: aStream
+%
+
 ! Class extensions for 'PrintStream'
 
 !		Instance methods for 'PrintStream'
@@ -14823,6 +14849,17 @@ method: PrintStream
 parenthesize: aBlock
 	self nextPut: $(.
 	aBlock ensure: [ self nextPut: $) ]
+%
+
+! Class extensions for 'Semaphore'
+
+!		Instance methods for 'Semaphore'
+
+category: '*GToolkit-RemotePhlow-GemStone'
+method: Semaphore
+gtDisplayOn: aStream
+	"Reuse the printOn: implementation"
+	self printOn: aStream
 %
 
 ! Class extensions for 'SequenceableCollection'
