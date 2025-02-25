@@ -13,6 +13,11 @@ GtRemotePhlowSendObjectTransformation class >> forValuable: aValuable [
 		valuable: aValuable
 ]
 
+{ #category : #'api - converting' }
+GtRemotePhlowSendObjectTransformation >> asPhlowSendTransformation [
+	^ self
+]
+
 { #category : #asserting }
 GtRemotePhlowSendObjectTransformation >> assertValuable: aBlock [
 	self
