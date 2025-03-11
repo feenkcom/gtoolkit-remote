@@ -25,74 +25,74 @@ Internal Representation and Key Implementation Points.
     Implementation Points
 "
 Class {
-	#name : #GtRemotePhlowView,
-	#superclass : #GtRemotePhlowProtoView,
+	#name : 'GtRemotePhlowView',
+	#superclass : 'GtRemotePhlowProtoView',
 	#instVars : [
 		'title',
 		'priority',
 		'definingSelector',
 		'definingClass'
 	],
-	#category : #'GToolkit-RemotePhlow-PhlowViews'
+	#category : 'GToolkit-RemotePhlow-PhlowViews'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowView >> actionUpdateButton [
 	"stub"
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 GtRemotePhlowView >> asGtDeclarativeView [
 	^ nil
 ]
 
-{ #category : #'message performning' }
+{ #category : 'message performning' }
 GtRemotePhlowView >> basicOn: anObject perform: aMessageSymbol withArguments: aCollectionOfArguments [ 
 	^ anObject  
 		perform: aMessageSymbol
 		with: aCollectionOfArguments first
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtRemotePhlowView >> canBeGtDeclarativeView [
 	^ true
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 GtRemotePhlowView >> copyTransformationFrom: aSendBlock [
 	"Do nothing by default. This is a callback used by forward views that define #send: to still work in case the view that we forward to does not support #send:"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowView >> definingClass [
 	^ definingClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowView >> definingClass: aClass [
 	definingClass := aClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowView >> definingMethod [
 	^ (definingClass whichClassIncludesSelector: definingSelector) 
 		ifNil: [ nil ]
 		ifNotNil: [ :aClass | aClass compiledMethodAt: definingSelector ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowView >> definingSelector [
 
 	^ definingSelector
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowView >> definingSelector: aSelector [
 
 	definingSelector := aSelector
 ]
 
-{ #category : #'message performing' }
+{ #category : 'message performing' }
 GtRemotePhlowView >> on: anObject perform: aMessageSymbol [ 
 	<return: #GtRemotePhlowView>
 	
@@ -102,7 +102,7 @@ GtRemotePhlowView >> on: anObject perform: aMessageSymbol [
 		withArguments: { self }
 ]
 
-{ #category : #'message performning' }
+{ #category : 'message performning' }
 GtRemotePhlowView >> on: anObject perform: aMessageSymbol withArguments: aCollectionOfArguments [
 	<return: #GtRemotePhlowView>
 	
@@ -120,7 +120,7 @@ GtRemotePhlowView >> on: anObject perform: aMessageSymbol withArguments: aCollec
 				andSelector: aMessageSymbol ]
 ]
 
-{ #category : #'message performning' }
+{ #category : 'message performning' }
 GtRemotePhlowView >> phlowErrorViewWithException: anException [ 
 	| aTitle |
 	aTitle := 'Error'.
@@ -130,7 +130,7 @@ GtRemotePhlowView >> phlowErrorViewWithException: anException [
 		errorMessage: anException description
 ]
 
-{ #category : #'error handling' }
+{ #category : 'error handling' }
 GtRemotePhlowView >> phlowErrorViewWithException: anException forBuildContext: aContext andSelector: aMessageSymbol [
 	| aPhlow | 
 
@@ -142,7 +142,7 @@ GtRemotePhlowView >> phlowErrorViewWithException: anException forBuildContext: a
 	^ aPhlow
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 GtRemotePhlowView >> printOn: aStream [
 	super printOn: aStream.
 	
@@ -150,22 +150,32 @@ GtRemotePhlowView >> printOn: aStream [
 		aStream << (self title ifNil: ['']) ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowView >> priority [
 	^ priority
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowView >> priority: anObject [
 	priority := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowView >> title [
 	^ title
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtRemotePhlowView >> title: anObject [
 	title := anObject
+]
+
+{ #category : 'adding - update definitions' }
+GtRemotePhlowView >> updateWhen: anAnnouncement if: anIfCondition in: anAnnouncer [
+	"Stub"
+]
+
+{ #category : 'adding - update definitions' }
+GtRemotePhlowView >> updateWhen: anAnnouncement in: anAnnouncer [
+	"Stub"
 ]
