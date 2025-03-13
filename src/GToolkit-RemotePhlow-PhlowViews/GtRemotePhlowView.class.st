@@ -33,7 +33,7 @@ Class {
 		'definingSelector',
 		'definingClass'
 	],
-	#category : #'GToolkit-RemotePhlow-PhlowViews'
+	#category : 'GToolkit-RemotePhlow-PhlowViews'
 }
 
 { #category : #accessing }
@@ -168,4 +168,14 @@ GtRemotePhlowView >> title [
 { #category : #accessing }
 GtRemotePhlowView >> title: anObject [
 	title := anObject
+]
+
+{ #category : #'adding - update definitions' }
+GtRemotePhlowView >> updateWhen: anAnnouncement if: anIfCondition in: anAnnouncer [
+	"Stub"
+]
+
+{ #category : #'adding - update definitions' }
+GtRemotePhlowView >> updateWhen: anAnnouncement in: anAnnouncer [
+	"Stub"
 ]
