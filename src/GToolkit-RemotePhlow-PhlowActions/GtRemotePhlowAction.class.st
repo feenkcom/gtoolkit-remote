@@ -12,6 +12,16 @@ Class {
 }
 
 { #category : #accessing }
+GtRemotePhlowAction class >> handledExceptions [
+	"Explicitly catch here Halt and Warning as in case an action raising 
+	those exceptions is embedded in the debugger it will trigger an
+	infinite chain of debuggers.
+	https://github.com/feenkcom/gtoolkit/issues/4383"
+	
+	^ Error, Halt, Warning
+]
+
+{ #category : #accessing }
 GtRemotePhlowAction >> asGtDeclarativeAction [
 	^ nil
 ]
@@ -97,9 +107,10 @@ GtRemotePhlowAction >> on: anObject perform: aMessageSymbol withArguments: aColl
 				perform: aMessageSymbol 
 				withArguments: aCollectionOfArguments
 		
-	] on: Error do: [ :anError |
+	] 
+		on: self class handledExceptions do: [ :anException |
 			self 
-				phlowErrorActionWithException: anError 
+				phlowErrorActionWithException: anException 
 				forBuildContext: nil "(GtPhlowBuildContext new 
 					object: anObject; 
 					arguments: aCollectionOfArguments) "
