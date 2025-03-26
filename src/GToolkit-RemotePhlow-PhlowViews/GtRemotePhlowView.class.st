@@ -33,8 +33,18 @@ Class {
 		'definingSelector',
 		'definingClass'
 	],
-	#category : 'GToolkit-RemotePhlow-PhlowViews'
+	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
+
+{ #category : #accessing }
+GtRemotePhlowView class >> handledExceptions [
+	"Explicitly catch here Halt and Warning as in case an action raising 
+	those exceptions is embedded in the debugger it will trigger an
+	infinite chain of debuggers.
+	https://github.com/feenkcom/gtoolkit/issues/4383"
+	
+	^ Error, Halt, Warning
+]
 
 { #category : #accessing }
 GtRemotePhlowView >> actionUpdateButton [
@@ -111,7 +121,7 @@ GtRemotePhlowView >> on: anObject perform: aMessageSymbol withArguments: aCollec
 				basicOn: anObject 
 				perform: aMessageSymbol 
 				withArguments: aCollectionOfArguments
-	] on: Error do: [ :anError |
+	] on: self class handledExceptions do: [ :anError |
 			self 
 				phlowErrorViewWithException: anError 
 				forBuildContext: nil "(GtPhlowBuildContext new 
