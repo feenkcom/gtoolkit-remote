@@ -17,7 +17,22 @@ LeProxyClassPageTypePageSide >> = anObject [
 ]
 
 { #category : #actions }
-LeProxyClassPageTypePageSide >> configurePage: aPage forProxyObject: aProxyObject [
+LeProxyClassPageTypePageSide >> configureExistingPage: aPage forProxyObject: aProxyObject [
+	| newSnippet  firstSnippetInPage |
+	newSnippet := self 
+		initialPlaygroundSnippetForProxyObject: aProxyObject.
+	
+	aPage children size = 0 ifTrue: [
+		aPage addSnippet: newSnippet.
+		^ self].
+	
+	firstSnippetInPage := aPage children first.
+	firstSnippetInPage class = newSnippet class ifFalse: [
+		aPage addFirstSnippet: newSnippet ]
+]
+
+{ #category : #actions }
+LeProxyClassPageTypePageSide >> configureNewPage: aPage forProxyObject: aProxyObject [
 	aPage addSnippet: (self 
 		initialPlaygroundSnippetForProxyObject: aProxyObject)
 ]

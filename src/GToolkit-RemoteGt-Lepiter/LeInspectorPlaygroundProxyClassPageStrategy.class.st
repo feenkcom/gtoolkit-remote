@@ -20,9 +20,16 @@ LeInspectorPlaygroundProxyClassPageStrategy class >> forRemoteProxySide [
 ]
 
 { #category : #accessing }
-LeInspectorPlaygroundProxyClassPageStrategy >> configurePage: aPage forProxyObject: aProxyObject [ 
+LeInspectorPlaygroundProxyClassPageStrategy >> configureExistingPage: aPage forObject: aProxyObject [
 	self proxySide
-		configurePage: aPage 
+		configureExistingPage: aPage 
+		forProxyObject: aProxyObject.
+]
+
+{ #category : #accessing }
+LeInspectorPlaygroundProxyClassPageStrategy >> configureNewPage: aPage forProxyObject: aProxyObject [ 
+	self proxySide
+		configureNewPage: aPage 
 		forProxyObject: aProxyObject.
 ]
 
@@ -36,7 +43,7 @@ LeInspectorPlaygroundProxyClassPageStrategy >> createNewPageForObject: aProxyObj
 		proxySide: self proxySide .
 	
 	self 
-		configurePage: page 
+		configureNewPage: page 
 		forProxyObject: aProxyObject.
 
 	^ page
