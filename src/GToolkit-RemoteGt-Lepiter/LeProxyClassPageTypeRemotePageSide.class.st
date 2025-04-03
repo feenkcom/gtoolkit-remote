@@ -11,11 +11,6 @@ LeProxyClassPageTypeRemotePageSide class >> leJsonV4Name [
 ]
 
 { #category : #accessing }
-LeProxyClassPageTypeRemotePageSide >> configurePage: aPage forProxyObject: aProxyObject [
-	aPage addSnippet: aProxyObject gtRemoteSideInitialPlaygroundSnippet
-]
-
-{ #category : #accessing }
 LeProxyClassPageTypeRemotePageSide >> id [
 	^ 'remoteSide'
 ]

@@ -713,7 +713,7 @@ GtProxyRemoteInspectionExamples >> playgroundProxyPageRemoteStrategy [
 ]
 
 { #category : #'examples - page strategy' }
-GtProxyRemoteInspectionExamples >> playgroundProxyPageRemoteStrategy_createPage [
+GtProxyRemoteInspectionExamples >> playgroundProxyPageRemoteStrategy_createPage_initialPage [
 	<gtExample>
 	| targetDatabase pageStrategy page |
 	
@@ -729,6 +729,82 @@ GtProxyRemoteInspectionExamples >> playgroundProxyPageRemoteStrategy_createPage 
 		assertSingleEmptyCodeSnippetOfType: self remoteCodeSnippetType 
 		inPage: page.
 	
+	^ targetDatabase
+]
+
+{ #category : #'examples - page strategy' }
+GtProxyRemoteInspectionExamples >> playgroundProxyPageRemoteStrategy_createPage_noInitialChildSnippets [
+	<gtExample>
+	| targetDatabase pageStrategy currentPage locatedPage|
+	
+	targetDatabase := self playgroundProxyPageRemoteStrategy_createPage_initialPage.
+	pageStrategy := self playgroundProxyPageRemoteStrategy.
+	currentPage := targetDatabase pages first.
+	
+	"Remove the first snippet so we get a wrongly configured page"
+	currentPage removeSnippet: currentPage children first.
+	
+	locatedPage := pageStrategy 
+		ensurePlaygroundPageInDatabase: targetDatabase 
+		forObject: self targetProxyObjectForInspection.
+	
+	self assert: targetDatabase pageCount equals: 1.
+	self 
+		assert: locatedPage identityHash
+		equals: currentPage identityHash.
+	self 
+		assert: locatedPage identityHash 
+		equals: targetDatabase pages first identityHash.
+	
+	self assertPageOnTestProxyFor: locatedPage.
+	self 
+		assert: locatedPage type pageProxySide 
+		equals: LeProxyClassPageType remoteSide.
+	
+	self 
+		assertSingleEmptyCodeSnippetOfType: self remoteCodeSnippetType 
+		inPage: locatedPage.
+	
+	^ targetDatabase
+]
+
+{ #category : #'examples - page strategy' }
+GtProxyRemoteInspectionExamples >> playgroundProxyPageRemoteStrategy_createPage_wrongFirstSnippet [
+	<gtExample>
+	| targetDatabase pageStrategy currentPage locatedPage initialSnippet |
+	
+	targetDatabase := self playgroundProxyPageRemoteStrategy_createPage_initialPage.
+	pageStrategy := self playgroundProxyPageRemoteStrategy.
+	currentPage := targetDatabase pages first.
+	
+	"Remove the existing snippet and add another one first
+	that is of the wrong type"
+	currentPage removeSnippet: currentPage children first.
+	currentPage addSnippet: (LeTextSnippet string: 'hello').
+	
+	locatedPage := pageStrategy 
+		ensurePlaygroundPageInDatabase: targetDatabase 
+		forObject: self targetProxyObjectForInspection.
+	
+	self assert: targetDatabase pageCount equals: 1.
+	self 
+		assert: locatedPage identityHash
+		equals: currentPage identityHash.
+	self 
+		assert: locatedPage identityHash 
+		equals: targetDatabase pages first identityHash.
+	
+	self assertPageOnTestProxyFor: locatedPage.
+	self 
+		assert: locatedPage type pageProxySide 
+		equals: LeProxyClassPageType remoteSide.
+	
+	self assert: locatedPage children size equals: 2.
+	
+	initialSnippet := locatedPage children first.
+	self assert: initialSnippet class equals: self remoteCodeSnippetType.
+	self assert: initialSnippet code isEmpty.
+
 	^ targetDatabase
 ]
 

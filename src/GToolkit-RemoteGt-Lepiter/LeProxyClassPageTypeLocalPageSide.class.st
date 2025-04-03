@@ -11,11 +11,6 @@ LeProxyClassPageTypeLocalPageSide class >> leJsonV4Name [
 ]
 
 { #category : #accessing }
-LeProxyClassPageTypeLocalPageSide >> configurePage: aPage forProxyObject: aProxyObject [
-	aPage addSnippet: LePharoSnippet new
-]
-
-{ #category : #accessing }
 LeProxyClassPageTypeLocalPageSide >> id [
 	^ 'localSide'
 ]
