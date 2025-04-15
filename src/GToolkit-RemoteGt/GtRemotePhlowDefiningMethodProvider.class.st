@@ -7,6 +7,17 @@ Class {
 	#category : #'GToolkit-RemoteGt-Phlow'
 }
 
+{ #category : #'as yet unclassified' }
+GtRemotePhlowDefiningMethodProvider >> asBrMenuWithSelfObjectHolder: aSelfObjectHolder [
+	^ BrMenuExplicit new
+		stencil: [ :aMenuModel | 
+			| aCoderElement |
+			aCoderElement := self definingMethod asGtMethodCoderModel asElement.
+			aCoderElement addAptitude: (BrGlamorousPopoverDefiningMethodAptitude new
+		menuModel: aMenuModel).
+			aCoderElement ]
+]
+
 { #category : #accessing }
 GtRemotePhlowDefiningMethodProvider >> declarativeView: aDeclarativeView [
 	declarativeView := aDeclarativeView
