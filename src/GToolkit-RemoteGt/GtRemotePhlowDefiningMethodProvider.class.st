@@ -13,16 +13,9 @@ GtRemotePhlowDefiningMethodProvider >> asBrMenuWithSelfObjectHolder: aSelfObject
 		stencil: [ :aMenuModel | 
 			| aCoderElement |
 			aCoderElement := self definingMethod asGtMethodCoderModel asElement.
-			aCoderElement
-				hExact: 500;
-				vFitContentLimited;
-				background: aCoderElement theme default contentBackgroundColor;
-				addAptitude: (BrGlamorousMenuPinnableAptitude new
-						menuModel: aMenuModel;
-						withResizers;
-						withAllPinActions);
-				addAptitude: (BrMenuHideableAptitude new menuModel: aMenuModel);
-				addAptitude: BrMenuCommonAptitude new ]
+			aCoderElement addAptitude: (BrGlamorousPopoverDefiningMethodAptitude new
+		menuModel: aMenuModel).
+			aCoderElement ]
 ]
 
 { #category : #accessing }
