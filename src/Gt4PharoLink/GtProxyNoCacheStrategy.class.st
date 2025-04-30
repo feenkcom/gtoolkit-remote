@@ -9,7 +9,7 @@ GtProxyNoCacheStrategy >> appliesToMessage: aMessage [
 	^ false
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtProxyNoCacheStrategy >> send: aMessage withComputation: aBlockClosure [
 	^ aBlockClosure value
 ]

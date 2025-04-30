@@ -8,19 +8,19 @@ Class {
 	#category : #'Gt4PharoLink-Cache'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #testing }
 GtProxyCacheStrategy >> appliesToMessage: aMessage [
 	^ matchingCondition appliesToMessage: aMessage
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #private }
 GtProxyCacheStrategy >> cachedValueFor: aMessage ifAbsentPut: aBlockClosure [ 
 	^ storage 
 		at: (self storageKeyFor: aMessage)
 		ifAbsentPut: aBlockClosure
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #initialization }
 GtProxyCacheStrategy >> initialize [ 
 	super initialize.
 	
@@ -28,14 +28,24 @@ GtProxyCacheStrategy >> initialize [
 	matchingCondition := GtProxyCacheNoMatchingCondition new.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #initialization }
 GtProxyCacheStrategy >> matchAllUnarySelectors [
 	matchingCondition := GtProxyCacheUnarySelectorsMatchingCondition new
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #initialization }
 GtProxyCacheStrategy >> matchUnarySelectors: aListOfSelectors [
 	matchingCondition := GtProxyCacheUnarySelectorsMatchingCondition new
+]
+
+{ #category : #accessing }
+GtProxyCacheStrategy >> matchingCondition [
+	^ matchingCondition
+]
+
+{ #category : #accessing }
+GtProxyCacheStrategy >> matchingCondition: anObject [
+	matchingCondition := anObject
 ]
 
 { #category : #'as yet unclassified' }
@@ -46,7 +56,7 @@ GtProxyCacheStrategy >> send: aMessage withComputation: aBlockClosure [
 	^ self cachedValueFor: aMessage ifAbsentPut: aBlockClosure
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #private }
 GtProxyCacheStrategy >> storageKeyFor: aMessage [
 	^ aMessage selector
 ]
