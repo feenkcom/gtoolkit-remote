@@ -63,3 +63,20 @@ GtProxyCacheStrategyExamples >> noCacheForNonMatchingSelectors [
 	self assert: result2 equals: 40.
 	^ cache
 ]
+
+{ #category : #examples }
+GtProxyCacheStrategyExamples >> removeFromCacheMessage [
+	<gtExample>
+	| cache result1 result2 message |
+	
+	cache := GtProxyCacheStrategy forSelectors: #(#foo1).
+	message := Message selector: #foo1.
+
+	result1 := cache send: message withComputation: [ 1 ].
+	cache removeFromCacheMessage: message.
+	"Second call with same selector should get cached value, computation block is not evaluated"
+	result2 := cache send: message withComputation: [ 2 ].
+	self assert: result1 equals: 1.
+	self assert: result2 equals: 2.
+	^ cache
+]

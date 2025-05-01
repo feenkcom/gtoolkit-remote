@@ -8,6 +8,15 @@ Class {
 	#category : #'Gt4PharoLink-Cache'
 }
 
+{ #category : #'instance creation' }
+GtProxyCacheStrategy class >> forSelectors: aCollection [
+	"Answer an instance of the receiver configured to cache the supplied collection of selectors"
+
+	^ self new matchingCondition:
+		(GtProxyCacheSpecifiedSelectorsMatchingCondition new
+			includeSelectors: aCollection)
+]
+
 { #category : #testing }
 GtProxyCacheStrategy >> appliesToMessage: aMessage [
 	^ matchingCondition appliesToMessage: aMessage
@@ -46,6 +55,14 @@ GtProxyCacheStrategy >> matchingCondition [
 { #category : #accessing }
 GtProxyCacheStrategy >> matchingCondition: anObject [
 	matchingCondition := anObject
+]
+
+{ #category : #accessing }
+GtProxyCacheStrategy >> removeFromCacheMessage: aMessage [
+	"Remove the supplied message's cached value from the receiver"
+	
+	storage removeKey: (self storageKeyFor: aMessage)
+		ifAbsent: [].
 ]
 
 { #category : #'as yet unclassified' }

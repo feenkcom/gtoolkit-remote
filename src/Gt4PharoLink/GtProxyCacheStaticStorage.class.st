@@ -7,14 +7,26 @@ Class {
 	#category : #'Gt4PharoLink-Cache'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtProxyCacheStaticStorage >> at: aKey ifAbsentPut: aBlockClosure [
 	^ cachedResults at: aKey ifAbsentPut: aBlockClosure
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #initialization }
 GtProxyCacheStaticStorage >> initialize [
 
 	super initialize.
 	cachedResults := Dictionary new.
+]
+
+{ #category : #accessing }
+GtProxyCacheStaticStorage >> removeKey: aKey [
+
+	^ cachedResults removeKey: aKey
+]
+
+{ #category : #accessing }
+GtProxyCacheStaticStorage >> removeKey: aKey ifAbsent: absentBlock [
+
+	^ cachedResults removeKey: aKey ifAbsent: absentBlock
 ]
