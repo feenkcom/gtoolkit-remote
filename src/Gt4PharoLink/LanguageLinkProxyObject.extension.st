@@ -272,6 +272,12 @@ LanguageLinkProxyObject >> gtViewsInContext: aContext [
 ]
 
 { #category : #'*Gt4PharoLink' }
+LanguageLinkProxyObject >> isGtProxyObject [
+
+	^ true
+]
+
+{ #category : #'*Gt4PharoLink' }
 LanguageLinkProxyObject >> remoteActionsFor: aView inContext: aContext [
 	"Should be all views, but just get Raw and Print views for now"
 
