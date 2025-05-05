@@ -8,9 +8,9 @@ Class {
 GtRemotePhlowDeclarativeViewsProxySimulationExamples >> remoteObject [
 	<gtExample>
 	<after: #stopServer>
+	<return: #GtRemoteInspectionSimulation>
 	| remoteObject |
-
-	remoteObject :=  self getRemoteObject.
+	remoteObject := self getRemoteObject.
 
 	^ remoteObject
 ]

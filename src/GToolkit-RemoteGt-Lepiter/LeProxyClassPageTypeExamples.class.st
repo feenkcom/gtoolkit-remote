@@ -29,59 +29,55 @@ LeProxyClassPageTypeExamples >> assertPageSerializationFor: aPage onSide: aProxy
 { #category : #'examples - basic page' }
 LeProxyClassPageTypeExamples >> basicProxyPageLocalSide [
 	<gtExample>
+	<return: #LePage>
 	| page |
-	
-	page := LePage 
-		proxyClassName: #GtRemotePhlowDeclarativeTestInspectable 
-		proxyTypeName: #GtRemoteInspectionSimulation  
-		proxySide: LeProxyClassPageType localSide.
-		
+	page := LePage
+			proxyClassName: #GtRemotePhlowDeclarativeTestInspectable
+			proxyTypeName: #GtRemoteInspectionSimulation
+			proxySide: LeProxyClassPageType localSide.
+
 	self assertPageOnTestProxyFor: page.
 	self assert: page type pageProxySide isLocalSide.
-		
+
 	^ page
 ]
 
 { #category : #'examples - basic page' }
 LeProxyClassPageTypeExamples >> basicProxyPageLocalSide_serialisation [
 	<gtExample>
+	<return: #LePage>
 	| page |
-	
 	page := self basicProxyPageLocalSide.
-	
-	self 
-		assertPageSerializationFor: page 
-		onSide: LeProxyClassPageType localSide.
-		
+
+	self assertPageSerializationFor: page onSide: LeProxyClassPageType localSide.
+
 	^ page
 ]
 
 { #category : #'examples - basic page' }
 LeProxyClassPageTypeExamples >> basicProxyPageRemoteSide [
 	<gtExample>
+	<return: #LePage>
 	| page |
-	
-	page := LePage 
-		proxyClassName: #GtRemotePhlowDeclarativeTestInspectable 
-		proxyTypeName: #GtRemoteInspectionSimulation  
-		proxySide: LeProxyClassPageType remoteSide.
-		
+	page := LePage
+			proxyClassName: #GtRemotePhlowDeclarativeTestInspectable
+			proxyTypeName: #GtRemoteInspectionSimulation
+			proxySide: LeProxyClassPageType remoteSide.
+
 	self assertPageOnTestProxyFor: page.
 	self assert: page type pageProxySide isRemoteSide.
-		
+
 	^ page
 ]
 
 { #category : #'examples - basic page' }
 LeProxyClassPageTypeExamples >> basicProxyPageRemoteSide_serialisation [
 	<gtExample>
+	<return: #LePage>
 	| page |
-	
 	page := self basicProxyPageRemoteSide.
-	
-	self 
-		assertPageSerializationFor: page 
-		onSide: LeProxyClassPageType remoteSide.
-		
+
+	self assertPageSerializationFor: page onSide: LeProxyClassPageType remoteSide.
+
 	^ page
 ]

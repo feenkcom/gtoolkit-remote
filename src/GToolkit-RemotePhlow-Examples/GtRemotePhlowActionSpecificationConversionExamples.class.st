@@ -7,86 +7,83 @@ Class {
 { #category : #examples }
 GtRemotePhlowActionSpecificationConversionExamples >> convertButtonActionWithIcon [
 	"Demonstrate converting a button action to a declarative specification"
-	<gtExample>
-	| phlowAction declarativeSpecification |
 
+	<gtExample>
+	<return: #GtPhlowButtonActionSpecification>
+	| phlowAction declarativeSpecification |
 	phlowAction := self createProtoActions button
-		tooltip: 'Inspect objects';
-		priority: 12;
-		icon: (GtPhlowGlamorousVectorIconNameStencil new 
-			iconName: #playinspect).
-			
+			tooltip: 'Inspect objects';
+			priority: 12;
+			icon: (GtPhlowGlamorousVectorIconNameStencil new iconName: #playinspect).
+
 	declarativeSpecification := phlowAction asGtDeclarativeAction.
 
 	self assert: declarativeSpecification tooltipText equals: 'Inspect objects'.
 	self assert: declarativeSpecification label equals: nil.
-	self 
-		assert: declarativeSpecification iconStencil 
-		equals: (GtPhlowGlamorousVectorIconNameStencil 
-			forIconName: #playinspect).
+	self
+		assert: declarativeSpecification iconStencil
+		equals: (GtPhlowGlamorousVectorIconNameStencil forIconName: #playinspect).
 	self assert: declarativeSpecification priority equals: 12.
-	
-	self 
-		assert: declarativeSpecification asDictionaryForExport 
+
+	self
+		assert: declarativeSpecification asDictionaryForExport
 		equals: self expectedButtonActionWithIconSpecification.
 
-	^ declarativeSpecification.
+	^ declarativeSpecification
 ]
 
 { #category : #examples }
 GtRemotePhlowActionSpecificationConversionExamples >> convertButtonActionWithIconAndLabel [
 	"Demonstrate converting a button action to a declarative specification"
-	<gtExample>
-	| phlowAction declarativeSpecification |
 
+	<gtExample>
+	<return: #GtPhlowButtonActionSpecification>
+	| phlowAction declarativeSpecification |
 	phlowAction := self createProtoActions button
-		tooltip: 'Inspect objects';
-		priority: 12;
-		label: 'Inspect';
-		icon: (GtPhlowGlamorousVectorIconNameStencil new 
-			iconName: #playinspect).
-			
+			tooltip: 'Inspect objects';
+			priority: 12;
+			label: 'Inspect';
+			icon: (GtPhlowGlamorousVectorIconNameStencil new iconName: #playinspect).
+
 	declarativeSpecification := phlowAction asGtDeclarativeAction.
 
 	self assert: declarativeSpecification tooltipText equals: 'Inspect objects'.
 	self assert: declarativeSpecification label equals: 'Inspect'.
-	self 
-		assert: declarativeSpecification iconStencil 
-		equals: (GtPhlowGlamorousVectorIconNameStencil 
-			forIconName: #playinspect).
+	self
+		assert: declarativeSpecification iconStencil
+		equals: (GtPhlowGlamorousVectorIconNameStencil forIconName: #playinspect).
 	self assert: declarativeSpecification priority equals: 12.
-	
-	self 
-		assert: declarativeSpecification asDictionaryForExport 
+
+	self
+		assert: declarativeSpecification asDictionaryForExport
 		equals: self expectedButtonActionWithIconAndLabelSpecification.
 
-	^ declarativeSpecification.
+	^ declarativeSpecification
 ]
 
 { #category : #examples }
 GtRemotePhlowActionSpecificationConversionExamples >> convertButtonActionWithLabelAndNoTooltip [
 	"Demonstrate converting a button action to a declarative specification"
-	<gtExample>
-	| phlowAction declarativeSpecification |
 
+	<gtExample>
+	<return: #GtPhlowButtonActionSpecification>
+	| phlowAction declarativeSpecification |
 	phlowAction := self createProtoActions button
-		label: 'Inspect';
-		priority: 12.
-			
+			label: 'Inspect';
+			priority: 12.
+
 	declarativeSpecification := phlowAction asGtDeclarativeAction.
 
 	self assert: declarativeSpecification tooltipText equals: nil.
 	self assert: declarativeSpecification label equals: 'Inspect'.
-	self 
-		assert: declarativeSpecification iconStencil 
-		equals: nil.
+	self assert: declarativeSpecification iconStencil equals: nil.
 	self assert: declarativeSpecification priority equals: 12.
-	
-	self 
-		assert: declarativeSpecification asDictionaryForExport 
+
+	self
+		assert: declarativeSpecification asDictionaryForExport
 		equals: self expectedButtonActionWithLabelAndNoTooltipSpecification.
 
-	^ declarativeSpecification.
+	^ declarativeSpecification
 ]
 
 { #category : #accessing }

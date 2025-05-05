@@ -37,58 +37,62 @@ GtRemotePhlowForwarderViewInspectionExamples >> assertTransformedValueInListFor:
 { #category : #accessing }
 GtRemotePhlowForwarderViewInspectionExamples >> computeObject [
 	<gtExample>
-	^ GtRemoteInspectionSimulation 
+	<return: #GtRemoteInspectionSimulation>
+	^ GtRemoteInspectionSimulation
 		openOn: GtRemotePhlowDeclarativeTestInspectable new
 ]
 
 { #category : #examples }
 GtRemotePhlowForwarderViewInspectionExamples >> remoteForwardedViewToListView [
 	<gtExample>
-	| forwarderView  |
+	<return: #GtPhlowRemoteForwarderView>
+	| forwarderView |
 	forwarderView := GtPhlowRemoteForwarderView new
-		title: 'Forward with send - to list';
-		priority: 10;
-		object: [ self computeObject ];
-		view: #gtListFor:.
-
-	"Assertions before initializing forwarded phlow"
+			title: 'Forward with send - to list';
+			priority: 10;
+			object: [ self computeObject ];
+			view: #gtListFor:.	"Assertions before initializing forwarded phlow"
 	self assert: forwarderView title equals: 'Forward with send - to list'.
 	self assert: forwarderView viewSymbol equals: #gtListFor:.
-	
+
 	self assertBasicForwarderView: forwarderView.
-	
+
 	self assert: forwarderView hasTransformation not.
-	
+
 	^ forwarderView
 ]
 
 { #category : #examples }
 GtRemotePhlowForwarderViewInspectionExamples >> remoteForwardedViewWithLocalSendToListView [
 	<gtExample>
-	| forwarderView  phlowView |
+	<return: #GtPhlowRemoteForwarderView>
+	| forwarderView phlowView |
 	forwarderView := GtPhlowRemoteForwarderView new
-		title: 'Forward with send - to list';
-		priority: 10;
-		object: [ self computeObject ];
-		view: #gtListFor:;
-		send: [ :each | 
-			{ each . each } ].
-
-	"Assertions before initializing forwarded phlow"
+			title: 'Forward with send - to list';
+			priority: 10;
+			object: [ self computeObject ];
+			view: #gtListFor:;
+			send: [ :each | 
+				{each.
+					each} ].	"Assertions before initializing forwarded phlow"
 	self assert: forwarderView title equals: 'Forward with send - to list'.
 	self assert: forwarderView viewSymbol equals: #gtListFor:.
-	
+
 	self assertBasicForwarderView: forwarderView.
-	
+
 	self assert: forwarderView hasTransformation.
-	self assert: (forwarderView transformation 
-		transformedValueFrom: Object new selection: {1}) size equals: 2.
-		
-	phlowView :=  forwarderView phlowView wait.
+	self
+		assert: (forwarderView transformation transformedValueFrom: Object new selection: {1})
+				size
+		equals: 2.
+
+	phlowView := forwarderView phlowView wait.
 	self assert: phlowView hasTransformation.
-	self assertTransformedValueInListFor: (phlowView transformation 
-		transformedValueFrom: GtRemotePhlowDataNode new selection: {1}).
-	
+	self
+		assertTransformedValueInListFor: (phlowView transformation
+				transformedValueFrom: GtRemotePhlowDataNode new
+				selection: {1}).
+
 	^ forwarderView
 ]
 

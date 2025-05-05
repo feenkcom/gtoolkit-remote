@@ -7,5 +7,7 @@ Class {
 { #category : #accessing }
 GtRemotePhlowSimulationExamples >> simulationOnRemoteObject [
 	<gtExample>
-	^ GtRemoteInspectionSimulation openOn: GtRemotePhlowDeclarativeTestInspectable new.
+	<return: #GtRemoteInspectionSimulation>
+	^ GtRemoteInspectionSimulation
+		openOn: GtRemotePhlowDeclarativeTestInspectable new
 ]

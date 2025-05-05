@@ -7,8 +7,8 @@ Class {
 { #category : #examples }
 GtProxyNoCacheStrategyExamples >> sendWithComputation [
 	<gtExample>
+	<return: #GtProxyNoCacheStrategy>
 	| strategy firstResult secondResult |
-
 	strategy := GtProxyNoCacheStrategy new.
 	firstResult := strategy send: #foo withComputation: [ 42 ].
 	secondResult := strategy send: #foo withComputation: [ 4 + 3 ].

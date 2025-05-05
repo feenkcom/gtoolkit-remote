@@ -10,35 +10,33 @@ Class {
 { #category : #accessing }
 GtRemotePhlowLocalViewWithRemoteColumnsExample >> columnedViewElementHasCorrectFirstRowContent [
 	<gtExample>
-	| scripter | 
-	
+	<return: #BlScripter>
+	| scripter |
 	scripter := BlScripter new.
 	scripter element: self phlowViewWithRemoteColumns asElement.
-	
+
 	scripter
 		assertStep: [ :s | 
 			s
 				on: GtPhlowCellElement index: 1;
 				// #content;
-				value: [ :aLabel | aLabel text asString ] equals: '1.00'].
-				
+				value: [ :aLabel | aLabel text asString ] equals: '1.00' ].
+
 	scripter
 		assertStep: [ :s | 
 			s
 				on: GtPhlowCellElement index: 2;
 				// #content;
-				value: [ :aLabel | aLabel text asString ] equals: '1.01'].
-	
+				value: [ :aLabel | aLabel text asString ] equals: '1.01' ].
+
 	^ scripter
 ]
 
 { #category : #accessing }
 GtRemotePhlowLocalViewWithRemoteColumnsExample >> columnedViewElementHasNoErrors [
 	<gtExample>
-	
-	self assertObjectPhlowViewsFor: self class new
-	
-	"| phlowView |
+	<return: #GtRemotePhlowLocalViewWithRemoteColumnsExample>
+	self assertObjectPhlowViewsFor: self class new	"| phlowView |
 	
 	phlowView := self phlowViewWithRemoteColumns.
 	GtPhlowViewTester new 
@@ -87,21 +85,21 @@ GtRemotePhlowLocalViewWithRemoteColumnsExample >> gtViewLocalWithRemoteColumnsFo
 { #category : #accessing }
 GtRemotePhlowLocalViewWithRemoteColumnsExample >> phlowViewWithRemoteColumns [
 	<gtExample>
-	| view columns|
-	
-	view  := self gtViewLocalWithRemoteColumnsFor: GtPhlowView empty.
+	<return: #GtPhlowColumnedListView>
+	| view columns |
+	view := self gtViewLocalWithRemoteColumnsFor: GtPhlowView empty.
 	columns := view columns.
-	
+
 	self assert: columns size equals: 3.
 	self assert: columns first title equals: 'Text'.
 	self assert: columns second title equals: 'Number'.
 	self assert: columns third title equals: 'Icon'.
-	
+
 	self assert: columns third backgroundComputation isNil.
 	self assert: columns third localBackgroundComputation notNil.
-	
+
 	self assert: columns first cellWidth isNil.
 	self assert: columns third localCellWidth notNil.
-	
+
 	^ view
 ]
