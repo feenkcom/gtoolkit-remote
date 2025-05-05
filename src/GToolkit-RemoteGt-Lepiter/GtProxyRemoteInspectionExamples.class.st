@@ -368,12 +368,13 @@ GtProxyRemoteInspectionExamples >> assertViewDatasourcesInProxyInspector: aProxy
 { #category : #'examples - database' }
 GtProxyRemoteInspectionExamples >> basicDatabase [
 	<gtExample>
+	<return: #LeDatabase>
 	| database |
 	database := LeDatabase new.
 	database monitor: LeVolatileMonitor new.
-	
+
 	self assert: database pageCount equals: 0.
-	
+
 	^ database
 ]
 
@@ -407,11 +408,12 @@ GtProxyRemoteInspectionExamples >> compositeInspectorSwitchToolUsing: aScripter 
 { #category : #'examples - tools' }
 GtProxyRemoteInspectionExamples >> compositeInspectorToolForBothProxySides [
 	<gtExample>
+	<return: #GtPhlowCompositeTool>
 	| targetDatabase |
 	targetDatabase := self databaseWithMonitor.
-	
+
 	^ self
-		compositeInspectorToolForBothProxySidesForProxy: self targetProxyObjectForInspection 
+		compositeInspectorToolForBothProxySidesForProxy: self targetProxyObjectForInspection
 		withDatabase: targetDatabase
 ]
 
@@ -454,50 +456,51 @@ GtProxyRemoteInspectionExamples >> currentProxyTypeName [
 GtProxyRemoteInspectionExamples >> databaseWithMonitor [
 	<gtExample>
 	<after: #stopDatabaseMonitor>
+	<return: #LeDatabase>
 	| folderReference localStore |
-	 
-	^ theDatabase ifNil: [ 
-		folderReference := FileSystem memory / 'storage'.
-		folderReference ensureCreateDirectory.
-		
-		localStore := LeLocalStoreLoad current.
-		localStore localRoot: folderReference.
-		theDatabase := localStore loadAndMonitorFrom: folderReference.
-		
-		self assert: theDatabase explicitLinks size equals: 0.
-		self assert: theDatabase pageCount equals: 0.
-			
-		theDatabase ]
+	^ theDatabase
+		ifNil: [ folderReference := FileSystem memory / 'storage'.
+			folderReference ensureCreateDirectory.
+
+			localStore := LeLocalStoreLoad current.
+			localStore localRoot: folderReference.
+			theDatabase := localStore loadAndMonitorFrom: folderReference.
+
+			self assert: theDatabase explicitLinks size equals: 0.
+			self assert: theDatabase pageCount equals: 0.
+
+			theDatabase ]
 ]
 
 { #category : #'examples - inspection' }
 GtProxyRemoteInspectionExamples >> inspectorForBothProxySides [
 	<gtExample>
+	<return: #BlScripter>
 	| targetDatabase scripter inspectorTool |
 	targetDatabase := self databaseWithMonitor.
-	
+
 	inspectorTool := self compositeInspectorToolForBothProxySides.
-	
+
 	scripter := self scripter.
 	scripter
 		model: inspectorTool object;
 		element: inspectorTool asElement.
-	
-	self 
+
+	self
 		assertDatabaseBeforeCompositeToolInspectionFor: targetDatabase
 		withTypeName: self remoteObjectTypeName.
-	self 
-		compositeInspectorSwitchToolUsing: scripter.
-	self 
+	self compositeInspectorSwitchToolUsing: scripter.
+	self
 		assertDatabaseAfterLocalAndRemoteInspectionFor: targetDatabase
 		withTypeName: self remoteObjectTypeName.
-	
+
 	^ scripter
 ]
 
 { #category : #'examples - inspection' }
 GtProxyRemoteInspectionExamples >> inspectorForLocalProxySide [
 	<gtExample>
+	<return: #BlScripter>
 	| targetDatabase scripter inspectorTool |
 	targetDatabase := self databaseWithMonitor.
 
@@ -529,37 +532,38 @@ GtProxyRemoteInspectionExamples >> inspectorForLocalProxySide [
 { #category : #'examples - inspection' }
 GtProxyRemoteInspectionExamples >> inspectorForRemoteProxySide [
 	<gtExample>
+	<return: #BlScripter>
 	| targetDatabase scripter inspectorTool |
 	targetDatabase := self databaseWithMonitor.
-	
+
 	inspectorTool := self inspectorToolForRemoteProxySide.
-	
+
 	scripter := self scripter.
 	scripter
 		model: inspectorTool object;
 		element: inspectorTool asElement.
-	
+
 	self assert: targetDatabase pageCount equals: 1.
 	self assertPageOnTestProxyFor: targetDatabase pages first.
-	self 
-		assertSingleEmptyCodeSnippetOfType: self remoteCodeSnippetType 
+	self
+		assertSingleEmptyCodeSnippetOfType: self remoteCodeSnippetType
 		inPage: targetDatabase pages first.
-		
-	self assertInspectorTabLabelsUsing: scripter.
-	"self assertInspectorTabContentsFor: scripter."
-	
+
+	self assertInspectorTabLabelsUsing: scripter.	"self assertInspectorTabContentsFor: scripter."
+
 	^ scripter
 ]
 
 { #category : #'examples - tools' }
 GtProxyRemoteInspectionExamples >> inspectorToolForLocalProxySide [
 	<gtExample>
+	<return: #GtInspectorTool>
 	| targetDatabase |
 	targetDatabase := self databaseWithMonitor.
-	
+
 	^ self
-		inspectorToolForLocalProxySideForProxy: self targetProxyObjectForInspection 
-		withDatabase: self databaseWithMonitor 
+		inspectorToolForLocalProxySideForProxy: self targetProxyObjectForInspection
+		withDatabase: self databaseWithMonitor
 ]
 
 { #category : #'examples - tools' }
@@ -579,10 +583,11 @@ GtProxyRemoteInspectionExamples >> inspectorToolForLocalProxySideForProxy: aProx
 { #category : #'examples - tools' }
 GtProxyRemoteInspectionExamples >> inspectorToolForRemoteProxySide [
 	<gtExample>
+	<return: #GtInspectorTool>
 	| targetDatabase |
 	targetDatabase := self databaseWithMonitor.
-	^ self 
-		inspectorToolForRemoteProxySideForProxy: self targetProxyObjectForInspection 
+	^ self
+		inspectorToolForRemoteProxySideForProxy: self targetProxyObjectForInspection
 		withDatabase: self databaseWithMonitor
 ]
 
@@ -608,16 +613,16 @@ GtProxyRemoteInspectionExamples >> localCodeSnippetType [
 { #category : #'examples - inspection' }
 GtProxyRemoteInspectionExamples >> localProxyInspector [
 	<gtExample>
+	<return: #GtLocalPhlowViewedObject>
 	| localProxyInspector |
 	localProxyInspector := nil.
-	self targetProxyObjectForInspection 
-		localProxyInspectorDo: [ :aLocalProxyInspector |
-			localProxyInspector := aLocalProxyInspector ].
-			
+	self targetProxyObjectForInspection
+		localProxyInspectorDo: [ :aLocalProxyInspector | localProxyInspector := aLocalProxyInspector ].
+
 	self assert: localProxyInspector notNil.
 	self assertViewDatasourcesInProxyInspector: localProxyInspector.
 	self assertActionDatasourcesInProxyInspector: localProxyInspector.
-	
+
 	^ localProxyInspector
 ]
 
@@ -629,178 +634,164 @@ GtProxyRemoteInspectionExamples >> localSideExpectedNumberOfViews [
 { #category : #'examples - page strategy' }
 GtProxyRemoteInspectionExamples >> playgroundProxyPageLocalStrategy [
 	<gtExample>
+	<return: #LeInspectorPlaygroundProxyClassPageStrategy>
 	| pageStrategy |
-	
 	pageStrategy := LeInspectorPlaygroundProxyClassPageStrategy forLocalProxySide.
-	
+
 	self assert: pageStrategy proxySide isLocalSide.
 	self assert: pageStrategy playgroundPageType equals: LeProxyClassPageType.
-	
+
 	^ pageStrategy
 ]
 
 { #category : #'examples - page strategy' }
 GtProxyRemoteInspectionExamples >> playgroundProxyPageLocalStrategy_createPage [
 	<gtExample>
+	<return: #LeDatabase>
 	| targetDatabase pageStrategy page |
-	
 	targetDatabase := self basicDatabase.
 	pageStrategy := self playgroundProxyPageLocalStrategy.
-	
-	page := self 
-		assertPageCreationForStrategy: pageStrategy 
-		inDatabase: targetDatabase 
-		onSide: LeProxyClassPageType localSide.
-	
-	self 
-		assertSingleEmptyCodeSnippetOfType: self localCodeSnippetType 
-		inPage: page.
-	
+
+	page := self
+			assertPageCreationForStrategy: pageStrategy
+			inDatabase: targetDatabase
+			onSide: LeProxyClassPageType localSide.
+
+	self assertSingleEmptyCodeSnippetOfType: self localCodeSnippetType inPage: page.
+
 	^ targetDatabase
 ]
 
 { #category : #'examples - page strategy' }
 GtProxyRemoteInspectionExamples >> playgroundProxyPageLocalStrategy_createPageInMonitoredDatabase [
 	<gtExample>
+	<return: #LeDatabase>
 	| targetDatabase pageStrategy page |
-	
 	targetDatabase := self databaseWithMonitor.
 	pageStrategy := self playgroundProxyPageLocalStrategy.
-	
-	page := self 
-		assertPageCreationForStrategy: pageStrategy 
-		inDatabase: targetDatabase 
-		onSide: LeProxyClassPageType localSide.
-	
-	self 
-		assertSingleEmptyCodeSnippetOfType: self localCodeSnippetType
-		inPage: page.
-	
+
+	page := self
+			assertPageCreationForStrategy: pageStrategy
+			inDatabase: targetDatabase
+			onSide: LeProxyClassPageType localSide.
+
+	self assertSingleEmptyCodeSnippetOfType: self localCodeSnippetType inPage: page.
+
 	^ targetDatabase
 ]
 
 { #category : #'examples - page strategy' }
 GtProxyRemoteInspectionExamples >> playgroundProxyPageLocalStrategy_pageCreation [
 	<gtExample>
+	<return: #LeInspectorPlaygroundProxyClassPageStrategy>
 	| pageStrategy page |
-	
 	pageStrategy := self playgroundProxyPageLocalStrategy.
-	
-	page := pageStrategy 
-		createNewPageForObject: self targetProxyObjectForInspection.
-	
-	self 
-		assertSingleEmptyCodeSnippetOfType: self localCodeSnippetType 
-		inPage: page.
-	
+
+	page := pageStrategy
+			createNewPageForObject: self targetProxyObjectForInspection.
+
+	self assertSingleEmptyCodeSnippetOfType: self localCodeSnippetType inPage: page.
+
 	self assertPageOnTestProxyFor: page.
 	self assert: page type pageProxySide isLocalSide.
-	
+
 	^ pageStrategy
 ]
 
 { #category : #'examples - page strategy' }
 GtProxyRemoteInspectionExamples >> playgroundProxyPageRemoteStrategy [
 	<gtExample>
-	| pageStrategy  |
-	
+	<return: #LeInspectorPlaygroundProxyClassPageStrategy>
+	| pageStrategy |
 	pageStrategy := LeInspectorPlaygroundProxyClassPageStrategy forRemoteProxySide.
-	
+
 	self assert: pageStrategy proxySide isRemoteSide.
 	self assert: pageStrategy playgroundPageType equals: LeProxyClassPageType.
-	
+
 	^ pageStrategy
 ]
 
 { #category : #'examples - page strategy' }
 GtProxyRemoteInspectionExamples >> playgroundProxyPageRemoteStrategy_createPage_initialPage [
 	<gtExample>
+	<return: #LeDatabase>
 	| targetDatabase pageStrategy page |
-	
 	targetDatabase := self basicDatabase.
 	pageStrategy := self playgroundProxyPageRemoteStrategy.
-	
-	page := self 
-		assertPageCreationForStrategy: pageStrategy 
-		inDatabase: targetDatabase 
-		onSide: LeProxyClassPageType remoteSide.
-	
-	self 
-		assertSingleEmptyCodeSnippetOfType: self remoteCodeSnippetType 
+
+	page := self
+			assertPageCreationForStrategy: pageStrategy
+			inDatabase: targetDatabase
+			onSide: LeProxyClassPageType remoteSide.
+
+	self
+		assertSingleEmptyCodeSnippetOfType: self remoteCodeSnippetType
 		inPage: page.
-	
+
 	^ targetDatabase
 ]
 
 { #category : #'examples - page strategy' }
 GtProxyRemoteInspectionExamples >> playgroundProxyPageRemoteStrategy_createPage_noInitialChildSnippets [
 	<gtExample>
-	| targetDatabase pageStrategy currentPage locatedPage|
-	
+	<return: #LeDatabase>
+	| targetDatabase pageStrategy currentPage locatedPage |
 	targetDatabase := self playgroundProxyPageRemoteStrategy_createPage_initialPage.
 	pageStrategy := self playgroundProxyPageRemoteStrategy.
-	currentPage := targetDatabase pages first.
-	
-	"Remove the first snippet so we get a wrongly configured page"
+	currentPage := targetDatabase pages first.	"Remove the first snippet so we get a wrongly configured page"
 	currentPage removeSnippet: currentPage children first.
-	
-	locatedPage := pageStrategy 
-		ensurePlaygroundPageInDatabase: targetDatabase 
-		forObject: self targetProxyObjectForInspection.
-	
+
+	locatedPage := pageStrategy
+			ensurePlaygroundPageInDatabase: targetDatabase
+			forObject: self targetProxyObjectForInspection.
+
 	self assert: targetDatabase pageCount equals: 1.
-	self 
+	self assert: locatedPage identityHash equals: currentPage identityHash.
+	self
 		assert: locatedPage identityHash
-		equals: currentPage identityHash.
-	self 
-		assert: locatedPage identityHash 
 		equals: targetDatabase pages first identityHash.
-	
+
 	self assertPageOnTestProxyFor: locatedPage.
-	self 
-		assert: locatedPage type pageProxySide 
+	self
+		assert: locatedPage type pageProxySide
 		equals: LeProxyClassPageType remoteSide.
-	
-	self 
-		assertSingleEmptyCodeSnippetOfType: self remoteCodeSnippetType 
+
+	self
+		assertSingleEmptyCodeSnippetOfType: self remoteCodeSnippetType
 		inPage: locatedPage.
-	
+
 	^ targetDatabase
 ]
 
 { #category : #'examples - page strategy' }
 GtProxyRemoteInspectionExamples >> playgroundProxyPageRemoteStrategy_createPage_wrongFirstSnippet [
 	<gtExample>
+	<return: #LeDatabase>
 	| targetDatabase pageStrategy currentPage locatedPage initialSnippet |
-	
 	targetDatabase := self playgroundProxyPageRemoteStrategy_createPage_initialPage.
 	pageStrategy := self playgroundProxyPageRemoteStrategy.
-	currentPage := targetDatabase pages first.
-	
-	"Remove the existing snippet and add another one first
+	currentPage := targetDatabase pages first.	"Remove the existing snippet and add another one first
 	that is of the wrong type"
 	currentPage removeSnippet: currentPage children first.
 	currentPage addSnippet: (LeTextSnippet string: 'hello').
-	
-	locatedPage := pageStrategy 
-		ensurePlaygroundPageInDatabase: targetDatabase 
-		forObject: self targetProxyObjectForInspection.
-	
+
+	locatedPage := pageStrategy
+			ensurePlaygroundPageInDatabase: targetDatabase
+			forObject: self targetProxyObjectForInspection.
+
 	self assert: targetDatabase pageCount equals: 1.
-	self 
+	self assert: locatedPage identityHash equals: currentPage identityHash.
+	self
 		assert: locatedPage identityHash
-		equals: currentPage identityHash.
-	self 
-		assert: locatedPage identityHash 
 		equals: targetDatabase pages first identityHash.
-	
+
 	self assertPageOnTestProxyFor: locatedPage.
-	self 
-		assert: locatedPage type pageProxySide 
+	self
+		assert: locatedPage type pageProxySide
 		equals: LeProxyClassPageType remoteSide.
-	
+
 	self assert: locatedPage children size equals: 2.
-	
+
 	initialSnippet := locatedPage children first.
 	self assert: initialSnippet class equals: self remoteCodeSnippetType.
 	self assert: initialSnippet code isEmpty.
@@ -811,19 +802,19 @@ GtProxyRemoteInspectionExamples >> playgroundProxyPageRemoteStrategy_createPage_
 { #category : #'examples - page strategy' }
 GtProxyRemoteInspectionExamples >> playgroundProxyPageRemoteStrategy_pageCreation [
 	<gtExample>
+	<return: #LeInspectorPlaygroundProxyClassPageStrategy>
 	| pageStrategy page |
-	
 	pageStrategy := self playgroundProxyPageRemoteStrategy.
-	page := pageStrategy 
-		createNewPageForObject: self targetProxyObjectForInspection.
-	
-	self 
-		assertSingleEmptyCodeSnippetOfType: self remoteCodeSnippetType 
+	page := pageStrategy
+			createNewPageForObject: self targetProxyObjectForInspection.
+
+	self
+		assertSingleEmptyCodeSnippetOfType: self remoteCodeSnippetType
 		inPage: page.
-	
+
 	self assertPageOnTestProxyFor: page.
 	self assert: page type pageProxySide isRemoteSide.
-	
+
 	^ pageStrategy
 ]
 
@@ -849,9 +840,11 @@ GtProxyRemoteInspectionExamples >> runningServer [
 	"Answer a running server.
 	No server is required running the examples in a single image.
 	Subclasses should overwrite this to start the server"
+
 	<gtExample>
 	<after: #stopServer>
-
+	<return: #GtProxyRemoteInspectionExamples>
+	
 ]
 
 { #category : #accessing }
@@ -875,14 +868,13 @@ GtProxyRemoteInspectionExamples >> stopServer [
 { #category : #examples }
 GtProxyRemoteInspectionExamples >> targetProxyObjectForInspection [
 	<gtExample>
-	
-	^ GtRemotePhlowSimulationExamples new 
-		simulationOnRemoteObject
+	<return: #GtRemoteInspectionSimulation>
+	^ GtRemotePhlowSimulationExamples new simulationOnRemoteObject
 ]
 
 { #category : #'examples - inspection' }
 GtProxyRemoteInspectionExamples >> targetProxyObjectForInspection_viewsAreOk [
 	<gtExample>
-	
+	<return: #GtProxyRemoteInspectionExamples>
 	^ self assertLocalAndRemotePhlowViewsFor: self targetProxyObjectForInspection
 ]

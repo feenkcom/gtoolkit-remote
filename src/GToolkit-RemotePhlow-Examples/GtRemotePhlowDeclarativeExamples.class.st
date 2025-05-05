@@ -31,16 +31,16 @@ GtRemotePhlowDeclarativeExamples >> getRemoteObject [
 GtRemotePhlowDeclarativeExamples >> remoteObject [
 	"Answer the remote GtRemotePhlowDeclarativeTestInspectable instance.
 	This will be a proxy with a remote server."
+
 	<gtExample>
 	<after: #stopServer>
+	<return: #SubclassResponsibility>
 	| remoteObject collection |
-
-	remoteObject :=  self getRemoteObject.
+	remoteObject := self getRemoteObject.
 
 	self assert: remoteObject string equals: 'hello world'.
 
-	collection :=  remoteObject collectionOfObjects.
-	"Check the size and immediate value objects, but assume that proxies are working correctly"
+	collection := remoteObject collectionOfObjects.	"Check the size and immediate value objects, but assume that proxies are working correctly"
 	self assert: collection size equals: 3.
 	self assert: collection first equals: 42.
 	self assert: collection second equals: 'Hello World'.
@@ -51,17 +51,16 @@ GtRemotePhlowDeclarativeExamples >> remoteObject [
 { #category : #examples }
 GtRemotePhlowDeclarativeExamples >> remotePhlowSpecificationsProvider [
 	"Answer the object for returning phlow specifications for the object"
+
 	<gtExample>
 	<after: #stopServer>
+	<return: #SubclassResponsibility>
 	| phlowSpecificationsProvider declarativeViews |
-
-	phlowSpecificationsProvider :=  self retrieveRemotePhlowSpecificationsProvider.
-
-	"The set of views can vary depending on configuration,
+	phlowSpecificationsProvider := self retrieveRemotePhlowSpecificationsProvider.	"The set of views can vary depending on configuration,
 	just check that a common view is present."
-	declarativeViews :=  phlowSpecificationsProvider getDeclarativeViewMethodNames.
+	declarativeViews := phlowSpecificationsProvider getDeclarativeViewMethodNames.
 	self assert: (declarativeViews includes: #gtListFor:).
- 
+
 	^ phlowSpecificationsProvider
 ]
 
@@ -77,9 +76,11 @@ GtRemotePhlowDeclarativeExamples >> runningServer [
 	"Answer a running server.
 	No server is required running the examples in a single image.
 	Subclasses should overwrite this to start the server"
+
 	<gtExample>
 	<after: #stopServer>
-
+	<return: #GtRemotePhlowDeclarativeExamples>
+	
 ]
 
 { #category : #private }

@@ -7,8 +7,8 @@ Class {
 { #category : #examples }
 GtRemotePhlowDeclarativeTreeExamples >> emptyTree [
 	<gtExample>
+	<return: #GtRemotePhlowTreeView>
 	| view |
-
 	view := GtRemotePhlowProtoView new tree.
 	self assert: view class equals: GtRemotePhlowTreeView.
 	^ view
@@ -81,24 +81,19 @@ GtRemotePhlowDeclarativeTreeExamples >> sentItemAt [
 { #category : #examples }
 GtRemotePhlowDeclarativeTreeExamples >> treeViewWithItemsAndChildren [
 	<gtExample>
+	<return: #GtRemotePhlowTreeView>
 	| aView declarativeView |
-
 	aView := self emptyTree.
-	aView 
+	aView
 		items: [ 1 to: 4 ];
 		itemText: [ :aNumber | aNumber asString ];
-		children: [ :aNumber | 
-			aNumber = 0
-				ifTrue: [ #() ]
-				ifFalse: [ 1 to: aNumber // 2 ] ].
+		children: [ :aNumber | aNumber = 0 ifTrue: [ #() ] ifFalse: [ 1 to: aNumber // 2 ] ].
 	declarativeView := aView asGtDeclarativeView.
-	
-	self 
-		assert: declarativeView retrieveTotalItemsCount  
-		equals: 4.
-	self 
-		assert: declarativeView retriveFormattedItems 
+
+	self assert: declarativeView retrieveTotalItemsCount equals: 4.
+	self
+		assert: declarativeView retriveFormattedItems
 		equals: self expectedFormattedItems.
-	 
+
 	^ aView
 ]

@@ -9,6 +9,7 @@ GtRemotePhlowViewSpecificationConversionExamples >> convertColumnedList [
 	"Demonstrate converting a columned list phlow view to a declarative specification"
 
 	<gtExample>
+	<return: #GtPhlowColumnedListViewSpecification>
 	| phlowView declarativeSpecification |
 	phlowView := self createProtoViews columnedList
 			title: #Test;
@@ -24,7 +25,7 @@ GtRemotePhlowViewSpecificationConversionExamples >> convertColumnedList [
 	self assert: declarativeSpecification priority equals: 10.
 	self assert: declarativeSpecification columnTitles equals: #('One' 'Two').
 	self assert: declarativeSpecification columnWidths equals: #(nil 100).
-	
+
 	self
 		assert: declarativeSpecification retriveFormattedItems
 		equals: self expectedColumnedListWithNumbersItems.
@@ -35,117 +36,121 @@ GtRemotePhlowViewSpecificationConversionExamples >> convertColumnedList [
 { #category : #examples }
 GtRemotePhlowViewSpecificationConversionExamples >> convertColumnedListWithTextColumns [
 	"Check the conversion to declarative specification with data"
-	<gtExample>
-	| declarativeSpecification |
 
-	declarativeSpecification := (GtRemotePhlowDeclarativeTestInspectable new 
-		gtColumnedListFor: self createProtoViews) asGtDeclarativeView.
+	<gtExample>
+	<return: #GtPhlowColumnedListViewSpecification>
+	| declarativeSpecification |
+	declarativeSpecification := (GtRemotePhlowDeclarativeTestInspectable new
+			gtColumnedListFor: self createProtoViews) asGtDeclarativeView.
 
 	self assert: declarativeSpecification title equals: 'Columned list'.
 	self assert: declarativeSpecification priority equals: 20.
-	self assert: declarativeSpecification columnTitles equals: #('Value' 'Lowercase').
+	self
+		assert: declarativeSpecification columnTitles
+		equals: #('Value' 'Lowercase').
 	self assert: declarativeSpecification columnWidths equals: #(nil 100).
-	
-	self 
-		assert: declarativeSpecification retriveFormattedItems 
-		equals: self expectedColumnedListForExampleObjectItems.
-	
-	^ declarativeSpecification
 
+	self
+		assert: declarativeSpecification retriveFormattedItems
+		equals: self expectedColumnedListForExampleObjectItems.
+
+	^ declarativeSpecification
 ]
 
 { #category : #examples }
 GtRemotePhlowViewSpecificationConversionExamples >> convertColumnedListWithTypedColumns [
 	"Check the conversion to declarative specification with data"
+
 	<gtExample>
+	<return: #GtPhlowColumnedListViewSpecification>
 	| declarativeSpecification |
+	declarativeSpecification := (GtRemotePhlowDeclarativeTestInspectable new
+			gtColumnedListWithTypedColumnsFor: self createProtoViews) asGtDeclarativeView.
 
-	declarativeSpecification := (GtRemotePhlowDeclarativeTestInspectable new 
-		gtColumnedListWithTypedColumnsFor: self createProtoViews)
-			asGtDeclarativeView.
-
-	self assert: declarativeSpecification title equals: 'Columned list with typed columns'.
+	self
+		assert: declarativeSpecification title
+		equals: 'Columned list with typed columns'.
 	self assert: declarativeSpecification priority equals: 24.
-	self 
-		assert: (declarativeSpecification columnSpecifications 
-			collect: [ :aColumnSpecification | aColumnSpecification typeLabel ])
+	self
+		assert: (declarativeSpecification columnSpecifications
+				collect: [ :aColumnSpecification | aColumnSpecification typeLabel ])
 		equals: #('text' 'number' 'icon').
-	self 
-		assert: declarativeSpecification columnTitles 
+	self
+		assert: declarativeSpecification columnTitles
 		equals: #('Text' 'Number' 'Icon Name').
-	self 
-		assert: declarativeSpecification columnWidths 
-		equals: #(nil 100 75).
-	
+	self assert: declarativeSpecification columnWidths equals: #(nil 100 75).
+
 	^ declarativeSpecification
 ]
 
 { #category : #examples }
 GtRemotePhlowViewSpecificationConversionExamples >> convertColumnedTree [
 	"Demonstrate converting a columned tree phlow view to a declarative specification"
-	<gtExample>
-	| phlowView declarativeSpecification |
 
+	<gtExample>
+	<return: #GtPhlowColumnedTreeViewSpecification>
+	| phlowView declarativeSpecification |
 	phlowView := self createProtoViews columnedTree
-		title: #Test;
-		priority: 10;
-		items: [ 1 to: 4 ];
-		children: [ :aNumber | 
-			aNumber = 0
-				ifTrue: [ #() ]
-				ifFalse: [ 1 to: aNumber // 2 ] ];
-		column: 'One' text: [ :item | item ];
-		column: 'Two' text: [ :item | (item + 1) asString ] width: 100.
+			title: #Test;
+			priority: 10;
+			items: [ 1 to: 4 ];
+			children: [ :aNumber | aNumber = 0 ifTrue: [ #() ] ifFalse: [ 1 to: aNumber // 2 ] ];
+			column: 'One' text: [ :item | item ];
+			column: 'Two'
+				text: [ :item | (item + 1) asString ]
+				width: 100.
 	declarativeSpecification := phlowView asGtDeclarativeView.
 
 	self assert: declarativeSpecification title equals: #Test.
 	self assert: declarativeSpecification priority equals: 10.
 	self assert: declarativeSpecification columnTitles equals: #('One' 'Two').
 	self assert: declarativeSpecification columnWidths equals: #(nil 100).
-	
-	self 
-		assert: declarativeSpecification retriveFormattedItems 
+
+	self
+		assert: declarativeSpecification retriveFormattedItems
 		equals: self expectedColumnedTreeWithNumberItems.
 
-	^ declarativeSpecification.
+	^ declarativeSpecification
 ]
 
 { #category : #examples }
 GtRemotePhlowViewSpecificationConversionExamples >> convertListWithNumbers [
 	"Demonstrate converting a columned list phlow view to a declarative specification"
-	<gtExample>
-	| phlowView declarativeSpecification |
 
+	<gtExample>
+	<return: #GtPhlowListViewSpecification>
+	| phlowView declarativeSpecification |
 	phlowView := self createProtoViews list
-		title: #Test;
-		priority: 10;
-		items: [ #(1 2 3) ];
-		itemText: [ :item | 'Number: ', item asString ].
+			title: #Test;
+			priority: 10;
+			items: [ #(1 2 3) ];
+			itemText: [ :item | 'Number: ' , item asString ].
 	declarativeSpecification := phlowView asGtDeclarativeView.
 
 	self assert: declarativeSpecification title equals: #Test.
 	self assert: declarativeSpecification priority equals: 10.
-	self 
-		assert: declarativeSpecification retriveFormattedItems 
+	self
+		assert: declarativeSpecification retriveFormattedItems
 		equals: self expectedListWithNumberItems.
 
-	^ declarativeSpecification.
+	^ declarativeSpecification
 ]
 
 { #category : #examples }
 GtRemotePhlowViewSpecificationConversionExamples >> convertListWithObjects [
 	"Check the conversion to declarative specification with data"
-	<gtExample>
-	| phlowView declarativeSpecification |
 
-	phlowView := GtRemotePhlowDeclarativeTestInspectable new 
-		gtListFor: self createProtoViews.
+	<gtExample>
+	<return: #GtPhlowListViewSpecification>
+	| phlowView declarativeSpecification |
+	phlowView := GtRemotePhlowDeclarativeTestInspectable new
+			gtListFor: self createProtoViews.
 	declarativeSpecification := phlowView asGtDeclarativeView.
-	
+
 	self assert: declarativeSpecification title equals: 'List'.
 	self assert: declarativeSpecification priority equals: 15.
-	self 
-		assert: declarativeSpecification retriveFormattedItems 
+	self
+		assert: declarativeSpecification retriveFormattedItems
 		equals: self expectedListForExampleObjectItems.
 
 	^ declarativeSpecification
@@ -154,16 +159,16 @@ GtRemotePhlowViewSpecificationConversionExamples >> convertListWithObjects [
 { #category : #examples }
 GtRemotePhlowViewSpecificationConversionExamples >> convertListWithStyledText [
 	<gtExample>
+	<return: #GtPhlowListViewSpecification>
 	| phlowView declarativeSpecification |
-
-	phlowView := GtRemotePhlowDeclarativeTestInspectable new 
-		gtListWithStyledTextFor: self createProtoViews.
+	phlowView := GtRemotePhlowDeclarativeTestInspectable new
+			gtListWithStyledTextFor: self createProtoViews.
 	declarativeSpecification := phlowView asGtDeclarativeView.
-	
+
 	self assert: declarativeSpecification title equals: 'List - styled text'.
 	self assert: declarativeSpecification priority equals: 15.1.
-	self 
-		assert: declarativeSpecification retriveFormattedItems 
+	self
+		assert: declarativeSpecification retriveFormattedItems
 		equals: self expectedListForStyledText.
 
 	^ declarativeSpecification
@@ -172,71 +177,71 @@ GtRemotePhlowViewSpecificationConversionExamples >> convertListWithStyledText [
 { #category : #examples }
 GtRemotePhlowViewSpecificationConversionExamples >> convertText [
 	"Demonstrate converting a columned list phlow view to a declarative specification"
-	<gtExample>
-	| phlowView declarativeSpecification |
 
+	<gtExample>
+	<return: #GtPhlowTextViewSpecification>
+	| phlowView declarativeSpecification |
 	phlowView := self createProtoViews text
-		title: #Test;
-		priority: 11;
-		text: [ 'hello world' ].
+			title: #Test;
+			priority: 11;
+			text: [ 'hello world' ].
 	declarativeSpecification := phlowView asGtDeclarativeView.
 
 	self assert: declarativeSpecification title equals: #Test.
 	self assert: declarativeSpecification priority equals: 11.
-	
-	self 
-		assert: declarativeSpecification retrieveStylableText 
+
+	self
+		assert: declarativeSpecification retrieveStylableText
 		equals: self expectedTextEditorBasicStringStylableTextData.
 
-	^ declarativeSpecification.
+	^ declarativeSpecification
 ]
 
 { #category : #examples }
 GtRemotePhlowViewSpecificationConversionExamples >> convertTextEditor [
 	"Demonstrate converting a columned list phlow view to a declarative specification"
-	<gtExample>
-	| phlowView declarativeSpecification |
 
+	<gtExample>
+	<return: #GtPhlowTextEditorViewSpecification>
+	| phlowView declarativeSpecification |
 	phlowView := self createProtoViews textEditor
-		title: 'String (editor)';
-		priority: 11;
-		text: [ 'hello world' ].
+			title: 'String (editor)';
+			priority: 11;
+			text: [ 'hello world' ].
 	declarativeSpecification := phlowView asGtDeclarativeView.
 
 	self assert: declarativeSpecification title equals: 'String (editor)'.
 	self assert: declarativeSpecification priority equals: 11.
 	self assert: declarativeSpecification string equals: nil.
-	
-	self 
-		assert: declarativeSpecification retrieveStylableText 
+
+	self
+		assert: declarativeSpecification retrieveStylableText
 		equals: self expectedTextEditorBasicStringStylableTextData.
 
-	^ declarativeSpecification.
+	^ declarativeSpecification
 ]
 
 { #category : #examples }
 GtRemotePhlowViewSpecificationConversionExamples >> convertTree [
 	"Demonstrate converting a tree phlow view to a declarative specification"
-	<gtExample>
-	| phlowView declarativeSpecification |
 
+	<gtExample>
+	<return: #GtPhlowTreeViewSpecification>
+	| phlowView declarativeSpecification |
 	phlowView := self createProtoViews tree
-		title: #Test;
-		priority: 10;
-		items: [ 1 to: 4 ];
-		children: [ :aNumber | 
-			aNumber = 0
-				ifTrue: [ #() ]
-				ifFalse: [ 1 to: aNumber // 2 ] ].
+			title: #Test;
+			priority: 10;
+			items: [ 1 to: 4 ];
+			children: [ :aNumber | aNumber = 0 ifTrue: [ #() ] ifFalse: [ 1 to: aNumber // 2 ] ].
 	declarativeSpecification := phlowView asGtDeclarativeView.
 
 	self assert: declarativeSpecification title equals: #Test.
 	self assert: declarativeSpecification priority equals: 10.
-	self 
-		assert: declarativeSpecification retriveFormattedItems 
+	self
+		assert: declarativeSpecification retriveFormattedItems
 		equals: self expectedTreeWithNumberItems.
 
-	^ declarativeSpecification.
+	^ declarativeSpecification
 ]
 
 { #category : #accessing }
