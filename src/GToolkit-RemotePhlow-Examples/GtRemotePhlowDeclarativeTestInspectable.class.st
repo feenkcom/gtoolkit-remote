@@ -101,6 +101,9 @@ GtRemotePhlowDeclarativeTestInspectable >> gtColumnedListSpawnTextFor: aView [
 		priority: 20.2;
 		items: [ collectionOfObjects ];
 		column: 'Value' text: [ :anObject | anObject ];
+		column: 'Value with spawn' 
+			text: [ :anObject | anObject ] 
+			spawn: [ :anObject | anObject ];
 		column: 'Class' 
 			text: [ :anObject | anObject class name ] 
 			spawn: [ :anObject | anObject class ]

@@ -549,7 +549,7 @@ GtProxyRemoteInspectionExamples >> inspectorForRemoteProxySide [
 		assertSingleEmptyCodeSnippetOfType: self remoteCodeSnippetType
 		inPage: targetDatabase pages first.
 
-	self assertInspectorTabLabelsUsing: scripter.	"self assertInspectorTabContentsFor: scripter."
+	self assertInspectorTabLabelsUsing: scripter.
 
 	^ scripter
 ]

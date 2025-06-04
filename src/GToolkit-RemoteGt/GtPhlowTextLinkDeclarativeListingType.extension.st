@@ -8,8 +8,8 @@ GtPhlowTextLinkDeclarativeListingType >> createColumnWithSpecification: aColumnS
 		text: [ :aColumnedNode | 
 			(aColumnedNode columnValueAt: aColumnIndex) itemText ]
 		spawn: [ :anArray :aRowIndex | 
-			aViewSpecification 
+			(aViewSpecification 
 				retriveSpawnedObjectAtRow: aRowIndex 
-				column: aColumnIndex ].
+				column: aColumnIndex)asGtBareProxyObject ].
 	^ column
 ]
