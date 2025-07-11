@@ -19,26 +19,31 @@ GtRemotePhlowItemValue class >> fromJSONDictionary: aDictionary [
 ]
 
 { #category : #'instance creation' }
-GtRemotePhlowItemValue class >> valueTypeFrom: aDictionary [ 
-	^ (aDictionary 
-		at: #valueTypeName 
-		ifPresent: [ :aTypeName |
-			| detectedType |
+GtRemotePhlowItemValue class >> mySubclasses [
+	"LW hook"
+	^self allSubclasses
+]
+
+{ #category : #'instance creation' }
+GtRemotePhlowItemValue class >> valueTypeFrom: aDictionary [
+	^aDictionary
+		at: #valueTypeName
+		ifPresent: 
+			[:aTypeName |
 			"We do a manual check for the types that are by default in GT, 
 			as it will be faster; this is called for every value in a table.
 			If the type is not found we iterate subclasses ."
+			| detectedType |
 			detectedType := nil.
 			aTypeName = GtRemotePhlowItemTextualValue valueTypeName
-				ifTrue: [ detectedType := GtRemotePhlowItemTextualValue ].
+				ifTrue: [detectedType := GtRemotePhlowItemTextualValue].
 			aTypeName = GtRemotePhlowItemErrorValue valueTypeName
-				ifTrue: [ detectedType := GtRemotePhlowItemErrorValue ].
-			detectedType ifNotNil: [ ^ detectedType ].
-				
-			GtRemotePhlowItemValue allSubclasses do: [ :aSubclass |
-				aSubclass valueTypeName = aTypeName ifTrue: [ ^ aSubclass] ].
-					
-			GtRemotePhlowItemValue ]
-		ifAbsent: [ GtRemotePhlowItemValue ])
+				ifTrue: [detectedType := GtRemotePhlowItemErrorValue].
+			detectedType ifNotNil: [^detectedType].
+			GtRemotePhlowItemValue mySubclasses
+				do: [:aSubclass | aSubclass valueTypeName = aTypeName ifTrue: [^aSubclass]].
+			GtRemotePhlowItemValue]
+		ifAbsent: [GtRemotePhlowItemValue]
 ]
 
 { #category : #accessing }
