@@ -172,12 +172,43 @@ GtLocalPhlowViewedObject >> getViewsDeclarations [
 ]
 
 { #category : #'gt - extensions' }
+GtLocalPhlowViewedObject >> gtActionProfileDataRetrieval: anAction [
+	<gtAction>
+	^(anAction dropdown)
+		priority: 10;
+		icon: BrGlamorousVectorIcons performance;
+		withDropdownIndicator;
+		label: 'Profile';
+		items: [:theButton :aHostElement :aMenu | 
+			self gtProfileActionsOnMenu: aMenu]
+]
+
+{ #category : #'gt - extensions' }
+GtLocalPhlowViewedObject >> gtProfileActionsOnMenu: aMenu [ 
+	aMenu addItemLabel: 'Profile inspector specification computation'
+		action: [:anotherButton |
+			anotherButton phlow 
+				spawnObject: remoteViewedObject
+					profileInspectorSpecificationComputation].
+	aMenu addItemLabel: 'Profile view specifications computation'
+		action: [:anotherButton |
+			anotherButton phlow 
+				spawnObject: remoteViewedObject
+					profileViewSpecificationsComputation].
+	aMenu addItemLabel: 'Profile action specifications computation'
+		action: [:anotherButton |
+			anotherButton phlow 
+				spawnObject: remoteViewedObject
+					profileActionSpecificationsComputation]
+]
+
+{ #category : #'gt - extensions' }
 GtLocalPhlowViewedObject >> gtRemoteActionSpecificationsFor: aView [
 	<gtView>
 	
 	^ aView columnedList
 		title: 'Remote action specifications';
-		priority: 20;
+		priority: 107;
 		items: [ self currentDeclarativeActionSpecifications 
 			sorted: #priority ascending];
 		column: 'Tooltip' text: [ :aViewAccessor | aViewAccessor tooltipText ];
@@ -198,7 +229,7 @@ GtLocalPhlowViewedObject >> gtRemoteInspectorSpecificationsFor: aView [
 	
 	^ aView forward
 		title: 'Remote specification';
-		priority: 30;
+		priority: 108;
 		object: [ GtJson
 			forJsonString: (NeoJSONWriter 
 				toStringPretty:  self getInspectorSpecificationData) ];
@@ -217,7 +248,7 @@ GtLocalPhlowViewedObject >> gtRemoteViewSpecificationsFor: aView [
 	
 	^ aView columnedList
 		title: 'Remote view specifications';
-		priority: 10;
+		priority: 105;
 		items: [ 
 			self currentDeclarativeViewSpecifications 
 				sorted: #priority ascending];
