@@ -31,7 +31,7 @@ GtPhlowViewSpecification >> gtActionBuildViewFor: anAction [
 	<gtAction>
 	
 	^ anAction button
-		  icon: BrGlamorousIcons playinspect;
+		  icon: BrGlamorousVectorIcons playinspect;
 		  tooltip: 'Create view';
 		  action: [ :aButton |
 		  	aButton phlow spawnObject: (self viewFor: GtPhlowView empty)  ]

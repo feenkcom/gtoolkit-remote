@@ -1,7 +1,7 @@
 Class {
 	#name : #PlpoMetaclass,
 	#superclass : #PlpoClassDescription,
-	#category : 'Gt4PharoLink-Proxies'
+	#category : #'Gt4PharoLink-Proxies'
 }
 
 { #category : #accessing }
