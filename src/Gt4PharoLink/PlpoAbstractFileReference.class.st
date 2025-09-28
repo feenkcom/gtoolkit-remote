@@ -48,8 +48,8 @@ PlpoAbstractFileReference >> gtItemsFor: aView [
 		column: 'Icon' translated 
 			icon: [ :each | 
 				each first
-					ifTrue: [ BrGlamorousIcons folder ]
-					ifFalse: [ BrGlamorousIcons file ] ];
+					ifTrue: [ BrGlamorousVectorIcons folder ]
+					ifFalse: [ BrGlamorousVectorIcons file ] ];
 		column: 'Name' translated text: [ :each | each second ];
 		column: 'Size' translated
 			text: [ :each | each third ]
