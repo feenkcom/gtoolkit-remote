@@ -1,5 +1,5 @@
 "
-GtDeclarativeTestInspectable is a simple object that can be used to test the Gt declarative views. 
+I am a simple object that can be used to test the Gt declarative views. 
 
  
 ## Internal Representation and Key Implementation Points.
