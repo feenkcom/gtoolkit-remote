@@ -482,6 +482,9 @@ GtProxyRemoteInspectionExamples >> inspectorForBothProxySides [
 	inspectorTool := self compositeInspectorToolForBothProxySides.
 
 	scripter := self scripter.
+	scripter space root 
+		padding: (BlInsets top: 15); 
+		layout: BlFrameLayout new.
 	scripter
 		model: inspectorTool object;
 		element: inspectorTool asElement.
