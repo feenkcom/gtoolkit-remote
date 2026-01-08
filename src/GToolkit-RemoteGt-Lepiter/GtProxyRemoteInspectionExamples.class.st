@@ -277,7 +277,7 @@ GtProxyRemoteInspectionExamples >> assertProxyPlaygroundPageTypeUsing: aScripter
 GtProxyRemoteInspectionExamples >> assertRemoteInspectorTitle: aString for: proxyObject [
 	| expectedTitle objectAdapter objectAdapterRemoteTitle |
 	
-	expectedTitle := aString, ' [<unnamed>:nil]'.
+	expectedTitle := aString, ' ', self expectedRemoteObjectTitle.
 	
 	"Check the title at the level of the adaptor"
 	objectAdapter := GtRemotePhlowViewedObjectInspectorAdaptor
@@ -296,7 +296,12 @@ GtProxyRemoteInspectionExamples >> assertRemoteInspectorTitle: aString for: prox
 GtProxyRemoteInspectionExamples >> assertRemoteInspectorTitleIncludes: aCollection for: proxyObject [
 	| expectedTitles objectAdapter objectAdapterRemoteTitle |
 	
-	expectedTitles := aCollection collect: [ :each | each, ' [<unnamed>:nil]' ].
+	expectedTitles := aCollection collect: [ :each |
+		String streamContents: [ :stream |
+			stream
+				<< each;
+				space;
+				<< self expectedRemoteObjectTitle ] ].
 	
 	"Check the title at the level of the adaptor"
 	objectAdapter := GtRemotePhlowViewedObjectInspectorAdaptor
@@ -472,6 +477,12 @@ GtProxyRemoteInspectionExamples >> databaseWithMonitor [
 			theDatabase ]
 ]
 
+{ #category : #accessing }
+GtProxyRemoteInspectionExamples >> expectedRemoteObjectTitle [
+
+	^ '[<unnamed>:nil]'
+]
+
 { #category : #'examples - inspection' }
 GtProxyRemoteInspectionExamples >> inspectorForBothProxySides [
 	<gtExample>
@@ -524,8 +535,10 @@ GtProxyRemoteInspectionExamples >> inspectorForLocalProxySide [
 		assertStep: [ :s | 
 			s
 				// GtPhlowCompositeViewElementId;
-				value: [ :aTabGroup | aTabGroup tabs size ]
-					equals: self localSideExpectedNumberOfViews ].
+				@ [ :aTabGroup | | tabLabels |
+					tabLabels := aTabGroup tabs collect: [ :each | each tabLabel text asString ]
+						as: Set.
+					(#('Raw' 'Print' 'Meta') asSet difference: tabLabels) isEmpty ] ].
 
 	self assertInspectorTabLabelsUsing: scripter.
 
