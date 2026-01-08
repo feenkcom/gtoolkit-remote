@@ -257,8 +257,8 @@ GtRemotePhlowDeclarativeViewsExamples >> columnedListWithStyledText [
 GtRemotePhlowDeclarativeViewsExamples >> columnedListWithTypedColumns [
 	<gtExample>
 	<after: #stopServer>
-	<return: #SubclassResponsibility>
 	| phlowSpecificationsProvider viewDictionary viewSpecification viewDatasource |
+
 	phlowSpecificationsProvider := self remotePhlowSpecificationsProvider.
 	viewDictionary := phlowSpecificationsProvider
 			getViewDeclaration: #gtColumnedListWithTypedColumnsFor:.
@@ -292,7 +292,7 @@ GtRemotePhlowDeclarativeViewsExamples >> columnedListWithTypedColumns [
 	self
 		assertNodesInColumnedViewDatasource: viewDatasource
 		forObjects: (1 to: 500)
-		andColumnsComputation: {[ :aNumber | '+' , aNumber asFloat asString ].
+		andColumnsComputation: {[ :aNumber | '+' , (aNumber asFloat printShowingDecimalPlaces: 1) ].
 				[ :aNumber | '+' , (aNumber + 1) asString ].
 				[ :aNumber | self formatExpectedIconName: aNumber asFloat gtSystemIconName ]}.
 
