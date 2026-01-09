@@ -277,18 +277,20 @@ GtProxyRemoteInspectionExamples >> assertProxyPlaygroundPageTypeUsing: aScripter
 GtProxyRemoteInspectionExamples >> assertRemoteInspectorTitle: aString for: proxyObject [
 	| expectedTitle objectAdapter objectAdapterRemoteTitle |
 	
-	expectedTitle := aString, ' ', self expectedRemoteObjectTitle.
+	expectedTitle := (aString, ' ', self expectedRemoteObjectTitle)
+		withInternalLineEndings.
 	
 	"Check the title at the level of the adaptor"
 	objectAdapter := GtRemotePhlowViewedObjectInspectorAdaptor
 		forTargetObject:proxyObject.
 	objectAdapterRemoteTitle := String streamContents: [ :aStream |
 		objectAdapter gtInspectorRemoteSideTitleStringOn: aStream ].
-	self assert: objectAdapterRemoteTitle equals: expectedTitle.
+	self assert: objectAdapterRemoteTitle withInternalLineEndings 
+		equals: expectedTitle.
 		
 	"Check the title as returned by the inspector"
 	self 
-		assert: proxyObject gtRemoteSideInspectorTool objectHolder view newLabel  
+		assert: proxyObject gtRemoteSideInspectorTool objectHolder view newLabel withInternalLineEndings
 		equals:expectedTitle.
 ]
 
