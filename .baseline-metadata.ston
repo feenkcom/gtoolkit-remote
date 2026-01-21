@@ -1,6 +1,6 @@
 {
 	"repositories" : {
-		"github://feenkcom/gtoolkit-phlow/src" : "v0.9.36",
+		"github://feenkcom/gtoolkit-phlow/src" : "v0.9.37",
 		"github://feenkcom/PharoLink/src" : "v0.8.500"
 	}
 }
