@@ -10,10 +10,10 @@ BaselineOfGt4PharoLink >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'PharoLink' with: [
-				spec repository: 'github://feenkcom/PharoLink:v0.8.512/src' ].
+				spec repository: 'github://feenkcom/PharoLink:v0.8.513/src' ].
 		spec
 			baseline: 'GToolkitRemote' with: [
-				spec repository: 'github://feenkcom/gtoolkit-remote:v0.9.65/src' ].
+				spec repository: 'github://feenkcom/gtoolkit-remote:v0.9.66/src' ].
 
 		spec package: 'Gt4PharoLink' with: [
 			spec requires: #(#PharoLink #GToolkitRemote) ].
