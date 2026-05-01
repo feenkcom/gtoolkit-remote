@@ -2,25 +2,34 @@ Extension { #name : #GtPhlowTextFutureColumn }
 
 { #category : #'*GToolkit-RemoteGt' }
 GtPhlowTextFutureColumn >> asGtDeclarativeColumnDataType [
-	self flag: #TODO.
+	"Currently, we convert the column to a regular text column."
+
 	^ GtPhlowDeclarativeListingType text
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
 GtPhlowTextFutureColumn >> updateValue: aCellValue forComputedItem: aComputedItem rowIndex: rowIndex columnIndex: columnIndex [
-	| itemText |
-	self flag: #TODO.
-	true
-		ifFalse: [ aCellValue itemText: ''.
-			^ aCellValue ].
+	"Since we convert this text future column to a regular text future column in #asGtDeclarativeColumnDataType,
+	this method will be called only in case of the following remote simulation: 
+	- `GtRemotePlainInspectionSimulation openOn: GtPhlowColumnedListViewExamples new`.
+	The method returns aCellValue, which is kind of `GtRemotePhlowItemTextualValue`."
 
-	itemText := self formatComputation
+	| aContext futureItem itemText |
+	aContext := GtPhlowTextFutureColumnContext new
+			rowItem: aComputedItem;
+			rowIndex: rowIndex;
+			columnIndex: columnIndex;
+			theme: BlTheme default.
+	futureItem := self futureComputation
 			ifNil: [ aComputedItem ]
-			ifNotNil: [ :aFormattingComputation | 
-				aFormattingComputation
-					phlowValue: aComputedItem
-					withEnoughArguments: {rowIndex.
-							columnIndex} ].
+			ifNotNil: [ :aSuccessComputation | 
+				aSuccessComputation phlowValue: aComputedItem withEnoughArguments: {rowIndex. aContext} ].
+	aContext result: futureItem.
+
+	itemText := self successComputation
+			ifNil: [ futureItem ]
+			ifNotNil: [ :aSuccessComputation | 
+				aSuccessComputation phlowValue: futureItem withEnoughArguments: {aContext} ].
 
 	aCellValue itemText: (self phlowTextOrStringFrom: itemText).
 

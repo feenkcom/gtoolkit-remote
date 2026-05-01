@@ -1,7 +1,7 @@
 Class {
 	#name : #GtRemotePhlowDictionaryAssociationsIterator,
 	#superclass : #GtRemotePhlowUnindexedCollectionIterator,
-	#category : 'GToolkit-RemotePhlow-PhlowViews'
+	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
 
 { #category : #accessing }

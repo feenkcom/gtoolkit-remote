@@ -1,7 +1,7 @@
 Class {
 	#name : #GtRemotePhlowSequenceableCollectionIterator,
 	#superclass : #GtRemotePhlowCollectionIterator,
-	#category : 'GToolkit-RemotePhlow-PhlowViews'
+	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
 
 { #category : #iterating }
