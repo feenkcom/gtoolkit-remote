@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'iterationSelector'
 	],
-	#category : 'GToolkit-RemotePhlow-PhlowViews'
+	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
 
 { #category : #iterating }
