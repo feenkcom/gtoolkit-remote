@@ -124,6 +124,38 @@ GtRemotePhlowBasicColumnedView >> column: aTitleString textDo: aBlock [
 ]
 
 { #category : #'api - scripting column' }
+GtRemotePhlowBasicColumnedView >> column: aTitleString textFuture: aFutureBlock executionConfiguration: aConfigurationBlock pending: aPendingBlock success: aSuccessBlock [
+	self
+		column: aTitleString
+		textDo: [ :aColumn | 
+			aColumn
+				item: aFutureBlock;
+				format: aSuccessBlock ]
+]
+
+{ #category : #'api - scripting column' }
+GtRemotePhlowBasicColumnedView >> column: aTitleString textFuture: aFutureBlock executionConfiguration: aConfigurationBlock pending: aPendingBlock success: aSuccessBlock weight: aNumber [
+	self
+		column: aTitleString
+		textDo: [ :aColumn | 
+			aColumn
+				item: aFutureBlock;
+				format: aSuccessBlock;
+				weight: aNumber ]
+]
+
+{ #category : #'api - scripting column' }
+GtRemotePhlowBasicColumnedView >> column: aTitleString textFuture: aFutureBlock executionConfiguration: aConfigurationBlock pending: aPendingBlock success: aSuccessBlock width: aNumber [
+	self
+		column: aTitleString
+		textDo: [ :aColumn | 
+			aColumn
+				item: aFutureBlock;
+				format: aSuccessBlock;
+				width: aNumber ]
+]
+
+{ #category : #'api - scripting column' }
 GtRemotePhlowBasicColumnedView >> column: aTitleString textFuture: aFutureBlock pending: aPendingBlock success: aSuccessBlock [
 	self
 		column: aTitleString
