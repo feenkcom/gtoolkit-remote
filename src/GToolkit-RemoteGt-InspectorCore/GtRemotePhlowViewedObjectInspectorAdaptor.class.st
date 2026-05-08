@@ -91,9 +91,16 @@ GtRemotePhlowViewedObjectInspectorAdaptor >> gtBasicDisplayOn: aStream [
 ]
 
 { #category : #'gt inspector' }
-GtRemotePhlowViewedObjectInspectorAdaptor >> gtInspectorRemoteSideTitleStringOn: aStream [
-	self gtBasicDisplayOn: aStream.
-	targetObject gtInspectorConnectionDetailsOn: aStream.
+GtRemotePhlowViewedObjectInspectorAdaptor >> gtInspectorRemoteSideTitleString [
+	| remoteTitleString|
+	remoteTitleString := String streamContents: [ :aStream |
+		self gtBasicDisplayOn: aStream ].
+		
+	^ String streamContents: [ :aStream |
+			aStream nextPutAll: (GtPhlowLabelBuilder new 
+				ensureClassName: self remoteClass
+				inTitle: remoteTitleString).
+			targetObject gtInspectorConnectionDetailsOn: aStream ]
 ]
 
 { #category : #'gt inspector' }
@@ -115,8 +122,7 @@ GtRemotePhlowViewedObjectInspectorAdaptor >> gtRemoteInspectorContentFor:  aView
 		viewsSelector: #gtViewsForRemoteSideInContext:;
 		actionsSelector: #gtActionsForRemoteSideInContext:;
 		titleComputation: [ :anObject |
-			String streamContents: [ :aStream |
-				anObject gtInspectorRemoteSideTitleStringOn: aStream ] ];
+			anObject gtInspectorRemoteSideTitleString ];
 		build 
 ]
 
@@ -151,4 +157,9 @@ GtRemotePhlowViewedObjectInspectorAdaptor >> initialiseForTargetObject: anObject
 { #category : #accessing }
 GtRemotePhlowViewedObjectInspectorAdaptor >> proxyInspector [
 	^ proxyInspector
+]
+
+{ #category : #accessing }
+GtRemotePhlowViewedObjectInspectorAdaptor >> remoteClass [
+	^ targetObject remoteClass
 ]
