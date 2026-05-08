@@ -283,8 +283,7 @@ GtProxyRemoteInspectionExamples >> assertRemoteInspectorTitle: aString for: prox
 	"Check the title at the level of the adaptor"
 	objectAdapter := GtRemotePhlowViewedObjectInspectorAdaptor
 		forTargetObject:proxyObject.
-	objectAdapterRemoteTitle := String streamContents: [ :aStream |
-		objectAdapter gtInspectorRemoteSideTitleStringOn: aStream ].
+	objectAdapterRemoteTitle := objectAdapter gtInspectorRemoteSideTitleString.
 	self assert: objectAdapterRemoteTitle withInternalLineEndings 
 		equals: expectedTitle.
 		
@@ -308,8 +307,7 @@ GtProxyRemoteInspectionExamples >> assertRemoteInspectorTitleIncludes: aCollecti
 	"Check the title at the level of the adaptor"
 	objectAdapter := GtRemotePhlowViewedObjectInspectorAdaptor
 		forTargetObject:proxyObject.
-	objectAdapterRemoteTitle := String streamContents: [ :aStream |
-		objectAdapter gtInspectorRemoteSideTitleStringOn: aStream ].
+	objectAdapterRemoteTitle := objectAdapter gtInspectorRemoteSideTitleString.
 	self assert: (expectedTitles includes: objectAdapterRemoteTitle).
 		
 	"Check the title as returned by the inspector"

@@ -6,7 +6,7 @@ Trait {
 }
 
 { #category : #'gt - inspector' }
-TGtRemoteProxyInspectorDirectObjectAttachment >> gtInspectorRemoteSideTitleStringOn: aStream [ 
+TGtRemoteProxyInspectorDirectObjectAttachment >> gtInspectorRemoteSideTitleString [
 	"As we attach views directly to the proxy object it needs to provide this method"
 	self explicitRequirement 
 ]
@@ -23,8 +23,7 @@ TGtRemoteProxyInspectorDirectObjectAttachment >> gtRemoteInspectorContentFor: aV
 		viewsSelector: #gtViewsForRemoteSideInContext:;
 		actionsSelector: #gtActionsForRemoteSideInContext:;
 		titleComputation: [ :anObject |
-			String streamContents: [ :aStream |
-				anObject gtInspectorRemoteSideTitleStringOn: aStream ] ];
+			anObject gtInspectorRemoteSideTitleString ];
 		build 
 ]
 

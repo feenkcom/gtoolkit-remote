@@ -105,12 +105,12 @@ GtRemoteInspectionSimulation >> getViewsDeclarations [
 GtRemoteInspectionSimulation >> gtInspectorConnectionDetailsOn: aStream [
 ]
 
-{ #category : #'as yet unclassified' }
-GtRemoteInspectionSimulation >> gtInspectorRemoteSideTitleStringOn: aStream [ 
-
-	aStream
-		<< 'a(n): ';
-		<< (self remoteClass ifNil: [ '<None>' ]) 
+{ #category : #printing }
+GtRemoteInspectionSimulation >> gtInspectorRemoteSideTitleString [
+	^ String streamContents: [ :aStream |
+			aStream
+				<< 'a(n): ';
+				<< (self remoteClass ifNil: [ '<None>' ]) ]
 ]
 
 { #category : #simulation }
