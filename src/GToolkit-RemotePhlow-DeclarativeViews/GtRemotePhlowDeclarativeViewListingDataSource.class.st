@@ -46,11 +46,6 @@ GtRemotePhlowDeclarativeViewListingDataSource >> flushItemsIterator [
 ]
 
 { #category : #accessing }
-GtRemotePhlowDeclarativeViewListingDataSource >> formatItem: anObject atIndex: anIndex [
-	self subclassResponsibility
-]
-
-{ #category : #accessing }
 GtRemotePhlowDeclarativeViewListingDataSource >> forNodesFrom: aStartIndex to: anEndIndex withIndexDo: aBlock [
 	| startIndex stopIndex |
 	
@@ -74,6 +69,11 @@ GtRemotePhlowDeclarativeViewListingDataSource >> forNodesFrom: aStartIndex to: a
 						buildMainNodeForObject: anObject atIndex: anIndex.
 					self cachedNodes at: anIndex put: newValueNode ].
 			aBlock cull: (self cachedNodes at: anIndex) cull: anIndex ]
+]
+
+{ #category : #accessing }
+GtRemotePhlowDeclarativeViewListingDataSource >> formatItem: anObject atIndex: anIndex [
+	self subclassResponsibility
 ]
 
 { #category : #accessing }
