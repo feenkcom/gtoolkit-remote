@@ -22,7 +22,6 @@ TGtRemoteProxyInspectorAttachment >> gtDefaultInspectorTool [
 	"We extent the inspector by adding a custom tool showing object specific views."
 	^ GtPhlowCompositeTool new
 		addTool: (self gtRemoteSideInspectorTool
-			name: self gtRemoteSideInspectorToolLabel;
 			playgroundPageStrategy: (LeInspectorPlaygroundProxyClassPageStrategy
 				forRemoteProxySide);
 			withLabelAndIconAptitude);
@@ -36,11 +35,6 @@ TGtRemoteProxyInspectorAttachment >> gtDefaultInspectorTool [
 { #category : #'gt - inspector' }
 TGtRemoteProxyInspectorAttachment >> gtRemoteSideInspectorTool [
 	^ self explicitRequirement 
-]
-
-{ #category : #'gt - inspector' }
-TGtRemoteProxyInspectorAttachment >> gtRemoteSideInspectorToolLabel [
-	^ 'Remote'
 ]
 
 { #category : #'gt - inspector' }
