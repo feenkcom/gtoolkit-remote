@@ -34,7 +34,7 @@ TGtRemoteProxyInspectorDirectObjectAttachment >> gtRemoteInspectorTargetObject [
 
 { #category : #'gt - inspector' }
 TGtRemoteProxyInspectorDirectObjectAttachment >> gtRemoteSideInspectorTool [
-	^ GtInspectorTool 
-		forObject: self 
-		viewSelector: #gtRemoteInspectorContentFor: 
+	^ GtInspectorTool new 
+			object: self 
+			viewSelector: #gtRemoteInspectorContentFor:
 ]

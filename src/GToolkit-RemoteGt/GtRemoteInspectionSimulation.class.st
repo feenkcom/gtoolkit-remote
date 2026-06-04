@@ -131,6 +131,15 @@ GtRemoteInspectionSimulation >> gtRemoteSideInspectorObjectHolder [
 	^ GtRemotePhlowInspectorObject new 
 ]
 
+{ #category : #'gt - inspector' }
+GtRemoteInspectionSimulation >> gtRemoteSideInspectorTool [
+	^GtInspectorTool new 
+		name: 'Remote';
+		objectHolder: (self gtRemoteSideInspectorObjectHolder
+			object: self; 
+			viewSelector: #gtRemoteInspectorContentFor:)
+]
+
 { #category : #utils }
 GtRemoteInspectionSimulation >> isProxyObjectActive [
 	^ true
