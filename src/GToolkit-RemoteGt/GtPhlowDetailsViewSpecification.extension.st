@@ -8,11 +8,11 @@ GtPhlowDetailsViewSpecification >> viewFor: aView [
 	currentView title: title.
 	currentView priority: priority.
 	
-	rowSpecifications doWithIndex: [ :eachRow :index |
+	rowSpecifications do: [ :eachRow |
 		currentView
 			row: eachRow name
-			value: [ self retrieveRowValueAt: index ]
-			text: [ :eachValue | self retrieveRowTextAt: index ] ].
+			value: [ self retrieveRowValueAt: eachRow index ]
+			text: [ :eachValue | self retrieveRowTextAt: eachRow index ] ].
 	
 	^ currentView
 ]

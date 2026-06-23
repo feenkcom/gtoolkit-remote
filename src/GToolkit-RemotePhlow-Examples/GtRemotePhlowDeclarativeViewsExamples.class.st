@@ -430,6 +430,46 @@ GtRemotePhlowDeclarativeViewsExamples >> createTreeNodesWithTextValues: aCollect
 	 			itemText: convertedText)]
 ]
 
+{ #category : #'examples - views' }
+GtRemotePhlowDeclarativeViewsExamples >> detailsView [
+	<gtExample>
+	<after: #stopServer>
+	<return: #SubclassResponsibility>
+	| phlowSpecificationsProvider viewDictionary viewSpecification viewDatasource rowsData |
+	phlowSpecificationsProvider := self remotePhlowSpecificationsProvider.
+	viewDictionary := phlowSpecificationsProvider getViewDeclaration: #gtDetailsViewFor:.
+	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
+
+	self assert: viewSpecification title equals: 'Details'.
+	self assert: viewSpecification priority equals: 37.
+	self assert: viewSpecification rowSpecifications equals: { 
+		GtRemotePhlowDetailsRowSpecification new index: 1; name: 'Class'.
+		GtRemotePhlowDetailsRowSpecification new index: 2; name: 'Package'.
+		GtRemotePhlowDetailsRowSpecification new index: 3; name: 'Methods'.
+		GtRemotePhlowDetailsRowSpecification new index: 4; name: 'string value'.
+		GtRemotePhlowDetailsRowSpecification new index: 5; name: 'Collection of objects'.
+	}.
+
+	viewDatasource := phlowSpecificationsProvider
+			getDeclarativeViewFor: #gtDetailsViewFor:.
+	rowsData := viewDatasource retrieveRowNodes.
+	
+	self 
+		assert:  (rowsData collect: [:each | each rowIndex]) asArray
+		equals: (1 to: 5) asArray.
+	self 
+		assert:  (rowsData collect: [:each | GtPhlowText forString: each rowText asString ]) asArray
+		equals: ({ 
+			'GtRemotePhlowDeclarativeTestInspectable' asRopedText.
+			'GToolkit-RemotePhlow-Examples' asRopedText.
+			'48' asRopedText.
+			'hello world' asRopedText.
+			'an Array [3 items] (42 ''Hello World'' 2021-04-06T14:43:50.123456+02:00)' asRopedText
+} collect: [ :each | each asGtPlowText ]).
+
+	^ viewSpecification
+]
+
 { #category : #accessing }
 GtRemotePhlowDeclarativeViewsExamples >> expectedBasicString [
 	^ 'Now is the time'

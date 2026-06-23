@@ -7,16 +7,23 @@ Class {
 	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #converting }
 GtRemotePhlowDetailsView >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
-
+	| rowSpecifications |
+	
+	rowSpecifications := OrderedCollection new.
+	self phlowDetailRows withIndexDo:  [ :each :anIndex |
+		rowSpecifications add: (GtRemotePhlowDetailsRowSpecification 
+			fromPhlowRow: each withIndex: anIndex) ].
+	
 	^ GtPhlowDetailsViewSpecification new 
 		title: self title;
 		priority: self priority;
 		phlowDataSource: (GtRemotePhlowDeclarativeViewDetailsDataSource 
 			forPhlowView: self);
+		rowSpecifications: rowSpecifications;
 		dataTransport: GtPhlowViewSpecification dataLazy
 ]
 
@@ -38,6 +45,11 @@ GtRemotePhlowDetailsView >> initialize [
 	super initialize.
 	
 	rows := OrderedCollection new
+]
+
+{ #category : #'as yet unclassified' }
+GtRemotePhlowDetailsView >> phlowDetailRows [
+	^ rows
 ]
 
 { #category : #'api - scripting' }

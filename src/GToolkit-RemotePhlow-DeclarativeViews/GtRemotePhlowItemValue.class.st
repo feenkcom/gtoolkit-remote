@@ -67,6 +67,7 @@ GtRemotePhlowItemValue >> asDictionaryForExport [
 	
 	data := Dictionary new 
 		at: #valueTypeName put: self class valueTypeName;
+		at: '__typeName' put: self class name;
 		yourself.
 		
 	"We check the attribute here instead of using the accessor,

@@ -230,6 +230,53 @@ GtRemotePhlowDeclarativeTestInspectable >> gtColumnedWithObjectsFor: aView [
 ]
 
 { #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtDetailsCustomPrintViewFor: aView [
+	<gtView>
+
+	^aView details
+		title: 'Details (custom print)';
+		priority: 37.1;
+		row: 'Class' 
+			value: [ self class name ] 
+			text:  [ :each |
+				each asString asRopedText
+					bold;
+					highlight: (GtPhlowColor named: #yellow) asColor ];
+		row: 'String value' value: [ self string ] text: [ :each | each ];
+		row: 'Text value' value: [ self styledText ];
+		row: 'Collection of objects' 
+			value: [ self collectionOfObjects ]
+			text: [ :each | each ]
+]
+
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtDetailsViewFor: aView [
+	<gtView>
+
+	^aView details
+		title: 'Details (default print)';
+		priority: 37;
+		row: 'Class' value: [ self class name ];
+		row: 'string value' value: [ self string ];
+		row: 'Collection of objects' value: [ self collectionOfObjects ]
+]
+
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtDetailsWithErrorsViewFor: aView [
+	<gtView>
+
+	^aView details
+		title: 'Details (with errors)';
+		priority: 37.3;
+		row: 'No error' value: [ self string ] text: [ :each | each ];
+		row: 'Error in value' value: [ 1/0 ];
+		row: 'Error in print' value: [ 1 ] text: [ :each | each / 0];
+		row: 'Also no error' value: [ self string ] text: [ :each | each ];
+		row: 'Error in both' value: [ 1/0 ] text: [ :each | 1 / 0]
+	
+]
+
+{ #category : #inspecting }
 GtRemotePhlowDeclarativeTestInspectable >> gtForwardListFor: aView [
 	<gtView>
 
