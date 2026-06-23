@@ -1,7 +1,7 @@
 Class {
 	#name : #GtRemotePhlowDetailsRowSpecificationExamples,
 	#superclass : #TestCase,
-	#category : #'GToolkit-RemotePhlow-DeclarativeViews-Examples'
+	#category : #'GToolkit-RemotePhlow-Examples'
 }
 
 { #category : #examples }
