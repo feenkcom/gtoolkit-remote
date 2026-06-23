@@ -3,8 +3,8 @@ Class {
 	#superclass : #GtRemotePhlowItemTextualValue,
 	#instVars : [
 		'rowText',
-		'rowValue',
-		'rowIndex'
+		'rowIndex',
+		'rowValueWrapper'
 	],
 	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
@@ -23,24 +23,13 @@ GtRemotePhlowDetailsRowValue >> asDictionaryForExport [
 ]
 
 { #category : #printing }
-GtRemotePhlowDetailsRowValue >> descriptionOn: aStream [
-		aStream
-			nextPutAll: 'index: ';
-			print: self rowIndex;
-			nextPutAll: '; text: ';
-			nextPutAll: self itemText 
-]
-
-{ #category : #printing }
-GtRemotePhlowDetailsRowValue >> printOn: aStream [
-	super printOn: aStream.
+GtRemotePhlowDetailsRowValue >> descriptionOn: aStream [ 
 	
-	aStream parenthesize: [
-		aStream
+	aStream
 			nextPutAll: 'index: ';
 			print: self rowIndex;
-			nextPutAll: '; text: ';
-			nextPutAll: self rowText ]
+			nextPutAll: '; '.
+	super descriptionOn: aStream 
 ]
 
 { #category : #accessing }
@@ -55,10 +44,21 @@ GtRemotePhlowDetailsRowValue >> rowIndex: anObject [
 
 { #category : #accessing }
 GtRemotePhlowDetailsRowValue >> rowValue [
-	^ rowValue
+	^ self rowValueWrapper targetObject
 ]
 
 { #category : #accessing }
 GtRemotePhlowDetailsRowValue >> rowValue: anObject [
-	rowValue := anObject
+	self rowValueWrapper: (GtRemotePhlowSpawnObjectWrapper new
+		targetObject: anObject)
+]
+
+{ #category : #accessing }
+GtRemotePhlowDetailsRowValue >> rowValueWrapper [
+	^ rowValueWrapper
+]
+
+{ #category : #accessing }
+GtRemotePhlowDetailsRowValue >> rowValueWrapper: aWrapper [
+	rowValueWrapper := aWrapper
 ]

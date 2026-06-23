@@ -7,6 +7,11 @@ Class {
 	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
 
+{ #category : #'instance creation' }
+GtRemotePhlowDetailsView class >> new [ 
+	^ self basicNew initialize
+]
+
 { #category : #converting }
 GtRemotePhlowDetailsView >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
@@ -31,6 +36,7 @@ GtRemotePhlowDetailsView >> asGtDeclarativeView [
 GtRemotePhlowDetailsView >> gtRowsFor: aView [
 	<gtView>
 	rows ifNil: [^aView empty].
+	
 	^(aView columnedList)
 		title: 'Rows';
 		priority: 11;

@@ -251,7 +251,8 @@ GtLocalPhlowViewedObject >> gtRemoteViewSpecificationsFor: aView [
 		priority: 105;
 		items: [ 
 			self currentDeclarativeViewSpecifications 
-				sorted: #priority ascending];
+				sorted: [:each | 
+					each priority ifNil: [75]] ascending];
 		column: 'Title' text: [ :aViewAccessor | aViewAccessor title ];
 		column: 'Selector' text: [ :aViewAccessor | aViewAccessor methodSelector ];
 		column: 'View' text: [ :aViewAccessor | aViewAccessor viewName ];

@@ -4,8 +4,13 @@ Class {
 	#instVars : [
 		'targetObject'
 	],
-	#category : #'GToolkit-RemotePhlow-DeclarativeActions'
+	#category : #'GToolkit-RemotePhlow-DeclarativeSpecification'
 }
+
+{ #category : #serialization }
+GtRemotePhlowSpawnObjectWrapper class >> replicationSpec [
+	^#(#(#targetObject #stub))
+]
 
 { #category : #accessing }
 GtRemotePhlowSpawnObjectWrapper >> targetObject [
