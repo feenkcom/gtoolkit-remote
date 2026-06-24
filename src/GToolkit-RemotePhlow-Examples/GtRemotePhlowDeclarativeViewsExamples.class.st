@@ -481,7 +481,7 @@ GtRemotePhlowDeclarativeViewsExamples >> detailsView [
 	obtainedNodes := viewDatasource retrieveRowNodeData collect: [ :each |
 			GtRemotePhlowDetailsNode fromJSONDictionary: each  ].
 	
-	targetObject := 	GtRemotePhlowDeclarativeTestInspectable new.
+	targetObject := GtRemotePhlowDeclarativeTestInspectable new.
 	self 
 		assertListingNodes: obtainedNodes 
 		equals: (self 
@@ -490,6 +490,46 @@ GtRemotePhlowDeclarativeViewsExamples >> detailsView [
 			 targetObject string.
 			 targetObject exampleDate gtDisplayString } collect: [ :each |
 			 	each asRopedText asGtPlowText ])).
+
+	^ viewSpecification
+]
+
+{ #category : #'examples - views' }
+GtRemotePhlowDeclarativeViewsExamples >> detailsViewWithCustomPrinting [
+	<gtExample>
+	<after: #stopServer>
+	<return: #SubclassResponsibility>
+	| phlowSpecificationsProvider viewDictionary viewSpecification viewDatasource obtainedNodes targetObject |
+	
+	phlowSpecificationsProvider := self remotePhlowSpecificationsProvider.
+	viewDictionary := phlowSpecificationsProvider getViewDeclaration: #gtDetailsCustomPrintViewFor:.
+	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
+
+	self assert: viewSpecification title equals: 'Details (custom print)'.
+	self assert: viewSpecification priority equals: 37.1.
+	self assert: viewSpecification rowSpecifications equals: { 
+		GtRemotePhlowDetailsRowSpecification new index: 1; name: 'Class'.
+		GtRemotePhlowDetailsRowSpecification new index: 2; name: 'String value'.
+		GtRemotePhlowDetailsRowSpecification new index: 3; name: 'Text value'.
+		GtRemotePhlowDetailsRowSpecification new index: 4; name: 'Date'.
+	}.
+
+	viewDatasource := phlowSpecificationsProvider
+			getDeclarativeViewFor: #gtDetailsCustomPrintViewFor:.
+	obtainedNodes := viewDatasource retrieveRowNodeData collect: [ :each |
+			GtRemotePhlowDetailsNode fromJSONDictionary: each  ].
+	
+	targetObject := GtRemotePhlowDeclarativeTestInspectable new.
+	self 
+		assertListingNodes: obtainedNodes 
+		equals: (self 
+			createDetailNodesWithObjectValues: ({
+			 (targetObject class name asString asRopedText
+					bold;
+					highlight: (GtPhlowColor named: #yellow) asColor) asGtPlowText.
+			 targetObject string.
+			 targetObject styledText asGtPlowText.
+			 targetObject exampleDate gtDisplayString })).
 
 	^ viewSpecification
 ]

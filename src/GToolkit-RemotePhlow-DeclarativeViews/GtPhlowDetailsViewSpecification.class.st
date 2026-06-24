@@ -41,34 +41,41 @@ GtPhlowDetailsViewSpecification >> gtViewRowSpecificationsFor: aView [
 		column: 'Row Name' text: [ :each | each name ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
+GtPhlowDetailsViewSpecification >> initializeFromInspector: anInspector [
+	self phlowDataSource ifNil: [
+		self phlowDataSource: (anInspector 
+			getDeclarativeViewFor: self methodSelector) ]
+]
+
+{ #category : #accessing }
 GtPhlowDetailsViewSpecification >> retrieveRowNodeData [
 	^ self phlowDataSource retrieveRowNodeData
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtPhlowDetailsViewSpecification >> retrieveRowNodeRawValueAtRowIndex: aRowIndex [
 	^ self phlowDataSource retrieveRowNodeRawValueAtRowIndex: aRowIndex
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtPhlowDetailsViewSpecification >> retrieveRowNodes [
 	^ self phlowDataSource retrieveRowNodes
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtPhlowDetailsViewSpecification >> retrieveRowNodesById [
 	^ cachedRowNodesByIndex ifNil: [
 			(self phlowDataSource retrieveRowNodes collect: [ :each |
 				each nodeId -> each ]) asDictionary ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtPhlowDetailsViewSpecification >> retrieveRowTextAt: aRowIndex [
 	^ (self retrieveRowNodesById at: aRowIndex) nodeValue itemText
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtPhlowDetailsViewSpecification >> retrieveRowValueAt: aRowIndex [
 	^ (self retrieveRowNodesById at: aRowIndex) nodeValue rowValue
 ]
