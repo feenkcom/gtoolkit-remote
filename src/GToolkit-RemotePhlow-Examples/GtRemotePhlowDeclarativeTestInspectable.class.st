@@ -246,7 +246,7 @@ GtRemotePhlowDeclarativeTestInspectable >> gtDetailsCustomPrintViewFor: aView [
 		row: 'Text value' value: [ self styledText ];
 		row: 'Collection of objects' 
 			value: [ self collectionOfObjects ]
-			text: [ :each | each ]
+			text: [ :each | each printString ]
 ]
 
 { #category : #inspecting }
