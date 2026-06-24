@@ -46,6 +46,11 @@ GtRemotePhlowDeclarativeViewDetailsDataSource >> gtPhlowViewRowsFor: aView [
 ]
 
 { #category : #accessing }
+GtRemotePhlowDeclarativeViewDetailsDataSource >> retrieveRowNodeData [
+	^ (self retrieveRowNodes collect: [ :each | each asDictionaryForExport ]) asArray
+]
+
+{ #category : #accessing }
 GtRemotePhlowDeclarativeViewDetailsDataSource >> retrieveRowNodeRawValueAtRowIndex: aRowIndex [
 	^ self retrieveRowNodes 
 			detect: [ :each | each nodeId = aRowIndex ]

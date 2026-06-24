@@ -42,6 +42,11 @@ GtPhlowDetailsViewSpecification >> gtViewRowSpecificationsFor: aView [
 ]
 
 { #category : #'as yet unclassified' }
+GtPhlowDetailsViewSpecification >> retrieveRowNodeData [
+	^ self phlowDataSource retrieveRowNodeData
+]
+
+{ #category : #'as yet unclassified' }
 GtPhlowDetailsViewSpecification >> retrieveRowNodeRawValueAtRowIndex: aRowIndex [
 	^ self phlowDataSource retrieveRowNodeRawValueAtRowIndex: aRowIndex
 ]
