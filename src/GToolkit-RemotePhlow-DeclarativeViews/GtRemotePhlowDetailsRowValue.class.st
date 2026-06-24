@@ -39,7 +39,6 @@ GtRemotePhlowDetailsRowValue >> descriptionOn: aStream [
 
 { #category : #initialization }
 GtRemotePhlowDetailsRowValue >> initializeFromJSONDictionary: aDictionary [
-	| textData |
 	super initializeFromJSONDictionary: aDictionary.
 	
 	aDictionary at: 'rowIndex' ifPresent: [ :each | self rowIndex: each ]
