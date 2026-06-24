@@ -16,44 +16,7 @@ GtRemotePhlowDeclarativeTreeExamples >> emptyTree [
 
 { #category : #examples }
 GtRemotePhlowDeclarativeTreeExamples >> expectedFormattedItems [
-	^ (Array new: 4)
-		at: 1
-			put: (Dictionary new
-					add: #nodeValue
-							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
-									add: #itemText -> '1';
-									yourself);
-					add: #nodeId -> 1;
-					yourself);
-		at: 2
-			put: (Dictionary new
-					add: #nodeValue
-							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
-									add: #itemText -> '2';
-									yourself);
-					add: #nodeId -> 2;
-					yourself);
-		at: 3
-			put: (Dictionary new
-					add: #nodeValue
-							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
-									add: #itemText -> '3';
-									yourself);
-					add: #nodeId -> 3;
-					yourself);
-		at: 4
-			put: (Dictionary new
-					add: #nodeValue
-							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
-									add: #itemText -> '4';
-									yourself);
-					add: #nodeId -> 4;
-					yourself);
-		yourself
+	^ ((Array new: 4) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'1'); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'2'); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'3'); yourself)); add: (#nodeId->3); yourself); at: 4 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'4'); yourself)); add: (#nodeId->4); yourself); yourself)
 ]
 
 { #category : #examples }

@@ -3,8 +3,7 @@ Class {
 	#superclass : #GtPhlowViewSpecification,
 	#instVars : [
 		'rowSpecifications',
-		'cachedRowValues',
-		'cachedRowTexts'
+		'cachedRowNodesByIndex'
 	],
 	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
@@ -15,7 +14,9 @@ GtPhlowDetailsViewSpecification class >> fromJSONDictionary: aDictionary [
 	
 	details := super fromJSONDictionary: aDictionary.
 	
-	details rowSpecifications: ((aDictionary at: 'rowSpecifications') collect: [ :eachRowSpecification | GtRemotePhlowDetailsRowSpecification fromJSONDictionary: eachRowSpecification ]).
+	details rowSpecifications: ((aDictionary at: 'rowSpecifications') 
+		collect: [ :eachRowSpecification | 
+			GtRemotePhlowDetailsRowSpecification fromJSONDictionary: eachRowSpecification ]).
 	
 	^ details
 ]
@@ -23,29 +24,60 @@ GtPhlowDetailsViewSpecification class >> fromJSONDictionary: aDictionary [
 { #category : #'as yet unclassified' }
 GtPhlowDetailsViewSpecification >> asDictionaryForExport [
 	^ super asDictionaryForExport
-		at: 'rowSpecifications' put: (self rowSpecifications collect: [ :eachRowSpecification | eachRowSpecification asDictionaryForExport ])
+		at: 'rowSpecifications' put: ((self rowSpecifications 
+			collect: [ :eachRowSpecification | eachRowSpecification asDictionaryForExport ]) asArray);
+		yourself
 ]
 
-{ #category : #'as yet unclassified' }
-GtPhlowDetailsViewSpecification >> retrieveRowTextAt: anIndex [
-	^ self retrieveRowTexts at: anIndex
+{ #category : #views }
+GtPhlowDetailsViewSpecification >> gtViewRowSpecificationsFor: aView [
+	<gtView>
+	rowSpecifications ifNil: [ ^ aView empty ].
+	^ aView columnedList
+		title: 'Row specifications';
+		priority: 5;
+		items: [ rowSpecifications ];
+		column: 'Row Index' text: [ :each | each index ];
+		column: 'Row Name' text: [ :each | each name ]
 ]
 
-{ #category : #'as yet unclassified' }
-GtPhlowDetailsViewSpecification >> retrieveRowTexts [
-	^ cachedRowTexts ifNil: [
-		self phlowDataSource retrieveRowTexts ]
+{ #category : #accessing }
+GtPhlowDetailsViewSpecification >> initializeFromInspector: anInspector [
+	self phlowDataSource ifNil: [
+		self phlowDataSource: (anInspector 
+			getDeclarativeViewFor: self methodSelector) ]
 ]
 
-{ #category : #'as yet unclassified' }
-GtPhlowDetailsViewSpecification >> retrieveRowValueAt: anIndex [
-	^ self retrieveRowValues at: anIndex
+{ #category : #accessing }
+GtPhlowDetailsViewSpecification >> retrieveRowNodeData [
+	^ self phlowDataSource retrieveRowNodeData
 ]
 
-{ #category : #'as yet unclassified' }
-GtPhlowDetailsViewSpecification >> retrieveRowValues [
-	^ cachedRowValues ifNil: [
-		self phlowDataSource retrieveRowValues ]
+{ #category : #accessing }
+GtPhlowDetailsViewSpecification >> retrieveRowNodeRawValueAtRowIndex: aRowIndex [
+	^ self phlowDataSource retrieveRowNodeRawValueAtRowIndex: aRowIndex
+]
+
+{ #category : #accessing }
+GtPhlowDetailsViewSpecification >> retrieveRowNodes [
+	^ self phlowDataSource retrieveRowNodes
+]
+
+{ #category : #accessing }
+GtPhlowDetailsViewSpecification >> retrieveRowNodesById [
+	^ cachedRowNodesByIndex ifNil: [
+			(self phlowDataSource retrieveRowNodes collect: [ :each |
+				each nodeId -> each ]) asDictionary ]
+]
+
+{ #category : #accessing }
+GtPhlowDetailsViewSpecification >> retrieveRowTextAt: aRowIndex [
+	^ (self retrieveRowNodesById at: aRowIndex) nodeValue itemText
+]
+
+{ #category : #accessing }
+GtPhlowDetailsViewSpecification >> retrieveRowValueAt: aRowIndex [
+	^ (self retrieveRowNodesById at: aRowIndex) nodeValue rowValue
 ]
 
 { #category : #accessing }

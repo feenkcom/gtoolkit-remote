@@ -23,6 +23,11 @@ GtRemotePhlowDataNode class >> fromJSONDictionary: aDictionary [
 		yourself
 ]
 
+{ #category : #serialization }
+GtRemotePhlowDataNode class >> replicationSpec [
+	^#(#(#targetObject #forwarder))
+]
+
 { #category : #accessing }
 GtRemotePhlowDataNode class >> valueType [
 	^ GtRemotePhlowItemValue

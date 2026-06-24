@@ -749,6 +749,24 @@ removeallclassmethods GtPhlowViewSpecification
 
 doit
 (GtPhlowViewSpecification
+	subclass: 'GtPhlowDetailsViewSpecification'
+	instVarNames: #(rowSpecifications cachedRowNodesByIndex)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtPhlowDetailsViewSpecification
+removeallclassmethods GtPhlowDetailsViewSpecification
+
+doit
+(GtPhlowViewSpecification
 	subclass: 'GtPhlowEmptyViewSpecification'
 	instVarNames: #()
 	classVars: #()
@@ -1371,6 +1389,24 @@ removeallclassmethods GtRemotePhlowDataNode
 
 doit
 (GtRemotePhlowDataNode
+	subclass: 'GtRemotePhlowDetailsNode'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowDetailsNode
+removeallclassmethods GtRemotePhlowDetailsNode
+
+doit
+(GtRemotePhlowDataNode
 	subclass: 'GtRemotePhlowTreeNode'
 	instVarNames: #(childNodes parentNode)
 	classVars: #()
@@ -1440,6 +1476,24 @@ true.
 
 removeallmethods GtRemotePhlowDeclarativeBlockActionDataSource
 removeallclassmethods GtRemotePhlowDeclarativeBlockActionDataSource
+
+doit
+(Object
+	subclass: 'GtRemotePhlowDeclarativeDetailsInspectableForExamples'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Examples';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowDeclarativeDetailsInspectableForExamples
+removeallclassmethods GtRemotePhlowDeclarativeDetailsInspectableForExamples
 
 doit
 (Object
@@ -1817,6 +1871,24 @@ removeallclassmethods GtRemotePhlowDeclarativeTextualViewDataSource
 
 doit
 (GtRemotePhlowDeclarativeViewDataSource
+	subclass: 'GtRemotePhlowDeclarativeViewDetailsDataSource'
+	instVarNames: #(cachedNodes)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowDeclarativeViewDetailsDataSource
+removeallclassmethods GtRemotePhlowDeclarativeViewDetailsDataSource
+
+doit
+(GtRemotePhlowDeclarativeViewDataSource
 	subclass: 'GtRemotePhlowDeclarativeViewListingDataSource'
 	instVarNames: #(itemsIterator cachedNodes cachedValueBuilder)
 	classVars: #()
@@ -1907,6 +1979,42 @@ removeallclassmethods GtRemotePhlowDeclarativeViewColumnedTreeDataSource
 
 doit
 (Object
+	subclass: 'GtRemotePhlowDetailsRow'
+	instVarNames: #(name valueComputation textComputation)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowDetailsRow
+removeallclassmethods GtRemotePhlowDetailsRow
+
+doit
+(Object
+	subclass: 'GtRemotePhlowDetailsRowSpecification'
+	instVarNames: #(name index)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowDetailsRowSpecification
+removeallclassmethods GtRemotePhlowDetailsRowSpecification
+
+doit
+(Object
 	subclass: 'GtRemotePhlowDummyTextStyler'
 	instVarNames: #()
 	classVars: #()
@@ -1976,6 +2084,24 @@ true.
 
 removeallmethods GtRemotePhlowItemTextualValue
 removeallclassmethods GtRemotePhlowItemTextualValue
+
+doit
+(GtRemotePhlowItemTextualValue
+	subclass: 'GtRemotePhlowDetailsRowValue'
+	instVarNames: #(rowText rowIndex rowValueWrapper)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowDetailsRowValue
+removeallclassmethods GtRemotePhlowDetailsRowValue
 
 doit
 (GtRemotePhlowItemTextualValue
@@ -2127,6 +2253,24 @@ true.
 
 removeallmethods GtRemotePhlowView
 removeallclassmethods GtRemotePhlowView
+
+doit
+(GtRemotePhlowView
+	subclass: 'GtRemotePhlowDetailsView'
+	instVarNames: #(rows)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowDetailsView
+removeallclassmethods GtRemotePhlowDetailsView
 
 doit
 (GtRemotePhlowView
@@ -2401,7 +2545,7 @@ doit
 	inDictionary: Globals
 	options: #( #logCreation )
 )
-		category: 'GToolkit-RemotePhlow-DeclarativeActions';
+		category: 'GToolkit-RemotePhlow-DeclarativeSpecification';
 		immediateInvariant.
 true.
 %
@@ -2877,6 +3021,24 @@ true.
 
 removeallmethods GtRsrInspectorProxyDataSerializationStrategy
 removeallclassmethods GtRsrInspectorProxyDataSerializationStrategy
+
+doit
+(TestCase
+	subclass: 'GtRemotePhlowDetailsRowSpecificationExamples'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Examples';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowDetailsRowSpecificationExamples
+removeallclassmethods GtRemotePhlowDetailsRowSpecificationExamples
 
 ! Class implementation for 'GtPhlowBasicRun'
 
@@ -5883,6 +6045,106 @@ viewName
 	^self class name
 %
 
+! Class implementation for 'GtPhlowDetailsViewSpecification'
+
+!		Class methods for 'GtPhlowDetailsViewSpecification'
+
+category: 'as yet unclassified'
+classmethod: GtPhlowDetailsViewSpecification
+fromJSONDictionary: aDictionary
+	| details|
+	
+	details := super fromJSONDictionary: aDictionary.
+	
+	details rowSpecifications: ((aDictionary at: 'rowSpecifications') 
+		collect: [ :eachRowSpecification | 
+			GtRemotePhlowDetailsRowSpecification fromJSONDictionary: eachRowSpecification ]).
+	
+	^ details
+%
+
+!		Instance methods for 'GtPhlowDetailsViewSpecification'
+
+category: 'as yet unclassified'
+method: GtPhlowDetailsViewSpecification
+asDictionaryForExport
+	^ super asDictionaryForExport
+		at: 'rowSpecifications' put: ((self rowSpecifications 
+			collect: [ :eachRowSpecification | eachRowSpecification asDictionaryForExport ]) asArray);
+		yourself
+%
+
+category: 'views'
+method: GtPhlowDetailsViewSpecification
+gtViewRowSpecificationsFor: aView
+	<gtView>
+	rowSpecifications ifNil: [ ^ aView empty ].
+	^ aView columnedList
+		title: 'Row specifications';
+		priority: 5;
+		items: [ rowSpecifications ];
+		column: 'Row Index' text: [ :each | each index ];
+		column: 'Row Name' text: [ :each | each name ]
+%
+
+category: 'accessing'
+method: GtPhlowDetailsViewSpecification
+initializeFromInspector: anInspector
+	self phlowDataSource ifNil: [
+		self phlowDataSource: (anInspector 
+			getDeclarativeViewFor: self methodSelector) ]
+%
+
+category: 'accessing'
+method: GtPhlowDetailsViewSpecification
+retrieveRowNodeData
+	^ self phlowDataSource retrieveRowNodeData
+%
+
+category: 'accessing'
+method: GtPhlowDetailsViewSpecification
+retrieveRowNodeRawValueAtRowIndex: aRowIndex
+	^ self phlowDataSource retrieveRowNodeRawValueAtRowIndex: aRowIndex
+%
+
+category: 'accessing'
+method: GtPhlowDetailsViewSpecification
+retrieveRowNodes
+	^ self phlowDataSource retrieveRowNodes
+%
+
+category: 'accessing'
+method: GtPhlowDetailsViewSpecification
+retrieveRowNodesById
+	^ cachedRowNodesByIndex ifNil: [
+			(self phlowDataSource retrieveRowNodes collect: [ :each |
+				each nodeId -> each ]) asDictionary ]
+%
+
+category: 'accessing'
+method: GtPhlowDetailsViewSpecification
+retrieveRowTextAt: aRowIndex
+	^ (self retrieveRowNodesById at: aRowIndex) nodeValue itemText
+%
+
+category: 'accessing'
+method: GtPhlowDetailsViewSpecification
+retrieveRowValueAt: aRowIndex
+	^ (self retrieveRowNodesById at: aRowIndex) nodeValue rowValue
+%
+
+category: 'accessing'
+method: GtPhlowDetailsViewSpecification
+rowSpecifications
+	^ rowSpecifications
+%
+
+category: 'accessing'
+method: GtPhlowDetailsViewSpecification
+rowSpecifications: anObject
+	rowSpecifications := anObject
+%
+
 ! Class implementation for 'GtPhlowEmptyViewSpecification'
 
 !		Class methods for 'GtPhlowEmptyViewSpecification'
@@ -7334,6 +7596,12 @@ fromJSONDictionary: aDictionary
 		yourself
 %
 
+category: 'serialization'
+classmethod: GtRemotePhlowDataNode
+replicationSpec
+	^#(#(#targetObject #forwarder))
+%
+
 category: 'accessing'
 classmethod: GtRemotePhlowDataNode
 valueType
@@ -7401,6 +7669,16 @@ category: 'accessing'
 method: GtRemotePhlowDataNode
 targetObject: anObject
 	targetObject := anObject
+%
+
+! Class implementation for 'GtRemotePhlowDetailsNode'
+
+!		Class methods for 'GtRemotePhlowDetailsNode'
+
+category: 'as yet unclassified'
+classmethod: GtRemotePhlowDetailsNode
+valueType
+	^ GtRemotePhlowDetailsRowValue
 %
 
 ! Class implementation for 'GtRemotePhlowTreeNode'
@@ -7614,6 +7892,89 @@ targetBlock: aBlockClosure
 	targetBlock := aBlockClosure
 %
 
+! Class implementation for 'GtRemotePhlowDeclarativeDetailsInspectableForExamples'
+
+!		Instance methods for 'GtRemotePhlowDeclarativeDetailsInspectableForExamples'
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeDetailsInspectableForExamples
+exampleDate
+	^ DateAndTime readFrom: '2021-04-06T14:43:50.123456+02:00' readStream
+%
+
+category: 'views'
+method: GtRemotePhlowDeclarativeDetailsInspectableForExamples
+gtDetailsCustomPrintViewFor: aView
+	<gtView>
+
+	^aView details
+		title: 'Details (custom print)';
+		priority: 37.1;
+		row: 'Class' 
+			value: [ self class name ] 
+			text:  [ :each |
+				| text |
+				text := each asString asRopedText.
+				text bold.
+				text highlight: (GtPhlowColor named: #yellow) asColor.
+				text ];
+		row: 'String value' value: [ self string ] text: [ :each | each ];
+		row: 'Text value' value: [ self styledPhlowText ];
+		row: 'Date' 
+			value: [ self exampleDate ]
+			text: [ :each | each printString ]
+%
+
+category: 'views'
+method: GtRemotePhlowDeclarativeDetailsInspectableForExamples
+gtDetailsViewFor: aView
+	<gtView>
+
+	^aView details
+		title: 'Details (default print)';
+		priority: 37;
+		row: 'Class' value: [ self class name ];
+		row: 'String value' value: [ self string ];
+		row: 'Date' value: [ self exampleDate ]
+%
+
+category: 'views'
+method: GtRemotePhlowDeclarativeDetailsInspectableForExamples
+gtDetailsWithErrorsViewFor: aView
+	<gtView>
+
+	^aView details
+		title: 'Details (with errors)';
+		priority: 37.3;
+		row: 'No error' value: [ 'hello world' ] text: [ :each | each ];
+		row: 'Error in value' value: [ 1/0 ];
+		row: 'Error in print' value: [ 1 ] text: [ :each | each / 0];
+		row: 'Also no error' value: [ 'hello world' ] text: [ :each | each ];
+		row: 'Error in both' value: [ 1/0 ] text: [ :each | 1 / 0]
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeDetailsInspectableForExamples
+string
+	^ 'hello world'
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeDetailsInspectableForExamples
+styledPhlowText
+	| text |
+	text := GtPhlowText forString: 'Now is the time'.
+	text glamorousCodeFont.
+	(text from: 12 to: 15) fontSize: 20.
+	(text from: 5 to: 6) highlight: (GtPhlowColor named: #yellow) .
+	(text from: 1 to: 4) bold.
+	(text from: 8 to: 10) foreground: (GtPhlowColor named: #red) .
+	(text from: 12 to: 12) glamorousRegularFont.
+	(text from: 1 to: 6) italic.
+	(text from: 8 to: 15) thin.
+	^ text
+%
+
 ! Class implementation for 'GtRemotePhlowDeclarativeErrorTestInspectable'
 
 !		Instance methods for 'GtRemotePhlowDeclarativeErrorTestInspectable'
@@ -7648,6 +8009,21 @@ gtColumnedListWithFormatErrorsFor: aView
 		column: 'Lowercase' text: [ :item | 
 			item = 2 ifTrue: [ 1/ 0].
 			item asString asLowercase ] width: 100.
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeErrorTestInspectable
+gtDetailsWithErrorsViewFor: aView
+	<gtView>
+
+	^aView details
+		title: 'Details (with errors)';
+		priority: 37.3;
+		row: 'No error' value: [ 'hello world' ] text: [ :each | each ];
+		row: 'Error in value' value: [ 1/0 ];
+		row: 'Error in print' value: [ 1 ] text: [ :each | each / 0];
+		row: 'Also no error' value: [ 'hello world' ] text: [ :each | each ];
+		row: 'Error in both' value: [ 1/0 ] text: [ :each | 1 / 0]
 %
 
 category: 'accessing'
@@ -8460,6 +8836,23 @@ createColumnedNodesWithRowValues: aCollectionOfRowValues
 
 category: 'private'
 method: GtRemotePhlowDeclarativeViewsExamples
+createDetailNodesWithObjectValues: aCollectionOfObjects
+	^ self createDetailsNodesWithTextValues: (aCollectionOfObjects 
+		collect: [ :anObject | 
+			self convertIfNeededUsingDisplayTextObject: anObject ])
+%
+
+category: 'private'
+method: GtRemotePhlowDeclarativeViewsExamples
+createDetailsNodesWithTextValues: aCollectionOfValues
+	^ aCollectionOfValues withIndexCollect: [ :aText :anIndex | 
+	 	GtRemotePhlowDetailsNode new
+	 		nodeId: anIndex;
+	 		nodeValue: (self createPhlowDetailsValueFromText: aText withIndex:  anIndex) ]
+%
+
+category: 'private'
+method: GtRemotePhlowDeclarativeViewsExamples
 createListNodesWithObjectValues: aCollectionOfObjects
 	^ self createListNodesWithTextValues: (aCollectionOfObjects 
 		collect: [ :anObject | 
@@ -8473,6 +8866,19 @@ createListNodesWithTextValues: aCollectionOfValues
 	 	GtRemotePhlowDataNode new
 	 		nodeId: anIndex;
 	 		nodeValue: (self createPhlowTextValueFromText: aText) ]
+%
+
+category: 'private'
+method: GtRemotePhlowDeclarativeViewsExamples
+createPhlowDetailsValueFromText: aText withIndex:  anIndex
+	| convertedText |
+	convertedText := aText.
+	convertedText class name = #BlRunRopedText ifTrue: [
+		convertedText := convertedText asGtPlowText ]. 
+	
+	^ (GtRemotePhlowDetailsRowValue new
+			 rowIndex:anIndex;
+	 		itemText: convertedText)
 %
 
 category: 'private'
@@ -8509,6 +8915,85 @@ createTreeNodesWithTextValues: aCollectionOfValues
 	 			itemText: convertedText)]
 %
 
+category: 'examples - views'
+method: GtRemotePhlowDeclarativeViewsExamples
+detailsView
+	<gtExample>
+	<after: #stopServer>
+	<return: #SubclassResponsibility>
+	| phlowSpecificationsProvider viewDictionary viewSpecification viewDatasource obtainedNodes targetObject |
+	
+	phlowSpecificationsProvider := self remotePhlowSpecificationsProvider.
+	viewDictionary := phlowSpecificationsProvider getViewDeclaration: #gtDetailsViewFor:.
+	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
+
+	self assert: viewSpecification title equals: 'Details (default print)'.
+	self assert: viewSpecification priority equals: 37.
+	self assert: viewSpecification rowSpecifications equals: { 
+		GtRemotePhlowDetailsRowSpecification new index: 1; name: 'Class'.
+		GtRemotePhlowDetailsRowSpecification new index: 2; name: 'String value'.
+		GtRemotePhlowDetailsRowSpecification new index: 3; name: 'Date'.
+	}.
+
+	viewDatasource := phlowSpecificationsProvider
+			getDeclarativeViewFor: #gtDetailsViewFor:.
+	obtainedNodes := viewDatasource retrieveRowNodeData collect: [ :each |
+			GtRemotePhlowDetailsNode fromJSONDictionary: each  ].
+	
+	targetObject := GtRemotePhlowDeclarativeTestInspectable new.
+	self 
+		assertListingNodes: obtainedNodes 
+		equals: (self 
+			createDetailNodesWithObjectValues: ({
+			 targetObject class name.
+			 targetObject string.
+			 targetObject exampleDate gtDisplayString } collect: [ :each |
+			 	each asRopedText asGtPlowText ])).
+
+	^ viewSpecification
+%
+
+category: 'examples - views'
+method: GtRemotePhlowDeclarativeViewsExamples
+detailsViewWithCustomPrinting
+	<gtExample>
+	<after: #stopServer>
+	<return: #SubclassResponsibility>
+	| phlowSpecificationsProvider viewDictionary viewSpecification viewDatasource obtainedNodes targetObject |
+	
+	phlowSpecificationsProvider := self remotePhlowSpecificationsProvider.
+	viewDictionary := phlowSpecificationsProvider getViewDeclaration: #gtDetailsCustomPrintViewFor:.
+	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
+
+	self assert: viewSpecification title equals: 'Details (custom print)'.
+	self assert: viewSpecification priority equals: 37.1.
+	self assert: viewSpecification rowSpecifications equals: { 
+		GtRemotePhlowDetailsRowSpecification new index: 1; name: 'Class'.
+		GtRemotePhlowDetailsRowSpecification new index: 2; name: 'String value'.
+		GtRemotePhlowDetailsRowSpecification new index: 3; name: 'Text value'.
+		GtRemotePhlowDetailsRowSpecification new index: 4; name: 'Date'.
+	}.
+
+	viewDatasource := phlowSpecificationsProvider
+			getDeclarativeViewFor: #gtDetailsCustomPrintViewFor:.
+	obtainedNodes := viewDatasource retrieveRowNodeData collect: [ :each |
+			GtRemotePhlowDetailsNode fromJSONDictionary: each  ].
+	
+	targetObject := GtRemotePhlowDeclarativeTestInspectable new.
+	self 
+		assertListingNodes: obtainedNodes 
+		equals: (self 
+			createDetailNodesWithObjectValues: ({
+			 (( GtPhlowText forString: targetObject class name)
+					bold;
+					highlight: (GtPhlowColor named: #yellow) ).
+			 targetObject string.
+			 targetObject styledPhlowTextForRemoteComparison .
+			 targetObject exampleDate gtDisplayString })).
+
+	^ viewSpecification
+%
+
 category: 'accessing'
 method: GtRemotePhlowDeclarativeViewsExamples
 expectedBasicString
@@ -8518,7 +9003,7 @@ expectedBasicString
 category: 'accessing - expected'
 method: GtRemotePhlowDeclarativeViewsExamples
 expectedColumnedListTypedColumnsTwoItems
-	^ ((Array new: 2) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+1.0'); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+2'); yourself); at: 3 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->#class); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+2.0'); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+3'); yourself); at: 3 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->#class); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); yourself)
+	^ ((Array new: 2) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'+1.0'); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'+2'); yourself); at: 3 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->#class); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'+2.0'); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'+3'); yourself); at: 3 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->#class); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); yourself)
 %
 
 category: 'accessing'
@@ -9056,6 +9541,12 @@ collectionOfObjects: anObject
 	collectionOfObjects := anObject
 %
 
+category: 'accessing'
+method: GtRemotePhlowDeclarativeTestInspectable
+exampleDate
+	^ DateAndTime readFrom: '2021-04-06T14:43:50.123456+02:00' readStream
+%
+
 category: 'actions'
 method: GtRemotePhlowDeclarativeTestInspectable
 gtButtonActionWithBothIconAndLabelFor: anAction
@@ -9257,6 +9748,42 @@ gtColumnedWithObjectsFor: aView
 		column: 'Key' text: [ :assoc | assoc key ];
 		column: 'Object' text: [ :assoc | assoc value ];
 		send: [ :assoc | assoc value ]
+%
+
+category: 'inspecting'
+method: GtRemotePhlowDeclarativeTestInspectable
+gtDetailsCustomPrintViewFor: aView
+	<gtView>
+
+	^aView details
+		title: 'Details (custom print)';
+		priority: 37.1;
+		row: 'Class' 
+			value: [ self class name ] 
+			text:  [ :each |
+				| text |
+				text := each asString asRopedText.
+				text bold.
+				text highlight: (GtPhlowColor named: #yellow) asColor.
+				text ];
+		row: 'String value' value: [ self string ] text: [ :each | each ];
+		row: 'Text value' value: [ self styledPhlowText ];
+		row: 'Date' 
+			value: [ self exampleDate ]
+			text: [ :each | each printString ]
+%
+
+category: 'inspecting'
+method: GtRemotePhlowDeclarativeTestInspectable
+gtDetailsViewFor: aView
+	<gtView>
+
+	^aView details
+		title: 'Details (default print)';
+		priority: 37;
+		row: 'Class' value: [ self class name ];
+		row: 'String value' value: [ self string ];
+		row: 'Date' value: [ self exampleDate ]
 %
 
 category: 'inspecting'
@@ -10008,44 +10535,7 @@ emptyTree
 category: 'examples'
 method: GtRemotePhlowDeclarativeTreeExamples
 expectedFormattedItems
-	^ (Array new: 4)
-		at: 1
-			put: (Dictionary new
-					add: #nodeValue
-							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
-									add: #itemText -> '1';
-									yourself);
-					add: #nodeId -> 1;
-					yourself);
-		at: 2
-			put: (Dictionary new
-					add: #nodeValue
-							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
-									add: #itemText -> '2';
-									yourself);
-					add: #nodeId -> 2;
-					yourself);
-		at: 3
-			put: (Dictionary new
-					add: #nodeValue
-							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
-									add: #itemText -> '3';
-									yourself);
-					add: #nodeId -> 3;
-					yourself);
-		at: 4
-			put: (Dictionary new
-					add: #nodeValue
-							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
-									add: #itemText -> '4';
-									yourself);
-					add: #nodeId -> 4;
-					yourself);
-		yourself
+	^ ((Array new: 4) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'1'); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'2'); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'3'); yourself)); add: (#nodeId->3); yourself); at: 4 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'4'); yourself)); add: (#nodeId->4); yourself); yourself)
 %
 
 category: 'examples'
@@ -10209,6 +10699,72 @@ category: 'accessing'
 method: GtRemotePhlowDeclarativeTextualViewDataSource
 retrieveStylableText 
 	^ self computeText asDictionaryForExport
+%
+
+! Class implementation for 'GtRemotePhlowDeclarativeViewDetailsDataSource'
+
+!		Instance methods for 'GtRemotePhlowDeclarativeViewDetailsDataSource'
+
+category: 'as yet unclassified'
+method: GtRemotePhlowDeclarativeViewDetailsDataSource
+computeRowNodes
+	| rowIndex |
+	rowIndex := 1.
+	^ self phlowView phlowDetailRows 
+			collect: [ :aPhlowRow |
+				| nodeValue currentIndex rowValue text |
+				currentIndex := rowIndex.
+				rowIndex := rowIndex + 1.
+				
+				nodeValue := [
+					rowValue := aPhlowRow valueComputation value.
+					text := aPhlowRow textComputation value: rowValue.
+				 	GtRemotePhlowDetailsRowValue new 
+							rowIndex: currentIndex;
+							itemText: text;
+							rowValue: rowValue
+				] on: Error 
+					do: [ :anError |
+						GtRemotePhlowItemErrorValue new
+							itemText: anError description ].
+	
+				GtRemotePhlowDetailsNode new
+					nodeId: currentIndex;
+					targetObject: rowValue;
+					nodeValue:nodeValue ]
+%
+
+category: 'views'
+method: GtRemotePhlowDeclarativeViewDetailsDataSource
+gtPhlowViewRowsFor: aView
+	<gtView>
+	^ aView forward
+		title: 'Phlow rows';
+		priority: 15;
+		object: [ phlowView ];
+		view: #gtRowsFor:
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeViewDetailsDataSource
+retrieveRowNodeData
+	^ (self retrieveRowNodes collect: [ :each | each asDictionaryForExport ]) asArray
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeViewDetailsDataSource
+retrieveRowNodeRawValueAtRowIndex: aRowIndex
+	^ self retrieveRowNodes 
+			detect: [ :each | each nodeId = aRowIndex ]
+			ifFound: [ :each | each targetObject ]
+			ifNone: [ nil ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeViewDetailsDataSource
+retrieveRowNodes
+	^ cachedNodes ifNil: [
+			cachedNodes := self computeRowNodes ]
 %
 
 ! Class implementation for 'GtRemotePhlowDeclarativeViewListingDataSource'
@@ -10554,6 +11110,190 @@ instantiateValueBuilder
 	^ GtRemotePhlowRowBuilder new
 %
 
+! Class implementation for 'GtRemotePhlowDetailsRow'
+
+!		Class methods for 'GtRemotePhlowDetailsRow'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowDetailsRow
+new
+	^ self basicNew initialize
+%
+
+!		Instance methods for 'GtRemotePhlowDetailsRow'
+
+category: 'initialization'
+method: GtRemotePhlowDetailsRow
+initialize
+	super initialize.
+	
+	name := 'Row'.
+	valueComputation := [ nil ].
+	textComputation := [ :aValue | aValue gtDisplayText ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowDetailsRow
+name
+	^name
+%
+
+category: 'accessing'
+method: GtRemotePhlowDetailsRow
+name: aString
+	name := aString
+%
+
+category: 'accessing'
+method: GtRemotePhlowDetailsRow
+textComputation
+	^textComputation
+%
+
+category: 'accessing'
+method: GtRemotePhlowDetailsRow
+textComputation: aTextComputation
+	textComputation := aTextComputation
+%
+
+category: 'accessing'
+method: GtRemotePhlowDetailsRow
+valueComputation
+	^valueComputation
+%
+
+category: 'accessing'
+method: GtRemotePhlowDetailsRow
+valueComputation: aBlockClosure
+	valueComputation := aBlockClosure
+%
+
+! Class implementation for 'GtRemotePhlowDetailsRowSpecification'
+
+!		Class methods for 'GtRemotePhlowDetailsRowSpecification'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowDetailsRowSpecification
+fromJSONDictionary: aDictionary
+	^self new
+		initializeFromJSONDictionary: aDictionary
+%
+
+category: 'instance creation'
+classmethod: GtRemotePhlowDetailsRowSpecification
+fromPhlowRow: aPhlowRow withIndex: anIndex
+	^ self new 
+			initializeFromPhlowRow: aPhlowRow withIndex: anIndex
+%
+
+!		Instance methods for 'GtRemotePhlowDetailsRowSpecification'
+
+category: 'comparing'
+method: GtRemotePhlowDetailsRowSpecification
+= anObject
+	self == anObject ifTrue: [ ^ true ].
+	self class = anObject class ifFalse: [ ^ false ].
+	^ self name = anObject name
+		and: [ self index = anObject index ]
+%
+
+category: 'converting'
+method: GtRemotePhlowDetailsRowSpecification
+asDictionaryForExport
+	^ Dictionary new
+			at: 'name' put: name;
+			at: 'index' put: index;
+			yourself
+%
+
+category: 'gt extensions'
+method: GtRemotePhlowDetailsRowSpecification
+gtViewJSONFor: aView
+	<gtView>
+	
+	^ aView textEditor
+		title: 'JSON';
+		priority: 10;
+		text: [
+			STONJSON toStringPretty:  self asDictionaryForExport ];
+		stylerParserClassName: #JSONParser";
+		actionButtonIcon: BrGlamorousVectorIcons inspect 
+			label: 'Json'
+			tooltip: 'Inspect the JSON object'
+			action: [ :aButton |
+				aButton phlow 
+					spawnObject: self asDictionaryForExport ]"
+%
+
+category: 'gt extensions'
+method: GtRemotePhlowDetailsRowSpecification
+gtViewSpecificationDataFor: aView
+	<gtView>
+
+	^ aView forward
+		title: 'Specification data';
+		priority: 10.4;
+		object: [ self asDictionaryForExport ];
+		view: #gtItemsFor:
+%
+
+category: 'comparing'
+method: GtRemotePhlowDetailsRowSpecification
+hash
+	^ self name hash bitXor: self index hash
+%
+
+category: 'accessing'
+method: GtRemotePhlowDetailsRowSpecification
+index
+	^ index
+%
+
+category: 'accessing'
+method: GtRemotePhlowDetailsRowSpecification
+index: anInteger
+	index := anInteger
+%
+
+category: 'initialization'
+method: GtRemotePhlowDetailsRowSpecification
+initializeFromJSONDictionary: aDictionary
+	self name: (aDictionary at: 'name').
+	self index: (aDictionary at: 'index').
+%
+
+category: 'initialization'
+method: GtRemotePhlowDetailsRowSpecification
+initializeFromPhlowRow: aPhlowRow withIndex: anIndex
+	self name: aPhlowRow name.
+	self index: anIndex.
+%
+
+category: 'accessing'
+method: GtRemotePhlowDetailsRowSpecification
+name
+	^ name
+%
+
+category: 'accessing'
+method: GtRemotePhlowDetailsRowSpecification
+name: anObject
+	name := anObject
+%
+
+category: 'printing'
+method: GtRemotePhlowDetailsRowSpecification
+printOn: aStream
+	super printOn: aStream.
+	
+	aStream parenthesize: [
+		aStream 
+			nextPutAll: 'index: ';
+			print: self index;
+			nextPutAll: '; name: ';
+			nextPutAll: (self name ifNil: [ '<missing>' ]) ]
+%
+
 ! Class implementation for 'GtRemotePhlowDummyTextStyler'
 
 !		Instance methods for 'GtRemotePhlowDummyTextStyler'
@@ -10670,6 +11410,7 @@ asDictionaryForExport
 	
 	data := Dictionary new 
 		at: #valueTypeName put: self class valueTypeName;
+		at: '__typeName' put: self class name;
 		yourself.
 		
 	"We check the attribute here instead of using the accessor,
@@ -10803,6 +11544,102 @@ category: 'accessing'
 method: GtRemotePhlowItemTextualValue
 itemText: anObject
 	itemText := anObject
+%
+
+! Class implementation for 'GtRemotePhlowDetailsRowValue'
+
+!		Class methods for 'GtRemotePhlowDetailsRowValue'
+
+category: 'accessing'
+classmethod: GtRemotePhlowDetailsRowValue
+valueTypeName
+	^ 'detailsRowValue'
+%
+
+!		Instance methods for 'GtRemotePhlowDetailsRowValue'
+
+category: 'comparing'
+method: GtRemotePhlowDetailsRowValue
+= anObject
+	super = anObject  ifFalse: [ ^ false ].
+	
+	^ self rowIndex = anObject rowIndex
+%
+
+category: 'converting'
+method: GtRemotePhlowDetailsRowValue
+asDictionaryForExport
+	"Answer the receiver as a dictionary ready for JSON serialisation"
+
+	| data | 
+	
+	data := super asDictionaryForExport.
+	data at: 'rowIndex' put: self rowIndex.
+	"data at: 'rowValue' put: self rowValue."
+	
+	^ data
+%
+
+category: 'printing'
+method: GtRemotePhlowDetailsRowValue
+descriptionOn: aStream 
+	
+	aStream
+			nextPutAll: 'index: ';
+			print: self rowIndex;
+			nextPutAll: '; '.
+	super descriptionOn: aStream 
+%
+
+category: 'comparing'
+method: GtRemotePhlowDetailsRowValue
+hash 
+	^ super hash bitXor: self rowIndex hash
+%
+
+category: 'initialization'
+method: GtRemotePhlowDetailsRowValue
+initializeFromJSONDictionary: aDictionary
+	super initializeFromJSONDictionary: aDictionary.
+	
+	aDictionary at: 'rowIndex' ifPresent: [ :each | self rowIndex: each ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowDetailsRowValue
+rowIndex
+	^ rowIndex
+%
+
+category: 'accessing'
+method: GtRemotePhlowDetailsRowValue
+rowIndex: anObject
+	rowIndex := anObject
+%
+
+category: 'accessing'
+method: GtRemotePhlowDetailsRowValue
+rowValue
+	^ self rowValueWrapper targetObject
+%
+
+category: 'accessing'
+method: GtRemotePhlowDetailsRowValue
+rowValue: anObject
+	self rowValueWrapper: (GtRemotePhlowSpawnObjectWrapper new
+		targetObject: anObject)
+%
+
+category: 'accessing'
+method: GtRemotePhlowDetailsRowValue
+rowValueWrapper
+	^ rowValueWrapper
+%
+
+category: 'accessing'
+method: GtRemotePhlowDetailsRowValue
+rowValueWrapper: aWrapper
+	rowValueWrapper := aWrapper
 %
 
 ! Class implementation for 'GtRemotePhlowItemErrorValue'
@@ -11043,6 +11880,13 @@ declarativeViewOfType: aGtDeclarativeViewClass
 
 category: 'decorating'
 method: GtRemotePhlowProtoView
+details
+
+	^ self declarativeViewOfType: GtRemotePhlowDetailsView
+%
+
+category: 'decorating'
+method: GtRemotePhlowProtoView
 empty
 
 	^ self declarativeViewOfType: GtRemotePhlowEmptyView
@@ -11263,6 +12107,85 @@ category: 'adding - update definitions'
 method: GtRemotePhlowView
 updateWhen: anAnnouncement in: anAnnouncer
 	"Stub"
+%
+
+! Class implementation for 'GtRemotePhlowDetailsView'
+
+!		Class methods for 'GtRemotePhlowDetailsView'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowDetailsView
+new 
+	^ self basicNew initialize
+%
+
+!		Instance methods for 'GtRemotePhlowDetailsView'
+
+category: 'converting'
+method: GtRemotePhlowDetailsView
+asGtDeclarativeView
+	"Answer the receiver as a GtDeclarativeView.
+	nil = not supported"
+	| rowSpecifications |
+	
+	rowSpecifications := OrderedCollection new.
+	self phlowDetailRows withIndexDo:  [ :each :anIndex |
+		rowSpecifications add: (GtRemotePhlowDetailsRowSpecification 
+			fromPhlowRow: each withIndex: anIndex) ].
+	
+	^ GtPhlowDetailsViewSpecification new 
+		title: self title;
+		priority: self priority;
+		phlowDataSource: (GtRemotePhlowDeclarativeViewDetailsDataSource 
+			forPhlowView: self);
+		rowSpecifications: rowSpecifications;
+		dataTransport: GtPhlowViewSpecification dataLazy
+%
+
+category: 'views'
+method: GtRemotePhlowDetailsView
+gtRowsFor: aView
+	<gtView>
+	rows ifNil: [^aView empty].
+	
+	^(aView columnedList)
+		title: 'Rows';
+		priority: 11;
+		items: [rows];
+		column: 'Name' text: [:each | each name ];
+		column: 'Value' text: [:each | each valueComputation ];
+		column: 'Text' text: [:each | each textComputation ]
+%
+
+category: 'initialization'
+method: GtRemotePhlowDetailsView
+initialize
+	super initialize.
+	
+	rows := OrderedCollection new
+%
+
+category: 'as yet unclassified'
+method: GtRemotePhlowDetailsView
+phlowDetailRows
+	^ rows
+%
+
+category: 'api - scripting'
+method: GtRemotePhlowDetailsView
+row: aString value: aBlockClosure
+	rows add: (GtRemotePhlowDetailsRow new
+		name: aString;
+		valueComputation: aBlockClosure)
+%
+
+category: 'api - scripting'
+method: GtRemotePhlowDetailsView
+row: aString value: aValueComputation text: aTextComputation
+	rows add: (GtRemotePhlowDetailsRow new
+		name: aString;
+		valueComputation: aValueComputation;
+		textComputation: aTextComputation)
 %
 
 ! Class implementation for 'GtRemotePhlowForwarderView'
@@ -11545,6 +12468,82 @@ category: 'api - scripting column'
 method: GtRemotePhlowBasicColumnedView
 column: aTitleString textDo: aBlock
 	aBlock value: (self textColumn title: aTitleString)
+%
+
+category: 'api - scripting column'
+method: GtRemotePhlowBasicColumnedView
+column: aTitleString textFuture: aFutureBlock executionConfiguration: aConfigurationBlock pending: aPendingBlock success: aSuccessBlock
+	self
+		column: aTitleString
+		textDo: [ :aColumn | 
+			aColumn
+				item: aFutureBlock;
+				format: aSuccessBlock ]
+%
+
+category: 'api - scripting column'
+method: GtRemotePhlowBasicColumnedView
+column: aTitleString textFuture: aFutureBlock executionConfiguration: aConfigurationBlock pending: aPendingBlock success: aSuccessBlock weight: aNumber
+	self
+		column: aTitleString
+		textDo: [ :aColumn | 
+			aColumn
+				item: aFutureBlock;
+				format: aSuccessBlock;
+				weight: aNumber ]
+%
+
+category: 'api - scripting column'
+method: GtRemotePhlowBasicColumnedView
+column: aTitleString textFuture: aFutureBlock executionConfiguration: aConfigurationBlock pending: aPendingBlock success: aSuccessBlock width: aNumber
+	self
+		column: aTitleString
+		textDo: [ :aColumn | 
+			aColumn
+				item: aFutureBlock;
+				format: aSuccessBlock;
+				width: aNumber ]
+%
+
+category: 'api - scripting column'
+method: GtRemotePhlowBasicColumnedView
+column: aTitleString textFuture: aFutureBlock pending: aPendingBlock success: aSuccessBlock
+	self
+		column: aTitleString
+		textDo: [ :aColumn | 
+			aColumn
+				item: aFutureBlock;
+				format: aSuccessBlock ]
+%
+
+category: 'api - scripting column'
+method: GtRemotePhlowBasicColumnedView
+column: aTitleString textFuture: aFutureBlock pending: aPendingBlock success: aSuccessBlock weight: aNumber
+	self
+		column: aTitleString
+		textDo: [ :aColumn | 
+			aColumn
+				item: aFutureBlock;
+				format: aSuccessBlock;
+				weight: aNumber ]
+%
+
+category: 'api - scripting column'
+method: GtRemotePhlowBasicColumnedView
+column: aTitleString textFuture: aFutureBlock pending: aPendingBlock success: aSuccessBlock width: aNumber
+	self
+		column: aTitleString
+		textDo: [ :aColumn | 
+			aColumn
+				item: aFutureBlock;
+				format: aSuccessBlock;
+				width: aNumber ]
+%
+
+category: 'api - scripting column'
+method: GtRemotePhlowBasicColumnedView
+column: aTitleString textFutureDo: aBlock
+	self column: aTitleString textDo: aBlock
 %
 
 category: 'api - scripting column'
@@ -12023,6 +13022,14 @@ valuable: anObject
 
 ! Class implementation for 'GtRemotePhlowSpawnObjectWrapper'
 
+!		Class methods for 'GtRemotePhlowSpawnObjectWrapper'
+
+category: 'serialization'
+classmethod: GtRemotePhlowSpawnObjectWrapper
+replicationSpec
+	^#(#(#targetObject #forwarder))
+%
+
 !		Instance methods for 'GtRemotePhlowSpawnObjectWrapper'
 
 category: 'accessing'
@@ -12444,37 +13451,37 @@ createProtoViews
 category: 'accessing - data'
 method: GtRemotePhlowViewSpecificationConversionExamples
 expectedColumnedListForExampleObjectItems
-	^ ((Array new: 3) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'42'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'42'); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'Hello World'); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'hello world'); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2021-04-06T14:43:50.123456+02:00'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'2021-04-06t14:43:50.123456+02:00'); yourself); yourself)); yourself)); add: (#nodeId->3); yourself); yourself)
+	^ ((Array new: 3) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'42'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'42'); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'Hello World'); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'hello world'); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2021-04-06T14:43:50.123456+02:00'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'2021-04-06t14:43:50.123456+02:00'); yourself); yourself)); yourself)); add: (#nodeId->3); yourself); yourself)
 %
 
 category: 'accessing - data'
 method: GtRemotePhlowViewSpecificationConversionExamples
 expectedColumnedListWithNumbersItems
-	^ ((Array new: 3) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'1'); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'2'); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'3'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'3'); yourself); yourself)); yourself)); add: (#nodeId->3); yourself); yourself)
+	^ ((Array new: 3) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'1'); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'2'); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'3'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'3'); yourself); yourself)); yourself)); add: (#nodeId->3); yourself); yourself)
 %
 
 category: 'accessing - data'
 method: GtRemotePhlowViewSpecificationConversionExamples
 expectedColumnedTreeWithNumberItems
-	^ ((Array new: 4) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'2'); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'3'); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'3'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'4'); yourself); yourself)); yourself)); add: (#nodeId->3); yourself); at: 4 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'4'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'5'); yourself); yourself)); yourself)); add: (#nodeId->4); yourself); yourself)
+	^ ((Array new: 4) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'2'); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'3'); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'3'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'4'); yourself); yourself)); yourself)); add: (#nodeId->3); yourself); at: 4 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'4'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'5'); yourself); yourself)); yourself)); add: (#nodeId->4); yourself); yourself)
 %
 
 category: 'accessing - data'
 method: GtRemotePhlowViewSpecificationConversionExamples
 expectedListForExampleObjectItems
-	^ ((Array new: 3) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'42'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'Hello World'); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2021-04-06T14:43:50.123456+02:00'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->3); yourself); yourself)
+	^ ((Array new: 3) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'42'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'Hello World'); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2021-04-06T14:43:50.123456+02:00'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->3); yourself); yourself)
 %
 
 category: 'accessing - data'
 method: GtRemotePhlowViewSpecificationConversionExamples
 expectedListForStyledText
-	^ ((Array new: 4) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'42'); add: ('attributeRuns'->((Dictionary new) add: ('items'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->2); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontWeightAttribute'); add: ('weight'->#bold); yourself); yourself)); yourself); yourself)); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'Hello World'); add: ('attributeRuns'->((Dictionary new) add: ('items'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->5); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('color'->((Dictionary new) add: (#a->1.0); add: (#r->1.0); add: (#g->1.0); add: (#b->0.0); yourself)); add: ('__typeLabel'->'phlowTextHighlightAttribute'); yourself); at: 2 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontSizeAttribute'); add: ('size'->20); yourself); yourself)); yourself); yourself)); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'Now is the time'); add: ('attributeRuns'->((Dictionary new) add: ('items'->((Array new: 9) at: 1 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->11); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('name'->'Source Code Pro'); add: ('__typeLabel'->'phlowFontNameAttribute'); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('startIndex'->13); add: ('endIndex'->15); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('name'->'Source Code Pro'); add: ('__typeLabel'->'phlowFontNameAttribute'); yourself); yourself)); yourself); at: 3 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->4); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontWeightAttribute'); add: ('weight'->#bold); yourself); yourself)); yourself); at: 4 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->6); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontEmphasisAttribute'); add: ('emphasis'->'italic'); yourself); yourself)); yourself); at: 5 put: ((Dictionary new) add: ('startIndex'->5); add: ('endIndex'->6); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('color'->((Dictionary new) add: (#a->1.0); add: (#r->1.0); add: (#g->1.0); add: (#b->0.0); yourself)); add: ('__typeLabel'->'phlowTextHighlightAttribute'); yourself); yourself)); yourself); at: 6 put: ((Dictionary new) add: ('startIndex'->8); add: ('endIndex'->10); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('color'->((Dictionary new) add: (#a->1.0); add: (#r->1.0); add: (#g->0.0); add: (#b->0.0); yourself)); add: ('__typeLabel'->'phlowTextForegroundAttribute'); yourself); yourself)); yourself); at: 7 put: ((Dictionary new) add: ('startIndex'->8); add: ('endIndex'->15); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontWeightAttribute'); add: ('weight'->#thin); yourself); yourself)); yourself); at: 8 put: ((Dictionary new) add: ('startIndex'->12); add: ('endIndex'->12); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('name'->'Source Sans Pro'); add: ('__typeLabel'->'phlowFontNameAttribute'); yourself); yourself)); yourself); at: 9 put: ((Dictionary new) add: ('startIndex'->12); add: ('endIndex'->15); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontSizeAttribute'); add: ('size'->20); yourself); yourself)); yourself); yourself)); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->3); yourself); at: 4 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'Now is the time'); add: ('attributeRuns'->((Dictionary new) add: ('items'->((Array new: 9) at: 1 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->11); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('name'->'Source Code Pro'); add: ('__typeLabel'->'phlowFontNameAttribute'); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('startIndex'->13); add: ('endIndex'->15); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('name'->'Source Code Pro'); add: ('__typeLabel'->'phlowFontNameAttribute'); yourself); yourself)); yourself); at: 3 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->4); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontWeightAttribute'); add: ('weight'->#bold); yourself); yourself)); yourself); at: 4 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->6); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontEmphasisAttribute'); add: ('emphasis'->'italic'); yourself); yourself)); yourself); at: 5 put: ((Dictionary new) add: ('startIndex'->5); add: ('endIndex'->6); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('color'->((Dictionary new) add: (#a->1.0); add: (#r->1.0); add: (#g->1.0); add: (#b->0.0); yourself)); add: ('__typeLabel'->'phlowTextHighlightAttribute'); yourself); yourself)); yourself); at: 6 put: ((Dictionary new) add: ('startIndex'->8); add: ('endIndex'->10); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('color'->((Dictionary new) add: (#a->1.0); add: (#r->1.0); add: (#g->0.0); add: (#b->0.0); yourself)); add: ('__typeLabel'->'phlowTextForegroundAttribute'); yourself); yourself)); yourself); at: 7 put: ((Dictionary new) add: ('startIndex'->8); add: ('endIndex'->15); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontWeightAttribute'); add: ('weight'->#thin); yourself); yourself)); yourself); at: 8 put: ((Dictionary new) add: ('startIndex'->12); add: ('endIndex'->12); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('name'->'Source Sans Pro'); add: ('__typeLabel'->'phlowFontNameAttribute'); yourself); yourself)); yourself); at: 9 put: ((Dictionary new) add: ('startIndex'->12); add: ('endIndex'->15); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontSizeAttribute'); add: ('size'->20); yourself); yourself)); yourself); yourself)); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->4); yourself); yourself)
+	^ ((Array new: 4) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'42'); add: ('attributeRuns'->((Dictionary new) add: ('items'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->2); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontWeightAttribute'); add: ('weight'->#bold); yourself); yourself)); yourself); yourself)); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'Hello World'); add: ('attributeRuns'->((Dictionary new) add: ('items'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->5); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('color'->((Dictionary new) add: (#a->1.0); add: (#r->1.0); add: (#g->1.0); add: (#b->0.0); yourself)); add: ('__typeLabel'->'phlowTextHighlightAttribute'); yourself); at: 2 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontSizeAttribute'); add: ('size'->20); yourself); yourself)); yourself); yourself)); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'Now is the time'); add: ('attributeRuns'->((Dictionary new) add: ('items'->((Array new: 9) at: 1 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->11); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('name'->'Source Code Pro'); add: ('__typeLabel'->'phlowFontNameAttribute'); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('startIndex'->13); add: ('endIndex'->15); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('name'->'Source Code Pro'); add: ('__typeLabel'->'phlowFontNameAttribute'); yourself); yourself)); yourself); at: 3 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->4); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontWeightAttribute'); add: ('weight'->#bold); yourself); yourself)); yourself); at: 4 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->6); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontEmphasisAttribute'); add: ('emphasis'->'italic'); yourself); yourself)); yourself); at: 5 put: ((Dictionary new) add: ('startIndex'->5); add: ('endIndex'->6); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('color'->((Dictionary new) add: (#a->1.0); add: (#r->1.0); add: (#g->1.0); add: (#b->0.0); yourself)); add: ('__typeLabel'->'phlowTextHighlightAttribute'); yourself); yourself)); yourself); at: 6 put: ((Dictionary new) add: ('startIndex'->8); add: ('endIndex'->10); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('color'->((Dictionary new) add: (#a->1.0); add: (#r->1.0); add: (#g->0.0); add: (#b->0.0); yourself)); add: ('__typeLabel'->'phlowTextForegroundAttribute'); yourself); yourself)); yourself); at: 7 put: ((Dictionary new) add: ('startIndex'->8); add: ('endIndex'->15); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontWeightAttribute'); add: ('weight'->#thin); yourself); yourself)); yourself); at: 8 put: ((Dictionary new) add: ('startIndex'->12); add: ('endIndex'->12); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('name'->'Source Sans Pro'); add: ('__typeLabel'->'phlowFontNameAttribute'); yourself); yourself)); yourself); at: 9 put: ((Dictionary new) add: ('startIndex'->12); add: ('endIndex'->15); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontSizeAttribute'); add: ('size'->20); yourself); yourself)); yourself); yourself)); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->3); yourself); at: 4 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'Now is the time'); add: ('attributeRuns'->((Dictionary new) add: ('items'->((Array new: 9) at: 1 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->11); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('name'->'Source Code Pro'); add: ('__typeLabel'->'phlowFontNameAttribute'); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('startIndex'->13); add: ('endIndex'->15); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('name'->'Source Code Pro'); add: ('__typeLabel'->'phlowFontNameAttribute'); yourself); yourself)); yourself); at: 3 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->4); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontWeightAttribute'); add: ('weight'->#bold); yourself); yourself)); yourself); at: 4 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->6); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontEmphasisAttribute'); add: ('emphasis'->'italic'); yourself); yourself)); yourself); at: 5 put: ((Dictionary new) add: ('startIndex'->5); add: ('endIndex'->6); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('color'->((Dictionary new) add: (#a->1.0); add: (#r->1.0); add: (#g->1.0); add: (#b->0.0); yourself)); add: ('__typeLabel'->'phlowTextHighlightAttribute'); yourself); yourself)); yourself); at: 6 put: ((Dictionary new) add: ('startIndex'->8); add: ('endIndex'->10); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('color'->((Dictionary new) add: (#a->1.0); add: (#r->1.0); add: (#g->0.0); add: (#b->0.0); yourself)); add: ('__typeLabel'->'phlowTextForegroundAttribute'); yourself); yourself)); yourself); at: 7 put: ((Dictionary new) add: ('startIndex'->8); add: ('endIndex'->15); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontWeightAttribute'); add: ('weight'->#thin); yourself); yourself)); yourself); at: 8 put: ((Dictionary new) add: ('startIndex'->12); add: ('endIndex'->12); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('name'->'Source Sans Pro'); add: ('__typeLabel'->'phlowFontNameAttribute'); yourself); yourself)); yourself); at: 9 put: ((Dictionary new) add: ('startIndex'->12); add: ('endIndex'->15); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontSizeAttribute'); add: ('size'->20); yourself); yourself)); yourself); yourself)); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->4); yourself); yourself)
 %
 
 category: 'accessing - data'
 method: GtRemotePhlowViewSpecificationConversionExamples
 expectedListWithNumberItems
-	^ ((Array new: 3) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'Number: 1'); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'Number: 2'); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'Number: 3'); yourself)); add: (#nodeId->3); yourself); yourself)
+	^ ((Array new: 3) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'Number: 1'); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'Number: 2'); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'Number: 3'); yourself)); add: (#nodeId->3); yourself); yourself)
 %
 
 category: 'accessing - data'
@@ -12486,7 +13493,7 @@ expectedTextEditorBasicStringStylableTextData
 category: 'accessing - data'
 method: GtRemotePhlowViewSpecificationConversionExamples
 expectedTreeWithNumberItems
-	^ ((Array new: 4) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'3'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->3); yourself); at: 4 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'4'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->4); yourself); yourself)
+	^ ((Array new: 4) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'3'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->3); yourself); at: 4 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'4'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->4); yourself); yourself)
 %
 
 ! Class implementation for 'GtRemotePhlowStylableText'
@@ -14512,6 +15519,45 @@ category: 'accessing'
 method: GtRsrInspectorProxyDataSerializationStrategy
 deserialize: viewProxyData
 	^ viewProxyData
+%
+
+! Class implementation for 'GtRemotePhlowDetailsRowSpecificationExamples'
+
+!		Instance methods for 'GtRemotePhlowDetailsRowSpecificationExamples'
+
+category: 'examples'
+method: GtRemotePhlowDetailsRowSpecificationExamples
+equality
+	<gtExample>
+	| first second |
+	first := GtRemotePhlowDetailsRowSpecification new
+		name: 'Class';
+		index: 1;
+		yourself.
+	second := GtRemotePhlowDetailsRowSpecification new
+		name: 'Class';
+		index: 1;
+		yourself.
+	self assert: first equals: second.
+	self assert: first hash equals: second hash.
+	^ first
+%
+
+category: 'examples'
+method: GtRemotePhlowDetailsRowSpecificationExamples
+inequalityByIndex
+	<gtExample>
+	| first second |
+	first := GtRemotePhlowDetailsRowSpecification new
+		name: 'Class';
+		index: 1;
+		yourself.
+	second := GtRemotePhlowDetailsRowSpecification new
+		name: 'Class';
+		index: 2;
+		yourself.
+	self deny: first = second.
+	^ first
 %
 
 ! Class extensions for 'AbstractDictionary'

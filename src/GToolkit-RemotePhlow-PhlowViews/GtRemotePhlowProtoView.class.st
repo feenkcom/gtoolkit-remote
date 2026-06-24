@@ -24,6 +24,12 @@ GtRemotePhlowProtoView >> declarativeViewOfType: aGtDeclarativeViewClass [
 ]
 
 { #category : #decorating }
+GtRemotePhlowProtoView >> details [
+
+	^ self declarativeViewOfType: GtRemotePhlowDetailsView
+]
+
+{ #category : #decorating }
 GtRemotePhlowProtoView >> empty [
 
 	^ self declarativeViewOfType: GtRemotePhlowEmptyView

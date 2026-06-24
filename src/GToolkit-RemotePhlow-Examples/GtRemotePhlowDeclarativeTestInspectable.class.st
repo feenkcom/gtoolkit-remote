@@ -37,6 +37,11 @@ GtRemotePhlowDeclarativeTestInspectable >> collectionOfObjects: anObject [
 	collectionOfObjects := anObject
 ]
 
+{ #category : #accessing }
+GtRemotePhlowDeclarativeTestInspectable >> exampleDate [
+	^ DateAndTime readFrom: '2021-04-06T14:43:50.123456+02:00' readStream
+]
+
 { #category : #actions }
 GtRemotePhlowDeclarativeTestInspectable >> gtButtonActionWithBothIconAndLabelFor: anAction [
 	<gtAction>
@@ -227,6 +232,40 @@ GtRemotePhlowDeclarativeTestInspectable >> gtColumnedWithObjectsFor: aView [
 		column: 'Key' text: [ :assoc | assoc key ];
 		column: 'Object' text: [ :assoc | assoc value ];
 		send: [ :assoc | assoc value ]
+]
+
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtDetailsCustomPrintViewFor: aView [
+	<gtView>
+
+	^aView details
+		title: 'Details (custom print)';
+		priority: 37.1;
+		row: 'Class' 
+			value: [ self class name ] 
+			text:  [ :each |
+				| text |
+				text := each asString asRopedText.
+				text bold.
+				text highlight: (GtPhlowColor named: #yellow) asColor.
+				text ];
+		row: 'String value' value: [ self string ] text: [ :each | each ];
+		row: 'Text value' value: [ self styledPhlowText ];
+		row: 'Date' 
+			value: [ self exampleDate ]
+			text: [ :each | each printString ]
+]
+
+{ #category : #inspecting }
+GtRemotePhlowDeclarativeTestInspectable >> gtDetailsViewFor: aView [
+	<gtView>
+
+	^aView details
+		title: 'Details (default print)';
+		priority: 37;
+		row: 'Class' value: [ self class name ];
+		row: 'String value' value: [ self string ];
+		row: 'Date' value: [ self exampleDate ]
 ]
 
 { #category : #inspecting }
