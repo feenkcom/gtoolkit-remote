@@ -385,6 +385,21 @@ GtRemotePhlowDeclarativeViewsExamples >> createColumnedNodesWithRowValues: aColl
 ]
 
 { #category : #private }
+GtRemotePhlowDeclarativeViewsExamples >> createDetailNodesWithObjectValues: aCollectionOfObjects [
+	^ self createDetailsNodesWithTextValues: (aCollectionOfObjects 
+		collect: [ :anObject | 
+			self convertIfNeededUsingDisplayTextObject: anObject ])
+]
+
+{ #category : #private }
+GtRemotePhlowDeclarativeViewsExamples >> createDetailsNodesWithTextValues: aCollectionOfValues [
+	^ aCollectionOfValues withIndexCollect: [ :aText :anIndex | 
+	 	GtRemotePhlowDetailsNode new
+	 		nodeId: anIndex;
+	 		nodeValue: (self createPhlowDetailsValueFromText: aText withIndex:  anIndex) ]
+]
+
+{ #category : #private }
 GtRemotePhlowDeclarativeViewsExamples >> createListNodesWithObjectValues: aCollectionOfObjects [
 	^ self createListNodesWithTextValues: (aCollectionOfObjects 
 		collect: [ :anObject | 
@@ -397,6 +412,18 @@ GtRemotePhlowDeclarativeViewsExamples >> createListNodesWithTextValues: aCollect
 	 	GtRemotePhlowDataNode new
 	 		nodeId: anIndex;
 	 		nodeValue: (self createPhlowTextValueFromText: aText) ]
+]
+
+{ #category : #private }
+GtRemotePhlowDeclarativeViewsExamples >> createPhlowDetailsValueFromText: aText withIndex:  anIndex [
+	| convertedText |
+	convertedText := aText.
+	convertedText class name = #BlRunRopedText ifTrue: [
+		convertedText := convertedText asGtPlowText ]. 
+	
+	^ (GtRemotePhlowDetailsRowValue new
+			 rowIndex:anIndex;
+	 		itemText: convertedText)
 ]
 
 { #category : #private }
@@ -435,7 +462,7 @@ GtRemotePhlowDeclarativeViewsExamples >> detailsView [
 	<gtExample>
 	<after: #stopServer>
 	<return: #SubclassResponsibility>
-	| phlowSpecificationsProvider viewDictionary viewSpecification viewDatasource rowsData |
+	| phlowSpecificationsProvider viewDictionary viewSpecification viewDatasource obtainedNodes targetObject |
 	
 	phlowSpecificationsProvider := self remotePhlowSpecificationsProvider.
 	viewDictionary := phlowSpecificationsProvider getViewDeclaration: #gtDetailsViewFor:.
@@ -446,25 +473,23 @@ GtRemotePhlowDeclarativeViewsExamples >> detailsView [
 	self assert: viewSpecification rowSpecifications equals: { 
 		GtRemotePhlowDetailsRowSpecification new index: 1; name: 'Class'.
 		GtRemotePhlowDetailsRowSpecification new index: 2; name: 'String value'.
-		GtRemotePhlowDetailsRowSpecification new index: 3; name: 'Collection of objects'.
+		GtRemotePhlowDetailsRowSpecification new index: 3; name: 'Date'.
 	}.
 
 	viewDatasource := phlowSpecificationsProvider
 			getDeclarativeViewFor: #gtDetailsViewFor:.
-	rowsData := viewDatasource retrieveRowNodeData.
+	obtainedNodes := viewDatasource retrieveRowNodeData collect: [ :each |
+			GtRemotePhlowDetailsNode fromJSONDictionary: each  ].
 	
+	targetObject := 	GtRemotePhlowDeclarativeTestInspectable new.
 	self 
-		assert:  (rowsData collect: [:each | each rowIndex]) asArray
-		equals: (1 to: 5) asArray.
-	self 
-		assert:  (rowsData collect: [:each | GtPhlowText forString: each rowText asString ]) asArray
-		equals: ({ 
-			'GtRemotePhlowDeclarativeTestInspectable' asRopedText.
-			'GToolkit-RemotePhlow-Examples' asRopedText.
-			'48' asRopedText.
-			'hello world' asRopedText.
-			'an Array [3 items] (42 ''Hello World'' 2021-04-06T14:43:50.123456+02:00)' asRopedText
-} collect: [ :each | each asGtPlowText ]).
+		assertListingNodes: obtainedNodes 
+		equals: (self 
+			createDetailNodesWithObjectValues: ({
+			 targetObject class name.
+			 targetObject string.
+			 targetObject exampleDate gtDisplayString } collect: [ :each |
+			 	each asRopedText asGtPlowText ])).
 
 	^ viewSpecification
 ]

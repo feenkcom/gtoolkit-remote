@@ -37,6 +37,11 @@ GtRemotePhlowDeclarativeTestInspectable >> collectionOfObjects: anObject [
 	collectionOfObjects := anObject
 ]
 
+{ #category : #accessing }
+GtRemotePhlowDeclarativeTestInspectable >> exampleDate [
+	^ DateAndTime readFrom: '2021-04-06T14:43:50.123456+02:00' readStream
+]
+
 { #category : #actions }
 GtRemotePhlowDeclarativeTestInspectable >> gtButtonActionWithBothIconAndLabelFor: anAction [
 	<gtAction>
@@ -258,7 +263,7 @@ GtRemotePhlowDeclarativeTestInspectable >> gtDetailsViewFor: aView [
 		priority: 37;
 		row: 'Class' value: [ self class name ];
 		row: 'String value' value: [ self string ];
-		row: 'Collection of objects' value: [ self collectionOfObjects ]
+		row: 'Date' value: [ self exampleDate ]
 ]
 
 { #category : #inspecting }
