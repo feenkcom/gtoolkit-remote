@@ -9,7 +9,7 @@ Class {
 
 { #category : #serialization }
 GtRemotePhlowSpawnObjectWrapper class >> replicationSpec [
-	^#(#(#targetObject #stub))
+	^#(#(#targetObject #forwarder))
 ]
 
 { #category : #accessing }

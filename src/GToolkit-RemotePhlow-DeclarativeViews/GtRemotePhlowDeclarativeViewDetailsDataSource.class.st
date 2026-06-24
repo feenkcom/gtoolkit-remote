@@ -1,21 +1,14 @@
 Class {
 	#name : #GtRemotePhlowDeclarativeViewDetailsDataSource,
 	#superclass : #GtRemotePhlowDeclarativeViewDataSource,
+	#instVars : [
+		'cachedNodes'
+	],
 	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
-{ #category : #views }
-GtRemotePhlowDeclarativeViewDetailsDataSource >> gtPhlowViewRowsFor: aView [
-	<gtView>
-	^ aView forward
-		title: 'Phlow rows';
-		priority: 15;
-		object: [ phlowView ];
-		view: #gtRowsFor:
-]
-
 { #category : #'as yet unclassified' }
-GtRemotePhlowDeclarativeViewDetailsDataSource >> retrieveRowNodes [
+GtRemotePhlowDeclarativeViewDetailsDataSource >> computeRowNodes [
 	| rowIndex |
 	rowIndex := 1.
 	^ self phlowView phlowDetailRows 
@@ -40,4 +33,28 @@ GtRemotePhlowDeclarativeViewDetailsDataSource >> retrieveRowNodes [
 					nodeId: currentIndex;
 					targetObject: rowValue;
 					nodeValue:nodeValue ]
+]
+
+{ #category : #views }
+GtRemotePhlowDeclarativeViewDetailsDataSource >> gtPhlowViewRowsFor: aView [
+	<gtView>
+	^ aView forward
+		title: 'Phlow rows';
+		priority: 15;
+		object: [ phlowView ];
+		view: #gtRowsFor:
+]
+
+{ #category : #accessing }
+GtRemotePhlowDeclarativeViewDetailsDataSource >> retrieveRowNodeRawValueAtRowIndex: aRowIndex [
+	^ self retrieveRowNodes 
+			detect: [ :each | each nodeId = aRowIndex ]
+			ifFound: [ :each | each targetObject ]
+			ifNone: [ nil ]
+]
+
+{ #category : #accessing }
+GtRemotePhlowDeclarativeViewDetailsDataSource >> retrieveRowNodes [
+	^ cachedNodes ifNil: [
+			cachedNodes := self computeRowNodes ]
 ]

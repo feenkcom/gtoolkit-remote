@@ -9,7 +9,12 @@ Class {
 	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
+GtRemotePhlowDetailsRowValue class >> valueTypeName [
+	^ 'detailsRowValue'
+]
+
+{ #category : #converting }
 GtRemotePhlowDetailsRowValue >> asDictionaryForExport [
 	"Answer the receiver as a dictionary ready for JSON serialisation"
 
@@ -30,6 +35,14 @@ GtRemotePhlowDetailsRowValue >> descriptionOn: aStream [
 			print: self rowIndex;
 			nextPutAll: '; '.
 	super descriptionOn: aStream 
+]
+
+{ #category : #initialization }
+GtRemotePhlowDetailsRowValue >> initializeFromJSONDictionary: aDictionary [
+	| textData |
+	super initializeFromJSONDictionary: aDictionary.
+	
+	aDictionary at: 'rowIndex' ifPresent: [ :each | self rowIndex: each ]
 ]
 
 { #category : #accessing }

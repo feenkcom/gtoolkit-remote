@@ -25,7 +25,7 @@ GtRemotePhlowDataNode class >> fromJSONDictionary: aDictionary [
 
 { #category : #serialization }
 GtRemotePhlowDataNode class >> replicationSpec [
-	^#(#(#targetObject #stub))
+	^#(#(#targetObject #forwarder))
 ]
 
 { #category : #accessing }
