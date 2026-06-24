@@ -524,9 +524,9 @@ GtRemotePhlowDeclarativeViewsExamples >> detailsViewWithCustomPrinting [
 		assertListingNodes: obtainedNodes 
 		equals: (self 
 			createDetailNodesWithObjectValues: ({
-			 ((targetObject class name asRopedText)
+			 (( GtPhlowText forString: targetObject class name)
 					bold;
-					highlight: (GtPhlowColor named: #yellow) asColor ).
+					highlight: (GtPhlowColor named: #yellow) ).
 			 targetObject string.
 			 targetObject styledPhlowTextForRemoteComparison .
 			 targetObject exampleDate gtDisplayString })).

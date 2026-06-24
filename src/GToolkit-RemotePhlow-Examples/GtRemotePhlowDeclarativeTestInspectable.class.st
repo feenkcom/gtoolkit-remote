@@ -250,7 +250,7 @@ GtRemotePhlowDeclarativeTestInspectable >> gtDetailsCustomPrintViewFor: aView [
 				text highlight: (GtPhlowColor named: #yellow) asColor.
 				text ];
 		row: 'String value' value: [ self string ] text: [ :each | each ];
-		row: 'Text value' value: [ self styledPhlowTextForRemoteComparison ];
+		row: 'Text value' value: [ self styledPhlowText ];
 		row: 'Date' 
 			value: [ self exampleDate ]
 			text: [ :each | each printString ]
