@@ -244,11 +244,13 @@ GtRemotePhlowDeclarativeTestInspectable >> gtDetailsCustomPrintViewFor: aView [
 		row: 'Class' 
 			value: [ self class name ] 
 			text:  [ :each |
-				each asString asRopedText
-					bold;
-					highlight: (GtPhlowColor named: #yellow) asColor ];
+				| text |
+				text := each asString asRopedText.
+				text bold.
+				text highlight: (GtPhlowColor named: #yellow) asColor.
+				text ];
 		row: 'String value' value: [ self string ] text: [ :each | each ];
-		row: 'Text value' value: [ self styledText ];
+		row: 'Text value' value: [ self styledPhlowTextForRemoteComparison ];
 		row: 'Date' 
 			value: [ self exampleDate ]
 			text: [ :each | each printString ]
