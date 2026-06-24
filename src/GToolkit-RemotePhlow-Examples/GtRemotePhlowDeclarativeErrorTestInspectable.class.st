@@ -35,6 +35,20 @@ GtRemotePhlowDeclarativeErrorTestInspectable >> gtColumnedListWithFormatErrorsFo
 ]
 
 { #category : #accessing }
+GtRemotePhlowDeclarativeErrorTestInspectable >> gtDetailsWithErrorsViewFor: aView [
+	<gtView>
+
+	^aView details
+		title: 'Details (with errors)';
+		priority: 37.3;
+		row: 'No error' value: [ 'hello world' ] text: [ :each | each ];
+		row: 'Error in value' value: [ 1/0 ];
+		row: 'Error in print' value: [ 1 ] text: [ :each | each / 0];
+		row: 'Also no error' value: [ 'hello world' ] text: [ :each | each ];
+		row: 'Error in both' value: [ 1/0 ] text: [ :each | 1 / 0]
+]
+
+{ #category : #accessing }
 GtRemotePhlowDeclarativeErrorTestInspectable >> gtForwardListWithFormatErrorsFor: aView [
 	<gtView>
 

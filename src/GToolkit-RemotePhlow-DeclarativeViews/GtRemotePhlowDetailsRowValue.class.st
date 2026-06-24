@@ -14,6 +14,13 @@ GtRemotePhlowDetailsRowValue class >> valueTypeName [
 	^ 'detailsRowValue'
 ]
 
+{ #category : #comparing }
+GtRemotePhlowDetailsRowValue >> = anObject [
+	super = anObject  ifFalse: [ ^ false ].
+	
+	^ self rowIndex = anObject rowIndex
+]
+
 { #category : #converting }
 GtRemotePhlowDetailsRowValue >> asDictionaryForExport [
 	"Answer the receiver as a dictionary ready for JSON serialisation"
@@ -35,6 +42,11 @@ GtRemotePhlowDetailsRowValue >> descriptionOn: aStream [
 			print: self rowIndex;
 			nextPutAll: '; '.
 	super descriptionOn: aStream 
+]
+
+{ #category : #comparing }
+GtRemotePhlowDetailsRowValue >> hash [ 
+	^ super hash bitXor: self rowIndex hash
 ]
 
 { #category : #initialization }

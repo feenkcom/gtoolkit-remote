@@ -436,23 +436,22 @@ GtRemotePhlowDeclarativeViewsExamples >> detailsView [
 	<after: #stopServer>
 	<return: #SubclassResponsibility>
 	| phlowSpecificationsProvider viewDictionary viewSpecification viewDatasource rowsData |
+	
 	phlowSpecificationsProvider := self remotePhlowSpecificationsProvider.
 	viewDictionary := phlowSpecificationsProvider getViewDeclaration: #gtDetailsViewFor:.
 	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
 
-	self assert: viewSpecification title equals: 'Details'.
+	self assert: viewSpecification title equals: 'Details (default print)'.
 	self assert: viewSpecification priority equals: 37.
 	self assert: viewSpecification rowSpecifications equals: { 
 		GtRemotePhlowDetailsRowSpecification new index: 1; name: 'Class'.
-		GtRemotePhlowDetailsRowSpecification new index: 2; name: 'Package'.
-		GtRemotePhlowDetailsRowSpecification new index: 3; name: 'Methods'.
-		GtRemotePhlowDetailsRowSpecification new index: 4; name: 'string value'.
-		GtRemotePhlowDetailsRowSpecification new index: 5; name: 'Collection of objects'.
+		GtRemotePhlowDetailsRowSpecification new index: 2; name: 'String value'.
+		GtRemotePhlowDetailsRowSpecification new index: 3; name: 'Collection of objects'.
 	}.
 
 	viewDatasource := phlowSpecificationsProvider
 			getDeclarativeViewFor: #gtDetailsViewFor:.
-	rowsData := viewDatasource retrieveRowNodes.
+	rowsData := viewDatasource retrieveRowNodeData.
 	
 	self 
 		assert:  (rowsData collect: [:each | each rowIndex]) asArray
@@ -477,7 +476,7 @@ GtRemotePhlowDeclarativeViewsExamples >> expectedBasicString [
 
 { #category : #'accessing - expected' }
 GtRemotePhlowDeclarativeViewsExamples >> expectedColumnedListTypedColumnsTwoItems [
-	^ ((Array new: 2) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+1.0'); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+2'); yourself); at: 3 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->#class); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+2.0'); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->'+3'); yourself); at: 3 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: (#itemText->#class); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); yourself)
+	^ ((Array new: 2) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'+1.0'); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'+2'); yourself); at: 3 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->#class); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'+2.0'); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'+3'); yourself); at: 3 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->#class); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); yourself)
 ]
 
 { #category : #accessing }
