@@ -29,6 +29,11 @@ GtPhlowDetailsViewSpecification >> asDictionaryForExport [
 		yourself
 ]
 
+{ #category : #accessing }
+GtPhlowDetailsViewSpecification >> flushCachedData [
+	^ self phlowDataSource flushCachedData
+]
+
 { #category : #views }
 GtPhlowDetailsViewSpecification >> gtViewRowSpecificationsFor: aView [
 	<gtView>
