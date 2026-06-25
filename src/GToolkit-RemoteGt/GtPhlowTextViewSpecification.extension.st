@@ -16,9 +16,10 @@ GtPhlowTextViewSpecification >> viewFor: aView [
 		title: title;
 		priority: priority;
 		actionButtonIcon: BrGlamorousVectorIcons refresh
+			id: GtPhlowViewRefreshContentButtonId
 			tooltip: 'Update'
 			action: [ :aButton :aTab | 
-				aTab viewContentElement phlow update ].
+				aTab phlow fireViewUpdateWish ].
 	
 	self configureForLazyDataView: currentView .
 		

@@ -7,10 +7,11 @@ GtPhlowBasicColumnedViewSpecification >> configureColumnedViewFor: aColumnedView
 		title: title;
 		priority: priority;
 		actionButtonIcon: BrGlamorousVectorIcons refresh
+			id: GtPhlowViewRefreshContentButtonId
 			tooltip: 'Update'
 			action: [ :aButton :aTab | 
 				phlowDataSource flushItemsIterator.
-				aTab viewContentElement phlow update ].
+				aTab phlow fireViewUpdateWish ].
 
 	columnSpecifications
 		withIndexDo: [ :aColumnSpecification :aColumnIndex | 

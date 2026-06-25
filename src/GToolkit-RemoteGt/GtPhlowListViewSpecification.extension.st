@@ -25,10 +25,11 @@ GtPhlowListViewSpecification >> viewFor: aView [
 				ifFalse: [ anItemTypeFactory default ] ];
 		itemText: [ :aDataNode | aDataNode nodeValue itemText ];
 		actionButtonIcon: BrGlamorousVectorIcons refresh 
+			id: GtPhlowViewRefreshContentButtonId
 			tooltip: 'Update'
 			action: [ :aButton :aTab | 
 				phlowDataSource flushItemsIterator.
-				aTab viewContentElement phlow update ].
+				aTab phlow fireViewUpdateWish ].
 				
 	self configureViewSendFor: listView.
 	
