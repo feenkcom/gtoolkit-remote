@@ -35,6 +35,11 @@ GtRemotePhlowDeclarativeViewDetailsDataSource >> computeRowNodes [
 					nodeValue:nodeValue ]
 ]
 
+{ #category : #accessing }
+GtRemotePhlowDeclarativeViewDetailsDataSource >> flushCachedData [
+	cachedNodes := nil
+]
+
 { #category : #views }
 GtRemotePhlowDeclarativeViewDetailsDataSource >> gtPhlowViewRowsFor: aView [
 	<gtView>

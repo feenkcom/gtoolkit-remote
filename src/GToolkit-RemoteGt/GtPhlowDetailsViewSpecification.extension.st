@@ -17,6 +17,14 @@ GtPhlowDetailsViewSpecification >> viewFor: aView [
 	
 	currentView localSend: [ :aPhlowRow :aRowSpecification |
 		self retrieveRowNodeRawValueAtRowIndex: aRowSpecification index].
+		
+	currentView
+		actionButtonIcon: BrGlamorousVectorIcons refresh
+			id: GtPhlowViewRefreshContentButtonId
+			tooltip: 'Update'
+			action: [ :aButton :aTab | 
+				self flushCachedData.
+				aTab phlow fireViewUpdateWish ].
 	
 	^ currentView
 ]

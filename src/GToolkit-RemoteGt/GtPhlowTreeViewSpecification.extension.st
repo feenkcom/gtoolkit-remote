@@ -40,10 +40,11 @@ GtPhlowTreeViewSpecification >> viewFor: aView [
 			self ensureChildrenLoadedForNode: aTreeNode.
 			aTreeNode childNodes ];
 		actionButtonIcon: BrGlamorousVectorIcons refresh
+			id: GtPhlowViewRefreshContentButtonId
 			tooltip: 'Update'
 			action: [ :aButton :aTab | 
 				phlowDataSource flushItemsIterator.
-				aTab viewContentElement phlow update ].
+				aTab phlow fireViewUpdateWish ].
 	
 	self configureViewSendFor: treeView.
 	

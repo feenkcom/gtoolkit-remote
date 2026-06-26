@@ -1480,7 +1480,7 @@ removeallclassmethods GtRemotePhlowDeclarativeBlockActionDataSource
 doit
 (Object
 	subclass: 'GtRemotePhlowDeclarativeDetailsInspectableForExamples'
-	instVarNames: #()
+	instVarNames: #(propertyOne propertyTwo)
 	classVars: #()
 	classInstVars: #()
 	poolDictionaries: #()
@@ -6074,6 +6074,12 @@ asDictionaryForExport
 		yourself
 %
 
+category: 'accessing'
+method: GtPhlowDetailsViewSpecification
+flushCachedData
+	^ self phlowDataSource flushCachedData
+%
+
 category: 'views'
 method: GtPhlowDetailsViewSpecification
 gtViewRowSpecificationsFor: aView
@@ -7940,6 +7946,18 @@ gtDetailsViewFor: aView
 
 category: 'views'
 method: GtRemotePhlowDeclarativeDetailsInspectableForExamples
+gtDetailsViewWithPropertiesFor: aView
+	<gtView>
+
+	^aView details
+		title: 'Properties';
+		priority: 40;
+		row: 'Property One' value: [ self propertyOne ifNil: ['<missing>'] ];
+		row: 'Property Two' value: [ self propertyTwo ifNil: ['<missing>'] ]
+%
+
+category: 'views'
+method: GtRemotePhlowDeclarativeDetailsInspectableForExamples
 gtDetailsWithErrorsViewFor: aView
 	<gtView>
 
@@ -7951,6 +7969,30 @@ gtDetailsWithErrorsViewFor: aView
 		row: 'Error in print' value: [ 1 ] text: [ :each | each / 0];
 		row: 'Also no error' value: [ 'hello world' ] text: [ :each | each ];
 		row: 'Error in both' value: [ 1/0 ] text: [ :each | 1 / 0]
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeDetailsInspectableForExamples
+propertyOne
+	^ propertyOne
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeDetailsInspectableForExamples
+propertyOne: anObject
+	propertyOne := anObject
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeDetailsInspectableForExamples
+propertyTwo
+	^ propertyTwo
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeDetailsInspectableForExamples
+propertyTwo: anObject
+	propertyTwo := anObject
 %
 
 category: 'accessing'
@@ -10732,6 +10774,12 @@ computeRowNodes
 					nodeId: currentIndex;
 					targetObject: rowValue;
 					nodeValue:nodeValue ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeViewDetailsDataSource
+flushCachedData
+	cachedNodes := nil
 %
 
 category: 'views'

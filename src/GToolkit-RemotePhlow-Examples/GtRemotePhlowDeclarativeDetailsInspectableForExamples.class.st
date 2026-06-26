@@ -1,6 +1,10 @@
 Class {
 	#name : #GtRemotePhlowDeclarativeDetailsInspectableForExamples,
 	#superclass : #Object,
+	#instVars : [
+		'propertyOne',
+		'propertyTwo'
+	],
 	#category : #'GToolkit-RemotePhlow-Examples'
 }
 
@@ -44,6 +48,17 @@ GtRemotePhlowDeclarativeDetailsInspectableForExamples >> gtDetailsViewFor: aView
 ]
 
 { #category : #views }
+GtRemotePhlowDeclarativeDetailsInspectableForExamples >> gtDetailsViewWithPropertiesFor: aView [
+	<gtView>
+
+	^aView details
+		title: 'Properties';
+		priority: 40;
+		row: 'Property One' value: [ self propertyOne ifNil: ['<missing>'] ];
+		row: 'Property Two' value: [ self propertyTwo ifNil: ['<missing>'] ]
+]
+
+{ #category : #views }
 GtRemotePhlowDeclarativeDetailsInspectableForExamples >> gtDetailsWithErrorsViewFor: aView [
 	<gtView>
 
@@ -55,6 +70,26 @@ GtRemotePhlowDeclarativeDetailsInspectableForExamples >> gtDetailsWithErrorsView
 		row: 'Error in print' value: [ 1 ] text: [ :each | each / 0];
 		row: 'Also no error' value: [ 'hello world' ] text: [ :each | each ];
 		row: 'Error in both' value: [ 1/0 ] text: [ :each | 1 / 0]
+]
+
+{ #category : #accessing }
+GtRemotePhlowDeclarativeDetailsInspectableForExamples >> propertyOne [
+	^ propertyOne
+]
+
+{ #category : #accessing }
+GtRemotePhlowDeclarativeDetailsInspectableForExamples >> propertyOne: anObject [
+	propertyOne := anObject
+]
+
+{ #category : #accessing }
+GtRemotePhlowDeclarativeDetailsInspectableForExamples >> propertyTwo [
+	^ propertyTwo
+]
+
+{ #category : #accessing }
+GtRemotePhlowDeclarativeDetailsInspectableForExamples >> propertyTwo: anObject [
+	propertyTwo := anObject
 ]
 
 { #category : #accessing }
