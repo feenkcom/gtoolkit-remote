@@ -3,12 +3,13 @@ Extension { #name : #GtPhlowViewWithError }
 { #category : #'*GToolkit-RemoteGt' }
 GtPhlowViewWithError >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView."
+	| viewSpecification |
 
-	^GtPhlowViewErrorViewSpecification new 
-		title: self title;
-		priority: self priority;
+	viewSpecification := GtPhlowViewErrorViewSpecification new
 		errorMessage: self error printString;
 		dataTransport: GtPhlowViewSpecification dataIncluded.
+	self configureGenericViewSpecificationOn: viewSpecification.
+	^ viewSpecification
 ]
 
 { #category : #'*GToolkit-RemoteGt' }

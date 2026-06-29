@@ -26,13 +26,14 @@ Class {
 GtRemotePhlowListView >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
+	| viewSpecification |
 
-	^ GtPhlowListViewSpecification new 
-		title: self title;
-		priority: self priority;
-		phlowDataSource: (GtRemotePhlowDeclarativeViewListDataSource 
+	viewSpecification := GtPhlowListViewSpecification new
+		phlowDataSource: (GtRemotePhlowDeclarativeViewListDataSource
 			forPhlowView: self);
 		dataTransport: GtPhlowViewSpecification dataLazy.
+	self configureGenericViewSpecificationOn: viewSpecification.
+	^ viewSpecification
 ]
 
 { #category : #'private - accessing' }

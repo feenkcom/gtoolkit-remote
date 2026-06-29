@@ -4,14 +4,14 @@ Extension { #name : #GtPhlowForwarderView }
 GtPhlowForwarderView >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
+	| viewSpecification |
 
-
-	^ GtPhlowForwardViewSpecification new 
-		title: self title;
-		priority: self priority;
-		phlowDataSource: (GtRemotePhlowDeclarativeForwardViewDataSource 
+	viewSpecification := GtPhlowForwardViewSpecification new
+		phlowDataSource: (GtRemotePhlowDeclarativeForwardViewDataSource
 			forPhlowView: self);
-		dataTransport: GtPhlowViewSpecification dataLazy
+		dataTransport: GtPhlowViewSpecification dataLazy.
+	self configureGenericViewSpecificationOn: viewSpecification.
+	^ viewSpecification
 ]
 
 { #category : #'*GToolkit-RemoteGt' }

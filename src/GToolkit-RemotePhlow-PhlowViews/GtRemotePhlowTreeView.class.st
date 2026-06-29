@@ -20,13 +20,14 @@ Class {
 { #category : #converting }
 GtRemotePhlowTreeView >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView."
+	| viewSpecification |
 
-	^ GtPhlowTreeViewSpecification new 
-		title: self title;
-		priority: self priority;
-		phlowDataSource: (GtRemotePhlowDeclarativeViewTreeDataSource 
+	viewSpecification := GtPhlowTreeViewSpecification new
+		phlowDataSource: (GtRemotePhlowDeclarativeViewTreeDataSource
 			forPhlowView: self);
-		dataTransport: GtPhlowViewSpecification dataLazy
+		dataTransport: GtPhlowViewSpecification dataLazy.
+	self configureGenericViewSpecificationOn: viewSpecification.
+	^ viewSpecification
 ]
 
 { #category : #accessing }

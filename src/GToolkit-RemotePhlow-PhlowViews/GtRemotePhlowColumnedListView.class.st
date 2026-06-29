@@ -14,22 +14,19 @@ Class {
 	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
 
-{ #category : #accessing }
+{ #category : #converting }
 GtRemotePhlowColumnedListView >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
 
 	| viewSpecification |
-	viewSpecification := GtPhlowColumnedListViewSpecification new 
-		phlowDataSource: (GtRemotePhlowDeclarativeViewColumnedListDataSource 
+	viewSpecification := GtPhlowColumnedListViewSpecification new
+		phlowDataSource: (GtRemotePhlowDeclarativeViewColumnedListDataSource
 			forPhlowView: self);
-		title: self title;
-		priority: self priority;
-		horizontalScrollingEnabled:  horizontalScrollingEnabled;
+		horizontalScrollingEnabled: horizontalScrollingEnabled;
 		dataTransport: GtPhlowViewSpecification dataLazy.
-		
+	self configureGenericViewSpecificationOn: viewSpecification.
 	self configureColumnsSpecificationOn: viewSpecification.
-	
 	^ viewSpecification
 ]
 

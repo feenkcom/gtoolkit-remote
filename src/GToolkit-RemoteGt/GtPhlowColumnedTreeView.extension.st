@@ -2,14 +2,14 @@ Extension { #name : #GtPhlowColumnedTreeView }
 
 { #category : #'*GToolkit-RemoteGt' }
 GtPhlowColumnedTreeView >> asGtDeclarativeView [
-	"Answer the receiver as a GtDeclarativeView.
-	nil = not supported"
+	"Answer the receiver as a GtDeclarativeView."
+	| viewSpecification |
 
-	^ GtPhlowColumnedTreeViewSpecification new 
-		phlowDataSource: (GtRemotePhlowDeclarativeViewColumnedTreeDataSource 
+	viewSpecification := GtPhlowColumnedTreeViewSpecification new
+		phlowDataSource: (GtRemotePhlowDeclarativeViewColumnedTreeDataSource
 			forPhlowView: self);
-		title: self title;
-		priority: self priority;
-		columnSpecifications: self buildRemoteColumnsSpecifications;
-		dataTransport: GtPhlowViewSpecification dataLazy
+		dataTransport: GtPhlowViewSpecification dataLazy.
+	self configureGenericViewSpecificationOn: viewSpecification.
+	viewSpecification columnSpecifications: self buildRemoteColumnsSpecifications.
+	^ viewSpecification
 ]

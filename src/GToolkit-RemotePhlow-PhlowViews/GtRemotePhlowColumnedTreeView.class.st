@@ -13,21 +13,17 @@ Class {
 	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
 
-{ #category : #accessing }
+{ #category : #converting }
 GtRemotePhlowColumnedTreeView >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView."
-
 	| viewSpecification |
-	
-	viewSpecification := GtPhlowColumnedTreeViewSpecification new 
-		title: self title;
-		priority: self priority;
-		phlowDataSource: (GtRemotePhlowDeclarativeViewColumnedTreeDataSource 
+
+	viewSpecification := GtPhlowColumnedTreeViewSpecification new
+		phlowDataSource: (GtRemotePhlowDeclarativeViewColumnedTreeDataSource
 			forPhlowView: self);
 		dataTransport: GtPhlowViewSpecification dataLazy.
-		
+	self configureGenericViewSpecificationOn: viewSpecification.
 	self configureColumnsSpecificationOn: viewSpecification.
-	
 	^ viewSpecification
 ]
 

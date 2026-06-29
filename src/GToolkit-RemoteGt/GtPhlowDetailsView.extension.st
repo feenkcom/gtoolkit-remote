@@ -4,20 +4,20 @@ Extension { #name : #GtPhlowDetailsView }
 GtPhlowDetailsView >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
-	| rowSpecifications |
+	| rowSpecifications viewSpecification |
 	
 	rowSpecifications := OrderedCollection new.
 	self phlowDetailRows withIndexDo:  [ :each :anIndex |
-		rowSpecifications add: (GtRemotePhlowDetailsRowSpecification 
+		rowSpecifications add: (GtRemotePhlowDetailsRowSpecification
 			fromPhlowRow: each withIndex: anIndex) ].
 	
-	^ GtPhlowDetailsViewSpecification new 
-		title: self title;
-		priority: self priority;
-		phlowDataSource: (GtRemotePhlowDeclarativeViewDetailsDataSource 
+	viewSpecification := GtPhlowDetailsViewSpecification new
+		phlowDataSource: (GtRemotePhlowDeclarativeViewDetailsDataSource
 			forPhlowView: self);
 		rowSpecifications: rowSpecifications;
-		dataTransport: GtPhlowViewSpecification dataLazy
+		dataTransport: GtPhlowViewSpecification dataLazy.
+	self configureGenericViewSpecificationOn: viewSpecification.
+	^ viewSpecification
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
