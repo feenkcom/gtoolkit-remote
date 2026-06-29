@@ -31,7 +31,8 @@ Class {
 		'title',
 		'priority',
 		'definingSelector',
-		'definingClass'
+		'definingClass',
+		'phlowActions'
 	],
 	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
@@ -46,9 +47,119 @@ GtRemotePhlowView class >> handledExceptions [
 	^ Error, Halt, Warning
 ]
 
-{ #category : #accessing }
+{ #category : #actions }
+GtRemotePhlowView >> action: anOneArgBlock [
+	| newPhlowAction |
+	newPhlowAction := anOneArgBlock value: GtRemotePhlowAction noAction.
+	newPhlowAction priority: GtPhlowAction defaultPriority + self actions size + 1.
+	self addPhlowAction: newPhlowAction
+]
+
+{ #category : #actions }
+GtRemotePhlowView >> actionButtonDo: aBlock [
+	self action: [ :aPhlowAction |
+		aBlock cull: aPhlowAction button ]
+]
+
+{ #category : #actions }
+GtRemotePhlowView >> actionButtonIcon: anIcon action: aValuable [
+	self actionButtonDo: [ :aButtonAction |
+		aButtonAction
+			icon: anIcon;
+			action: aValuable ]
+]
+
+{ #category : #actions }
+GtRemotePhlowView >> actionButtonIcon: anIcon id: aButtonId tooltip: aTooltipText action: aValuable [
+	self actionButtonDo: [ :aButtonAction |
+		aButtonAction
+			icon: anIcon;
+			tooltip: aTooltipText;
+			id: aButtonId;
+			action: aValuable ]
+]
+
+{ #category : #actions }
+GtRemotePhlowView >> actionButtonIcon: anIcon label: aStringOrRope action: aValuable [
+	self actionButtonDo: [ :aButtonAction |
+		aButtonAction
+			icon: anIcon;
+			label: aStringOrRope;
+			action: aValuable ]
+]
+
+{ #category : #actions }
+GtRemotePhlowView >> actionButtonIcon: anIcon label: aStringOrRope tooltip: aTooltipText action: aValuable [
+	self actionButtonDo: [ :aButtonAction |
+		aButtonAction
+			icon: anIcon;
+			label: aStringOrRope;
+			tooltip: aTooltipText;
+			action: aValuable ]
+]
+
+{ #category : #actions }
+GtRemotePhlowView >> actionButtonIcon: anIcon tooltip: aTooltipText action: aValuable [
+	self actionButtonDo: [ :aButtonAction |
+		aButtonAction
+			icon: anIcon;
+			tooltip: aTooltipText;
+			action: aValuable ]
+]
+
+{ #category : #actions }
+GtRemotePhlowView >> actionButtonLabel: aString action: aValuable [
+	self actionButtonDo: [ :aButtonAction |
+		aButtonAction
+			label: aString;
+			action: aValuable ]
+]
+
+{ #category : #actions }
+GtRemotePhlowView >> actionButtonLabel: aString tooltip: aTooltipText action: aValuable [
+	self actionButtonDo: [ :aButtonAction |
+		aButtonAction
+			label: aString;
+			tooltip: aTooltipText;
+			action: aValuable ]
+]
+
+{ #category : #actions }
 GtRemotePhlowView >> actionUpdateButton [
 	"stub"
+	"self actionUpdateButtonTooltip: 'Update'"
+]
+
+{ #category : #actions }
+GtRemotePhlowView >> actionUpdateButtonIcon: anIcon tooltip: aTooltip [
+	"stub"
+	"self
+		actionButtonIcon: anIcon
+		tooltip: aTooltip
+		action: [ :aButton | aButton ]"
+]
+
+{ #category : #actions }
+GtRemotePhlowView >> actionUpdateButtonTooltip: aTooltip [
+	"stub"
+	"self
+		actionUpdateButtonIcon: BrGlamorousVectorIcons refresh
+		tooltip: aTooltip"
+]
+
+{ #category : #actions }
+GtRemotePhlowView >> actions [
+	<return: #OrderedCollection of: #GtRemotePhlowAction>
+	^ phlowActions ifNil: [ phlowActions := OrderedCollection new ]
+]
+
+{ #category : #actions }
+GtRemotePhlowView >> addPhlowAction: aPhlowAction [
+	phlowActions add: aPhlowAction.
+	phlowActions sort: [ :a :b |
+		[ a priority < b priority ]
+			on: Error
+			do: [ :error | true ] ]
 ]
 
 { #category : #converting }
