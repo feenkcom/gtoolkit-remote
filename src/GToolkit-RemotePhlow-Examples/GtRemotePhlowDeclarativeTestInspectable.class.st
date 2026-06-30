@@ -379,6 +379,33 @@ GtRemotePhlowDeclarativeTestInspectable >> gtListFor: aView [
 		itemText: [ :item | item ]
 ]
 
+{ #category : #'gt-extensions' }
+GtRemotePhlowDeclarativeTestInspectable >> gtListWithButtonActionsFor: aView [
+	<gtView>
+
+	^ aView list
+		title: 'List with button actions';
+		priority: 16;
+		items: [ collectionOfObjects ];
+		itemText: [ :item | item ];
+		actionButtonLabel: 'Inspect' action: [ :aButton |
+			aButton phlow spawnObject: 1 ];
+		actionButtonLabel: 'Inspect with tooltip' tooltip: 'Inspect objects' action: [ :aButton |
+			aButton phlow spawnObject: collectionOfObjects ];
+		actionButtonIcon: (GtPhlowGlamorousVectorIconNameStencil new
+			iconName: #playinspect) action: [ :aButton |
+			aButton phlow spawnObject: collectionOfObjects first ];
+		actionButtonIcon: (GtPhlowGlamorousVectorIconNameStencil new
+			iconName: #playinspect) tooltip: 'Inspect with icon' action: [ :aButton |
+			aButton phlow spawnObject: collectionOfObjects second ];
+		actionButtonIcon: (GtPhlowGlamorousVectorIconNameStencil new
+			iconName: #refresh) label: 'Refresh' action: [ :aButton |
+			aButton phlow spawnObject: collectionOfObjects third ];
+		actionButtonIcon: (GtPhlowGlamorousVectorIconNameStencil new
+			iconName: #refresh) label: 'Refresh tooltip' tooltip: 'Refresh objects' action: [ :aButton |
+			aButton phlow spawnObject: collectionOfObjects ]
+]
+
 { #category : #inspecting }
 GtRemotePhlowDeclarativeTestInspectable >> gtListWithSendFor: aView [
 	<gtView>

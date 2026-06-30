@@ -25,7 +25,7 @@ GtPhlowNamedIconStencil >> = anObject [
 	^ self iconName = anObject iconName
 ]
 
-{ #category : #accessing }
+{ #category : #converting }
 GtPhlowNamedIconStencil >> asDictionaryForExport [
 	^ super asDictionaryForExport
 		at: 'iconName' put: self iconName;
@@ -49,7 +49,7 @@ GtPhlowNamedIconStencil >> iconName: anIconName [
 	iconName := anIconName
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 GtPhlowNamedIconStencil >> initializeFromJSONDictionary: aDictionary [
 	super initializeFromJSONDictionary: aDictionary.
 	
