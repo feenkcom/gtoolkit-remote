@@ -87,7 +87,7 @@ GtPhlowViewSpecification >> actionSpecifications: aCollection [
 ]
 
 { #category : #converting }
-GtPhlowViewSpecification >> asDictionaryForExport [
+GtPhlowViewSpecification >> asBasicViewDataForExport [
 	"Answer the receiver as a dictionary ready for JSON serialisation.
 	Subclasses will override and add to the dictionary"
 	| specificationData |
@@ -100,6 +100,17 @@ GtPhlowViewSpecification >> asDictionaryForExport [
 		at: 'dataTransport' put: dataTransport;
 		at: 'methodSelector' put: methodSelector;
 		yourself.
+	
+	^ specificationData
+]
+
+{ #category : #converting }
+GtPhlowViewSpecification >> asDictionaryForExport [
+	"Answer the receiver as a dictionary ready for JSON serialisation.
+	Subclasses will override and add to the dictionary"
+	| specificationData |
+
+	specificationData := self asBasicViewDataForExport.
 
 	specificationData
 			at: 'actionSpecifications'
@@ -107,6 +118,25 @@ GtPhlowViewSpecification >> asDictionaryForExport [
 				ifNil: [ #() ]
 				ifNotNil: [ :aCollection | 
 					aCollection collect: [ :each | each asDictionaryForExport ] ]) asArray .
+
+	^ specificationData
+]
+
+{ #category : #converting }
+GtPhlowViewSpecification >> asDictionaryForExportWithPhlowDataSource [
+	"Answer the receiver as a dictionary ready for JSON serialisation.
+	Subclasses will override and add to the dictionary"
+	| specificationData |
+
+	specificationData := self asBasicViewDataForExport.
+	specificationData at: 'phlowDataSource' put: self.
+
+	specificationData
+			at: 'actionSpecifications'
+			put: (actionSpecifications 
+				ifNil: [ #() ]
+				ifNotNil: [ :aCollection | 
+					aCollection collect: [ :each | each asDictionaryForExportWithPhlowDataSource ] ]) asArray .
 
 	^ specificationData
 ]

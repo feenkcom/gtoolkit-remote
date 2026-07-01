@@ -23,12 +23,13 @@ GtPhlowTextEditorViewSpecification >> viewFor: aView [
 	| currentView |
 	"Answer the GtPhlowView for the receiver"
 
-	currentView := aView textEditor 
+	currentView := aView textEditor
 		title: title;
 		priority: priority.
-	
-	self dataTransport = self class dataIncluded 
-		ifTrue: [ self configureForLocalDataView: currentView ] 
+
+	self configureViewActionsFor: currentView.
+	self dataTransport = self class dataIncluded
+		ifTrue: [ self configureForLocalDataView: currentView ]
 		ifFalse: [ self configureForLazyDataView: currentView ].
 		
 	^ currentView

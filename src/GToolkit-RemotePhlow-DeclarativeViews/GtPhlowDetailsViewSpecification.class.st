@@ -22,8 +22,8 @@ GtPhlowDetailsViewSpecification class >> fromJSONDictionary: aDictionary [
 ]
 
 { #category : #'as yet unclassified' }
-GtPhlowDetailsViewSpecification >> asDictionaryForExport [
-	^ super asDictionaryForExport
+GtPhlowDetailsViewSpecification >> asBasicViewDataForExport [
+	^ super asBasicViewDataForExport
 		at: 'rowSpecifications' put: ((self rowSpecifications 
 			collect: [ :eachRowSpecification | eachRowSpecification asDictionaryForExport ]) asArray);
 		yourself

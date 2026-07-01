@@ -21,16 +21,16 @@ GtPhlowDeclarativeSpecification class >> typeLabel [
 GtPhlowDeclarativeSpecification >> asDictionaryForExport [
 	"Answer the receiver as a dictionary ready for JSON serialisation.
 	Subclasses will override and add to the dictionary"
-	| dictionaryForExport |
+	| specificationData |
 	
-	dictionaryForExport :=  Dictionary new 
+	specificationData :=  Dictionary new 
 		at: '__typeName' put: self class name;
 		yourself.
 	
 	self class typeLabel ifNotNil: [ :aLabel |
-		dictionaryForExport at: '__typeLabel' put: aLabel ].
+		specificationData at: '__typeLabel' put: aLabel ].
 		
-	^ dictionaryForExport
+	^ specificationData
 ]
 
 { #category : #initialization }

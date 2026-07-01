@@ -11,6 +11,11 @@ Class {
 	#category : #'GToolkit-RemotePhlow-Examples'
 }
 
+{ #category : #'instance creation' }
+GtRemotePhlowDeclarativeActionsInspectableForExamples class >> new [
+	^ self basicNew initialize
+]
+
 { #category : #accessing }
 GtRemotePhlowDeclarativeActionsInspectableForExamples >> collectionOfObjects [
 	^ collectionOfObjects
@@ -27,7 +32,7 @@ GtRemotePhlowDeclarativeActionsInspectableForExamples >> gtListViewWithAllButton
 		itemText: [ :item | item asString ];
 		actionButtonLabel: 'Inspect' action: [ :aButton |
 			aButton phlow spawnObject: 1 ];
-		actionButtonLabel: 'Inspect with tooltip' tooltip: 'Inspect objects' action: [ :aButton |
+		actionButtonLabel: 'Inspect (tooltip)' tooltip: 'Inspect objects' action: [ :aButton |
 			aButton phlow spawnObject: collectionOfObjects ];
 		actionButtonIcon: (GtPhlowGlamorousVectorIconNameStencil new
 			iconName: #playinspect) action: [ :aButton |
@@ -36,10 +41,10 @@ GtRemotePhlowDeclarativeActionsInspectableForExamples >> gtListViewWithAllButton
 			iconName: #playinspect) tooltip: 'Inspect with icon' action: [ :aButton |
 			aButton phlow spawnObject: collectionOfObjects second ];
 		actionButtonIcon: (GtPhlowGlamorousVectorIconNameStencil new
-			iconName: #refresh) label: 'Refresh' action: [ :aButton |
+			iconName: #refresh) label: 'Inspect' action: [ :aButton |
 			aButton phlow spawnObject: collectionOfObjects third ];
 		actionButtonIcon: (GtPhlowGlamorousVectorIconNameStencil new
-			iconName: #refresh) label: 'Refresh tooltip' tooltip: 'Refresh objects' action: [ :aButton |
+			iconName: #refresh) label: 'Inspect (tooltip)' tooltip: 'Inspect objects' action: [ :aButton |
 			aButton phlow spawnObject: collectionOfObjects ]
 ]
 
@@ -71,7 +76,7 @@ GtRemotePhlowDeclarativeActionsInspectableForExamples >> gtListViewWithLabelActi
 		itemText: [ :item | item asString ];
 		actionButtonLabel: 'Inspect' action: [ :aButton |
 			aButton phlow spawnObject: collectionOfObjects first ];
-		actionButtonLabel: 'Inspect with tooltip' tooltip: 'Inspect objects' action: [ :aButton |
+		actionButtonLabel: 'Inspect (tooltip)' tooltip: 'Inspect objects' action: [ :aButton |
 			aButton phlow spawnObject: collectionOfObjects second ]
 ]
 
@@ -85,10 +90,10 @@ GtRemotePhlowDeclarativeActionsInspectableForExamples >> gtListViewWithLabelAndI
 		items: [ collectionOfObjects ];
 		itemText: [ :item | item asString ];
 		actionButtonIcon: (GtPhlowGlamorousVectorIconNameStencil new
-			iconName: #refresh) label: 'Refresh' action: [ :aButton |
+			iconName: #refresh) label: 'Inspect' action: [ :aButton |
 			aButton phlow spawnObject: collectionOfObjects third ];
 		actionButtonIcon: (GtPhlowGlamorousVectorIconNameStencil new
-			iconName: #refresh) label: 'Refresh tooltip' tooltip: 'Refresh objects' action: [ :aButton |
+			iconName: #refresh) label: 'Inspect (tooltip)' tooltip: 'Inspect objects' action: [ :aButton |
 			aButton phlow spawnObject: collectionOfObjects ]
 ]
 
@@ -110,6 +115,7 @@ GtRemotePhlowDeclarativeActionsInspectableForExamples >> gtTextViewWithButtonAct
 { #category : #initialization }
 GtRemotePhlowDeclarativeActionsInspectableForExamples >> initialize [
 	super initialize.
+	
 	string := 'hello world'.
 	collectionOfObjects := #(42 'Hello World' 7)
 ]

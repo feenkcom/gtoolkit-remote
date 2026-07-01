@@ -3,16 +3,6 @@ Extension { #name : #GtPhlowBasicColumnedViewSpecification }
 { #category : #'*GToolkit-RemoteGt' }
 GtPhlowBasicColumnedViewSpecification >> configureColumnedViewFor: aColumnedView [
 
-	aColumnedView 
-		title: title;
-		priority: priority;
-		actionButtonIcon: BrGlamorousVectorIcons refresh
-			id: GtPhlowViewRefreshContentButtonId
-			tooltip: 'Update'
-			action: [ :aButton :aTab | 
-				phlowDataSource flushItemsIterator.
-				aTab phlow fireViewUpdateWish ].
-
 	columnSpecifications
 		withIndexDo: [ :aColumnSpecification :aColumnIndex | 
 			aColumnSpecification 
@@ -22,23 +12,19 @@ GtPhlowBasicColumnedViewSpecification >> configureColumnedViewFor: aColumnedView
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
-GtPhlowBasicColumnedViewSpecification >> instantiateNodeFrom: aNodeValueDictionary [
-	^ GtRemotePhlowColumnedTreeNode fromJSONDictionary: aNodeValueDictionary 
+GtPhlowBasicColumnedViewSpecification >> configureViewActionsFor: aView [
+	super configureViewActionsFor: aView.
+	
+	aView
+		actionButtonIcon: BrGlamorousVectorIcons refresh
+		id: GtPhlowViewRefreshContentButtonId
+		tooltip: 'Update'
+		action: [ :aButton :aTab | 
+			phlowDataSource flushItemsIterator.
+			aTab phlow fireViewUpdateWish ]
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
-GtPhlowBasicColumnedViewSpecification >> viewFor: aView [
-	"Answer the GtPhlowView for the receiver"
-	| currentView |
-	
-	currentView := aView columnedList
-		items: [ (GtRemoteInspectorListingBufferedStream 
-			declarativeView: self) collect: [ :cellValuesDictionary |
-				cellValuesDictionary collect: [ :aCellValueDictionary |
-					GtRemotePhlowItemValue 
-						fromJSONDictionary: aCellValueDictionary ] ] ].
-	
-	self configureColumnedViewFor: currentView.
-	
-	^ currentView
+GtPhlowBasicColumnedViewSpecification >> instantiateNodeFrom: aNodeValueDictionary [
+	^ GtRemotePhlowColumnedTreeNode fromJSONDictionary: aNodeValueDictionary 
 ]

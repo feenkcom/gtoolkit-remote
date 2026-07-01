@@ -8,6 +8,14 @@ GtPhlowViewSpecification >> asJSONForExport [
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
+GtPhlowViewSpecification >> configureViewActionsFor: aView [
+	self actionSpecifications ifNil: [ ^ self ].
+
+	self actionSpecifications do: [ :anActionSpecification |
+		aView addPhlowAction: (anActionSpecification actionFor: GtPhlowAction noAction) ]
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
 GtPhlowViewSpecification class >> fromDictionary: viewDictionary [
 	"Answer the view specified by viewDictionary"
 	| viewName |

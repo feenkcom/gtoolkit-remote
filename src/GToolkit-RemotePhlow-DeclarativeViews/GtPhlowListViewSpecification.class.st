@@ -20,14 +20,3 @@ GtPhlowListViewSpecification class >> fromJSONDictionary: aDictionary [
 	list := super fromJSONDictionary: aDictionary.
 	^list
 ]
-
-{ #category : #converting }
-GtPhlowListViewSpecification >> asDictionaryForExport [ 
-
-	| dictionary |
-
-	dictionary := super asDictionaryForExport.
-	"self dataTransport = self class dataIncluded ifTrue: [ 
-		dictionary at: #items put: self retriveFormattedItems ]."
-	^dictionary
-]

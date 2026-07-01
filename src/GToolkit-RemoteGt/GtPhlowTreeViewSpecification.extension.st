@@ -1,6 +1,19 @@
 Extension { #name : #GtPhlowTreeViewSpecification }
 
 { #category : #'*GToolkit-RemoteGt' }
+GtPhlowTreeViewSpecification >> configureViewActionsFor: aView [
+	super configureViewActionsFor: aView.
+	
+	aView
+			actionButtonIcon: BrGlamorousVectorIcons refresh
+			id: GtPhlowViewRefreshContentButtonId
+			tooltip: 'Update'
+			action: [ :aButton :aTab |
+				phlowDataSource flushItemsIterator.
+				aTab phlow fireViewUpdateWish ]
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
 GtPhlowTreeViewSpecification >> ensureChildrenLoadedForNode: aTreeNode [ 
 	aTreeNode childNodes ifNotNil: [ :currentChildren |
 		^ self ].
@@ -25,27 +38,22 @@ GtPhlowTreeViewSpecification >> viewFor: aView [
 	treeView := aView tree
 		title: title;
 		priority: priority;
-		items: [ ((GtRemoteInspectorListingBufferedStream 
+		items: [ ((GtRemoteInspectorListingBufferedStream
 			declarativeView: self) collect: [ :aNodeValueDictionary |
-				GtRemotePhlowTreeNode 
+				GtRemotePhlowTreeNode
 					fromJSONDictionary: aNodeValueDictionary ]) toArray wait ];
-		itemType: [ :anItemTypeFactory :aDataNode :aDataNodeIndex | 
+		itemType: [ :anItemTypeFactory :aDataNode :aDataNodeIndex |
 			aDataNode value nodeValue isErrorItemValue
 				ifTrue: [
-					GtPhlowExceptionItemType 
+					GtPhlowExceptionItemType
 						exception: aDataNode value nodeValue remoteExceptionWrapper ]
 				ifFalse: [ anItemTypeFactory default ] ];
 		itemText: [ :aTreeNode | aTreeNode nodeValue itemText ];
 		children: [ :aTreeNode |
 			self ensureChildrenLoadedForNode: aTreeNode.
-			aTreeNode childNodes ];
-		actionButtonIcon: BrGlamorousVectorIcons refresh
-			id: GtPhlowViewRefreshContentButtonId
-			tooltip: 'Update'
-			action: [ :aButton :aTab | 
-				phlowDataSource flushItemsIterator.
-				aTab phlow fireViewUpdateWish ].
-	
+			aTreeNode childNodes ].
+
+	self configureViewActionsFor: treeView.
 	self configureViewSendFor: treeView.
 	
 	^ treeView
