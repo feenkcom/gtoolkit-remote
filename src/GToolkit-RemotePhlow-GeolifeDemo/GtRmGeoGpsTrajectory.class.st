@@ -27,6 +27,13 @@ GtRmGeoGpsTrajectory >> asJsonDictionary [
 ]
 
 { #category : #accessing }
+GtRmGeoGpsTrajectory >> asRemoteObject [
+	"Only define it for the demo"
+	^ GtRsrProxyServiceClient bareProxyObjectAt: self
+				ifAbsent: [self asGtBareProxyObject]
+]
+
+{ #category : #accessing }
 GtRmGeoGpsTrajectory >> distance [
 	^ self records distance
 ]
@@ -44,7 +51,7 @@ GtRmGeoGpsTrajectory >> gtViewGpsRecordsFor: aView [
 		title: 'Records';
 		priority: 10;
 		items: [ self records items ];
-		column: 'Timestamp' text: [ :aRecord | aRecord timestamp ];
+		column: 'Timestamp' text: [ :aRecord | aRecord timestamp gtDisplayString ];
 		column: 'Latitude' text: [ :aRecord | aRecord latitude ];
 		column: 'Longitude' text: [ :aRecord | aRecord longitude ]
 ]

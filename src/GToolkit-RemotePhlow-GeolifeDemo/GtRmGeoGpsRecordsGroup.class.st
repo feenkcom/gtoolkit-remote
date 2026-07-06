@@ -4,6 +4,11 @@ Class {
 	#category : #'GToolkit-RemotePhlow-GeolifeDemo'
 }
 
+{ #category : #replication }
+GtRmGeoGpsRecordsGroup class >> replicationSpec [
+	^#(#(#cache #forwarder))
+]
+
 { #category : #accessing }
 GtRmGeoGpsRecordsGroup >> computeDistance [
 	| distance |
@@ -71,7 +76,7 @@ GtRmGeoGpsRecordsGroup >> gtItemsFor: aView [
 	^ aView columnedList
 		title: 'Records';
 		items: [ self items ];
-		column: 'Timestamp' text: [ :aRecord | aRecord timestamp ];
+		column: 'Timestamp' text: [ :aRecord | aRecord timestamp gtDisplayString ];
 		column: 'Latitude' text: [ :aRecord | aRecord latitude ];
 		column: 'Longitude' text: [ :aRecord | aRecord longitude ]
 ]

@@ -18,7 +18,7 @@ GtRmGeoGpsTrajectory >> gtViewPathShapeFor: aView [
 		title: 'Path Shape';
 		priority: 55;
 		stencil: [GtRmGeoGpsPathsStencil new
-			pathPoints:  self records]
+			pathPoints:  self records ]
 ]
 
 { #category : #'*GToolkit-RemotePhlow-GeolifeDemo-GTSpecific' }
