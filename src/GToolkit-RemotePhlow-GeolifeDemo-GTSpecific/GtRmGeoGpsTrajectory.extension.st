@@ -1,6 +1,13 @@
 Extension { #name : #GtRmGeoGpsTrajectory }
 
 { #category : #'*GToolkit-RemotePhlow-GeolifeDemo-GTSpecific' }
+GtRmGeoGpsTrajectory >> asRemoteObject [
+	"Only define it for the demo"
+	^ GtRsrProxyServiceClient bareProxyObjectAt: self
+				ifAbsent: [self asGtBareProxyObject]
+]
+
+{ #category : #'*GToolkit-RemotePhlow-GeolifeDemo-GTSpecific' }
 GtRmGeoGpsTrajectory >> gtViewMapFor: aView [
 	<gtView>
 	
@@ -18,7 +25,7 @@ GtRmGeoGpsTrajectory >> gtViewPathShapeFor: aView [
 		title: 'Path Shape';
 		priority: 55;
 		stencil: [GtRmGeoGpsPathsStencil new
-			pathPoints:  self records]
+			pathPoints:  self records ]
 ]
 
 { #category : #'*GToolkit-RemotePhlow-GeolifeDemo-GTSpecific' }
