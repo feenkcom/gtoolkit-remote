@@ -27,13 +27,6 @@ GtRmGeoGpsTrajectory >> asJsonDictionary [
 ]
 
 { #category : #accessing }
-GtRmGeoGpsTrajectory >> asRemoteObject [
-	"Only define it for the demo"
-	^ GtRsrProxyServiceClient bareProxyObjectAt: self
-				ifAbsent: [self asGtBareProxyObject]
-]
-
-{ #category : #accessing }
 GtRmGeoGpsTrajectory >> distance [
 	^ self records distance
 ]

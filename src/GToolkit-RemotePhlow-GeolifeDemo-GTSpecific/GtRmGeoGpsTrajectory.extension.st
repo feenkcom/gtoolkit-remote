@@ -1,6 +1,13 @@
 Extension { #name : #GtRmGeoGpsTrajectory }
 
 { #category : #'*GToolkit-RemotePhlow-GeolifeDemo-GTSpecific' }
+GtRmGeoGpsTrajectory >> asRemoteObject [
+	"Only define it for the demo"
+	^ GtRsrProxyServiceClient bareProxyObjectAt: self
+				ifAbsent: [self asGtBareProxyObject]
+]
+
+{ #category : #'*GToolkit-RemotePhlow-GeolifeDemo-GTSpecific' }
 GtRmGeoGpsTrajectory >> gtViewMapFor: aView [
 	<gtView>
 	
