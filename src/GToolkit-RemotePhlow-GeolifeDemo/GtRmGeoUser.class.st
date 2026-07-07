@@ -143,3 +143,9 @@ GtRmGeoUser >> trajectoriesAsJsonData [
 	^ (self trajectories collect: [ :aTrajectory |
 			aTrajectory asJsonDictionary ]) asArray
 ]
+
+{ #category : #accessing }
+GtRmGeoUser >> trajectoryNamed: aString [
+	^ self trajectories items detect: [ :each |
+			each targetFolderName = aString ]
+]
