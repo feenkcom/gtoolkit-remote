@@ -51,7 +51,7 @@ GtRemotePhlowView class >> handledExceptions [
 GtRemotePhlowView >> action: anOneArgBlock [
 	| newPhlowAction |
 	newPhlowAction := anOneArgBlock value: GtRemotePhlowAction noAction.
-	newPhlowAction priority: GtPhlowAction defaultPriority + self actions size + 1.
+	newPhlowAction priority: GtRemotePhlowAction defaultPriority + self actions size + 1.
 	self addPhlowAction: newPhlowAction
 ]
 

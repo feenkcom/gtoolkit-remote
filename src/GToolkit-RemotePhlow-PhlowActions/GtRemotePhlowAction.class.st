@@ -11,6 +11,11 @@ Class {
 	#category : #'GToolkit-RemotePhlow-PhlowActions'
 }
 
+{ #category : #accessing }
+GtRemotePhlowAction class >> defaultPriority [
+	^ 50
+]
+
 { #category : #'instance creation' }
 GtRemotePhlowAction class >> empty [
 	"Convenience --by analogy with views"
