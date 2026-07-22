@@ -12,6 +12,18 @@ Class {
 }
 
 { #category : #accessing }
+GtRemotePhlowAction class >> defaultPriority [
+	^ 50
+]
+
+{ #category : #'instance creation' }
+GtRemotePhlowAction class >> empty [
+	"Convenience --by analogy with views"
+
+	^ self noAction
+]
+
+{ #category : #accessing }
 GtRemotePhlowAction class >> handledExceptions [
 	"Explicitly catch here Halt and Warning as in case an action raising 
 	those exceptions is embedded in the debugger it will trigger an
@@ -19,6 +31,11 @@ GtRemotePhlowAction class >> handledExceptions [
 	https://github.com/feenkcom/gtoolkit/issues/4383"
 	
 	^ Error, Halt, Warning
+]
+
+{ #category : #'instance creation' }
+GtRemotePhlowAction class >> noAction [
+	^ self new noAction
 ]
 
 { #category : #accessing }
@@ -70,6 +87,13 @@ GtRemotePhlowAction >> definingSelector [
 GtRemotePhlowAction >> definingSelector: aSelector [
 
 	definingSelector := aSelector
+]
+
+{ #category : #decorating }
+GtRemotePhlowAction >> empty [
+	"Convenience --by analogy with views"
+
+	^ self noAction
 ]
 
 { #category : #accessing }

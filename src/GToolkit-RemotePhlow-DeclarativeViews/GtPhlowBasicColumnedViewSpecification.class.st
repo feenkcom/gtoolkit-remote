@@ -23,8 +23,8 @@ GtPhlowBasicColumnedViewSpecification class >> fromJSONDictionary: aDictionary [
 ]
 
 { #category : #converting }
-GtPhlowBasicColumnedViewSpecification >> asDictionaryForExport [ 
-	^ super asDictionaryForExport 
+GtPhlowBasicColumnedViewSpecification >> asBasicViewDataForExport [ 
+	^ super asBasicViewDataForExport 
 		at: 'columnSpecifications' put: (self columnSpecifications
 			collect: [ :aColumnSpecification |
 				aColumnSpecification asDictionaryForExport ]);

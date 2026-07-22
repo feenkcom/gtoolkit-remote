@@ -34,7 +34,8 @@ Class {
 		'methodSelector',
 		'title',
 		'priority',
-		'dataTransport'
+		'dataTransport',
+		'actionSpecifications'
 	],
 	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
@@ -57,30 +58,87 @@ GtPhlowViewSpecification class >> dataLazy [
 GtPhlowViewSpecification class >> fromJSONDictionary: aDictionary [
 	"Answer an instance of the receiver from the supplied dictionary.
 	Subclasses will override this to add their specific attributes"
+	| specification |
 
-	^self new 
+	specification := self new
 		title: (aDictionary at: 'title');
 		priority: (aDictionary at: 'priority');
 		dataTransport: (aDictionary at: 'dataTransport');
 		methodSelector: (aDictionary at: 'methodSelector');
-		phlowDataSource: (aDictionary 
+		phlowDataSource: (aDictionary
 			at: 'phlowDataSource' ifAbsent: [ nil ]);
-		yourself
+		yourself.
+
+	(aDictionary includesKey: 'actionSpecifications') ifTrue: [
+		specification actionSpecifications: ((aDictionary at: 'actionSpecifications')
+			collect: [ :each | GtPhlowActionSpecification fromDictionary: each ]) ].
+
+	^ specification
+]
+
+{ #category : #accessing }
+GtPhlowViewSpecification >> actionSpecifications [
+	^ actionSpecifications
+]
+
+{ #category : #accessing }
+GtPhlowViewSpecification >> actionSpecifications: aCollection [
+	actionSpecifications := aCollection
 ]
 
 { #category : #converting }
-GtPhlowViewSpecification >> asDictionaryForExport [
+GtPhlowViewSpecification >> asBasicViewDataForExport [
 	"Answer the receiver as a dictionary ready for JSON serialisation.
 	Subclasses will override and add to the dictionary"
+	| specificationData |
 
-	^ Dictionary new 
+	specificationData := Dictionary new
 		at: 'viewName' put: self viewName;
 		at: '__typeName' put: self class name;
 		at: 'title' put: title;
 		at: 'priority' put: priority;
 		at: 'dataTransport' put: dataTransport;
 		at: 'methodSelector' put: methodSelector;
-		yourself
+		yourself.
+	
+	^ specificationData
+]
+
+{ #category : #converting }
+GtPhlowViewSpecification >> asDictionaryForExport [
+	"Answer the receiver as a dictionary ready for JSON serialisation.
+	Subclasses will override and add to the dictionary"
+	| specificationData |
+
+	specificationData := self asBasicViewDataForExport.
+
+	specificationData
+			at: 'actionSpecifications'
+			put: (actionSpecifications 
+				ifNil: [ #() ]
+				ifNotNil: [ :aCollection | 
+					aCollection collect: [ :each | each asDictionaryForExport ] ]) asArray .
+
+	^ specificationData
+]
+
+{ #category : #converting }
+GtPhlowViewSpecification >> asDictionaryForExportWithPhlowDataSource [
+	"Answer the receiver as a dictionary ready for JSON serialisation.
+	Subclasses will override and add to the dictionary"
+	| specificationData |
+
+	specificationData := self asBasicViewDataForExport.
+	specificationData at: 'phlowDataSource' put: self.
+
+	specificationData
+			at: 'actionSpecifications'
+			put: (actionSpecifications 
+				ifNil: [ #() ]
+				ifNotNil: [ :aCollection | 
+					aCollection collect: [ :each | each asDictionaryForExportWithPhlowDataSource ] ]) asArray .
+
+	^ specificationData
 ]
 
 { #category : #accessing }

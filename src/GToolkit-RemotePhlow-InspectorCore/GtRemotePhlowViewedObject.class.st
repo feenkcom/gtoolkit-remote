@@ -137,12 +137,7 @@ GtRemotePhlowViewedObject >> getActionSpecificationsWithPhlowDataSource [
 	| actionsSpecifications |
 	actionsSpecifications := (self actionSpecificationsBySelector 
 		collect: [ :anActionSpecification |
-			(self specificationDataForAction: anActionSpecification)
-				ifNotNil: [ :aDictionary |
-					aDictionary 
-						at: 'phlowDataSource' 
-							put: anActionSpecification phlowDataSource;
-						yourself ] ]).
+			self specificationDataWithPhlowDataSourceForAction: anActionSpecification ]).
 	^ Dictionary new
 		at: 'actions' put: actionsSpecifications asArray;
 		yourself
@@ -228,11 +223,7 @@ GtRemotePhlowViewedObject >> getViewSpecificationWithPhlowDataSource [
 	| viewDeclarations |
 	viewDeclarations := (self viewSpecificationsBySelector 
 		collect: [ :aViewSpecification |
-			(self specificationDataForView: aViewSpecification)
-				ifNotNil: [ :aDictionary |
-					aDictionary 
-						at: 'phlowDataSource' put: aViewSpecification;
-						yourself ] ]).
+			self specificationDataWithPhlowDataSourceForView: aViewSpecification]).
 	^ Dictionary new
 		at: 'views' put: viewDeclarations asArray;
 		yourself
@@ -364,6 +355,18 @@ GtRemotePhlowViewedObject >> specificationDataForAction: anActionSpecification [
 GtRemotePhlowViewedObject >> specificationDataForView: aViewSpecification [
 
 	^ aViewSpecification asDictionaryForExport
+]
+
+{ #category : #utils }
+GtRemotePhlowViewedObject >> specificationDataWithPhlowDataSourceForAction: anActionSpecification [
+
+	^ anActionSpecification asDictionaryForExportWithPhlowDataSource
+]
+
+{ #category : #utils }
+GtRemotePhlowViewedObject >> specificationDataWithPhlowDataSourceForView: aViewSpecification [
+
+	^ aViewSpecification asDictionaryForExportWithPhlowDataSource
 ]
 
 { #category : #accessing }

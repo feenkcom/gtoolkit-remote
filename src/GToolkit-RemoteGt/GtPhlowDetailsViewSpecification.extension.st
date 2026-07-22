@@ -1,6 +1,19 @@
 Extension { #name : #GtPhlowDetailsViewSpecification }
 
 { #category : #'*GToolkit-RemoteGt' }
+GtPhlowDetailsViewSpecification >> configureViewActionsFor: aView [
+	super configureViewActionsFor: aView.
+	
+	aView
+		actionButtonIcon: BrGlamorousVectorIcons refresh
+		id: GtPhlowViewRefreshContentButtonId
+		tooltip: 'Update'
+		action: [ :aButton :aTab |
+				self flushCachedData.
+				aTab phlow fireViewUpdateWish ].
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
 GtPhlowDetailsViewSpecification >> viewFor: aView [
 	| currentView |
 	
@@ -12,19 +25,13 @@ GtPhlowDetailsViewSpecification >> viewFor: aView [
 		currentView
 			row: aRowSpecification name
 			value: [ aRowSpecification ]
-			text: [ :eachValue | 
+			text: [ :eachValue |
 				self retrieveRowTextAt: aRowSpecification index ] ].
 	
 	currentView localSend: [ :aPhlowRow :aRowSpecification |
 		self retrieveRowNodeRawValueAtRowIndex: aRowSpecification index].
-		
-	currentView
-		actionButtonIcon: BrGlamorousVectorIcons refresh
-			id: GtPhlowViewRefreshContentButtonId
-			tooltip: 'Update'
-			action: [ :aButton :aTab | 
-				self flushCachedData.
-				aTab phlow fireViewUpdateWish ].
+
+	self configureViewActionsFor: currentView.
 	
 	^ currentView
 ]

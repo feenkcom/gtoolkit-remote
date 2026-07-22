@@ -1,6 +1,19 @@
 Extension { #name : #GtPhlowListViewSpecification }
 
 { #category : #'*GToolkit-RemoteGt' }
+GtPhlowListViewSpecification >> configureViewActionsFor: aView [
+	super configureViewActionsFor: aView.
+	
+	aView
+			actionButtonIcon: BrGlamorousVectorIcons refresh
+			id: GtPhlowViewRefreshContentButtonId
+			tooltip: 'Update'
+			action: [ :aButton :aTab |
+				phlowDataSource flushItemsIterator.
+				aTab phlow fireViewUpdateWish ]
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
 GtPhlowListViewSpecification >> extractRemoteSendObjectFromNode: aTreeNode atSelection: aSelection [ 
 	^ self retriveSentItemAt: aSelection first
 ]
@@ -11,27 +24,22 @@ GtPhlowListViewSpecification >> viewFor: aView [
 
 	| listView |
 
-	listView := aView list 
+	listView := aView list
 		title: title;
 		priority: priority;
 		items: [ (GtRemoteInspectorListingBufferedStream declarativeView: self)
 			collect: [ :aNodeDictionary |
 				GtRemotePhlowDataNode fromJSONDictionary: aNodeDictionary ] ];
-		itemType: [ :anItemTypeFactory :aDataNode :aDataNodeIndex | 
+		itemType: [ :anItemTypeFactory :aDataNode :aDataNodeIndex |
 			aDataNode nodeValue isErrorItemValue
 				ifTrue: [
-					GtPhlowExceptionItemType 
+					GtPhlowExceptionItemType
 						exception: aDataNode nodeValue remoteExceptionWrapper ]
 				ifFalse: [ anItemTypeFactory default ] ];
-		itemText: [ :aDataNode | aDataNode nodeValue itemText ];
-		actionButtonIcon: BrGlamorousVectorIcons refresh 
-			id: GtPhlowViewRefreshContentButtonId
-			tooltip: 'Update'
-			action: [ :aButton :aTab | 
-				phlowDataSource flushItemsIterator.
-				aTab phlow fireViewUpdateWish ].
-				
+		itemText: [ :aDataNode | aDataNode nodeValue itemText ].
+
+	self configureViewActionsFor: listView.
 	self configureViewSendFor: listView.
-	
-	^listView
+
+	^ listView
 ]

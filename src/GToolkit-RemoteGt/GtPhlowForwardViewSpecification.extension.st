@@ -15,11 +15,13 @@ GtPhlowForwardViewSpecification >> viewFor: aView [
 
 	| list |
 
-	list := aView forward 
+	list := aView forward
 		title: title;
 		priority: priority;
 		object: [ self ];
 		view: #gtComputedViewFor:.
+
+	self configureViewActionsFor: list.
 		
-	^list
+	^ list
 ]

@@ -4,13 +4,14 @@ Extension { #name : #GtPhlowTextView }
 GtPhlowTextView >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
+	| viewSpecification |
 
-	^ GtPhlowTextViewSpecification new 
-		title: self title;
-		priority: self priority;
-		phlowDataSource: (GtRemotePhlowDeclarativeTextualViewDataSource 
+	viewSpecification := GtPhlowTextViewSpecification new
+		phlowDataSource: (GtRemotePhlowDeclarativeTextualViewDataSource
 			forPhlowView: self);
 		dataTransport: GtPhlowViewSpecification dataLazy.
+	self configureGenericViewSpecificationOn: viewSpecification.
+	^ viewSpecification
 ]
 
 { #category : #'*GToolkit-RemoteGt' }

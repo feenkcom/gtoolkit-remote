@@ -30,13 +30,17 @@ GtPhlowColumnedTreeViewSpecification >> viewFor: aView [
 	| currentView |
 	
 	currentView := aView columnedTree.
-	currentView items: [
-		((GtRemoteInspectorListingBufferedStream declarativeView: self)
-			collect: [ :aColumnedTreeNodeDictionary |
-				self instantiateNodeFrom: aColumnedTreeNodeDictionary ]) toArray wait ].
+	currentView 
+		title: title;
+		priority: priority;
+		items: [
+			((GtRemoteInspectorListingBufferedStream declarativeView: self)
+				collect: [ :aColumnedTreeNodeDictionary |
+					self instantiateNodeFrom: aColumnedTreeNodeDictionary ]) toArray wait ].
 	
 	self configureColumnedViewFor: currentView.
 	self configureTreeViewFor: currentView.
+	self configureViewActionsFor: currentView.
 	self configureViewSendFor: currentView.
 	
 	^ currentView

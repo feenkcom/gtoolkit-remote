@@ -22,6 +22,18 @@ GtPhlowActionSpecification >> asDictionaryForExport [
 		yourself
 ]
 
+{ #category : #converting }
+GtPhlowActionSpecification >> asDictionaryForExportWithPhlowDataSource [
+	| specificationData|
+	specificationData := self asDictionaryForExport.
+	
+	specificationData 
+			at: 'phlowDataSource' 
+			put: self phlowDataSource.
+	
+	^ specificationData
+]
+
 { #category : #initialization }
 GtPhlowActionSpecification >> initializeFromInspector: anInspector [
 ]

@@ -32,10 +32,10 @@ GtPhlowTextEditorViewSpecification class >> fromJSONDictionary: aDictionary [
 ]
 
 { #category : #converting }
-GtPhlowTextEditorViewSpecification >> asDictionaryForExport [ 
+GtPhlowTextEditorViewSpecification >> asBasicViewDataForExport [ 
 	| dictionary |
 
-	dictionary := super asDictionaryForExport.
+	dictionary := super asBasicViewDataForExport.
 	self dataTransport = self class dataIncluded ifTrue: [ 
 		dictionary at: 'string' put: string.
 		textStylerSpecification ifNotNil: [

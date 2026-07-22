@@ -4,17 +4,18 @@ Class {
 	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
 
-{ #category : #accessing }
+{ #category : #converting }
 GtRemotePhlowTextView >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView.
 	nil = not supported"
+	| viewSpecification |
 
-	^ GtPhlowTextViewSpecification new 
-		title: self title;
-		priority: self priority;
-		phlowDataSource: (GtRemotePhlowDeclarativeTextualViewDataSource 
+	viewSpecification := GtPhlowTextViewSpecification new
+		phlowDataSource: (GtRemotePhlowDeclarativeTextualViewDataSource
 			forPhlowView: self);
 		dataTransport: GtPhlowViewSpecification dataLazy.
+	self configureGenericViewSpecificationOn: viewSpecification.
+	^ viewSpecification
 ]
 
 { #category : #accessing }

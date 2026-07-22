@@ -8,20 +8,28 @@ GtPhlowTextViewSpecification >> configureForLazyDataView: aTextView [
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
+GtPhlowTextViewSpecification >> configureViewActionsFor: aView [
+	super configureViewActionsFor: aView.
+	
+	aView
+		actionButtonIcon: BrGlamorousVectorIcons refresh
+		id: GtPhlowViewRefreshContentButtonId
+		tooltip: 'Update'
+		action: [ :aButton :aTab |
+			aTab phlow fireViewUpdateWish ]
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
 GtPhlowTextViewSpecification >> viewFor: aView [
 	| currentView |
 	"Answer the GtPhlowView for the receiver"
 
-	currentView := aView text 
+	currentView := aView text
 		title: title;
-		priority: priority;
-		actionButtonIcon: BrGlamorousVectorIcons refresh
-			id: GtPhlowViewRefreshContentButtonId
-			tooltip: 'Update'
-			action: [ :aButton :aTab | 
-				aTab phlow fireViewUpdateWish ].
-	
-	self configureForLazyDataView: currentView .
-		
+		priority: priority.
+
+	self configureViewActionsFor: currentView.
+	self configureForLazyDataView: currentView.
+
 	^ currentView
 ]

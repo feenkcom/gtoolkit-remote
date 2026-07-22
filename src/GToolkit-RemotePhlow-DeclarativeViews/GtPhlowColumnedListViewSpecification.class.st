@@ -34,8 +34,8 @@ GtPhlowColumnedListViewSpecification class >> fromJSONDictionary: aDictionary [
 ]
 
 { #category : #converting }
-GtPhlowColumnedListViewSpecification >> asDictionaryForExport [ 
-	^ super asDictionaryForExport 
+GtPhlowColumnedListViewSpecification >> asBasicViewDataForExport [ 
+	^ super asBasicViewDataForExport 
 		at: 'horizontalScrollingEnabled' put: horizontalScrollingEnabled;
 		yourself
 ]

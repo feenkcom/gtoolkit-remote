@@ -10,12 +10,13 @@ Class {
 { #category : #converting }
 GtRemotePhlowViewErrorView >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView."
+	| viewSpecification |
 
-	^GtPhlowViewErrorViewSpecification new 
-		title: self title;
-		priority: self priority;
+	viewSpecification := GtPhlowViewErrorViewSpecification new
 		errorMessage: self errorMessage;
 		dataTransport: GtPhlowViewSpecification dataIncluded.
+	self configureGenericViewSpecificationOn: viewSpecification.
+	^ viewSpecification
 ]
 
 { #category : #accessing }

@@ -15,19 +15,19 @@ GtPhlowButtonActionSpecification class >> typeLabel [
 
 { #category : #converting }
 GtPhlowButtonActionSpecification >> asDictionaryForExport [
-	| dictionaryForExport|
-	dictionaryForExport := super asDictionaryForExport.
+	| specificationData|
+	specificationData := super asDictionaryForExport.
 	
 	label ifNotNil: [ :aText |
-		dictionaryForExport at: 'label' put: aText ].
+		specificationData at: 'label' put: aText ].
 	iconStencil ifNotNil: [ :anIconStencil |
-		dictionaryForExport 
+		specificationData 
 			at: 'iconStencil' 
 			put: anIconStencil asDictionaryForExport ].
 	tooltipText ifNotNil: [ :aText |
-		dictionaryForExport at: 'tooltipText' put: aText ].
+		specificationData at: 'tooltipText' put: aText ].
 
-	^ dictionaryForExport
+	^ specificationData
 ]
 
 { #category : #accessing }

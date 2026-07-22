@@ -5,7 +5,9 @@ GtPhlowButtonAction >> asGtDeclarativeAction [
 	^ GtPhlowButtonActionSpecification new
 		priority: self priority;
 		label: label;
-		iconStencil: icon;
+		iconStencil: (((icon isKindOf: BlElement) or: [ icon isKindOf: BlStencil])
+			ifTrue: [ GtPhlowPngBytesIconStencil fromElement: icon asElement ] 
+			ifFalse: [ icon ]);
 		in: [ :aSpecification | 
 			self tooltipBuilder 
 				applyToActionSpecification: aSpecification ];

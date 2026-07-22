@@ -15,8 +15,8 @@ GtPhlowViewErrorViewSpecification class >> fromJSONDictionary: aDictionary [
 ]
 
 { #category : #converting }
-GtPhlowViewErrorViewSpecification >> asDictionaryForExport [ 
-	^ super asDictionaryForExport
+GtPhlowViewErrorViewSpecification >> asBasicViewDataForExport [ 
+	^ super asBasicViewDataForExport
 		at: 'errorMessage' put: errorMessage;
 		yourself
 ]

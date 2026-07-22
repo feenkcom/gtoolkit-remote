@@ -19,11 +19,11 @@ GtPhlowBitmapViewSpecification class >> fromJSONDictionary: aDictionary [
 ]
 
 { #category : #converting }
-GtPhlowBitmapViewSpecification >> asDictionaryForExport [ 
+GtPhlowBitmapViewSpecification >> asBasicViewDataForExport [ 
 
 	| dictionary |
 
-	dictionary := super asDictionaryForExport.
+	dictionary := super asBasicViewDataForExport.
 	self dataTransport = self class dataIncluded ifTrue: [ 
 		dictionary at: 'bitmap' put: bitmap asDictionaryForExport ].
 		

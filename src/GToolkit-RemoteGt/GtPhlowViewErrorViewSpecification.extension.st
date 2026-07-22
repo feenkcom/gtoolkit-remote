@@ -31,10 +31,14 @@ GtPhlowViewErrorViewSpecification >> createErrorElement [
 { #category : #'*GToolkit-RemoteGt' }
 GtPhlowViewErrorViewSpecification >> viewFor: aView [
 	"Answer the GtPhlowView for the receiver"
+	| currentView |
 
-	^aView explicit 
+	currentView := aView explicit
 		title: title;
 		priority: priority;
-		stencil: [
-			self createErrorElement ]
+		stencil: [ self createErrorElement ].
+
+	self configureViewActionsFor: currentView.
+
+	^ currentView
 ]
