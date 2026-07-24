@@ -59,6 +59,11 @@ GtRemotePhlowProtoView >> textEditor [
 	^ self declarativeViewOfType: GtRemotePhlowTextEditorView
 ]
 
+{ #category : #converting }
+GtRemotePhlowProtoView >> transformIfNeededForLocalRendering [
+	^ self
+]
+
 { #category : #decorating }
 GtRemotePhlowProtoView >> tree [
 
