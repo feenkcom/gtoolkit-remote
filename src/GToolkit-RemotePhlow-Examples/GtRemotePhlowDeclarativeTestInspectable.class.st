@@ -609,19 +609,7 @@ GtRemotePhlowDeclarativeTestInspectable >> objectsForListWithStyledTextForRemote
 
 { #category : #accessing }
 GtRemotePhlowDeclarativeTestInspectable >> pictureBytes [
-	| element form |
-	element := (BlElement new)
-				border: (BlBorder paint: Color red width: 5);
-				background: (BlPaintBackground new paint: ((BlRadialGradientPaint new)
-									stops: 
-											{0 -> Color blue.
-											1 -> Color white};
-									center: 100 @ 100;
-									radius: 150));
-				extent: 400 @ 300.
-	form := (BlExporter form element: element) export.
-	^ByteArray
-		streamContents: [:stream | PNGReadWriter putForm: form onStream: stream]
+	^ GtRemotePhlowPictureViewTestObject pictureBytes
 ]
 
 { #category : #accessing }
