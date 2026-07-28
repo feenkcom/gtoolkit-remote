@@ -18,6 +18,8 @@ BaselineOfGToolkitRemote >> baseline: spec [
 		spec 
 			package: 'GToolkit-RemotePhlow-DeclarativeSpecification';
 			package: 'GToolkit-RemotePhlow-Text';
+			package: 'GToolkit-RemotePhlow-Stencils' with: [
+				spec requires: #('GToolkit-RemotePhlow-DeclarativeSpecification')];
 			package: 'GToolkit-RemotePhlow-Icons' with: [
 				spec requires: #('GToolkit-RemotePhlow-DeclarativeSpecification')];
 			package: 'GToolkit-RemotePhlow-DeclarativeActions'with: [
@@ -47,6 +49,8 @@ BaselineOfGToolkitRemote >> baseline: spec [
 				spec requires: #('GToolkit-RemoteGt') ];
 			package: 'GToolkit-RemoteGt-InspectorCore' with: [
 				spec requires: #('GToolkit-RemoteGt') ];
+			package: 'GToolkit-RemoteGt-Stencils' with: [
+				spec requires: #('GToolkit-RemotePhlow-Stencils')];
 			package: 'GToolkit-RemotePhlow-GeolifeDemo';
 			package: 'GToolkit-RemotePhlow-GeolifeDemo-GTSpecific' with: [
 				spec requires: #('GToolkit-RemotePhlow-GeolifeDemo') ];

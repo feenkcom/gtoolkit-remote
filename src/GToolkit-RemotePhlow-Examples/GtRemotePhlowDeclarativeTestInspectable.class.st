@@ -429,6 +429,15 @@ GtRemotePhlowDeclarativeTestInspectable >> gtListWithStyledTextFor: aView [
 		itemText: [ :item | item ]
 ]
 
+{ #category : #views }
+GtRemotePhlowDeclarativeTestInspectable >> gtPictureFor: aView [
+	<gtView>
+	^(aView picture)
+		title: 'Picture';
+		priority: 50;
+		content: [self pictureBytes]
+]
+
 { #category : #inspecting }
 GtRemotePhlowDeclarativeTestInspectable >> gtStringInTextEditorViewFor: aView [
 	<gtView>
@@ -596,6 +605,23 @@ GtRemotePhlowDeclarativeTestInspectable >> objectsForListWithStyledTextForRemote
 			self styledPhlowTextForRemoteComparison.
 			self styledPhlowTextForRemoteComparison
 		}
+]
+
+{ #category : #accessing }
+GtRemotePhlowDeclarativeTestInspectable >> pictureBytes [
+	| element form |
+	element := (BlElement new)
+				border: (BlBorder paint: Color red width: 5);
+				background: (BlPaintBackground new paint: ((BlRadialGradientPaint new)
+									stops: 
+											{0 -> Color blue.
+											1 -> Color white};
+									center: 100 @ 100;
+									radius: 150));
+				extent: 400 @ 300.
+	form := (BlExporter form element: element) export.
+	^ByteArray
+		streamContents: [:stream | PNGReadWriter putForm: form onStream: stream]
 ]
 
 { #category : #accessing }
