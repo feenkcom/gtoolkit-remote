@@ -644,7 +644,7 @@ GtRemotePhlowDeclarativeViewsExamples >> pictureView [
 	viewDatasource := phlowSpecificationsProvider
 				getDeclarativeViewFor: #gtPictureFor:.
 	data := viewDatasource retrieveData.
-	self assert: data isError not.
+	self assert: data isPhlowErrorData not.
 	self assert: data content notNil.
 	self assert: data content notEmpty.
 	self assert: data width isNil.

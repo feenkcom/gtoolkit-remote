@@ -4,6 +4,11 @@ Class {
 	#category : #'GToolkit-RemotePhlow-Examples'
 }
 
+{ #category : #accessing }
+GtRemotePhlowPictureViewErrorTestObject class >> pictureBytes [
+	^ GtRemotePhlowTestDataForExamples pictureBytes
+]
+
 { #category : #views }
 GtRemotePhlowPictureViewErrorTestObject >> gtViewPictureErrorFor: aView [
 	<gtView>
@@ -20,7 +25,7 @@ GtRemotePhlowPictureViewErrorTestObject >> gtViewPictureHeightErrorFor: aView [
 		title: 'Picture Height Error';
 		priority: 27;
 		height: [self error: 'Height computation error'];
-		content: [self pictureBytes]
+		content: [self class pictureBytes]
 ]
 
 { #category : #views }
@@ -30,10 +35,5 @@ GtRemotePhlowPictureViewErrorTestObject >> gtViewPictureWidthErrorFor: aView [
 		title: 'Picture Width Error';
 		priority: 26;
 		width: [self error: 'Width computation error'];
-		content: [self pictureBytes]
-]
-
-{ #category : #accessing }
-GtRemotePhlowPictureViewErrorTestObject >> pictureBytes [
-	^GtRemotePhlowPictureViewTestObject new pictureBytes
+		content: [self class pictureBytes]
 ]

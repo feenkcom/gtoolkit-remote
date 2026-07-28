@@ -3,3 +3,8 @@ Class {
 	#superclass : #GtPhlowDeclarativeSpecification,
 	#category : #'GToolkit-RemotePhlow-Stencils'
 }
+
+{ #category : #testing }
+GtRemotePhlowAbstractStencilSpecification >> isPhlowErrorSpecification [
+	^ false
+]

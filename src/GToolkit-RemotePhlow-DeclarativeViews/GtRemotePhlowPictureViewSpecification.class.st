@@ -26,6 +26,19 @@ GtRemotePhlowPictureViewSpecification >> asBasicViewDataForExport [
 	^dictionary
 ]
 
+{ #category : #accessing }
+GtRemotePhlowPictureViewSpecification >> createStencilForViewData: aViewData [
+	^ aViewData isPhlowErrorData
+				ifTrue: [ 
+					GtPhlowErrorStencil new
+							stencilData: aViewData]
+				ifFalse: [ 
+						| specification | 
+						specification := self renderingStencilSpecification.
+						specification stencilData: aViewData.
+						specification createStencil ]
+]
+
 { #category : #initialization }
 GtRemotePhlowPictureViewSpecification >> initializeFromInspector: anInspector [
 	self phlowDataSource

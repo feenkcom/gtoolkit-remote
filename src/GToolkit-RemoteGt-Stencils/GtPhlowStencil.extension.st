@@ -14,7 +14,7 @@ GtPhlowStencil >> create [
 GtPhlowStencil >> gtViewLiveIconFor: aView [
 	<gtView>
 	^ aView forward
-		title: 'Icon';
+		title: 'Live';
 		priority: 10;
 		object: [ self asElement ];
 		view: #gtLiveFor:

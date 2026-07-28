@@ -54,7 +54,7 @@ GtRemotePhlowViewErrorData >> errorObject: anException [
 ]
 
 { #category : #testing }
-GtRemotePhlowViewErrorData >> isError [
+GtRemotePhlowViewErrorData >> isPhlowErrorData [
 	^true
 ]
 

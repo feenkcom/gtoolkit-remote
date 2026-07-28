@@ -47,6 +47,12 @@ GtRemotePhlowProtoView >> empty [
 ]
 
 { #category : #decorating }
+GtRemotePhlowProtoView >> explicit [
+
+	^ self declarativeViewOfType: GtRemotePhlowExplicitView
+]
+
+{ #category : #decorating }
 GtRemotePhlowProtoView >> forward [
 
 	^ self declarativeViewOfType: GtRemotePhlowForwarderView

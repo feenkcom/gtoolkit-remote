@@ -1,7 +1,7 @@
-Extension { #name : #GtRemotePhlowPictureViewTestObject }
+Extension { #name : #GtRemotePhlowTestDataForExamples }
 
 { #category : #'*GToolkit-RemoteGt' }
-GtRemotePhlowPictureViewTestObject class >> computePictureBytes [
+GtRemotePhlowTestDataForExamples class >> computePictureBytes [
 	| element  form |
 	element := BlElement new
 		border: (BlBorder paint: Color red width: 5);

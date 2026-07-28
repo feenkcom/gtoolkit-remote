@@ -60,7 +60,7 @@ GtRemotePhlowPictureView >> pictureComputation: aBlock [
 
 { #category : #accessing }
 GtRemotePhlowPictureView >> renderingStencilName: aSymbol [
-	renderingStencilSpecification := GtRemotePhlowTypedStencilSpecification new 
+	renderingStencilSpecification := GtRemotePhlowForwardStencilSpecification new 
 			stencilClassName: aSymbol
 ]
 
@@ -68,7 +68,7 @@ GtRemotePhlowPictureView >> renderingStencilName: aSymbol [
 GtRemotePhlowPictureView >> renderingStencilSpecification [
 	^renderingStencilSpecification
 		ifNil: [
-			GtRemotePhlowTypedStencilSpecification new
+			GtRemotePhlowForwardStencilSpecification new
 				stencilClassName: #GtLocalPhlowPictureScaledViewStencil ]
 ]
 

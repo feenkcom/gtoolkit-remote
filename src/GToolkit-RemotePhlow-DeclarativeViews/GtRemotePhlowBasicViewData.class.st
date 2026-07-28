@@ -5,7 +5,7 @@ Class {
 }
 
 { #category : #testing }
-GtRemotePhlowBasicViewData >> isError [
+GtRemotePhlowBasicViewData >> isPhlowErrorData [
 	^false
 ]
 
