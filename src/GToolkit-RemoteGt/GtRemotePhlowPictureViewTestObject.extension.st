@@ -9,9 +9,9 @@ GtRemotePhlowPictureViewTestObject class >> computePictureBytes [
 			paint: (BlRadialGradientPaint new
 					stops: {0 -> Color blue.
 							1 -> Color white};
-					center: 300 @ 300;
-					radius: 400));
-		extent: 1200@600.
+					center: 100 @ 100;
+					radius: 200));
+		extent: 600@300.
 	form := (BlExporter form element: element) export.
 	^ByteArray
 		streamContents: [:stream | PNGReadWriter putForm: form onStream: stream]

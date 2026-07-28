@@ -22,8 +22,8 @@ GtRemotePhlowProtoView >> declarativeLocalRemoteViewOfType: aGtDeclarativeViewCl
 	| view |
 	view := self declarativeViewOfType: aGtDeclarativeViewClass.
 	self 
-		gtDo: []
-		gemstoneDo: [self updateLocalDefiningMethodProviderFor: view].
+		gtDo: [ self updateLocalDefiningMethodProviderFor: view ]
+		gemstoneDo: [].
 	^ view
 ]
 
