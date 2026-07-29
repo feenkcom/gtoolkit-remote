@@ -14,11 +14,6 @@ GtPhlowStencil >> asGtStencilSpecification [
 		stencilData: self asDictionaryForExport
 ]
 
-{ #category : #converting }
-GtPhlowStencil >> createStencil [
-	^ self
-]
-
 { #category : #views }
 GtPhlowStencil >> gtLiveFor: aView [
 	<gtView>
@@ -27,6 +22,11 @@ GtPhlowStencil >> gtLiveFor: aView [
 		title: 'Live';
 		priority: 10;
 		declarativeStencil: [ self ]
+]
+
+{ #category : #init }
+GtPhlowStencil >> initializeFromStencilSpecification: aStencilSpecification [
+	self initializeFromJSONDictionary: aStencilSpecification stencilData.
 ]
 
 { #category : #testing }

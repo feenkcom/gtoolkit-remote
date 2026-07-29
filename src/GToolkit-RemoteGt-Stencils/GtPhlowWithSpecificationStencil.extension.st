@@ -9,3 +9,7 @@ GtPhlowWithSpecificationStencil >> asElement [
 GtPhlowWithSpecificationStencil >> create [
 	^ self subclassResponsibility
 ]
+
+{ #category : #'*GToolkit-RemoteGt-Stencils' }
+GtPhlowWithSpecificationStencil >> initializeFromStencilSpecification: aStencilSpecification [
+]

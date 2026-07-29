@@ -4,3 +4,7 @@ Extension { #name : #GtRemotePhlowAbstractStencilSpecification }
 GtRemotePhlowAbstractStencilSpecification >> createStencil [
 	^self subclassResponsibility
 ]
+
+{ #category : #'*GToolkit-RemoteGt-Stencils' }
+GtRemotePhlowAbstractStencilSpecification >> initializeForGemStoneStencilSpecification: aGemStoneProxy [
+]

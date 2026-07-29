@@ -7,9 +7,9 @@ Class {
 	#category : #'GToolkit-RemotePhlow-Stencils'
 }
 
-{ #category : #'as yet unclassified' }
-GtPhlowWithDataStencil >> asDictionaryForExport [
-	^ self asGtStencilSpecification
+{ #category : #accessing }
+GtPhlowWithDataStencil >> initializeFromStencilSpecification: aStencilSpecification [
+	self stencilData: aStencilSpecification stencilData.
 ]
 
 { #category : #accessing }

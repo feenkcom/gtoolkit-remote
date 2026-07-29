@@ -9,6 +9,15 @@ GtRemotePhlowForwardStencilSpecification >> createStencil [
 ]
 
 { #category : #'*GToolkit-RemoteGt-Stencils' }
+GtRemotePhlowForwardStencilSpecification >> initializeForGemStoneStencilSpecification: aGemStoneProxy [
+	| retrieveStencilData|
+	retrieveStencilData := aGemStoneProxy retrieveStencilData.
+	retrieveStencilData isPhlowErrorData ifTrue: [ 
+		retrieveStencilData beRemoteException ].
+	self stencilData: retrieveStencilData.
+]
+
+{ #category : #'*GToolkit-RemoteGt-Stencils' }
 GtRemotePhlowForwardStencilSpecification >> instantiateStencil [
 	^(Smalltalk globals at: stencilClassName) new
 ]
