@@ -27,7 +27,7 @@ GtPhlowExplicitView >> declarativeStencil: aStencilBuilder [
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
-GtPhlowExplicitView >> declarativeStencilName: aStencilClassName stencilData: aBlockClosure [
+GtPhlowExplicitView >> localStencilName: aStencilClassName stencilData: aBlockClosure [
 	self declarativeStencil: [
 		GtPhlowNamedStencil new
 				stencilClassName: aStencilClassName;

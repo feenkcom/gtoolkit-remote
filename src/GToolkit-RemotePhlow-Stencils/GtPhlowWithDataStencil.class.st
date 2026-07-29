@@ -1,11 +1,16 @@
 Class {
 	#name : #GtPhlowWithDataStencil,
-	#superclass : #GtPhlowStencil,
+	#superclass : #GtPhlowWithSpecificationStencil,
 	#instVars : [
 		'stencilData'
 	],
 	#category : #'GToolkit-RemotePhlow-Stencils'
 }
+
+{ #category : #'as yet unclassified' }
+GtPhlowWithDataStencil >> asDictionaryForExport [
+	^ self asGtStencilSpecification
+]
 
 { #category : #accessing }
 GtPhlowWithDataStencil >> stencilData [

@@ -9,7 +9,7 @@ GtLocalPhlowPictureScaledViewStencil >> create [
 	| imageElement |
 	imageElement := self imageElementFor: stencilData.
 	self configureImageElement: imageElement.
+	
 	^(imageElement asScalableElement)
-		id: GtLocalPhlowPictureElementId;
-		margin: (BlInsets all: 10)
+		id: GtLocalPhlowPictureElementId
 ]

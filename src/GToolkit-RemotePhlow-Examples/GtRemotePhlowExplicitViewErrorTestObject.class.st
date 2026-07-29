@@ -11,7 +11,7 @@ GtRemotePhlowExplicitViewErrorTestObject >> gtExplicitPictureViewWithStencilData
 	^(aView explicit)
 		title: 'Picture (stencil API)';
 		priority: 20;
-		declarativeStencilName: #GtLocalPhlowPictureFullSizeViewStencil
+		localStencilName: #GtLocalPhlowPictureFullSizeViewStencil
 			stencilData: [ 
 				self error: 'Stencil data computation with exception']
 ]

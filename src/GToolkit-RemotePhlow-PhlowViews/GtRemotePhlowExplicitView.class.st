@@ -29,7 +29,7 @@ GtRemotePhlowExplicitView >> declarativeStencil: aStencilBuilder [
 ]
 
 { #category : #'api - scripting' }
-GtRemotePhlowExplicitView >> declarativeStencilName: aStencilClassName stencilData: aBlockClosure [
+GtRemotePhlowExplicitView >> localStencilName: aStencilClassName stencilData: aBlockClosure [
 	self declarativeStencil: [
 		GtPhlowNamedStencil new
 				stencilClassName: aStencilClassName;

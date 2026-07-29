@@ -21,11 +21,23 @@ GtRemotePhlowExplicitViewTestObject >> gtViewPictureWithCustomPhlowStencilFor: a
 ]
 
 { #category : #views }
+GtRemotePhlowExplicitViewTestObject >> gtViewPictureWithDirectlySerializableFor: aView [
+	<gtView>
+	
+	^(aView explicit)
+		title: 'Remote stencil';
+		priority: 10;
+		declarativeStencil: [ 
+			(GtPhlowPictureWithDirectDataExampleStencil new)
+				contentBytes: self class pictureBytes ]
+]
+
+{ #category : #views }
 GtRemotePhlowExplicitViewTestObject >> gtViewPictureWithGenericPhlowStencilWithDirectDataFor: aView [
 	<gtView>
 	
 	^(aView explicit)
-		title: 'Picture (stencil API)';
+		title: 'GT-Side stencil v2';
 		priority: 25;
 		declarativeStencil: [
 			GtPhlowNamedStencil new
@@ -39,9 +51,9 @@ GtRemotePhlowExplicitViewTestObject >> gtViewPictureWithGenericPhlowStencilWithD
 	<gtView>
 	
 	^(aView explicit)
-		title: 'Picture (dedicated API)';
+		title: 'GT-Side stencil v1';
 		priority: 20;
-		declarativeStencilName: #GtLocalPhlowPictureFullSizeViewStencil
+		localStencilName: #GtLocalPhlowPictureFullSizeViewStencil
 			stencilData: [ ((GtRemotePhlowPictureViewData new)
 				content: self class pictureBytes) ]
 ]
