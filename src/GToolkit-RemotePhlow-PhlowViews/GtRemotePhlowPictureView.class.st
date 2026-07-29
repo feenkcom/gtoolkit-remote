@@ -3,10 +3,10 @@ Class {
 	#superclass : #GtRemotePhlowLocalView,
 	#instVars : [
 		'pictureComputation',
-		'renderingStencilSpecification',
 		'widthComputation',
 		'heightComputation',
-		'mediaTypeComputation'
+		'mediaTypeComputation',
+		'renderingStencilName'
 	],
 	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
@@ -17,7 +17,7 @@ GtRemotePhlowPictureView >> asGtDeclarativeView [
 	viewSpecification := (GtRemotePhlowPictureViewSpecification new)
 				phlowDataSource: (GtRemotePhlowDeclarativePictureViewDataSource
 							forPhlowView: self);
-				renderingStencilSpecification: self renderingStencilSpecification;
+				renderingStencilName: self renderingStencilName;
 				dataTransport: GtPhlowViewSpecification dataLazy.
 	self configureGenericViewSpecificationOn: viewSpecification.
 	^viewSpecification
@@ -59,22 +59,13 @@ GtRemotePhlowPictureView >> pictureComputation: aBlock [
 ]
 
 { #category : #accessing }
+GtRemotePhlowPictureView >> renderingStencilName [
+	^ renderingStencilName
+]
+
+{ #category : #accessing }
 GtRemotePhlowPictureView >> renderingStencilName: aSymbol [
-	renderingStencilSpecification := GtRemotePhlowForwardStencilSpecification new 
-			stencilClassName: aSymbol
-]
-
-{ #category : #accessing }
-GtRemotePhlowPictureView >> renderingStencilSpecification [
-	^renderingStencilSpecification
-		ifNil: [
-			GtRemotePhlowForwardStencilSpecification new
-				stencilClassName: #GtLocalPhlowPictureScaledViewStencil ]
-]
-
-{ #category : #accessing }
-GtRemotePhlowPictureView >> renderingStencilSpecification: aStencilSpecification [
-	renderingStencilSpecification := aStencilSpecification
+	renderingStencilName := aSymbol
 ]
 
 { #category : #accessing }

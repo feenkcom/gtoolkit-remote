@@ -2,7 +2,7 @@ Class {
 	#name : #GtRemotePhlowPictureViewSpecification,
 	#superclass : #GtPhlowViewSpecification,
 	#instVars : [
-		'renderingStencilSpecification'
+		'renderingStencilName'
 	],
 	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
@@ -12,8 +12,7 @@ GtRemotePhlowPictureViewSpecification class >> fromJSONDictionary: aDictionary [
 	| specification |
 	specification := super fromJSONDictionary: aDictionary.
 	specification
-		renderingStencilSpecification: (GtRemotePhlowAbstractStencilSpecification
-				fromDictionary: (aDictionary at: 'renderingStencilSpecification')).
+		renderingStencilName: (aDictionary at: 'renderingStencilName').
 	^specification
 ]
 
@@ -21,20 +20,20 @@ GtRemotePhlowPictureViewSpecification class >> fromJSONDictionary: aDictionary [
 GtRemotePhlowPictureViewSpecification >> asBasicViewDataForExport [
 	| dictionary |
 	dictionary := super asBasicViewDataForExport.
-	dictionary at: 'renderingStencilSpecification'
-		put: self renderingStencilSpecification asDictionaryForExport.
+	dictionary at: 'renderingStencilName' put: self renderingStencilName.
 	^dictionary
 ]
 
 { #category : #accessing }
-GtRemotePhlowPictureViewSpecification >> createStencilForViewData: aViewData [
+GtRemotePhlowPictureViewSpecification >> createDeclarativeStencilForViewData: aViewData [
 	^ aViewData isPhlowErrorData
 				ifTrue: [ 
 					GtPhlowErrorStencil new
 							stencilData: aViewData]
 				ifFalse: [ 
 						| specification | 
-						specification := self renderingStencilSpecification.
+						specification := GtRemotePhlowForwardStencilSpecification new
+							stencilClassName: self renderingStencilName.
 						specification stencilData: aViewData.
 						specification createStencil ]
 ]
@@ -48,13 +47,13 @@ GtRemotePhlowPictureViewSpecification >> initializeFromInspector: anInspector [
 ]
 
 { #category : #accessing }
-GtRemotePhlowPictureViewSpecification >> renderingStencilSpecification [
-	^renderingStencilSpecification
+GtRemotePhlowPictureViewSpecification >> renderingStencilName [
+	^ renderingStencilName
 ]
 
 { #category : #accessing }
-GtRemotePhlowPictureViewSpecification >> renderingStencilSpecification: aStencilSpecification [
-	renderingStencilSpecification := aStencilSpecification
+GtRemotePhlowPictureViewSpecification >> renderingStencilName: anObject [
+	renderingStencilName := anObject
 ]
 
 { #category : #accessing }

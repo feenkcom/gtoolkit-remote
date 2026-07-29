@@ -137,9 +137,7 @@ GtRemotePhlowPictureViewAbstractExamples >> pictureView [
 				content: [ self pictureBytes ].
 	self assert: view title equals: 'Picture'.
 	self assert: view priority equals: 20.
-	self assert: view renderingStencilSpecification class
-		equals: GtRemotePhlowForwardStencilSpecification.
-	self assert: view renderingStencilSpecification stencilClassName
+	self assert: view renderingStencilName
 		equals: #GtLocalPhlowPictureScaledViewStencil.
 	^view
 ]
@@ -155,10 +153,10 @@ GtRemotePhlowPictureViewAbstractExamples >> pictureViewNoScaleWithExtentRendersI
 				renderingStencilName: #GtLocalPhlowPictureFullSizeViewStencil;
 				content: [ self pictureBytes ].
 	spec := view asGtDeclarativeView.
-	self assert: spec renderingStencilSpecification stencilClassName
+	self assert: spec renderingStencilName
 		equals: #GtLocalPhlowPictureFullSizeViewStencil.
 	data := spec phlowDataSource retrieveData.
-	element := (spec createStencilForViewData: data) asElement.
+	element := (spec createDeclarativeStencilForViewData: data) asElement.
 	^element
 ]
 
@@ -168,7 +166,7 @@ GtRemotePhlowPictureViewAbstractExamples >> pictureViewSpecification [
 	| view spec |
 	view := self pictureView.
 	spec := view asGtDeclarativeView.
-	self assert: spec renderingStencilSpecification stencilClassName
+	self assert: spec renderingStencilName
 		equals: #GtLocalPhlowPictureScaledViewStencil.
 	^spec
 ]
@@ -186,7 +184,7 @@ GtRemotePhlowPictureViewAbstractExamples >> pictureViewWithExtent [
 	self assert: view title equals: 'Picture With Extent'.
 	self assert: view widthComputation equals: 500.
 	self assert: view heightComputation equals: 1000.
-	self assert: view renderingStencilSpecification stencilClassName
+	self assert: view renderingStencilName
 		equals: #GtLocalPhlowPictureScaledViewStencil.
 	^view
 ]
@@ -197,7 +195,7 @@ GtRemotePhlowPictureViewAbstractExamples >> pictureViewWithExtentRendersScalable
 	| spec data element |
 	spec := self pictureViewWithExtentSpecification.
 	data := spec phlowDataSource retrieveData.
-	element := (spec createStencilForViewData: data) asElement.
+	element := (spec createDeclarativeStencilForViewData: data) asElement.
 	self assert: element class equals: BlScalableElement.
 	^element
 ]
@@ -213,7 +211,7 @@ GtRemotePhlowPictureViewAbstractExamples >> pictureViewWithExtentSpecification [
 	
 	self assert: data width equals: 500.
 	self assert: data height equals: 1000.
-	self assert: spec renderingStencilSpecification stencilClassName
+	self assert: spec renderingStencilName
 		equals: #GtLocalPhlowPictureScaledViewStencil.
 		
 	^spec
@@ -227,9 +225,7 @@ GtRemotePhlowPictureViewAbstractExamples >> renderingStencilSpecificationSeriali
 	exported := spec asBasicViewDataForExport.
 	restored := GtRemotePhlowPictureViewSpecification
 				fromJSONDictionary: exported.
-	self assert: restored renderingStencilSpecification class
-		equals: GtRemotePhlowForwardStencilSpecification.
-	self assert: restored renderingStencilSpecification stencilClassName
+	self assert: restored renderingStencilName
 		equals: #GtLocalPhlowPictureScaledViewStencil.
 	^restored
 ]

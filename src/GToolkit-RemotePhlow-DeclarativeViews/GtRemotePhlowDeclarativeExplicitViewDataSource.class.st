@@ -19,13 +19,23 @@ GtRemotePhlowDeclarativeExplicitViewDataSource >> phlowStencil [
 ]
 
 { #category : #accessing }
+GtRemotePhlowDeclarativeExplicitViewDataSource >> retrievePrimitiveStencilData [
+	^self retrieveStencilData asDictionaryForExport
+]
+
+{ #category : #accessing }
+GtRemotePhlowDeclarativeExplicitViewDataSource >> retrievePrimitiveStencilSpecificationData [
+	^self retrieveStencilSpecification asDictionaryForExport
+]
+
+{ #category : #accessing }
 GtRemotePhlowDeclarativeExplicitViewDataSource >> retrieveStencilData [
-	^ [ self phlowStencil stencilData value ]
+	^ [ self phlowStencil stencilData ]
 			on: Error
-			do: [:e |
+			do: [ :anException |
 				(GtRemotePhlowViewErrorData new)
-					errorDescription: e messageText;
-					errorObject: e]
+					errorDescription: anException messageText;
+					errorObject: anException]
 ]
 
 { #category : #accessing }

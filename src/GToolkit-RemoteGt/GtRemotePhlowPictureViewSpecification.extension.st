@@ -10,7 +10,7 @@ GtRemotePhlowPictureViewSpecification >> viewFor: aView [
 				declarativeStencil: [
 						| data |
 						data := self phlowDataSource retrieveData.
-						self createStencilForViewData: data ].
+						self createDeclarativeStencilForViewData: data ].
 	self configureViewActionsFor: pictureView.
 	^pictureView
 ]

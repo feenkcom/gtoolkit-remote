@@ -5,7 +5,8 @@ Class {
 		'stencilClassName',
 		'stencilData',
 		'originalStencil',
-		'isPhlowErrorSpecification'
+		'isPhlowErrorSpecification',
+		'originalStencilData'
 	],
 	#category : #'GToolkit-RemotePhlow-Stencils'
 }
@@ -48,6 +49,16 @@ GtRemotePhlowForwardStencilSpecification >> originalStencil [
 { #category : #accessing }
 GtRemotePhlowForwardStencilSpecification >> originalStencil: anObject [
 	originalStencil := anObject
+]
+
+{ #category : #accessing }
+GtRemotePhlowForwardStencilSpecification >> originalStencilData [
+	^ originalStencilData
+]
+
+{ #category : #accessing }
+GtRemotePhlowForwardStencilSpecification >> originalStencilData: anObject [
+	originalStencilData := anObject
 ]
 
 { #category : #accessing }

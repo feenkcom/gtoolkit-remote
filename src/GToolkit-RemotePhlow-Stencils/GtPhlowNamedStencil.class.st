@@ -20,7 +20,8 @@ GtPhlowNamedStencil >> stencilClassName: anObject [
 
 { #category : #accessing }
 GtPhlowNamedStencil >> stencilData [
-	^ stencilData := stencilDataWrapper targetObject
+	^ stencilData ifNil: [
+		 stencilData := stencilDataWrapper targetObject ]
 ]
 
 { #category : #accessing }

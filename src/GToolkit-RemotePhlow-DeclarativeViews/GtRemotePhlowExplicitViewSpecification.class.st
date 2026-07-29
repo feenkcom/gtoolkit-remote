@@ -25,6 +25,16 @@ GtRemotePhlowExplicitViewSpecification >> initializeFromInspector: anInspector [
 ]
 
 { #category : #accessing }
+GtRemotePhlowExplicitViewSpecification >> retrievePrimitiveStencilData [
+	^self phlowDataSource retrievePrimitiveStencilData
+]
+
+{ #category : #accessing }
+GtRemotePhlowExplicitViewSpecification >> retrievePrimitiveStencilSpecificationData [
+	^self phlowDataSource retrievePrimitiveStencilSpecificationData
+]
+
+{ #category : #accessing }
 GtRemotePhlowExplicitViewSpecification >> retrieveStencilData [
 	^self phlowDataSource retrieveStencilData
 ]

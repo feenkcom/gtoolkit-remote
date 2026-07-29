@@ -639,7 +639,7 @@ GtRemotePhlowDeclarativeViewsExamples >> pictureView [
 	self assert: viewSpecification title equals: 'Picture'.
 	self assert: viewSpecification priority equals: 50. 
 	self
-		assert: viewSpecification renderingStencilSpecification stencilClassName
+		assert: viewSpecification renderingStencilName
 		equals: #GtLocalPhlowPictureScaledViewStencil.
 	viewDatasource := phlowSpecificationsProvider
 				getDeclarativeViewFor: #gtPictureFor:.
