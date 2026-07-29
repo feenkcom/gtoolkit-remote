@@ -60,7 +60,7 @@ GtRemotePhlowPictureView >> pictureComputation: aBlock [
 
 { #category : #accessing }
 GtRemotePhlowPictureView >> renderingStencilName [
-	^ renderingStencilName
+	^ renderingStencilName ifNil: [ #GtLocalPhlowPictureScaledViewStencil ]
 ]
 
 { #category : #accessing }

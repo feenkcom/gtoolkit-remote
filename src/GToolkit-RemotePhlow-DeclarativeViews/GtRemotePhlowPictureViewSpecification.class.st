@@ -31,11 +31,11 @@ GtRemotePhlowPictureViewSpecification >> createDeclarativeStencilForViewData: aV
 					GtPhlowErrorStencil new
 							stencilData: aViewData]
 				ifFalse: [ 
-						| specification | 
-						specification := GtRemotePhlowForwardStencilSpecification new
+						| stecil | 
+						stecil := GtPhlowNamedStencil new
 							stencilClassName: self renderingStencilName.
-						specification stencilData: aViewData.
-						specification createStencil ]
+						stecil stencilData: aViewData.
+						stecil ]
 ]
 
 { #category : #initialization }
