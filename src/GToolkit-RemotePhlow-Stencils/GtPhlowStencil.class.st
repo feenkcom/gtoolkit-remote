@@ -9,8 +9,9 @@ Class {
 
 { #category : #converting }
 GtPhlowStencil >> asGtStencilSpecification [
-	"These phlow stencils are directly serializable; they are their own specification"
-	^ self
+	^ GtRemotePhlowDirectStencilSpecification new
+		stencilClassName: self class name;
+		stencilData: self asDictionaryForExport
 ]
 
 { #category : #converting }
