@@ -9,7 +9,7 @@ GtRemotePhlowExplicitViewSpecification >> viewFor: aView [
 				priority: priority;
 				stencil: [
 						| stencilSpecification newStencil |
-						stencilSpecification := self retrieveStencilSpecification.
+						stencilSpecification := self retrieveStencilSpecificationWithDataSetup.
 						newStencil := stencilSpecification createStencil.
 						newStencil ].
 	self configureViewActionsFor: pictureView.

@@ -6,5 +6,15 @@ GtRemotePhlowAbstractStencilSpecification >> createStencil [
 ]
 
 { #category : #'*GToolkit-RemoteGt-Stencils' }
-GtRemotePhlowAbstractStencilSpecification >> initializeForGemStoneStencilSpecification: aGemStoneProxy [
+GtRemotePhlowAbstractStencilSpecification >> handleStencilSpecificationAfterDeserializationFrom: aViewSpecification [
+	self dataSerializationStrategy 
+		updateStencilSpecificationAfterDeserializationFor: self
+		from: aViewSpecification.
+]
+
+{ #category : #'*GToolkit-RemoteGt-Stencils' }
+GtRemotePhlowAbstractStencilSpecification >> handleStencilSpecificationBeforeSerializationFrom: aViewSpecification [
+	self dataSerializationStrategy 
+		prepareStencilSpecificationForSerializationFor: self
+		from: aViewSpecification.
 ]

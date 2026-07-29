@@ -39,8 +39,13 @@ GtRemotePhlowDeclarativeExplicitViewDataSource >> retrieveStencilData [
 ]
 
 { #category : #accessing }
+GtRemotePhlowDeclarativeExplicitViewDataSource >> retrieveStencilDataWithSerializerNamed: aDataSerializationStrategyClass [
+	^ self retrieveStencilData
+]
+
+{ #category : #accessing }
 GtRemotePhlowDeclarativeExplicitViewDataSource >> retrieveStencilSpecification [
-	^ [ self phlowStencil asGtStencilSpecification  ]
+	^ [ self phlowStencil asGtStencilSpecificationFrom: self ]
 			on: Error
 			do: [ :anException |
 				(GtPhlowErrorStencil forException: anException)

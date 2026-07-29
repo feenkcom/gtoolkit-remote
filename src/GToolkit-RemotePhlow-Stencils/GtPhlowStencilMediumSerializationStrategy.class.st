@@ -1,0 +1,44 @@
+Class {
+	#name : #GtPhlowStencilMediumSerializationStrategy,
+	#superclass : #GtPhlowStencilDataSerializationStrategy,
+	#instVars : [
+		'serializationStrategyName'
+	],
+	#category : #'GToolkit-RemotePhlow-Stencils'
+}
+
+{ #category : #'instance creation' }
+GtPhlowStencilMediumSerializationStrategy class >> forWireEncoding [
+	^ self new 
+		serializationStrategyName:#GtRsrWireSerializationStrategy
+]
+
+{ #category : #converting }
+GtPhlowStencilMediumSerializationStrategy >> asDictionaryForExport [
+	^(super asDictionaryForExport)
+		at: 'serializationStrategyName' put: serializationStrategyName;
+		yourself
+]
+
+{ #category : #initialization }
+GtPhlowStencilMediumSerializationStrategy >> initializeFromJSONDictionary: aDictionary [
+	super initializeFromJSONDictionary: aDictionary.
+	
+	self serializationStrategyName: (aDictionary at: 'serializationStrategyName' ) asSymbol.
+]
+
+{ #category : #accessing }
+GtPhlowStencilMediumSerializationStrategy >> serializationStrategyName [
+	^ serializationStrategyName
+]
+
+{ #category : #accessing }
+GtPhlowStencilMediumSerializationStrategy >> serializationStrategyName: anObject [
+	serializationStrategyName := anObject
+]
+
+{ #category : #api }
+GtPhlowStencilMediumSerializationStrategy >> updateStencilSpecificationAfterDeserializationFor: aStencil from: aViewSpecification [
+	^ aViewSpecification 
+		retrieveStencilDataWithSerializerNamed: self serializationStrategyName.
+]

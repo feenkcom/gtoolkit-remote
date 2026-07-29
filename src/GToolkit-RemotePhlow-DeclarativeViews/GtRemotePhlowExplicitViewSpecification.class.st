@@ -40,6 +40,12 @@ GtRemotePhlowExplicitViewSpecification >> retrieveStencilData [
 ]
 
 { #category : #accessing }
+GtRemotePhlowExplicitViewSpecification >> retrieveStencilDataWithSerializerNamed: aDataSerializationStrategyClass [
+	^ self phlowDataSource 
+		retrieveStencilDataWithSerializerNamed: aDataSerializationStrategyClass
+]
+
+{ #category : #accessing }
 GtRemotePhlowExplicitViewSpecification >> retrieveStencilSpecification [
 	^self phlowDataSource retrieveStencilSpecification
 ]

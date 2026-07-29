@@ -16,6 +16,16 @@ GtPhlowWithSpecificationStencil >> asGtStencilSpecification [
 	^ nil
 ]
 
+{ #category : #converting }
+GtPhlowWithSpecificationStencil >> asGtStencilSpecificationFrom: aDataProvider [
+	| stencilSpecification |
+	stencilSpecification := self asGtStencilSpecification.
+	stencilSpecification ifNil: [ ^ nil ].
+	
+	stencilSpecification handleStencilSpecificationBeforeSerializationFrom: aDataProvider.
+	^ stencilSpecification
+]
+
 { #category : #views }
 GtPhlowWithSpecificationStencil >> gtLiveFor: aView [
 	<gtView>

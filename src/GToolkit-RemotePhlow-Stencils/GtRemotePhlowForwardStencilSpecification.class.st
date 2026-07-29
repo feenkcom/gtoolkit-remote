@@ -17,8 +17,14 @@ GtRemotePhlowForwardStencilSpecification >> asDictionaryForExport [
 		at: 'stencilClassName' put: stencilClassName;
 		at: 'isPhlowErrorSpecification' put: isPhlowErrorSpecification;
 		at: 'originalStencil' put: originalStencil;
-		at: 'stencilData' put: stencilData;
+		at: 'originalStencilData' put: originalStencilData;
 		yourself
+]
+
+{ #category : #accessing }
+GtRemotePhlowForwardStencilSpecification >> dataSerializationStrategy [
+	^ super dataSerializationStrategy
+			ifNil: [ GtPhlowStencilMediumSerializationStrategy forWireEncoding  ]
 ]
 
 { #category : #initialization }
@@ -28,7 +34,7 @@ GtRemotePhlowForwardStencilSpecification >> initializeFromJSONDictionary: aDicti
 	self stencilClassName: (aDictionary at: 'stencilClassName' ) asSymbol.
 	self isPhlowErrorSpecification: (aDictionary at: 'isPhlowErrorSpecification').
 	self originalStencil: (aDictionary at: 'originalStencil' ifAbsent: [ nil ]).
-	self stencilData: (aDictionary at: 'stencilData' ifAbsent: [ nil ])
+	self originalStencilData: (aDictionary at: 'originalStencilData' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

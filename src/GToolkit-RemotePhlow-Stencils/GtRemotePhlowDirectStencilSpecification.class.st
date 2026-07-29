@@ -16,6 +16,12 @@ GtRemotePhlowDirectStencilSpecification >> asDictionaryForExport [
 		yourself
 ]
 
+{ #category : #accessing }
+GtRemotePhlowDirectStencilSpecification >> dataSerializationStrategy [
+	^ super dataSerializationStrategy
+			ifNil: [ GtPhlowStencilNoExplicitDataSerializationStrategy new ]
+]
+
 { #category : #initialization }
 GtRemotePhlowDirectStencilSpecification >> initializeFromJSONDictionary: aDictionary [
 	super initializeFromJSONDictionary: aDictionary.
