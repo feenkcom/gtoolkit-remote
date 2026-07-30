@@ -11,7 +11,7 @@ Class {
 { #category : #accessing }
 GtRemotePhlowAbstractStencilSpecification >> asDictionaryForExport [
 	^(super asDictionaryForExport)
-		at: 'dataSerializationStrategy' put: dataSerializationStrategy;
+		at: 'dataSerializationStrategy' put: self dataSerializationStrategy asDictionaryForExport;
 		at: 'properties' put: self properties;
 		yourself
 ]
@@ -26,6 +26,20 @@ GtRemotePhlowAbstractStencilSpecification >> dataSerializationStrategy: anObject
 	dataSerializationStrategy := anObject
 ]
 
+{ #category : #updating }
+GtRemotePhlowAbstractStencilSpecification >> handleStencilSpecificationAfterDeserializationFrom: aViewSpecification [
+	self dataSerializationStrategy 
+		updateStencilSpecificationAfterDeserializationFor: self
+		from: aViewSpecification.
+]
+
+{ #category : #updating }
+GtRemotePhlowAbstractStencilSpecification >> handleStencilSpecificationBeforeSerializationFrom: aViewSpecification [
+	self dataSerializationStrategy 
+		prepareStencilSpecificationForSerializationFor: self
+		from: aViewSpecification.
+]
+
 { #category : #testing }
 GtRemotePhlowAbstractStencilSpecification >> hasProperty: aKey [
 	self propertyAt: aKey ifAbsent: [ ^ false ].
@@ -38,7 +52,7 @@ GtRemotePhlowAbstractStencilSpecification >> initializeFromJSONDictionary: aDict
 	
 	aDictionary at: 'dataSerializationStrategy' ifPresent: [ :data |
 		self dataSerializationStrategy: (GtPhlowStencilDataSerializationStrategy
-			fromJSONDictionary:  data ) ].
+			fromDictionary:  data ) ].
 	aDictionary at: 'properties' ifPresent: [ :data |
 		self properties: data]
 ]
@@ -86,4 +100,9 @@ GtRemotePhlowAbstractStencilSpecification >> propertyAt: propertyName ifPresent:
 		at: propertyName
 		ifPresent: aPresentBlock
 		ifAbsent: anAbsentBlock
+]
+
+{ #category : #accessing }
+GtRemotePhlowAbstractStencilSpecification >> propertyAt: aKey put: aValue [
+	^ self properties at: aKey put: aValue
 ]

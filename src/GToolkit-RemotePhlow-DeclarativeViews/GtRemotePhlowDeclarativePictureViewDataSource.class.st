@@ -17,5 +17,6 @@ GtRemotePhlowDeclarativePictureViewDataSource >> retrieveData [
 				[:e |
 				(GtRemotePhlowViewErrorData new)
 					errorDescription: e messageText;
-					errorObject: e]
+					errorObject: e;
+					updateLocalRemoteSide]
 ]

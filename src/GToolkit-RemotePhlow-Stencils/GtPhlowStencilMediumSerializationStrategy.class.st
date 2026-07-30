@@ -38,7 +38,9 @@ GtPhlowStencilMediumSerializationStrategy >> serializationStrategyName: anObject
 ]
 
 { #category : #api }
-GtPhlowStencilMediumSerializationStrategy >> updateStencilSpecificationAfterDeserializationFor: aStencil from: aViewSpecification [
-	^ aViewSpecification 
+GtPhlowStencilMediumSerializationStrategy >> updateStencilSpecificationAfterDeserializationFor: aSpecificationStencil from: aViewSpecification [
+	| data |
+	data := aViewSpecification 
 		retrieveStencilDataWithSerializerNamed: self serializationStrategyName.
+	aSpecificationStencil stencilData: data
 ]

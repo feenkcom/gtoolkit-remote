@@ -35,7 +35,8 @@ GtRemotePhlowDeclarativeExplicitViewDataSource >> retrieveStencilData [
 			do: [ :anException |
 				(GtRemotePhlowViewErrorData new)
 					errorDescription: anException messageText;
-					errorObject: anException]
+					errorObject: anException;
+					updateLocalRemoteSide]
 ]
 
 { #category : #accessing }
@@ -49,5 +50,5 @@ GtRemotePhlowDeclarativeExplicitViewDataSource >> retrieveStencilSpecification [
 			on: Error
 			do: [ :anException |
 				(GtPhlowErrorStencil forException: anException)
-					asGtStencilSpecification ]
+					asGtStencilSpecificationFrom: self ]
 ]

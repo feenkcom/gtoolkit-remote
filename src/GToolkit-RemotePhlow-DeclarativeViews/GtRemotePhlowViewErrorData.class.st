@@ -62,3 +62,8 @@ GtRemotePhlowViewErrorData >> isPhlowErrorData [
 GtRemotePhlowViewErrorData >> isRemoteException [
 	^isRemoteException ifNil: [false]
 ]
+
+{ #category : #accessing }
+GtRemotePhlowViewErrorData >> updateLocalRemoteSide [
+	self gtDo: [] gemstoneDo: [self beRemoteException]
+]

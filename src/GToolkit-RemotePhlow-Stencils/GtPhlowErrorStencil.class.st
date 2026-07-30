@@ -11,6 +11,12 @@ GtPhlowErrorStencil class >> forException: anException [
 ]
 
 { #category : #initialization }
+GtPhlowErrorStencil >> asGtStencilSpecification [
+	^ super asGtStencilSpecification
+		dataSerializationStrategy: GtPhlowStencilDictionaryDataSerializationStrategy new
+]
+
+{ #category : #initialization }
 GtPhlowErrorStencil >> initializeForException: anException [
 	self stencilData: ((GtRemotePhlowViewErrorData new)
 			errorDescription: anException messageText;
