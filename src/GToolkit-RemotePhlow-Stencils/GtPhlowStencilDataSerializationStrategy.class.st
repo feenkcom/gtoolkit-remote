@@ -12,7 +12,7 @@ GtPhlowStencilDataSerializationStrategy class >> forDirectProxy [
 
 { #category : #api }
 GtPhlowStencilDataSerializationStrategy class >> forManualDictionary [
-	^ GtPhlowStencilDictionaryDataSerializationStrategy
+	^ GtPhlowStencilDictionaryDataSerializationStrategy new
 ]
 
 { #category : #api }

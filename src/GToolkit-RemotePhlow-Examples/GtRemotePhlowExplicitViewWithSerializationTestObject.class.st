@@ -15,7 +15,7 @@ GtRemotePhlowExplicitViewWithSerializationTestObject >> gtExplicitPictureViewDir
 	
 	^(aView explicit)
 		title: 'Direct proxy';
-		priority: 5;
+		priority: 15;
 		declarativeStencil: [
 			GtPhlowNamedStencil new
 				stencilClassName: #GtLocalPhlowPictureFullSizeViewStencil;
@@ -46,8 +46,8 @@ GtRemotePhlowExplicitViewWithSerializationTestObject >> gtExplicitPictureViewWir
 	<gtView>
 	
 	^(aView explicit)
-		title: 'Direct proxy';
-		priority: 5;
+		title: 'Wire encoding';
+		priority: 10;
 		declarativeStencil: [
 			GtPhlowNamedStencil new
 				stencilClassName: #GtLocalPhlowPictureFullSizeViewStencil;
