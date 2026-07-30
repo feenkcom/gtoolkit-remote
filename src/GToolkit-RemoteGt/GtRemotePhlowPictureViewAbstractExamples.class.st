@@ -18,7 +18,7 @@ GtRemotePhlowPictureViewAbstractExamples >> contentComputationError [
 				content: [Error signal: 'content error'].
 	spec := view asGtDeclarativeView.
 	data := spec phlowDataSource retrieveData.
-	self assert: data isError.
+	self assert: data isPhlowErrorData.
 	self assert: data errorDescription equals: 'content error'.
 	^data
 ]
@@ -44,7 +44,7 @@ GtRemotePhlowPictureViewAbstractExamples >> dataSourceRetrievesData [
 	| spec data |
 	spec := self pictureViewSpecification.
 	data := spec phlowDataSource retrieveData.
-	self assert: data isError not.
+	self assert: data isPhlowErrorData not.
 	self assert: data isPictureData.
 	self assert: data content class equals: ByteArray.
 	self assert: data content notEmpty.
@@ -61,7 +61,7 @@ GtRemotePhlowPictureViewAbstractExamples >> dataSourceRetrievesErrorData [
 				content: [Error signal: 'test error'].
 	spec := view asGtDeclarativeView.
 	data := spec phlowDataSource retrieveData.
-	self assert: data isError.
+	self assert: data isPhlowErrorData.
 	self assert: data isPictureData not.
 	self assert: data errorDescription equals: 'test error'.
 	^data
@@ -77,7 +77,7 @@ GtRemotePhlowPictureViewAbstractExamples >> errorDataSerializationRoundTrip [
 		equals: 'GtRemotePhlowViewErrorData'.
 	self assert: (dictionary at: 'errorDescription') equals: 'test error'.
 	restored := GtRemotePhlowBasicViewData fromDictionary: dictionary.
-	self assert: restored isError.
+	self assert: restored isPhlowErrorData.
 	self assert: restored errorDescription equals: 'test error'.
 	^restored
 ]
@@ -92,7 +92,7 @@ GtRemotePhlowPictureViewAbstractExamples >> heightComputationError [
 				content: [ self pictureBytes ].
 	spec := view asGtDeclarativeView.
 	data := spec phlowDataSource retrieveData.
-	self assert: data isError.
+	self assert: data isPhlowErrorData.
 	self assert: data errorDescription equals: 'height error'.
 	^data
 ]
@@ -243,7 +243,7 @@ GtRemotePhlowPictureViewAbstractExamples >> retrievePrimitiveDataForError [
 	self assert: (dictionary at: '__typeName')
 		equals: 'GtRemotePhlowViewErrorData'.
 	restored := GtRemotePhlowBasicViewData fromDictionary: dictionary.
-	self assert: restored isError.
+	self assert: restored isPhlowErrorData.
 	^restored
 ]
 
@@ -271,7 +271,7 @@ GtRemotePhlowPictureViewAbstractExamples >> widthComputationError [
 				content: [ self pictureBytes ].
 	spec := view asGtDeclarativeView.
 	data := spec phlowDataSource retrieveData.
-	self assert: data isError.
+	self assert: data isPhlowErrorData.
 	self assert: data errorDescription equals: 'width error'.
 	^data
 ]
