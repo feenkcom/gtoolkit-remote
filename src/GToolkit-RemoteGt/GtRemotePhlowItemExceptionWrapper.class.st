@@ -21,7 +21,7 @@ GtRemotePhlowItemExceptionWrapper >> exceptionDescription [
 
 { #category : #accessing }
 GtRemotePhlowItemExceptionWrapper >> exceptionDescription: aString [
-	^ exceptionDescription
+	exceptionDescription := aString
 ]
 
 { #category : #accessing }
@@ -32,4 +32,12 @@ GtRemotePhlowItemExceptionWrapper >> exceptionObject [
 { #category : #accessing }
 GtRemotePhlowItemExceptionWrapper >> exceptionObject: anObject [
 	exceptionObject := anObject
+]
+
+{ #category : #views }
+GtRemotePhlowItemExceptionWrapper >> gtLiveFor: aView [
+	<gtView>
+	^ aView explicit
+		title: 'Live';
+		stencil: [ self asDebuggableElement ]
 ]

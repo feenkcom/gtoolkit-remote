@@ -43,6 +43,17 @@ GtRemotePhlowViewErrorData >> errorObject: anException [
 	errorObject := anException
 ]
 
+{ #category : #views }
+GtRemotePhlowViewErrorData >> gtLiveFor: aView [
+	<gtView>
+	
+	^ aView explicit
+		title: 'Live';
+		declarativeStencil: [
+			GtPhlowErrorStencil new 
+				stencilData: self ]
+]
+
 { #category : #initialization }
 GtRemotePhlowViewErrorData >> initializeFromJSONDictionary: aDictionary [
 	super initializeFromJSONDictionary: aDictionary.
