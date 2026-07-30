@@ -169,6 +169,8 @@ GtRemotePhlowView >> asGtDeclarativeView [
 
 { #category : #'message performning' }
 GtRemotePhlowView >> basicOn: anObject perform: aMessageSymbol withArguments: aCollectionOfArguments [ 
+	<gtCollector>
+	
 	^ anObject  
 		perform: aMessageSymbol
 		with: aCollectionOfArguments first
@@ -229,6 +231,7 @@ GtRemotePhlowView >> definingSelector: aSelector [
 { #category : #'message performing' }
 GtRemotePhlowView >> on: anObject perform: aMessageSymbol [ 
 	<return: #GtRemotePhlowView>
+	<gtCollector>
 	
 	^ self 
 		on: anObject 
@@ -239,6 +242,7 @@ GtRemotePhlowView >> on: anObject perform: aMessageSymbol [
 { #category : #'message performning' }
 GtRemotePhlowView >> on: anObject perform: aMessageSymbol withArguments: aCollectionOfArguments [
 	<return: #GtRemotePhlowView>
+	<gtCollector>
 	
 	^ [ 
 			self 

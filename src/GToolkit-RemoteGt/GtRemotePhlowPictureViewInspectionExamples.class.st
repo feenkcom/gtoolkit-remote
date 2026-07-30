@@ -4,13 +4,18 @@ Class {
 	#category : #'GToolkit-RemoteGt-Examples-Views'
 }
 
+{ #category : #testing }
+GtRemotePhlowPictureViewInspectionExamples class >> isAbstract [
+	^ self name = #GtRemotePhlowPictureViewInspectionExamples
+]
+
 { #category : #'examples - scripter' }
 GtRemotePhlowPictureViewInspectionExamples >> altClickOnErrorTabOpensDefinition [
 	<gtExample>
 	| scripter |
 	scripter := BlScripter new.
 	scripter element: (GtPagerSettings usedPager
-				createWrappedOn: (GtInspectorTool forObject: self createErrorTestObject)).
+				createWrappedOn: (self createErrorTestObject gtDefaultInspectorTool)).
 	(scripter inspectorStep)
 		clickOnTabWithName: 'Picture Error';
 		assertSelectedTabWithName: 'Picture Error';
@@ -44,7 +49,7 @@ GtRemotePhlowPictureViewInspectionExamples >> altClickOnPictureTabOpensDefinitio
 	| scripter |
 	scripter := BlScripter new.
 	scripter element: (GtPagerSettings usedPager
-				createWrappedOn: (GtInspectorTool forObject: self createTestObject)).
+				createWrappedOn: (self createTestObject gtDefaultInspectorTool)).
 	(scripter inspectorStep)
 		clickOnTabWithName: 'Picture';
 		assertSelectedTabWithName: 'Picture';
@@ -80,8 +85,7 @@ GtRemotePhlowPictureViewInspectionExamples >> createErrorTestObject [
 
 { #category : #'examples - setup' }
 GtRemotePhlowPictureViewInspectionExamples >> createTestObject [
-	<gtExample>
-	^GtRemotePhlowPictureViewTestObject new
+	^ GtRemotePhlowPictureViewTestObject new
 ]
 
 { #category : #'examples - scripter' }
@@ -249,7 +253,7 @@ GtRemotePhlowPictureViewInspectionExamples >> scripterOnErrorTestObject [
 	<gtExample>
 	| scripter element |
 	scripter := BlScripter new.
-	element := GtInspector createOn: self createErrorTestObject.
+	element := (self createErrorTestObject gtDefaultInspectorTool) asElement.
 	element size: 1200 @ 800.
 	scripter element: element.
 	^scripter
@@ -260,7 +264,7 @@ GtRemotePhlowPictureViewInspectionExamples >> scripterOnTestObject [
 	<gtExample>
 	| scripter element |
 	scripter := BlScripter new.
-	element := GtInspector createOn: self createTestObject.
+	element := (self createTestObject gtDefaultInspectorTool) asElement.
 	element size: 1200 @ 800.
 	scripter element: element.
 	^scripter

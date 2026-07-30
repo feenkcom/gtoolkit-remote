@@ -19,6 +19,7 @@ GtRemotePhlowLocalView >> transformIfNeededForLocalRendering [
 	spec := self asGtDeclarativeView.
 	localView := spec viewFor: GtPhlowView empty.
 	localDefiningMethodProvider
-		ifNotNil: [:provider | localView definingMethodProvider: provider].
+		ifNotNil: [ :provider | 
+			localView definingMethodProvider: provider].
 	^localView
 ]

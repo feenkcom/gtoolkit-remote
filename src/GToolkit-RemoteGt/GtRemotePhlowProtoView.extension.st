@@ -3,6 +3,7 @@ Extension { #name : #GtRemotePhlowProtoView }
 { #category : #'*GToolkit-RemoteGt' }
 GtRemotePhlowProtoView >> updateLocalDefiningMethodProviderFor: aLocalView [
 	aLocalView
-			localDefiningMethodProvider: (GtPhlowDefiningMethodsCollector
-						forContext: thisContext) collect
+			localDefiningMethodProvider: (GtPhlowConcreteDefiningMethodProvider new
+				definingMethod:(GtPhlowDefiningMethodsCollector
+						forContext: thisContext sender sender sender sender) collect)
 ]
