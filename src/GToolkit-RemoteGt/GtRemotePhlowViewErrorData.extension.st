@@ -7,7 +7,8 @@ GtRemotePhlowViewErrorData >> asDebuggableElement [
 				ifTrue: 
 					[| wrapper |
 					wrapper := GtRemotePhlowItemExceptionWrapper new
-								exceptionDescription: self errorDescription.
+								exceptionDescription: self errorDescription;
+								exceptionObject: self errorObject.
 					wrapper asDebuggableElement]
 				ifFalse: [self errorObject asDebuggableElement].
 	errorElement id: GtPhlowExceptionId.

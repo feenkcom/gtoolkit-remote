@@ -10,20 +10,10 @@ Class {
 }
 
 { #category : #serialization }
-GtRemotePhlowViewErrorData class >> fromJSONDictionary: aDictionary [
-	| data |
-	data := (self new)
-				errorDescription: (aDictionary at: 'errorDescription');
-				yourself.
-	(aDictionary at: 'isRemoteException' ifAbsent: [false])
-		ifTrue: [data beRemoteException].
-	^data
-]
-
-{ #category : #serialization }
 GtRemotePhlowViewErrorData >> asDictionaryForExport [
 	^(super asDictionaryForExport)
 		at: 'errorDescription' put: errorDescription;
+		at: 'errorObject' put: errorObject;
 		at: 'isRemoteException' put: self isRemoteException;
 		yourself
 ]
@@ -53,6 +43,16 @@ GtRemotePhlowViewErrorData >> errorObject: anException [
 	errorObject := anException
 ]
 
+{ #category : #initialization }
+GtRemotePhlowViewErrorData >> initializeFromJSONDictionary: aDictionary [
+	super initializeFromJSONDictionary: aDictionary.
+
+	self
+		errorDescription: (aDictionary at: 'errorDescription');
+		errorObject: (aDictionary at: 'errorObject' ifAbsent: [ nil ]);
+		isRemoteException: (aDictionary at: 'isRemoteException' ifAbsent: [false]).
+]
+
 { #category : #testing }
 GtRemotePhlowViewErrorData >> isPhlowErrorData [
 	^true
@@ -61,6 +61,11 @@ GtRemotePhlowViewErrorData >> isPhlowErrorData [
 { #category : #testing }
 GtRemotePhlowViewErrorData >> isRemoteException [
 	^isRemoteException ifNil: [false]
+]
+
+{ #category : #accessing }
+GtRemotePhlowViewErrorData >> isRemoteException: anObject [
+	isRemoteException := anObject
 ]
 
 { #category : #accessing }

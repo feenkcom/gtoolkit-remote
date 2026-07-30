@@ -24,7 +24,7 @@ GtPhlowErrorStencil >> initializeForException: anException [
 ]
 
 { #category : #testing }
-GtPhlowErrorStencil >> isPhlowErrrorStencil [
+GtPhlowErrorStencil >> isPhlowErrorStencil [
 	^ true
 ]
 

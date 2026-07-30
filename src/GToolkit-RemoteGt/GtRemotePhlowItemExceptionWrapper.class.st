@@ -2,7 +2,8 @@ Class {
 	#name : #GtRemotePhlowItemExceptionWrapper,
 	#superclass : #Object,
 	#instVars : [
-		'exceptionDescription'
+		'exceptionDescription',
+		'exceptionObject'
 	],
 	#category : #'GToolkit-RemoteGt-Declarative Views'
 }
@@ -20,5 +21,15 @@ GtRemotePhlowItemExceptionWrapper >> exceptionDescription [
 
 { #category : #accessing }
 GtRemotePhlowItemExceptionWrapper >> exceptionDescription: aString [
-	exceptionDescription := aString
+	^ exceptionDescription
+]
+
+{ #category : #accessing }
+GtRemotePhlowItemExceptionWrapper >> exceptionObject [
+	^ exceptionObject
+]
+
+{ #category : #accessing }
+GtRemotePhlowItemExceptionWrapper >> exceptionObject: anObject [
+	exceptionObject := anObject
 ]

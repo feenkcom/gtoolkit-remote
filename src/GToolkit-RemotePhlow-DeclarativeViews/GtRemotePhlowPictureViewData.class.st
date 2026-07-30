@@ -11,16 +11,6 @@ Class {
 }
 
 { #category : #serialization }
-GtRemotePhlowPictureViewData class >> fromJSONDictionary: aDictionary [
-	^(self new)
-		content: (aDictionary at: 'content');
-		mediaType: (aDictionary at: 'mediaType' ifAbsent: [nil]);
-		width: (aDictionary at: 'width' ifAbsent: [nil]);
-		height: (aDictionary at: 'height' ifAbsent: [nil]);
-		yourself
-]
-
-{ #category : #serialization }
 GtRemotePhlowPictureViewData >> asDictionaryForExport [
 	| dict |
 	dict := super asDictionaryForExport.
@@ -49,6 +39,17 @@ GtRemotePhlowPictureViewData >> height [
 { #category : #accessing }
 GtRemotePhlowPictureViewData >> height: anInteger [
 	height := anInteger
+]
+
+{ #category : #initialization }
+GtRemotePhlowPictureViewData >> initializeFromJSONDictionary: aDictionary [
+	super initializeFromJSONDictionary: aDictionary.
+	
+	self
+		content: (aDictionary at: 'content');
+		mediaType: (aDictionary at: 'mediaType' ifAbsent: [nil]);
+		width: (aDictionary at: 'width' ifAbsent: [nil]);
+		height: (aDictionary at: 'height' ifAbsent: [nil])
 ]
 
 { #category : #testing }

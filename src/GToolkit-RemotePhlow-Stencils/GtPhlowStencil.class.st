@@ -38,6 +38,6 @@ GtPhlowStencil >> initializeFromStencilSpecification: aStencilSpecification [
 ]
 
 { #category : #testing }
-GtPhlowStencil >> isPhlowErrrorStencil [
+GtPhlowStencil >> isPhlowErrorStencil [
 	^ false
 ]
