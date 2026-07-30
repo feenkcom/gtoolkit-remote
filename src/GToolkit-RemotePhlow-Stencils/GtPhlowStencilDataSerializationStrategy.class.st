@@ -16,6 +16,12 @@ GtPhlowStencilDataSerializationStrategy class >> forManualDictionary [
 ]
 
 { #category : #api }
+GtPhlowStencilDataSerializationStrategy class >> forMixedProxyDataEncoding [
+	^ GtPhlowStencilMediumSerializationStrategy new 
+		serializationStrategyName:#GtRsrLegacySerializationStrategy
+]
+
+{ #category : #api }
 GtPhlowStencilDataSerializationStrategy class >> forWireEncoding [
 	^ GtPhlowStencilMediumSerializationStrategy new 
 		serializationStrategyName:#GtRsrWireSerializationStrategy

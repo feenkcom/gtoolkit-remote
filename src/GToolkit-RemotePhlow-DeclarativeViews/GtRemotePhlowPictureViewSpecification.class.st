@@ -25,6 +25,13 @@ GtRemotePhlowPictureViewSpecification >> asBasicViewDataForExport [
 ]
 
 { #category : #accessing }
+GtRemotePhlowPictureViewSpecification >> configureViewActionsFor: aView [
+	super configureViewActionsFor: aView.
+	
+	self configureDefaultRefreshActionFor: aView.
+]
+
+{ #category : #accessing }
 GtRemotePhlowPictureViewSpecification >> createDeclarativeStencilForViewData: aViewData [
 	^ aViewData isPhlowErrorData
 				ifTrue: [ 

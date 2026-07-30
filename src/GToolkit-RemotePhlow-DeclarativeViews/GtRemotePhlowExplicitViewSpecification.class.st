@@ -18,6 +18,11 @@ GtRemotePhlowExplicitViewSpecification >> asBasicViewDataForExport [
 	^dictionary
 ]
 
+{ #category : #actions }
+GtRemotePhlowExplicitViewSpecification >> flushCachedData [
+	^ self phlowDataSource flushCachedData
+]
+
 { #category : #initialization }
 GtRemotePhlowExplicitViewSpecification >> initializeFromInspector: anInspector [
 	self phlowDataSource ifNil: [	

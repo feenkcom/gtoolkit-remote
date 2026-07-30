@@ -1,6 +1,13 @@
 Extension { #name : #GtRemotePhlowExplicitViewSpecification }
 
 { #category : #'*GToolkit-RemoteGt' }
+GtRemotePhlowExplicitViewSpecification >> configureViewActionsFor: aView [
+	super configureViewActionsFor: aView.
+	
+	self configureDefaultRefreshActionFor: aView.
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
 GtRemotePhlowExplicitViewSpecification >> viewFor: aView [
 	| pictureView |
 	pictureView := aView explicit

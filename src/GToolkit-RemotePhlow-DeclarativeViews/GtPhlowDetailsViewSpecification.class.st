@@ -29,7 +29,7 @@ GtPhlowDetailsViewSpecification >> asBasicViewDataForExport [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : #actions }
 GtPhlowDetailsViewSpecification >> flushCachedData [
 	^ self phlowDataSource flushCachedData
 ]

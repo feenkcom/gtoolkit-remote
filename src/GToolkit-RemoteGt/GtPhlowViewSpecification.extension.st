@@ -8,6 +8,17 @@ GtPhlowViewSpecification >> asJSONForExport [
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
+GtPhlowViewSpecification >> configureDefaultRefreshActionFor: aView [
+	aView
+		actionButtonIcon: BrGlamorousVectorIcons refresh
+		id: GtPhlowViewRefreshContentButtonId
+		tooltip: 'Update'
+		action: [ :aButton :aTab |
+				self flushCachedData.
+				aTab phlow fireViewUpdateWish ].
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
 GtPhlowViewSpecification >> configureViewActionsFor: aView [
 	self actionSpecifications ifNil: [ ^ self ].
 
