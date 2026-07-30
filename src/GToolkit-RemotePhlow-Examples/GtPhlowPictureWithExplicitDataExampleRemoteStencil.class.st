@@ -3,17 +3,9 @@ I am an example of a phlow stencil with data that can be used both locally and r
 "
 Class {
 	#name : #GtPhlowPictureWithExplicitDataExampleRemoteStencil,
-	#superclass : #GtPhlowWithDataStencil,
+	#superclass : #GtPhlowForwardStencil,
 	#category : #'GToolkit-RemotePhlow-Examples'
 }
-
-{ #category : #converting }
-GtPhlowPictureWithExplicitDataExampleRemoteStencil >> asGtStencilSpecification [
-	^ GtRemotePhlowForwardStencilSpecification new
-		stencilClassName: self class name;
-		stencilData: self stencilData;
-		originalStencil: self
-]
 
 { #category : #building }
 GtPhlowPictureWithExplicitDataExampleRemoteStencil >> configureImageElement: anImageElement [
@@ -32,4 +24,9 @@ GtPhlowPictureWithExplicitDataExampleRemoteStencil >> configureImageElement: anI
 		ifNotNil: [:h | 
 			anImageElement constraintsDo: 	[:c |
 				c vertical exact: h ] ].
+]
+
+{ #category : #building }
+GtPhlowPictureWithExplicitDataExampleRemoteStencil >> stencilClassName [
+	^ self class name
 ]

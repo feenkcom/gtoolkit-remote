@@ -9,6 +9,13 @@ Class {
 }
 
 { #category : #accessing }
+GtPhlowWithDataStencil >> asGtStencilSpecification [
+	^ GtRemotePhlowForwardStencilSpecification new
+		stencilData: self stencilData;
+		dataSerializationStrategy: self dataSerializationStrategy
+]
+
+{ #category : #accessing }
 GtPhlowWithDataStencil >> dataSerializationStrategy [
 	^ dataSerializationStrategy
 ]

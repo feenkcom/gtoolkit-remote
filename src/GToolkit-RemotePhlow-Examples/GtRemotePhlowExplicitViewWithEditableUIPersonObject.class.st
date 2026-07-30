@@ -38,8 +38,8 @@ GtRemotePhlowExplicitViewWithEditableUIPersonObject >> age: anInteger [
 GtRemotePhlowExplicitViewWithEditableUIPersonObject >> gtEditableFor: aView [
 	<gtView>
 	^(aView explicit)
-		title: 'Edit';
-		priority: 1;
+		title: 'Basic edit';
+		priority: 10;
 		declarativeStencil: [
 			GtPhlowNamedStencil new
 				stencilClassName: #GtRemotePhlowExplicitViewWithEditableUIPersonStencil;
@@ -52,8 +52,8 @@ GtRemotePhlowExplicitViewWithEditableUIPersonObject >> gtEditableFor: aView [
 GtRemotePhlowExplicitViewWithEditableUIPersonObject >> gtEditableWithNotificationFor: aView [
 	<gtView>
 	^(aView explicit)
-		title: 'Edit with notification';
-		priority: 2;
+		title: 'Edit';
+		priority: 5;
 		declarativeStencil: [
 			GtRemotePhlowExplicitViewWithEditableUIPersonWithNotificationStencil new
 				personObject: self ]

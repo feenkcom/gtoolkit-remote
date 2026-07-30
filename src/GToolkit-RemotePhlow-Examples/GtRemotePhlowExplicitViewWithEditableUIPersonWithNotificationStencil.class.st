@@ -1,6 +1,6 @@
 Class {
 	#name : #GtRemotePhlowExplicitViewWithEditableUIPersonWithNotificationStencil,
-	#superclass : #GtPhlowWithDataStencil,
+	#superclass : #GtPhlowForwardStencil,
 	#instVars : [
 		'personObject'
 	],
@@ -12,7 +12,7 @@ GtRemotePhlowExplicitViewWithEditableUIPersonWithNotificationStencil class >> ne
 	^ self basicNew initialize
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 GtRemotePhlowExplicitViewWithEditableUIPersonWithNotificationStencil >> initialize [
 	super initialize.
 	
@@ -27,6 +27,11 @@ GtRemotePhlowExplicitViewWithEditableUIPersonWithNotificationStencil >> personOb
 { #category : #accessing }
 GtRemotePhlowExplicitViewWithEditableUIPersonWithNotificationStencil >> personObject: anObject [
 	personObject := anObject
+]
+
+{ #category : #accessing }
+GtRemotePhlowExplicitViewWithEditableUIPersonWithNotificationStencil >> stencilClassName [
+	^ self class name
 ]
 
 { #category : #accessing }

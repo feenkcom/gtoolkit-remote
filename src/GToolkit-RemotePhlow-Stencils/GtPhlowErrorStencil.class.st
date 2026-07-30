@@ -10,10 +10,16 @@ GtPhlowErrorStencil class >> forException: anException [
 		initializeForException: anException
 ]
 
-{ #category : #initialization }
-GtPhlowErrorStencil >> asGtStencilSpecification [
-	^ super asGtStencilSpecification
-		dataSerializationStrategy: GtPhlowStencilDictionaryDataSerializationStrategy new
+{ #category : #'instance creation' }
+GtPhlowErrorStencil class >> new [
+	^ self basicNew initialize
+]
+
+{ #category : #testing }
+GtPhlowErrorStencil >> initialize [
+	super initialize.
+	
+	self dataSerializationStrategy: GtPhlowStencilDictionaryDataSerializationStrategy new
 ]
 
 { #category : #initialization }

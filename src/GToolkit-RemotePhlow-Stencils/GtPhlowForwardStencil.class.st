@@ -6,12 +6,8 @@ Class {
 
 { #category : #converting }
 GtPhlowForwardStencil >> asGtStencilSpecification [
-	^ GtRemotePhlowForwardStencilSpecification new
-		stencilClassName: self stencilClassName;
-		stencilData: self stencilData;
-		dataSerializationStrategy: self dataSerializationStrategy;
-		originalStencilData: self stencilData;
-		originalStencil: self
+	^ super asGtStencilSpecification
+		stencilClassName: self stencilClassName
 ]
 
 { #category : #accessing }

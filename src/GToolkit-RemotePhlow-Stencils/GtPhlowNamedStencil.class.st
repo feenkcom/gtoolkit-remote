@@ -9,6 +9,13 @@ Class {
 }
 
 { #category : #accessing }
+GtPhlowNamedStencil >> asGtStencilSpecification [
+	^ super asGtStencilSpecification
+		originalStencilData: self stencilData;
+		originalStencil: self
+]
+
+{ #category : #accessing }
 GtPhlowNamedStencil >> stencilClassName [
 	^ stencilClassName
 ]
