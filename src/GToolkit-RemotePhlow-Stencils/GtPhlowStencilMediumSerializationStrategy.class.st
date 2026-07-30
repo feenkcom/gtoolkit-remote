@@ -7,12 +7,6 @@ Class {
 	#category : #'GToolkit-RemotePhlow-Stencils'
 }
 
-{ #category : #'instance creation' }
-GtPhlowStencilMediumSerializationStrategy class >> forWireEncoding [
-	^ self new 
-		serializationStrategyName:#GtRsrWireSerializationStrategy
-]
-
 { #category : #converting }
 GtPhlowStencilMediumSerializationStrategy >> asDictionaryForExport [
 	^(super asDictionaryForExport)

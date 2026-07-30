@@ -24,7 +24,7 @@ GtRemotePhlowForwardStencilSpecification >> asDictionaryForExport [
 { #category : #accessing }
 GtRemotePhlowForwardStencilSpecification >> dataSerializationStrategy [
 	^ super dataSerializationStrategy
-			ifNil: [ GtPhlowStencilMediumSerializationStrategy forWireEncoding  ]
+			ifNil: [ GtPhlowStencilDataSerializationStrategy forWireEncoding  ]
 ]
 
 { #category : #initialization }

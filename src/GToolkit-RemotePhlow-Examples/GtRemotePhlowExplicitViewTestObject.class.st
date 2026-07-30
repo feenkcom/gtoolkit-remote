@@ -10,22 +10,11 @@ GtRemotePhlowExplicitViewTestObject class >> pictureBytes [
 ]
 
 { #category : #views }
-GtRemotePhlowExplicitViewTestObject >> gtViewPictureWithCustomPhlowStencilFor: aView [
-	"<gtView>"
-	
-	^(aView explicit)
-		title: 'Picture';
-		priority: 20;
-		stencil: [ 
-			 ]
-]
-
-{ #category : #views }
-GtRemotePhlowExplicitViewTestObject >> gtViewPictureWithDirectlySerializableFor: aView [
+GtRemotePhlowExplicitViewTestObject >> gtExplicitPictureViewWithDirectlySerializableFor: aView [
 	<gtView>
 	
 	^(aView explicit)
-		title: 'Remote stencil';
+		title: 'Remote/local stencil';
 		priority: 10;
 		declarativeStencil: [ 
 			(GtPhlowPictureWithDirectDataExampleStencil new)
@@ -33,7 +22,7 @@ GtRemotePhlowExplicitViewTestObject >> gtViewPictureWithDirectlySerializableFor:
 ]
 
 { #category : #views }
-GtRemotePhlowExplicitViewTestObject >> gtViewPictureWithGenericPhlowStencilWithDirectDataFor: aView [
+GtRemotePhlowExplicitViewTestObject >> gtExplicitPictureViewWithGenericPhlowStencilWithDirectDataFor: aView [
 	<gtView>
 	
 	^(aView explicit)
@@ -47,7 +36,7 @@ GtRemotePhlowExplicitViewTestObject >> gtViewPictureWithGenericPhlowStencilWithD
 ]
 
 { #category : #views }
-GtRemotePhlowExplicitViewTestObject >> gtViewPictureWithGenericPhlowStencilWithDirectDataUsingDedicatedApiFor: aView [
+GtRemotePhlowExplicitViewTestObject >> gtExplicitPictureViewWithGenericPhlowStencilWithDirectDataUsingDedicatedApiFor: aView [
 	<gtView>
 	
 	^(aView explicit)
@@ -56,4 +45,17 @@ GtRemotePhlowExplicitViewTestObject >> gtViewPictureWithGenericPhlowStencilWithD
 		localStencilName: #GtLocalPhlowPictureFullSizeViewStencil
 			stencilData: [ ((GtRemotePhlowPictureViewData new)
 				content: self class pictureBytes) ]
+]
+
+{ #category : #views }
+GtRemotePhlowExplicitViewTestObject >> gtExplicitPictureViewWithRemoteOnlyStencilSerializableFor: aView [
+	<gtView>
+	
+	^(aView explicit)
+		title: 'Remote only stencil';
+		priority: 12;
+		declarativeStencil: [ 
+			GtPhlowPictureWithExplicitDataExampleRemoteStencil new
+				stencilData: ((GtRemotePhlowPictureViewData new)
+						content: self class pictureBytes) ]
 ]

@@ -9,6 +9,7 @@ GtPhlowForwardStencil >> asGtStencilSpecification [
 	^ GtRemotePhlowForwardStencilSpecification new
 		stencilClassName: self stencilClassName;
 		stencilData: self stencilData;
+		dataSerializationStrategy: self dataSerializationStrategy;
 		originalStencilData: self stencilData;
 		originalStencil: self
 ]

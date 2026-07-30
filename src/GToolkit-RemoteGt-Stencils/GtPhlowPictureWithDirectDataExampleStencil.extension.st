@@ -10,5 +10,6 @@ GtPhlowPictureWithDirectDataExampleStencil >> create [
 			c vertical matchParent] .
 	
 	^(imageElement asScalableElement)
-		id: GtLocalPhlowPictureElementId
+		id: GtLocalPhlowPictureElementId;
+		margin: (BlInsets all: 10)
 ]

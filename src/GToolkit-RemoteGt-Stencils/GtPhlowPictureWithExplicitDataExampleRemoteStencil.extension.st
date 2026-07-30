@@ -1,7 +1,7 @@
-Extension { #name : #GtPhlowPictureWithExplicitDataExampleStencil }
+Extension { #name : #GtPhlowPictureWithExplicitDataExampleRemoteStencil }
 
 { #category : #'*GToolkit-RemoteGt-Stencils' }
-GtPhlowPictureWithExplicitDataExampleStencil >> create [
+GtPhlowPictureWithExplicitDataExampleRemoteStencil >> create [
 	| imageElement |
 	
 	imageElement := self imageElementFor: stencilData.
@@ -13,6 +13,6 @@ GtPhlowPictureWithExplicitDataExampleStencil >> create [
 ]
 
 { #category : #'*GToolkit-RemoteGt-Stencils' }
-GtPhlowPictureWithExplicitDataExampleStencil >> imageElementFor: aData [
+GtPhlowPictureWithExplicitDataExampleRemoteStencil >> imageElementFor: aData [
 	^ BlSpartaBufferedImageElement buffer: aData content
 ]

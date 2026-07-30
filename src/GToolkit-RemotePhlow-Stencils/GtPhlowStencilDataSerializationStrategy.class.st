@@ -5,6 +5,23 @@ Class {
 }
 
 { #category : #api }
+GtPhlowStencilDataSerializationStrategy class >> forDirectProxy [
+	^ GtPhlowStencilMediumSerializationStrategy new 
+		serializationStrategyName:#GtRsrProxyOnlySerializationStrategy
+]
+
+{ #category : #api }
+GtPhlowStencilDataSerializationStrategy class >> forManualDictionary [
+	^ GtPhlowStencilDictionaryDataSerializationStrategy
+]
+
+{ #category : #api }
+GtPhlowStencilDataSerializationStrategy class >> forWireEncoding [
+	^ GtPhlowStencilMediumSerializationStrategy new 
+		serializationStrategyName:#GtRsrWireSerializationStrategy
+]
+
+{ #category : #api }
 GtPhlowStencilDataSerializationStrategy >> prepareStencilSpecificationForSerializationFor: aStencilSpecification from: aViewSpecification [
 ]
 
