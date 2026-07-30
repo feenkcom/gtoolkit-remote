@@ -206,7 +206,12 @@ GtRemotePhlowView >> definingClass: aClass [
 GtRemotePhlowView >> definingMethod [
 	^ (definingClass whichClassIncludesSelector: definingSelector) 
 		ifNil: [ nil ]
-		ifNotNil: [ :aClass | aClass compiledMethodAt: definingSelector ]
+		ifNotNil: [ :aClass | 
+			self 
+				gtDo: [
+					(aClass compiledMethodAt: definingSelector) methodReference ] 
+				gemstoneDo: [
+					aClass compiledMethodAt: definingSelector ] ]
 ]
 
 { #category : #accessing }
