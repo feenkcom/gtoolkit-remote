@@ -4,7 +4,7 @@ I am an example of a phlow stencil with data that can be used both locally and r
 Class {
 	#name : #GtPhlowPictureWithExplicitDataExampleRemoteStencil,
 	#superclass : #GtPhlowWithDataStencil,
-	#category : #'GToolkit-RemotePhlow-Stencils'
+	#category : #'GToolkit-RemotePhlow-Examples'
 }
 
 { #category : #converting }

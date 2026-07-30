@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'contentBytes'
 	],
-	#category : #'GToolkit-RemotePhlow-Stencils'
+	#category : #'GToolkit-RemotePhlow-Examples'
 }
 
 { #category : #converting }
