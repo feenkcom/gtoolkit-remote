@@ -79,7 +79,9 @@ GtRemotePhlowExplicitViewWithEditableUIPersonStencil >> stencilData [
 
 { #category : #accessing }
 GtRemotePhlowExplicitViewWithEditableUIPersonStencil >> stencilData: anObject [
-	self personObject: anObject
+	self personObject: (self 
+		gtDo: [ anObject asGtBareProxyObject ] 
+		gemstoneDo: [anObject])
 ]
 
 { #category : #'private - updating' }

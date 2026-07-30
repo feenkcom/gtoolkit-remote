@@ -1,16 +1,22 @@
 Class {
 	#name : #GtRemotePhlowExplicitViewWithEditableUIPersonWithNotificationStencil,
-	#superclass : #BrStencil,
+	#superclass : #GtPhlowWithDataStencil,
 	#instVars : [
 		'personObject'
 	],
-	#category : #'GToolkit-RemoteGt-Examples-Views'
+	#category : #'GToolkit-RemotePhlow-Examples'
 }
 
-{ #category : #'api - instantiation' }
-GtRemotePhlowExplicitViewWithEditableUIPersonWithNotificationStencil >> create [
-	^GtRemotePhlowExplicitViewWithEditableUIPersonElement new
-		personObject: personObject
+{ #category : #'instance creation' }
+GtRemotePhlowExplicitViewWithEditableUIPersonWithNotificationStencil class >> new [
+	^ self basicNew initialize
+]
+
+{ #category : #accessing }
+GtRemotePhlowExplicitViewWithEditableUIPersonWithNotificationStencil >> initialize [
+	super initialize.
+	
+	self dataSerializationStrategy: GtPhlowStencilDataSerializationStrategy forDirectProxy
 ]
 
 { #category : #accessing }
@@ -30,5 +36,7 @@ GtRemotePhlowExplicitViewWithEditableUIPersonWithNotificationStencil >> stencilD
 
 { #category : #accessing }
 GtRemotePhlowExplicitViewWithEditableUIPersonWithNotificationStencil >> stencilData: anObject [
-	self personObject: anObject
+	self personObject: (self 
+		gtDo: [ anObject asGtBareProxyObject ] 
+		gemstoneDo: [anObject])
 ]

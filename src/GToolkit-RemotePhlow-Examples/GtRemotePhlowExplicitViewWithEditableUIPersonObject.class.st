@@ -9,6 +9,11 @@ Class {
 	#category : #'GToolkit-RemotePhlow-Examples'
 }
 
+{ #category : #'instance creation' }
+GtRemotePhlowExplicitViewWithEditableUIPersonObject class >> new [
+	^ self basicNew initialize
+]
+
 { #category : #accessing }
 GtRemotePhlowExplicitViewWithEditableUIPersonObject >> address [
 	^address
@@ -50,11 +55,8 @@ GtRemotePhlowExplicitViewWithEditableUIPersonObject >> gtEditableWithNotificatio
 		title: 'Edit with notification';
 		priority: 2;
 		declarativeStencil: [
-			GtPhlowNamedStencil new
-				stencilClassName: #GtRemotePhlowExplicitViewWithEditableUIPersonWithNotificationStencil;
-				stencilData: self;
-				dataSerializationStrategy: GtPhlowStencilDataSerializationStrategy 
-					forDirectProxy]
+			GtRemotePhlowExplicitViewWithEditableUIPersonWithNotificationStencil new
+				personObject: self ]
 ]
 
 { #category : #initialization }
