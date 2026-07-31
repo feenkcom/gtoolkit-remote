@@ -21,7 +21,7 @@ BaselineOfGToolkitRemote >> baseline: spec [
 			package: 'GToolkit-RemotePhlow-Stencils' with: [
 				spec requires: #('GToolkit-RemotePhlow-DeclarativeSpecification')];
 			package: 'GToolkit-RemotePhlow-Icons' with: [
-				spec requires: #('GToolkit-RemotePhlow-DeclarativeSpecification')];
+				spec requires: #('GToolkit-RemotePhlow-Stencils')];
 			package: 'GToolkit-RemotePhlow-DeclarativeActions'with: [
 				spec requires: #('GToolkit-RemotePhlow-DeclarativeSpecification')];
 			package: 'GToolkit-RemotePhlow-DeclarativeViews' with: [
@@ -37,7 +37,8 @@ BaselineOfGToolkitRemote >> baseline: spec [
 				
 			"GToolkit-RemotePhlow-Examples all run in the local image, 
 			i.e. don't require external servers, so can be part of the standard test suite"
-			package: 'GToolkit-RemotePhlow-Examples';
+			package: 'GToolkit-RemotePhlow-Examples' with: [
+				spec requires: #('GToolkit-RemotePhlow-Stencils') ];
 			
 			package: 'GToolkit-RemoteGt-LocalPhlow' with: [
 				spec requires: #('GToolkit-RemotePhlow-PhlowViews')];
