@@ -640,7 +640,7 @@ GtRemotePhlowDeclarativeViewsExamples >> pictureView [
 	self assert: viewSpecification priority equals: 50. 
 	viewDatasource := phlowSpecificationsProvider
 				getDeclarativeViewFor: #gtPictureFor:.
-	data := viewDatasource retrieveData.
+	data := viewDatasource retrieveStencilData.
 	self assert: data isPhlowErrorData not.
 	self assert: data content notNil.
 	self assert: data content notEmpty.
