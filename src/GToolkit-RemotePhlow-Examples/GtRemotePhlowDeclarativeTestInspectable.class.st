@@ -429,6 +429,15 @@ GtRemotePhlowDeclarativeTestInspectable >> gtListWithStyledTextFor: aView [
 		itemText: [ :item | item ]
 ]
 
+{ #category : #views }
+GtRemotePhlowDeclarativeTestInspectable >> gtPictureFor: aView [
+	<gtView>
+	^(aView picture)
+		title: 'Picture';
+		priority: 50;
+		content: [self pictureBytes]
+]
+
 { #category : #inspecting }
 GtRemotePhlowDeclarativeTestInspectable >> gtStringInTextEditorViewFor: aView [
 	<gtView>
@@ -596,6 +605,11 @@ GtRemotePhlowDeclarativeTestInspectable >> objectsForListWithStyledTextForRemote
 			self styledPhlowTextForRemoteComparison.
 			self styledPhlowTextForRemoteComparison
 		}
+]
+
+{ #category : #accessing }
+GtRemotePhlowDeclarativeTestInspectable >> pictureBytes [
+	^ GtRemotePhlowPictureViewTestObject pictureBytes
 ]
 
 { #category : #accessing }

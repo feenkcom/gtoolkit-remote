@@ -8,6 +8,7 @@ RwSimpleProjectLoadComponentV2 {
 	#packageNames : [
 		'GToolkit-RemotePhlow-DeclarativeSpecification',
 		'GToolkit-RemotePhlow-Text',
+		'GToolkit-RemotePhlow-Stencils',
 		'GToolkit-RemotePhlow-Icons',
 		'GToolkit-RemotePhlow-DeclarativeActions',
 		'GToolkit-RemotePhlow-DeclarativeViews',

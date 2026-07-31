@@ -49,6 +49,9 @@ GtRemoteInspectionSimulation >> configurePhlowAction: aPhlowAction withSpecifica
 
 { #category : #'gt inspector' }
 GtRemoteInspectionSimulation >> configurePhlowView: aPhlowView withSpecification: aViewSpecification [
+	aPhlowView definingMethodProvider: (GtRemotePhlowDefiningMethodProvider new
+		declarativeView: aViewSpecification).
+	"aPhlowView autoUpdates removeUpdateOnMethodChanged."
 ]
 
 { #category : #simulation }

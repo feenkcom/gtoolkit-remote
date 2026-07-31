@@ -1,0 +1,40 @@
+Class {
+	#name : #GtPhlowErrorStencil,
+	#superclass : #GtPhlowForwardStencil,
+	#category : #'GToolkit-RemotePhlow-Stencils'
+}
+
+{ #category : #'instance creation' }
+GtPhlowErrorStencil class >> forException: anException [
+	^self new 
+		initializeForException: anException
+]
+
+{ #category : #'instance creation' }
+GtPhlowErrorStencil class >> new [
+	^ self basicNew initialize
+]
+
+{ #category : #testing }
+GtPhlowErrorStencil >> initialize [
+	super initialize.
+	
+	self dataSerializationStrategy: GtPhlowStencilDictionaryDataSerializationStrategy new
+]
+
+{ #category : #initialization }
+GtPhlowErrorStencil >> initializeForException: anException [
+	self stencilData: ((GtRemotePhlowViewErrorData new)
+			errorDescription: anException messageText;
+			errorObject: anException )
+]
+
+{ #category : #testing }
+GtPhlowErrorStencil >> isPhlowErrorStencil [
+	^ true
+]
+
+{ #category : #accessing }
+GtPhlowErrorStencil >> stencilClassName [
+	^ #GtLocalPhlowExceptionStencil
+]

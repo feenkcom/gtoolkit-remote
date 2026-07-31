@@ -4,13 +4,7 @@ Extension { #name : #GtPhlowDetailsViewSpecification }
 GtPhlowDetailsViewSpecification >> configureViewActionsFor: aView [
 	super configureViewActionsFor: aView.
 	
-	aView
-		actionButtonIcon: BrGlamorousVectorIcons refresh
-		id: GtPhlowViewRefreshContentButtonId
-		tooltip: 'Update'
-		action: [ :aButton :aTab |
-				self flushCachedData.
-				aTab phlow fireViewUpdateWish ].
+	self configureDefaultRefreshActionFor: aView.
 ]
 
 { #category : #'*GToolkit-RemoteGt' }

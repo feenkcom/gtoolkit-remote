@@ -17,6 +17,17 @@ GtRemotePhlowProtoView >> columnedTree [
 ]
 
 { #category : #private }
+GtRemotePhlowProtoView >> declarativeLocalRemoteViewOfType: aGtDeclarativeViewClass [
+	"Answer a new declarative view instance for views that are both local and remote"
+	| view |
+	view := self declarativeViewOfType: aGtDeclarativeViewClass.
+	self 
+		gtDo: [ self updateLocalDefiningMethodProviderFor: view ]
+		gemstoneDo: [].
+	^ view
+]
+
+{ #category : #private }
 GtRemotePhlowProtoView >> declarativeViewOfType: aGtDeclarativeViewClass [
 	"Answer a new declarative view instance"
 
@@ -36,6 +47,12 @@ GtRemotePhlowProtoView >> empty [
 ]
 
 { #category : #decorating }
+GtRemotePhlowProtoView >> explicit [
+
+	^ self declarativeViewOfType: GtRemotePhlowExplicitView
+]
+
+{ #category : #decorating }
 GtRemotePhlowProtoView >> forward [
 
 	^ self declarativeViewOfType: GtRemotePhlowForwarderView
@@ -45,6 +62,11 @@ GtRemotePhlowProtoView >> forward [
 GtRemotePhlowProtoView >> list [
 
 	^ self declarativeViewOfType: GtRemotePhlowListView
+]
+
+{ #category : #'accessing - views' }
+GtRemotePhlowProtoView >> picture [
+	^ self declarativeLocalRemoteViewOfType: GtRemotePhlowPictureView.
 ]
 
 { #category : #decorating }

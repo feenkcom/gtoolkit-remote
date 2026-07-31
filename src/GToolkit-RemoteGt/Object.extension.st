@@ -1,6 +1,13 @@
 Extension { #name : #Object }
 
 { #category : #'*GToolkit-RemoteGt' }
+Object >> asPhlowDeclarativeStencilBuilder [
+	<return: #BrStencilBuilder>
+	
+	^ self asStencilBuilder: GtPhlowRemoteDeclarativeStencilBuilder
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
 Object >> gtActionsInCurrentContext [
 	^ self gtActionsInContext: GtPhlowContext new
 ]

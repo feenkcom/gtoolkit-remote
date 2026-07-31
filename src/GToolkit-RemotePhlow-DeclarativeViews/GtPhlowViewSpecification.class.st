@@ -157,6 +157,11 @@ GtPhlowViewSpecification >> definingMethod [
 		aDataSource definingMethod ]
 ]
 
+{ #category : #accessing }
+GtPhlowViewSpecification >> flushCachedData [
+
+]
+
 { #category : #initialization }
 GtPhlowViewSpecification >> initializeFromInspector: anInspector [
 ]

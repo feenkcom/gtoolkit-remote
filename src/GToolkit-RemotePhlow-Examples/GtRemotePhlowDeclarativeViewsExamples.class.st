@@ -626,6 +626,29 @@ GtRemotePhlowDeclarativeViewsExamples >> objectsForListWithStyledTextComparison 
 			objectsForListWithStyledText
 ]
 
+{ #category : #examples }
+GtRemotePhlowDeclarativeViewsExamples >> pictureView [
+	<gtExample>
+	<after: #stopServer>
+	| phlowSpecificationsProvider viewDictionary viewSpecification viewDatasource data |
+	phlowSpecificationsProvider := self remotePhlowSpecificationsProvider.
+	viewDictionary := phlowSpecificationsProvider
+				getViewDeclaration: #gtPictureFor:.
+	viewSpecification := GtPhlowViewSpecification
+				fromDictionary: viewDictionary.
+	self assert: viewSpecification title equals: 'Picture'.
+	self assert: viewSpecification priority equals: 50. 
+	viewDatasource := phlowSpecificationsProvider
+				getDeclarativeViewFor: #gtPictureFor:.
+	data := viewDatasource retrieveStencilData.
+	self assert: data isPhlowErrorData not.
+	self assert: data content notNil.
+	self assert: data content notEmpty.
+	self assert: data width isNil.
+	self assert: data height isNil.
+	^viewSpecification
+]
+
 { #category : #private }
 GtRemotePhlowDeclarativeViewsExamples >> printForString [
 	"Answer the string returned in the #gtPrintFor: view.
