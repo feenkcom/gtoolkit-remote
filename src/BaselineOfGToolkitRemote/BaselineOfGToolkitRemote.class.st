@@ -15,12 +15,14 @@ BaselineOfGToolkitRemote >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'GToolkitPhlow' with: [
-				spec repository: 'github://feenkcom/gtoolkit-phlow:v0.9.168/src' ].
+				spec repository: 'github://feenkcom/gtoolkit-phlow:v0.9.169/src' ].
 
 		spec package: 'GToolkit-RemotePhlow-DeclarativeSpecification'.
 		spec package: 'GToolkit-RemotePhlow-Text'.
-		spec package: 'GToolkit-RemotePhlow-Icons' with: [
+		spec package: 'GToolkit-RemotePhlow-Stencils' with: [
 			spec requires: #(#'GToolkit-RemotePhlow-DeclarativeSpecification') ].
+		spec package: 'GToolkit-RemotePhlow-Icons' with: [
+			spec requires: #(#'GToolkit-RemotePhlow-Stencils') ].
 		spec package: 'GToolkit-RemotePhlow-DeclarativeActions' with: [
 			spec requires: #(#'GToolkit-RemotePhlow-DeclarativeSpecification') ].
 		spec package: 'GToolkit-RemotePhlow-DeclarativeViews' with: [
@@ -33,7 +35,8 @@ BaselineOfGToolkitRemote >> baseline: spec [
 			spec requires: #(#GToolkitPhlow #'GToolkit-RemotePhlow-Text') ].
 		spec package: 'GToolkit-RemotePhlow-InspectorCore' with: [
 			spec requires: #(#'GToolkit-RemotePhlow-PhlowViews') ].
-		spec package: 'GToolkit-RemotePhlow-Examples'.
+		spec package: 'GToolkit-RemotePhlow-Examples' with: [
+			spec requires: #(#'GToolkit-RemotePhlow-Stencils') ].
 		spec package: 'GToolkit-RemoteGt-LocalPhlow' with: [
 			spec requires: #(#'GToolkit-RemotePhlow-PhlowViews') ].
 		spec package: 'GToolkit-RemoteGt' with: [
@@ -44,6 +47,8 @@ BaselineOfGToolkitRemote >> baseline: spec [
 			spec requires: #(#'GToolkit-RemoteGt') ].
 		spec package: 'GToolkit-RemoteGt-InspectorCore' with: [
 			spec requires: #(#'GToolkit-RemoteGt') ].
+		spec package: 'GToolkit-RemoteGt-Stencils' with: [
+			spec requires: #(#'GToolkit-RemotePhlow-Stencils') ].
 		spec package: 'GToolkit-RemotePhlow-GeolifeDemo'.
 		spec package: 'GToolkit-RemotePhlow-GeolifeDemo-GTSpecific' with: [
 			spec requires: #(#'GToolkit-RemotePhlow-GeolifeDemo') ].
