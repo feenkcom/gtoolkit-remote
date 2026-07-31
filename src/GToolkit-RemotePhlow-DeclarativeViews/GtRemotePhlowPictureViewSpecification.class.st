@@ -72,3 +72,8 @@ GtRemotePhlowPictureViewSpecification >> retrieveData [
 GtRemotePhlowPictureViewSpecification >> retrievePrimitiveData [
 	^self retrieveData asDictionaryForExport
 ]
+
+{ #category : #accessing }
+GtRemotePhlowPictureViewSpecification >> retrieveStencilData [
+	^self retrieveData
+]
