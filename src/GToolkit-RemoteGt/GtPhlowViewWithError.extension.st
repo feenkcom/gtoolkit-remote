@@ -6,7 +6,7 @@ GtPhlowViewWithError >> asGtDeclarativeView [
 	| viewSpecification |
 
 	viewSpecification := GtPhlowViewErrorViewSpecification new
-		errorMessage: self error printString;
+		errorMessage: self exception description asString;
 		dataTransport: GtPhlowViewSpecification dataIncluded.
 	self configureGenericViewSpecificationOn: viewSpecification.
 	^ viewSpecification
