@@ -5,7 +5,7 @@ Class {
 		'exceptionDescription',
 		'exceptionObject'
 	],
-	#category : 'GToolkit-RemoteGt-Declarative Views'
+	#category : #'GToolkit-RemoteGt-Declarative Views'
 }
 
 { #category : #accessing }

@@ -1,7 +1,7 @@
 Class {
 	#name : #GtPhlowRemoteForwarderView,
 	#superclass : #GtPhlowBasicForwarderView,
-	#category : 'GToolkit-RemoteGt-Phlow'
+	#category : #'GToolkit-RemoteGt-Phlow'
 }
 
 { #category : #accessing }

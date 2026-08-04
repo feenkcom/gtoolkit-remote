@@ -1,7 +1,7 @@
 Class {
 	#name : #GtRemotePlainInspectionViewedObject,
 	#superclass : #GtRemotePhlowViewedObject,
-	#category : 'GToolkit-RemoteGt-Development'
+	#category : #'GToolkit-RemoteGt-Development'
 }
 
 { #category : #accessing }

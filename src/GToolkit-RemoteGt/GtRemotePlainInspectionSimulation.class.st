@@ -1,7 +1,7 @@
 Class {
 	#name : #GtRemotePlainInspectionSimulation,
 	#superclass : #GtRemoteInspectionSimulation,
-	#category : 'GToolkit-RemoteGt-Development'
+	#category : #'GToolkit-RemoteGt-Development'
 }
 
 { #category : #accessing }

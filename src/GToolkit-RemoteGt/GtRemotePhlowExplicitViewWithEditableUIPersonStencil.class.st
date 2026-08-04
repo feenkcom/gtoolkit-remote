@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'personObject'
 	],
-	#category : 'GToolkit-RemoteGt-Examples-Views'
+	#category : #'GToolkit-RemoteGt-Examples-Views'
 }
 
 { #category : #'private - building' }

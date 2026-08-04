@@ -1,7 +1,7 @@
 Class {
 	#name : #GtRemotePhlowExplicitViewInspectionExamples,
 	#superclass : #Object,
-	#category : 'GToolkit-RemoteGt-Examples-Views'
+	#category : #'GToolkit-RemoteGt-Examples-Views'
 }
 
 { #category : #testing }
@@ -256,15 +256,6 @@ GtRemotePhlowExplicitViewInspectionExamples >> errorTestObjectSelectStencilError
 				// BrDebuggableElementExceptionMessageId;
 				play].
 	^scripter
-]
-
-{ #category : #'examples - rendering' }
-GtRemotePhlowExplicitViewInspectionExamples >> errorTestObjectViewsRenderWithoutErrors [
-	<gtExample>
-	| testObject |
-	testObject := self createErrorTestObject.
-	self assertObjectPhlowViewsFor: testObject.
-	^testObject
 ]
 
 { #category : #private }

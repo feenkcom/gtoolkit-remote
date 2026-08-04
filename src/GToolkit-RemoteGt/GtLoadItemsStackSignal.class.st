@@ -5,7 +5,7 @@ Class {
 		'startIndex',
 		'chunkSize'
 	],
-	#category : 'GToolkit-RemoteGt-Declarative Views'
+	#category : #'GToolkit-RemoteGt-Declarative Views'
 }
 
 { #category : #testing }

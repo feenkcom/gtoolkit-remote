@@ -5,7 +5,7 @@ Class {
 		'personObject',
 		'notificationLabel'
 	],
-	#category : 'GToolkit-RemoteGt-Examples-Views'
+	#category : #'GToolkit-RemoteGt-Examples-Views'
 }
 
 { #category : #'private - editing' }

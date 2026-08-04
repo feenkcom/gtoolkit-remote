@@ -1,5 +1,5 @@
 Class {
 	#name : #GtRemotePhlowPictureViewObjectInspectionExamples,
 	#superclass : #GtRemotePhlowPictureViewInspectionExamples,
-	#category : 'GToolkit-RemoteGt-Examples-Views'
+	#category : #'GToolkit-RemoteGt-Examples-Views'
 }

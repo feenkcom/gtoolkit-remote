@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'attributeRuns'
 	],
-	#category : 'GToolkit-RemoteGt-Styler'
+	#category : #'GToolkit-RemoteGt-Styler'
 }
 
 { #category : #accessing }
