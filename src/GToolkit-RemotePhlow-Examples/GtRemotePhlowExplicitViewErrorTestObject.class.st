@@ -16,13 +16,12 @@ GtRemotePhlowExplicitViewErrorTestObject >> gtExplicitPictureViewWithStencilData
 				self error: 'Stencil data computation with exception']
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #views }
 GtRemotePhlowExplicitViewErrorTestObject >> gtExplicitPictureViewWithStencilErrorFor: aView [
 	<gtView>
-	
 	^(aView explicit)
-		title: 'Picture (stencil API)';
+		title: 'Picture (stencil error)';
 		priority: 25;
-		declarativeStencil: [
-			self error: 'Declarative stencil computation with exception'  ]
+		declarativeStencil: 
+				[self error: 'Declarative stencil computation with exception']
 ]

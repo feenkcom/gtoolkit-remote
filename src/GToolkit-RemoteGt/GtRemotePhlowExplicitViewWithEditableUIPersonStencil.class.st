@@ -7,25 +7,31 @@ Class {
 	#category : #'GToolkit-RemoteGt-Examples-Views'
 }
 
-{ #category : #'private - editing' }
+{ #category : #'private - building' }
 GtRemotePhlowExplicitViewWithEditableUIPersonStencil >> addAddressEditorTo: aContainer [
 	aContainer addChild: (self newLabelWithText: 'Address:').
-	aContainer addChild: (self newEditorWithText: personObject address
+	aContainer
+		addChild: ((self newEditorWithText: personObject address
 				onAccept: [:aText | self updateAddress: aText])
+					id: GtRemotePhlowExplicitViewExampleAddressEditorId)
 ]
 
-{ #category : #'private - editing' }
+{ #category : #'private - building' }
 GtRemotePhlowExplicitViewWithEditableUIPersonStencil >> addAgeEditorTo: aContainer [
 	aContainer addChild: (self newLabelWithText: 'Age:').
-	aContainer addChild: (self newEditorWithText: personObject age asString
+	aContainer
+		addChild: ((self newEditorWithText: personObject age asString
 				onAccept: [:aText | self updateAge: aText])
+					id: GtRemotePhlowExplicitViewExampleAgeEditorId)
 ]
 
-{ #category : #'private - editing' }
+{ #category : #'private - building' }
 GtRemotePhlowExplicitViewWithEditableUIPersonStencil >> addNameEditorTo: aContainer [
 	aContainer addChild: (self newLabelWithText: 'Name:').
-	aContainer addChild: (self newEditorWithText: personObject name
+	aContainer
+		addChild: ((self newEditorWithText: personObject name
 				onAccept: [:aText | self updateName: aText])
+					id: GtRemotePhlowExplicitViewExampleNameEditorId)
 ]
 
 { #category : #'api - instantiation' }
