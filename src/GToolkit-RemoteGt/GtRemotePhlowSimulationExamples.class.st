@@ -1,7 +1,7 @@
 Class {
 	#name : #GtRemotePhlowSimulationExamples,
 	#superclass : #Object,
-	#category : #'GToolkit-RemoteGt-Examples'
+	#category : 'GToolkit-RemoteGt-Examples'
 }
 
 { #category : #accessing }

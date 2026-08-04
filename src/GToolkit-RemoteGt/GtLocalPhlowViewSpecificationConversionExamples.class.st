@@ -1,7 +1,7 @@
 Class {
 	#name : #GtLocalPhlowViewSpecificationConversionExamples,
 	#superclass : #GtRemotePhlowViewSpecificationConversionExamples,
-	#category : #'GToolkit-RemoteGt-Examples'
+	#category : 'GToolkit-RemoteGt-Examples'
 }
 
 { #category : #accessing }

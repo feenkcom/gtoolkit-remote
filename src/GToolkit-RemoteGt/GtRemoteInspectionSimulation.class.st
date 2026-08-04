@@ -28,7 +28,7 @@ Class {
 		'localProxyInspector',
 		'remoteInspectorProxy'
 	],
-	#category : #'GToolkit-RemoteGt-Development'
+	#category : 'GToolkit-RemoteGt-Development'
 }
 
 { #category : #accessing }

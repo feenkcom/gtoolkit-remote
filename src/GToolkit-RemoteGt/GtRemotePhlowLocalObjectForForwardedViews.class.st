@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'objectComputation'
 	],
-	#category : #'GToolkit-RemoteGt-Examples-Views'
+	#category : 'GToolkit-RemoteGt-Examples-Views'
 }
 
 { #category : #'instance creation' }

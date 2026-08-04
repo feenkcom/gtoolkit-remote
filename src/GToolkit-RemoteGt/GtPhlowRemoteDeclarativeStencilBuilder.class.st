@@ -1,7 +1,7 @@
 Class {
 	#name : #GtPhlowRemoteDeclarativeStencilBuilder,
 	#superclass : #BrStencilBuilder,
-	#category : #'GToolkit-RemoteGt-Phlow'
+	#category : 'GToolkit-RemoteGt-Phlow'
 }
 
 { #category : #testing }

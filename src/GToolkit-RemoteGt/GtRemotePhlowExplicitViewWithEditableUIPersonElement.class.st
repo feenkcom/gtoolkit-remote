@@ -5,28 +5,34 @@ Class {
 		'personObject',
 		'notificationLabel'
 	],
-	#category : #'GToolkit-RemoteGt-Examples-Views'
+	#category : 'GToolkit-RemoteGt-Examples-Views'
 }
 
 { #category : #'private - editing' }
 GtRemotePhlowExplicitViewWithEditableUIPersonElement >> addAddressEditor [
 	self addChild: (self newLabelWithText: 'Address:').
-	self addChild: (self newEditorWithText: personObject address
+	self
+		addChild: ((self newEditorWithText: personObject address
 				onAccept: [:aText | self updateAddress: aText])
+					id: GtRemotePhlowExplicitViewExampleAddressEditorId)
 ]
 
 { #category : #'private - editing' }
 GtRemotePhlowExplicitViewWithEditableUIPersonElement >> addAgeEditor [
 	self addChild: (self newLabelWithText: 'Age:').
-	self addChild: (self newEditorWithText: personObject age asString
+	self
+		addChild: ((self newEditorWithText: personObject age asString
 				onAccept: [:aText | self updateAge: aText])
+					id: GtRemotePhlowExplicitViewExampleAgeEditorId)
 ]
 
 { #category : #'private - editing' }
 GtRemotePhlowExplicitViewWithEditableUIPersonElement >> addNameEditor [
 	self addChild: (self newLabelWithText: 'Name:').
-	self addChild: (self newEditorWithText: personObject name
+	self
+		addChild: ((self newEditorWithText: personObject name
 				onAccept: [:aText | self updateName: aText])
+					id: GtRemotePhlowExplicitViewExampleNameEditorId)
 ]
 
 { #category : #'private - building' }

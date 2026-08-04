@@ -24,17 +24,6 @@ TGtRemoteProxyInspectorWrappedObjectAttachment >> remoteActionsFor: anAction inC
 ]
 
 { #category : #'gt - inspector' }
-TGtRemoteProxyInspectorWrappedObjectAttachment >> remoteViewWithSelector: aViewSelector for: aView inContext: aContext from: anInspectorProxy [
-	| viewSpecification phlowView |
-	viewSpecification := anInspectorProxy  getViewSpecificationFor: aViewSelector.
-	phlowView := viewSpecification viewFor: aView.
-	self 
-			configurePhlowView: phlowView 
-			withSpecification: viewSpecification.
-	^ phlowView 
-]
-
-{ #category : #'gt - inspector' }
 TGtRemoteProxyInspectorWrappedObjectAttachment >> remoteViewsFor: aView inContext: aContext from: anInspectorProxy [
 
 	^ anInspectorProxy currentDeclarativeViewSpecifications 
@@ -45,4 +34,15 @@ TGtRemoteProxyInspectorWrappedObjectAttachment >> remoteViewsFor: aView inContex
 				configurePhlowView: phlowView 
 				withSpecification: aViewSpecification.
 			phlowView ] 
+]
+
+{ #category : #'gt - inspector' }
+TGtRemoteProxyInspectorWrappedObjectAttachment >> remoteViewWithSelector: aViewSelector for: aView inContext: aContext from: anInspectorProxy [
+	| viewSpecification phlowView |
+	viewSpecification := anInspectorProxy  getViewSpecificationFor: aViewSelector.
+	phlowView := viewSpecification viewFor: aView.
+	self 
+			configurePhlowView: phlowView 
+			withSpecification: viewSpecification.
+	^ phlowView 
 ]

@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'declarativeView'
 	],
-	#category : #'GToolkit-RemoteGt-Phlow'
+	#category : 'GToolkit-RemoteGt-Phlow'
 }
 
 { #category : #'as yet unclassified' }
