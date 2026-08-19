@@ -32,22 +32,24 @@ GtRemotePhlowRemoteExceptionStencil >> create [
 		matchParent;
 		addChild: aContainer;
 		in: [ :anElement | 
-			anElement userData at: #exceptionWrapper put: self exceptionWrapper ];
+			anElement userData at: #exception put: self exceptionWrapper ];
 		yourself
 ]
 
 { #category : #'building widgets' }
 GtRemotePhlowRemoteExceptionStencil >> createDebugLabel [
-	^ BrLabel new
+	^ BrButton new
 		hFitContentLimited;
 		vFitContent;
-		id: BrDebuggableElementExceptionMessageId;
-		text: self newTextLabel;
+		label: self newTextLabel;
 		aptitude: BrGlamorousLabelAptitude new;
+		id: BrDebuggableElementExceptionMessageId;
 		margin: (BlInsets right: 6);
 		constraintsDo: [ :c | 
 			c linear vertical alignCenter.
-			c linear horizontal alignLeft ].
+			c linear horizontal alignLeft ];
+		action: [ :aButton |
+			aButton phlow spawnObject: self exceptionWrapper exceptionObject ]
 ]
 
 { #category : #'building widgets' }

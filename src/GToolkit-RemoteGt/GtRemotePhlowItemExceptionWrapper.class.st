@@ -31,7 +31,7 @@ GtRemotePhlowItemExceptionWrapper >> exceptionObject [
 
 { #category : #accessing }
 GtRemotePhlowItemExceptionWrapper >> exceptionObject: anObject [
-	exceptionObject := anObject
+	exceptionObject := anObject asGtBareProxyObject
 ]
 
 { #category : #views }
@@ -40,4 +40,9 @@ GtRemotePhlowItemExceptionWrapper >> gtLiveFor: aView [
 	^ aView explicit
 		title: 'Live';
 		stencil: [ self asDebuggableElement ]
+]
+
+{ #category : #accessing }
+GtRemotePhlowItemExceptionWrapper >> messageText [
+	^ self exceptionObject messageText
 ]
