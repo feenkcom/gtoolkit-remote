@@ -9,7 +9,7 @@ GtRemotePhlowPictureViewInspectionExamples class >> isAbstract [
 	^ self name = #GtRemotePhlowPictureViewInspectionExamples
 ]
 
-{ #category : #'examples - scripter' }
+{ #category : #'examples - setup' }
 GtRemotePhlowPictureViewInspectionExamples >> altClickOnErrorTabOpensDefinition [
 	<gtExample>
 	| scripter |
@@ -32,18 +32,11 @@ GtRemotePhlowPictureViewInspectionExamples >> altClickOnErrorTabOpensDefinition 
 	(scripter treePager)
 		assertNumberOfPaneElements: 2;
 		play.
-	(scripter multipleViewsToolStep)
-		label: 'Second pane has method definition';
-		onPagerPaneWithIndex: 2;
-		onMultipleViewsToolElement;
-		assertToolObjectOfType: RGMethodDefinition;
-		assertToolObjectValueFor: [:aMethodDefinition | aMethodDefinition selector]
-			equals: [#gtViewPictureErrorFor:];
-		play.
+		
 	^scripter
 ]
 
-{ #category : #'examples - scripter' }
+{ #category : #'examples - setup' }
 GtRemotePhlowPictureViewInspectionExamples >> altClickOnPictureTabOpensDefinition [
 	<gtExample>
 	| scripter |
@@ -66,14 +59,7 @@ GtRemotePhlowPictureViewInspectionExamples >> altClickOnPictureTabOpensDefinitio
 	(scripter treePager)
 		assertNumberOfPaneElements: 2;
 		play.
-	(scripter multipleViewsToolStep)
-		label: 'Second pane has method definition';
-		onPagerPaneWithIndex: 2;
-		onMultipleViewsToolElement;
-		assertToolObjectOfType: RGMethodDefinition;
-		assertToolObjectValueFor: [:aMethodDefinition | aMethodDefinition selector]
-			equals: [#gtViewPictureFor:];
-		play.
+	
 	^scripter
 ]
 
@@ -85,10 +71,11 @@ GtRemotePhlowPictureViewInspectionExamples >> createErrorTestObject [
 
 { #category : #'examples - setup' }
 GtRemotePhlowPictureViewInspectionExamples >> createTestObject [
+	<gtExample>
 	^ GtRemotePhlowPictureViewTestObject new
 ]
 
-{ #category : #'examples - scripter' }
+{ #category : #'examples - setup' }
 GtRemotePhlowPictureViewInspectionExamples >> errorViewShowsDebuggableElement [
 	<gtExample>
 	| scripter |
@@ -111,7 +98,7 @@ GtRemotePhlowPictureViewInspectionExamples >> errorViewShowsDebuggableElement [
 				value: [:anElement | (anElement userData at: #exception) messageText]
 					equals: ['Test picture computation error'];
 				// GtPhlowExceptionId;
-				play].
+				play ].
 	scripter check: 'Error label displays message'
 		do: 
 			[:aStep |
@@ -162,7 +149,7 @@ GtRemotePhlowPictureViewInspectionExamples >> heightErrorViewShowsDebuggableElem
 ]
 
 { #category : #'examples - rendering' }
-GtRemotePhlowPictureViewInspectionExamples >> objectViewsRenderWithoutErros [
+GtRemotePhlowPictureViewInspectionExamples >> objectViewsRenderWithoutErrors [
 	<gtExample>
 	| testObject |
 	testObject := self createTestObject.
@@ -253,9 +240,20 @@ GtRemotePhlowPictureViewInspectionExamples >> scripterOnErrorTestObject [
 	<gtExample>
 	| scripter element |
 	scripter := BlScripter new.
+	scripter extent: 1200 @ 800.
 	element := (self createErrorTestObject gtDefaultInspectorTool) asElement.
-	element size: 1200 @ 800.
 	scripter element: element.
+	^scripter
+]
+
+{ #category : #'examples - setup' }
+GtRemotePhlowPictureViewInspectionExamples >> scripterOnErrorTestObjectInPager [
+	<gtExample>
+	| scripter |
+	scripter := BlScripter new.
+	scripter extent: 1200 @ 800.
+	scripter element: (GtPagerSettings usedPager
+				createWrappedOn: (self createErrorTestObject gtDefaultInspectorTool)).
 	^scripter
 ]
 

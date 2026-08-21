@@ -12719,10 +12719,49 @@ forPhlowView: aView
 
 !		Instance methods for 'GtRemotePhlowDeclarativeViewDataSource'
 
+category: 'utils'
+method: GtRemotePhlowDeclarativeViewDataSource
+captureErrorDataFor: anError 
+	<gtGsStackCollector>
+	^ self 
+			gtDo: [ self captureGtErrorDataFor: anError ] 
+			gemstoneDo: [ self captureGemstoneErrorDataFor: anError ]
+%
+
+category: 'utils'
+method: GtRemotePhlowDeclarativeViewDataSource
+captureGemstoneErrorDataFor: anError 
+	<gtGsStackCollector>
+	^ (GtRemotePhlowViewErrorData new)
+			errorDescription: anError messageText;
+			errorObject: (GtGemStoneLocalExceptionWithCallStack 
+				exception: anError
+				callStack: GtGemStoneLocalCallStack forActiveProcess);
+			beRemoteException
+%
+
+category: 'utils'
+method: GtRemotePhlowDeclarativeViewDataSource
+captureGtErrorDataFor: anError 
+	^ (GtRemotePhlowViewErrorData new)
+			errorDescription: anError messageText;
+			errorObject: anError;
+			updateLocalRemoteSide
+%
+
 category: 'accessing'
 method: GtRemotePhlowDeclarativeViewDataSource
 definingMethod
 	^ self phlowView definingMethod
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeViewDataSource
+executeWithErrorDataCapture: aBlockClosure
+	aBlockClosure 
+		on: Error
+		do: [:anError |
+				self captureErrorDataFor: anError ]
 %
 
 category: 'accessing'
@@ -12838,20 +12877,20 @@ retrieveViewSpecificationForForwarding
 
 category: 'accessing'
 method: GtRemotePhlowDeclarativePictureViewDataSource
-retrieveData
-	^
-	[(GtRemotePhlowPictureViewData new)
+computeViewData
+	^ GtRemotePhlowPictureViewData new
 		content: self phlowView pictureComputation value;
 		mediaType: self phlowView mediaTypeComputation value;
 		width: self phlowView widthComputation value;
-		height: self phlowView heightComputation value]
-			on: Error
-			do: 
-				[:e |
-				(GtRemotePhlowViewErrorData new)
-					errorDescription: e messageText;
-					errorObject: e;
-					updateLocalRemoteSide]
+		height: self phlowView heightComputation value
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativePictureViewDataSource
+retrieveData
+	^ [ self computeViewData ]
+		on: Error
+		do: [ :anError | self captureErrorDataFor: anError ]
 %
 
 ! Class implementation for 'GtRemotePhlowDeclarativeTextualViewDataSource'
@@ -13545,16 +13584,15 @@ gtExplicitPictureViewWithStencilDataFor: aView
 				self error: 'Stencil data computation with exception']
 %
 
-category: 'as yet unclassified'
+category: 'views'
 method: GtRemotePhlowExplicitViewErrorTestObject
 gtExplicitPictureViewWithStencilErrorFor: aView
 	<gtView>
-	
 	^(aView explicit)
-		title: 'Picture (stencil API)';
+		title: 'Picture (stencil error)';
 		priority: 25;
-		declarativeStencil: [
-			self error: 'Declarative stencil computation with exception'  ]
+		declarativeStencil: 
+				[self error: 'Declarative stencil computation with exception']
 %
 
 ! Class implementation for 'GtRemotePhlowExplicitViewTestObject'
