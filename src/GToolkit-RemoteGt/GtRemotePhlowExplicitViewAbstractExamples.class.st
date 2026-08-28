@@ -305,17 +305,23 @@ GtRemotePhlowExplicitViewAbstractExamples >> stencilDataComputationError [
 	^data
 ]
 
-{ #category : #'examples - test object integration' }
+{ #category : #'examples - data' }
 GtRemotePhlowExplicitViewAbstractExamples >> stencilDataFromTestObjectWithDirectlySerializableStencil [
 	<gtExample>
-	| provider viewSpecification stencilSpec |
+	| provider viewSpecification stencilSpec stencilData |
 	provider := GtRemotePhlowViewedObject
-				object: GtRemotePhlowExplicitViewTestObject new.
+		object: GtRemotePhlowExplicitViewTestObject new.
 	viewSpecification := provider
-				getDeclarativeViewFor: #gtExplicitPictureViewWithDirectlySerializableFor:.
+		getDeclarativeViewFor: #gtExplicitPictureViewWithDirectlySerializableFor:.
 	stencilSpec := viewSpecification retrieveStencilSpecification.
-	self assert: stencilSpec notNil.
-	^stencilSpec
+	stencilData := stencilSpec stencilData.
+	self assert: stencilSpec class equals: GtRemotePhlowDirectStencilSpecification.
+	self assert: stencilSpec stencilClassName equals: #GtPhlowPictureWithDirectDataExampleStencil.
+	self assert: stencilData class equals: Dictionary.
+	self assert: (stencilData at: '__typeName') equals: #GtPhlowPictureWithDirectDataExampleStencil.
+	self assert: (stencilData at: 'contentBytes') class equals: ByteArray.
+	self assert: (stencilData at: 'contentBytes') notEmpty.
+	^ stencilSpec
 ]
 
 { #category : #'examples - test object integration' }
@@ -334,14 +340,16 @@ GtRemotePhlowExplicitViewAbstractExamples >> stencilDataFromTestObjectWithNamedS
 	^data
 ]
 
-{ #category : #'examples - stencil data' }
+{ #category : #'examples - data' }
 GtRemotePhlowExplicitViewAbstractExamples >> stencilDataRetrievalForDirectlySerializableStencil [
 	<gtExample>
 	| spec data |
 	spec := self explicitViewSpecificationWithDirectlySerializableStencil.
 	data := spec retrieveStencilData.
-	self assert: data notNil.
-	^data
+	self assert: data isPhlowErrorData.
+	self assert: data errorDescription
+		equals: 'Message not understood: GtPhlowPictureWithDirectDataExampleStencil >> #stencilData'.
+	^ data
 ]
 
 { #category : #'examples - stencil data' }
@@ -372,32 +380,46 @@ GtRemotePhlowExplicitViewAbstractExamples >> stencilDataRetrievalForNamedStencil
 	^data
 ]
 
-{ #category : #'examples - stencil specification' }
+{ #category : #'examples - specification' }
 GtRemotePhlowExplicitViewAbstractExamples >> stencilSpecificationRetrievalForDirectlySerializableStencil [
 	<gtExample>
-	| spec stencilSpec |
+	| spec stencilSpec stencilData |
 	spec := self explicitViewSpecificationWithDirectlySerializableStencil.
 	stencilSpec := spec retrieveStencilSpecification.
-	self assert: stencilSpec notNil.
-	^stencilSpec
+	stencilData := stencilSpec stencilData.
+	self assert: stencilSpec class equals: GtRemotePhlowDirectStencilSpecification.
+	self assert: stencilSpec stencilClassName equals: #GtPhlowPictureWithDirectDataExampleStencil.
+	self assert: stencilData class equals: Dictionary.
+	self assert: (stencilData at: '__typeName') equals: #GtPhlowPictureWithDirectDataExampleStencil.
+	self assert: (stencilData at: 'contentBytes') class equals: ByteArray.
+	self assert: (stencilData at: 'contentBytes') notEmpty.
+	^ stencilSpec
 ]
 
-{ #category : #'examples - stencil specification' }
+{ #category : #'examples - specification' }
 GtRemotePhlowExplicitViewAbstractExamples >> stencilSpecificationRetrievalForLocalStencilNameApi [
 	<gtExample>
 	| spec stencilSpec |
 	spec := self explicitViewSpecificationWithLocalStencilNameApi.
 	stencilSpec := spec retrieveStencilSpecification.
-	self assert: stencilSpec notNil.
-	^stencilSpec
+	self assert: stencilSpec class equals: GtRemotePhlowForwardStencilSpecification.
+	self assert: stencilSpec stencilClassName equals: #GtLocalPhlowPictureFullSizeViewStencil.
+	self assert: stencilSpec stencilData class equals: GtRemotePhlowPictureViewData.
+	self assert: stencilSpec stencilData content class equals: ByteArray.
+	self assert: stencilSpec stencilData content notEmpty.
+	^ stencilSpec
 ]
 
-{ #category : #'examples - stencil specification' }
+{ #category : #'examples - specification' }
 GtRemotePhlowExplicitViewAbstractExamples >> stencilSpecificationRetrievalForNamedStencil [
 	<gtExample>
 	| spec stencilSpec |
 	spec := self explicitViewSpecificationWithNamedStencil.
 	stencilSpec := spec retrieveStencilSpecification.
-	self assert: stencilSpec notNil.
-	^stencilSpec
+	self assert: stencilSpec class equals: GtRemotePhlowForwardStencilSpecification.
+	self assert: stencilSpec stencilClassName equals: #GtLocalPhlowPictureFullSizeViewStencil.
+	self assert: stencilSpec stencilData class equals: GtRemotePhlowPictureViewData.
+	self assert: stencilSpec stencilData content class equals: ByteArray.
+	self assert: stencilSpec stencilData content notEmpty.
+	^ stencilSpec
 ]

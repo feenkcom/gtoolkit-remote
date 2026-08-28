@@ -22,6 +22,6 @@ GtRemotePhlowExplicitViewErrorTestObject >> gtExplicitPictureViewWithStencilErro
 	^(aView explicit)
 		title: 'Picture (stencil error)';
 		priority: 25;
-		declarativeStencil: 
-				[self error: 'Declarative stencil computation with exception']
+		declarativeStencil: [
+			self error: 'Declarative stencil computation with exception']
 ]

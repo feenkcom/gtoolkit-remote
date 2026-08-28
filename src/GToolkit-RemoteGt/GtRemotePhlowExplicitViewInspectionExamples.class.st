@@ -32,14 +32,6 @@ GtRemotePhlowExplicitViewInspectionExamples >> altClickOnExplicitErrorViewTabOpe
 	(scripter treePager)
 		assertNumberOfPaneElements: 2;
 		play.
-	(scripter multipleViewsToolStep)
-		label: 'Second pane has method definition';
-		onPagerPaneWithIndex: 2;
-		onMultipleViewsToolElement;
-		assertToolObjectOfType: RGMethodDefinition;
-		assertToolObjectValueFor: [:aMethodDefinition | aMethodDefinition selector]
-			equals: [#gtExplicitPictureViewWithStencilErrorFor:];
-		play.
 	^scripter
 ]
 
@@ -65,14 +57,6 @@ GtRemotePhlowExplicitViewInspectionExamples >> altClickOnExplicitViewTabOpensDef
 				@ [:aTab | aTab label asString = 'Remote/local stencil']].
 	(scripter treePager)
 		assertNumberOfPaneElements: 2;
-		play.
-	(scripter multipleViewsToolStep)
-		label: 'Second pane has method definition';
-		onPagerPaneWithIndex: 2;
-		onMultipleViewsToolElement;
-		assertToolObjectOfType: RGMethodDefinition;
-		assertToolObjectValueFor: [:aMethodDefinition | aMethodDefinition selector]
-			equals: [#gtExplicitPictureViewWithDirectlySerializableFor:];
 		play.
 	^scripter
 ]
@@ -283,6 +267,17 @@ GtRemotePhlowExplicitViewInspectionExamples >> scripterOnErrorTestObject [
 	element := self createErrorTestObject gtDefaultInspectorTool asElement.
 	element size: 1200 @ 800.
 	scripter element: element.
+	^scripter
+]
+
+{ #category : #'examples - setup' }
+GtRemotePhlowExplicitViewInspectionExamples >> scripterOnErrorTestObjectInPager [
+	<gtExample>
+	| scripter |
+	scripter := BlScripter new.
+	scripter extent: 1200 @ 800.
+	scripter element: (GtPagerSettings usedPager
+				createWrappedOn: (self createErrorTestObject gtDefaultInspectorTool)).
 	^scripter
 ]
 

@@ -41,7 +41,5 @@ GtRemotePhlowExplicitViewWithEditableUIPersonWithNotificationStencil >> stencilD
 
 { #category : #accessing }
 GtRemotePhlowExplicitViewWithEditableUIPersonWithNotificationStencil >> stencilData: anObject [
-	self personObject: (self 
-		gtDo: [ anObject asGtBareProxyObject ] 
-		gemstoneDo: [anObject])
+	self personObject: anObject
 ]
