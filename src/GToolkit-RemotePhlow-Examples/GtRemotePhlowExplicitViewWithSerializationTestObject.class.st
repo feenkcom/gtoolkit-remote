@@ -10,6 +10,22 @@ GtRemotePhlowExplicitViewWithSerializationTestObject class >> pictureBytes [
 ]
 
 { #category : #'as yet unclassified' }
+GtRemotePhlowExplicitViewWithSerializationTestObject >> gtExplicitPictureViewDirectProxySerializationExplicitComputationFor: aView [
+	<gtView>
+	
+	^(aView explicit)
+		title: 'Direct proxy - explicit block';
+		priority: 16;
+		declarativeStencil: [
+			GtPhlowNamedStencil new
+				stencilClassName: #GtLocalPhlowPictureFullSizeViewStencil;
+				stencilDataComputation: [ (GtRemotePhlowPictureViewData new)
+						content: self class pictureBytes ];
+				dataSerializationStrategy: GtPhlowStencilDataSerializationStrategy 
+					forDirectProxy  ]
+]
+
+{ #category : #'as yet unclassified' }
 GtRemotePhlowExplicitViewWithSerializationTestObject >> gtExplicitPictureViewDirectProxySerializationFor: aView [
 	<gtView>
 	

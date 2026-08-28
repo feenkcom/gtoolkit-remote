@@ -305,6 +305,25 @@ GtRemotePhlowExplicitViewInspectionExamples >> scripterOnTestObject [
 ]
 
 { #category : #examples }
+GtRemotePhlowExplicitViewInspectionExamples >> serializationTestObjectSelectDirectProxyExplicitComputationView [
+	<gtExample>
+	| scripter |
+	scripter := self scripterOnSerializationTestObject.
+	(scripter inspectorStep)
+		clickOnTabWithName: 'Direct proxy - explicit block';
+		assertSelectedTabWithName: 'Direct proxy - explicit block';
+		play.
+	scripter check: 'Picture element exists'
+		do: 
+			[:aStep |
+			(aStep check)
+				exists;
+				// GtLocalPhlowPictureElementId;
+				play].
+	^scripter
+]
+
+{ #category : #examples }
 GtRemotePhlowExplicitViewInspectionExamples >> serializationTestObjectSelectDirectProxyView [
 	<gtExample>
 	| scripter |
