@@ -31,20 +31,6 @@ GtRemotePhlowPictureViewSpecification >> configureViewActionsFor: aView [
 	self configureDefaultRefreshActionFor: aView.
 ]
 
-{ #category : #accessing }
-GtRemotePhlowPictureViewSpecification >> createDeclarativeStencilForViewData: aViewData [
-	^ aViewData isPhlowErrorData
-				ifTrue: [ 
-					GtPhlowErrorStencil new
-							stencilData: aViewData]
-				ifFalse: [ 
-						| stecil | 
-						stecil := GtPhlowNamedStencil new
-							stencilClassName: self renderingStencilName.
-						stecil stencilData: aViewData.
-						stecil ]
-]
-
 { #category : #initialization }
 GtRemotePhlowPictureViewSpecification >> initializeFromInspector: anInspector [
 	self phlowDataSource

@@ -32,3 +32,10 @@ GtPhlowProtoView >> remoteForward [
 		originalView: self;
 		definingMethod: (GtPhlowDefiningMethodsCollector forContext: thisContext) collect
 ]
+
+{ #category : #'*GToolkit-RemoteGt' }
+GtPhlowProtoView >> webBrowser [
+	^ GtRemotePhlowWebBrowserView new
+		originalView: self;
+		definingMethod: (GtPhlowDefiningMethodsCollector forContext: thisContext) collect
+]

@@ -9,13 +9,20 @@ GtPhlowViewSpecification >> asJSONForExport [
 
 { #category : #'*GToolkit-RemoteGt' }
 GtPhlowViewSpecification >> configureDefaultRefreshActionFor: aView [
+	(aView actions anySatisfy: [ :anAction |
+		anAction tooltipText = 'Update' ])
+			ifTrue: [ 
+				"Skip the refresh action if the view already defines one"
+				"For the moment use the tooltip to filter"
+				^ self].
+	
 	aView
 		actionButtonIcon: BrGlamorousVectorIcons refresh
-		id: GtPhlowViewRefreshContentButtonId
+		id: GtPhlowViewRefreshContentButtonId new
 		tooltip: 'Update'
-		action: [ :aButton :aTab |
+		action: [ :aButton |
 				self flushCachedData.
-				aTab phlow fireViewUpdateWish ].
+				aButton phlow fireViewUpdateWish ].
 ]
 
 { #category : #'*GToolkit-RemoteGt' }

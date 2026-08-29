@@ -15,9 +15,13 @@ GtPhlowButtonActionSpecification >> actionFor: anAction [
 		localAction icon: anIconStencil ].
 		
 	localAction action: [ :aButtonElement | 
-		(GtRemotePhlowNavigationAction navigationActionFromDictionary: self 
-				phlowDataSource executeRemoteActionWithPhlowResult)
-			applyOn: aButtonElement ].
+		| remoteWrappedActionData |
+		remoteWrappedActionData := self phlowDataSource
+			executeRemoteActionWithPhlowResult.
+		remoteWrappedActionData ifNotNil: [ 
+			| remoteWrappedAction |
+			remoteWrappedAction := GtRemotePhlowNavigationAction navigationActionFromDictionary: remoteWrappedActionData.
+			remoteWrappedAction applyOn: aButtonElement ]  ].
 			
 	"Added as a fast way to implement https://github.com/feenkcom/gtoolkit/issues/4132.
 	Should be redone when we have different types of actions in GemStone"

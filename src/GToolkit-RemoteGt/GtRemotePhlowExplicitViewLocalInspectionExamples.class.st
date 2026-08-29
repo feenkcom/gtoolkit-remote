@@ -9,72 +9,54 @@ GtRemotePhlowExplicitViewLocalInspectionExamples class >> isAbstract [
 	^ self name = #GtRemotePhlowExplicitViewLocalInspectionExamples
 ]
 
-{ #category : #examples }
+{ #category : #'examples - scripter' }
 GtRemotePhlowExplicitViewLocalInspectionExamples >> altClickOnExplicitErrorViewTabOpensDefinition_methodOpenedInSecondPane [
 	<gtExample>
 	| scripter |
 	scripter := self altClickOnExplicitErrorViewTabOpensDefinition.
-	
-	(scripter multipleViewsToolStep)
-		label: 'Second pane has method definition';
-		onPagerPaneWithIndex: 2;
-		onMultipleViewsToolElement;
-		assertToolObjectOfType: RGMethodDefinition;
-		assertToolObjectValueFor: [:aMethodDefinition | aMethodDefinition selector]
-			equals: [#gtExplicitPictureViewWithStencilErrorFor:];
-		play.
-		
+	self 
+		assertSecondPaneHasLocalMethodWithSelector: #gtExplicitPictureViewWithStencilErrorFor: 
+		in: scripter.
 	^scripter
 ]
 
-{ #category : #examples }
+{ #category : #'examples - scripter' }
 GtRemotePhlowExplicitViewLocalInspectionExamples >> altClickOnExplicitViewTabOpensDefinition_methodOpenedInSecondPane [
 	<gtExample>
 	| scripter |
 	scripter := self altClickOnExplicitViewTabOpensDefinition.
-		
-	(scripter multipleViewsToolStep)
-		label: 'Second pane has method definition';
-		onPagerPaneWithIndex: 2;
-		onMultipleViewsToolElement;
-		assertToolObjectOfType: RGMethodDefinition;
-		assertToolObjectValueFor: [:aMethodDefinition | aMethodDefinition selector]
-			equals: [#gtExplicitPictureViewWithDirectlySerializableFor:];
-		play.
-		
+	self 
+		assertSecondPaneHasLocalMethodWithSelector: #gtExplicitPictureViewWithDirectlySerializableFor: 
+		in: scripter.
 	^scripter
 ]
 
-{ #category : #examples }
+{ #category : #'examples - scripter' }
 GtRemotePhlowExplicitViewLocalInspectionExamples >> errorTestObjectSelectStencilDataErrorView_debugButton [
 	<gtExample>
 	| scripter |
 	scripter := self errorTestObjectSelectStencilDataErrorView.
 	
-	scripter 
-		check: 'Inspect exception button present'
-		do: [:aStep |
-			(aStep check)
-				value: [:aButton | aButton label asString ]
+	scripter checkStep: [ :aStep | 
+		aStep
+			label: 'Debug exception button present';
+			value: [:aButton | aButton label asString ]
 					equals: [ 'Open debugger' ];
-				// GtPhlowExceptionId;
-				// BrDebuggableElementOpenDebuggerButtonId;
-				play].
+			// GtPhlowExceptionId;
+			// BrDebuggableElementOpenDebuggerButtonId ]
 ]
 
-{ #category : #examples }
+{ #category : #'examples - scripter' }
 GtRemotePhlowExplicitViewLocalInspectionExamples >> errorTestObjectSelectStencilErrorView_debugButton [
 	<gtExample>
 	| scripter |
 	scripter := self errorTestObjectSelectStencilErrorView.
 	
-	scripter 
-		check: 'Inspect exception button present'
-		do: [:aStep |
-			(aStep check)
-				value: [:aButton | aButton label asString ]
+	scripter checkStep: [ :aStep | 
+		aStep
+			label: 'Debug exception button present';
+			value: [:aButton | aButton label asString ]
 					equals: [ 'Open debugger' ];
-				// GtPhlowExceptionId;
-				// BrDebuggableElementOpenDebuggerButtonId;
-				play].
+			// GtPhlowExceptionId;
+			// BrDebuggableElementOpenDebuggerButtonId ]
 ]

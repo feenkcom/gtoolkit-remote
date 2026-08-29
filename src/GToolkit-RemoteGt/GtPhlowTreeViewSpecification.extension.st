@@ -6,7 +6,7 @@ GtPhlowTreeViewSpecification >> configureViewActionsFor: aView [
 	
 	aView
 			actionButtonIcon: BrGlamorousVectorIcons refresh
-			id: GtPhlowViewRefreshContentButtonId
+			id: GtPhlowViewRefreshContentButtonId new
 			tooltip: 'Update'
 			action: [ :aButton :aTab |
 				phlowDataSource flushItemsIterator.

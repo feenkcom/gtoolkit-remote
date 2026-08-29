@@ -91,3 +91,8 @@ GtRemotePhlowProtoView >> tree [
 
 	^ self declarativeViewOfType: GtRemotePhlowTreeView
 ]
+
+{ #category : #accessing }
+GtRemotePhlowProtoView >> webBrowser [
+	^ self declarativeLocalRemoteViewOfType: GtRemotePhlowWebBrowserView
+]
