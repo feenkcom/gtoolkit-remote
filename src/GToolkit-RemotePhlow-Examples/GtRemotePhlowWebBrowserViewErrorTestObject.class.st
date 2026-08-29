@@ -4,7 +4,7 @@ Inspectable fixture whose web browser content computation fails.
 Class {
 	#name : #GtRemotePhlowWebBrowserViewErrorTestObject,
 	#superclass : #Object,
-	#category : #'GToolkit-RemoteGt-Examples-Views'
+	#category : #'GToolkit-RemotePhlow-Examples'
 }
 
 { #category : #views }

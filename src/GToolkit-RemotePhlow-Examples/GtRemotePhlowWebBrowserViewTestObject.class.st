@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'currentUrl'
 	],
-	#category : #'GToolkit-RemoteGt-Examples-Views'
+	#category : #'GToolkit-RemotePhlow-Examples'
 }
 
 { #category : #'instance creation' }

@@ -4,7 +4,7 @@ Inspectable fixture that provides the web browser view scenarios through GtRemot
 Class {
 	#name : #GtRemotePhlowWebBrowserStencilTestObject,
 	#superclass : #Object,
-	#category : #'GToolkit-RemoteGt-Examples-Views'
+	#category : #'GToolkit-RemotePhlow-Examples'
 }
 
 { #category : #'gt-views' }
