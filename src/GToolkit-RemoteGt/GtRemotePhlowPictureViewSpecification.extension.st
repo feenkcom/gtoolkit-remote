@@ -21,6 +21,7 @@ GtRemotePhlowPictureViewSpecification >> viewFor: aView [
 				originalView: aView;
 				title: title;
 				priority: priority;
+				phlowViewSpecification: self;
 				declarativeStencil: [
 						| data |
 						data := self phlowDataSource retrieveData.

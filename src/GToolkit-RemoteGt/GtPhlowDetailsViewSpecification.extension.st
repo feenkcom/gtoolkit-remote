@@ -14,6 +14,7 @@ GtPhlowDetailsViewSpecification >> viewFor: aView [
 	currentView := aView details.
 	currentView title: title.
 	currentView priority: priority.
+	currentView phlowViewSpecification: self.
 	
 	rowSpecifications do: [ :aRowSpecification |
 		currentView

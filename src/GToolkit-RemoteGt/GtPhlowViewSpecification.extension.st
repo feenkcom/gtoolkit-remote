@@ -14,7 +14,7 @@ GtPhlowViewSpecification >> configureDefaultRefreshActionFor: aView [
 			ifTrue: [ 
 				"Skip the refresh action if the view already defines one"
 				"For the moment use the tooltip to filter"
-				^ self].
+				^ self ].
 	
 	aView
 		actionButtonIcon: BrGlamorousVectorIcons refresh

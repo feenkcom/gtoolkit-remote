@@ -18,6 +18,7 @@ GtPhlowForwardViewSpecification >> viewFor: aView [
 	list := aView forward
 		title: title;
 		priority: priority;
+		phlowViewSpecification: self;
 		object: [ self ];
 		view: #gtComputedViewFor:.
 

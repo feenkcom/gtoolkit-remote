@@ -6,4 +6,5 @@ GtPhlowEmptyViewSpecification >> viewFor: aView [
 	a way to delegate the creation of the remote view back to this specification."
 
 	^ aView empty
+			phlowViewSpecification: self.
 ]

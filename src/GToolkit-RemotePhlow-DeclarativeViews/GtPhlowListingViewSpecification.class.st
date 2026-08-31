@@ -15,6 +15,11 @@ Class {
 }
 
 { #category : #'api - accessing' }
+GtPhlowListingViewSpecification >> flushCachedData [
+	self flushItemsIterator 
+]
+
+{ #category : #'api - accessing' }
 GtPhlowListingViewSpecification >> flushItemsIterator [ 
 
 	phlowDataSource flushItemsIterator

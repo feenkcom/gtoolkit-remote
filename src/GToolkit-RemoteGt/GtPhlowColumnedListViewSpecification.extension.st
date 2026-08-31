@@ -14,6 +14,7 @@ GtPhlowColumnedListViewSpecification >> viewFor: aView [
 	currentView
 		title: title;
 		priority: priority;
+		phlowViewSpecification: self;
 		items: [
 			(GtRemoteInspectorListingBufferedStream declarativeView: self)
 				collect: [ :aColumnedTreeNodeDictionary |

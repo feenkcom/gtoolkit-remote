@@ -15,13 +15,7 @@ GtPhlowBasicColumnedViewSpecification >> configureColumnedViewFor: aColumnedView
 GtPhlowBasicColumnedViewSpecification >> configureViewActionsFor: aView [
 	super configureViewActionsFor: aView.
 	
-	aView
-		actionButtonIcon: BrGlamorousVectorIcons refresh
-		id: GtPhlowViewRefreshContentButtonId new
-		tooltip: 'Update'
-		action: [ :aButton :aTab | 
-			phlowDataSource flushItemsIterator.
-			aTab phlow fireViewUpdateWish ]
+	self configureDefaultRefreshActionFor: aView.
 ]
 
 { #category : #'*GToolkit-RemoteGt' }

@@ -38,7 +38,6 @@ GtRemotePhlowWebBrowserStencil >> byteArray: aByteArray contentType: aContentTyp
 
 { #category : #building }
 GtRemotePhlowWebBrowserStencil >> content: aContent [
-	self assert: aContent isWebViewContent.
 	browserContent := aContent
 ]
 

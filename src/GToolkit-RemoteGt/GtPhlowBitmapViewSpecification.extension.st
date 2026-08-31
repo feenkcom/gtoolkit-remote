@@ -7,6 +7,7 @@ GtPhlowBitmapViewSpecification >> viewFor: aView [
 	^ aView explicit 
 		title: title;
 		priority: priority;
+		phlowViewSpecification: self;
 		stencil: [ self bitmap asForm asElement asScrollableElement ];
 		actionButtonIcon: BrGlamorousVectorIcons inspect
 			label: 'Bitmap'

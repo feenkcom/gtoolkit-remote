@@ -26,7 +26,8 @@ GtPhlowTextViewSpecification >> viewFor: aView [
 
 	currentView := aView text
 		title: title;
-		priority: priority.
+		priority: priority;
+		phlowViewSpecification: self.
 
 	self configureViewActionsFor: currentView.
 	self configureForLazyDataView: currentView.
