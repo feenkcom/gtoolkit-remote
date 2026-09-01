@@ -80,7 +80,11 @@ GtRemotePhlowWebBrowserViewTestObject >> gtWebBrowserUpdatingUrlFor: aView [
 			tooltip: 'Change the URL used by this view'
 			action: [ :aButton | 
 				self updateCurrentUrl.
-				aButton phlow fireViewUpdateWish ]
+				aButton phlow fireViewUpdateWish ];
+		actionButtonLabel: 'Edit URL'
+			tooltip: 'Edit the url without updating the view'
+			action: [ :aButton | 
+				self updateCurrentUrl ]
 ]
 
 { #category : #views }

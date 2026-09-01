@@ -23,7 +23,7 @@ GtRemotePhlowDeclarativeWebBrowserViewDataSource >> computeDynamicHeaders [
 
 { #category : #updating }
 GtRemotePhlowDeclarativeWebBrowserViewDataSource >> flushCachedData [
-	"Content and dynamic headers are computed afresh for every retrieval."
+	
 ]
 
 { #category : #retrieving }

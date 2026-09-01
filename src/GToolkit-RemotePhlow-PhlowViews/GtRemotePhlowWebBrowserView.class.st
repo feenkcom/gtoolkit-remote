@@ -26,9 +26,7 @@ GtRemotePhlowWebBrowserView >> asGtDeclarativeView [
 		phlowDataSource: dataSource;
 		staticHeaders: self staticHeaders;
 		hasDynamicHeaders: self hasDynamicHeaders;
-		dataTransport: (self shouldLoadContentLazily
-			ifTrue: [ GtPhlowViewSpecification dataLazy ]
-			ifFalse: [ GtPhlowViewSpecification dataIncluded ]).
+		dataTransport: self currentDataTransport.
 	self configureGenericViewSpecificationOn: specification.
 	self shouldLoadContentLazily ifFalse: [ specification populateBrowserContent ].
 	^ specification

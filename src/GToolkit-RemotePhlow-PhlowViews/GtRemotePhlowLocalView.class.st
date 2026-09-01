@@ -20,6 +20,13 @@ GtRemotePhlowLocalView >> buildContext: aGtPhlowBuildContext [
 ]
 
 { #category : #accessing }
+GtRemotePhlowLocalView >> currentDataTransport [
+	^ self shouldLoadContentLazily
+			ifTrue: [ GtPhlowViewSpecification dataLazy ]
+			ifFalse: [ GtPhlowViewSpecification dataIncluded ]
+]
+
+{ #category : #accessing }
 GtRemotePhlowLocalView >> definingClass [
 	localDefiningMethodProvider
 		ifNotNil: [ :aProvider | ^aProvider definingMethod methodClass].
@@ -61,4 +68,9 @@ GtRemotePhlowLocalView >> originalView [
 { #category : #accessing }
 GtRemotePhlowLocalView >> originalView: aView [
 	localOriginalView := aView
+]
+
+{ #category : #testing }
+GtRemotePhlowLocalView >> shouldLoadContentLazily [
+	^ false
 ]

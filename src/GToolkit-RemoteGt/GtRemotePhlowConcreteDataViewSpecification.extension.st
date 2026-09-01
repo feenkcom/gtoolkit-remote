@@ -1,21 +1,19 @@
-Extension { #name : #GtRemotePhlowPictureViewSpecification }
+Extension { #name : #GtRemotePhlowConcreteDataViewSpecification }
 
 { #category : #'*GToolkit-RemoteGt' }
-GtRemotePhlowPictureViewSpecification >> createDeclarativeStencilForViewData: aViewData [
+GtRemotePhlowConcreteDataViewSpecification >> createDeclarativeStencilForViewData: aViewData [
 	^ aViewData isPhlowErrorData
-				ifTrue: [ 
-					GtPhlowErrorStencil new
-							stencilData: aViewData]
-				ifFalse: [ 
-						| stecil | 
-						stecil := GtPhlowNamedStencil new
-							stencilClassName: self renderingStencilName.
-						stecil stencilData: aViewData.
-						stecil ]
+		ifTrue: [ 
+			GtPhlowErrorStencil new stencilData: aViewData ]
+		ifFalse: [ 
+			| stecil |
+			stecil := GtPhlowNamedStencil new stencilClassName: self renderingStencilName.
+			stecil stencilData: aViewData.
+			stecil ]
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
-GtRemotePhlowPictureViewSpecification >> viewFor: aView [
+GtRemotePhlowConcreteDataViewSpecification >> viewFor: aView [
 	| pictureView |
 	pictureView := aView explicit
 				originalView: aView;
