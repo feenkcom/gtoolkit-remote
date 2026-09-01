@@ -399,6 +399,25 @@ removeallmethods GtPhlowPictureWithDirectDataExampleStencil
 removeallclassmethods GtPhlowPictureWithDirectDataExampleStencil
 
 doit
+(GtPhlowStencil
+	subclass: 'GtRemotePhlowWebBrowserStencil'
+	instVarNames: #(browserContent contentHeaders)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Stencils';
+		comment: 'Creates a web view element from browser content and its static and dynamic headers.';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowWebBrowserStencil
+removeallclassmethods GtRemotePhlowWebBrowserStencil
+
+doit
 (GtPhlowDeclarativeSpecification
 	subclass: 'GtPhlowStencilDataSerializationStrategy'
 	instVarNames: #()
@@ -597,6 +616,139 @@ removeallmethods GtRemotePhlowViewErrorData
 removeallclassmethods GtRemotePhlowViewErrorData
 
 doit
+(GtRemotePhlowBasicViewData
+	subclass: 'GtRemotePhlowWebViewContent'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		comment: 'A serializable value that configures a GtWebViewElement.';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowWebViewContent
+removeallclassmethods GtRemotePhlowWebViewContent
+
+doit
+(GtRemotePhlowWebViewContent
+	subclass: 'GtRemotePhlowWebViewExplicitContent'
+	instVarNames: #(content contentType fileUrlString)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		comment: 'Abstract content materialized into a local temporary file before it configures a web view.';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowWebViewExplicitContent
+removeallclassmethods GtRemotePhlowWebViewExplicitContent
+
+doit
+(GtRemotePhlowWebViewExplicitContent
+	subclass: 'GtRemotePhlowWebViewByteArrayContent'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		comment: 'File-backed byte-array web-view content.';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowWebViewByteArrayContent
+removeallclassmethods GtRemotePhlowWebViewByteArrayContent
+
+doit
+(GtRemotePhlowWebViewExplicitContent
+	subclass: 'GtRemotePhlowWebViewTextualContent'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		comment: 'File-backed textual web-view content.';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowWebViewTextualContent
+removeallclassmethods GtRemotePhlowWebViewTextualContent
+
+doit
+(GtRemotePhlowWebViewContent
+	subclass: 'GtRemotePhlowWebViewHtmlContent'
+	instVarNames: #(html)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		comment: 'Content that injects HTML directly into a web view.';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowWebViewHtmlContent
+removeallclassmethods GtRemotePhlowWebViewHtmlContent
+
+doit
+(GtRemotePhlowWebViewContent
+	subclass: 'GtRemotePhlowWebViewUrlContent'
+	instVarNames: #(url)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		comment: 'Content that navigates a web view to a URL.';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowWebViewUrlContent
+removeallclassmethods GtRemotePhlowWebViewUrlContent
+
+doit
+(GtRemotePhlowBasicViewData
+	subclass: 'GtRemotePhlowWebViewHeader'
+	instVarNames: #(headers)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		comment: 'A serializable collection of HTTP headers applied to a web view.';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowWebViewHeader
+removeallclassmethods GtRemotePhlowWebViewHeader
+
+doit
 (GtPhlowDeclarativeSpecification
 	subclass: 'GtRemotePhlowNavigationAction'
 	instVarNames: #()
@@ -613,6 +765,78 @@ true.
 
 removeallmethods GtRemotePhlowNavigationAction
 removeallclassmethods GtRemotePhlowNavigationAction
+
+doit
+(GtRemotePhlowNavigationAction
+	subclass: 'GtRemotePhlowNavigationRefreshAction'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeActions';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowNavigationRefreshAction
+removeallclassmethods GtRemotePhlowNavigationRefreshAction
+
+doit
+(GtRemotePhlowNavigationRefreshAction
+	subclass: 'GtRemotePhlowNavigationUpdateCurrentToolAction'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeActions';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowNavigationUpdateCurrentToolAction
+removeallclassmethods GtRemotePhlowNavigationUpdateCurrentToolAction
+
+doit
+(GtRemotePhlowNavigationRefreshAction
+	subclass: 'GtRemotePhlowNavigationUpdateMainToolAction'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeActions';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowNavigationUpdateMainToolAction
+removeallclassmethods GtRemotePhlowNavigationUpdateMainToolAction
+
+doit
+(GtRemotePhlowNavigationRefreshAction
+	subclass: 'GtRemotePhlowNavigationUpdateViewAction'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeActions';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowNavigationUpdateViewAction
+removeallclassmethods GtRemotePhlowNavigationUpdateViewAction
 
 doit
 (GtRemotePhlowNavigationAction
@@ -1264,6 +1488,24 @@ removeallclassmethods GtPhlowViewErrorViewSpecification
 
 doit
 (GtPhlowViewSpecification
+	subclass: 'GtRemotePhlowConcreteDataViewSpecification'
+	instVarNames: #(renderingStencilName viewData)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowConcreteDataViewSpecification
+removeallclassmethods GtRemotePhlowConcreteDataViewSpecification
+
+doit
+(GtPhlowViewSpecification
 	subclass: 'GtRemotePhlowExplicitViewSpecification'
 	instVarNames: #()
 	classVars: #()
@@ -1282,8 +1524,8 @@ removeallclassmethods GtRemotePhlowExplicitViewSpecification
 
 doit
 (GtPhlowViewSpecification
-	subclass: 'GtRemotePhlowPictureViewSpecification'
-	instVarNames: #(renderingStencilName)
+	subclass: 'GtRemotePhlowWebBrowserViewSpecification'
+	instVarNames: #(staticHeaders hasDynamicHeaders browserContent dynamicHeaders)
 	classVars: #()
 	classInstVars: #()
 	poolDictionaries: #()
@@ -1291,12 +1533,13 @@ doit
 	options: #( #logCreation )
 )
 		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		comment: 'Declarative specification for a remote web browser view.';
 		immediateInvariant.
 true.
 %
 
-removeallmethods GtRemotePhlowPictureViewSpecification
-removeallclassmethods GtRemotePhlowPictureViewSpecification
+removeallmethods GtRemotePhlowWebBrowserViewSpecification
+removeallclassmethods GtRemotePhlowWebBrowserViewSpecification
 
 doit
 (Object
@@ -2274,6 +2517,24 @@ removeallclassmethods GtRemotePhlowDeclarativeViewDataSource
 
 doit
 (GtRemotePhlowDeclarativeViewDataSource
+	subclass: 'GtRemotePhlowConcreteDataViewDataSource'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowConcreteDataViewDataSource
+removeallclassmethods GtRemotePhlowConcreteDataViewDataSource
+
+doit
+(GtRemotePhlowDeclarativeViewDataSource
 	subclass: 'GtRemotePhlowDeclarativeExplicitViewDataSource'
 	instVarNames: #(cachedStencil)
 	classVars: #()
@@ -2307,24 +2568,6 @@ true.
 
 removeallmethods GtRemotePhlowDeclarativeForwardViewDataSource
 removeallclassmethods GtRemotePhlowDeclarativeForwardViewDataSource
-
-doit
-(GtRemotePhlowDeclarativeViewDataSource
-	subclass: 'GtRemotePhlowDeclarativePictureViewDataSource'
-	instVarNames: #()
-	classVars: #()
-	classInstVars: #()
-	poolDictionaries: #()
-	inDictionary: Globals
-	options: #( #logCreation )
-)
-		category: 'GToolkit-RemotePhlow-DeclarativeViews';
-		immediateInvariant.
-true.
-%
-
-removeallmethods GtRemotePhlowDeclarativePictureViewDataSource
-removeallclassmethods GtRemotePhlowDeclarativePictureViewDataSource
 
 doit
 (GtRemotePhlowDeclarativeViewDataSource
@@ -2451,6 +2694,25 @@ true.
 
 removeallmethods GtRemotePhlowDeclarativeViewColumnedTreeDataSource
 removeallclassmethods GtRemotePhlowDeclarativeViewColumnedTreeDataSource
+
+doit
+(GtRemotePhlowDeclarativeViewDataSource
+	subclass: 'GtRemotePhlowDeclarativeWebBrowserViewDataSource'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		comment: 'Computes web browser content and dynamic headers.';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowDeclarativeWebBrowserViewDataSource
+removeallclassmethods GtRemotePhlowDeclarativeWebBrowserViewDataSource
 
 doit
 (Object
@@ -3067,7 +3329,7 @@ removeallclassmethods GtRemotePhlowLocalView
 doit
 (GtRemotePhlowLocalView
 	subclass: 'GtRemotePhlowPictureView'
-	instVarNames: #(pictureComputation widthComputation heightComputation mediaTypeComputation renderingStencilName)
+	instVarNames: #(pictureComputation widthComputation heightComputation mediaTypeComputation renderingStencilName shouldLoadContentLazily)
 	classVars: #()
 	classInstVars: #()
 	poolDictionaries: #()
@@ -3081,6 +3343,25 @@ true.
 
 removeallmethods GtRemotePhlowPictureView
 removeallclassmethods GtRemotePhlowPictureView
+
+doit
+(GtRemotePhlowLocalView
+	subclass: 'GtRemotePhlowWebBrowserView'
+	instVarNames: #(contentComputation staticHeaders dynamicHeadersComputation shouldLoadContentLazily)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowViews';
+		comment: 'A local/remote declarative Phlow view rendered by a GtWebViewElement.';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowWebBrowserView
+removeallclassmethods GtRemotePhlowWebBrowserView
 
 doit
 (GtRemotePhlowView
@@ -3478,6 +3759,82 @@ true.
 
 removeallmethods GtRemotePhlowViewedObject
 removeallclassmethods GtRemotePhlowViewedObject
+
+doit
+(Object
+	subclass: 'GtRemotePhlowWebBrowserStencilTestObject'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Examples';
+		comment: 'Inspectable fixture that provides the web browser view scenarios through GtRemotePhlowWebBrowserStencil.';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowWebBrowserStencilTestObject
+removeallclassmethods GtRemotePhlowWebBrowserStencilTestObject
+
+doit
+(Object
+	subclass: 'GtRemotePhlowWebBrowserViewErrorTestObject'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Examples';
+		comment: 'Inspectable fixture whose web browser content computation fails.';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowWebBrowserViewErrorTestObject
+removeallclassmethods GtRemotePhlowWebBrowserViewErrorTestObject
+
+doit
+(Object
+	subclass: 'GtRemotePhlowWebBrowserViewTestObject'
+	instVarNames: #(currentUrl)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Examples';
+		comment: 'Inspectable fixture for web browser views.';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowWebBrowserViewTestObject
+removeallclassmethods GtRemotePhlowWebBrowserViewTestObject
+
+doit
+(Object
+	subclass: 'GtRemotePhlowWebViewExplicitContentFileWriter'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		comment: 'Materializes explicit web-view content in a temporary local file and answers its file URL.';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowWebViewExplicitContentFileWriter
+removeallclassmethods GtRemotePhlowWebViewExplicitContentFileWriter
 
 doit
 (Object
@@ -4805,6 +5162,100 @@ initializeFromJSONDictionary: aDictionary
 				self contentBytes: aByteArray ] ]
 %
 
+! Class implementation for 'GtRemotePhlowWebBrowserStencil'
+
+!		Instance methods for 'GtRemotePhlowWebBrowserStencil'
+
+category: 'serialization'
+method: GtRemotePhlowWebBrowserStencil
+asDictionaryForExport
+	| dictionary |
+	
+	dictionary := super asDictionaryForExport.
+	
+	dictionary at: 'browserContent' put: browserContent asDictionaryForExport.
+	contentHeaders ifNotNil: [ :headers |
+		dictionary at: 'contentHeaders' put: headers asDictionaryForExport ].
+		
+	^ dictionary
+%
+
+category: 'accessing'
+method: GtRemotePhlowWebBrowserStencil
+browserContent: aContent
+	browserContent := aContent
+%
+
+category: 'building'
+method: GtRemotePhlowWebBrowserStencil
+byteArray: aByteArray contentType: aContentType
+	self content: (GtRemotePhlowWebViewByteArrayContent new
+		content: aByteArray;
+		contentType: aContentType)
+%
+
+category: 'building'
+method: GtRemotePhlowWebBrowserStencil
+content: aContent
+	browserContent := aContent
+%
+
+category: 'accessing'
+method: GtRemotePhlowWebBrowserStencil
+contentHeaders
+	^ contentHeaders ifNil: [ contentHeaders := GtRemotePhlowWebViewHeader new ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowWebBrowserStencil
+contentHeaders: aHeader
+	contentHeaders := aHeader
+%
+
+category: 'building'
+method: GtRemotePhlowWebBrowserStencil
+headerAt: aName put: aValue
+	self contentHeaders headerAt: aName put: aValue
+%
+
+category: 'building'
+method: GtRemotePhlowWebBrowserStencil
+headers: aHeader
+	self contentHeaders: aHeader
+%
+
+category: 'building'
+method: GtRemotePhlowWebBrowserStencil
+html: aString
+	self content: (GtRemotePhlowWebViewHtmlContent new html: aString)
+%
+
+category: 'initialization'
+method: GtRemotePhlowWebBrowserStencil
+initializeFromJSONDictionary: aDictionary
+	super initializeFromJSONDictionary: aDictionary.
+	
+	self browserContent: (GtRemotePhlowBasicViewData 
+		fromDictionary: (aDictionary at: 'browserContent')).
+	(aDictionary at: 'contentHeaders' ifAbsent: [ nil ])
+		ifNotNil: [ :headers |
+			self contentHeaders: (GtRemotePhlowBasicViewData fromDictionary: headers) ]
+%
+
+category: 'building'
+method: GtRemotePhlowWebBrowserStencil
+textual: aString contentType: aContentType
+	self content: (GtRemotePhlowWebViewTextualContent new
+		content: aString;
+		contentType: aContentType)
+%
+
+category: 'building'
+method: GtRemotePhlowWebBrowserStencil
+url: aUrl
+	self content: (GtRemotePhlowWebViewUrlContent new url: aUrl)
+%
+
 ! Class implementation for 'GtPhlowStencilDataSerializationStrategy'
 
 !		Class methods for 'GtPhlowStencilDataSerializationStrategy'
@@ -5193,6 +5644,12 @@ isPictureData
 	^false
 %
 
+category: 'testing'
+method: GtRemotePhlowBasicViewData
+isWebViewContent
+	^false
+%
+
 ! Class implementation for 'GtRemotePhlowPictureViewData'
 
 !		Instance methods for 'GtRemotePhlowPictureViewData'
@@ -5364,6 +5821,341 @@ category: 'accessing'
 method: GtRemotePhlowViewErrorData
 updateLocalRemoteSide
 	self gtDo: [] gemstoneDo: [self beRemoteException]
+%
+
+! Class implementation for 'GtRemotePhlowWebViewContent'
+
+!		Class methods for 'GtRemotePhlowWebViewContent'
+
+category: 'testing'
+classmethod: GtRemotePhlowWebViewContent
+isAbstract
+	^ self name = #GtRemotePhlowWebViewContent
+%
+
+!		Instance methods for 'GtRemotePhlowWebViewContent'
+
+category: 'testing'
+method: GtRemotePhlowWebViewContent
+isWebViewContent
+	^ true
+%
+
+! Class implementation for 'GtRemotePhlowWebViewExplicitContent'
+
+!		Class methods for 'GtRemotePhlowWebViewExplicitContent'
+
+category: 'testing'
+classmethod: GtRemotePhlowWebViewExplicitContent
+isAbstract
+	^ self name = #GtRemotePhlowWebViewExplicitContent
+%
+
+!		Instance methods for 'GtRemotePhlowWebViewExplicitContent'
+
+category: 'serializing'
+method: GtRemotePhlowWebViewExplicitContent
+asDictionaryForExport
+	| dictionary |
+	dictionary := super asDictionaryForExport.
+	
+	dictionary at: 'content' put: content.
+	contentType ifNotNil: [ 
+		dictionary at: 'contentType' put: contentType ].
+		
+	^ dictionary
+%
+
+category: 'configuring'
+method: GtRemotePhlowWebViewExplicitContent
+configureWebViewElement: aWebViewElement
+	aWebViewElement url: self fileUrlString
+%
+
+category: 'accessing'
+method: GtRemotePhlowWebViewExplicitContent
+content
+	^ content
+%
+
+category: 'accessing'
+method: GtRemotePhlowWebViewExplicitContent
+content: anObject
+	content := anObject
+%
+
+category: 'accessing'
+method: GtRemotePhlowWebViewExplicitContent
+contentType
+	^ contentType
+%
+
+category: 'accessing'
+method: GtRemotePhlowWebViewExplicitContent
+contentType: aString
+	contentType := aString
+%
+
+category: 'accessing'
+method: GtRemotePhlowWebViewExplicitContent
+contentTypeToFileExtensionMappings
+	^ #(
+			('text/html' 'html')
+			('text/plain' 'txt')
+			('application/json' 'json')
+			('application/pdf' 'pdf')
+			('image/png' 'png')
+			('image/svg+xml' 'svg')
+			('text/css' 'css')
+			('text/javascript' 'js')
+			('application/javascript' 'js'))
+%
+
+category: 'accessing'
+method: GtRemotePhlowWebViewExplicitContent
+defaultContentType
+	self subclassResponsibility
+%
+
+category: 'accessing'
+method: GtRemotePhlowWebViewExplicitContent
+defaultFileExtension
+	self subclassResponsibility
+%
+
+category: 'accessing'
+method: GtRemotePhlowWebViewExplicitContent
+effectiveContentType
+	^ contentType ifNil: [ self defaultContentType ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowWebViewExplicitContent
+fileExtension
+	| normalized |
+	
+	normalized := self effectiveContentType asLowercase.
+	
+	^ self contentTypeToFileExtensionMappings
+		detect: [ :each | each first = normalized ]
+		ifFound: [ :each | each second ]
+		ifNone: [  self defaultFileExtension ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowWebViewExplicitContent
+fileUrlString
+	^ fileUrlString ifNil: [
+		fileUrlString := GtRemotePhlowWebViewExplicitContentFileWriter new 
+				writeContent: self ]
+%
+
+category: 'serializing'
+method: GtRemotePhlowWebViewExplicitContent
+initializeFromJSONDictionary: aDictionary
+	super initializeFromJSONDictionary: aDictionary.
+	
+	self
+		content: (aDictionary at: 'content');
+		contentType: (aDictionary at: 'contentType' ifAbsent: [ nil ])
+%
+
+category: 'rendering'
+method: GtRemotePhlowWebViewExplicitContent
+writeContentTo: aFileReference
+	self subclassResponsibility
+%
+
+! Class implementation for 'GtRemotePhlowWebViewByteArrayContent'
+
+!		Instance methods for 'GtRemotePhlowWebViewByteArrayContent'
+
+category: 'defaults'
+method: GtRemotePhlowWebViewByteArrayContent
+defaultContentType
+	^ 'application/octet-stream'
+%
+
+category: 'defaults'
+method: GtRemotePhlowWebViewByteArrayContent
+defaultFileExtension
+	^ 'bin'
+%
+
+category: 'rendering'
+method: GtRemotePhlowWebViewByteArrayContent
+writeContentTo: aFileReference
+	aFileReference binaryWriteStreamDo: [ :aStream |
+		aStream nextPutAll: self content ]
+%
+
+! Class implementation for 'GtRemotePhlowWebViewTextualContent'
+
+!		Instance methods for 'GtRemotePhlowWebViewTextualContent'
+
+category: 'defaults'
+method: GtRemotePhlowWebViewTextualContent
+defaultContentType
+	^ 'text/plain'
+%
+
+category: 'defaults'
+method: GtRemotePhlowWebViewTextualContent
+defaultFileExtension
+	^ 'txt'
+%
+
+category: 'rendering'
+method: GtRemotePhlowWebViewTextualContent
+writeContentTo: aFileReference
+	aFileReference writeStreamDo: [ :aStream |
+		aStream nextPutAll: self content  ]
+%
+
+! Class implementation for 'GtRemotePhlowWebViewHtmlContent'
+
+!		Instance methods for 'GtRemotePhlowWebViewHtmlContent'
+
+category: 'serializing'
+method: GtRemotePhlowWebViewHtmlContent
+asDictionaryForExport
+	^ (super asDictionaryForExport)
+		at: 'html' put: html;
+		yourself
+%
+
+category: 'rendering'
+method: GtRemotePhlowWebViewHtmlContent
+configureWebViewElement: aWebViewElement
+	aWebViewElement html: self html
+%
+
+category: 'accessing'
+method: GtRemotePhlowWebViewHtmlContent
+html
+	^ html
+%
+
+category: 'accessing'
+method: GtRemotePhlowWebViewHtmlContent
+html: aString
+	html := aString
+%
+
+category: 'serializing'
+method: GtRemotePhlowWebViewHtmlContent
+initializeFromJSONDictionary: aDictionary
+	super initializeFromJSONDictionary: aDictionary.
+	
+	self html: (aDictionary at: 'html')
+%
+
+! Class implementation for 'GtRemotePhlowWebViewUrlContent'
+
+!		Instance methods for 'GtRemotePhlowWebViewUrlContent'
+
+category: 'serializing'
+method: GtRemotePhlowWebViewUrlContent
+asDictionaryForExport
+	^ (super asDictionaryForExport)
+		at: 'url' put: url;
+		yourself
+%
+
+category: 'serializing'
+method: GtRemotePhlowWebViewUrlContent
+initializeFromJSONDictionary: aDictionary
+	super initializeFromJSONDictionary: aDictionary.
+	
+	self url: (aDictionary at: 'url')
+%
+
+category: 'accessing'
+method: GtRemotePhlowWebViewUrlContent
+url
+	^ url
+%
+
+category: 'accessing'
+method: GtRemotePhlowWebViewUrlContent
+url: aString
+	url := aString
+%
+
+! Class implementation for 'GtRemotePhlowWebViewHeader'
+
+!		Class methods for 'GtRemotePhlowWebViewHeader'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowWebViewHeader
+new
+	^ self basicNew initialize
+%
+
+!		Instance methods for 'GtRemotePhlowWebViewHeader'
+
+category: 'serializing'
+method: GtRemotePhlowWebViewHeader
+asDictionaryForExport
+	^ (super asDictionaryForExport)
+		at: 'headers' put: headers;
+		yourself
+%
+
+category: 'rendering'
+method: GtRemotePhlowWebViewHeader
+configureWebViewElement: aWebViewElement
+	self do: [ :aName :aValue | 
+		aWebViewElement headerAt: aName put: aValue ]
+%
+
+category: 'enumerating'
+method: GtRemotePhlowWebViewHeader
+do: aBlock
+	headers associationsDo: [ :each | 
+		aBlock value: each key value: each value ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowWebViewHeader
+headerAt: aName put: aValue
+	headers at: aName put: aValue.
+%
+
+category: 'accessing'
+method: GtRemotePhlowWebViewHeader
+headers
+	^ headers
+%
+
+category: 'initialization'
+method: GtRemotePhlowWebViewHeader
+initialize
+	super initialize.
+	
+	headers := Dictionary new
+%
+
+category: 'serializing'
+method: GtRemotePhlowWebViewHeader
+initializeFromJSONDictionary: aDictionary
+	super initializeFromJSONDictionary: aDictionary.
+	
+	headers := aDictionary at: 'headers' ifAbsent: [ Dictionary new ]
+%
+
+category: 'testing'
+method: GtRemotePhlowWebViewHeader
+isEmpty
+	^ headers isEmpty
+%
+
+category: 'copying'
+method: GtRemotePhlowWebViewHeader
+postCopy
+	super postCopy.
+	
+	headers := headers copy
 %
 
 ! Class implementation for 'GtRemotePhlowSpawnObjectAction'
@@ -7429,6 +8221,7 @@ definingMethod
 category: 'accessing'
 method: GtPhlowViewSpecification
 flushCachedData
+	"Method called when the view is about to be update to clean all the cached data"
 %
 
 category: 'initialization'
@@ -7687,6 +8480,12 @@ retrieveViewSpecificationForForwarding
 ! Class implementation for 'GtPhlowListingViewSpecification'
 
 !		Instance methods for 'GtPhlowListingViewSpecification'
+
+category: 'api - accessing'
+method: GtPhlowListingViewSpecification
+flushCachedData
+	self flushItemsIterator 
+%
 
 category: 'api - accessing'
 method: GtPhlowListingViewSpecification
@@ -8094,6 +8893,112 @@ errorMessage: anObject
 	errorMessage := anObject
 %
 
+! Class implementation for 'GtRemotePhlowConcreteDataViewSpecification'
+
+!		Class methods for 'GtRemotePhlowConcreteDataViewSpecification'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowConcreteDataViewSpecification
+fromJSONDictionary: aDictionary
+	| specification |
+	specification := super fromJSONDictionary: aDictionary.
+	
+	specification
+		renderingStencilName: (aDictionary at: 'renderingStencilName').
+		
+	(aDictionary at: 'viewData' ifAbsent: [ nil ])
+		ifNotNil: [ :viewDataDictionary |
+			specification staticHeaders: (GtRemotePhlowBasicViewData 
+				fromDictionary: viewDataDictionary) ].
+	
+	^specification
+%
+
+!		Instance methods for 'GtRemotePhlowConcreteDataViewSpecification'
+
+category: 'converting'
+method: GtRemotePhlowConcreteDataViewSpecification
+asBasicViewDataForExport
+	| dictionary |
+	
+	dictionary := super asBasicViewDataForExport.
+	dictionary at: 'renderingStencilName' put: self renderingStencilName.
+	
+	self isWithLazyLoading ifFalse: [
+		dictionary
+			at: 'viewData' put: self viewData asDictionaryForExport ].
+			
+	^dictionary
+%
+
+category: 'accessing'
+method: GtRemotePhlowConcreteDataViewSpecification
+configureViewActionsFor: aView
+	super configureViewActionsFor: aView.
+	
+	self configureDefaultRefreshActionFor: aView.
+%
+
+category: 'updating'
+method: GtRemotePhlowConcreteDataViewSpecification
+flushCachedData
+	viewData := nil.
+	self phlowDataSource ifNotNil: [ :aDataSource |
+		aDataSource flushCachedData ]
+%
+
+category: 'initialization'
+method: GtRemotePhlowConcreteDataViewSpecification
+initializeFromInspector: anInspector
+	self phlowDataSource
+		ifNil: 
+			[self
+				phlowDataSource: (anInspector getDeclarativeViewFor: self methodSelector)]
+%
+
+category: 'testing'
+method: GtRemotePhlowConcreteDataViewSpecification
+isWithLazyLoading
+	^ self dataTransport = self class dataLazy
+%
+
+category: 'accessing'
+method: GtRemotePhlowConcreteDataViewSpecification
+renderingStencilName
+	^ renderingStencilName
+%
+
+category: 'accessing'
+method: GtRemotePhlowConcreteDataViewSpecification
+renderingStencilName: anObject
+	renderingStencilName := anObject
+%
+
+category: 'accessing'
+method: GtRemotePhlowConcreteDataViewSpecification
+retrieveData
+	^self phlowDataSource retrieveData
+%
+
+category: 'accessing'
+method: GtRemotePhlowConcreteDataViewSpecification
+retrievePrimitiveData
+	^self retrieveData asDictionaryForExport
+%
+
+category: 'accessing'
+method: GtRemotePhlowConcreteDataViewSpecification
+retrieveStencilData
+	^self retrieveData
+%
+
+category: 'accessing'
+method: GtRemotePhlowConcreteDataViewSpecification
+viewData
+	^ viewData ifNil: [
+			viewData := self retrieveData ]
+%
+
 ! Class implementation for 'GtRemotePhlowExplicitViewSpecification'
 
 !		Class methods for 'GtRemotePhlowExplicitViewSpecification'
@@ -8160,91 +9065,164 @@ retrieveStencilSpecification
 	^self phlowDataSource retrieveStencilSpecification
 %
 
-! Class implementation for 'GtRemotePhlowPictureViewSpecification'
+! Class implementation for 'GtRemotePhlowWebBrowserViewSpecification'
 
-!		Class methods for 'GtRemotePhlowPictureViewSpecification'
+!		Class methods for 'GtRemotePhlowWebBrowserViewSpecification'
 
 category: 'instance creation'
-classmethod: GtRemotePhlowPictureViewSpecification
+classmethod: GtRemotePhlowWebBrowserViewSpecification
 fromJSONDictionary: aDictionary
 	| specification |
 	specification := super fromJSONDictionary: aDictionary.
-	specification
-		renderingStencilName: (aDictionary at: 'renderingStencilName').
-	^specification
+	(aDictionary at: 'staticHeaders' ifAbsent: [ nil ])
+		ifNotNil: [ :headers |
+			specification staticHeaders: (GtRemotePhlowBasicViewData fromDictionary: headers) ].
+	specification hasDynamicHeaders: (aDictionary at: 'hasDynamicHeaders' ifAbsent: [ false ]).
+	specification isWithLazyLoading ifFalse: [
+		(aDictionary at: 'browserContent' ifAbsent: [ nil ])
+			ifNotNil: [ :content |
+				specification browserContent: (GtRemotePhlowBasicViewData fromDictionary: content) ].
+		(aDictionary at: 'dynamicHeaders' ifAbsent: [ nil ])
+			ifNotNil: [ :headers |
+				specification dynamicHeaders: (GtRemotePhlowBasicViewData fromDictionary: headers) ] ].
+	^ specification
 %
 
-!		Instance methods for 'GtRemotePhlowPictureViewSpecification'
+category: 'instance creation'
+classmethod: GtRemotePhlowWebBrowserViewSpecification
+new
+	^ self basicNew initialize
+%
 
-category: 'converting'
-method: GtRemotePhlowPictureViewSpecification
+!		Instance methods for 'GtRemotePhlowWebBrowserViewSpecification'
+
+category: 'exporting'
+method: GtRemotePhlowWebBrowserViewSpecification
 asBasicViewDataForExport
 	| dictionary |
 	dictionary := super asBasicViewDataForExport.
-	dictionary at: 'renderingStencilName' put: self renderingStencilName.
-	^dictionary
+	dictionary
+		at: 'staticHeaders' put: self staticHeaders asDictionaryForExport;
+		at: 'hasDynamicHeaders' put: self hasDynamicHeaders.
+	self isWithLazyLoading ifFalse: [
+		dictionary
+			at: 'browserContent' put: self browserContent asDictionaryForExport;
+			at: 'dynamicHeaders' put: self dynamicHeaders asDictionaryForExport ].
+	^ dictionary
 %
 
 category: 'accessing'
-method: GtRemotePhlowPictureViewSpecification
+method: GtRemotePhlowWebBrowserViewSpecification
+browserContent
+	^ browserContent ifNil: [ browserContent := self retrieveContent ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowWebBrowserViewSpecification
+browserContent: aContent
+	browserContent := aContent
+%
+
+category: 'actions'
+method: GtRemotePhlowWebBrowserViewSpecification
 configureViewActionsFor: aView
 	super configureViewActionsFor: aView.
 	
-	self configureDefaultRefreshActionFor: aView.
+	self configureDefaultRefreshActionFor: aView
 %
 
 category: 'accessing'
-method: GtRemotePhlowPictureViewSpecification
-createDeclarativeStencilForViewData: aViewData
-	^ aViewData isPhlowErrorData
-				ifTrue: [ 
-					GtPhlowErrorStencil new
-							stencilData: aViewData]
-				ifFalse: [ 
-						| stecil | 
-						stecil := GtPhlowNamedStencil new
-							stencilClassName: self renderingStencilName.
-						stecil stencilData: aViewData.
-						stecil ]
+method: GtRemotePhlowWebBrowserViewSpecification
+dynamicHeaders
+	self hasDynamicHeaders ifFalse: [ ^ GtRemotePhlowWebViewHeader new ].
+	^ dynamicHeaders ifNil: [ dynamicHeaders := self retrieveDynamicHeaders ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowWebBrowserViewSpecification
+dynamicHeaders: aHeader
+	dynamicHeaders := aHeader
+%
+
+category: 'updating'
+method: GtRemotePhlowWebBrowserViewSpecification
+flushCachedData
+	browserContent := nil.
+	dynamicHeaders := nil.
+	self phlowDataSource ifNotNil: [ :aDataSource |
+		aDataSource flushCachedData ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowWebBrowserViewSpecification
+hasDynamicHeaders
+	^ hasDynamicHeaders
+%
+
+category: 'accessing'
+method: GtRemotePhlowWebBrowserViewSpecification
+hasDynamicHeaders: aBoolean
+	hasDynamicHeaders := aBoolean
 %
 
 category: 'initialization'
-method: GtRemotePhlowPictureViewSpecification
+method: GtRemotePhlowWebBrowserViewSpecification
+initialize
+	super initialize.
+	
+	staticHeaders := GtRemotePhlowWebViewHeader new
+%
+
+category: 'initialization'
+method: GtRemotePhlowWebBrowserViewSpecification
 initializeFromInspector: anInspector
-	self phlowDataSource
-		ifNil: 
-			[self
-				phlowDataSource: (anInspector getDeclarativeViewFor: self methodSelector)]
+	self isWithLazyLoading ifTrue: [
+		self phlowDataSource ifNil: [
+			self phlowDataSource: (anInspector getDeclarativeViewFor: self methodSelector) ] ]
+%
+
+category: 'initialization'
+method: GtRemotePhlowWebBrowserViewSpecification
+populateBrowserContent
+	self
+		browserContent: self retrieveContent;
+		dynamicHeaders: self dynamicHeaders
+%
+
+category: 'retrieving'
+method: GtRemotePhlowWebBrowserViewSpecification
+retrieveContent
+	^ self phlowDataSource retrieveContent
+%
+
+category: 'retrieving'
+method: GtRemotePhlowWebBrowserViewSpecification
+retrieveDynamicHeaders
+	^ self phlowDataSource retrieveDynamicHeaders
+%
+
+category: 'retrieving'
+method: GtRemotePhlowWebBrowserViewSpecification
+retrievePrimitiveContent
+	^ self retrieveContent asDictionaryForExport
+%
+
+category: 'retrieving'
+method: GtRemotePhlowWebBrowserViewSpecification
+retrievePrimitiveDynamicHeaders
+	^ self retrieveDynamicHeaders asDictionaryForExport
 %
 
 category: 'accessing'
-method: GtRemotePhlowPictureViewSpecification
-renderingStencilName
-	^ renderingStencilName
+method: GtRemotePhlowWebBrowserViewSpecification
+staticHeaders
+	^ staticHeaders ifNil: [ GtRemotePhlowWebViewHeader new ]
 %
 
 category: 'accessing'
-method: GtRemotePhlowPictureViewSpecification
-renderingStencilName: anObject
-	renderingStencilName := anObject
-%
-
-category: 'accessing'
-method: GtRemotePhlowPictureViewSpecification
-retrieveData
-	^self phlowDataSource retrieveData
-%
-
-category: 'accessing'
-method: GtRemotePhlowPictureViewSpecification
-retrievePrimitiveData
-	^self retrieveData asDictionaryForExport
-%
-
-category: 'accessing'
-method: GtRemotePhlowPictureViewSpecification
-retrieveStencilData
-	^self retrieveData
+method: GtRemotePhlowWebBrowserViewSpecification
+staticHeaders: aHeader
+	staticHeaders := aHeader
 %
 
 ! Class implementation for 'GtPhlowWithSpecificationStencil'
@@ -8394,8 +9372,8 @@ category: 'accessing'
 method: GtPhlowNamedStencil
 asGtStencilSpecification
 	^ super asGtStencilSpecification
-		originalStencilData: self stencilData;
-		originalStencil: self
+			originalStencilData: self stencilData;
+			originalStencil: self
 %
 
 category: 'accessing'
@@ -8506,9 +9484,7 @@ stencilData
 category: 'accessing'
 method: GtRemotePhlowExplicitViewWithEditableUIPersonWithNotificationStencil
 stencilData: anObject
-	self personObject: (self 
-		gtDo: [ anObject asGtBareProxyObject ] 
-		gemstoneDo: [anObject])
+	self personObject: anObject
 %
 
 ! Class implementation for 'GtRemotePhlowAction'
@@ -8811,6 +9787,24 @@ category: 'accessing'
 method: GtRemotePhlowApiWrapper
 currentAction
 	^ currentAction
+%
+
+category: 'accessing'
+method: GtRemotePhlowApiWrapper
+fireCurrentToolUpdateWish
+	currentAction := GtRemotePhlowNavigationUpdateCurrentToolAction new
+%
+
+category: 'accessing'
+method: GtRemotePhlowApiWrapper
+fireToolUpdateWish
+	currentAction := GtRemotePhlowNavigationUpdateMainToolAction new
+%
+
+category: 'accessing'
+method: GtRemotePhlowApiWrapper
+fireViewUpdateWish
+	currentAction := GtRemotePhlowNavigationUpdateViewAction new
 %
 
 category: 'accessing'
@@ -9762,7 +10756,9 @@ executeRemoteActionWithPhlowResult
 	phlowApiWrapper := self phlowApiWrapper.
 	self targetBlock value: phlowApiWrapper.
 	
-	^ phlowApiWrapper currentAction asDictionaryForExport
+	^ phlowApiWrapper currentAction 
+			ifNotNil: [ :aPhlowWrappedAction | 
+				aPhlowWrappedAction asDictionaryForExport ]
 %
 
 category: 'accessing'
@@ -12776,6 +13772,29 @@ phlowView: anObject
 	phlowView := anObject
 %
 
+! Class implementation for 'GtRemotePhlowConcreteDataViewDataSource'
+
+!		Instance methods for 'GtRemotePhlowConcreteDataViewDataSource'
+
+category: 'accessing'
+method: GtRemotePhlowConcreteDataViewDataSource
+computeViewData
+	^ self phlowView computeViewData
+%
+
+category: 'accessing'
+method: GtRemotePhlowConcreteDataViewDataSource
+flushCachedData
+%
+
+category: 'accessing'
+method: GtRemotePhlowConcreteDataViewDataSource
+retrieveData
+	^ [ self computeViewData ]
+		on: Error
+		do: [ :anError | self captureErrorDataFor: anError ]
+%
+
 ! Class implementation for 'GtRemotePhlowDeclarativeExplicitViewDataSource'
 
 !		Instance methods for 'GtRemotePhlowDeclarativeExplicitViewDataSource'
@@ -12783,7 +13802,10 @@ phlowView: anObject
 category: 'accessing'
 method: GtRemotePhlowDeclarativeExplicitViewDataSource
 flushCachedData
-	cachedStencil := nil
+	cachedStencil := nil.
+	phlowView phlowViewSpecification 
+		ifNotNil: [ :aPhlowViewSpecification |
+			aPhlowViewSpecification flushCachedData  ].
 %
 
 category: 'accessing'
@@ -12810,11 +13832,7 @@ method: GtRemotePhlowDeclarativeExplicitViewDataSource
 retrieveStencilData
 	^ [ self phlowStencil stencilData ]
 			on: Error
-			do: [ :anException |
-				(GtRemotePhlowViewErrorData new)
-					errorDescription: anException messageText;
-					errorObject: anException;
-					updateLocalRemoteSide]
+			do: [ :anException | self captureErrorDataFor: anException]
 %
 
 category: 'accessing'
@@ -12829,8 +13847,9 @@ retrieveStencilSpecification
 	^ [ self phlowStencil asGtStencilSpecificationFrom: self ]
 			on: Error
 			do: [ :anException |
-				(GtPhlowErrorStencil forException: anException)
-					asGtStencilSpecificationFrom: self ]
+				(GtPhlowErrorStencil new 
+					stencilData: (self captureErrorDataFor: anException))
+						asGtStencilSpecificationFrom: self ]
 %
 
 ! Class implementation for 'GtRemotePhlowDeclarativeForwardViewDataSource'
@@ -12869,28 +13888,6 @@ retrieveViewSpecificationForForwarding
 	cachedViewSpecification methodSelector: computedPhlowView definingSelector.
 	
 	^ cachedViewSpecification asDictionaryForExport
-%
-
-! Class implementation for 'GtRemotePhlowDeclarativePictureViewDataSource'
-
-!		Instance methods for 'GtRemotePhlowDeclarativePictureViewDataSource'
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativePictureViewDataSource
-computeViewData
-	^ GtRemotePhlowPictureViewData new
-		content: self phlowView pictureComputation value;
-		mediaType: self phlowView mediaTypeComputation value;
-		width: self phlowView widthComputation value;
-		height: self phlowView heightComputation value
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativePictureViewDataSource
-retrieveData
-	^ [ self computeViewData ]
-		on: Error
-		do: [ :anError | self captureErrorDataFor: anError ]
 %
 
 ! Class implementation for 'GtRemotePhlowDeclarativeTextualViewDataSource'
@@ -13358,6 +14355,48 @@ instantiateValueBuilder
 	^ GtRemotePhlowRowBuilder new
 %
 
+! Class implementation for 'GtRemotePhlowDeclarativeWebBrowserViewDataSource'
+
+!		Instance methods for 'GtRemotePhlowDeclarativeWebBrowserViewDataSource'
+
+category: 'computing'
+method: GtRemotePhlowDeclarativeWebBrowserViewDataSource
+computeContent
+	^ self phlowView contentComputation value.
+%
+
+category: 'computing'
+method: GtRemotePhlowDeclarativeWebBrowserViewDataSource
+computeDynamicHeaders
+	| computedHeaders |
+	computedHeaders := GtRemotePhlowWebViewHeader new.
+	self phlowView hasDynamicHeaders ifTrue: [
+		self phlowView dynamicHeadersComputation value: computedHeaders ].
+	^ computedHeaders
+%
+
+category: 'updating'
+method: GtRemotePhlowDeclarativeWebBrowserViewDataSource
+flushCachedData
+	
+%
+
+category: 'retrieving'
+method: GtRemotePhlowDeclarativeWebBrowserViewDataSource
+retrieveContent
+	^ [ self computeContent ]
+		on: Error
+		do: [ :anError | self captureErrorDataFor: anError ]
+%
+
+category: 'retrieving'
+method: GtRemotePhlowDeclarativeWebBrowserViewDataSource
+retrieveDynamicHeaders
+	^ [ self computeDynamicHeaders ]
+		on: Error
+		do: [ :anError | self captureErrorDataFor: anError ]
+%
+
 ! Class implementation for 'GtRemotePhlowDetailsRow'
 
 !		Class methods for 'GtRemotePhlowDetailsRow'
@@ -13591,8 +14630,8 @@ gtExplicitPictureViewWithStencilErrorFor: aView
 	^(aView explicit)
 		title: 'Picture (stencil error)';
 		priority: 25;
-		declarativeStencil: 
-				[self error: 'Declarative stencil computation with exception']
+		declarativeStencil: [
+			self error: 'Declarative stencil computation with exception']
 %
 
 ! Class implementation for 'GtRemotePhlowExplicitViewTestObject'
@@ -13757,6 +14796,23 @@ pictureBytes
 %
 
 !		Instance methods for 'GtRemotePhlowExplicitViewWithSerializationTestObject'
+
+category: 'as yet unclassified'
+method: GtRemotePhlowExplicitViewWithSerializationTestObject
+gtExplicitPictureViewDirectProxySerializationExplicitComputationFor: aView
+	<gtView>
+	
+	^(aView explicit)
+		title: 'Direct proxy - explicit block';
+		priority: 16;
+		declarativeStencil: [
+			GtPhlowNamedStencil new
+				stencilClassName: #GtLocalPhlowPictureFullSizeViewStencil;
+				stencilDataComputation: [ (GtRemotePhlowPictureViewData new)
+						content: self class pictureBytes ];
+				dataSerializationStrategy: GtPhlowStencilDataSerializationStrategy 
+					forDirectProxy  ]
+%
 
 category: 'as yet unclassified'
 method: GtRemotePhlowExplicitViewWithSerializationTestObject
@@ -14527,6 +15583,12 @@ tree
 	^ self declarativeViewOfType: GtRemotePhlowTreeView
 %
 
+category: 'accessing'
+method: GtRemotePhlowProtoView
+webBrowser
+	^ self declarativeLocalRemoteViewOfType: GtRemotePhlowWebBrowserView
+%
+
 ! Class implementation for 'GtRemotePhlowView'
 
 !		Class methods for 'GtRemotePhlowView'
@@ -14701,7 +15763,8 @@ configureGenericViewSpecificationOn: aViewSpecification
 	aViewSpecification
 		title: self title;
 		priority: self priority;
-		actionSpecifications: (self actions collect: [ :each | each asGtDeclarativeAction ]) asArray
+		actionSpecifications: (self actions collect: [ :each | 
+			each asGtDeclarativeAction ]) asArray
 %
 
 category: 'copying'
@@ -15647,6 +16710,14 @@ buildContext: aGtPhlowBuildContext
 
 category: 'accessing'
 method: GtRemotePhlowLocalView
+currentDataTransport
+	^ self shouldLoadContentLazily
+			ifTrue: [ GtPhlowViewSpecification dataLazy ]
+			ifFalse: [ GtPhlowViewSpecification dataIncluded ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowLocalView
 definingClass
 	localDefiningMethodProvider
 		ifNotNil: [ :aProvider | ^aProvider definingMethod methodClass].
@@ -15696,6 +16767,12 @@ originalView: aView
 	localOriginalView := aView
 %
 
+category: 'testing'
+method: GtRemotePhlowLocalView
+shouldLoadContentLazily
+	^ false
+%
+
 ! Class implementation for 'GtRemotePhlowPictureView'
 
 !		Instance methods for 'GtRemotePhlowPictureView'
@@ -15704,13 +16781,23 @@ category: 'converting'
 method: GtRemotePhlowPictureView
 asGtDeclarativeView
 	| viewSpecification |
-	viewSpecification := (GtRemotePhlowPictureViewSpecification new)
-				phlowDataSource: (GtRemotePhlowDeclarativePictureViewDataSource
+	viewSpecification := (GtRemotePhlowConcreteDataViewSpecification new)
+				phlowDataSource: (GtRemotePhlowConcreteDataViewDataSource
 							forPhlowView: self);
 				renderingStencilName: self renderingStencilName;
-				dataTransport: GtPhlowViewSpecification dataLazy.
+				dataTransport: self currentDataTransport.
 	self configureGenericViewSpecificationOn: viewSpecification.
 	^viewSpecification
+%
+
+category: 'utils'
+method: GtRemotePhlowPictureView
+computeViewData
+	^ GtRemotePhlowPictureViewData new
+		content: self pictureComputation value;
+		mediaType: self mediaTypeComputation value;
+		width: self widthComputation value;
+		height: self heightComputation value
 %
 
 category: 'building'
@@ -15729,6 +16816,12 @@ category: 'accessing'
 method: GtRemotePhlowPictureView
 heightComputation
 	^heightComputation
+%
+
+category: 'accessing'
+method: GtRemotePhlowPictureView
+loadContentLazily
+	self shouldLoadContentLazily: true
 %
 
 category: 'accessing'
@@ -15769,6 +16862,18 @@ renderingStencilName: aSymbol
 
 category: 'accessing'
 method: GtRemotePhlowPictureView
+shouldLoadContentLazily
+	^ shouldLoadContentLazily ifNil: [ true ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowPictureView
+shouldLoadContentLazily: aBoolean
+	shouldLoadContentLazily := aBoolean.
+%
+
+category: 'accessing'
+method: GtRemotePhlowPictureView
 width: anObject
 	widthComputation := anObject
 %
@@ -15777,6 +16882,162 @@ category: 'accessing'
 method: GtRemotePhlowPictureView
 widthComputation
 	^widthComputation
+%
+
+! Class implementation for 'GtRemotePhlowWebBrowserView'
+
+!		Class methods for 'GtRemotePhlowWebBrowserView'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowWebBrowserView
+new
+	^ self basicNew initialize
+%
+
+!		Instance methods for 'GtRemotePhlowWebBrowserView'
+
+category: 'converting'
+method: GtRemotePhlowWebBrowserView
+asGtDeclarativeView
+	| specification dataSource |
+	dataSource := GtRemotePhlowDeclarativeWebBrowserViewDataSource forPhlowView: self.
+	specification := GtRemotePhlowWebBrowserViewSpecification new
+		phlowDataSource: dataSource;
+		staticHeaders: self staticHeaders;
+		hasDynamicHeaders: self hasDynamicHeaders;
+		dataTransport: self currentDataTransport.
+	self configureGenericViewSpecificationOn: specification.
+	self shouldLoadContentLazily ifFalse: [ specification populateBrowserContent ].
+	^ specification
+%
+
+category: 'building'
+method: GtRemotePhlowWebBrowserView
+byteArray: aBlock
+	self byteArray: aBlock contentType: nil
+%
+
+category: 'building'
+method: GtRemotePhlowWebBrowserView
+byteArray: aBlock contentType: aContentType
+	self content: [
+		GtRemotePhlowWebViewByteArrayContent new
+			content: aBlock value;
+			contentType: aContentType ]
+%
+
+category: 'building'
+method: GtRemotePhlowWebBrowserView
+content: aBlock
+	self contentComputation: aBlock
+%
+
+category: 'accessing'
+method: GtRemotePhlowWebBrowserView
+contentComputation
+	^ contentComputation
+%
+
+category: 'accessing'
+method: GtRemotePhlowWebBrowserView
+contentComputation: aBlock
+	contentComputation := aBlock
+%
+
+category: 'building'
+method: GtRemotePhlowWebBrowserView
+dynamicHeaders: aBlock
+	dynamicHeadersComputation := aBlock.
+%
+
+category: 'headers'
+method: GtRemotePhlowWebBrowserView
+dynamicHeadersComputation
+	^ dynamicHeadersComputation
+%
+
+category: 'headers'
+method: GtRemotePhlowWebBrowserView
+hasDynamicHeaders
+	^ dynamicHeadersComputation isNotNil
+%
+
+category: 'building'
+method: GtRemotePhlowWebBrowserView
+headerAt: aName put: aValue
+	self staticHeaders headerAt: aName put: aValue.
+%
+
+category: 'building'
+method: GtRemotePhlowWebBrowserView
+headers: aHeader
+	staticHeaders := aHeader
+%
+
+category: 'building'
+method: GtRemotePhlowWebBrowserView
+html: aBlock
+	self content: [ GtRemotePhlowWebViewHtmlContent new html: aBlock value ]
+%
+
+category: 'building'
+method: GtRemotePhlowWebBrowserView
+includeContent
+	self shouldLoadContentLazily: false
+%
+
+category: 'initialization'
+method: GtRemotePhlowWebBrowserView
+initialize
+	super initialize.
+	
+	staticHeaders := GtRemotePhlowWebViewHeader new.
+	shouldLoadContentLazily := true
+%
+
+category: 'building'
+method: GtRemotePhlowWebBrowserView
+loadContentLazily
+	self shouldLoadContentLazily: true
+%
+
+category: 'accessing'
+method: GtRemotePhlowWebBrowserView
+shouldLoadContentLazily
+	^ shouldLoadContentLazily ifNil: [ true ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowWebBrowserView
+shouldLoadContentLazily: aBoolean
+	shouldLoadContentLazily := aBoolean.
+%
+
+category: 'headers'
+method: GtRemotePhlowWebBrowserView
+staticHeaders
+	^ staticHeaders ifNil: [ staticHeaders := GtRemotePhlowWebViewHeader new ]
+%
+
+category: 'building'
+method: GtRemotePhlowWebBrowserView
+textual: aBlock
+	self textual: aBlock contentType: nil
+%
+
+category: 'building'
+method: GtRemotePhlowWebBrowserView
+textual: aBlock contentType: aContentType
+	self content: [
+		GtRemotePhlowWebViewTextualContent new
+			content: aBlock value;
+			contentType: aContentType ]
+%
+
+category: 'building'
+method: GtRemotePhlowWebBrowserView
+url: aBlock
+	self content: [ GtRemotePhlowWebViewUrlContent new url: aBlock value ]
 %
 
 ! Class implementation for 'GtRemotePhlowTextualView'
@@ -17470,6 +18731,229 @@ viewSpecificationsBySelector
 	viewSpecificationsBySelector ifNil: [ 
 		self initializeViewSpecifications ].
 	^ viewSpecificationsBySelector
+%
+
+! Class implementation for 'GtRemotePhlowWebBrowserStencilTestObject'
+
+!		Instance methods for 'GtRemotePhlowWebBrowserStencilTestObject'
+
+category: 'gt-views'
+method: GtRemotePhlowWebBrowserStencilTestObject
+gtWebBrowserFor: aView
+	<gtView>
+	^ aView explicit
+		title: 'Browser';
+		priority: 20;
+		declarativeStencil: [
+			GtRemotePhlowWebBrowserStencil new
+				html: '<h1>Web browser</h1>' ]
+%
+
+category: 'gt-views'
+method: GtRemotePhlowWebBrowserStencilTestObject
+gtWebBrowserHeadersFor: aView
+	<gtView>
+	^ aView explicit
+		title: 'Browser headers';
+		priority: 23;
+		declarativeStencil: [
+			GtRemotePhlowWebBrowserStencil new
+				url: 'https://example.com';
+				headerAt: 'Accept' put: 'text/html';
+				headerAt: 'X-Static' put: 'static value';
+				headerAt: 'Authorization' put: 'Bearer dynamic-token';
+				headerAt: 'X-Dynamic' put: 'dynamic value' ]
+%
+
+category: 'gt-views'
+method: GtRemotePhlowWebBrowserStencilTestObject
+gtWebBrowserLocalDataFor: aView
+	<gtView>
+	^ aView explicit
+		title: 'Browser local data';
+		priority: 24;
+		declarativeStencil: [
+			GtRemotePhlowWebBrowserStencil new
+				html: '<h1>Included local HTML</h1>' ]
+%
+
+category: 'gt-views'
+method: GtRemotePhlowWebBrowserStencilTestObject
+gtWebBrowserPngFor: aView
+	<gtView>
+	^ aView explicit
+		title: 'Browser PNG';
+		priority: 22;
+		declarativeStencil: [
+			GtRemotePhlowWebBrowserStencil new
+				byteArray: GtRemotePhlowPictureViewTestObject pictureBytes
+				contentType: 'image/png' ]
+%
+
+category: 'gt-views'
+method: GtRemotePhlowWebBrowserStencilTestObject
+gtWebBrowserUrlFor: aView
+	<gtView>
+	^ aView explicit
+		title: 'Browser URL';
+		priority: 21;
+		declarativeStencil: [
+			GtRemotePhlowWebBrowserStencil new
+				url: 'https://example.com' ]
+%
+
+! Class implementation for 'GtRemotePhlowWebBrowserViewErrorTestObject'
+
+!		Instance methods for 'GtRemotePhlowWebBrowserViewErrorTestObject'
+
+category: 'views'
+method: GtRemotePhlowWebBrowserViewErrorTestObject
+gtWebBrowserDynamicHeadersErrorFor: aView
+	<gtView>
+	^ aView webBrowser
+		title: 'Browser dynamic headers error';
+		priority: 21;
+		url: [ 'https://example.com' ];
+		dynamicHeaders: [ :aHeaders | Error signal: 'web browser dynamic headers test error' ]
+%
+
+category: 'views'
+method: GtRemotePhlowWebBrowserViewErrorTestObject
+gtWebBrowserFor: aView
+	<gtView>
+	^ aView webBrowser
+		title: 'Browser error';
+		priority: 20;
+		content: [ Error signal: 'web browser test error' ]
+%
+
+! Class implementation for 'GtRemotePhlowWebBrowserViewTestObject'
+
+!		Class methods for 'GtRemotePhlowWebBrowserViewTestObject'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowWebBrowserViewTestObject
+new
+	^ self basicNew initialize
+%
+
+!		Instance methods for 'GtRemotePhlowWebBrowserViewTestObject'
+
+category: 'accessing'
+method: GtRemotePhlowWebBrowserViewTestObject
+currentUrl
+	^ currentUrl
+%
+
+category: 'accessing'
+method: GtRemotePhlowWebBrowserViewTestObject
+currentUrl: aUrl
+	currentUrl := aUrl
+%
+
+category: 'views'
+method: GtRemotePhlowWebBrowserViewTestObject
+gtWebBrowserFor: aView
+	<gtView>
+	^ aView webBrowser
+		title: 'Browser';
+		priority: 20;
+		html: [ '<h1>Web browser</h1>' ]
+%
+
+category: 'views'
+method: GtRemotePhlowWebBrowserViewTestObject
+gtWebBrowserHeadersFor: aView
+	<gtView>
+	^ aView webBrowser
+		title: 'Browser headers';
+		priority: 23;
+		url: [ 'https://example.com' ];
+		headerAt: 'Accept' put: 'text/html';
+		headerAt: 'X-Static' put: 'static value';
+		dynamicHeaders: [ :aHeaders |
+			aHeaders
+				headerAt: 'Authorization' put: 'Bearer dynamic-token';
+				headerAt: 'X-Dynamic' put: 'dynamic value' ]
+%
+
+category: 'views'
+method: GtRemotePhlowWebBrowserViewTestObject
+gtWebBrowserLocalDataFor: aView
+	<gtView>
+	^ aView webBrowser
+		title: 'Browser local data';
+		priority: 24;
+		html: [ '<h1>Included local HTML</h1>' ];
+		includeContent
+%
+
+category: 'views'
+method: GtRemotePhlowWebBrowserViewTestObject
+gtWebBrowserPngFor: aView
+	<gtView>
+	^ aView webBrowser
+		title: 'Browser PNG';
+		priority: 22;
+		byteArray: [ GtRemotePhlowPictureViewTestObject pictureBytes ]
+		contentType: 'image/png'
+%
+
+category: 'gt views'
+method: GtRemotePhlowWebBrowserViewTestObject
+gtWebBrowserUpdatingUrlFor: aView
+	<gtView>
+	^ aView webBrowser
+		title: 'Browser updating URL';
+		priority: 25;
+		url: [ self currentUrl ];
+		actionButtonLabel: 'Change URL'
+			tooltip: 'Change the URL used by this view'
+			action: [ :aButton | 
+				self updateCurrentUrl.
+				aButton phlow fireViewUpdateWish ];
+		actionButtonLabel: 'Edit URL'
+			tooltip: 'Edit the url without updating the view'
+			action: [ :aButton | 
+				self updateCurrentUrl ]
+%
+
+category: 'views'
+method: GtRemotePhlowWebBrowserViewTestObject
+gtWebBrowserUrlFor: aView
+	<gtView>
+	^ aView webBrowser
+		title: 'Browser URL';
+		priority: 21;
+		url: [ 'https://example.com' ]
+%
+
+category: 'initialization'
+method: GtRemotePhlowWebBrowserViewTestObject
+initialize
+	super initialize.
+	currentUrl := 'https://example.com'
+%
+
+category: 'actions'
+method: GtRemotePhlowWebBrowserViewTestObject
+updateCurrentUrl
+	self currentUrl: 'https://example.org'
+%
+
+! Class implementation for 'GtRemotePhlowWebViewExplicitContentFileWriter'
+
+!		Instance methods for 'GtRemotePhlowWebViewExplicitContentFileWriter'
+
+category: 'writing'
+method: GtRemotePhlowWebViewExplicitContentFileWriter
+writeContent: anExplicitContent
+	| fileReference |
+	fileReference := FileReference
+		newTempFilePrefix: 'gt-web-view-'
+		suffix: '.', anExplicitContent fileExtension.
+	anExplicitContent writeContentTo: fileReference.
+	^ fileReference asUrl asString
 %
 
 ! Class implementation for 'GtRmGeoGpsGroup'
