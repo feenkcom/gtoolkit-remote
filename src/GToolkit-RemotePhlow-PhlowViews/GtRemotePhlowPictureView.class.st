@@ -6,7 +6,8 @@ Class {
 		'widthComputation',
 		'heightComputation',
 		'mediaTypeComputation',
-		'renderingStencilName'
+		'renderingStencilName',
+		'shouldLoadContentLazily'
 	],
 	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
@@ -14,13 +15,22 @@ Class {
 { #category : #converting }
 GtRemotePhlowPictureView >> asGtDeclarativeView [
 	| viewSpecification |
-	viewSpecification := (GtRemotePhlowPictureViewSpecification new)
-				phlowDataSource: (GtRemotePhlowDeclarativePictureViewDataSource
+	viewSpecification := (GtRemotePhlowConcreteDataViewSpecification new)
+				phlowDataSource: (GtRemotePhlowConcreteDataViewDataSource
 							forPhlowView: self);
 				renderingStencilName: self renderingStencilName;
-				dataTransport: GtPhlowViewSpecification dataLazy.
+				dataTransport: self currentDataTransport.
 	self configureGenericViewSpecificationOn: viewSpecification.
 	^viewSpecification
+]
+
+{ #category : #utils }
+GtRemotePhlowPictureView >> computeViewData [
+	^ GtRemotePhlowPictureViewData new
+		content: self pictureComputation value;
+		mediaType: self mediaTypeComputation value;
+		width: self widthComputation value;
+		height: self heightComputation value
 ]
 
 { #category : #building }
@@ -36,6 +46,11 @@ GtRemotePhlowPictureView >> height: anObject [
 { #category : #accessing }
 GtRemotePhlowPictureView >> heightComputation [
 	^heightComputation
+]
+
+{ #category : #accessing }
+GtRemotePhlowPictureView >> loadContentLazily [
+	self shouldLoadContentLazily: true
 ]
 
 { #category : #accessing }
@@ -66,6 +81,16 @@ GtRemotePhlowPictureView >> renderingStencilName [
 { #category : #accessing }
 GtRemotePhlowPictureView >> renderingStencilName: aSymbol [
 	renderingStencilName := aSymbol
+]
+
+{ #category : #accessing }
+GtRemotePhlowPictureView >> shouldLoadContentLazily [
+	^ shouldLoadContentLazily ifNil: [ true ]
+]
+
+{ #category : #accessing }
+GtRemotePhlowPictureView >> shouldLoadContentLazily: aBoolean [
+	shouldLoadContentLazily := aBoolean.
 ]
 
 { #category : #accessing }

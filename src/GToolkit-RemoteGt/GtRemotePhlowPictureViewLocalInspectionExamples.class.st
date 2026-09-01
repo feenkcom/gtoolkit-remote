@@ -14,16 +14,9 @@ GtRemotePhlowPictureViewLocalInspectionExamples >> altClickOnErrorTabOpensDefini
 	<gtExample>
 	| scripter |
 	scripter := self altClickOnErrorTabOpensDefinition.
-	
-	(scripter multipleViewsToolStep)
-		label: 'Second pane has method definition';
-		onPagerPaneWithIndex: 2;
-		onMultipleViewsToolElement;
-		assertToolObjectOfType: RGMethodDefinition;
-		assertToolObjectValueFor: [:aMethodDefinition | aMethodDefinition selector]
-			equals: [#gtViewPictureErrorFor:];
-		play.
-		
+	self 
+		assertSecondPaneHasLocalMethodWithSelector: #gtViewPictureErrorFor: 
+		in: scripter.
 	^scripter
 ]
 
@@ -32,16 +25,9 @@ GtRemotePhlowPictureViewLocalInspectionExamples >> altClickOnPictureTabOpensDefi
 	<gtExample>
 	| scripter |
 	scripter := self altClickOnPictureTabOpensDefinition.
-		
-	(scripter multipleViewsToolStep)
-		label: 'Second pane has method definition';
-		onPagerPaneWithIndex: 2;
-		onMultipleViewsToolElement;
-		assertToolObjectOfType: RGMethodDefinition;
-		assertToolObjectValueFor: [:aMethodDefinition | aMethodDefinition selector]
-			equals: [#gtViewPictureFor:];
-		play.
-		
+	self 
+		assertSecondPaneHasLocalMethodWithSelector: #gtViewPictureFor: 
+		in: scripter.
 	^scripter
 ]
 
@@ -49,15 +35,28 @@ GtRemotePhlowPictureViewLocalInspectionExamples >> altClickOnPictureTabOpensDefi
 GtRemotePhlowPictureViewLocalInspectionExamples >> errorViewShowsDebuggableElement_debugButton [
 	<gtExample>
 	| scripter |
-	scripter := self scripterOnErrorTestObjectInPager.
+	scripter := self errorViewShowsDebuggableElement.
 	
-	scripter 
-		check: 'Inspect exception button present'
-		do: [:aStep |
-			(aStep check)
+	scripter checkStep: [:aStep |
+			aStep
+				label: 'Inspect exception button present';
 				value: [:aButton | aButton label asString ]
 					equals: [ 'Open debugger' ];
 				// GtPhlowExceptionId;
-				// BrDebuggableElementOpenDebuggerButtonId;
-				play].
+				// BrDebuggableElementOpenDebuggerButtonId ].
+]
+
+{ #category : #'examples - scripter' }
+GtRemotePhlowPictureViewLocalInspectionExamples >> heightErrorViewShowsDebuggableElement_debugButton [
+	<gtExample>
+	| scripter |
+	scripter := self heightErrorViewShowsDebuggableElement.
+	
+	scripter checkStep: [:aStep |
+			aStep
+				label: 'Inspect exception button present';
+				value: [:aButton | aButton label asString ]
+					equals: [ 'Open debugger' ];
+				// GtPhlowExceptionId;
+				// BrDebuggableElementOpenDebuggerButtonId ].
 ]

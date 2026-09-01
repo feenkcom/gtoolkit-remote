@@ -13,3 +13,8 @@ GtRemotePhlowBasicViewData >> isPhlowErrorData [
 GtRemotePhlowBasicViewData >> isPictureData [
 	^false
 ]
+
+{ #category : #testing }
+GtRemotePhlowBasicViewData >> isWebViewContent [
+	^false
+]

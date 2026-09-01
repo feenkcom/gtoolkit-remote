@@ -14,7 +14,9 @@ GtRemotePhlowDeclarativeBlockActionDataSource >> executeRemoteActionWithPhlowRes
 	phlowApiWrapper := self phlowApiWrapper.
 	self targetBlock value: phlowApiWrapper.
 	
-	^ phlowApiWrapper currentAction asDictionaryForExport
+	^ phlowApiWrapper currentAction 
+			ifNotNil: [ :aPhlowWrappedAction | 
+				aPhlowWrappedAction asDictionaryForExport ]
 ]
 
 { #category : #accessing }

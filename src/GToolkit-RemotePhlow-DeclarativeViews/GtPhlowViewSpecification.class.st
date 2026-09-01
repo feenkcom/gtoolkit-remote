@@ -159,7 +159,7 @@ GtPhlowViewSpecification >> definingMethod [
 
 { #category : #accessing }
 GtPhlowViewSpecification >> flushCachedData [
-
+	"Method called when the view is about to be update to clean all the cached data"
 ]
 
 { #category : #initialization }

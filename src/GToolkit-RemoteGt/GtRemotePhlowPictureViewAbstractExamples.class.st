@@ -223,7 +223,7 @@ GtRemotePhlowPictureViewAbstractExamples >> renderingStencilSpecificationSeriali
 	| spec exported restored |
 	spec := self pictureViewWithExtentSpecification.
 	exported := spec asBasicViewDataForExport.
-	restored := GtRemotePhlowPictureViewSpecification
+	restored := GtRemotePhlowConcreteDataViewSpecification
 				fromJSONDictionary: exported.
 	self assert: restored renderingStencilName
 		equals: #GtLocalPhlowPictureScaledViewStencil.

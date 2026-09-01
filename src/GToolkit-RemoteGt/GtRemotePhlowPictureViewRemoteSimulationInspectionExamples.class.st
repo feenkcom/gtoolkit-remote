@@ -4,14 +4,16 @@ Class {
 	#category : #'GToolkit-RemoteGt-Examples-Views'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #'examples - setup' }
 GtRemotePhlowPictureViewRemoteSimulationInspectionExamples >> createErrorTestObject [
+	<gtExample>
 	^ GtRemotePlainInspectionSimulation 
 			openOn: super createErrorTestObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'examples - setup' }
 GtRemotePhlowPictureViewRemoteSimulationInspectionExamples >> createTestObject [
+	<gtExample>
 	^ GtRemotePlainInspectionSimulation 
 			openOn: super createTestObject
 ]

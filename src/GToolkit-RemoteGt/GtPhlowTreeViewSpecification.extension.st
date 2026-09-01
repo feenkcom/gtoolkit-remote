@@ -4,13 +4,7 @@ Extension { #name : #GtPhlowTreeViewSpecification }
 GtPhlowTreeViewSpecification >> configureViewActionsFor: aView [
 	super configureViewActionsFor: aView.
 	
-	aView
-			actionButtonIcon: BrGlamorousVectorIcons refresh
-			id: GtPhlowViewRefreshContentButtonId
-			tooltip: 'Update'
-			action: [ :aButton :aTab |
-				phlowDataSource flushItemsIterator.
-				aTab phlow fireViewUpdateWish ]
+	self configureDefaultRefreshActionFor: aView.
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
@@ -38,6 +32,7 @@ GtPhlowTreeViewSpecification >> viewFor: aView [
 	treeView := aView tree
 		title: title;
 		priority: priority;
+		phlowViewSpecification: self;
 		items: [ ((GtRemoteInspectorListingBufferedStream
 			declarativeView: self) collect: [ :aNodeValueDictionary |
 				GtRemotePhlowTreeNode

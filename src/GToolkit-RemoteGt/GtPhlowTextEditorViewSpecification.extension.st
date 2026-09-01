@@ -25,7 +25,8 @@ GtPhlowTextEditorViewSpecification >> viewFor: aView [
 
 	currentView := aView textEditor
 		title: title;
-		priority: priority.
+		priority: priority;
+		phlowViewSpecification: self.
 
 	self configureViewActionsFor: currentView.
 	self dataTransport = self class dataIncluded

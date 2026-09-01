@@ -186,7 +186,8 @@ GtRemotePhlowView >> configureGenericViewSpecificationOn: aViewSpecification [
 	aViewSpecification
 		title: self title;
 		priority: self priority;
-		actionSpecifications: (self actions collect: [ :each | each asGtDeclarativeAction ]) asArray
+		actionSpecifications: (self actions collect: [ :each | 
+			each asGtDeclarativeAction ]) asArray
 ]
 
 { #category : #copying }

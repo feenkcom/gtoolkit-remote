@@ -1,6 +1,8 @@
 Class {
 	#name : #GtRemotePhlowExplicitViewInspectionExamples,
 	#superclass : #Object,
+	#traits : 'TGtRemotePhlowLocalInspectionAssertions',
+	#classTraits : 'TGtRemotePhlowLocalInspectionAssertions classTrait',
 	#category : #'GToolkit-RemoteGt-Examples-Views'
 }
 
@@ -9,7 +11,7 @@ GtRemotePhlowExplicitViewInspectionExamples class >> isAbstract [
 	^self name = #GtRemotePhlowExplicitViewInspectionExamples
 ]
 
-{ #category : #examples }
+{ #category : #'examples - scripter' }
 GtRemotePhlowExplicitViewInspectionExamples >> altClickOnExplicitErrorViewTabOpensDefinition [
 	<gtExample>
 	| scripter |
@@ -32,18 +34,10 @@ GtRemotePhlowExplicitViewInspectionExamples >> altClickOnExplicitErrorViewTabOpe
 	(scripter treePager)
 		assertNumberOfPaneElements: 2;
 		play.
-	(scripter multipleViewsToolStep)
-		label: 'Second pane has method definition';
-		onPagerPaneWithIndex: 2;
-		onMultipleViewsToolElement;
-		assertToolObjectOfType: RGMethodDefinition;
-		assertToolObjectValueFor: [:aMethodDefinition | aMethodDefinition selector]
-			equals: [#gtExplicitPictureViewWithStencilErrorFor:];
-		play.
 	^scripter
 ]
 
-{ #category : #examples }
+{ #category : #'examples - scripter' }
 GtRemotePhlowExplicitViewInspectionExamples >> altClickOnExplicitViewTabOpensDefinition [
 	<gtExample>
 	| scripter |
@@ -66,38 +60,48 @@ GtRemotePhlowExplicitViewInspectionExamples >> altClickOnExplicitViewTabOpensDef
 	(scripter treePager)
 		assertNumberOfPaneElements: 2;
 		play.
-	(scripter multipleViewsToolStep)
-		label: 'Second pane has method definition';
-		onPagerPaneWithIndex: 2;
-		onMultipleViewsToolElement;
-		assertToolObjectOfType: RGMethodDefinition;
-		assertToolObjectValueFor: [:aMethodDefinition | aMethodDefinition selector]
-			equals: [#gtExplicitPictureViewWithDirectlySerializableFor:];
-		play.
 	^scripter
+]
+
+{ #category : #assertions }
+GtRemotePhlowExplicitViewInspectionExamples >> assertPictureElementViewExistsInTabNamed: aTabName in: aScripter [ 
+	(aScripter inspectorStep)
+		clickOnTabWithName: aTabName;
+		assertSelectedTabWithName: aTabName;
+		play.
+	
+	aScripter checkStep: [:aStep |
+		aStep 
+			label: 'Picture element exists';
+			// GtLocalPhlowPictureElementId;
+			exists ].
 ]
 
 { #category : #'examples - setup' }
 GtRemotePhlowExplicitViewInspectionExamples >> createEditablePersonObject [
+	<gtExample>
 	^GtRemotePhlowExplicitViewWithEditableUIPersonObject new
 ]
 
 { #category : #'examples - setup' }
 GtRemotePhlowExplicitViewInspectionExamples >> createErrorTestObject [
+	<gtExample>
 	^GtRemotePhlowExplicitViewErrorTestObject new
 ]
 
 { #category : #'examples - setup' }
 GtRemotePhlowExplicitViewInspectionExamples >> createSerializationTestObject [
+	<gtExample>
 	^GtRemotePhlowExplicitViewWithSerializationTestObject new
 ]
 
 { #category : #'examples - setup' }
 GtRemotePhlowExplicitViewInspectionExamples >> createTestObject [
+	<gtExample>
 	^GtRemotePhlowExplicitViewTestObject new
 ]
 
-{ #category : #examples }
+{ #category : #'examples - scripter' }
 GtRemotePhlowExplicitViewInspectionExamples >> editablePersonObjectSelectBasicEditView [
 	<gtExample>
 	| scripter |
@@ -106,38 +110,30 @@ GtRemotePhlowExplicitViewInspectionExamples >> editablePersonObjectSelectBasicEd
 		clickOnTabWithName: 'Basic edit';
 		assertSelectedTabWithName: 'Basic edit';
 		play.
-	scripter check: 'Name editor exists'
-		do: 
-			[:aStep |
-			(aStep check)
-				exists;
-				// GtRemotePhlowExplicitViewExampleNameEditorId;
-				play].
-	scripter check: 'Name editor shows person name'
-		do: 
-			[:aStep |
-			(aStep check)
-				value: [:anElement | anElement text asString] equals: ['John Doe'];
-				// GtRemotePhlowExplicitViewExampleNameEditorId;
-				play].
-	scripter check: 'Age editor shows age'
-		do: 
-			[:aStep |
-			(aStep check)
-				value: [:anElement | anElement text asString] equals: ['30'];
-				// GtRemotePhlowExplicitViewExampleAgeEditorId;
-				play].
-	scripter check: 'Address editor shows address'
-		do: 
-			[:aStep |
-			(aStep check)
-				value: [:anElement | anElement text asString] equals: ['123 Main Street'];
-				// GtRemotePhlowExplicitViewExampleAddressEditorId;
-				play].
+	scripter checkStep: [:aStep |
+		aStep
+			label: 'Name editor exists';
+			exists;
+			// GtRemotePhlowExplicitViewExampleNameEditorId].
+	scripter checkStep: [:aStep |
+		aStep
+			label: 'Name editor shows person name';
+			value: [:anElement | anElement text asString] equals: ['John Doe'];
+			// GtRemotePhlowExplicitViewExampleNameEditorId ].
+	scripter checkStep: [:aStep |
+		aStep
+			label: 'Age editor shows age';
+			value: [:anElement | anElement text asString] equals: ['30'];
+			// GtRemotePhlowExplicitViewExampleAgeEditorId ].
+	scripter checkStep: [:aStep |
+		aStep
+			label: 'Address editor shows address';
+			value: [:anElement | anElement text asString] equals: ['123 Main Street'];
+			// GtRemotePhlowExplicitViewExampleAddressEditorId ].
 	^scripter
 ]
 
-{ #category : #examples }
+{ #category : #'examples - scripter' }
 GtRemotePhlowExplicitViewInspectionExamples >> editablePersonObjectSelectEditView [
 	<gtExample>
 	| scripter |
@@ -146,34 +142,26 @@ GtRemotePhlowExplicitViewInspectionExamples >> editablePersonObjectSelectEditVie
 		clickOnTabWithName: 'Edit';
 		assertSelectedTabWithName: 'Edit';
 		play.
-	scripter check: 'Name editor exists'
-		do: 
-			[:aStep |
-			(aStep check)
+	scripter checkStep: [:aStep |
+			aStep 
+				label:'Name editor exists';
 				exists;
-				// GtRemotePhlowExplicitViewExampleNameEditorId;
-				play].
-	scripter check: 'Name editor shows person name'
-		do: 
-			[:aStep |
-			(aStep check)
+				// GtRemotePhlowExplicitViewExampleNameEditorId ].
+	scripter checkStep: [:aStep |
+			aStep
+				label: 'Name editor shows person name';
 				value: [:anElement | anElement text asString] equals: ['John Doe'];
-				// GtRemotePhlowExplicitViewExampleNameEditorId;
-				play].
-	scripter check: 'Age editor shows age'
-		do: 
-			[:aStep |
-			(aStep check)
+				// GtRemotePhlowExplicitViewExampleNameEditorId ].
+	scripter checkStep: [:aStep |
+			aStep
+				label: 'Age editor shows age';
 				value: [:anElement | anElement text asString] equals: ['30'];
-				// GtRemotePhlowExplicitViewExampleAgeEditorId;
-				play].
-	scripter check: 'Address editor shows address'
-		do: 
-			[:aStep |
-			(aStep check)
+				// GtRemotePhlowExplicitViewExampleAgeEditorId ].
+	scripter checkStep: [:aStep |
+			aStep
+				label: 'Address editor shows address';
 				value: [:anElement | anElement text asString] equals: ['123 Main Street'];
-				// GtRemotePhlowExplicitViewExampleAddressEditorId;
-				play].
+				// GtRemotePhlowExplicitViewExampleAddressEditorId ].
 	^scripter
 ]
 
@@ -186,75 +174,39 @@ GtRemotePhlowExplicitViewInspectionExamples >> editablePersonObjectViewsRenderWi
 	^testObject
 ]
 
-{ #category : #examples }
+{ #category : #'examples - scripter' }
 GtRemotePhlowExplicitViewInspectionExamples >> errorTestObjectSelectStencilDataErrorView [
 	<gtExample>
 	| scripter |
-	scripter := self scripterOnErrorTestObject.
+	scripter := self scripterOnErrorTestObjectInPager.
+	
 	(scripter inspectorStep)
 		clickOnTabWithName: 'Picture (stencil API)';
 		assertSelectedTabWithName: 'Picture (stencil API)';
 		play.
-	scripter check: 'Error element exists'
-		do: 
-			[:aStep |
-			(aStep check)
-				exists;
-				// GtPhlowExceptionId;
-				play].
-	scripter check: 'Exception has correct message'
-		do: 
-			[:aStep |
-			(aStep check)
-				value: [:anElement | (anElement userData at: #exception) messageText]
-					equals: ['Stencil data computation with exception'];
-				// GtPhlowExceptionId;
-				play].
-	scripter check: 'Error label displays message'
-		do: 
-			[:aStep |
-			(aStep check)
-				value: [:aButton | self remoteErrorPrefix: aButton label asString]
-					equals: ['Stencil data computation with exception'];
-				// GtPhlowExceptionId;
-				// BrDebuggableElementExceptionMessageId;
-				play].
+	
+	self 
+		assertPhlowViewHasErrorWithMessage: 'Stencil data computation with exception' 
+		in: scripter.
+		
 	^scripter
 ]
 
-{ #category : #examples }
+{ #category : #'examples - scripter' }
 GtRemotePhlowExplicitViewInspectionExamples >> errorTestObjectSelectStencilErrorView [
 	<gtExample>
 	| scripter |
-	scripter := self scripterOnErrorTestObject.
+	scripter := self scripterOnErrorTestObjectInPager.
+	
 	(scripter inspectorStep)
 		clickOnTabWithName: 'Picture (stencil error)';
 		assertSelectedTabWithName: 'Picture (stencil error)';
 		play.
-	scripter check: 'Error element exists'
-		do: 
-			[:aStep |
-			(aStep check)
-				exists;
-				// GtPhlowExceptionId;
-				play].
-	scripter check: 'Exception has correct message'
-		do: 
-			[:aStep |
-			(aStep check)
-				value: [:anElement | (anElement userData at: #exception) messageText]
-					equals: ['Declarative stencil computation with exception'];
-				// GtPhlowExceptionId;
-				play].
-	scripter check: 'Error label displays message'
-		do: 
-			[:aStep |
-			(aStep check)
-				value: [:aButton | self remoteErrorPrefix: aButton label asString]
-					equals: ['Declarative stencil computation with exception'];
-				// GtPhlowExceptionId;
-				// BrDebuggableElementExceptionMessageId;
-				play].
+		
+	self 
+		assertPhlowViewHasErrorWithMessage: 'Declarative stencil computation with exception' 
+		in: scripter.
+				
 	^scripter
 ]
 
@@ -263,7 +215,7 @@ GtRemotePhlowExplicitViewInspectionExamples >> remoteErrorPrefix: aString [
 	^aString withoutPrefix: 'Error: '
 ]
 
-{ #category : #'examples - setup' }
+{ #category : #'examples - scripter setup' }
 GtRemotePhlowExplicitViewInspectionExamples >> scripterOnEditablePersonObject [
 	<gtExample>
 	| scripter element |
@@ -276,13 +228,13 @@ GtRemotePhlowExplicitViewInspectionExamples >> scripterOnEditablePersonObject [
 ]
 
 { #category : #'examples - setup' }
-GtRemotePhlowExplicitViewInspectionExamples >> scripterOnErrorTestObject [
+GtRemotePhlowExplicitViewInspectionExamples >> scripterOnErrorTestObjectInPager [
 	<gtExample>
-	| scripter element |
+	| scripter |
 	scripter := BlScripter new.
-	element := self createErrorTestObject gtDefaultInspectorTool asElement.
-	element size: 1200 @ 800.
-	scripter element: element.
+	scripter extent: 1200 @ 800.
+	scripter element: (GtPagerSettings usedPager
+				createWrappedOn: (self createErrorTestObject gtDefaultInspectorTool)).
 	^scripter
 ]
 
@@ -309,60 +261,39 @@ GtRemotePhlowExplicitViewInspectionExamples >> scripterOnTestObject [
 	^scripter
 ]
 
-{ #category : #examples }
+{ #category : #'examples - scripter' }
+GtRemotePhlowExplicitViewInspectionExamples >> serializationTestObjectSelectDirectProxyExplicitComputationView [
+	<gtExample>
+	| scripter |
+	scripter := self scripterOnSerializationTestObject.
+	self assertPictureElementViewExistsInTabNamed: 'Direct proxy - explicit block' in: scripter. 
+	^scripter
+]
+
+{ #category : #'examples - scripter' }
 GtRemotePhlowExplicitViewInspectionExamples >> serializationTestObjectSelectDirectProxyView [
 	<gtExample>
 	| scripter |
 	scripter := self scripterOnSerializationTestObject.
-	(scripter inspectorStep)
-		clickOnTabWithName: 'Direct proxy';
-		assertSelectedTabWithName: 'Direct proxy';
-		play.
-	scripter check: 'Picture element exists'
-		do: 
-			[:aStep |
-			(aStep check)
-				exists;
-				// GtLocalPhlowPictureElementId;
-				play].
+	self assertPictureElementViewExistsInTabNamed: 'Direct proxy' in: scripter. 
 	^scripter
 ]
 
-{ #category : #examples }
+{ #category : #'examples - scripter' }
 GtRemotePhlowExplicitViewInspectionExamples >> serializationTestObjectSelectManualDictionaryView [
 	<gtExample>
 	| scripter |
 	scripter := self scripterOnSerializationTestObject.
-	(scripter inspectorStep)
-		clickOnTabWithName: 'Manual dictionary';
-		assertSelectedTabWithName: 'Manual dictionary';
-		play.
-	scripter check: 'Picture element exists'
-		do: 
-			[:aStep |
-			(aStep check)
-				exists;
-				// GtLocalPhlowPictureElementId;
-				play].
+	self assertPictureElementViewExistsInTabNamed: 'Manual dictionary' in: scripter. 
 	^scripter
 ]
 
-{ #category : #examples }
+{ #category : #'examples - scripter' }
 GtRemotePhlowExplicitViewInspectionExamples >> serializationTestObjectSelectWireEncodingView [
 	<gtExample>
 	| scripter |
 	scripter := self scripterOnSerializationTestObject.
-	(scripter inspectorStep)
-		clickOnTabWithName: 'Wire encoding';
-		assertSelectedTabWithName: 'Wire encoding';
-		play.
-	scripter check: 'Picture element exists'
-		do: 
-			[:aStep |
-			(aStep check)
-				exists;
-				// GtLocalPhlowPictureElementId;
-				play].
+	self assertPictureElementViewExistsInTabNamed: 'Wire encoding' in: scripter. 
 	^scripter
 ]
 
@@ -375,79 +306,39 @@ GtRemotePhlowExplicitViewInspectionExamples >> serializationTestObjectViewsRende
 	^testObject
 ]
 
-{ #category : #examples }
+{ #category : #'examples - scripter' }
 GtRemotePhlowExplicitViewInspectionExamples >> testObjectSelectGtSideStencilV1View [
 	<gtExample>
 	| scripter |
 	scripter := self scripterOnTestObject.
-	(scripter inspectorStep)
-		clickOnTabWithName: 'GT-Side stencil v1';
-		assertSelectedTabWithName: 'GT-Side stencil v1';
-		play.
-	scripter check: 'Picture element exists'
-		do: 
-			[:aStep |
-			(aStep check)
-				exists;
-				// GtLocalPhlowPictureElementId;
-				play].
+	self assertPictureElementViewExistsInTabNamed: 'GT-Side stencil v1' in: scripter. 
 	^scripter
 ]
 
-{ #category : #examples }
+{ #category : #'examples - scripter' }
 GtRemotePhlowExplicitViewInspectionExamples >> testObjectSelectGtSideStencilV2View [
 	<gtExample>
 	| scripter |
 	scripter := self scripterOnTestObject.
-	(scripter inspectorStep)
-		clickOnTabWithName: 'GT-Side stencil v2';
-		assertSelectedTabWithName: 'GT-Side stencil v2';
-		play.
-	scripter check: 'Picture element exists'
-		do: 
-			[:aStep |
-			(aStep check)
-				exists;
-				// GtLocalPhlowPictureElementId;
-				play].
+	self assertPictureElementViewExistsInTabNamed: 'GT-Side stencil v2' in: scripter. 
 	^scripter
 ]
 
-{ #category : #examples }
+{ #category : #'examples - scripter' }
 GtRemotePhlowExplicitViewInspectionExamples >> testObjectSelectRemoteLocalStencilView [
 	<gtExample>
 	| scripter |
 	scripter := self scripterOnTestObject.
-	(scripter inspectorStep)
-		clickOnTabWithName: 'Remote/local stencil';
-		assertSelectedTabWithName: 'Remote/local stencil';
-		play.
-	scripter check: 'Picture element exists'
-		do: 
-			[:aStep |
-			(aStep check)
-				exists;
-				// GtLocalPhlowPictureElementId;
-				play].
+	self assertPictureElementViewExistsInTabNamed: 'Remote/local stencil' in: scripter. 
 	^scripter
 ]
 
-{ #category : #examples }
+{ #category : #'examples - scripter' }
 GtRemotePhlowExplicitViewInspectionExamples >> testObjectSelectRemoteOnlyStencilView [
 	<gtExample>
 	| scripter |
 	scripter := self scripterOnTestObject.
-	(scripter inspectorStep)
-		clickOnTabWithName: 'Remote only stencil';
-		assertSelectedTabWithName: 'Remote only stencil';
-		play.
-	scripter check: 'Picture element exists'
-		do: 
-			[:aStep |
-			(aStep check)
-				exists;
-				// GtLocalPhlowPictureElementId;
-				play].
+	self assertPictureElementViewExistsInTabNamed: 'Remote only stencil' in: scripter. 
 	^scripter
 ]
 

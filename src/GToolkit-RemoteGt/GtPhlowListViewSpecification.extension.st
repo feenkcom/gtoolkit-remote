@@ -4,13 +4,7 @@ Extension { #name : #GtPhlowListViewSpecification }
 GtPhlowListViewSpecification >> configureViewActionsFor: aView [
 	super configureViewActionsFor: aView.
 	
-	aView
-			actionButtonIcon: BrGlamorousVectorIcons refresh
-			id: GtPhlowViewRefreshContentButtonId
-			tooltip: 'Update'
-			action: [ :aButton :aTab |
-				phlowDataSource flushItemsIterator.
-				aTab phlow fireViewUpdateWish ]
+	self configureDefaultRefreshActionFor: aView.
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
@@ -27,6 +21,7 @@ GtPhlowListViewSpecification >> viewFor: aView [
 	listView := aView list
 		title: title;
 		priority: priority;
+		phlowViewSpecification: self;
 		items: [ (GtRemoteInspectorListingBufferedStream declarativeView: self)
 			collect: [ :aNodeDictionary |
 				GtRemotePhlowDataNode fromJSONDictionary: aNodeDictionary ] ];

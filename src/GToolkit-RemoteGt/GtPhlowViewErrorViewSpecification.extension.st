@@ -36,6 +36,7 @@ GtPhlowViewErrorViewSpecification >> viewFor: aView [
 	currentView := aView explicit
 		title: title;
 		priority: priority;
+		phlowViewSpecification: self;
 		stencil: [ self createErrorElement ].
 
 	self configureViewActionsFor: currentView.

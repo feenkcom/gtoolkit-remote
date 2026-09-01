@@ -1,6 +1,8 @@
 Class {
 	#name : #GtRemotePhlowPictureViewInspectionExamples,
 	#superclass : #Object,
+	#traits : 'TGtRemotePhlowLocalInspectionAssertions',
+	#classTraits : 'TGtRemotePhlowLocalInspectionAssertions classTrait',
 	#category : #'GToolkit-RemoteGt-Examples-Views'
 }
 
@@ -9,7 +11,7 @@ GtRemotePhlowPictureViewInspectionExamples class >> isAbstract [
 	^ self name = #GtRemotePhlowPictureViewInspectionExamples
 ]
 
-{ #category : #'examples - setup' }
+{ #category : #'examples - scripter' }
 GtRemotePhlowPictureViewInspectionExamples >> altClickOnErrorTabOpensDefinition [
 	<gtExample>
 	| scripter |
@@ -36,7 +38,7 @@ GtRemotePhlowPictureViewInspectionExamples >> altClickOnErrorTabOpensDefinition 
 	^scripter
 ]
 
-{ #category : #'examples - setup' }
+{ #category : #'examples - scripter' }
 GtRemotePhlowPictureViewInspectionExamples >> altClickOnPictureTabOpensDefinition [
 	<gtExample>
 	| scripter |
@@ -75,39 +77,20 @@ GtRemotePhlowPictureViewInspectionExamples >> createTestObject [
 	^ GtRemotePhlowPictureViewTestObject new
 ]
 
-{ #category : #'examples - setup' }
+{ #category : #'examples - scripter' }
 GtRemotePhlowPictureViewInspectionExamples >> errorViewShowsDebuggableElement [
 	<gtExample>
 	| scripter |
-	scripter := self scripterOnErrorTestObject.
+	scripter := self scripterOnErrorTestObjectInPager.
 	(scripter inspectorStep)
 		clickOnTabWithName: 'Picture Error';
 		assertSelectedTabWithName: 'Picture Error';
 		play.
-	scripter check: 'Error element exists'
-		do: 
-			[:aStep |
-			(aStep check)
-				exists;
-				// GtPhlowExceptionId;
-				play].
-	scripter check: 'Exception has correct message'
-		do: 
-			[:aStep |
-			(aStep check)
-				value: [:anElement | (anElement userData at: #exception) messageText]
-					equals: ['Test picture computation error'];
-				// GtPhlowExceptionId;
-				play ].
-	scripter check: 'Error label displays message'
-		do: 
-			[:aStep |
-			(aStep check)
-				value: [:aButton | self remoteErrorPrefix: aButton label asString ]
-					equals: [ 'Test picture computation error' ];
-				// GtPhlowExceptionId;
-				// BrDebuggableElementExceptionMessageId;
-				play].
+	
+	self 
+		assertPhlowViewHasErrorWithMessage: 'Test picture computation error' 
+		in: scripter.
+		
 	^scripter
 ]
 
@@ -115,36 +98,16 @@ GtRemotePhlowPictureViewInspectionExamples >> errorViewShowsDebuggableElement [
 GtRemotePhlowPictureViewInspectionExamples >> heightErrorViewShowsDebuggableElement [
 	<gtExample>
 	| scripter |
-	scripter := self scripterOnErrorTestObject.
+	scripter := self scripterOnErrorTestObjectInPager.
 	(scripter inspectorStep)
 		clickOnTabWithName: 'Picture Height Error';
 		assertSelectedTabWithName: 'Picture Height Error';
 		play.
-	scripter check: 'Error element exists'
-		do: 
-			[:aStep |
-			(aStep check)
-				exists;
-				// GtPhlowExceptionId;
-				play].
-	scripter check: 'Exception has correct message'
-		do: 
-			[:aStep |
-			(aStep check)
-				value: [:anElement | 
-						(anElement userData at: #exception) messageText]
-					equals: ['Height computation error'];
-				// GtPhlowExceptionId;
-				play].
-	scripter check: 'Error label displays message'
-		do: 
-			[:aStep |
-			(aStep check)
-				value: [:aButton | self remoteErrorPrefix: aButton label asString]
-					equals: ['Height computation error'];
-				// GtPhlowExceptionId;
-				// BrDebuggableElementExceptionMessageId;
-				play].
+
+	self 
+		assertPhlowViewHasErrorWithMessage: 'Height computation error' 
+		in: scripter.
+	
 	^scripter
 ]
 
@@ -166,29 +129,23 @@ GtRemotePhlowPictureViewInspectionExamples >> pictureFullSizeViewHasCorrectSize 
 		clickOnTabWithName: 'Picture (full size)';
 		assertSelectedTabWithName: 'Picture (full size)';
 		play.
-	scripter check: 'Picture element exists'
-		do: 
-			[:aStep |
-			(aStep check)
+	scripter checkStep: [:aStep |
+			aStep
+				label: 'Picture element exists';
 				exists;
-				// GtLocalPhlowPictureElementId;
-				play].
-	scripter check: 'Image has correct width'
-		do: 
-			[:aStep |
-			(aStep check)
+				// GtLocalPhlowPictureElementId ].
+	scripter checkStep: [:aStep |
+			aStep
+				label: 'Image has correct width';
 				value: [:anElement | anElement width] equals: [1164];
 				// GtLocalPhlowPictureElementId;
-				// BlSpartaBufferedImageElement;
-				play].
-	scripter check: 'Image has correct height'
-		do: 
-			[:aStep |
-			(aStep check)
+				// BlSpartaBufferedImageElement ].
+	scripter checkStep: [:aStep |
+			aStep
+				label:'Image has correct height';
 				value: [:anElement | anElement height] equals: [560];
 				// GtLocalPhlowPictureElementId;
-				// BlSpartaBufferedImageElement;
-				play].
+				// BlSpartaBufferedImageElement ].
 	^scripter
 ]
 
@@ -201,13 +158,11 @@ GtRemotePhlowPictureViewInspectionExamples >> pictureFullSizeViewShowsPictureEle
 		clickOnTabWithName: 'Picture (full size)';
 		assertSelectedTabWithName: 'Picture (full size)';
 		play.
-	scripter check: 'Assert picture element exists'
-		do: 
-			[:aStep |
-			(aStep check)
+	scripter checkStep: [:aStep |
+			aStep
+				label: 'Assert picture element exists';
 				exists;
-				// GtLocalPhlowPictureElementId;
-				play].
+				// GtLocalPhlowPictureElementId ].
 	^scripter
 ]
 
@@ -220,33 +175,20 @@ GtRemotePhlowPictureViewInspectionExamples >> pictureViewShowsPictureElement [
 		clickOnTabWithName: 'Picture';
 		assertSelectedTabWithName: 'Picture';
 		play.
-	scripter check: 'Assert picture element exists'
-		do: 
-			[:aStep |
-			(aStep check)
+	scripter checkStep: [:aStep |
+			aStep
+				label:'Assert picture element exists';
 				exists;
-				// GtLocalPhlowPictureElementId;
-				play].
+				// GtLocalPhlowPictureElementId ].
 	^scripter
 ]
 
-{ #category : #'examples - scripter' }
+{ #category : #utils }
 GtRemotePhlowPictureViewInspectionExamples >> remoteErrorPrefix: aString [
 	 ^ aString withoutPrefix: 'Error: '
 ]
 
-{ #category : #'examples - setup' }
-GtRemotePhlowPictureViewInspectionExamples >> scripterOnErrorTestObject [
-	<gtExample>
-	| scripter element |
-	scripter := BlScripter new.
-	scripter extent: 1200 @ 800.
-	element := (self createErrorTestObject gtDefaultInspectorTool) asElement.
-	scripter element: element.
-	^scripter
-]
-
-{ #category : #'examples - setup' }
+{ #category : #'examples - scripter setup' }
 GtRemotePhlowPictureViewInspectionExamples >> scripterOnErrorTestObjectInPager [
 	<gtExample>
 	| scripter |
@@ -257,7 +199,7 @@ GtRemotePhlowPictureViewInspectionExamples >> scripterOnErrorTestObjectInPager [
 	^scripter
 ]
 
-{ #category : #'examples - setup' }
+{ #category : #'examples - scripter setup' }
 GtRemotePhlowPictureViewInspectionExamples >> scripterOnTestObject [
 	<gtExample>
 	| scripter element |
