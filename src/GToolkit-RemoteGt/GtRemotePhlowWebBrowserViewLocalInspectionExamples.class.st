@@ -33,3 +33,33 @@ GtRemotePhlowWebBrowserViewLocalInspectionExamples >> altClickOnWebBrowserTabOpe
 		in: scripter.
 	^ scripter
 ]
+
+{ #category : #'examples - scripter' }
+GtRemotePhlowWebBrowserViewLocalInspectionExamples >> dynamicHeadersErrorViewShowsDebuggableElement_debugButton [
+	<gtExample>
+	| scripter |
+	scripter := self dynamicHeadersErrorViewShowsDebuggableElement.
+	
+	scripter checkStep: [:aStep |
+			aStep
+				label: 'Inspect exception button present';
+				value: [:aButton | aButton label asString ]
+					equals: [ 'Open debugger' ];
+				// GtPhlowExceptionId;
+				// BrDebuggableElementOpenDebuggerButtonId ].
+]
+
+{ #category : #'examples - scripter' }
+GtRemotePhlowWebBrowserViewLocalInspectionExamples >> errorViewShowsDebuggableElement_debugButton [
+	<gtExample>
+	| scripter |
+	scripter := self errorViewShowsDebuggableElement.
+	
+	scripter checkStep: [:aStep |
+			aStep
+				label: 'Inspect exception button present';
+				value: [:aButton | aButton label asString ]
+					equals: [ 'Open debugger' ];
+				// GtPhlowExceptionId;
+				// BrDebuggableElementOpenDebuggerButtonId ].
+]

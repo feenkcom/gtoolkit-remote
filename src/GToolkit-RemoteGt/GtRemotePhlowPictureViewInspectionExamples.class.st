@@ -81,29 +81,16 @@ GtRemotePhlowPictureViewInspectionExamples >> createTestObject [
 GtRemotePhlowPictureViewInspectionExamples >> errorViewShowsDebuggableElement [
 	<gtExample>
 	| scripter |
-	scripter := self scripterOnErrorTestObject.
+	scripter := self scripterOnErrorTestObjectInPager.
 	(scripter inspectorStep)
 		clickOnTabWithName: 'Picture Error';
 		assertSelectedTabWithName: 'Picture Error';
 		play.
-	scripter checkStep: [:aStep |
-			aStep
-				label: 'Error element exists';
-				exists;
-				// GtPhlowExceptionId ].
-	scripter checkStep: [:aStep |
-			aStep
-				label: 'Exception has correct message';
-				value: [:anElement | (anElement userData at: #exception) messageText]
-					equals: ['Test picture computation error'];
-				// GtPhlowExceptionId ].
-	scripter checkStep: [:aStep |
-			aStep
-				label: 'Error label displays message';
-				value: [:aButton | self remoteErrorPrefix: aButton label asString ]
-					equals: [ 'Test picture computation error' ];
-				// GtPhlowExceptionId;
-				// BrDebuggableElementExceptionMessageId ].
+	
+	self 
+		assertPhlowViewHasErrorWithMessage: 'Test picture computation error' 
+		in: scripter.
+		
 	^scripter
 ]
 
@@ -111,30 +98,16 @@ GtRemotePhlowPictureViewInspectionExamples >> errorViewShowsDebuggableElement [
 GtRemotePhlowPictureViewInspectionExamples >> heightErrorViewShowsDebuggableElement [
 	<gtExample>
 	| scripter |
-	scripter := self scripterOnErrorTestObject.
+	scripter := self scripterOnErrorTestObjectInPager.
 	(scripter inspectorStep)
 		clickOnTabWithName: 'Picture Height Error';
 		assertSelectedTabWithName: 'Picture Height Error';
 		play.
-	scripter checkStep: [:aStep |
-			aStep
-				label: 'Error element exists';
-				exists;
-				// GtPhlowExceptionId ].
-	scripter checkStep: [:aStep |
-			aStep
-				label: 'Exception has correct message';
-				value: [:anElement | 
-						(anElement userData at: #exception) messageText]
-					equals: ['Height computation error'];
-				// GtPhlowExceptionId ].
-	scripter checkStep: [:aStep |
-			aStep
-				label: 'Error label displays message';
-				value: [:aButton | self remoteErrorPrefix: aButton label asString]
-					equals: ['Height computation error'];
-				// GtPhlowExceptionId;
-				// BrDebuggableElementExceptionMessageId].
+
+	self 
+		assertPhlowViewHasErrorWithMessage: 'Height computation error' 
+		in: scripter.
+	
 	^scripter
 ]
 
@@ -213,17 +186,6 @@ GtRemotePhlowPictureViewInspectionExamples >> pictureViewShowsPictureElement [
 { #category : #utils }
 GtRemotePhlowPictureViewInspectionExamples >> remoteErrorPrefix: aString [
 	 ^ aString withoutPrefix: 'Error: '
-]
-
-{ #category : #'examples - scripter setup' }
-GtRemotePhlowPictureViewInspectionExamples >> scripterOnErrorTestObject [
-	<gtExample>
-	| scripter element |
-	scripter := BlScripter new.
-	scripter extent: 1200 @ 800.
-	element := (self createErrorTestObject gtDefaultInspectorTool) asElement.
-	scripter element: element.
-	^scripter
 ]
 
 { #category : #'examples - scripter setup' }

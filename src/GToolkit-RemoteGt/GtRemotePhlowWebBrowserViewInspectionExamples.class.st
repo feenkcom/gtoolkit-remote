@@ -90,22 +90,17 @@ GtRemotePhlowWebBrowserViewInspectionExamples >> createTestObject [
 GtRemotePhlowWebBrowserViewInspectionExamples >> dynamicHeadersErrorViewShowsDebuggableElement [
 	<gtExample>
 	| scripter |
-	scripter := self scripterOnErrorTestObject.
+	scripter := self scripterOnErrorTestObjectInPager.
+	
 	(scripter inspectorStep)
 		clickOnTabWithName: 'Browser dynamic headers error';
 		assertSelectedTabWithName: 'Browser dynamic headers error';
 		play.
-	scripter checkStep: [ :aStep |
-			aStep
-				label:'Dynamic headers error element exists';
-				exists;
-				// GtPhlowExceptionId ].
-	scripter checkStep: [ :aStep |
-			aStep
-				label: 'Dynamic headers exception has correct message';
-				value: [ :anElement | (anElement userData at: #exception) messageText ]
-				equals: [ 'web browser dynamic headers test error' ];
-				// GtPhlowExceptionId ].
+	
+	self 
+		assertPhlowViewHasErrorWithMessage: 'web browser dynamic headers test error' 
+		in: scripter.
+		
 	^ scripter
 ]
 
@@ -113,31 +108,16 @@ GtRemotePhlowWebBrowserViewInspectionExamples >> dynamicHeadersErrorViewShowsDeb
 GtRemotePhlowWebBrowserViewInspectionExamples >> errorViewShowsDebuggableElement [
 	<gtExample>
 	| scripter |
-	scripter := self scripterOnErrorTestObject.
+	scripter := self scripterOnErrorTestObjectInPager.
 	
 	(scripter inspectorStep)
 		clickOnTabWithName: 'Browser error';
 		assertSelectedTabWithName: 'Browser error';
 		play.
-	scripter checkStep: [ :aStep |
-			aStep
-				label: 'Error element exists';
-				exists;
-				// GtPhlowExceptionId  ].
-				
-	scripter checkStep: [:aStep |
-			aStep
-				label: 'Exception has correct message';
-				value: [:anElement | (anElement userData at: #exception) messageText]
-					equals: ['web browser test error'];
-				// GtPhlowExceptionId ].
-	scripter checkStep: [:aStep |
-			aStep
-				label: 'Error label displays message';
-				value: [:aButton |  aButton label asString withoutPrefix: 'Error: ']
-					equals: ['web browser test error'];
-				// GtPhlowExceptionId;
-				// BrDebuggableElementExceptionMessageId ].
+		
+	self 
+		assertPhlowViewHasErrorWithMessage: 'web browser test error' 
+		in: scripter.
 				
 	^ scripter
 ]
@@ -152,13 +132,14 @@ GtRemotePhlowWebBrowserViewInspectionExamples >> objectViewsRenderWithoutErrors 
 ]
 
 { #category : #'examples - scripter setup' }
-GtRemotePhlowWebBrowserViewInspectionExamples >> scripterOnErrorTestObject [
+GtRemotePhlowWebBrowserViewInspectionExamples >> scripterOnErrorTestObjectInPager [
 	<gtExample>
-	| scripter element |
+	| scripter |
 	scripter := BlScripter new.
-	element := (self createErrorTestObject gtDefaultInspectorTool) asElement.
-	scripter element: element.
-	^ scripter
+	scripter extent: 1200 @ 800.
+	scripter element: (GtPagerSettings usedPager
+				createWrappedOn: (self createErrorTestObject gtDefaultInspectorTool)).
+	^scripter
 ]
 
 { #category : #'examples - scripter setup' }

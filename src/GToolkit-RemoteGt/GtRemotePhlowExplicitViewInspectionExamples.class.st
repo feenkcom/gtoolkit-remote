@@ -178,32 +178,17 @@ GtRemotePhlowExplicitViewInspectionExamples >> editablePersonObjectViewsRenderWi
 GtRemotePhlowExplicitViewInspectionExamples >> errorTestObjectSelectStencilDataErrorView [
 	<gtExample>
 	| scripter |
-	scripter := self scripterOnErrorTestObject.
+	scripter := self scripterOnErrorTestObjectInPager.
 	
 	(scripter inspectorStep)
 		clickOnTabWithName: 'Picture (stencil API)';
 		assertSelectedTabWithName: 'Picture (stencil API)';
 		play.
+	
+	self 
+		assertPhlowViewHasErrorWithMessage: 'Stencil data computation with exception' 
+		in: scripter.
 		
-	scripter checkStep: [:aStep |
-			aStep
-				label: 'Error element exists';
-				exists;
-				// GtPhlowExceptionId ].
-	scripter checkStep: [:aStep |
-			aStep
-				label: 'Exception has correct message';
-				value: [:anElement | (anElement userData at: #exception) messageText]
-					equals: ['Stencil data computation with exception'];
-				// GtPhlowExceptionId ].
-	scripter checkStep: [:aStep |
-			aStep
-				label: 'Error label displays message';
-				value: [:aButton | self remoteErrorPrefix: aButton label asString]
-					equals: ['Stencil data computation with exception'];
-				// GtPhlowExceptionId;
-				// BrDebuggableElementExceptionMessageId ].
-				
 	^scripter
 ]
 
@@ -211,29 +196,17 @@ GtRemotePhlowExplicitViewInspectionExamples >> errorTestObjectSelectStencilDataE
 GtRemotePhlowExplicitViewInspectionExamples >> errorTestObjectSelectStencilErrorView [
 	<gtExample>
 	| scripter |
-	scripter := self scripterOnErrorTestObject.
+	scripter := self scripterOnErrorTestObjectInPager.
+	
 	(scripter inspectorStep)
 		clickOnTabWithName: 'Picture (stencil error)';
 		assertSelectedTabWithName: 'Picture (stencil error)';
 		play.
-	scripter checkStep: [:aStep |
-			aStep
-				label: 'Error element exists';
-				exists;
-				// GtPhlowExceptionId ].
-	scripter checkStep: [:aStep |
-			aStep
-				label: 'Exception has correct message';
-				value: [:anElement | (anElement userData at: #exception) messageText]
-					equals: ['Declarative stencil computation with exception'];
-				// GtPhlowExceptionId ].
-	scripter checkStep: [:aStep |
-			aStep
-				label: 'Error label displays message';
-				value: [:aButton | self remoteErrorPrefix: aButton label asString]
-					equals: ['Declarative stencil computation with exception'];
-				// GtPhlowExceptionId;
-				// BrDebuggableElementExceptionMessageId ].
+		
+	self 
+		assertPhlowViewHasErrorWithMessage: 'Declarative stencil computation with exception' 
+		in: scripter.
+				
 	^scripter
 ]
 
@@ -249,17 +222,6 @@ GtRemotePhlowExplicitViewInspectionExamples >> scripterOnEditablePersonObject [
 	scripter := BlScripter new.
 	element := self createEditablePersonObject gtDefaultInspectorTool
 				asElement.
-	element size: 1200 @ 800.
-	scripter element: element.
-	^scripter
-]
-
-{ #category : #'examples - setup' }
-GtRemotePhlowExplicitViewInspectionExamples >> scripterOnErrorTestObject [
-	<gtExample>
-	| scripter element |
-	scripter := BlScripter new.
-	element := self createErrorTestObject gtDefaultInspectorTool asElement.
 	element size: 1200 @ 800.
 	scripter element: element.
 	^scripter
