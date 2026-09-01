@@ -9,7 +9,10 @@ Class {
 
 { #category : #accessing }
 GtRemotePhlowDeclarativeExplicitViewDataSource >> flushCachedData [
-	cachedStencil := nil
+	cachedStencil := nil.
+	phlowView phlowViewSpecification 
+		ifNotNil: [ :aPhlowViewSpecification |
+			aPhlowViewSpecification flushCachedData  ].
 ]
 
 { #category : #accessing }
