@@ -52,8 +52,20 @@ GtRemotePhlowColumnedTreeView >> expandAll [
 ]
 
 { #category : #accessing }
+GtRemotePhlowColumnedTreeView >> expandSuchThat: aBlock [
+	"It stops expanding children if a parent node does not satisfy the condition.
+	The block receives [ :aTreeNode :aNodeValue | ... ]"
+	expander := GtRemotePhlowTreeNodeExpander suchThat: aBlock.
+]
+
+{ #category : #accessing }
 GtRemotePhlowColumnedTreeView >> expandUpTo: aLevelIndex [
 	expander := GtRemotePhlowTreeNodeExpander upTo: aLevelIndex.
+]
+
+{ #category : #accessing }
+GtRemotePhlowColumnedTreeView >> expander [
+	^ expander ifNil: [ expander := GtRemotePhlowTreeNodeExpander null ]
 ]
 
 { #category : #accessing }
