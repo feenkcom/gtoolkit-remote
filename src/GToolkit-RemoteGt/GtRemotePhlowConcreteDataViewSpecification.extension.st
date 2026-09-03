@@ -1,6 +1,13 @@
 Extension { #name : #GtRemotePhlowConcreteDataViewSpecification }
 
 { #category : #'*GToolkit-RemoteGt' }
+GtRemotePhlowConcreteDataViewSpecification >> createDeclarativeContentStencil [
+	| data |
+	data := self phlowDataSource retrieveData.
+	^ self createDeclarativeStencilForViewData: data
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
 GtRemotePhlowConcreteDataViewSpecification >> createDeclarativeStencilForViewData: aViewData [
 	^ aViewData isPhlowErrorData
 		ifTrue: [ 
@@ -15,15 +22,14 @@ GtRemotePhlowConcreteDataViewSpecification >> createDeclarativeStencilForViewDat
 { #category : #'*GToolkit-RemoteGt' }
 GtRemotePhlowConcreteDataViewSpecification >> viewFor: aView [
 	| pictureView |
-	pictureView := aView explicit
-				originalView: aView;
-				title: title;
-				priority: priority;
-				phlowViewSpecification: self;
-				declarativeStencil: [
-						| data |
-						data := self phlowDataSource retrieveData.
-						self createDeclarativeStencilForViewData: data ].
+	
+	pictureView := aView explicit.
+		
+	self configureBasicLocalView: pictureView for: aView.
 	self configureViewActionsFor: pictureView.
+	
+	pictureView 
+		declarativeStencil: [ self createDeclarativeContentStencil ].
+		
 	^pictureView
 ]

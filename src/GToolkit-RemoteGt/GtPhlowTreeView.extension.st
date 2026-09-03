@@ -8,8 +8,10 @@ GtPhlowTreeView >> asGtDeclarativeView [
 	viewSpecification := GtPhlowTreeViewSpecification new
 		phlowDataSource: (GtRemotePhlowDeclarativeViewTreeDataSource
 			forPhlowView: self);
+		"expander: expander;"
 		dataTransport: GtPhlowViewSpecification dataLazy.
 	self configureGenericViewSpecificationOn: viewSpecification.
+	
 	^ viewSpecification
 ]
 

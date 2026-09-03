@@ -13,16 +13,16 @@ GtPhlowForwardViewSpecification >> viewFor: aView [
 	"Answer the GtPhlowView for the receiver. We use a forwarder view as
 	a way to delegate the creation of the remote view back to this specification."
 
-	| list |
+	| localForwardView |
 
-	list := aView forward
-		title: title;
-		priority: priority;
-		phlowViewSpecification: self;
+	localForwardView := aView forward.
+	
+	self configureBasicLocalView: localForwardView for: aView.
+	localForwardView
 		object: [ self ];
 		view: #gtComputedViewFor:.
 
-	self configureViewActionsFor: list.
+	self configureViewActionsFor: localForwardView.
 		
-	^ list
+	^ localForwardView
 ]

@@ -8,6 +8,7 @@ GtPhlowColumnedTreeView >> asGtDeclarativeView [
 	viewSpecification := GtPhlowColumnedTreeViewSpecification new
 		phlowDataSource: (GtRemotePhlowDeclarativeViewColumnedTreeDataSource
 			forPhlowView: self);
+		"expander: expander;"
 		dataTransport: GtPhlowViewSpecification dataLazy.
 	self configureGenericViewSpecificationOn: viewSpecification.
 	viewSpecification columnSpecifications: self buildRemoteColumnsSpecifications.

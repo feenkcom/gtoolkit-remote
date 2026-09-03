@@ -33,13 +33,12 @@ GtPhlowViewErrorViewSpecification >> viewFor: aView [
 	"Answer the GtPhlowView for the receiver"
 	| currentView |
 
-	currentView := aView explicit
-		title: title;
-		priority: priority;
-		phlowViewSpecification: self;
-		stencil: [ self createErrorElement ].
-
+	currentView := aView explicit.
+	
+	self configureBasicLocalView: currentView for: aView.
 	self configureViewActionsFor: currentView.
+	
+	currentView stencil: [ self createErrorElement ].
 
 	^ currentView
 ]

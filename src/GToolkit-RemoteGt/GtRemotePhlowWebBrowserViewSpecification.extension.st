@@ -24,12 +24,14 @@ GtRemotePhlowWebBrowserViewSpecification >> createDeclarativeContentStencil [
 { #category : #'*GToolkit-RemoteGt' }
 GtRemotePhlowWebBrowserViewSpecification >> viewFor: aView [
 	| browserView |
-	browserView := aView explicit
-		originalView: aView;
-		title: title;
-		priority: priority;
-		phlowViewSpecification: self;
-		declarativeStencil: [ self createDeclarativeContentStencil ].
+	
+	browserView := aView explicit.
+	
+	self configureBasicLocalView: browserView for: aView.
 	self configureViewActionsFor: browserView.
+
+	browserView
+		declarativeStencil: [ self createDeclarativeContentStencil ].
+	
 	^ browserView
 ]
