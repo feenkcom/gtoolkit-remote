@@ -242,29 +242,6 @@ GtRemotePhlowViewSpecificationConversionExamples >> convertTextEditor [
 	^ declarativeSpecification
 ]
 
-{ #category : #examples }
-GtRemotePhlowViewSpecificationConversionExamples >> convertTree [
-	"Demonstrate converting a tree phlow view to a declarative specification"
-
-	<gtExample>
-	<return: #GtPhlowTreeViewSpecification>
-	| phlowView declarativeSpecification |
-	phlowView := self createProtoViews tree
-			title: #Test;
-			priority: 10;
-			items: [ 1 to: 4 ];
-			children: [ :aNumber | aNumber = 0 ifTrue: [ #() ] ifFalse: [ 1 to: aNumber // 2 ] ].
-	declarativeSpecification := phlowView asGtDeclarativeView.
-
-	self assert: declarativeSpecification title equals: #Test.
-	self assert: declarativeSpecification priority equals: 10.
-	self
-		assert: declarativeSpecification retriveFormattedItems
-		equals: self expectedTreeWithNumberItems.
-
-	^ declarativeSpecification
-]
-
 { #category : #accessing }
 GtRemotePhlowViewSpecificationConversionExamples >> createProtoViews [
 	^ GtRemotePhlowProtoView new
@@ -380,11 +357,6 @@ GtRemotePhlowViewSpecificationConversionExamples >> expectedListWithNumberItems 
 { #category : #'accessing - data' }
 GtRemotePhlowViewSpecificationConversionExamples >> expectedTextEditorBasicStringStylableTextData [
 	^ ((Dictionary new) add: ('string'->'hello world'); add: ('__typeLabel'->'remotePhlowText'); add: ('stylerSpecification'->((Dictionary new) add: ('__typeLabel'->'remotePhlowTextAttributeRunsStylerSpecification'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)
-]
-
-{ #category : #'accessing - data' }
-GtRemotePhlowViewSpecificationConversionExamples >> expectedTreeWithNumberItems [
-	^ ((Array new: 4) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'3'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->3); yourself); at: 4 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'4'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->4); yourself); yourself)
 ]
 
 { #category : #examples }
