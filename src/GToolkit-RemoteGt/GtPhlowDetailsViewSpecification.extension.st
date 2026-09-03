@@ -24,7 +24,7 @@ GtPhlowDetailsViewSpecification >> viewFor: aView [
 	currentView := aView details.
 	
 	self configureBasicLocalView: currentView for: aView.
-	self configureRowSpecificationsFor: aView.
+	self configureRowSpecificationsFor: currentView.
 	self configureViewActionsFor: currentView.
 	
 	currentView localSend: [ :aPhlowRow :aRowSpecification |

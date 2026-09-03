@@ -18,11 +18,11 @@ GtPhlowForwardViewSpecification >> viewFor: aView [
 	localForwardView := aView forward.
 	
 	self configureBasicLocalView: localForwardView for: aView.
+	self configureViewActionsFor: localForwardView.
+	
 	localForwardView
 		object: [ self ];
 		view: #gtComputedViewFor:.
-
-	self configureViewActionsFor: localForwardView.
 		
 	^ localForwardView
 ]
