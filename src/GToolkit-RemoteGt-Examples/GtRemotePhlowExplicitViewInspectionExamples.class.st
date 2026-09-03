@@ -3,7 +3,7 @@ Class {
 	#superclass : #Object,
 	#traits : 'TGtRemotePhlowLocalInspectionAssertions',
 	#classTraits : 'TGtRemotePhlowLocalInspectionAssertions classTrait',
-	#category : #'GToolkit-RemoteGt-Examples'
+	#category : #'GToolkit-RemoteGt-Examples-Inspection'
 }
 
 { #category : #testing }

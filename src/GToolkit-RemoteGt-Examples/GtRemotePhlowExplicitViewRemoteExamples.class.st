@@ -1,7 +1,7 @@
 Class {
 	#name : #GtRemotePhlowExplicitViewRemoteExamples,
 	#superclass : #GtRemotePhlowExplicitViewAbstractExamples,
-	#category : #'GToolkit-RemoteGt-Examples'
+	#category : #'GToolkit-RemoteGt-Examples-Phlow API'
 }
 
 { #category : #support }

@@ -4,7 +4,7 @@ Shared construction examples for the web browser Phlow view.
 Class {
 	#name : #GtRemotePhlowWebBrowserViewAbstractExamples,
 	#superclass : #Object,
-	#category : #'GToolkit-RemoteGt-Examples'
+	#category : #'GToolkit-RemoteGt-Examples-Phlow API'
 }
 
 { #category : #testing }

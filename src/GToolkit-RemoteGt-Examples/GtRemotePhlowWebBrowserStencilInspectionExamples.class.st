@@ -4,7 +4,7 @@ Inspector examples for web browser views built directly with GtRemotePhlowWebBro
 Class {
 	#name : #GtRemotePhlowWebBrowserStencilInspectionExamples,
 	#superclass : #Object,
-	#category : #'GToolkit-RemoteGt-Examples'
+	#category : #'GToolkit-RemoteGt-Examples-Inspection'
 }
 
 { #category : #testing }

@@ -4,7 +4,7 @@ Shared local and simulation inspector examples for the web browser view.
 Class {
 	#name : #GtRemotePhlowWebBrowserViewLocalInspectionExamples,
 	#superclass : #GtRemotePhlowWebBrowserViewInspectionExamples,
-	#category : #'GToolkit-RemoteGt-Examples'
+	#category : #'GToolkit-RemoteGt-Examples-Inspection'
 }
 
 { #category : #testing }

@@ -4,7 +4,7 @@ Inspector examples for a direct local web browser view fixture.
 Class {
 	#name : #GtRemotePhlowWebBrowserViewObjectInspectionExamples,
 	#superclass : #GtRemotePhlowWebBrowserViewLocalInspectionExamples,
-	#category : #'GToolkit-RemoteGt-Examples'
+	#category : #'GToolkit-RemoteGt-Examples-Inspection'
 }
 
 { #category : #'examples - setup' }

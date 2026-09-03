@@ -4,7 +4,7 @@ Inspector examples using a local remote-inspection simulation.
 Class {
 	#name : #GtRemotePhlowWebBrowserViewLocalSimulationInspectionExamples,
 	#superclass : #GtRemotePhlowWebBrowserViewLocalInspectionExamples,
-	#category : #'GToolkit-RemoteGt-Examples'
+	#category : #'GToolkit-RemoteGt-Examples-Inspection'
 }
 
 { #category : #'examples - setup' }

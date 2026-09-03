@@ -6,6 +6,7 @@ Class {
 
 { #category : #accessing }
 GtRemotePhlowSimulationExamples >> simulationOnRemoteObject [
+	"This is used in the Lepiter documentation"
 	<gtExample>
 	<return: #GtRemoteInspectionSimulation>
 	^ GtRemoteInspectionSimulation

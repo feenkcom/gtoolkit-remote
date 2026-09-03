@@ -4,7 +4,7 @@ Inspector examples for a web browser stencil through plain remote-inspection sim
 Class {
 	#name : #GtRemotePhlowWebBrowserStencilRemoteSimulationInspectionExamples,
 	#superclass : #GtRemotePhlowWebBrowserStencilLocalInspectionExamples,
-	#category : #'GToolkit-RemoteGt-Examples'
+	#category : #'GToolkit-RemoteGt-Examples-Inspection'
 }
 
 { #category : #'examples - setup' }

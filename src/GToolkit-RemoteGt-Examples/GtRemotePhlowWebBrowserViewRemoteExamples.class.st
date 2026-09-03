@@ -1,7 +1,7 @@
 Class {
 	#name : #GtRemotePhlowWebBrowserViewRemoteExamples,
 	#superclass : #GtRemotePhlowWebBrowserViewAbstractExamples,
-	#category : #'GToolkit-RemoteGt-Examples'
+	#category : #'GToolkit-RemoteGt-Examples-Phlow API'
 }
 
 { #category : #private }
