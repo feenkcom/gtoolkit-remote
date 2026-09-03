@@ -12,7 +12,8 @@ Class {
 	#superclass : #GtRemotePhlowListingView,
 	#instVars : [
 		'itemTextBlock',
-		'childrenBuilder'
+		'childrenBuilder',
+		'expander'
 	],
 	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
@@ -25,6 +26,7 @@ GtRemotePhlowTreeView >> asGtDeclarativeView [
 	viewSpecification := GtPhlowTreeViewSpecification new
 		phlowDataSource: (GtRemotePhlowDeclarativeViewTreeDataSource
 			forPhlowView: self);
+		expander: expander;
 		dataTransport: GtPhlowViewSpecification dataLazy.
 	self configureGenericViewSpecificationOn: viewSpecification.
 	^ viewSpecification
@@ -47,9 +49,14 @@ GtRemotePhlowTreeView >> defaultItemsComputation [
 	^ [ #() ]
 ]
 
-{ #category : #accessing }
+{ #category : #'api - scripting' }
 GtRemotePhlowTreeView >> expandAll [
-	"To implement"
+	self expandUpTo: 20
+]
+
+{ #category : #'api - scripting' }
+GtRemotePhlowTreeView >> expandUpTo: aLevelIndex [
+	expander := GtRemotePhlowTreeNodeExpander upTo: aLevelIndex.
 ]
 
 { #category : #accessing }

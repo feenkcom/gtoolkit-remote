@@ -8,7 +8,8 @@ Class {
 	#superclass : #GtRemotePhlowBasicColumnedView,
 	#instVars : [
 		'itemTextBlock',
-		'childrenBuilder'
+		'childrenBuilder',
+		'expander'
 	],
 	#category : #'GToolkit-RemotePhlow-PhlowViews'
 }
@@ -21,6 +22,7 @@ GtRemotePhlowColumnedTreeView >> asGtDeclarativeView [
 	viewSpecification := GtPhlowColumnedTreeViewSpecification new
 		phlowDataSource: (GtRemotePhlowDeclarativeViewColumnedTreeDataSource
 			forPhlowView: self);
+		expander: expander;
 		dataTransport: GtPhlowViewSpecification dataLazy.
 	self configureGenericViewSpecificationOn: viewSpecification.
 	self configureColumnsSpecificationOn: viewSpecification.
@@ -46,7 +48,12 @@ GtRemotePhlowColumnedTreeView >> defaultItemsComputation [
 
 { #category : #accessing }
 GtRemotePhlowColumnedTreeView >> expandAll [
-	"To implement"
+	self expandUpTo: 20
+]
+
+{ #category : #accessing }
+GtRemotePhlowColumnedTreeView >> expandUpTo: aLevelIndex [
+	expander := GtRemotePhlowTreeNodeExpander upTo: aLevelIndex.
 ]
 
 { #category : #accessing }
