@@ -44,6 +44,8 @@ BaselineOfGToolkitRemote >> baseline: spec [
 				spec requires: #('GToolkit-RemotePhlow-PhlowViews')];
 			package: 'GToolkit-RemoteGt' with: [
 				spec requires: #('GToolkitPhlow' #'GToolkit-RemotePhlow-DeclarativeActions' #'GToolkit-RemotePhlow-DeclarativeViews-GTSpecific' #'GToolkit-RemotePhlow-PhlowActions' #'GToolkit-RemotePhlow-PhlowViews' 'GToolkit-RemotePhlow-Examples'). ];
+			package: 'GToolkit-RemoteGt-Examples' with: [
+				spec requires: #('GToolkit-RemoteGt') ];
 			package: 'GToolkit-RemoteGt-Icons' with: [
 				spec requires: #('GToolkit-RemoteGt' 'GToolkit-RemotePhlow-DeclarativeActions') ];
 			package: 'GToolkit-RemoteGt-Lepiter' with: [
