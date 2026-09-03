@@ -24,8 +24,8 @@ GtRemotePhlowTreeView >> asGtDeclarativeView [
 	| viewSpecification |
 
 	viewSpecification := GtPhlowTreeViewSpecification new
-		phlowDataSource: (GtRemotePhlowDeclarativeViewTreeDataSource
-			forPhlowView: self);
+		phlowDataSource: ((GtRemotePhlowDeclarativeViewTreeDataSource forPhlowView: self)
+			expander: expander);
 		expander: expander;
 		dataTransport: GtPhlowViewSpecification dataLazy.
 	self configureGenericViewSpecificationOn: viewSpecification.
@@ -55,8 +55,20 @@ GtRemotePhlowTreeView >> expandAll [
 ]
 
 { #category : #'api - scripting' }
+GtRemotePhlowTreeView >> expandSuchThat: aBlock [
+	"It stops expanding children if a parent node does not satisfy the condition.
+	The block receives [ :aTreeNode :aNodeValue | ... ]"
+	expander := GtRemotePhlowTreeNodeExpander suchThat: aBlock.
+]
+
+{ #category : #'api - scripting' }
 GtRemotePhlowTreeView >> expandUpTo: aLevelIndex [
 	expander := GtRemotePhlowTreeNodeExpander upTo: aLevelIndex.
+]
+
+{ #category : #accessing }
+GtRemotePhlowTreeView >> expander [
+	^ expander ifNil: [ expander := GtRemotePhlowTreeNodeExpander null ]
 ]
 
 { #category : #accessing }

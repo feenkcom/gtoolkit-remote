@@ -1,6 +1,9 @@
 Class {
 	#name : #GtRemotePhlowDeclarativeViewTreeDataSource,
 	#superclass : #GtRemotePhlowDeclarativeViewListingDataSource,
+	#instVars : [
+		'expander'
+	],
 	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
@@ -31,10 +34,33 @@ GtRemotePhlowDeclarativeViewTreeDataSource >> buildChildrenForNode: aNode atPath
 ]
 
 { #category : #accessing }
+GtRemotePhlowDeclarativeViewTreeDataSource >> buildMainNodeForObject: anObject atIndex: anIndex [ 
+	| rootNode |
+	rootNode := self buildNodeForObject: anObject atIndex: anIndex.
+	
+	self expander ifNotNil: [ :aPhlowExpander |
+		aPhlowExpander 
+			expandNode: rootNode 
+			fromDataSource: self ].
+	
+	^ rootNode
+]
+
+{ #category : #accessing }
 GtRemotePhlowDeclarativeViewTreeDataSource >> ensureChildrenForNode: aNode [ 
 	aNode childNodes ifNotNil: [ ^ self ].
 	
 	aNode childNodes: (self buildChildNodesFor: aNode)
+]
+
+{ #category : #accessing }
+GtRemotePhlowDeclarativeViewTreeDataSource >> expander [
+	^ expander
+]
+
+{ #category : #accessing }
+GtRemotePhlowDeclarativeViewTreeDataSource >> expander: anExpander [
+	expander := anExpander
 ]
 
 { #category : #accessing }

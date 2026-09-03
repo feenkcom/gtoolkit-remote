@@ -8,6 +8,30 @@ Class {
 	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
+{ #category : #'instance creation' }
+GtRemotePhlowTreeNode class >> fromJSONDictionary: aDictionary [
+	| node |
+
+	node := super fromJSONDictionary: aDictionary.
+	
+	(aDictionary at: 'childNodes' ifAbsent: [ nil ])
+			ifNotNil: [ :childDataArray |
+				node childNodes: (childDataArray collect: [ :aChildData |
+					self fromJSONDictionary: aChildData ])].
+	^ node
+]
+
+{ #category : #enumerating }
+GtRemotePhlowTreeNode >> allChildrenNodesBreadthFirstDo: aBlock [
+	| queue next |
+	queue := LinkedList new.
+	queue addAll: (self childNodes ifNil: [ #() ]).
+	[ queue notEmpty ]
+		whileTrue: [ next := queue removeFirst.
+			aBlock value: next.
+			queue addAll: (next childNodes ifNil: [ #() ]) ]
+]
+
 { #category : #converting }
 GtRemotePhlowTreeNode >> asDictionaryForExport [
 	| exportDictionary  |
@@ -37,6 +61,38 @@ GtRemotePhlowTreeNode >> childNodes: aCollectionOfNodes [
 	childNodes := aCollectionOfNodes.
 ]
 
+{ #category : #enumerating }
+GtRemotePhlowTreeNode >> childrenNodesDo: aBlock [
+	(self childNodes ifNil: [#()]) do: aBlock
+]
+
+{ #category : #accessing }
+GtRemotePhlowTreeNode >> depth [
+	| depthValue |
+	depthValue := 0.
+	self parentNodesDo: [ depthValue := depthValue + 1].
+	^ depthValue
+]
+
+{ #category : #expanding }
+GtRemotePhlowTreeNode >> expandSuchThat: aBlock withDataSource: aTreeDataSource [
+	"It stops expanding children if a parent node does not satisfy the condition."
+	(aBlock cull: self cull: self targetObject) ifTrue: [ 
+		aTreeDataSource ensureChildrenForNode: self.
+		self childrenNodesDo: [ :eachNode | 
+			eachNode expandSuchThat: aBlock withDataSource: aTreeDataSource ] ].
+]
+
+{ #category : #expanding }
+GtRemotePhlowTreeNode >> expandUpTo: aLevelIndex withDataSource: aDataSource [
+	self depth < aLevelIndex ifFalse: [ ^ self ].
+	
+	self 
+		upToDepth: aLevelIndex
+		do: [ :eachNode | 
+			aDataSource ensureChildrenForNode: eachNode ]
+]
+
 { #category : #'gt - extensions' }
 GtRemotePhlowTreeNode >> gtViewChildrenFor: aView [ 
 	<gtView>
@@ -51,6 +107,11 @@ GtRemotePhlowTreeNode >> gtViewChildrenFor: aView [
 			aNode nodePathDescription  ] width: 100;
 		column: 'Id' text: [ :aNode | aNode nodeId ] width: 100;
 		column: 'Value' text: [ :aNode | aNode nodeValue ]
+]
+
+{ #category : #testing }
+GtRemotePhlowTreeNode >> hasChildNodesData [
+	^ childNodes notNil
 ]
 
 { #category : #comparing }
@@ -95,6 +156,12 @@ GtRemotePhlowTreeNode >> parentNode: anObject [
 	parentNode := anObject
 ]
 
+{ #category : #enumerating }
+GtRemotePhlowTreeNode >> parentNodesDo: aBlock [
+	self parentNode ifNotNil: [ :aParentNode | 
+		aParentNode withParentNodesDo: aBlock ].
+]
+
 { #category : #printing }
 GtRemotePhlowTreeNode >> printNodePathOn: aStream [
 	self nodePath 
@@ -112,11 +179,23 @@ GtRemotePhlowTreeNode >> printOn: aStream [
 			separatedBy: [aStream nextPutAll: '/'] ]
 ]
 
-{ #category : #traversing }
+{ #category : #enumerating }
+GtRemotePhlowTreeNode >> upToDepth: aMaxDepthLevel do: anOneArgBlock [
+
+	self withAllChildrenNodesBreadthFirstDo: [ :eachNode | 
+		eachNode depth >= aMaxDepthLevel
+			ifTrue: [ ^ self ].
+		anOneArgBlock value: eachNode ]
+]
+
+{ #category : #enumerating }
+GtRemotePhlowTreeNode >> withAllChildrenNodesBreadthFirstDo: aBlock [ 
+	aBlock value: self.
+	self allChildrenNodesBreadthFirstDo: aBlock
+]
+
+{ #category : #enumerating }
 GtRemotePhlowTreeNode >> withParentNodesDo: aBlock [
-
-	self parentNode ifNotNil: [ :aParentNode | 
-		aParentNode withParentNodesDo: aBlock ].
-
+	self parentNodesDo: aBlock.
 	aBlock cull: self
 ]

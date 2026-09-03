@@ -41,6 +41,40 @@ GtRemotePhlowTreeViewTestObject >> gtTreeWithAllLevelsExpansionFor: aView [
 ]
 
 { #category : #'gt - extensions' }
+GtRemotePhlowTreeViewTestObject >> gtTreeWithBelowFourFor: aView [
+	<gtView>
+
+	^aView tree
+		title: 'Expansion - below four';
+		priority: 50;
+		items: [ 1 to: 5 ];
+		children: [ :aNumber | 
+			(aNumber // 2 = aNumber)
+				ifTrue: [ #() ] 
+				ifFalse: [
+					aNumber // 2 to: (aNumber - 1) ] ];
+		itemText: [ :x | x asString, ' number'];
+		expandSuchThat: [ :aNode :aNumber | aNumber < 4 ]
+]
+
+{ #category : #'gt - extensions' }
+GtRemotePhlowTreeViewTestObject >> gtTreeWithBelowThreeOrFiveFor: aView [
+	<gtView>
+
+	^aView tree
+		title: 'Expansion - below three or five';
+		priority: 50;
+		items: [ 1 to: 5 ];
+		children: [ :aNumber | 
+			(aNumber // 2 = aNumber)
+				ifTrue: [ #() ] 
+				ifFalse: [
+					aNumber // 2 to: (aNumber - 1) ] ];
+		itemText: [ :x | x asString, ' number'];
+		expandSuchThat: [ :aNode :aNumber | (aNumber < 3) or: [ aNumber = 5 ] ]
+]
+
+{ #category : #'gt - extensions' }
 GtRemotePhlowTreeViewTestObject >> gtTreeWithOneLevelExpansionFor: aView [
 	<gtView>
 
@@ -79,21 +113,4 @@ GtRemotePhlowTreeViewTestObject >> gtTreeWithStyledTextFor: aView [
 						bold;
 						highlight: (GtPhlowColor named: #yellow) asColor ].
 			computedString ]
-]
-
-{ #category : #'gt - extensions' }
-GtRemotePhlowTreeViewTestObject >> gtTreeWithTwoLevelsExpansionFor: aView [
-	<gtView>
-
-	^aView tree
-		title: 'Expansion - two levels';
-		priority: 42;
-		items: [ 1 to: 5 ];
-		children: [ :aNumber | 
-			(aNumber // 2 = aNumber)
-				ifTrue: [ #() ] 
-				ifFalse: [
-					aNumber // 2 to: (aNumber - 1) ] ];
-		itemText: [ :x | x asString, ' number'];
-		expandUpTo: 2
 ]

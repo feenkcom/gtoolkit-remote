@@ -24,7 +24,21 @@ GtRemotePhlowTreeNodeExpander class >> upTo: aLevelIndex [
 	^ GtRemotePhlowTreeNodeUpToExpander new level: aLevelIndex
 ]
 
+{ #category : #converting }
+GtRemotePhlowTreeNodeExpander >> asDeclarativeExpander [
+	^ self
+]
+
 { #category : #'api - configuration' }
 GtRemotePhlowTreeNodeExpander >> configurePhlowView: aPhlowView [
 	
+]
+
+{ #category : #'api - configuration' }
+GtRemotePhlowTreeNodeExpander >> expandNode: aNode fromDataSource: aTreeDataSource [
+]
+
+{ #category : #testing }
+GtRemotePhlowTreeNodeExpander >> isNullExpander [
+	^ false
 ]

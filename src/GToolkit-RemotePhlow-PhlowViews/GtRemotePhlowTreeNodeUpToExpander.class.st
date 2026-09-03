@@ -21,6 +21,13 @@ GtRemotePhlowTreeNodeUpToExpander >> configurePhlowView: aPhlowView [
 		aPhlowView expandUpTo: self level ]
 ]
 
+{ #category : #'api - configuration' }
+GtRemotePhlowTreeNodeUpToExpander >> expandNode: aNode fromDataSource: aTreeDataSource [
+	aNode 
+		expandUpTo: self level 
+		withDataSource: aTreeDataSource
+]
+
 { #category : #initialization }
 GtRemotePhlowTreeNodeUpToExpander >> initializeFromJSONDictionary: aDictionary [
 	super initializeFromJSONDictionary: aDictionary.
