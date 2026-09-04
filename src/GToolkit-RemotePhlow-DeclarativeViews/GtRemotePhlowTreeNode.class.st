@@ -24,7 +24,7 @@ GtRemotePhlowTreeNode class >> fromJSONDictionary: aDictionary [
 { #category : #enumerating }
 GtRemotePhlowTreeNode >> allChildrenNodesBreadthFirstDo: aBlock [
 	| queue next |
-	queue := LinkedList new.
+	queue := OrderedCollection new.
 	queue addAll: (self childNodes ifNil: [ #() ]).
 	[ queue notEmpty ]
 		whileTrue: [ next := queue removeFirst.
