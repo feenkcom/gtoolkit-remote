@@ -8,6 +8,15 @@ GtPhlowViewSpecification >> asJSONForExport [
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
+GtPhlowViewSpecification >> configureBasicLocalView: aPhlowView for: aParentView [
+	aPhlowView
+		originalView: aParentView;
+		title: title;
+		priority: priority;
+		phlowViewSpecification: self
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
 GtPhlowViewSpecification >> configureDefaultRefreshActionFor: aView [
 	(aView actions anySatisfy: [ :anAction |
 		anAction tooltipText = 'Update' ])

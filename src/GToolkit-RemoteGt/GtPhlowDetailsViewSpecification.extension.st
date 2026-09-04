@@ -1,6 +1,16 @@
 Extension { #name : #GtPhlowDetailsViewSpecification }
 
 { #category : #'*GToolkit-RemoteGt' }
+GtPhlowDetailsViewSpecification >> configureRowSpecificationsFor: aView [
+	rowSpecifications do: [ :aRowSpecification |
+		aView
+			row: aRowSpecification name
+			value: [ aRowSpecification ]
+			text: [ :eachValue |
+				self retrieveRowTextAt: aRowSpecification index ] ].
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
 GtPhlowDetailsViewSpecification >> configureViewActionsFor: aView [
 	super configureViewActionsFor: aView.
 	
@@ -12,21 +22,13 @@ GtPhlowDetailsViewSpecification >> viewFor: aView [
 	| currentView |
 	
 	currentView := aView details.
-	currentView title: title.
-	currentView priority: priority.
-	currentView phlowViewSpecification: self.
 	
-	rowSpecifications do: [ :aRowSpecification |
-		currentView
-			row: aRowSpecification name
-			value: [ aRowSpecification ]
-			text: [ :eachValue |
-				self retrieveRowTextAt: aRowSpecification index ] ].
+	self configureBasicLocalView: currentView for: aView.
+	self configureRowSpecificationsFor: currentView.
+	self configureViewActionsFor: currentView.
 	
 	currentView localSend: [ :aPhlowRow :aRowSpecification |
 		self retrieveRowNodeRawValueAtRowIndex: aRowSpecification index].
-
-	self configureViewActionsFor: currentView.
 	
 	^ currentView
 ]

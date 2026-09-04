@@ -1,6 +1,15 @@
 Extension { #name : #GtPhlowColumnedListViewSpecification }
 
 { #category : #'*GToolkit-RemoteGt' }
+GtPhlowColumnedListViewSpecification >> configureItemsFor: aView [
+	aView
+		items: [
+			(GtRemoteInspectorListingBufferedStream declarativeView: self)
+				collect: [ :aColumnedTreeNodeDictionary |
+					self instantiateNodeFrom: aColumnedTreeNodeDictionary ] ]
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
 GtPhlowColumnedListViewSpecification >> extractRemoteSendObjectFromNode: aTreeNode atSelection: aSelection [ 
 	^ self retriveSentItemAt: aSelection first
 ]
@@ -11,21 +20,16 @@ GtPhlowColumnedListViewSpecification >> viewFor: aView [
 	| currentView |
 	
 	currentView := aView columnedList.
-	currentView
-		title: title;
-		priority: priority;
-		phlowViewSpecification: self;
-		items: [
-			(GtRemoteInspectorListingBufferedStream declarativeView: self)
-				collect: [ :aColumnedTreeNodeDictionary |
-					self instantiateNodeFrom: aColumnedTreeNodeDictionary ] ].
-	self isHorizontalScrollingEnabled
-		ifTrue: [ currentView withHorizontalScrolling ]
-		ifFalse: [ currentView withoutHorizontalScrolling ].
 	
+	self configureBasicLocalView: currentView for: aView.
+	self configureItemsFor: currentView.
 	self configureColumnedViewFor: currentView.
 	self configureViewActionsFor: currentView.
 	self configureViewSendFor: currentView.
+	
+	self isHorizontalScrollingEnabled
+		ifTrue: [ currentView withHorizontalScrolling ]
+		ifFalse: [ currentView withoutHorizontalScrolling ].
 
 	^ currentView
 ]

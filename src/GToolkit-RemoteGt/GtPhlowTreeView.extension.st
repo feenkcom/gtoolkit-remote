@@ -3,13 +3,17 @@ Extension { #name : #GtPhlowTreeView }
 { #category : #'*GToolkit-RemoteGt' }
 GtPhlowTreeView >> asGtDeclarativeView [
 	"Answer the receiver as a GtDeclarativeView."
-	| viewSpecification |
+	| declarativeExpander viewSpecification |
 
+	declarativeExpander := expander ifNotNil: [ :anExpander | 
+		anExpander asDeclarativeExpander ].
 	viewSpecification := GtPhlowTreeViewSpecification new
-		phlowDataSource: (GtRemotePhlowDeclarativeViewTreeDataSource
-			forPhlowView: self);
+		phlowDataSource: ((GtRemotePhlowDeclarativeViewTreeDataSource forPhlowView: self)
+			expander: declarativeExpander);
+		expander: declarativeExpander;
 		dataTransport: GtPhlowViewSpecification dataLazy.
 	self configureGenericViewSpecificationOn: viewSpecification.
+	
 	^ viewSpecification
 ]
 

@@ -24,11 +24,9 @@ GtPhlowTextViewSpecification >> viewFor: aView [
 	| currentView |
 	"Answer the GtPhlowView for the receiver"
 
-	currentView := aView text
-		title: title;
-		priority: priority;
-		phlowViewSpecification: self.
+	currentView := aView text.
 
+	self configureBasicLocalView: currentView for: aView.
 	self configureViewActionsFor: currentView.
 	self configureForLazyDataView: currentView.
 
