@@ -44,8 +44,8 @@ GtRemotePhlowTreeNodeUpToExpander >> level [
 
 { #category : #'api - accessing' }
 GtRemotePhlowTreeNodeUpToExpander >> level: aLevelIndex [
-	self 
-		assert: [ aLevelIndex isInteger and: [ aLevelIndex > 0 ] ] 
-		description: [ 'Level index must be a natural number' ].
+	(aLevelIndex isInteger and: [ aLevelIndex > 0 ])
+		ifFalse:  [ Error signal: 'Level index must be a natural number' ].
+		
 	level := aLevelIndex
 ]
