@@ -28,7 +28,10 @@ GtRemotePhlowTreeView >> asGtDeclarativeView [
 			expander: expander);
 		expander: expander;
 		dataTransport: GtPhlowViewSpecification dataLazy.
+		
 	self configureGenericViewSpecificationOn: viewSpecification.
+	self configureListingViewSpecificationOn: viewSpecification.
+	
 	^ viewSpecification
 ]
 

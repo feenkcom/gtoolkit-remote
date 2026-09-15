@@ -32,7 +32,10 @@ GtRemotePhlowListView >> asGtDeclarativeView [
 		phlowDataSource: (GtRemotePhlowDeclarativeViewListDataSource
 			forPhlowView: self);
 		dataTransport: GtPhlowViewSpecification dataLazy.
+		
 	self configureGenericViewSpecificationOn: viewSpecification.
+	self configureListingViewSpecificationOn: viewSpecification.
+	
 	^ viewSpecification
 ]
 

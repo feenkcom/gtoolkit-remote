@@ -183,9 +183,17 @@ GtRemotePhlowView >> canBeGtDeclarativeView [
 
 { #category : #'private - converting' }
 GtRemotePhlowView >> configureGenericViewSpecificationOn: aViewSpecification [
+
 	aViewSpecification
 		title: self title;
-		priority: self priority;
+		priority: self priority.
+	
+	self configureMainActionsSpecificationsOn: aViewSpecification
+]
+
+{ #category : #'private - converting' }
+GtRemotePhlowView >> configureMainActionsSpecificationsOn: aViewSpecification [
+	aViewSpecification
 		actionSpecifications: (self actions collect: [ :each | 
 			each asGtDeclarativeAction ]) asArray
 ]

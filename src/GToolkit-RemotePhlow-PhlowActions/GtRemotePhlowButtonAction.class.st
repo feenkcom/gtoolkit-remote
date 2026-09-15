@@ -2,21 +2,26 @@ Class {
 	#name : #GtRemotePhlowButtonAction,
 	#superclass : #GtRemotePhlowAction,
 	#instVars : [
-		'actionBlock',
 		'label',
-		'iconStencil'
+		'iconStencil',
+		'actionComputation'
 	],
 	#category : #'GToolkit-RemotePhlow-PhlowActions'
 }
 
 { #category : #accessing }
 GtRemotePhlowButtonAction >> action: aValuable [
-	actionBlock := aValuable
+	actionComputation := aValuable
 ]
 
 { #category : #accessing }
 GtRemotePhlowButtonAction >> actionBlock [
-	^ actionBlock
+	^ self actionComputation
+]
+
+{ #category : #accessing }
+GtRemotePhlowButtonAction >> actionComputation [
+	^ actionComputation
 ]
 
 { #category : #converting }
@@ -45,7 +50,7 @@ GtRemotePhlowButtonAction >> iconStencil [
 GtRemotePhlowButtonAction >> initialize [
 	super initialize.
 
-	actionBlock := [ :aButton | 
+	actionComputation := [ :aButton | 
 		"do nothing" ].
 ]
 

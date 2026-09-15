@@ -25,8 +25,11 @@ GtRemotePhlowColumnedListView >> asGtDeclarativeView [
 			forPhlowView: self);
 		horizontalScrollingEnabled: horizontalScrollingEnabled;
 		dataTransport: GtPhlowViewSpecification dataLazy.
+		
 	self configureGenericViewSpecificationOn: viewSpecification.
 	self configureColumnsSpecificationOn: viewSpecification.
+	self configureListingViewSpecificationOn: viewSpecification.
+	
 	^ viewSpecification
 ]
 

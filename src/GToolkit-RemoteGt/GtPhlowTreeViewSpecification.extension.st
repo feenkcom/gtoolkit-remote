@@ -20,13 +20,6 @@ GtPhlowTreeViewSpecification >> configureItemsFor: aView [
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
-GtPhlowTreeViewSpecification >> configureViewActionsFor: aView [
-	super configureViewActionsFor: aView.
-	
-	self configureDefaultRefreshActionFor: aView.
-]
-
-{ #category : #'*GToolkit-RemoteGt' }
 GtPhlowTreeViewSpecification >> ensureChildrenLoadedForNode: aTreeNode [ 
 	aTreeNode childNodes ifNotNil: [ :currentChildren |
 		^ self ].

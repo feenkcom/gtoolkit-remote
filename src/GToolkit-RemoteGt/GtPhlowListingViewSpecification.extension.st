@@ -1,6 +1,50 @@
 Extension { #name : #GtPhlowListingViewSpecification }
 
 { #category : #'*GToolkit-RemoteGt' }
+GtPhlowListingViewSpecification >> configureListingView: aView [
+	self hasMultipleSelection
+		ifTrue: [ aView withMultipleSelection ] 
+		ifFalse: [ aView withoutMultipleSelection ].
+		
+	self configureViewContextMenuActionsFor: aView.
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
+GtPhlowListingViewSpecification >> configureViewActionsFor: aView [
+	super configureViewActionsFor: aView.
+	
+	self configureDefaultRefreshActionFor: aView.
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
+GtPhlowListingViewSpecification >> configureViewContextMenuActionsFor: aView [
+	self hasContextActionSpecifications ifFalse: [ ^ self ].
+
+	self hasMultipleSelection 
+	
+		ifTrue: [
+			aView dynamicContextItems: [ :anElement :aMultipleSelection |
+				| currentSelection |
+				currentSelection := GtPhlowListingViewSelection forMultipleListIndexes:aMultipleSelection.
+				self retriveContextActionSpecificationsForPhlowSelection: currentSelection ] ] 
+				
+		ifFalse: [
+			aView dynamicContextItems: [ :anElement :anObject :aSingleSelection |
+				| currentSelection currentSpecifications |
+				
+				currentSelection := GtPhlowListingViewSelection forSingleListIndex:aSingleSelection.
+				currentSpecifications := self 
+					retriveContextActionSpecificationsForPhlowSelection: currentSelection.
+			
+				currentSpecifications collect: [ :anActionSpecification | 
+					"anActionSpecification actionFor: GtPhlowAction noAction"
+					anActionSpecification 
+						menuActionFor: GtPhlowAction noAction
+						item: anObject 
+						index: aSingleSelection ] ] ].
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
 GtPhlowListingViewSpecification >> configureViewSendFor: aView [ 
 	aView send: [ :aTreeNode :aSelection  | 
 		aTreeNode targetObject ifNil: [
