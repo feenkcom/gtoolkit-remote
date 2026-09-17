@@ -50,6 +50,13 @@ GtPhlowActionSpecification >> initializeFromJSONDictionary: aDictionary [
 			at: 'phlowDataSource' ifAbsent: [ nil ])
 ]
 
+{ #category : #actions }
+GtPhlowActionSpecification >> menuActionFor: anAction element: anElement [
+	| localAction |
+	localAction := self actionFor: anAction.
+	^ localAction asMenuItemWithHostElement: anElement
+]
+
 { #category : #accessing }
 GtPhlowActionSpecification >> methodSelector [
 	^ methodSelector

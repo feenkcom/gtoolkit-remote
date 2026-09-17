@@ -12,19 +12,21 @@ Class {
 
 { #category : #'api - actions' }
 GtRemotePhlowListingView >> collectIndividualContextMenuActionsForElement: anElement item: anObject index: anIndex [
-	| allActions |
+	| allInitialPhlowActions |
 	
-	allActions := OrderedCollection new.
+	allInitialPhlowActions := OrderedCollection new.
 	self contextMenuActions
 			"select: [ :anAction | anAction respondsToItem: item ]"
 			do: [ :anAction | 
 				anAction 
-					collectInvidualActionsOn: allActions
+					collectInvidualActionsOn: allInitialPhlowActions
 					forElement: anElement 
 					item: anObject
 					index: anIndex ].
 				
-	^ allActions
+	^ allInitialPhlowActions collect: [ :anAction |
+			anAction 
+				asItemBoundActionToItem: anObject index: anIndex ]
 ]
 
 { #category : #converting }
@@ -64,17 +66,15 @@ GtRemotePhlowListingView >> defaultTransformation [
 { #category : #'api - actions' }
 GtRemotePhlowListingView >> dynamicContextItems: aBlock [
 	self contextMenuActions
-		add: (GtRemotePhlowContextMenuDynamicActions new
-			label: 'Dynamic menu items';
-			actions: aBlock )
+		add: (GtRemotePhlowContextMenuDynamicActions
+			label: 'Dynamic menu items' actions: aBlock )
 ]
 
 { #category : #'api - actions' }
 GtRemotePhlowListingView >> dynamicPhlowContextItems: aBlock [
 	self contextMenuActions
-		add: (GtRemotePhlowContextMenuDynamicPhlowActions new
-			label: 'Dynamic phlow menu items';
-			actions: aBlock )
+		add: (GtRemotePhlowContextMenuDynamicPhlowActions
+			label: 'Dynamic phlow menu items' actions: aBlock )
 ]
 
 { #category : #'gt - extensions' }

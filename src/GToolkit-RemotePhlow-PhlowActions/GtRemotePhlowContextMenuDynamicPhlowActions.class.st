@@ -8,6 +8,13 @@ Class {
 	#category : #'GToolkit-RemotePhlow-PhlowActions'
 }
 
+{ #category : #'instance creation' }
+GtRemotePhlowContextMenuDynamicPhlowActions class >> label: aLabel actions: aBlockClosure [
+	^ self new 
+		label: 'Dynamic phlow menu items';
+		actions: aBlockClosure 
+]
+
 { #category : #accessing }
 GtRemotePhlowContextMenuDynamicPhlowActions >> actions: aBlockClosure [
 	actionsComputation := aBlockClosure

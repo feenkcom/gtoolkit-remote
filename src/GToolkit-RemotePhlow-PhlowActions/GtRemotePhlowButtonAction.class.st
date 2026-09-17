@@ -33,7 +33,7 @@ GtRemotePhlowButtonAction >> asGtDeclarativeAction [
 		iconStencil: self iconStencil;
 		phlowDataSource: (GtRemotePhlowDeclarativeBlockActionDataSource new
 			phlowAction: self;
-			targetBlock: self actionBlock)
+			targetBlock: self actionComputation)
 ]
 
 { #category : #accessing }

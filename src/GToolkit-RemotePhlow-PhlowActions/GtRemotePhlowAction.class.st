@@ -60,6 +60,18 @@ GtRemotePhlowAction >> canBeGtDeclarativeAction [
 	^ true
 ]
 
+{ #category : #decorating }
+GtRemotePhlowAction >> contextMenuAction [
+	^ GtRemotePhlowContextMenuAction new
+		"definingMethod: (GtPhlowDefiningMethodsCollector forContext: thisContext) collect"
+]
+
+{ #category : #decorating }
+GtRemotePhlowAction >> contextMenuBoundAction [
+	^ GtRemotePhlowContextMenuItemBoundAction new
+		"definingMethod: (GtPhlowDefiningMethodsCollector forContext: thisContext) collect"
+]
+
 { #category : #accessing }
 GtRemotePhlowAction >> definingClass [
 	^ definingClass

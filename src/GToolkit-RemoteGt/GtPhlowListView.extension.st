@@ -10,6 +10,10 @@ GtPhlowListView >> asGtDeclarativeView [
 		phlowDataSource: (GtRemotePhlowDeclarativeViewListDataSource forPhlowView: self);
 		dataTransport: GtPhlowViewSpecification dataLazy.
 	self configureGenericViewSpecificationOn: viewSpecification.
+	
+	viewSpecification hasMultipleSelection: self hasMultipleSelection.
+	viewSpecification hasContextActionSpecifications: self contextMenuActions notEmpty.
+	
 	^ viewSpecification
 ]
 

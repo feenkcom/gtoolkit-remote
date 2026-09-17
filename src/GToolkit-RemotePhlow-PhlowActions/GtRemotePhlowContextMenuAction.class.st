@@ -36,14 +36,11 @@ GtRemotePhlowContextMenuAction >> actionComputation [
 ]
 
 { #category : #converting }
-GtRemotePhlowContextMenuAction >> asGtDeclarativeAction [
-	^ GtPhlowContextMenuActionSpecification new
-		tooltipText: self tooltipText;
-		label: self label;
-		iconStencil: self iconStencil;
-		phlowDataSource: (GtRemotePhlowDeclarativeBlockActionDataSource new
-			phlowAction: self;
-			targetBlock: self actionBlock)
+GtRemotePhlowContextMenuAction >> asItemBoundActionToItem: anItem index: anIndex [
+	^ GtRemotePhlowContextMenuItemBoundAction new
+		targetAction: self;
+		item: anItem;
+		index: anIndex
 ]
 
 { #category : #'api - scripting' }
@@ -86,11 +83,6 @@ GtRemotePhlowContextMenuAction >> printOn: aStream [
 	super printOn: aStream.
 	aStream parenthesize: [
 		aStream nextPutAll: (self label ifNil: [ '' ]) ]
-]
-
-{ #category : #'api - scripting' }
-GtRemotePhlowContextMenuAction >> showIf: aBlock [ 
-	showCondition := aBlock
 ]
 
 { #category : #'api - scripting' }

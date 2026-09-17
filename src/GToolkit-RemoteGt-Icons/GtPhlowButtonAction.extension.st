@@ -13,7 +13,7 @@ GtPhlowButtonAction >> asGtDeclarativeAction [
 				applyToActionSpecification: aSpecification ];
 		phlowDataSource: (GtRemotePhlowDeclarativeBlockActionDataSource new
 			phlowAction: self;
-			targetBlock: self actionBlock)
+			targetBlock: self actionComputation)
 ]
 
 { #category : #'*GToolkit-RemoteGt-Icons' }

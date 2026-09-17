@@ -1,5 +1,5 @@
 Class {
-	#name : #GtPhlowContextMenuActionSpecification,
+	#name : #GtRemotePhlowContextMenuItemBoundActionSpecification,
 	#superclass : #GtPhlowActionSpecification,
 	#instVars : [
 		'label',
@@ -9,12 +9,12 @@ Class {
 }
 
 { #category : #accessing }
-GtPhlowContextMenuActionSpecification class >> typeLabel [
+GtRemotePhlowContextMenuItemBoundActionSpecification class >> typeLabel [
 	^ 'phlowContextMenuActionSpecification'
 ]
 
 { #category : #converting }
-GtPhlowContextMenuActionSpecification >> asDictionaryForExport [
+GtRemotePhlowContextMenuItemBoundActionSpecification >> asDictionaryForExport [
 	| specificationData |
 	specificationData := super asDictionaryForExport.
 	
@@ -31,17 +31,17 @@ GtPhlowContextMenuActionSpecification >> asDictionaryForExport [
 ]
 
 { #category : #accessing }
-GtPhlowContextMenuActionSpecification >> iconStencil [
+GtRemotePhlowContextMenuItemBoundActionSpecification >> iconStencil [
 	^ iconStencil
 ]
 
 { #category : #accessing }
-GtPhlowContextMenuActionSpecification >> iconStencil: anIconStencil [
+GtRemotePhlowContextMenuItemBoundActionSpecification >> iconStencil: anIconStencil [
 	iconStencil := anIconStencil
 ]
 
 { #category : #initialization }
-GtPhlowContextMenuActionSpecification >> initializeFromJSONDictionary: aDictionary [
+GtRemotePhlowContextMenuItemBoundActionSpecification >> initializeFromJSONDictionary: aDictionary [
 	super initializeFromJSONDictionary: aDictionary.
 	
 	aDictionary 
@@ -61,11 +61,18 @@ GtPhlowContextMenuActionSpecification >> initializeFromJSONDictionary: aDictiona
 ]
 
 { #category : #accessing }
-GtPhlowContextMenuActionSpecification >> label [
+GtRemotePhlowContextMenuItemBoundActionSpecification >> label [
 	^ label
 ]
 
 { #category : #accessing }
-GtPhlowContextMenuActionSpecification >> label: aString [
+GtRemotePhlowContextMenuItemBoundActionSpecification >> label: aString [
 	label := aString
+]
+
+{ #category : #actions }
+GtRemotePhlowContextMenuItemBoundActionSpecification >> menuActionFor: anAction element: anElement [
+	| localAction |
+	localAction := self actionFor: anAction.
+	^ localAction asMenuItemWithHostElement: anElement
 ]

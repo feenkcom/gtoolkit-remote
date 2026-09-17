@@ -37,11 +37,8 @@ GtPhlowListingViewSpecification >> configureViewContextMenuActionsFor: aView [
 					retriveContextActionSpecificationsForPhlowSelection: currentSelection.
 			
 				currentSpecifications collect: [ :anActionSpecification | 
-					"anActionSpecification actionFor: GtPhlowAction noAction"
 					anActionSpecification 
-						menuActionFor: GtPhlowAction noAction
-						item: anObject 
-						index: aSingleSelection ] ] ].
+						actionFor: GtPhlowAction noAction] ] ].
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
