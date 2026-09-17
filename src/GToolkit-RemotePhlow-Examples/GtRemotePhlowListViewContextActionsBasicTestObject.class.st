@@ -44,32 +44,6 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithBasicContextActi
 ]
 
 { #category : #views }
-GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithDynamicActionsFor: aView [
-	<gtView>
-
-	^aView list
-		title: 'Dynamic actions';
-		priority: 17;
-		items: [ collectionOfObjects ];
-		itemText: [ :anObject :anIndex | anObject printString, '; index: ', anIndex printString ];
-		dynamicContextItems: [ :anElement :anObject :anIndex |
-			{
-				GtPhlowAction noAction button
-					label: 'Inspect element';
-					action: [ :currentElement |
-						currentElement phlow spawnObject: anElement ].
-				GtPhlowAction noAction button
-					label: 'Inspect object';
-					action: [ :currentElement |
-						currentElement phlow spawnObject: anObject ].
-				GtPhlowAction noAction button
-					label: 'Inspect index';
-					action: [ :currentElement |
-						currentElement phlow spawnObject: anIndex ] 
-			} ]
-]
-
-{ #category : #views }
 GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithDynamicActionsMultipleSelectinFor: aView [
 	<gtView>
 
@@ -80,8 +54,7 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithDynamicActionsMu
 		itemText: [ :anObject :anIndex | anObject printString, '; index: ', anIndex printString ];
 		withMultipleSelection;
 		dynamicContextItems: [ :anElement :anObject :anIndex |
-			self halt.
-			{'Action' -> [ :a :b | self halt] } ]
+			{'Action' -> [ :a :b |] } ]
 ]
 
 { #category : #views }
@@ -126,13 +99,11 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtTreeWithBasicContextActi
 		itemText: [ :x :anIndex | x asString, ' number; index: ', anIndex  asString];
 		contextItemLabel: 'Inspect first object' 
 			action: [ :anElement :anObject |
-				self halt.
 				anElement phlow spawnObject: anObject ];
 		contextItemLabel: 'Inspect first index' 
 			action: [ :anElement :anObject |
 				anElement phlow spawnObject: 'TODO' ];
 		send: [ :anObject :aSelection |
-			self halt.
 			anObject ]
 ]
 
@@ -153,13 +124,11 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtTreeWithBasicContextActi
 		withMultipleSelection;
 		contextItemLabel: 'Inspect first object' 
 			action: [ :anElement :anObject |
-				self halt.
 				anElement phlow spawnObject: anObject ];
 		contextItemLabel: 'Inspect first index' 
 			action: [ :anElement :anObject |
 				anElement phlow spawnObject: 'TODO' ];
 		send: [ :anObject :aSelection |
-			self halt.
 			anObject ]
 ]
 
