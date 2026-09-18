@@ -5,6 +5,18 @@ Class {
 }
 
 { #category : #'instance creation' }
+GtPhlowDeclarativeSpecification class >> fromDictionary: aSpecificationDictionary [
+	"Answer the specification based on its exported data"
+	| typeName typeClass |
+
+	typeName := (aSpecificationDictionary at: '__typeName') asSymbol.
+	typeClass := self 
+		gtDo: [ self class environment classOrTraitNamed: typeName ] 
+		gemstoneDo: [ (System myUserProfile resolveSymbol: typeName asSymbol) value ].
+	^ typeClass fromJSONDictionary: aSpecificationDictionary.
+]
+
+{ #category : #'instance creation' }
 GtPhlowDeclarativeSpecification class >> fromJSONDictionary: aDictionary [
 	"Answer an instance of the receiver from the supplied dictionary."
 

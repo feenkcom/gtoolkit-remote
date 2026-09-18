@@ -7,6 +7,11 @@ Class {
 	#category : #'GToolkit-RemotePhlow-Examples'
 }
 
+{ #category : #'instance creation' }
+GtRemotePhlowListViewContextActionsBasicTestObject class >> new [ 	
+	^ self basicNew initialize
+]
+
 { #category : #views }
 GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithBasicContextActionsFor: aView [
 	<gtView>

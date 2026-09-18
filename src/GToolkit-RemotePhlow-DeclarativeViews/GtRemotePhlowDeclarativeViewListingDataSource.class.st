@@ -9,6 +9,16 @@ Class {
 	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
+{ #category : #'api - data retrival' }
+GtRemotePhlowDeclarativeViewListingDataSource >> bareRetriveContextActionSpecificationsForPhlowSelectionData: aPhlowSelectionData [
+	| phlowSelection |
+	phlowSelection := GtPhlowListingViewSelection fromDictionary: aPhlowSelectionData.
+	^ (self retriveContextActionSpecificationsForPhlowSelection: phlowSelection)
+			ifNotNil: [ :actions |
+				actions collect: [ :anAction |
+					anAction asDictionaryForExportWithPhlowDataSource ] ]
+]
+
 { #category : #accessing }
 GtRemotePhlowDeclarativeViewListingDataSource >> buildMainNodeForObject: anObject atIndex: anIndex [ 
 	^ self buildNodeForObject: anObject atIndex: anIndex 

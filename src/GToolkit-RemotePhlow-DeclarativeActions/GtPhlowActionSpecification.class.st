@@ -11,6 +11,11 @@ Class {
 	#category : #'GToolkit-RemotePhlow-DeclarativeActions'
 }
 
+{ #category : #'instance creation' }
+GtPhlowActionSpecification class >> phlowActionFromDictionary: aSpecificationDictionary [
+	^ self fromDictionary: aSpecificationDictionary
+]
+
 { #category : #converting }
 GtPhlowActionSpecification >> asDictionaryForExport [
 	"Answer the receiver as a dictionary ready for JSON serialisation.

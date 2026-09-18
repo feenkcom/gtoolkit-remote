@@ -48,6 +48,12 @@ GtPhlowListingViewSpecification >> asBasicViewDataForExport [
 ]
 
 { #category : #'api - accessing' }
+GtPhlowListingViewSpecification >> bareRetriveContextActionSpecificationsForPhlowSelectionData: aPhlowSelectionData [
+	^ self phlowDataSource 
+		bareRetriveContextActionSpecificationsForPhlowSelectionData: aPhlowSelectionData
+]
+
+{ #category : #'api - accessing' }
 GtPhlowListingViewSpecification >> flushCachedData [
 	self flushItemsIterator 
 ]
