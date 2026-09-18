@@ -24,8 +24,8 @@ GtPhlowColumnedTreeViewSpecification >> ensureChildrenLoadedForNode: aTreeNode [
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
-GtPhlowColumnedTreeViewSpecification >> extractRemoteSendObjectFromNode: aTreeNode atSelection: aSelection [ 
-	^ self retriveSentItemAtPath: aTreeNode nodePath
+GtPhlowColumnedTreeViewSpecification >> extractRemoteSendObjectFromNode: aNode atSelectionIndex: aSelection [ 
+	^ self retriveSentItemAtPath: aNode nodePath
 ]
 
 { #category : #'*GToolkit-RemoteGt' }

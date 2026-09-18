@@ -16,8 +16,13 @@ GtPhlowListViewSpecification >> configureItemsFor: aView [
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
-GtPhlowListViewSpecification >> extractRemoteSendObjectFromNode: aTreeNode atSelection: aSelection [ 
-	^ self retriveSentItemAt: aSelection first
+GtPhlowListViewSpecification >> extractRemoteSendObjectFromNode: aNode atSelectionIndex: aSelectionIndex [ 
+	^ self retriveSentItemAt: aSelectionIndex first
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
+GtPhlowListViewSpecification >> extractRemoteSendObjectFromNode: aNode forPhlowSelection: aPhlowSelection [ 
+	^ self retriveSentItemAt: nil
 ]
 
 { #category : #'*GToolkit-RemoteGt' }

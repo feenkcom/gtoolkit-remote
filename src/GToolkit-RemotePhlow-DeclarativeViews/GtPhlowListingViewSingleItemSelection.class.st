@@ -41,6 +41,11 @@ GtPhlowListingViewSingleItemSelection >> initializeFromJSONDictionary: aDictiona
 			self selectionIdentifier: (GtRemotePhlowNodeIdentifier fromDictionary: aDict) ].
 ]
 
+{ #category : #accessing }
+GtPhlowListingViewSingleItemSelection >> nodeIdentifiersDo: aBlock [
+	aBlock value: self
+]
+
 { #category : #printing }
 GtPhlowListingViewSingleItemSelection >> printOn: aStream [
 	super printOn: aStream.

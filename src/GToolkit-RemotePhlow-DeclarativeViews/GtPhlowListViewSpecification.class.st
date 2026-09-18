@@ -20,3 +20,13 @@ GtPhlowListViewSpecification class >> fromJSONDictionary: aDictionary [
 	list := super fromJSONDictionary: aDictionary.
 	^list
 ]
+
+{ #category : #accessing }
+GtPhlowListViewSpecification >> createMultipleSelectionForSelectionIndex: aSelectionIndex [
+	^ GtPhlowListingViewSelection forMultipleListIndexes:aSelectionIndex.
+]
+
+{ #category : #accessing }
+GtPhlowListViewSpecification >> createSingleSelectionForSelectionIndex: aSelectionIndex [
+	^ GtPhlowListingViewSelection forSingleListIndex:aSelectionIndex.
+]

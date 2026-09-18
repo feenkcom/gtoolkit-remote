@@ -23,10 +23,14 @@ GtPhlowListingViewSpecification >> configureViewContextMenuActionsFor: aView [
 	self hasMultipleSelection 
 	
 		ifTrue: [
-			aView dynamicContextItems: [ :anElement :aMultipleSelection |
-				| currentSelection |
+			aView dynamicContextItems: [ :anElement :anObject :aMultipleSelection |
+				| currentSelection currentSpecifications |
 				currentSelection := GtPhlowListingViewSelection forMultipleListIndexes:aMultipleSelection.
-				self retriveContextActionSpecificationsForPhlowSelection: currentSelection ] ] 
+				currentSpecifications := self retriveContextActionSpecificationsForPhlowSelection: currentSelection.
+				
+				currentSpecifications collect: [ :anActionSpecification | 
+					anActionSpecification 
+						actionFor: GtPhlowAction noAction]  ] ] 
 				
 		ifFalse: [
 			aView dynamicContextItems: [ :anElement :anObject :aSingleSelection |
@@ -42,13 +46,30 @@ GtPhlowListingViewSpecification >> configureViewContextMenuActionsFor: aView [
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
-GtPhlowListingViewSpecification >> configureViewSendFor: aView [ 
-	aView send: [ :aTreeNode :aSelection  | 
-		aTreeNode targetObject ifNil: [
-			aTreeNode targetObject: (self 
-				extractRemoteSendObjectFromNode: aTreeNode 
-				atSelection: aSelection) asGtBareProxyObject ].
-		aTreeNode targetObject ]
+GtPhlowListingViewSpecification >> configureViewSendFor: aView [
+	aView
+		send: [ :aListingNode :anIndexSelection | 
+			(anIndexSelection size > 1)
+				ifTrue: [ self halt. 
+					"For multiple selection we do not store the object returned by the send logic"
+					(self 
+							extractRemoteSendObjectFromNodePath: (aListingNode 
+								collect: [ :each | each value nodePath ]) 
+							atPhlowSelection: (self 
+								createMultipleSelectionForSelectionIndex: anIndexSelection)
+							indexSelection: anIndexSelection)
+									asGtBareProxyObject]
+				ifFalse: [ 
+					"Even for multiple selection we handle the case 
+					of a single selection the same way."
+					self halt.
+					aListingNode targetObject
+						ifNil: [ 
+							aListingNode
+								targetObject: (self 
+									extractRemoteSendObjectFromNode: aListingNode 
+									atSelectionIndex: anIndexSelection) asGtBareProxyObject ].
+					aListingNode targetObject ] ]
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
@@ -57,15 +78,24 @@ GtPhlowListingViewSpecification >> configureViewSendFor: aView withLocalTransfor
 		aTreeNode targetObject ifNil: [
 			aTreeNode targetObject: (self 
 				extractRemoteSendObjectFromNode: aTreeNode 
-				atSelection: aSelectionIndices) asGtBareProxyObject ].
+				atSelectionIndex: aSelectionIndices) asGtBareProxyObject ].
 		(aBlock 
 			cull: aTreeNode targetObject
 			cull: aSelectionIndices) asGtBareProxyObject ]
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
-GtPhlowListingViewSpecification >> extractRemoteSendObjectFromNode: aTreeNode atSelection: aSelection [ 
+GtPhlowListingViewSpecification >> extractRemoteSendObjectFromNode: aNode atSelectionIndex: aSelectionIndex [ 
 	self subclassResponsibility
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
+GtPhlowListingViewSpecification >> extractRemoteSendObjectFromNodePath: aNodePath atPhlowSelection: aPhlowSelection indexSelection: anIndexSelection [
+ 
+	^ self 
+			retriveSentItemAtPath: aNodePath
+			forPhlowSelection: aPhlowSelection
+			indexSelection: anIndexSelection
 ]
 
 { #category : #'*GToolkit-RemoteGt' }

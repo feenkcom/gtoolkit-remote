@@ -49,3 +49,8 @@ GtPhlowListingViewSelection class >> forSingleTreeIdentifier: aTreeNodeIdentifie
 GtPhlowListingViewSelection class >> forSingleTreePath: anArray [
 	^ self forSingleTreeIdentifier: (GtRemotePhlowNodeIdentifier forTreePath: anArray)
 ]
+
+{ #category : #enumerating }
+GtPhlowListingViewSelection >> nodeIdentifiersDo: aBlock [
+	self subclassResponsibility
+]

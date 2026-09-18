@@ -180,8 +180,40 @@ GtRemotePhlowDeclarativeViewListingDataSource >> retriveSentItemAt: aSelectionIn
 		withIndexDo: [ :aNode :anItemIndex |
 			^ self phlowView transformation 
 				transformedValueFrom: aNode targetObject
-				selection: aSelectionIndex ].
+				selection: (Array with: aSelectionIndex) ].
 	^ nil
+]
+
+{ #category : #'api - data retrival' }
+GtRemotePhlowDeclarativeViewListingDataSource >> retriveSentItemAtPath: aNodePath forPhlowSelection: aPhlowSelection [
+	| targetNodes |
+	targetNodes := OrderedCollection new.
+	self withNodesInPhlowSelection: aPhlowSelection do: [ :aNode |
+		targetNodes add: aNode ].
+	targetNodes ifEmpty: [ ^ nil ].
+	
+	^ self phlowView transformation 
+			transformedValueFrom: (aPhlowSelection isMultipleSelection
+				ifTrue: [ targetNodes]
+				ifFalse: [ targetNodes first ])
+			selection: (aPhlowSelection selectionIndexesForSendComputation) 
+]
+
+{ #category : #'api - data retrival' }
+GtRemotePhlowDeclarativeViewListingDataSource >> retriveSentItemAtPath: aNodePath forPhlowSelection: aPhlowSelection indexSelection: anIndexSelection [
+	| targetNodes targetObjects |
+	targetNodes := OrderedCollection new.
+	self withNodesInPhlowSelection: aPhlowSelection do: [ :aNode |
+		targetNodes add: aNode ].
+	targetNodes ifEmpty: [ ^ nil ].
+	
+	targetObjects := targetNodes collect: [ :aNode | aNode targetObject ].
+	
+	^ self phlowView transformation 
+			transformedValueFrom: ((targetObjects size > 1)
+				ifTrue: [ targetObjects]
+				ifFalse: [ targetObjects first ])
+			selection: (anIndexSelection"aPhlowSelection selectionIndexesForSendComputation") 
 ]
 
 { #category : #accessing }
@@ -189,4 +221,14 @@ GtRemotePhlowDeclarativeViewListingDataSource >> valueBuilder [
 	^ cachedValueBuilder ifNil: [
 		cachedValueBuilder := self instantiateValueBuilder
 			phlowView:  self phlowView]
+]
+
+{ #category : #'api - data retrival' }
+GtRemotePhlowDeclarativeViewListingDataSource >> withNodesInPhlowSelection: aPhlowSelection do: aBlock [
+	aPhlowSelection nodeIdentifiersDo: [ :aNodeIdentifier |
+		self  
+			forNodesFrom: aNodeIdentifier nodeIndex
+			to: aNodeIdentifier nodeIndex 
+			withIndexDo: [ :aNode :anNodeIndex |
+				aBlock cull: aNode cull: anNodeIndex ] ].
 ]

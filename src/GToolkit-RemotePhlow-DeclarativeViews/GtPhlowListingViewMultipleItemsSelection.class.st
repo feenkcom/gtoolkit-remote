@@ -51,6 +51,11 @@ GtPhlowListingViewMultipleItemsSelection >> initializeFromJSONDictionary: aDicti
 				GtRemotePhlowNodeIdentifier fromDictionary: each ]) ].
 ]
 
+{ #category : #accessing }
+GtPhlowListingViewMultipleItemsSelection >> nodeIdentifiersDo: aBlock [
+	selectionIdentifiers do: aBlock
+]
+
 { #category : #printing }
 GtPhlowListingViewMultipleItemsSelection >> printOn: aStream [
 	super printOn: aStream.

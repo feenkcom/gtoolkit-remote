@@ -67,6 +67,11 @@ GtRemotePhlowDataNode >> nodeId: anObject [
 ]
 
 { #category : #accessing }
+GtRemotePhlowDataNode >> nodePath [
+	^ Array with: self nodeId
+]
+
+{ #category : #accessing }
 GtRemotePhlowDataNode >> nodeValue [
 	^ nodeValue
 ]

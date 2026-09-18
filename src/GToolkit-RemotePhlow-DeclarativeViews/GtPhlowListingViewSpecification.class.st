@@ -53,6 +53,16 @@ GtPhlowListingViewSpecification >> bareRetriveContextActionSpecificationsForPhlo
 		bareRetriveContextActionSpecificationsForPhlowSelectionData: aPhlowSelectionData
 ]
 
+{ #category : #accessing }
+GtPhlowListingViewSpecification >> createMultipleSelectionForSelectionIndex: aSelectionIndex [
+	self subclassResponsibility
+]
+
+{ #category : #accessing }
+GtPhlowListingViewSpecification >> createSingleSelectionForSelectionIndex: aSelectionIndex [
+	self subclassResponsibility
+]
+
 { #category : #'api - accessing' }
 GtPhlowListingViewSpecification >> flushCachedData [
 	self flushItemsIterator 
@@ -133,6 +143,12 @@ GtPhlowListingViewSpecification >> retriveFormattedItems [
 { #category : #'api - accessing' }
 GtPhlowListingViewSpecification >> retriveSentItemAt: aSelectionIndex [
 	^ self phlowDataSource retriveSentItemAt: aSelectionIndex
+]
+
+{ #category : #'api - accessing' }
+GtPhlowListingViewSpecification >> retriveSentItemAtPath: aNodePath forPhlowSelection: aPhlowSelection indexSelection: anIndexSelection [
+	^ self phlowDataSource 
+			retriveSentItemAtPath: aNodePath forPhlowSelection: aPhlowSelection indexSelection: anIndexSelection
 ]
 
 { #category : #accessing }

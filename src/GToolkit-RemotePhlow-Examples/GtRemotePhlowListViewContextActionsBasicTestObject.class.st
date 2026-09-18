@@ -27,7 +27,7 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithBasicContextActi
 				anElement phlow spawnObject: anObject ];
 		contextItemLabel: 'Inspect index' action: [ :anElement :anObject :anIndex |
 				anElement phlow spawnObject: anIndex ];
-		send: [ :anObject :aSelection | anObject ]
+		send: [ :anObject :aSelection | {anObject . aSelection} ]
 ]
 
 { #category : #views }
@@ -38,6 +38,7 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithBasicContextActi
 		title: 'Basic Multiple Selection';
 		priority:15.1;
 		items: [ collectionOfObjects ];
+		itemText: [ :anObject :anIndex | anObject printString, '; index: ', anIndex printString ];
 		withMultipleSelection;
 		contextItemLabel: 'Inspect element' action: [ :anElement |
 				anElement phlow spawnObject: anElement ];
@@ -45,7 +46,7 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithBasicContextActi
 				anElement phlow spawnObject: anObject ];
 		contextItemLabel: 'Inspect index' action: [ :anElement :anObject :anIndex |
 				anElement phlow spawnObject: anIndex ];
-		send: [ :anObject :aSelection | anObject ]
+		send: [ :anObject :aSelection |  {anObject . aSelection} ]
 ]
 
 { #category : #views }
@@ -109,7 +110,7 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtTreeWithBasicContextActi
 			action: [ :anElement :anObject |
 				anElement phlow spawnObject: 'TODO' ];
 		send: [ :anObject :aSelection |
-			anObject ]
+			{anObject . aSelection} ]
 ]
 
 { #category : #views }
@@ -134,7 +135,7 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtTreeWithBasicContextActi
 			action: [ :anElement :anObject |
 				anElement phlow spawnObject: 'TODO' ];
 		send: [ :anObject :aSelection |
-			anObject ]
+			{anObject . aSelection} ]
 ]
 
 { #category : #initialization }

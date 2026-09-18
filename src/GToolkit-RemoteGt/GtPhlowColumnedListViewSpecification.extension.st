@@ -10,7 +10,7 @@ GtPhlowColumnedListViewSpecification >> configureItemsFor: aView [
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
-GtPhlowColumnedListViewSpecification >> extractRemoteSendObjectFromNode: aTreeNode atSelection: aSelection [ 
+GtPhlowColumnedListViewSpecification >> extractRemoteSendObjectFromNode: aNode atSelectionIndex: aSelection [ 
 	^ self retriveSentItemAt: aSelection first
 ]
 
