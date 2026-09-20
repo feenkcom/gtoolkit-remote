@@ -36,6 +36,13 @@ GtRemotePhlowButtonAction >> asGtDeclarativeAction [
 			targetBlock: self actionComputation)
 ]
 
+{ #category : #converting }
+GtRemotePhlowButtonAction >> asItemBoundActionToItem: anItem index: anIndex [
+	"Normal phlow actions do no get the item or the selection as parameters.
+	They are bound already to them when they are created."
+	^ self
+]
+
 { #category : #accessing }
 GtRemotePhlowButtonAction >> icon: anIconStencil [
 	iconStencil := anIconStencil
