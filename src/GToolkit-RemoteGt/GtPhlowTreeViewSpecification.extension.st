@@ -33,7 +33,7 @@ GtPhlowTreeViewSpecification >> ensureChildrenLoadedForNode: aTreeNode [
 
 { #category : #'*GToolkit-RemoteGt' }
 GtPhlowTreeViewSpecification >> extractRemoteSendObjectFromNode: aNode atSelectionIndex: aSelectionIndex [ 
-	^ self retriveSentItemAtPath: aNode nodePath
+	^ self retrieveSentItemAtPath: aNode nodePath
 ]
 
 { #category : #'*GToolkit-RemoteGt' }

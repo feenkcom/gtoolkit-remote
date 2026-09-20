@@ -20,29 +20,19 @@ GtPhlowListingViewSpecification >> configureViewActionsFor: aView [
 GtPhlowListingViewSpecification >> configureViewContextMenuActionsFor: aView [
 	self hasContextActionSpecifications ifFalse: [ ^ self ].
 
-	self hasMultipleSelection 
-	
-		ifTrue: [
-			aView dynamicContextItems: [ :anElement :anObject :aMultipleSelection |
-				| currentSelection currentSpecifications |
-				currentSelection := GtPhlowListingViewSelection forMultipleListIndexes:aMultipleSelection.
-				currentSpecifications := self retriveContextActionSpecificationsForPhlowSelection: currentSelection.
+	aView dynamicContextItems: [ :anElement :aNodeOrNodesCollection :anIndexSelection |
+			| currentSelection currentSpecifications |
 				
-				currentSpecifications collect: [ :anActionSpecification | 
-					anActionSpecification 
-						actionFor: GtPhlowAction noAction]  ] ] 
-				
-		ifFalse: [
-			aView dynamicContextItems: [ :anElement :anObject :aSingleSelection |
-				| currentSelection currentSpecifications |
-				
-				currentSelection := GtPhlowListingViewSelection forSingleListIndex:aSingleSelection.
-				currentSpecifications := self 
-					retriveContextActionSpecificationsForPhlowSelection: currentSelection.
+			currentSelection := self 
+				createViewSelectionFromNode: aNodeOrNodesCollection 
+				indexSelection: anIndexSelection.
 			
-				currentSpecifications collect: [ :anActionSpecification | 
-					anActionSpecification 
-						actionFor: GtPhlowAction noAction] ] ].
+			currentSpecifications := self 
+				retriveContextActionSpecificationsForPhlowSelection: currentSelection.
+			
+			currentSpecifications collect: [ :anActionSpecification | 
+				anActionSpecification 
+					actionFor: GtPhlowAction noAction] ]
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
@@ -50,25 +40,19 @@ GtPhlowListingViewSpecification >> configureViewSendFor: aView [
 	aView
 		send: [ :aListingNode :anIndexSelection | 
 			(anIndexSelection size > 1)
-				ifTrue: [ self halt. 
-					"For multiple selection we do not store the object returned by the send logic"
-					(self 
-							extractRemoteSendObjectFromNodePath: (aListingNode 
-								collect: [ :each | each value nodePath ]) 
-							atPhlowSelection: (self 
-								createMultipleSelectionForSelectionIndex: anIndexSelection)
-							indexSelection: anIndexSelection)
-									asGtBareProxyObject]
+				ifTrue: [  
+					"For multiple selection we do not store the sent object"
+					self 
+						extractRemoteSendObjectFromNode: aListingNode 
+						indexSelection: anIndexSelection ]
 				ifFalse: [ 
-					"Even for multiple selection we handle the case 
-					of a single selection the same way."
-					self halt.
 					aListingNode targetObject
 						ifNil: [ 
-							aListingNode
-								targetObject: (self 
+							| targetObject|
+							targetObject := self 
 									extractRemoteSendObjectFromNode: aListingNode 
-									atSelectionIndex: anIndexSelection) asGtBareProxyObject ].
+									atSelectionIndex: anIndexSelection.
+							aListingNode targetObject: targetObject ].
 					aListingNode targetObject ] ]
 ]
 
@@ -90,12 +74,13 @@ GtPhlowListingViewSpecification >> extractRemoteSendObjectFromNode: aNode atSele
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
-GtPhlowListingViewSpecification >> extractRemoteSendObjectFromNodePath: aNodePath atPhlowSelection: aPhlowSelection indexSelection: anIndexSelection [
- 
-	^ self 
-			retriveSentItemAtPath: aNodePath
-			forPhlowSelection: aPhlowSelection
-			indexSelection: anIndexSelection
+GtPhlowListingViewSpecification >> extractRemoteSendObjectFromNode: aNodeOrNodesCollection indexSelection: anIndexSelection [
+	| viewSelection |
+	viewSelection := self 
+ 		createViewSelectionFromNode: aNodeOrNodesCollection 
+ 		indexSelection: anIndexSelection.
+	
+	^ self retrieveSentItemAtPhlowSelection: viewSelection
 ]
 
 { #category : #'*GToolkit-RemoteGt' }

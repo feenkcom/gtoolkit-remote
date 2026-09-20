@@ -67,6 +67,12 @@ GtRemotePhlowTreeNode >> childrenNodesDo: aBlock [
 ]
 
 { #category : #accessing }
+GtRemotePhlowTreeNode >> createNodeIdentifier [
+	^ GtRemotePhlowPathNodeIdentifier new 
+		nodeIndexPath: self nodePath
+]
+
+{ #category : #accessing }
 GtRemotePhlowTreeNode >> depth [
 	| depthValue |
 	depthValue := 0.

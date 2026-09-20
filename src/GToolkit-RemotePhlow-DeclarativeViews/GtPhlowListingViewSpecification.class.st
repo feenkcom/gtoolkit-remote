@@ -48,19 +48,35 @@ GtPhlowListingViewSpecification >> asBasicViewDataForExport [
 ]
 
 { #category : #'api - accessing' }
+GtPhlowListingViewSpecification >> bareRetrieveSentItemAtPhlowSelectionData: aPhlowSelectionData [
+	^ self phlowDataSource 
+		bareRetrieveSentItemAtPhlowSelectionData: aPhlowSelectionData
+]
+
+{ #category : #'api - accessing' }
 GtPhlowListingViewSpecification >> bareRetriveContextActionSpecificationsForPhlowSelectionData: aPhlowSelectionData [
 	^ self phlowDataSource 
 		bareRetriveContextActionSpecificationsForPhlowSelectionData: aPhlowSelectionData
 ]
 
 { #category : #accessing }
-GtPhlowListingViewSpecification >> createMultipleSelectionForSelectionIndex: aSelectionIndex [
+GtPhlowListingViewSpecification >> createViewSelection [
 	self subclassResponsibility
 ]
 
 { #category : #accessing }
-GtPhlowListingViewSpecification >> createSingleSelectionForSelectionIndex: aSelectionIndex [
-	self subclassResponsibility
+GtPhlowListingViewSpecification >> createViewSelectionFromNode: aNodeOrNodesCollection indexSelection: anIndexSelection [
+	| viewSelection nodeIdentifier|
+	viewSelection := self createViewSelection.
+	nodeIdentifier := anIndexSelection size > 1
+ 		ifTrue: [ GtRemotePhlowCompositeNodeIdentifier new
+ 			nodeIdentifiers: (aNodeOrNodesCollection collect: [ :aNode |
+ 				aNode value createNodeIdentifier]) ]
+ 		ifFalse: [ aNodeOrNodesCollection value createNodeIdentifier ].
+	viewSelection
+ 		nodeIdentifier: nodeIdentifier;
+ 		selectionIndex: anIndexSelection.
+	^ viewSelection
 ]
 
 { #category : #'api - accessing' }
@@ -124,6 +140,12 @@ GtPhlowListingViewSpecification >> retrieveSentItemAt: aSelectionIndex [
 ]
 
 { #category : #'api - accessing' }
+GtPhlowListingViewSpecification >> retrieveSentItemAtPhlowSelection: aPhlowSelection [
+	^ self phlowDataSource 
+			retrieveSentItemAtPhlowSelection: aPhlowSelection
+]
+
+{ #category : #'api - accessing' }
 GtPhlowListingViewSpecification >> retrieveTotalItemsCount [
 	^ self phlowDataSource retrieveTotalItemsCount
 ]
@@ -143,12 +165,6 @@ GtPhlowListingViewSpecification >> retriveFormattedItems [
 { #category : #'api - accessing' }
 GtPhlowListingViewSpecification >> retriveSentItemAt: aSelectionIndex [
 	^ self phlowDataSource retriveSentItemAt: aSelectionIndex
-]
-
-{ #category : #'api - accessing' }
-GtPhlowListingViewSpecification >> retriveSentItemAtPath: aNodePath forPhlowSelection: aPhlowSelection indexSelection: anIndexSelection [
-	^ self phlowDataSource 
-			retriveSentItemAtPath: aNodePath forPhlowSelection: aPhlowSelection indexSelection: anIndexSelection
 ]
 
 { #category : #accessing }

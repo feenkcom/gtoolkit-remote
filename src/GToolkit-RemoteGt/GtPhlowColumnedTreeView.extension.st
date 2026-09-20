@@ -12,7 +12,12 @@ GtPhlowColumnedTreeView >> asGtDeclarativeView [
 			expander: declarativeExpander);
 		expander: declarativeExpander;
 		dataTransport: GtPhlowViewSpecification dataLazy.
+		
 	self configureGenericViewSpecificationOn: viewSpecification.
+	
 	viewSpecification columnSpecifications: self buildRemoteColumnsSpecifications.
+	viewSpecification hasMultipleSelection: self hasMultipleSelection.
+	viewSpecification hasContextActionSpecifications: self contextMenuActions notEmpty.
+	
 	^ viewSpecification
 ]

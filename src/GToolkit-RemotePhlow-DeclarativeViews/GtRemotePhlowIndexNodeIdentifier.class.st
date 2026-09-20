@@ -51,6 +51,11 @@ GtRemotePhlowIndexNodeIdentifier >> nodeIndex: anObject [
 	nodeIndex := anObject
 ]
 
+{ #category : #accessing }
+GtRemotePhlowIndexNodeIdentifier >> nodeIndexPath [
+	^ Array with: self nodeIndex
+]
+
 { #category : #printing }
 GtRemotePhlowIndexNodeIdentifier >> printOn: aStream [
 	super printOn: aStream.

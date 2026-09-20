@@ -4,137 +4,49 @@ Class {
 	#category : #'GToolkit-RemotePhlow-Examples'
 }
 
-{ #category : #examples }
-GtPhlowListingViewSelectionExamples >> multipleItemsSelection [
+{ #category : #'examples - equality' }
+GtPhlowListingViewSelectionExamples >> listAndTreeSelectionInequality [
 	<gtExample>
-	<return: #GtPhlowListingViewMultipleListIndexSelection>
-	| selection identifiers |
-	identifiers := {
-		GtRemotePhlowNodeIdentifier forListIndex: 1.
-		GtRemotePhlowNodeIdentifier forListIndex: 3.
-		GtRemotePhlowNodeIdentifier forListIndex: 5 }.
-	selection := GtPhlowListingViewMultipleListIndexSelection new
-		selectionIdentifiers: identifiers.
-	self assert: selection class equals: GtPhlowListingViewMultipleListIndexSelection.
-	self assert: selection selectionIdentifiers equals: identifiers.
-	self assert: selection printString equals: 'a GtPhlowListingViewMultipleListIndexSelection(1, 3, 5)'.
-	^ selection
+	<return: #GtPhlowListingViewListSelection>
+	| listSelection treeSelection |
+	listSelection := self listSelectionSingle.
+	treeSelection := self treeSelectionSingle.
+	self assert: (listSelection = treeSelection) not.
+	self assert: (treeSelection = listSelection) not.
+	^ listSelection
 ]
 
-{ #category : #examples }
-GtPhlowListingViewSelectionExamples >> multipleItemsSelectionEquality [
+{ #category : #'examples - list' }
+GtPhlowListingViewSelectionExamples >> listSelectionComposite [
 	<gtExample>
-	<return: #GtPhlowListingViewMultipleListIndexSelection>
-	| selection1 selection2 identifiers |
-	selection1 := self multipleItemsSelection.
-	identifiers := {
-		GtRemotePhlowNodeIdentifier forListIndex: 1.
-		GtRemotePhlowNodeIdentifier forListIndex: 3.
-		GtRemotePhlowNodeIdentifier forListIndex: 5 }.
-	selection2 := GtPhlowListingViewMultipleListIndexSelection new
-		selectionIdentifiers: identifiers.
-	self assert: selection1 equals: selection2.
-	self assert: selection1 hash equals: selection2 hash.
-	^ selection1
-]
-
-{ #category : #examples }
-GtPhlowListingViewSelectionExamples >> multipleItemsSelectionForTree [
-	<gtExample>
-	<return: #GtPhlowListingViewMultipleTreeIndexSelection>
-	| selection identifiers |
-	identifiers := {
-		GtRemotePhlowNodeIdentifier forTreePath: #(1 2).
-		GtRemotePhlowNodeIdentifier forTreePath: #(3 4) }.
-	selection := GtPhlowListingViewMultipleTreeIndexSelection new
-		selectionIdentifiers: identifiers.
-	self assert: selection class equals: GtPhlowListingViewMultipleTreeIndexSelection.
-	self assert: selection selectionIdentifiers equals: identifiers.
-	self assert: selection printString equals: 'a GtPhlowListingViewMultipleTreeIndexSelection(#(1 2), #(3 4))'.
-	^ selection
-]
-
-{ #category : #examples }
-GtPhlowListingViewSelectionExamples >> multipleItemsSelectionFromFactoryForList [
-	<gtExample>
-	<return: #GtPhlowListingViewMultipleListIndexSelection>
-	| selection identifiers |
-	identifiers := {
-		GtRemotePhlowNodeIdentifier forListIndex: 1.
-		GtRemotePhlowNodeIdentifier forListIndex: 3 }.
-	selection := GtPhlowListingViewSelection forMultipleListIdentifiers: identifiers.
-	self assert: selection class equals: GtPhlowListingViewMultipleListIndexSelection.
-	self assert: selection selectionIdentifiers equals: identifiers.
-	^ selection
-]
-
-{ #category : #examples }
-GtPhlowListingViewSelectionExamples >> multipleItemsSelectionFromFactoryForTree [
-	<gtExample>
-	<return: #GtPhlowListingViewMultipleTreeIndexSelection>
-	| selection identifiers |
-	identifiers := {
-		GtRemotePhlowNodeIdentifier forTreePath: #(1 2).
-		GtRemotePhlowNodeIdentifier forTreePath: #(3 4) }.
-	selection := GtPhlowListingViewSelection forMultipleTreeIdentifiers: identifiers.
-	self assert: selection class equals: GtPhlowListingViewMultipleTreeIndexSelection.
-	self assert: selection selectionIdentifiers equals: identifiers.
-	^ selection
-]
-
-{ #category : #examples }
-GtPhlowListingViewSelectionExamples >> multipleItemsSelectionFromListIndexes [
-	<gtExample>
-	<return: #GtPhlowListingViewMultipleListIndexSelection>
-	| selection |
-	selection := GtPhlowListingViewSelection forMultipleListIndexes: #(1 3 5).
-	self assert: selection class equals: GtPhlowListingViewMultipleListIndexSelection.
-	self assert: selection selectionIdentifiers equals: {
-		GtRemotePhlowNodeIdentifier forListIndex: 1.
-		GtRemotePhlowNodeIdentifier forListIndex: 3.
-		GtRemotePhlowNodeIdentifier forListIndex: 5 }.
-	^ selection
-]
-
-{ #category : #examples }
-GtPhlowListingViewSelectionExamples >> multipleItemsSelectionFromTreePaths [
-	<gtExample>
-	<return: #GtPhlowListingViewMultipleTreeIndexSelection>
-	| selection |
-	selection := GtPhlowListingViewSelection forMultipleTreePaths: { #(1 2). #(3 4) }.
-	self assert: selection class equals: GtPhlowListingViewMultipleTreeIndexSelection.
-	self assert: selection selectionIdentifiers equals: {
-		GtRemotePhlowNodeIdentifier forTreePath: #(1 2).
-		GtRemotePhlowNodeIdentifier forTreePath: #(3 4) }.
+	<return: #GtPhlowListingViewListSelection>
+	| selection identifier |
+	identifier := GtRemotePhlowNodeIdentifier forListIndexes: #(1 3 5).
+	selection := GtPhlowListingViewListSelection new
+		nodeIdentifier: identifier.
+	self assert: selection class equals: GtPhlowListingViewListSelection.
+	self assert: selection nodeIdentifier equals: identifier.
+	self assert: selection printString equals: 'a GtPhlowListingViewListSelection(1, 3, 5)'.
+	self assert: selection description equals: '1, 3, 5'.
 	^ selection
 ]
 
 { #category : #'examples - serialization' }
-GtPhlowListingViewSelectionExamples >> multipleItemsSelectionJsonRoundtrip [
+GtPhlowListingViewSelectionExamples >> listSelectionCompositeSerialization [
 	<gtExample>
-	<return: #GtPhlowListingViewMultipleListIndexSelection>
-	| selection json dictionary deserialized |
-	selection := self multipleItemsSelection.
-	json := selection asJSONForExport.
-	dictionary := STONJSON fromString: json.
-	deserialized := GtPhlowDeclarativeSpecification fromDictionary: dictionary.
-	self assert: deserialized equals: selection.
-	^ deserialized
-]
-
-{ #category : #'examples - serialization' }
-GtPhlowListingViewSelectionExamples >> multipleItemsSelectionSerialization [
-	<gtExample>
-	<return: #GtPhlowListingViewMultipleListIndexSelection>
+	<return: #GtPhlowListingViewListSelection>
 	| selection dictionary deserialized expectedDictionary |
-	selection := self multipleItemsSelection.
+	selection := self listSelectionComposite.
 	dictionary := selection asDictionaryForExport.
 	expectedDictionary := Dictionary new
-		at: '__typeName' put: 'GtPhlowListingViewMultipleListIndexSelection';
-		at: 'selectionIdentifiers' put: {
-			Dictionary new at: '__typeName' put: 'GtRemotePhlowIndexNodeIdentifier'; at: 'nodeIndex' put: 1; yourself.
-			Dictionary new at: '__typeName' put: 'GtRemotePhlowIndexNodeIdentifier'; at: 'nodeIndex' put: 3; yourself.
-			Dictionary new at: '__typeName' put: 'GtRemotePhlowIndexNodeIdentifier'; at: 'nodeIndex' put: 5; yourself };
+		at: '__typeName' put: 'GtPhlowListingViewListSelection';
+		at: 'nodeIdentifier' put: (Dictionary new
+			at: '__typeName' put: 'GtRemotePhlowCompositeNodeIdentifier';
+			at: 'nodeIdentifiers' put: {
+				Dictionary new at: '__typeName' put: 'GtRemotePhlowIndexNodeIdentifier'; at: 'nodeIndex' put: 1; yourself.
+				Dictionary new at: '__typeName' put: 'GtRemotePhlowIndexNodeIdentifier'; at: 'nodeIndex' put: 3; yourself.
+				Dictionary new at: '__typeName' put: 'GtRemotePhlowIndexNodeIdentifier'; at: 'nodeIndex' put: 5; yourself };
+			yourself);
 		yourself.
 	self assert: dictionary equals: expectedDictionary.
 	deserialized := GtPhlowDeclarativeSpecification fromDictionary: dictionary.
@@ -142,121 +54,89 @@ GtPhlowListingViewSelectionExamples >> multipleItemsSelectionSerialization [
 	^ deserialized
 ]
 
-{ #category : #examples }
-GtPhlowListingViewSelectionExamples >> singleAndMultipleSelectionInequality [
+{ #category : #'examples - equality' }
+GtPhlowListingViewSelectionExamples >> listSelectionEquality [
 	<gtExample>
-	<return: #GtPhlowListingViewSingleItemSelection>
-	| single multiple |
-	single := self singleItemSelectionForList.
-	multiple := self multipleItemsSelection.
-	self assert: (single = multiple) not.
-	^ single
-]
-
-{ #category : #examples }
-GtPhlowListingViewSelectionExamples >> singleItemSelectionEquality [
-	<gtExample>
-	<return: #GtPhlowListingViewSingleListIndexSelection>
+	<return: #GtPhlowListingViewListSelection>
 	| selection1 selection2 |
-	selection1 := self singleItemSelectionForList.
-	selection2 := GtPhlowListingViewSingleListIndexSelection new
-		selectionIdentifier: (GtRemotePhlowNodeIdentifier forListIndex: 3).
+	selection1 := self listSelectionSingle.
+	selection2 := GtPhlowListingViewListSelection new
+		nodeIdentifier: (GtRemotePhlowNodeIdentifier forListIndex: 3).
 	self assert: selection1 equals: selection2.
 	self assert: selection1 hash equals: selection2 hash.
 	^ selection1
 ]
 
-{ #category : #examples }
-GtPhlowListingViewSelectionExamples >> singleItemSelectionForList [
+{ #category : #'examples - factory' }
+GtPhlowListingViewSelectionExamples >> listSelectionFromMultipleListIndexes [
 	<gtExample>
-	<return: #GtPhlowListingViewSingleListIndexSelection>
-	| selection identifier |
-	identifier := GtRemotePhlowNodeIdentifier forListIndex: 3.
-	selection := GtPhlowListingViewSingleListIndexSelection new
-		selectionIdentifier: identifier.
-	self assert: selection class equals: GtPhlowListingViewSingleListIndexSelection.
-	self assert: selection selectionIdentifier equals: identifier.
-	self assert: selection printString equals: 'a GtPhlowListingViewSingleListIndexSelection(3)'.
+	<return: #GtPhlowListingViewListSelection>
+	| selection |
+	selection := GtPhlowListingViewSelection forMultipleListIndexes: #(1 3 5).
+	self assert: selection class equals: GtPhlowListingViewListSelection.
+	self assert: selection nodeIdentifier class equals: GtRemotePhlowCompositeNodeIdentifier.
+	self assert: selection nodeIdentifier nodeIdentifiers size equals: 3.
 	^ selection
 ]
 
-{ #category : #examples }
-GtPhlowListingViewSelectionExamples >> singleItemSelectionForTree [
+{ #category : #'examples - factory' }
+GtPhlowListingViewSelectionExamples >> listSelectionFromSingleIdentifier [
 	<gtExample>
-	<return: #GtPhlowListingViewSingleTreeIndexSelection>
-	| selection identifier |
-	identifier := GtRemotePhlowNodeIdentifier forTreePath: #(1 2).
-	selection := GtPhlowListingViewSingleTreeIndexSelection new
-		selectionIdentifier: identifier.
-	self assert: selection class equals: GtPhlowListingViewSingleTreeIndexSelection.
-	self assert: selection selectionIdentifier equals: identifier.
-	self assert: selection printString equals: 'a GtPhlowListingViewSingleTreeIndexSelection(#(1 2))'.
-	^ selection
-]
-
-{ #category : #examples }
-GtPhlowListingViewSelectionExamples >> singleItemSelectionFromFactoryForList [
-	<gtExample>
-	<return: #GtPhlowListingViewSingleListIndexSelection>
-	| selection identifier |
+	<return: #GtPhlowListingViewListSelection>
+	| identifier selection |
 	identifier := GtRemotePhlowNodeIdentifier forListIndex: 3.
 	selection := GtPhlowListingViewSelection forSingleListIdentifier: identifier.
-	self assert: selection class equals: GtPhlowListingViewSingleListIndexSelection.
-	self assert: selection selectionIdentifier equals: identifier.
+	self assert: selection class equals: GtPhlowListingViewListSelection.
+	self assert: selection nodeIdentifier equals: identifier.
 	^ selection
 ]
 
-{ #category : #examples }
-GtPhlowListingViewSelectionExamples >> singleItemSelectionFromFactoryForTree [
+{ #category : #'examples - factory' }
+GtPhlowListingViewSelectionExamples >> listSelectionFromSingleListIndex [
 	<gtExample>
-	<return: #GtPhlowListingViewSingleTreeIndexSelection>
-	| selection identifier |
-	identifier := GtRemotePhlowNodeIdentifier forTreePath: #(1 2).
-	selection := GtPhlowListingViewSelection forSingleTreeIdentifier: identifier.
-	self assert: selection class equals: GtPhlowListingViewSingleTreeIndexSelection.
-	self assert: selection selectionIdentifier equals: identifier.
-	^ selection
-]
-
-{ #category : #examples }
-GtPhlowListingViewSelectionExamples >> singleItemSelectionFromListIndex [
-	<gtExample>
-	<return: #GtPhlowListingViewSingleListIndexSelection>
+	<return: #GtPhlowListingViewListSelection>
 	| selection |
 	selection := GtPhlowListingViewSelection forSingleListIndex: 3.
-	self assert: selection class equals: GtPhlowListingViewSingleListIndexSelection.
-	self assert: selection selectionIdentifier equals: (GtRemotePhlowNodeIdentifier forListIndex: 3).
+	self assert: selection class equals: GtPhlowListingViewListSelection.
+	self assert: selection nodeIdentifier class equals: GtRemotePhlowIndexNodeIdentifier.
+	self assert: selection nodeIdentifier nodeIndex equals: 3.
 	^ selection
 ]
 
-{ #category : #examples }
-GtPhlowListingViewSelectionExamples >> singleItemSelectionFromTreePath [
+{ #category : #'examples - equality' }
+GtPhlowListingViewSelectionExamples >> listSelectionInequality [
 	<gtExample>
-	<return: #GtPhlowListingViewSingleTreeIndexSelection>
-	| selection |
-	selection := GtPhlowListingViewSelection forSingleTreePath: #(1 2).
-	self assert: selection class equals: GtPhlowListingViewSingleTreeIndexSelection.
-	self assert: selection selectionIdentifier equals: (GtRemotePhlowNodeIdentifier forTreePath: #(1 2)).
-	^ selection
-]
-
-{ #category : #examples }
-GtPhlowListingViewSelectionExamples >> singleItemSelectionInequality [
-	<gtExample>
-	<return: #GtPhlowListingViewSingleListIndexSelection>
+	<return: #GtPhlowListingViewListSelection>
 	| selection1 selection2 |
-	selection1 := self singleItemSelectionForList.
-	selection2 := self singleItemSelectionForTree.
+	selection1 := self listSelectionSingle.
+	selection2 := GtPhlowListingViewListSelection new
+		nodeIdentifier: (GtRemotePhlowNodeIdentifier forListIndex: 7).
 	self assert: (selection1 = selection2) not.
 	^ selection1
 ]
 
-{ #category : #'examples - serialization' }
-GtPhlowListingViewSelectionExamples >> singleItemSelectionJsonRoundtrip [
+{ #category : #'examples - list' }
+GtPhlowListingViewSelectionExamples >> listSelectionSingle [
 	<gtExample>
-	<return: #GtPhlowListingViewSingleListIndexSelection>
+	<return: #GtPhlowListingViewListSelection>
+	| selection identifier |
+	identifier := GtRemotePhlowNodeIdentifier forListIndex: 3.
+	selection := GtPhlowListingViewListSelection new
+		nodeIdentifier: identifier.
+	self assert: selection class equals: GtPhlowListingViewListSelection.
+	self assert: selection nodeIdentifier equals: identifier.
+	self assert: selection selectionIndex isNil.
+	self assert: selection printString equals: 'a GtPhlowListingViewListSelection(3)'.
+	self assert: selection description equals: '3'.
+	^ selection
+]
+
+{ #category : #'examples - serialization' }
+GtPhlowListingViewSelectionExamples >> listSelectionSingleJsonRoundtrip [
+	<gtExample>
+	<return: #GtPhlowListingViewListSelection>
 	| selection json dictionary deserialized |
-	selection := self singleItemSelectionForList.
+	selection := self listSelectionSingle.
 	json := selection asJSONForExport.
 	dictionary := STONJSON fromString: json.
 	deserialized := GtPhlowDeclarativeSpecification fromDictionary: dictionary.
@@ -265,15 +145,15 @@ GtPhlowListingViewSelectionExamples >> singleItemSelectionJsonRoundtrip [
 ]
 
 { #category : #'examples - serialization' }
-GtPhlowListingViewSelectionExamples >> singleItemSelectionSerialization [
+GtPhlowListingViewSelectionExamples >> listSelectionSingleSerialization [
 	<gtExample>
-	<return: #GtPhlowListingViewSingleListIndexSelection>
+	<return: #GtPhlowListingViewListSelection>
 	| selection dictionary deserialized expectedDictionary |
-	selection := self singleItemSelectionForList.
+	selection := self listSelectionSingle.
 	dictionary := selection asDictionaryForExport.
 	expectedDictionary := Dictionary new
-		at: '__typeName' put: 'GtPhlowListingViewSingleListIndexSelection';
-		at: 'selectionIdentifier' put: (Dictionary new
+		at: '__typeName' put: 'GtPhlowListingViewListSelection';
+		at: 'nodeIdentifier' put: (Dictionary new
 			at: '__typeName' put: 'GtRemotePhlowIndexNodeIdentifier';
 			at: 'nodeIndex' put: 3;
 			yourself);
@@ -282,4 +162,216 @@ GtPhlowListingViewSelectionExamples >> singleItemSelectionSerialization [
 	deserialized := GtPhlowDeclarativeSpecification fromDictionary: dictionary.
 	self assert: deserialized equals: selection.
 	^ deserialized
+]
+
+{ #category : #'examples - selectionIndex' }
+GtPhlowListingViewSelectionExamples >> listSelectionWithSelectionIndex [
+	<gtExample>
+	<return: #GtPhlowListingViewListSelection>
+	| selection identifier |
+	identifier := GtRemotePhlowNodeIdentifier forListIndex: 3.
+	selection := GtPhlowListingViewListSelection new
+		nodeIdentifier: identifier;
+		selectionIndex: #(3).
+	self assert: selection nodeIdentifier equals: identifier.
+	self assert: selection selectionIndex equals: #(3).
+	self assert: selection printString equals: 'a GtPhlowListingViewListSelection(3 @ #(3))'.
+	^ selection
+]
+
+{ #category : #'examples - selectionIndex' }
+GtPhlowListingViewSelectionExamples >> selectionIndexEquality [
+	<gtExample>
+	<return: #GtPhlowListingViewListSelection>
+	| selection1 selection2 |
+	selection1 := self listSelectionWithSelectionIndex.
+	selection2 := GtPhlowListingViewListSelection new
+		nodeIdentifier: (GtRemotePhlowNodeIdentifier forListIndex: 3);
+		selectionIndex: #(3).
+	self assert: selection1 equals: selection2.
+	self assert: selection1 hash equals: selection2 hash.
+	^ selection1
+]
+
+{ #category : #'examples - selectionIndex' }
+GtPhlowListingViewSelectionExamples >> selectionIndexInequality [
+	<gtExample>
+	<return: #GtPhlowListingViewListSelection>
+	| selection1 selection2 |
+	selection1 := self listSelectionWithSelectionIndex.
+	selection2 := GtPhlowListingViewListSelection new
+		nodeIdentifier: (GtRemotePhlowNodeIdentifier forListIndex: 3);
+		selectionIndex: #(7).
+	self assert: (selection1 = selection2) not.
+	^ selection1
+]
+
+{ #category : #'examples - selectionIndex' }
+GtPhlowListingViewSelectionExamples >> selectionIndexJsonRoundtrip [
+	<gtExample>
+	<return: #GtPhlowListingViewListSelection>
+	| selection json dictionary deserialized |
+	selection := self listSelectionWithSelectionIndex.
+	json := selection asJSONForExport.
+	dictionary := STONJSON fromString: json.
+	deserialized := GtPhlowDeclarativeSpecification fromDictionary: dictionary.
+	self assert: deserialized equals: selection.
+	^ deserialized
+]
+
+{ #category : #'examples - selectionIndex' }
+GtPhlowListingViewSelectionExamples >> selectionIndexSerialization [
+	<gtExample>
+	<return: #GtPhlowListingViewListSelection>
+	| selection dictionary deserialized expectedDictionary |
+	selection := self listSelectionWithSelectionIndex.
+	dictionary := selection asDictionaryForExport.
+	expectedDictionary := Dictionary new
+		at: '__typeName' put: 'GtPhlowListingViewListSelection';
+		at: 'nodeIdentifier' put: (Dictionary new
+			at: '__typeName' put: 'GtRemotePhlowIndexNodeIdentifier';
+			at: 'nodeIndex' put: 3;
+			yourself);
+		at: 'selectionIndex' put: #(3);
+		yourself.
+	self assert: dictionary equals: expectedDictionary.
+	deserialized := GtPhlowDeclarativeSpecification fromDictionary: dictionary.
+	self assert: deserialized equals: selection.
+	^ deserialized
+]
+
+{ #category : #'examples - selectionIndex' }
+GtPhlowListingViewSelectionExamples >> selectionWithoutIndexNotEqualToSelectionWithIndex [
+	<gtExample>
+	<return: #GtPhlowListingViewListSelection>
+	| withoutIndex withIndex |
+	withoutIndex := self listSelectionSingle.
+	withIndex := self listSelectionWithSelectionIndex.
+	self assert: (withoutIndex = withIndex) not.
+	^ withoutIndex
+]
+
+{ #category : #'examples - equality' }
+GtPhlowListingViewSelectionExamples >> singleAndCompositeListSelectionInequality [
+	<gtExample>
+	<return: #GtPhlowListingViewListSelection>
+	| single composite |
+	single := self listSelectionSingle.
+	composite := self listSelectionComposite.
+	self assert: (single = composite) not.
+	^ single
+]
+
+{ #category : #'examples - tree' }
+GtPhlowListingViewSelectionExamples >> treeSelectionComposite [
+	<gtExample>
+	<return: #GtPhlowListingViewTreeSelection>
+	| selection identifier |
+	identifier := GtRemotePhlowNodeIdentifier forTreePaths: { #(1 2). #(3 4) }.
+	selection := GtPhlowListingViewTreeSelection new
+		nodeIdentifier: identifier.
+	self assert: selection class equals: GtPhlowListingViewTreeSelection.
+	self assert: selection nodeIdentifier equals: identifier.
+	self assert: selection printString equals: 'a GtPhlowListingViewTreeSelection(#(1 2), #(3 4))'.
+	^ selection
+]
+
+{ #category : #'examples - serialization' }
+GtPhlowListingViewSelectionExamples >> treeSelectionCompositeJsonRoundtrip [
+	<gtExample>
+	<return: #GtPhlowListingViewTreeSelection>
+	| selection json dictionary deserialized |
+	selection := self treeSelectionComposite.
+	json := selection asJSONForExport.
+	dictionary := STONJSON fromString: json.
+	deserialized := GtPhlowDeclarativeSpecification fromDictionary: dictionary.
+	self assert: deserialized equals: selection.
+	^ deserialized
+]
+
+{ #category : #'examples - factory' }
+GtPhlowListingViewSelectionExamples >> treeSelectionFromMultipleTreePaths [
+	<gtExample>
+	<return: #GtPhlowListingViewTreeSelection>
+	| selection |
+	selection := GtPhlowListingViewSelection forMultipleTreePaths: { #(1 2). #(3 4) }.
+	self assert: selection class equals: GtPhlowListingViewTreeSelection.
+	self assert: selection nodeIdentifier class equals: GtRemotePhlowCompositeNodeIdentifier.
+	self assert: selection nodeIdentifier nodeIdentifiers size equals: 2.
+	^ selection
+]
+
+{ #category : #'examples - factory' }
+GtPhlowListingViewSelectionExamples >> treeSelectionFromSingleIdentifier [
+	<gtExample>
+	<return: #GtPhlowListingViewTreeSelection>
+	| identifier selection |
+	identifier := GtRemotePhlowNodeIdentifier forTreePath: #(1 2).
+	selection := GtPhlowListingViewSelection forSingleTreeIdentifier: identifier.
+	self assert: selection class equals: GtPhlowListingViewTreeSelection.
+	self assert: selection nodeIdentifier equals: identifier.
+	^ selection
+]
+
+{ #category : #'examples - factory' }
+GtPhlowListingViewSelectionExamples >> treeSelectionFromSingleTreePath [
+	<gtExample>
+	<return: #GtPhlowListingViewTreeSelection>
+	| selection |
+	selection := GtPhlowListingViewSelection forSingleTreePath: #(1 2).
+	self assert: selection class equals: GtPhlowListingViewTreeSelection.
+	self assert: selection nodeIdentifier class equals: GtRemotePhlowPathNodeIdentifier.
+	self assert: selection nodeIdentifier nodeIndexPath equals: #(1 2).
+	^ selection
+]
+
+{ #category : #'examples - tree' }
+GtPhlowListingViewSelectionExamples >> treeSelectionSingle [
+	<gtExample>
+	<return: #GtPhlowListingViewTreeSelection>
+	| selection identifier |
+	identifier := GtRemotePhlowNodeIdentifier forTreePath: #(1 2).
+	selection := GtPhlowListingViewTreeSelection new
+		nodeIdentifier: identifier.
+	self assert: selection class equals: GtPhlowListingViewTreeSelection.
+	self assert: selection nodeIdentifier equals: identifier.
+	self assert: selection selectionIndex isNil.
+	self assert: selection printString equals: 'a GtPhlowListingViewTreeSelection(#(1 2))'.
+	self assert: selection description equals: '#(1 2)'.
+	^ selection
+]
+
+{ #category : #'examples - serialization' }
+GtPhlowListingViewSelectionExamples >> treeSelectionSingleSerialization [
+	<gtExample>
+	<return: #GtPhlowListingViewTreeSelection>
+	| selection dictionary deserialized expectedDictionary |
+	selection := self treeSelectionSingle.
+	dictionary := selection asDictionaryForExport.
+	expectedDictionary := Dictionary new
+		at: '__typeName' put: 'GtPhlowListingViewTreeSelection';
+		at: 'nodeIdentifier' put: (Dictionary new
+			at: '__typeName' put: 'GtRemotePhlowPathNodeIdentifier';
+			at: 'nodeIndexPath' put: #(1 2);
+			yourself);
+		yourself.
+	self assert: dictionary equals: expectedDictionary.
+	deserialized := GtPhlowDeclarativeSpecification fromDictionary: dictionary.
+	self assert: deserialized equals: selection.
+	^ deserialized
+]
+
+{ #category : #'examples - selectionIndex' }
+GtPhlowListingViewSelectionExamples >> treeSelectionWithSelectionIndex [
+	<gtExample>
+	<return: #GtPhlowListingViewTreeSelection>
+	| selection identifier |
+	identifier := GtRemotePhlowNodeIdentifier forTreePath: #(1 2).
+	selection := GtPhlowListingViewTreeSelection new
+		nodeIdentifier: identifier;
+		selectionIndex: #(5).
+	self assert: selection nodeIdentifier equals: identifier.
+	self assert: selection selectionIndex equals: #(5).
+	self assert: selection printString equals: 'a GtPhlowListingViewTreeSelection(#(1 2) @ #(5))'.
+	^ selection
 ]

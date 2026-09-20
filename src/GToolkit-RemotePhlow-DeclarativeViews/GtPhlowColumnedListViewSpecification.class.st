@@ -41,8 +41,8 @@ GtPhlowColumnedListViewSpecification >> asBasicViewDataForExport [
 ]
 
 { #category : #accessing }
-GtPhlowColumnedListViewSpecification >> createMultipleSelectionForSelectionIndex: aSelectionIndex [
-	^ GtPhlowListingViewSelection forMultipleListIndexes:aSelectionIndex.
+GtPhlowColumnedListViewSpecification >> createViewSelection [
+	^ GtPhlowListingViewListSelection new
 ]
 
 { #category : #accessing }

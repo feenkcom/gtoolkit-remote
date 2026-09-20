@@ -24,9 +24,12 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithBasicContextActi
 		contextItemLabel: 'Inspect element' action: [ :anElement |
 				anElement phlow spawnObject: anElement ];
 		contextItemLabel: 'Inspect object' action: [ :anElement :anObject |
+				
 				anElement phlow spawnObject: anObject ];
-		contextItemLabel: 'Inspect index' action: [ :anElement :anObject :anIndex |
-				anElement phlow spawnObject: anIndex ];
+		contextItemLabel: 'Inspect selection index' action: [ :anElement :anObject :aSelection |
+				anElement phlow spawnObject: aSelection ];
+		contextItemLabel: 'Inspect parameters' action: [ :anElement :anObject :anIndex |
+				anElement phlow spawnObject: {anElement . anObject . anIndex} ];
 		send: [ :anObject :aSelection | {anObject . aSelection} ]
 ]
 
@@ -44,8 +47,10 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithBasicContextActi
 				anElement phlow spawnObject: anElement ];
 		contextItemLabel: 'Inspect object' action: [ :anElement :anObject |
 				anElement phlow spawnObject: anObject ];
-		contextItemLabel: 'Inspect index' action: [ :anElement :anObject :anIndex |
+		contextItemLabel: 'Inspect selection index' action: [ :anElement :anObject :anIndex |
 				anElement phlow spawnObject: anIndex ];
+		contextItemLabel: 'Inspect parameters' action: [ :anElement :anObject :anIndex |
+				anElement phlow spawnObject: {anElement . anObject . anIndex} ];
 		send: [ :anObject :aSelection |  {anObject . aSelection} ]
 ]
 
@@ -60,7 +65,8 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithDynamicActionsMu
 		itemText: [ :anObject :anIndex | anObject printString, '; index: ', anIndex printString ];
 		withMultipleSelection;
 		dynamicContextItems: [ :anElement :anObject :anIndex |
-			{'Action' -> [ :a :b |] } ]
+			{'Action' -> [ :a :b |] } ];
+		send: [ :anObject :aSelection |  {anObject . aSelection} ]
 ]
 
 { #category : #views }
@@ -103,12 +109,14 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtTreeWithBasicContextActi
 				ifFalse: [
 					aNumber // 2 to: (aNumber - 1) ] ];
 		itemText: [ :x :anIndex | x asString, ' number; index: ', anIndex  asString];
-		contextItemLabel: 'Inspect first object' 
-			action: [ :anElement :anObject |
+		contextItemLabel: 'Inspect element' action: [ :anElement |
+				anElement phlow spawnObject: anElement ];
+		contextItemLabel: 'Inspect object' action: [ :anElement :anObject |
 				anElement phlow spawnObject: anObject ];
-		contextItemLabel: 'Inspect first index' 
-			action: [ :anElement :anObject |
-				anElement phlow spawnObject: 'TODO' ];
+		contextItemLabel: 'Inspect selection index' action: [ :anElement :anObject :aSelection |
+				anElement phlow spawnObject: aSelection ];
+		contextItemLabel: 'Inspect parameters' action: [ :anElement :anObject :anIndex |
+				anElement phlow spawnObject: {anElement . anObject . anIndex} ];
 		send: [ :anObject :aSelection |
 			{anObject . aSelection} ]
 ]
@@ -128,12 +136,14 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtTreeWithBasicContextActi
 					aNumber // 2 to: (aNumber - 1) ] ];
 		itemText: [ :x :anIndex | x asString, ' number; index: ', anIndex  asString];
 		withMultipleSelection;
-		contextItemLabel: 'Inspect first object' 
-			action: [ :anElement :anObject |
+		contextItemLabel: 'Inspect element' action: [ :anElement |
+				anElement phlow spawnObject: anElement ];
+		contextItemLabel: 'Inspect object' action: [ :anElement :anObject |
 				anElement phlow spawnObject: anObject ];
-		contextItemLabel: 'Inspect first index' 
-			action: [ :anElement :anObject |
-				anElement phlow spawnObject: 'TODO' ];
+		contextItemLabel: 'Inspect selection index' action: [ :anElement :anObject :aSelection |
+				anElement phlow spawnObject: aSelection ];
+		contextItemLabel: 'Inspect parameters' action: [ :anElement :anObject :anIndex |
+				anElement phlow spawnObject: {anElement . anObject . anIndex} ];
 		send: [ :anObject :aSelection |
 			{anObject . aSelection} ]
 ]

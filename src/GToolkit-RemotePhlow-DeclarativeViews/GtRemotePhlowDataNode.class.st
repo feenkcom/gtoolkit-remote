@@ -47,6 +47,12 @@ GtRemotePhlowDataNode >> asDictionaryForExport [
 	^ data
 ]
 
+{ #category : #accessing }
+GtRemotePhlowDataNode >> createNodeIdentifier [
+	^ GtRemotePhlowIndexNodeIdentifier new
+			nodeIndex: self nodeId
+]
+
 { #category : #comparing }
 GtRemotePhlowDataNode >> matchesNodeContentWith: aNode [
 	self class = aNode class ifFalse: [ ^ false].

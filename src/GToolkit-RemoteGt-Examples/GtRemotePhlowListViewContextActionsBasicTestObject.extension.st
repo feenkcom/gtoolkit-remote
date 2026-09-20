@@ -23,5 +23,6 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithDynamicActionsFo
 					label: 'Inspect index';
 					action: [ :currentElement |
 						currentElement phlow spawnObject: anIndex ] 
-			} ]
+			} ];
+	send: [ :anObject :aSelection |  {anObject . aSelection} ]
 ]

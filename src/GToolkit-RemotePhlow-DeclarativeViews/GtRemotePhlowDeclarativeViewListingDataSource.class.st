@@ -10,6 +10,13 @@ Class {
 }
 
 { #category : #'api - data retrival' }
+GtRemotePhlowDeclarativeViewListingDataSource >> bareRetrieveSentItemAtPhlowSelectionData: aPhlowSelectionData [
+	| phlowSelection |
+	phlowSelection := GtPhlowListingViewSelection fromDictionary: aPhlowSelectionData.
+	^ self retrieveSentItemAtPhlowSelection: phlowSelection
+]
+
+{ #category : #'api - data retrival' }
 GtRemotePhlowDeclarativeViewListingDataSource >> bareRetriveContextActionSpecificationsForPhlowSelectionData: aPhlowSelectionData [
 	| phlowSelection |
 	phlowSelection := GtPhlowListingViewSelection fromDictionary: aPhlowSelectionData.
@@ -149,25 +156,46 @@ GtRemotePhlowDeclarativeViewListingDataSource >> retrieveSentItemAt: aSelectionI
 ]
 
 { #category : #'api - data retrival' }
+GtRemotePhlowDeclarativeViewListingDataSource >> retrieveSentItemAtPhlowSelection: aPhlowSelection [ 
+	| targetNodes targetObjects |
+	
+	targetNodes := OrderedCollection new.
+	self withNodesInPhlowSelection: aPhlowSelection do: [ :aNode |
+		targetNodes add: aNode ].
+	targetNodes ifEmpty: [ ^ nil ].
+	
+	targetObjects := targetNodes collect: [ :aNode | aNode targetObject ].
+	
+	^ self phlowView transformation 
+			transformedValueFrom: ((targetObjects size > 1)
+				ifTrue: [ Array withAll: targetObjects ]
+				ifFalse: [ targetObjects first ])
+			selection: (aPhlowSelection selectionIndex) 
+]
+
+{ #category : #'api - data retrival' }
 GtRemotePhlowDeclarativeViewListingDataSource >> retrieveTotalItemsCount [
 	^ self itemsIterator totalItemsCount
 ]
 
 { #category : #'api - data retrival' }
-GtRemotePhlowDeclarativeViewListingDataSource >> retriveContextActionSpecificationsForPhlowSelection: aListSelection [
-	"Answer the raw value at the supplied index"
+GtRemotePhlowDeclarativeViewListingDataSource >> retriveContextActionSpecificationsForPhlowSelection: aPhlowSelection [
+	| targetNodes targetObjects |
 	
-	self  
-		forNodesFrom: aListSelection selectionIdentifier nodeIndex
-		to: aListSelection selectionIdentifier nodeIndex 
-		withIndexDo: [ :aNode :anItemIndex |
-			^ (self phlowView 	
-					collectIndividualContextMenuActionsForElement: nil 
-					item: aNode targetObject 
-					index: anItemIndex) collect: [ :anAction |
-						anAction asGtDeclarativeAction ] ].
+	targetNodes := OrderedCollection new.
+	self withNodesInPhlowSelection: aPhlowSelection do: [ :aNode |
+		targetNodes add: aNode ].
+	targetNodes ifEmpty: [ ^ nil ].
 	
-	^ nil
+	targetObjects := targetNodes collect: [ :aNode | aNode targetObject ].
+	
+	^ (self phlowView 	
+			collectIndividualContextMenuActionsForElement: nil 
+			item: ((targetObjects size > 1)
+				ifTrue: [ Array withAll: targetObjects ]
+				ifFalse: [ targetObjects first ])
+			index: (aPhlowSelection selectionIndex)) collect: [ :anAction |
+				anAction asGtDeclarativeAction ].
 ]
 
 { #category : #'api - data retrival' }
@@ -184,38 +212,6 @@ GtRemotePhlowDeclarativeViewListingDataSource >> retriveSentItemAt: aSelectionIn
 	^ nil
 ]
 
-{ #category : #'api - data retrival' }
-GtRemotePhlowDeclarativeViewListingDataSource >> retriveSentItemAtPath: aNodePath forPhlowSelection: aPhlowSelection [
-	| targetNodes |
-	targetNodes := OrderedCollection new.
-	self withNodesInPhlowSelection: aPhlowSelection do: [ :aNode |
-		targetNodes add: aNode ].
-	targetNodes ifEmpty: [ ^ nil ].
-	
-	^ self phlowView transformation 
-			transformedValueFrom: (aPhlowSelection isMultipleSelection
-				ifTrue: [ targetNodes]
-				ifFalse: [ targetNodes first ])
-			selection: (aPhlowSelection selectionIndexesForSendComputation) 
-]
-
-{ #category : #'api - data retrival' }
-GtRemotePhlowDeclarativeViewListingDataSource >> retriveSentItemAtPath: aNodePath forPhlowSelection: aPhlowSelection indexSelection: anIndexSelection [
-	| targetNodes targetObjects |
-	targetNodes := OrderedCollection new.
-	self withNodesInPhlowSelection: aPhlowSelection do: [ :aNode |
-		targetNodes add: aNode ].
-	targetNodes ifEmpty: [ ^ nil ].
-	
-	targetObjects := targetNodes collect: [ :aNode | aNode targetObject ].
-	
-	^ self phlowView transformation 
-			transformedValueFrom: ((targetObjects size > 1)
-				ifTrue: [ targetObjects]
-				ifFalse: [ targetObjects first ])
-			selection: (anIndexSelection"aPhlowSelection selectionIndexesForSendComputation") 
-]
-
 { #category : #accessing }
 GtRemotePhlowDeclarativeViewListingDataSource >> valueBuilder [
 	^ cachedValueBuilder ifNil: [
@@ -224,11 +220,21 @@ GtRemotePhlowDeclarativeViewListingDataSource >> valueBuilder [
 ]
 
 { #category : #'api - data retrival' }
+GtRemotePhlowDeclarativeViewListingDataSource >> withNodeAtAtPath: aNodePath ifPresent: aPresentBlock ifAbsent: anAbsentBlock [
+	self 
+		forNodesFrom: aNodePath first 
+		to: aNodePath first 
+		withIndexDo: [ :aNode :aSelectionIndex |
+			^ aPresentBlock cull: aNode cull: aSelectionIndex ].
+	^ anAbsentBlock value
+]
+
+{ #category : #'api - data retrival' }
 GtRemotePhlowDeclarativeViewListingDataSource >> withNodesInPhlowSelection: aPhlowSelection do: aBlock [
 	aPhlowSelection nodeIdentifiersDo: [ :aNodeIdentifier |
-		self  
-			forNodesFrom: aNodeIdentifier nodeIndex
-			to: aNodeIdentifier nodeIndex 
-			withIndexDo: [ :aNode :anNodeIndex |
-				aBlock cull: aNode cull: anNodeIndex ] ].
+		self 
+			withNodeAtAtPath: aNodeIdentifier nodeIndexPath 
+			ifPresent: [ :targetNode :aSelectionIndex |
+				aBlock cull: targetNode cull: aSelectionIndex ]  
+			ifAbsent: [  ]. ].
 ]

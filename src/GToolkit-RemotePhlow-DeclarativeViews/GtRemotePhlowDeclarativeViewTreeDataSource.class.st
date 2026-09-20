@@ -94,7 +94,17 @@ GtRemotePhlowDeclarativeViewTreeDataSource >> retrieveChildrenForNodeAtPath: aNo
 
 { #category : #'api - data retrival' }
 GtRemotePhlowDeclarativeViewTreeDataSource >> retrieveSentItemAtPath: aNodePath [
-	self 
+	^ self 
+		withNodeAtAtPath: aNodePath 
+		ifPresent: [ :targetNode :aSelectionIndex |
+			| targetObject |
+			targetObject := targetNode targetObject.
+			self phlowView transformation 
+				transformedValueFrom: targetObject
+				selection: (Array with: aSelectionIndex) ]  
+		ifAbsent: [ nil ].
+	
+	"self 
 		forNodesFrom: aNodePath first 
 		to: aNodePath first 
 		withIndexDo: [ :aNode :aSelectionIndex |
@@ -106,22 +116,32 @@ GtRemotePhlowDeclarativeViewTreeDataSource >> retrieveSentItemAtPath: aNodePath 
 			^ self phlowView transformation 
 				transformedValueFrom: targetObject
 				selection: aSelectionIndex ].
-	^ nil
+	^ nil"
 ]
 
 { #category : #'api - data retrival' }
 GtRemotePhlowDeclarativeViewTreeDataSource >> retriveSentItemAtPath: aNodePath [
+	^ self 
+		withNodeAtAtPath: aNodePath 
+		ifPresent: [ :targetNode :aSelectionIndex |
+			| targetObject |
+			targetObject := targetNode targetObject.
+			self phlowView transformation 
+				transformedValueFrom: targetObject
+				selection: (Array with: aSelectionIndex) ]  
+		ifAbsent: [ nil ].
+]
+
+{ #category : #'api - data retrival' }
+GtRemotePhlowDeclarativeViewTreeDataSource >> withNodeAtAtPath: aNodePath ifPresent: aPresentBlock ifAbsent: anAbsentBlock [
 	self 
 		forNodesFrom: aNodePath first 
 		to: aNodePath first 
 		withIndexDo: [ :aNode :aSelectionIndex |
-			| targetNode targetObject |
+			| targetNode |
 			targetNode := self 
 				locateNode: aNode 
 				atPath: aNodePath allButFirst.
-			targetObject := targetNode targetObject.
-			^ self phlowView transformation 
-				transformedValueFrom: targetObject
-				selection: aSelectionIndex ].
-	^ nil
+			^ aPresentBlock cull: targetNode cull: aSelectionIndex ].
+	^ anAbsentBlock value
 ]

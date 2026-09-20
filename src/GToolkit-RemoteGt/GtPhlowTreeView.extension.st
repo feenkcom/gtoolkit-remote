@@ -12,7 +12,11 @@ GtPhlowTreeView >> asGtDeclarativeView [
 			expander: declarativeExpander);
 		expander: declarativeExpander;
 		dataTransport: GtPhlowViewSpecification dataLazy.
+		
 	self configureGenericViewSpecificationOn: viewSpecification.
+	
+	viewSpecification hasMultipleSelection: self hasMultipleSelection.
+	viewSpecification hasContextActionSpecifications: self contextMenuActions notEmpty.
 	
 	^ viewSpecification
 ]
