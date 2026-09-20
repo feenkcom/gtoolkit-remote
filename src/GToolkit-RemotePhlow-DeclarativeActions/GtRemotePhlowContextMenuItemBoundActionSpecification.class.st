@@ -69,10 +69,3 @@ GtRemotePhlowContextMenuItemBoundActionSpecification >> label [
 GtRemotePhlowContextMenuItemBoundActionSpecification >> label: aString [
 	label := aString
 ]
-
-{ #category : #actions }
-GtRemotePhlowContextMenuItemBoundActionSpecification >> menuActionFor: anAction element: anElement [
-	| localAction |
-	localAction := self actionFor: anAction.
-	^ localAction asMenuItemWithHostElement: anElement
-]

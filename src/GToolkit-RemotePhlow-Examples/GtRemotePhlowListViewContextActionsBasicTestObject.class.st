@@ -19,18 +19,19 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithBasicContextActi
 	^aView list
 		title: 'Basic actions';
 		priority: 15;
-		items: [ collectionOfObjects ];
-		itemText: [ :anObject :anIndex | anObject printString, '; index: ', anIndex printString ];
+		items: [ 10 to: 15 ];
+		itemText: [ :anObject :aSelectionIndex | 
+			'value: ', anObject printString, '; index: ', aSelectionIndex printString ];
 		contextItemLabel: 'Inspect element' action: [ :anElement |
 				anElement phlow spawnObject: anElement ];
 		contextItemLabel: 'Inspect object' action: [ :anElement :anObject |
 				
 				anElement phlow spawnObject: anObject ];
-		contextItemLabel: 'Inspect selection index' action: [ :anElement :anObject :aSelection |
-				anElement phlow spawnObject: aSelection ];
-		contextItemLabel: 'Inspect parameters' action: [ :anElement :anObject :anIndex |
-				anElement phlow spawnObject: {anElement . anObject . anIndex} ];
-		send: [ :anObject :aSelection | {anObject . aSelection} ]
+		contextItemLabel: 'Inspect selection index' action: [ :anElement :anObject :aSelectionIndex |
+				anElement phlow spawnObject: aSelectionIndex ];
+		contextItemLabel: 'Inspect parameters' action: [ :anElement :anObject :aSelectionIndex |
+				anElement phlow spawnObject: {anElement . anObject . aSelectionIndex} ];
+		send: [ :anObject :aSelectionIndex | {anObject . aSelectionIndex} ]
 ]
 
 { #category : #views }
@@ -38,35 +39,58 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithBasicContextActi
 	<gtView>
 
 	^aView list
-		title: 'Basic Multiple Selection';
+		title: 'Basic - multiple selection';
 		priority:15.1;
-		items: [ collectionOfObjects ];
-		itemText: [ :anObject :anIndex | anObject printString, '; index: ', anIndex printString ];
+		items: [ 10 to: 15 ];
+		itemText: [ :anObject :aSelectionIndex | 
+			'value: ', anObject printString, '; index: ', aSelectionIndex printString ];
 		withMultipleSelection;
 		contextItemLabel: 'Inspect element' action: [ :anElement |
 				anElement phlow spawnObject: anElement ];
 		contextItemLabel: 'Inspect object' action: [ :anElement :anObject |
 				anElement phlow spawnObject: anObject ];
-		contextItemLabel: 'Inspect selection index' action: [ :anElement :anObject :anIndex |
-				anElement phlow spawnObject: anIndex ];
-		contextItemLabel: 'Inspect parameters' action: [ :anElement :anObject :anIndex |
-				anElement phlow spawnObject: {anElement . anObject . anIndex} ];
-		send: [ :anObject :aSelection |  {anObject . aSelection} ]
+		contextItemLabel: 'Inspect selection index' action: [ :anElement :anObject :aSelectionIndex |
+				anElement phlow spawnObject: aSelectionIndex ];
+		contextItemLabel: 'Inspect parameters' action: [ :anElement :anObject :aSelectionIndex |
+				anElement phlow spawnObject: {anElement . anObject . aSelectionIndex} ];
+		send: [ :anObject :aSelectionIndex |  {anObject . aSelectionIndex} ]
 ]
 
 { #category : #views }
-GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithDynamicActionsMultipleSelectinFor: aView [
+GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithDynamicContextPhlowActionsFor: aView [
 	<gtView>
 
 	^aView list
-		title: 'Dynamic actions - Multiple Selection';
-		priority: 17.2;
-		items: [ collectionOfObjects ];
-		itemText: [ :anObject :anIndex | anObject printString, '; index: ', anIndex printString ];
-		withMultipleSelection;
-		dynamicContextItems: [ :anElement :anObject :anIndex |
-			{'Action' -> [ :a :b |] } ];
-		send: [ :anObject :aSelection |  {anObject . aSelection} ]
+		title: 'Dynamic context phlow';
+		priority: 19.2;
+		items: [ 10 to: 15 ];
+		itemText: [ :anObject :aSelectionIndex | 
+			'value: ', anObject printString, '; index: ', aSelectionIndex printString ];
+		dynamicPhlowContextItems: [ :anAction :anElement :anObject :aSelectionIndex |
+			{
+				anAction contextMenuAction
+					label: 'Inspect element';
+					action: [ :currentElement |
+						currentElement phlow spawnObject: currentElement ].
+				anAction contextMenuAction
+					label: 'Inspect object';
+					action: [ :currentElement :currentObject |
+						currentElement phlow spawnObject: currentObject ].
+				anAction contextMenuAction
+					label: 'Inspect selection index';
+					action: [ :currentElement :currentObject :currentIndex |
+						currentElement phlow spawnObject: currentIndex ].
+				anAction contextMenuAction
+					label: 'Inspect parameters';
+					action: [ :currentElement :currentObject :currentIndex |
+						currentElement phlow spawnObject: {
+							currentElement . currentObject . currentIndex } ].
+				anAction contextMenuAction
+					label: 'Inspect outer parameters';
+					action: [ :currentElement |
+						currentElement phlow spawnObject: {anAction. anElement . anObject . aSelectionIndex} ] 
+			} ];
+		send: [ :anObject :aSelectionIndex | {anObject . aSelectionIndex} ]
 ]
 
 { #category : #views }
@@ -74,25 +98,36 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithDynamicPhlowActi
 	<gtView>
 
 	^aView list
-		title: 'Dynamic phlow actions';
+		title: 'Dynamic action phlow';
 		priority: 18.2;
-		items: [ collectionOfObjects ];
-		itemText: [ :anObject :anIndex | anObject printString, '; index: ', anIndex printString ];
-		dynamicPhlowContextItems: [ :anAction :anElement :anObject :anIndex |
+		items: [ 10 to: 15 ];
+		itemText: [ :anObject :aSelectionIndex | 
+			'value: ', anObject printString, '; index: ', aSelectionIndex printString ];
+		dynamicPhlowContextItems: [ :anAction :anElement :anObject :aSelectionIndex |
 			{
 				anAction button
 					label: 'Inspect element';
 					action: [ :currentElement |
-						currentElement phlow spawnObject: anElement ].
+						currentElement phlow spawnObject: currentElement ].
 				anAction button
 					label: 'Inspect object';
 					action: [ :currentElement |
 						currentElement phlow spawnObject: anObject ].
 				anAction button
-					label: 'Inspect index';
+					label: 'Inspect selection index';
 					action: [ :currentElement |
-						currentElement phlow spawnObject: anIndex ] 
-			} ]
+						currentElement phlow spawnObject: aSelectionIndex ].
+				anAction button
+					label: 'Inspect parameters';
+					action: [ :currentElement |
+						currentElement phlow spawnObject: {
+							currentElement . anObject . aSelectionIndex} ].
+				anAction button
+					label: 'Inspect outer parameters';
+					action: [ :currentElement |
+						currentElement phlow spawnObject: {anElement . anObject . aSelectionIndex} ] 
+			} ];
+		send: [ :anObject :aSelectionIndex | {anObject . aSelectionIndex} ]
 ]
 
 { #category : #views }
@@ -102,13 +137,15 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtTreeWithBasicContextActi
 	^aView tree
 		title: 'Tree - Basic actions';
 		priority: 30;
-		items: [ 1 to: 5 ];
+		items: [ 10 to: 15 ];
 		children: [ :aNumber | 
-			(aNumber // 2 = aNumber)
+			| targetNumber|
+			targetNumber := aNumber \\ 10.
+			(targetNumber // 2 = targetNumber)
 				ifTrue: [ #() ] 
 				ifFalse: [
-					aNumber // 2 to: (aNumber - 1) ] ];
-		itemText: [ :x :anIndex | x asString, ' number; index: ', anIndex  asString];
+					targetNumber // 2 to: (targetNumber - 1) ] ];
+		itemText: [ :x :anIndex | 'value: ', x asString, '; index: ', anIndex  asString];
 		contextItemLabel: 'Inspect element' action: [ :anElement |
 				anElement phlow spawnObject: anElement ];
 		contextItemLabel: 'Inspect object' action: [ :anElement :anObject |
@@ -128,12 +165,14 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtTreeWithBasicContextActi
 	^aView tree
 		title: 'Tree - Multiple Selection';
 		priority: 35;
-		items: [ 1 to: 5 ];
+		items: [ 10 to: 15 ];
 		children: [ :aNumber | 
-			(aNumber // 2 = aNumber)
+			| targetNumber|
+			targetNumber := aNumber \\ 10.
+			(targetNumber // 2 = targetNumber)
 				ifTrue: [ #() ] 
 				ifFalse: [
-					aNumber // 2 to: (aNumber - 1) ] ];
+					targetNumber // 2 to: (targetNumber - 1) ] ];
 		itemText: [ :x :anIndex | x asString, ' number; index: ', anIndex  asString];
 		withMultipleSelection;
 		contextItemLabel: 'Inspect element' action: [ :anElement |
