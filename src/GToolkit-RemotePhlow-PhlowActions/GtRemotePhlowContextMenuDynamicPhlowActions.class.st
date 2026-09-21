@@ -26,12 +26,11 @@ GtRemotePhlowContextMenuDynamicPhlowActions >> actionsComputation [
 ]
 
 { #category : #accessing }
-GtRemotePhlowContextMenuDynamicPhlowActions >> collectInvidualActionsOn: aCollection forElement: anElement item: anObject index: anIndex [
-	aCollection addAll: (self actionsComputation 
-		cull: GtRemotePhlowAction noAction
-		cull: anElement 
-		cull: anObject 
-		cull: anIndex )
+GtRemotePhlowContextMenuDynamicPhlowActions >> collectInvidualActionsOn: aCollection forElement: anElement item: anObject index: aSelectionIndex [
+	| collectedActions |
+	collectedActions := self toActionOn: anObject index: aSelectionIndex element: anElement.
+	aCollection addAll: (collectedActions select: [ :anAction | 
+			anAction shouldShowContextActionOn: anObject index: aSelectionIndex ])
 ]
 
 { #category : #accessing }
@@ -42,4 +41,13 @@ GtRemotePhlowContextMenuDynamicPhlowActions >> label [
 { #category : #accessing }
 GtRemotePhlowContextMenuDynamicPhlowActions >> label: aString [ 
 	label := aString
+]
+
+{ #category : #accessing }
+GtRemotePhlowContextMenuDynamicPhlowActions >> toActionOn: anItem index: anItemIndex element: anElement [
+	^ self actionsComputation 
+			cull: GtRemotePhlowAction noAction
+			cull: anElement 
+			cull: anItem 
+			cull: anItemIndex
 ]

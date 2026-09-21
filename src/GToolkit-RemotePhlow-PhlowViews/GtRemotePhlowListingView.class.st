@@ -41,6 +41,15 @@ GtRemotePhlowListingView >> contextItemLabel: aString action: aBlock [
 		add: (GtRemotePhlowContextMenuAction label: aString action: aBlock)
 ]
 
+{ #category : #'api - actions' }
+GtRemotePhlowListingView >> contextItemLabel: aString action: aBlock showIf: aShowBlock [
+	self contextMenuActions
+		add: (GtRemotePhlowContextMenuAction 
+			label: aString 
+			action: aBlock 
+			show: aShowBlock)
+]
+
 { #category : #accessing }
 GtRemotePhlowListingView >> contextMenuActions [
 	^ contextMenuActions ifNil: [ 

@@ -3,7 +3,6 @@ Class {
 	#superclass : #GtRemotePhlowContextMenuSingleAction,
 	#instVars : [
 		'actionComputation',
-		'showCondition',
 		'enableCondition',
 		'iconStencil',
 		'label',
@@ -18,6 +17,31 @@ GtRemotePhlowContextMenuAction class >> label: aString action: aBlock [
 	^ self new
 		label: aString;
 		action: aBlock
+]
+
+{ #category : #'instance creation' }
+GtRemotePhlowContextMenuAction class >> label: aString action: aBlock enable: anEnablelock [
+	^ self new 
+		label: aString;
+		action: aBlock;
+		enableIf: anEnablelock
+]
+
+{ #category : #'instance creation' }
+GtRemotePhlowContextMenuAction class >> label: aString action: aBlock show: aShowBlock [
+	^ self new 
+		label: aString;
+		action: aBlock;
+		showIf: aShowBlock
+]
+
+{ #category : #'instance creation' }
+GtRemotePhlowContextMenuAction class >> label: aString action: aBlock show: aShowBlock enable: anEnablelock [
+	^ self new 
+		label: aString;
+		action: aBlock;
+		showIf: aShowBlock;
+		enableIf: anEnablelock
 ]
 
 { #category : #'api - scripting' }

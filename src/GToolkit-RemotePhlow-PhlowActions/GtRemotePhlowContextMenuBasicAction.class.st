@@ -1,6 +1,9 @@
 Class {
 	#name : #GtRemotePhlowContextMenuBasicAction,
 	#superclass : #Object,
+	#instVars : [
+		'showCondition'
+	],
 	#category : #'GToolkit-RemotePhlow-PhlowActions'
 }
 
@@ -11,4 +14,9 @@ GtRemotePhlowContextMenuBasicAction class >> isAbstract [
 
 { #category : #collecting }
 GtRemotePhlowContextMenuBasicAction >> collectInvidualActionsOn: aCollection forElement: anElement item: anObject index: anIndex [
+]
+
+{ #category : #'api - scripting' }
+GtRemotePhlowContextMenuBasicAction >> showIf: aBlock [ 
+	showCondition := aBlock
 ]
