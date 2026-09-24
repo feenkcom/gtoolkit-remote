@@ -37,7 +37,7 @@ GtRemotePhlowButtonAction >> asGtDeclarativeAction [
 ]
 
 { #category : #converting }
-GtRemotePhlowButtonAction >> asItemBoundActionToItem: anItem index: anIndex [
+GtRemotePhlowButtonAction >> asItemBoundActionToItem: anItem viewSelection: anIndex [
 	"Normal phlow actions do no get the item or the selection as parameters.
 	They are bound already to them when they are created."
 	^ self
@@ -69,4 +69,9 @@ GtRemotePhlowButtonAction >> label [
 { #category : #accessing }
 GtRemotePhlowButtonAction >> label: aStringOrText [
 	label := aStringOrText
+]
+
+{ #category : #testing }
+GtRemotePhlowButtonAction >> shouldShowContextActionOn: anItem viewSelection: aSelectionIndex [ 
+	^ true
 ]

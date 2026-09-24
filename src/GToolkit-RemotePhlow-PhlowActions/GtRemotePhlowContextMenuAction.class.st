@@ -60,11 +60,11 @@ GtRemotePhlowContextMenuAction >> actionComputation [
 ]
 
 { #category : #converting }
-GtRemotePhlowContextMenuAction >> asItemBoundActionToItem: anItem index: anIndex [
+GtRemotePhlowContextMenuAction >> asItemBoundActionToItem: anItem viewSelection: aSelection [
 	^ GtRemotePhlowContextMenuItemBoundAction new
 		targetAction: self;
-		item: anItem;
-		index: anIndex
+		item: anItem; 
+		viewSelection: aSelection
 ]
 
 { #category : #'api - scripting' }

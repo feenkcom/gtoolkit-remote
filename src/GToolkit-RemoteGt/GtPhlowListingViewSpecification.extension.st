@@ -20,12 +20,10 @@ GtPhlowListingViewSpecification >> configureViewActionsFor: aView [
 GtPhlowListingViewSpecification >> configureViewContextMenuActionsFor: aView [
 	self hasContextActionSpecifications ifFalse: [ ^ self ].
 
-	aView dynamicContextItems: [ :anElement :aNodeOrNodesCollection :anIndexSelection |
+	aView dynamicContextItems: [ :anElement :aNodeOrNodesCollection :aPhlowSelection |
 			| currentSelection currentSpecifications |
 				
-			currentSelection := self 
-				createViewSelectionFromNode: aNodeOrNodesCollection 
-				indexSelection: anIndexSelection.
+			currentSelection := aPhlowSelection asRemoteSelection.
 			
 			currentSpecifications := self 
 				retriveContextActionSpecificationsForPhlowSelection: currentSelection.
@@ -66,6 +64,32 @@ GtPhlowListingViewSpecification >> configureViewSendFor: aView withLocalTransfor
 		(aBlock 
 			cull: aTreeNode targetObject
 			cull: aSelectionIndices) asGtBareProxyObject ]
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
+GtPhlowListingViewSpecification >> createViewSelectionFromNode: aCollectionOfNodes indexSelection: aSelectionIndexes [
+	^ self hasMultipleSelection 
+		ifTrue: [ 
+			self 
+				createViewMultipleSelectionFromNodes: aCollectionOfNodes
+				selectionIndices: aSelectionIndexes ] 
+		ifFalse: [
+			self 
+				createViewSingleSelectionFromNode: aCollectionOfNodes
+				selectionIndices: aSelectionIndexes]
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
+GtPhlowListingViewSpecification >> createViewSingleSelectionFromNode: aPhlowDataNode selectionIndices: aPhlowSelection [ 
+	| viewSelection selectionItem |
+	
+	selectionItem := aPhlowDataNode value createSelectionItem
+ 		selectionIndex: (aPhlowSelection first).
+ 		
+	viewSelection:= GtRemotePhlowListingViewSingleSelection new
+ 		selectionItem: selectionItem.
+
+	^ viewSelection
 ]
 
 { #category : #'*GToolkit-RemoteGt' }

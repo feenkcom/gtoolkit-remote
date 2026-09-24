@@ -1,6 +1,6 @@
 Class {
 	#name : #GtRemotePhlowIndexNodeIdentifier,
-	#superclass : #GtRemotePhlowSingleNodeIdentifier,
+	#superclass : #GtRemotePhlowNodeIdentifier,
 	#instVars : [
 		'nodeIndex'
 	],

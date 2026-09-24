@@ -60,22 +60,16 @@ GtPhlowListingViewSpecification >> bareRetriveContextActionSpecificationsForPhlo
 ]
 
 { #category : #accessing }
-GtPhlowListingViewSpecification >> createViewSelection [
-	self subclassResponsibility
-]
+GtPhlowListingViewSpecification >> createViewMultipleSelectionFromNodes: aCollectionOfNodes selectionIndices: aSelectionIndexes [
+	| viewSelection selectionItems|
+	
+	selectionItems := aCollectionOfNodes collectWithIndex: [ :aNode :anIndex |
+ 		aNode value createSelectionItem
+ 			selectionIndex: (aSelectionIndexes at: anIndex)  ].
+ 		
+	viewSelection:= GtRemotePhlowListingViewMultipleSelection new
+ 		selectionItems: selectionItems.
 
-{ #category : #accessing }
-GtPhlowListingViewSpecification >> createViewSelectionFromNode: aNodeOrNodesCollection indexSelection: anIndexSelection [
-	| viewSelection nodeIdentifier|
-	viewSelection := self createViewSelection.
-	nodeIdentifier := anIndexSelection size > 1
- 		ifTrue: [ GtRemotePhlowCompositeNodeIdentifier new
- 			nodeIdentifiers: (aNodeOrNodesCollection collect: [ :aNode |
- 				aNode value createNodeIdentifier]) ]
- 		ifFalse: [ aNodeOrNodesCollection value createNodeIdentifier ].
-	viewSelection
- 		nodeIdentifier: nodeIdentifier;
- 		selectionIndex: anIndexSelection.
 	^ viewSelection
 ]
 

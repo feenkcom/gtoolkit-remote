@@ -41,11 +41,6 @@ GtPhlowColumnedListViewSpecification >> asBasicViewDataForExport [
 ]
 
 { #category : #accessing }
-GtPhlowColumnedListViewSpecification >> createViewSelection [
-	^ GtPhlowListingViewListSelection new
-]
-
-{ #category : #accessing }
 GtPhlowColumnedListViewSpecification >> horizontalScrollingEnabled [
 	^ horizontalScrollingEnabled
 ]

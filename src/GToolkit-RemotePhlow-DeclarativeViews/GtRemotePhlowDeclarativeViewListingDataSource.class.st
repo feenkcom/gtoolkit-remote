@@ -191,10 +191,10 @@ GtRemotePhlowDeclarativeViewListingDataSource >> retriveContextActionSpecificati
 	
 	^ (self phlowView 	
 			collectIndividualContextMenuActionsForElement: nil 
-			item: ((targetObjects size > 1)
+			item: (aPhlowSelection isMultipleSelection
 				ifTrue: [ Array withAll: targetObjects ]
-				ifFalse: [ targetObjects first ])
-			index: (aPhlowSelection selectionIndex)) collect: [ :anAction |
+				ifFalse: [ targetObjects first  ])
+			viewSelection: aPhlowSelection) collect: [ :anAction |
 				anAction asGtDeclarativeAction ].
 ]
 
@@ -231,10 +231,10 @@ GtRemotePhlowDeclarativeViewListingDataSource >> withNodeAtAtPath: aNodePath ifP
 
 { #category : #'api - data retrival' }
 GtRemotePhlowDeclarativeViewListingDataSource >> withNodesInPhlowSelection: aPhlowSelection do: aBlock [
-	aPhlowSelection nodeIdentifiersDo: [ :aNodeIdentifier |
+	aPhlowSelection selectionItemsDo: [ :aSelectionItem |
 		self 
-			withNodeAtAtPath: aNodeIdentifier nodeIndexPath 
+			withNodeAtAtPath: aSelectionItem nodeIdentifier nodeIndexPath 
 			ifPresent: [ :targetNode :aSelectionIndex |
-				aBlock cull: targetNode cull: aSelectionIndex ]  
+				aBlock cull: targetNode cull: aSelectionItem selectionIndex ]  
 			ifAbsent: [  ]. ].
 ]

@@ -36,6 +36,7 @@ GtPhlowColumnedTreeViewSpecification >> viewFor: aView [
 	currentView := aView columnedTree.
 	
 	self configureBasicLocalView: currentView for: aView.
+	self configureListingView: currentView. 
 	self configureItemsFor: currentView.
 	self configureColumnedViewFor: currentView.
 	self configureViewActionsFor: currentView.

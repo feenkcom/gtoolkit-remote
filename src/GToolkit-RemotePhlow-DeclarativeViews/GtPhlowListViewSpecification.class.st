@@ -20,8 +20,3 @@ GtPhlowListViewSpecification class >> fromJSONDictionary: aDictionary [
 	list := super fromJSONDictionary: aDictionary.
 	^list
 ]
-
-{ #category : #accessing }
-GtPhlowListViewSpecification >> createViewSelection [
-	^ GtPhlowListingViewListSelection new
-]

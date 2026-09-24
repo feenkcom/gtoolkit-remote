@@ -21,11 +21,6 @@ GtPhlowListViewSpecification >> extractRemoteSendObjectFromNode: aNode atSelecti
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
-GtPhlowListViewSpecification >> extractRemoteSendObjectFromNode: aNode forPhlowSelection: aPhlowSelection [ 
-	^ self retriveSentItemAt: nil
-]
-
-{ #category : #'*GToolkit-RemoteGt' }
 GtPhlowListViewSpecification >> viewFor: aView [
 	"Answer the GtPhlowView for the receiver"
 	| listView |

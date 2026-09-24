@@ -53,6 +53,12 @@ GtRemotePhlowDataNode >> createNodeIdentifier [
 			nodeIndex: self nodeId
 ]
 
+{ #category : #accessing }
+GtRemotePhlowDataNode >> createSelectionItem [
+	^ GtRemotePhlowListingViewListSelectionItem new
+			nodeIdentifier: self createNodeIdentifier
+]
+
 { #category : #comparing }
 GtRemotePhlowDataNode >> matchesNodeContentWith: aNode [
 	self class = aNode class ifFalse: [ ^ false].

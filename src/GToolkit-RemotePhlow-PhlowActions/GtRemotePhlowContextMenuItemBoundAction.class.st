@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'targetAction',
 		'item',
-		'index'
+		'viewSelection'
 	],
 	#category : #'GToolkit-RemotePhlow-PhlowActions'
 }
@@ -27,17 +27,7 @@ GtRemotePhlowContextMenuItemBoundAction >> asGtDeclarativeAction [
 { #category : #actions }
 GtRemotePhlowContextMenuItemBoundAction >> executeActionFrom: anElement [
 	^ self actionComputation
-			cull: anElement cull: item cull: index
-]
-
-{ #category : #accessing }
-GtRemotePhlowContextMenuItemBoundAction >> index [
-	^ index
-]
-
-{ #category : #accessing }
-GtRemotePhlowContextMenuItemBoundAction >> index: anObject [
-	index := anObject
+			cull: anElement cull: item cull: viewSelection
 ]
 
 { #category : #accessing }
@@ -63,4 +53,14 @@ GtRemotePhlowContextMenuItemBoundAction >> targetAction [
 { #category : #accessing }
 GtRemotePhlowContextMenuItemBoundAction >> targetAction: anObject [
 	targetAction := anObject
+]
+
+{ #category : #accessing }
+GtRemotePhlowContextMenuItemBoundAction >> viewSelection [
+	^ viewSelection
+]
+
+{ #category : #accessing }
+GtRemotePhlowContextMenuItemBoundAction >> viewSelection: anObject [
+	viewSelection := anObject
 ]

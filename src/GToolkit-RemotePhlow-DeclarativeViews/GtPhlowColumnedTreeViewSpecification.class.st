@@ -32,11 +32,6 @@ GtPhlowColumnedTreeViewSpecification >> asBasicViewDataForExport [
 ]
 
 { #category : #accessing }
-GtPhlowColumnedTreeViewSpecification >> createViewSelection [
-	^ GtPhlowListingViewTreeSelection new
-]
-
-{ #category : #accessing }
 GtPhlowColumnedTreeViewSpecification >> expander [
 	^ expander
 ]

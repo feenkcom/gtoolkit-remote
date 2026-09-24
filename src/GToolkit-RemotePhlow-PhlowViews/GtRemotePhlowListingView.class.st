@@ -11,22 +11,23 @@ Class {
 }
 
 { #category : #'api - actions' }
-GtRemotePhlowListingView >> collectIndividualContextMenuActionsForElement: anElement item: anObject index: anIndex [
+GtRemotePhlowListingView >> collectIndividualContextMenuActionsForElement: anElement item: anObject viewSelection: aViewSelection [
 	| allInitialPhlowActions |
 	
 	allInitialPhlowActions := OrderedCollection new.
-	self contextMenuActions
-			"select: [ :anAction | anAction respondsToItem: item ]"
+	(self contextMenuActions
+			select: [ :anAction | 
+				anAction shouldShowContextActionOn: anObject viewSelection: aViewSelection ])
 			do: [ :anAction | 
 				anAction 
 					collectInvidualActionsOn: allInitialPhlowActions
 					forElement: anElement 
 					item: anObject
-					index: anIndex ].
+					index: aViewSelection ].
 				
 	^ allInitialPhlowActions collect: [ :anAction |
 			anAction 
-				asItemBoundActionToItem: anObject index: anIndex ]
+				asItemBoundActionToItem: anObject viewSelection: aViewSelection ]
 ]
 
 { #category : #converting }

@@ -73,6 +73,12 @@ GtRemotePhlowTreeNode >> createNodeIdentifier [
 ]
 
 { #category : #accessing }
+GtRemotePhlowTreeNode >> createSelectionItem [
+	^ GtRemotePhlowListingViewTreeSelectionItem new
+			nodeIdentifier: self createNodeIdentifier
+]
+
+{ #category : #accessing }
 GtRemotePhlowTreeNode >> depth [
 	| depthValue |
 	depthValue := 0.
