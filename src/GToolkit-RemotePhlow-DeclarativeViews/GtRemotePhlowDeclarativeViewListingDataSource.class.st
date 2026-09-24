@@ -12,14 +12,14 @@ Class {
 { #category : #'api - data retrival' }
 GtRemotePhlowDeclarativeViewListingDataSource >> bareRetrieveSentItemAtPhlowSelectionData: aPhlowSelectionData [
 	| phlowSelection |
-	phlowSelection := GtPhlowListingViewSelection fromDictionary: aPhlowSelectionData.
+	phlowSelection := GtRemotePhlowListingViewSelection fromDictionary: aPhlowSelectionData.
 	^ self retrieveSentItemAtPhlowSelection: phlowSelection
 ]
 
 { #category : #'api - data retrival' }
 GtRemotePhlowDeclarativeViewListingDataSource >> bareRetriveContextActionSpecificationsForPhlowSelectionData: aPhlowSelectionData [
 	| phlowSelection |
-	phlowSelection := GtPhlowListingViewSelection fromDictionary: aPhlowSelectionData.
+	phlowSelection := GtRemotePhlowListingViewSelection fromDictionary: aPhlowSelectionData.
 	^ (self retriveContextActionSpecificationsForPhlowSelection: phlowSelection)
 			ifNotNil: [ :actions |
 				actions collect: [ :anAction |
