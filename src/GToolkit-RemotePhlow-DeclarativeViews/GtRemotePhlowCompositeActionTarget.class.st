@@ -43,13 +43,6 @@ GtRemotePhlowCompositeActionTarget >> asDictionaryForExport [
 		yourself
 ]
 
-{ #category : #converting }
-GtRemotePhlowCompositeActionTarget >> asLocalPhlowTarget [
-	| localTargets |
-	localTargets := self targets collect: [ :each | each asLocalPhlowTarget ].
-	^ GtPhlowCompositeActionTarget new targets: localTargets
-]
-
 { #category : #comparing }
 GtRemotePhlowCompositeActionTarget >> hash [
 	^ self class hash bitXor: targets hash

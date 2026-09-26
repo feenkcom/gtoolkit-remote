@@ -31,14 +31,6 @@ GtRemotePhlowViewActionTarget >> asDictionaryForExport [
 		yourself
 ]
 
-{ #category : #converting }
-GtRemotePhlowViewActionTarget >> asLocalPhlowTarget [
-	| target |
-	target := GtPhlowViewActionTarget new.
-	target definingMethodSelector: self definingMethodSelector.
-	^ target
-]
-
 { #category : #accessing }
 GtRemotePhlowViewActionTarget >> definingMethodSelector [
 	^ definingMethodSelector

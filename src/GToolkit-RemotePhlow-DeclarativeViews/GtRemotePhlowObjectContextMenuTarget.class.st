@@ -8,8 +8,3 @@ Class {
 GtRemotePhlowObjectContextMenuTarget class >> typeLabel [
 	^ 'objectContextMenu'
 ]
-
-{ #category : #converting }
-GtRemotePhlowObjectContextMenuTarget >> asLocalPhlowTarget [
-	^ GtPhlowObjectContextMenuTarget uniqueInstance
-]

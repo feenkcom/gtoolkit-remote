@@ -8,8 +8,3 @@ Class {
 GtRemotePhlowObjectActionTarget class >> typeLabel [
 	^ 'objectAction'
 ]
-
-{ #category : #converting }
-GtRemotePhlowObjectActionTarget >> asLocalPhlowTarget [
-	^ GtPhlowObjectActionTarget uniqueInstance
-]
