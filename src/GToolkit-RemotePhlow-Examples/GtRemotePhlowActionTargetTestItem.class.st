@@ -99,19 +99,6 @@ GtRemotePhlowActionTargetTestItem >> gtDisabledContextMenuActionFor: anAction [
 		action: [ :anElement | ]
 ]
 
-{ #category : #'gt - extensions - object actions' }
-GtRemotePhlowActionTargetTestItem >> gtInspectActionFor: anAction [
-	<gtAction>
-	
-	^ anAction button
-		target: GtPhlowObjectActionTarget;
-		icon: BrGlamorousVectorIcons inspect;
-		label: 'Inspect';
-		priority: 4;
-		action: [ :anElement | 
-			anElement phlow spawnObject: self ]
-]
-
 { #category : #'gt - extensions - context menu actions' }
 GtRemotePhlowActionTargetTestItem >> gtInspectItemContextMenuActionFor: anAction [
 	<gtAction>
