@@ -82,13 +82,6 @@ GtRemotePhlowMenuItemGroupConfiguration >> asDictionaryForExport [
 ]
 
 { #category : #converting }
-GtRemotePhlowMenuItemGroupConfiguration >> asMenuItemGroupConfiguration [
-	^ BrMenuItemGroupConfiguration new
-		name: self name;
-		priority: self priority
-]
-
-{ #category : #converting }
 GtRemotePhlowMenuItemGroupConfiguration >> asRemotePhlowMenuItemGroupConfiguration [
 	^ self
 ]
