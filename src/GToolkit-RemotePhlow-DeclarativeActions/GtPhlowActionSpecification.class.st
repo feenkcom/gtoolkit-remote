@@ -6,7 +6,8 @@ Class {
 		'priority',
 		'tooltipText',
 		'methodSelector',
-		'phlowDataSource'
+		'phlowDataSource',
+		'target'
 	],
 	#category : #'GToolkit-RemotePhlow-DeclarativeActions'
 }
@@ -16,15 +17,16 @@ GtPhlowActionSpecification class >> phlowActionFromDictionary: aSpecificationDic
 	^ self fromDictionary: aSpecificationDictionary
 ]
 
-{ #category : #converting }
+{ #category : #serialization }
 GtPhlowActionSpecification >> asDictionaryForExport [
-	"Answer the receiver as a dictionary ready for JSON serialisation.
-	Subclasses will override and add to the dictionary"
-
-	^ super asDictionaryForExport
+	| dict |
+	dict := super asDictionaryForExport
 		at: 'priority' put: priority;
 		at: 'methodSelector' put: methodSelector;
-		yourself
+		yourself.
+	target ifNotNil: [ :aTarget |
+		dict at: 'target' put: aTarget asDictionaryForExport ].
+	^ dict
 ]
 
 { #category : #converting }
@@ -39,20 +41,36 @@ GtPhlowActionSpecification >> asDictionaryForExportWithPhlowDataSource [
 	^ specificationData
 ]
 
+{ #category : #printing }
+GtPhlowActionSpecification >> descriptOn: aStream [
+	tooltipText ifNotNil: [ :aText |
+		aStream nextPutAll: aText ].
+	priority ifNotNil: [ :aPriority |
+		tooltipText ifNotNil: [ aStream nextPutAll: ', ' ].
+		aStream
+			nextPutAll: 'priority: ';
+			print: aPriority ]
+]
+
 { #category : #initialization }
 GtPhlowActionSpecification >> initializeFromInspector: anInspector [
 ]
 
-{ #category : #initialization }
+{ #category : #serialization }
 GtPhlowActionSpecification >> initializeFromJSONDictionary: aDictionary [
 	super initializeFromJSONDictionary: aDictionary.
 
 	self
 		priority: (aDictionary at: 'priority' ifAbsent: [ nil ]);
 		methodSelector: (aDictionary at: 'methodSelector' ifAbsent: [ nil ]);
-		tooltipText: (aDictionary  at: 'tooltipText' ifAbsent: [ nil ]);
-		phlowDataSource: (aDictionary 
-			at: 'phlowDataSource' ifAbsent: [ nil ])
+		tooltipText: (aDictionary at: 'tooltipText' ifAbsent: [ nil ]);
+		phlowDataSource: (aDictionary
+			at: 'phlowDataSource' ifAbsent: [ nil ]).
+	aDictionary
+		at: 'target'
+		ifPresent: [ :aTargetDict |
+			aTargetDict ifNotNil: [
+				self target: (GtPhlowDeclarativeSpecification fromDictionary: aTargetDict) ] ]
 ]
 
 { #category : #accessing }
@@ -75,6 +93,13 @@ GtPhlowActionSpecification >> phlowDataSource: aDataSource [
 	phlowDataSource := aDataSource
 ]
 
+{ #category : #printing }
+GtPhlowActionSpecification >> printOn: aStream [
+	super printOn: aStream.
+	aStream parenthesize: [
+		self descriptOn: aStream ]
+]
+
 { #category : #accessing }
 GtPhlowActionSpecification >> priority [
 	^ priority
@@ -83,6 +108,16 @@ GtPhlowActionSpecification >> priority [
 { #category : #accessing }
 GtPhlowActionSpecification >> priority: aNumber [
 	priority := aNumber
+]
+
+{ #category : #accessing }
+GtPhlowActionSpecification >> target [
+	^ target
+]
+
+{ #category : #accessing }
+GtPhlowActionSpecification >> target: aGtRemotePhlowActionTarget [
+	target := aGtRemotePhlowActionTarget
 ]
 
 { #category : #accessing }

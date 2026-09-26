@@ -26,14 +26,19 @@ GtRemotePhlowButtonAction >> actionComputation [
 
 { #category : #converting }
 GtRemotePhlowButtonAction >> asGtDeclarativeAction [
-	^ GtPhlowButtonActionSpecification new
+	| specification |
+	specification := GtPhlowButtonActionSpecification new
 		priority: self priority;
 		tooltipText: self tooltipText;
+		target: self target;
 		label: self label;
 		iconStencil: self iconStencil;
 		phlowDataSource: (GtRemotePhlowDeclarativeBlockActionDataSource new
 			phlowAction: self;
-			targetBlock: self actionComputation)
+			targetBlock: self actionComputation).
+	self hasMenuOptions ifTrue: [
+		specification menuOptions: self menuOptions asMenuOptionsSpecification ].
+	^ specification
 ]
 
 { #category : #converting }

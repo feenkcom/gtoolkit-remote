@@ -2,7 +2,8 @@ Extension { #name : #GtPhlowButtonAction }
 
 { #category : #'*GToolkit-RemoteGt-Icons' }
 GtPhlowButtonAction >> asGtDeclarativeAction [
-	^ GtPhlowButtonActionSpecification new
+	| specification |
+	specification := GtPhlowButtonActionSpecification new
 		priority: self priority;
 		label: label;
 		iconStencil: (((icon isKindOf: BlElement) or: [ icon isKindOf: BlStencil])
@@ -13,7 +14,10 @@ GtPhlowButtonAction >> asGtDeclarativeAction [
 				applyToActionSpecification: aSpecification ];
 		phlowDataSource: (GtRemotePhlowDeclarativeBlockActionDataSource new
 			phlowAction: self;
-			targetBlock: self actionComputation)
+			targetBlock: self actionComputation).
+	self asMenuOptionsSpecification ifNotNil: [ :currentMenuOptions |
+		specification menuOptions: currentMenuOptions ].
+	^ specification
 ]
 
 { #category : #'*GToolkit-RemoteGt-Icons' }

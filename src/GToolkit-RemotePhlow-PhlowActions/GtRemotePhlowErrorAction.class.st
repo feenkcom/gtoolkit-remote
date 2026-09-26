@@ -12,6 +12,7 @@ GtRemotePhlowErrorAction >> asGtDeclarativeAction [
 	^ GtPhlowErrorActionSpecification new
 		priority: self priority;
 		errorMessage: self errorMessage;
+		target: self target;
 		tooltipText: self tooltipText
 ]
 

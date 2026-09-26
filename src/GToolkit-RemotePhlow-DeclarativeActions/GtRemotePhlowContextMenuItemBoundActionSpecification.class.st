@@ -3,7 +3,8 @@ Class {
 	#superclass : #GtPhlowActionSpecification,
 	#instVars : [
 		'label',
-		'iconStencil'
+		'iconStencil',
+		'menuOptions'
 	],
 	#category : #'GToolkit-RemotePhlow-DeclarativeActions'
 }
@@ -13,7 +14,7 @@ GtRemotePhlowContextMenuItemBoundActionSpecification class >> typeLabel [
 	^ 'phlowContextMenuActionSpecification'
 ]
 
-{ #category : #converting }
+{ #category : #serialization }
 GtRemotePhlowContextMenuItemBoundActionSpecification >> asDictionaryForExport [
 	| specificationData |
 	specificationData := super asDictionaryForExport.
@@ -26,6 +27,9 @@ GtRemotePhlowContextMenuItemBoundActionSpecification >> asDictionaryForExport [
 			put: anIconStencil asDictionaryForExport ].
 	tooltipText ifNotNil: [ :aText |
 		specificationData at: 'tooltipText' put: aText ].
+	menuOptions ifNotNil: [ :options |
+		options hasAnyOptions ifTrue: [
+			specificationData at: 'menuOptions' put: options asDictionaryForExport ] ].
 
 	^ specificationData
 ]
@@ -40,7 +44,7 @@ GtRemotePhlowContextMenuItemBoundActionSpecification >> iconStencil: anIconStenc
 	iconStencil := anIconStencil
 ]
 
-{ #category : #initialization }
+{ #category : #serialization }
 GtRemotePhlowContextMenuItemBoundActionSpecification >> initializeFromJSONDictionary: aDictionary [
 	super initializeFromJSONDictionary: aDictionary.
 	
@@ -58,6 +62,12 @@ GtRemotePhlowContextMenuItemBoundActionSpecification >> initializeFromJSONDictio
 			anIconStencilData ifNotNil: [
 				self iconStencil: (GtPhlowIconStencil 
 					phlowIconStencilFromDictionary: anIconStencilData) ] ].
+	aDictionary
+		at: 'menuOptions'
+		ifPresent: [ :optionsData |
+			self menuOptions: (GtRemotePhlowMenuOptionsSpecification new
+				initializeFromJSONDictionary: optionsData;
+				yourself) ].
 ]
 
 { #category : #accessing }
@@ -68,4 +78,14 @@ GtRemotePhlowContextMenuItemBoundActionSpecification >> label [
 { #category : #accessing }
 GtRemotePhlowContextMenuItemBoundActionSpecification >> label: aString [
 	label := aString
+]
+
+{ #category : #accessing }
+GtRemotePhlowContextMenuItemBoundActionSpecification >> menuOptions [
+	^ menuOptions
+]
+
+{ #category : #accessing }
+GtRemotePhlowContextMenuItemBoundActionSpecification >> menuOptions: aGtRemotePhlowMenuOptions [
+	menuOptions := aGtRemotePhlowMenuOptions
 ]

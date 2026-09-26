@@ -3,7 +3,8 @@ Class {
 	#superclass : #GtPhlowActionSpecification,
 	#instVars : [
 		'label',
-		'iconStencil'
+		'iconStencil',
+		'menuOptions'
 	],
 	#category : #'GToolkit-RemotePhlow-DeclarativeActions'
 }
@@ -13,9 +14,9 @@ GtPhlowButtonActionSpecification class >> typeLabel [
 	^ 'phlowButtonActionSpecification'
 ]
 
-{ #category : #converting }
+{ #category : #serialization }
 GtPhlowButtonActionSpecification >> asDictionaryForExport [
-	| specificationData|
+	| specificationData |
 	specificationData := super asDictionaryForExport.
 	
 	label ifNotNil: [ :aText |
@@ -26,8 +27,22 @@ GtPhlowButtonActionSpecification >> asDictionaryForExport [
 			put: anIconStencil asDictionaryForExport ].
 	tooltipText ifNotNil: [ :aText |
 		specificationData at: 'tooltipText' put: aText ].
+	menuOptions ifNotNil: [ :options |
+		options hasAnyOptions ifTrue: [
+			specificationData at: 'menuOptions' put: options asDictionaryForExport ] ].
 
 	^ specificationData
+]
+
+{ #category : #printing }
+GtPhlowButtonActionSpecification >> descriptOn: aStream [
+	label ifNotNil: [ :aLabel |
+		aStream nextPutAll: aLabel ].
+	self priority ifNotNil: [ :aPriority |
+		label ifNotNil: [ aStream nextPutAll: ', ' ].
+		aStream
+			nextPutAll: 'priority: ';
+			print: aPriority ]
 ]
 
 { #category : #accessing }
@@ -47,7 +62,7 @@ GtPhlowButtonActionSpecification >> initializeFromInspector: anInspector [
 			getDeclarativeActionDataSourceFor: self methodSelector) ]
 ]
 
-{ #category : #initialization }
+{ #category : #serialization }
 GtPhlowButtonActionSpecification >> initializeFromJSONDictionary: aDictionary [
 	super initializeFromJSONDictionary: aDictionary.
 	
@@ -65,6 +80,12 @@ GtPhlowButtonActionSpecification >> initializeFromJSONDictionary: aDictionary [
 			anIconStencilData ifNotNil: [
 				self iconStencil: (GtPhlowIconStencil 
 					phlowIconStencilFromDictionary: anIconStencilData) ] ].
+	aDictionary
+		at: 'menuOptions'
+		ifPresent: [ :optionsData |
+			self menuOptions: (GtRemotePhlowMenuOptionsSpecification new
+				initializeFromJSONDictionary: optionsData;
+				yourself) ].
 ]
 
 { #category : #accessing }
@@ -75,4 +96,14 @@ GtPhlowButtonActionSpecification >> label [
 { #category : #accessing }
 GtPhlowButtonActionSpecification >> label: aLabel [
 	label := aLabel
+]
+
+{ #category : #accessing }
+GtPhlowButtonActionSpecification >> menuOptions [
+	^ menuOptions
+]
+
+{ #category : #accessing }
+GtPhlowButtonActionSpecification >> menuOptions: aGtRemotePhlowMenuOptions [
+	menuOptions := aGtRemotePhlowMenuOptions
 ]

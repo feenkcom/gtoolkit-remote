@@ -36,6 +36,27 @@ GtRemotePhlowListingView >> configureListingViewSpecificationOn: aViewSpecificat
 	aViewSpecification hasContextActionSpecifications: self contextMenuActions notEmpty.
 ]
 
+{ #category : #'context menu' }
+GtRemotePhlowListingView >> contextActionsForTarget: aGtRemotePhlowActionTarget [
+	self contextMenuActions
+		add: (GtRemotePhlowContextMenuTargetedObjectActions
+			forTarget: aGtRemotePhlowActionTarget)
+]
+
+{ #category : #'context menu' }
+GtRemotePhlowListingView >> contextActionsForTarget: aSingleTarget groupTarget: aGroupTarget groupWith: aGroupFactory [
+	self contextMenuActions
+		add: (GtRemotePhlowContextMenuTargetedObjectActions
+			forTarget: aSingleTarget groupTarget: aGroupTarget groupWith: aGroupFactory)
+]
+
+{ #category : #'context menu' }
+GtRemotePhlowListingView >> contextActionsForTarget: aTarget groupWith: aGroupFactory [
+	self contextMenuActions
+		add: (GtRemotePhlowContextMenuTargetedObjectActions
+			forTarget: aTarget groupWith: aGroupFactory)
+]
+
 { #category : #'api - actions' }
 GtRemotePhlowListingView >> contextItemLabel: aString action: aBlock [
 	self contextMenuActions
