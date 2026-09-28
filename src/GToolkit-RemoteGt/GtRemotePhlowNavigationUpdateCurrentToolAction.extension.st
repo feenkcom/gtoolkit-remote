@@ -1,6 +1,6 @@
 Extension { #name : #GtRemotePhlowNavigationUpdateCurrentToolAction }
 
-{ #category : #'*GToolkit-RemoteGt-Icons' }
+{ #category : #'*GToolkit-RemoteGt' }
 GtRemotePhlowNavigationUpdateCurrentToolAction >> applyOn: aLocalElement [ 
 	aLocalElement phlow fireCurrentToolUpdateWish
 ]

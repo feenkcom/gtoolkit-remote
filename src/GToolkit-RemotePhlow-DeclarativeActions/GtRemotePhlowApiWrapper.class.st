@@ -7,6 +7,11 @@ Class {
 	#category : #'GToolkit-RemotePhlow-DeclarativeActions'
 }
 
+{ #category : #actions }
+GtRemotePhlowApiWrapper >> copyToClipboard: aString [
+	currentAction := GtRemotePhlowCopyToClipboardAction forString: aString
+]
+
 { #category : #accessing }
 GtRemotePhlowApiWrapper >> currentAction [
 	^ currentAction

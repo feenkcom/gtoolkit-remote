@@ -155,8 +155,8 @@ GtRemotePhlowView >> actions [
 
 { #category : #actions }
 GtRemotePhlowView >> addPhlowAction: aPhlowAction [
-	phlowActions add: aPhlowAction.
-	phlowActions sort: [ :a :b |
+	self actions add: aPhlowAction.
+	self actions sort: [ :a :b |
 		[ a priority < b priority ]
 			on: Error
 			do: [ :error | true ] ]

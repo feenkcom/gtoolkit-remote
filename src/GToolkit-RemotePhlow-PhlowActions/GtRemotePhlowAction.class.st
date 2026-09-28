@@ -137,8 +137,10 @@ GtRemotePhlowAction >> id: anId [
 
 { #category : #testing }
 GtRemotePhlowAction >> isDefaultTarget [
+	| defaultTarget |
+	defaultTarget := self defaultTarget.
 	self target targetsDo: [ :eachTarget | 
-		eachTarget = self defaultTarget ifTrue: [ ^ true ] ].
+		eachTarget = defaultTarget ifTrue: [ ^ true ] ].
 	^ false
 ]
 

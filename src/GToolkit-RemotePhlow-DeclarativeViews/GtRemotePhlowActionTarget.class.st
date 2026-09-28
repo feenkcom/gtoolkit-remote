@@ -39,10 +39,9 @@ GtRemotePhlowActionTarget >> = anObject [
 
 { #category : #actions }
 GtRemotePhlowActionTarget >> actionsForObject: anObject do: aBlock [
-	anObject gtActions do: [ :anAction |
-		(anAction canBeGtDeclarativeAction and: [
-			anAction target notNil and: [
-				anAction target isForTarget: self ] ])
+	anObject gtDeclarativePhlowActions do: [ :anAction |
+		(anAction target notNil and: [
+			anAction target isForTarget: self ])
 				ifTrue: [ aBlock value: anAction ] ]
 ]
 
@@ -78,6 +77,11 @@ GtRemotePhlowActionTarget >> default [
 	^ self
 ]
 
+{ #category : #printing }
+GtRemotePhlowActionTarget >> descriptionOn: aStream [
+	aStream nextPutAll: self class typeLabel
+]
+
 { #category : #comparing }
 GtRemotePhlowActionTarget >> hash [
 	^ self class hash
@@ -106,8 +110,9 @@ GtRemotePhlowActionTarget >> phlowActionsForObject: anObject [
 
 { #category : #printing }
 GtRemotePhlowActionTarget >> printOn: aStream [
+	super printOn: aStream.
 	aStream parenthesize: [
-		aStream nextPutAll: self class typeLabel ]
+		self descriptionOn: aStream ]
 ]
 
 { #category : #enumerating }

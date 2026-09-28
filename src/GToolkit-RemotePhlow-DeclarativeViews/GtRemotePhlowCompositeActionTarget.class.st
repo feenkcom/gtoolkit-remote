@@ -43,6 +43,15 @@ GtRemotePhlowCompositeActionTarget >> asDictionaryForExport [
 		yourself
 ]
 
+{ #category : #printing }
+GtRemotePhlowCompositeActionTarget >> descriptionOn: aStream [
+	super descriptionOn: aStream.
+	aStream nextPutAll: ': '.
+	targets
+		do: [ :each | aStream print: each ]
+		separatedBy: [ aStream nextPutAll: ', ' ]
+]
+
 { #category : #comparing }
 GtRemotePhlowCompositeActionTarget >> hash [
 	^ self class hash bitXor: targets hash
@@ -70,16 +79,6 @@ GtRemotePhlowCompositeActionTarget >> isForTarget: aTarget [
 GtRemotePhlowCompositeActionTarget >> isForViewDefinedIn: aSymbol [
 	^ self targets anySatisfy: [ :eachTarget | 
 		eachTarget isForViewDefinedIn: aSymbol ]
-]
-
-{ #category : #printing }
-GtRemotePhlowCompositeActionTarget >> printOn: aStream [
-	aStream parenthesize: [
-		aStream nextPutAll: self class typeLabel;
-			nextPutAll: ': '.
-		targets
-			do: [ :each | aStream print: each ]
-			separatedBy: [ aStream nextPutAll: ', ' ] ]
 ]
 
 { #category : #accessing }

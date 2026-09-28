@@ -41,6 +41,14 @@ GtRemotePhlowViewActionTarget >> definingMethodSelector: aSelector [
 	definingMethodSelector := aSelector
 ]
 
+{ #category : #printing }
+GtRemotePhlowViewActionTarget >> descriptionOn: aStream [
+	super descriptionOn: aStream.
+	aStream
+		nextPutAll: ': ';
+		print: definingMethodSelector
+]
+
 { #category : #comparing }
 GtRemotePhlowViewActionTarget >> hash [
 	^ self class hash bitXor: definingMethodSelector hash
@@ -55,13 +63,4 @@ GtRemotePhlowViewActionTarget >> initializeFromJSONDictionary: aDictionary [
 { #category : #testing }
 GtRemotePhlowViewActionTarget >> isForViewDefinedIn: aSymbol [
 	^ self definingMethodSelector = aSymbol
-]
-
-{ #category : #printing }
-GtRemotePhlowViewActionTarget >> printOn: aStream [
-	aStream parenthesize: [
-		aStream
-			nextPutAll: self class typeLabel;
-			nextPutAll: ': ';
-			print: definingMethodSelector ]
 ]

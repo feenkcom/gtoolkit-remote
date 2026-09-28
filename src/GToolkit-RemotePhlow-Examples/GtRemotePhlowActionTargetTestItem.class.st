@@ -49,7 +49,7 @@ GtRemotePhlowActionTargetTestItem >> gtBasicContextMenuActionFor: anAction [
 { #category : #'gt - extensions - object actions' }
 GtRemotePhlowActionTargetTestItem >> gtBrowseActionFor: anAction [
 	<gtAction>
-	
+
 	^ anAction button
 		target: GtRemotePhlowObjectActionTarget;
 		icon: (GtPhlowGlamorousVectorIconNameStencil new 
@@ -69,7 +69,24 @@ GtRemotePhlowActionTargetTestItem >> gtCopyDetailsActionFor: anAction [
 		label: 'Copy details';
 		priority: 10;
 		action: [ :anElement | 
-			anElement phlow spawnObject: self label , ': ' , self value printString ]
+			anElement phlow 
+				copyToClipboard: self label , ': ' , self value printString ]
+]
+
+{ #category : #'gt - extensions - context menu actions' }
+GtRemotePhlowActionTargetTestItem >> gtCopyLabelContextMenuActionFor: anAction [
+	<gtAction>
+	
+	^ anAction button
+		target: GtRemotePhlowExampleItemActionTarget;
+		icon: (GtPhlowGlamorousVectorIconNameStencil new 
+			iconName: #clipboard);
+		label: 'Copy label';
+		menuItemPreview: self label;
+		menuItemGroup: GtRemotePhlowMenuItemGroupConfiguration editing;
+		priority: 7;
+		action: [ :anElement | 
+			anElement phlow copyToClipboard: self label ]
 ]
 
 { #category : #'gt - extensions - views' }

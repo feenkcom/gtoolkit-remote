@@ -6,7 +6,7 @@ Class {
 
 { #category : #testing }
 GtRemotePhlowExampleItemActionTarget class >> isAbstract [
-	^ self name = #GtRemotePhlowExampleItemActionTarget
+	^ false
 ]
 
 { #category : #accessing }
