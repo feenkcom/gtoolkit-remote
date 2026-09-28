@@ -179,7 +179,7 @@ GtRemotePhlowActionTargetExamples >> objectContextMenuTarget [
 { #category : #'examples - actions' }
 GtRemotePhlowActionTargetExamples >> targetedActionsWithGroupFactory [
 	<gtExample>
-	| targeted singleItem items group singleActions groupActions |
+	| targeted singleItem items singleActions groupActions |
 	targeted := GtRemotePhlowContextMenuTargetedObjectActions
 		forTarget: GtRemotePhlowExampleItemActionTarget
 		groupWith: [ :aCollection | GtRemotePhlowActionTargetTestItemGroup withAll: aCollection ].
