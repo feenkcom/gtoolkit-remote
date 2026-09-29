@@ -9,7 +9,7 @@ TGtRemoteProxyInspectorAttachment >> gtActionInspectLocalProxyInspectorFor: anAc
 	
 	^ anAction button
 		tooltip: 'Inspect the local proxy inspector for this object';
-		priority: 1020;
+		priority: 119;
 		icon: BrGlamorousVectorIcons inspect;
 		label: 'Inspector';
 		action: [ :aButton |

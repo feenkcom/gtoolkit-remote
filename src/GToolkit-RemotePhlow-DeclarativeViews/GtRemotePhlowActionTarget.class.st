@@ -71,12 +71,6 @@ GtRemotePhlowActionTarget >> contextPhlowActionsForObject: anObject [
 		collect: [ :each | each asItemBoundActionToItem: anObject viewSelection: nil ]
 ]
 
-{ #category : #actions }
-GtRemotePhlowActionTarget >> contextPhlowActionsForObject: anObject viewSelection: aSelectionIndex [
-	^ (self phlowActionsForObject: anObject)
-		collect: [ :each | each asItemBoundActionToItem: anObject viewSelection: aSelectionIndex ]
-]
-
 { #category : #converting }
 GtRemotePhlowActionTarget >> default [
 	^ self

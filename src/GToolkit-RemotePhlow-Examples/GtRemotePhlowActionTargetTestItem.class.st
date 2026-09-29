@@ -132,6 +132,21 @@ GtRemotePhlowActionTargetTestItem >> gtInspectItemContextMenuActionFor: anAction
 			anElement phlow spawnObject: self ]
 ]
 
+{ #category : #'gt - extensions' }
+GtRemotePhlowActionTargetTestItem >> gtInspectObjectContextMenuActionFor: anAction [
+	<gtAction>
+	
+	^ anAction button
+		target: GtRemotePhlowObjectContextMenuTarget;
+		icon: (GtPhlowGlamorousVectorIconNameStencil new 
+			iconName: #inspect);
+		label: 'Custom inspect item';
+		menuItemGroup: GtRemotePhlowMenuItemGroupConfiguration inspection;
+		priority: 8;
+		action: [ :anElement | 
+			anElement phlow spawnObject: self ]
+]
+
 { #category : #'gt - extensions - context menu actions' }
 GtRemotePhlowActionTargetTestItem >> gtInspectValueContextMenuActionFor: anAction [
 	<gtAction>
