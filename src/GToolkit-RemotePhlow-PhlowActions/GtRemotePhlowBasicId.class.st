@@ -12,11 +12,6 @@ GtRemotePhlowBasicId class >> asBlocElementId [
 	^ self new
 ]
 
-{ #category : #converting }
-GtRemotePhlowBasicId class >> asElementQuerySelector [
-	^ BlElementQueryByIdStep new elementId: self
-]
-
 { #category : #testing }
 GtRemotePhlowBasicId class >> isAbstract [
 	^ self name = #GtRemotePhlowBasicId
