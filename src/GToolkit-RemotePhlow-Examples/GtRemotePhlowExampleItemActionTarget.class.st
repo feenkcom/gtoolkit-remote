@@ -1,6 +1,6 @@
 Class {
 	#name : #GtRemotePhlowExampleItemActionTarget,
-	#superclass : #GtRemotePhlowActionTarget,
+	#superclass : #GtRemotePhlowBasicActionTarget,
 	#category : #'GToolkit-RemotePhlow-Examples'
 }
 

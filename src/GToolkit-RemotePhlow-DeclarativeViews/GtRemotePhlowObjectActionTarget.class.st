@@ -1,6 +1,6 @@
 Class {
 	#name : #GtRemotePhlowObjectActionTarget,
-	#superclass : #GtRemotePhlowActionTarget,
+	#superclass : #GtRemotePhlowBasicActionTarget,
 	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
