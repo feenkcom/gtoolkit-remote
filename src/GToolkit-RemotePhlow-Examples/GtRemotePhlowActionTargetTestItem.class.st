@@ -73,11 +73,12 @@ GtRemotePhlowActionTargetTestItem >> gtCopyDetailsActionFor: anAction [
 				copyToClipboard: self label , ': ' , self value printString ]
 ]
 
-{ #category : #'gt - extensions - context menu actions' }
+{ #category : #'gt - extensions' }
 GtRemotePhlowActionTargetTestItem >> gtCopyLabelContextMenuActionFor: anAction [
 	<gtAction>
 	
 	^ anAction button
+		id: GtRemotePhlowExampleCopyLabelActionId new;
 		target: GtRemotePhlowExampleItemActionTarget;
 		icon: (GtPhlowGlamorousVectorIconNameStencil new 
 			iconName: #clipboard);
@@ -116,11 +117,12 @@ GtRemotePhlowActionTargetTestItem >> gtDisabledContextMenuActionFor: anAction [
 		action: [ :anElement | ]
 ]
 
-{ #category : #'gt - extensions - context menu actions' }
+{ #category : #'gt - extensions' }
 GtRemotePhlowActionTargetTestItem >> gtInspectItemContextMenuActionFor: anAction [
 	<gtAction>
 	
 	^ anAction button
+		id: GtRemotePhlowExampleInspectItemActionId new;
 		target: GtRemotePhlowExampleItemActionTarget;
 		icon: (GtPhlowGlamorousVectorIconNameStencil new 
 			iconName: #inspect);
@@ -137,6 +139,7 @@ GtRemotePhlowActionTargetTestItem >> gtInspectObjectContextMenuActionFor: anActi
 	<gtAction>
 	
 	^ anAction button
+		id: GtRemotePhlowExampleCustomInspectActionId new;
 		target: GtRemotePhlowObjectContextMenuTarget;
 		icon: (GtPhlowGlamorousVectorIconNameStencil new 
 			iconName: #inspect);

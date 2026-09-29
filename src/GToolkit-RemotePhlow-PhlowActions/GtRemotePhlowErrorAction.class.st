@@ -13,7 +13,8 @@ GtRemotePhlowErrorAction >> asGtDeclarativeAction [
 		priority: self priority;
 		errorMessage: self errorMessage;
 		target: self target;
-		tooltipText: self tooltipText
+		tooltipText: self tooltipText;
+		id: (self id ifNotNil: [ :anId | anId asBlocElementId ])
 ]
 
 { #category : #accessing }

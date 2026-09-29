@@ -68,6 +68,8 @@ GtRemotePhlowAction >> button [
 { #category : #testing }
 GtRemotePhlowAction >> canBeGtDeclarativeAction [
 	self target asRemotePhlowActionTarget ifNil: [ ^ false ].
+	self id ifNotNil: [ :anId | 
+		anId isRemotePhlowId ifFalse: [ ^ false ] ].
 	^ true
 ]
 

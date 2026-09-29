@@ -24,6 +24,8 @@ GtPhlowActionSpecification >> asDictionaryForExport [
 		at: 'priority' put: priority;
 		at: 'methodSelector' put: methodSelector;
 		yourself.
+	id ifNotNil: [ :anId |
+		dict at: 'id' put: anId asDictionaryForExport ].
 	target ifNotNil: [ :aTarget |
 		dict at: 'target' put: aTarget asDictionaryForExport ].
 	^ dict
@@ -52,6 +54,16 @@ GtPhlowActionSpecification >> descriptOn: aStream [
 			print: aPriority ]
 ]
 
+{ #category : #accessing }
+GtPhlowActionSpecification >> id [
+	^ id
+]
+
+{ #category : #accessing }
+GtPhlowActionSpecification >> id: aPhlowId [
+	id := aPhlowId
+]
+
 { #category : #initialization }
 GtPhlowActionSpecification >> initializeFromInspector: anInspector [
 ]
@@ -66,6 +78,11 @@ GtPhlowActionSpecification >> initializeFromJSONDictionary: aDictionary [
 		tooltipText: (aDictionary at: 'tooltipText' ifAbsent: [ nil ]);
 		phlowDataSource: (aDictionary
 			at: 'phlowDataSource' ifAbsent: [ nil ]).
+	aDictionary
+		at: 'id'
+		ifPresent: [ :anIdDict |
+			anIdDict ifNotNil: [
+				self id: (GtPhlowDeclarativeSpecification fromDictionary: anIdDict) ] ].
 	aDictionary
 		at: 'target'
 		ifPresent: [ :aTargetDict |

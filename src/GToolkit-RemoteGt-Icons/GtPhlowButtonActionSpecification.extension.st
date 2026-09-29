@@ -32,9 +32,10 @@ GtPhlowButtonActionSpecification >> actionFor: anAction [
 	
 	self menuOptions ifNotNil: [ :options |
 		options applyToLocalAction: localAction ].
-	
 	self target ifNotNil: [ :aPhlowTarget | 
 		localAction target: aPhlowTarget ].
+	self id ifNotNil: [ :anId |
+		localAction id: anId ].
 	
 	^ localAction
 ]

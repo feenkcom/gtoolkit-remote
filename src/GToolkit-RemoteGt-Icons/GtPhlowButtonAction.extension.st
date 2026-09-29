@@ -19,6 +19,8 @@ GtPhlowButtonAction >> asGtDeclarativeAction [
 		specification menuOptions: currentMenuOptions ].
 	self target asRemotePhlowActionTarget ifNotNil: [ :aRemoteTarget |
 		specification target: aRemoteTarget ].
+	(self id isKindOf: GtRemotePhlowId) ifTrue: [
+		specification id: self id ].
 	^ specification
 ]
 
@@ -37,6 +39,9 @@ GtPhlowButtonAction >> canBeGtDeclarativeAction [
 			(icon isKindOf: GtPhlowIconStencil) not ]) ifTrue: [ ^ false ]."
 	
 	self target asRemotePhlowActionTarget ifNil: [ ^ false ].
+	self id ifNotNil: [ :anId | 
+		anId isRemotePhlowId ifFalse: [ ^ false ] ].
+		
 	^ true
 ]
 

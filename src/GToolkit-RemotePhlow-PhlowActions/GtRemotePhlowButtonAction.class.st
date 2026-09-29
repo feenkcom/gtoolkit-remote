@@ -27,6 +27,7 @@ GtRemotePhlowButtonAction >> actionComputation [
 { #category : #converting }
 GtRemotePhlowButtonAction >> asGtDeclarativeAction [
 	| specification |
+	
 	specification := GtPhlowButtonActionSpecification new
 		priority: self priority;
 		tooltipText: self tooltipText;
@@ -38,6 +39,10 @@ GtRemotePhlowButtonAction >> asGtDeclarativeAction [
 			targetBlock: self actionComputation).
 	self hasMenuOptions ifTrue: [
 		specification menuOptions: self menuOptions asMenuOptionsSpecification ].
+		
+	self id ifNotNil: [ :anId |
+		specification id: anId asBlocElementId ].
+		
 	^ specification
 ]
 
