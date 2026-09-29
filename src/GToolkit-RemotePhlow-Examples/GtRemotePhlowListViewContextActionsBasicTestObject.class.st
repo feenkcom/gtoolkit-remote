@@ -32,8 +32,8 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithBasicContextActi
 				anElement phlow spawnObject: {anElement . anObject . aSelection} ];
 		
 		contextItemLabel: 'Show if greater than 12' 
-			action: [ :anElement | anElement phlow spawnObject: anElement ]
-			showIf: [ :anObject :aSelection | anObject >= 13 ];
+			action: [ :anElement :anObject | anElement phlow spawnObject: anObject ]
+			showIf: [ :anObject :aSelection | anObject > 12 ];
 				
 		send: [ :anObject :aSelectionIndex | {anObject . aSelectionIndex} ]
 ]
@@ -103,7 +103,14 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithDynamicContextPh
 				anAction contextMenuAction
 					label: 'Inspect outer parameters';
 					action: [ :currentElement |
-						currentElement phlow spawnObject: {anAction. anElement . anObject . aSelectionIndex} ] 
+						currentElement phlow 
+							spawnObject: {anAction. anElement . anObject . aSelectionIndex} ].
+							
+				anAction contextMenuAction
+					label: 'Show if greater than 12';
+					action: [ :currentElement | currentElement phlow spawnObject: anElement ];
+					showIf: [ :currentObject :aSelection | currentObject > 12]
+					
 			} ];
 		send: [ :anObject :aSelectionIndex | {anObject . aSelectionIndex} ]
 ]
@@ -179,7 +186,13 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithDynamicPhlowActi
 					label: 'Inspect outer parameters';
 					action: [ :currentElement |
 						currentElement phlow spawnObject: {anElement . anObject . aSelectionIndex} ] 
-			} ];
+			}, ((anObject > 12)
+				ifTrue: [
+					{GtPhlowAction noAction button
+						label: 'Show if greater than 12';
+						action: [ :currentElement |
+							currentElement phlow spawnObject: anObject ]}
+				] ifFalse: [#()]) ];
 		send: [ :anObject :aSelectionIndex | {anObject . aSelectionIndex} ]
 ]
 

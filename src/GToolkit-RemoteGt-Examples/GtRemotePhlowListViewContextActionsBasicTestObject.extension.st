@@ -32,7 +32,13 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithDynamicActionsFo
 					label: 'Inspect outer parameters';
 					action: [ :currentElement |
 						currentElement phlow spawnObject: {anElement . anObject . aSelectionIndex} ] 
-			} ];
+			}, ((anObject > 12)
+				ifTrue: [
+					{GtPhlowAction noAction button
+						label: 'Show if greater than 12';
+						action: [ :currentElement |
+							currentElement phlow spawnObject: anObject ]}
+				] ifFalse: [#()]) ];
 	send: [ :anObject :aSelectionIndex |  {anObject . aSelectionIndex} ]
 ]
 

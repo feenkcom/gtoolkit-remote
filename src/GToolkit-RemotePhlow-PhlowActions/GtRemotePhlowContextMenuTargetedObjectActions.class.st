@@ -29,25 +29,6 @@ GtRemotePhlowContextMenuTargetedObjectActions class >> forTarget: aTarget groupW
 		groupFactory: aGroupFactory
 ]
 
-{ #category : #actions }
-GtRemotePhlowContextMenuTargetedObjectActions >> collectInvidualActionsOn: aCollection forElement: anElement item: anObject index: aSelectionIndex [
-	| effectiveTarget effectiveObject |
-	groupFactory
-		ifNil: [
-			effectiveTarget := target.
-			effectiveObject := anObject ]
-		ifNotNil: [
-			anObject size = 1
-				ifTrue: [
-					effectiveTarget := target.
-					effectiveObject := anObject first ]
-				ifFalse: [
-					effectiveTarget := self groupTarget.
-					effectiveObject := groupFactory value: anObject ] ].
-	effectiveTarget actionsForObject: effectiveObject do: [ :anAction |
-		aCollection add: anAction ]
-]
-
 { #category : #accessing }
 GtRemotePhlowContextMenuTargetedObjectActions >> groupFactory [
 	^ groupFactory
@@ -76,4 +57,25 @@ GtRemotePhlowContextMenuTargetedObjectActions >> target [
 { #category : #accessing }
 GtRemotePhlowContextMenuTargetedObjectActions >> target: aGtRemotePhlowActionTarget [
 	target := aGtRemotePhlowActionTarget default
+]
+
+{ #category : #actions }
+GtRemotePhlowContextMenuTargetedObjectActions >> toActionOn: anObject index: anIndexSelection element: anElement [
+	| actions effectiveTarget effectiveObject |
+	actions := OrderedCollection new.
+	groupFactory
+		ifNil: [
+			effectiveTarget := target.
+			effectiveObject := anObject ]
+		ifNotNil: [
+			anObject size = 1
+				ifTrue: [
+					effectiveTarget := target.
+					effectiveObject := anObject first ]
+				ifFalse: [
+					effectiveTarget := self groupTarget.
+					effectiveObject := groupFactory value: anObject ] ].
+	effectiveTarget default actionsForObject: effectiveObject do: [ :anAction |
+		actions add: anAction ].
+	^ actions
 ]

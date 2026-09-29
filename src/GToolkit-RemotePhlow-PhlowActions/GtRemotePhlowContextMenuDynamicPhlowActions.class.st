@@ -26,14 +26,6 @@ GtRemotePhlowContextMenuDynamicPhlowActions >> actionsComputation [
 ]
 
 { #category : #accessing }
-GtRemotePhlowContextMenuDynamicPhlowActions >> collectInvidualActionsOn: aCollection forElement: anElement item: anObject index: aSelectionIndex [
-	| collectedActions |
-	collectedActions := self toActionOn: anObject index: aSelectionIndex element: anElement.
-	aCollection addAll: (collectedActions select: [ :anAction | 
-			anAction shouldShowContextActionOn: anObject viewSelection: aSelectionIndex ])
-]
-
-{ #category : #accessing }
 GtRemotePhlowContextMenuDynamicPhlowActions >> label [
 	^ label
 ]
