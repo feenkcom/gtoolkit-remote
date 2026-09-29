@@ -41,6 +41,14 @@ GtRemotePhlowAction class >> noAction [
 ]
 
 { #category : #accessing }
+GtRemotePhlowAction >> addTarget: aGtPhlowActionTarget [
+	self 
+		assert: [ aGtPhlowActionTarget notNil ]
+		description: [ 'Phlow action target must be non-nil' ].
+	target := self target, aGtPhlowActionTarget asPhlowTarget
+]
+
+{ #category : #accessing }
 GtRemotePhlowAction >> asGtDeclarativeAction [
 	^ nil
 ]
@@ -59,6 +67,7 @@ GtRemotePhlowAction >> button [
 
 { #category : #testing }
 GtRemotePhlowAction >> canBeGtDeclarativeAction [
+	self target asRemotePhlowActionTarget ifNil: [ ^ false ].
 	^ true
 ]
 
@@ -230,6 +239,11 @@ GtRemotePhlowAction >> phlowErrorActionWithException: anException forBuildContex
 	aPhlow failedComputation: aFailedComputation."
 
 	^ phlowErrorAction
+]
+
+{ #category : #accessing }
+GtRemotePhlowAction >> primaryModifierAction: aBlock mouseCursor: aCursor [
+	"Ignored in remote phlow"
 ]
 
 { #category : #accessing }

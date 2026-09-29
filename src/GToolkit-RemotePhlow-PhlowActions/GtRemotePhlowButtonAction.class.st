@@ -30,7 +30,7 @@ GtRemotePhlowButtonAction >> asGtDeclarativeAction [
 	specification := GtPhlowButtonActionSpecification new
 		priority: self priority;
 		tooltipText: self tooltipText;
-		target: self target;
+		target: self target asRemotePhlowActionTarget;
 		label: self label;
 		iconStencil: self iconStencil;
 		phlowDataSource: (GtRemotePhlowDeclarativeBlockActionDataSource new
@@ -46,6 +46,16 @@ GtRemotePhlowButtonAction >> asItemBoundActionToItem: anItem viewSelection: anIn
 	"Normal phlow actions do no get the item or the selection as parameters.
 	They are bound already to them when they are created."
 	^ self
+]
+
+{ #category : #testing }
+GtRemotePhlowButtonAction >> canBeGtDeclarativeAction [
+	^ self 
+			gtDo: [
+				super canBeGtDeclarativeAction and: [
+					self canBeGtDeclarativeActionOnTheGtSide ] ] 
+			gemstoneDo: [ 
+				super canBeGtDeclarativeAction]
 ]
 
 { #category : #accessing }

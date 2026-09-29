@@ -60,6 +60,11 @@ GtRemotePhlowActionTarget >> asPhlowTarget [
 	^ self
 ]
 
+{ #category : #converting }
+GtRemotePhlowActionTarget >> asRemotePhlowActionTarget [
+	^ self
+]
+
 { #category : #actions }
 GtRemotePhlowActionTarget >> contextPhlowActionsForObject: anObject [
 	^ (self phlowActionsForObject: anObject)

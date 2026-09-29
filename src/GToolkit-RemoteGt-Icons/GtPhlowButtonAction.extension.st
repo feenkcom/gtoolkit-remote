@@ -17,6 +17,8 @@ GtPhlowButtonAction >> asGtDeclarativeAction [
 			targetBlock: self actionComputation).
 	self asMenuOptionsSpecification ifNotNil: [ :currentMenuOptions |
 		specification menuOptions: currentMenuOptions ].
+	self target asRemotePhlowActionTarget ifNotNil: [ :aRemoteTarget |
+		specification target: aRemoteTarget ].
 	^ specification
 ]
 
@@ -29,8 +31,13 @@ GtPhlowButtonAction >> asItemBoundActionToItem: anItem viewSelection: anIndex [
 
 { #category : #'*GToolkit-RemoteGt-Icons' }
 GtPhlowButtonAction >> canBeGtDeclarativeAction [
-	^ icon isNil or: [
-		icon isKindOf: GtPhlowIconStencil ]
+	"
+	Allow icons as they get serialized.
+	(icon notNil and: [
+			(icon isKindOf: GtPhlowIconStencil) not ]) ifTrue: [ ^ false ]."
+	
+	self target asRemotePhlowActionTarget ifNil: [ ^ false ].
+	^ true
 ]
 
 { #category : #'*GToolkit-RemoteGt-Icons' }
