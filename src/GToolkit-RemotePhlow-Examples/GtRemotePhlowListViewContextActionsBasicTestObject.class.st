@@ -188,7 +188,7 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithDynamicPhlowActi
 						currentElement phlow spawnObject: {anElement . anObject . aSelectionIndex} ] 
 			}, ((anObject > 12)
 				ifTrue: [
-					{GtPhlowAction noAction button
+					{anAction button
 						label: 'Show if greater than 12';
 						action: [ :currentElement |
 							currentElement phlow spawnObject: anObject ]}
