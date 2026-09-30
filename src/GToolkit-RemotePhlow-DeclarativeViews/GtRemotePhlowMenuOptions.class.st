@@ -21,8 +21,9 @@ GtRemotePhlowMenuOptions class >> new [
 GtRemotePhlowMenuOptions >> asMenuOptionsSpecification [
 	| specification |
 	specification := GtRemotePhlowMenuOptionsSpecification new.
-	menuPreview ifPresent: [ :anObject |
-		specification menuPreview: anObject value ].
+	menuPreview ifPresent: [ :anObject | 
+			specification menuPreview: (anObject value 
+				ifNotNil: [ :aValue | aValue gtDisplayText]) ].
 	menuGroup ifPresent: [ :anObject |
 		specification menuGroup: anObject ].
 	menuPinSubmenu ifPresent: [ :anObject |

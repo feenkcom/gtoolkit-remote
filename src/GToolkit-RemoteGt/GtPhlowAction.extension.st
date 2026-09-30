@@ -11,7 +11,9 @@ GtPhlowAction >> asMenuOptionsSpecification [
 	self hasOptions ifFalse: [ ^ nil ].
 	specification := GtRemotePhlowMenuOptionsSpecification new.
 	self optionAt: #menuPreview
-		ifPresent: [ :anObject | specification menuPreview: anObject value ]
+		ifPresent: [ :anObject | 
+			specification menuPreview: (anObject value 
+				ifNotNil: [ :aValue | aValue gtDisplayText]) ]
 		ifAbsent: [].
 	self optionAt: #menuItemGroup
 		ifPresent: [ :anObject | specification menuGroup: anObject asRemotePhlowMenuItemGroupConfiguration ]
