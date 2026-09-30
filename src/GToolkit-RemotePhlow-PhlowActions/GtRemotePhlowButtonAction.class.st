@@ -63,6 +63,25 @@ GtRemotePhlowButtonAction >> canBeGtDeclarativeAction [
 				super canBeGtDeclarativeAction]
 ]
 
+{ #category : #converting }
+GtRemotePhlowButtonAction >> gtLiveFor: aView [
+	<gtView>
+	
+	^ aView explicit
+		title: 'Live';
+		priority: 1;
+		declarativeStencil: [
+			GtPhlowNamedStencil new
+				stencilClassName: #GtLocalPhlowActionStencil;
+				stencilData: (self asGtDeclarativeAction 
+					asDictionaryForExportWithPhlowDataSource);
+				dataSerializationStrategy: GtPhlowStencilDataSerializationStrategy 
+					forWireEncoding  ];
+		actionButtonIcon: GtPhlowGlamorousVectorIconNameStencil play
+			action: [ :aButton | 
+				self actionComputation cull:  aButton ]
+]
+
 { #category : #accessing }
 GtRemotePhlowButtonAction >> icon: anIconStencil [
 	iconStencil := anIconStencil

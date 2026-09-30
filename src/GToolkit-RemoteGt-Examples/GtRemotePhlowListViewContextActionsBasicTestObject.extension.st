@@ -10,7 +10,7 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithDynamicActionsFo
 		items: [ 10 to: 15 ];
 		itemText: [ :anObject :aSelectionIndex | 
 			'value: ', anObject printString, '; index: ', aSelectionIndex printString ];
-		dynamicContextItems: [ :anElement :anObject :aSelectionIndex |
+		dynamicContextItems: [ :anElement :anObject :aSelection |
 			{
 				GtPhlowAction noAction button
 					label: 'Inspect element';
@@ -21,17 +21,17 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithDynamicActionsFo
 					action: [ :currentElement |
 						currentElement phlow spawnObject: anObject ].
 				GtPhlowAction noAction button
-					label: 'Inspect selection index';
+					label: 'Inspect selection';
 					action: [ :currentElement |
-						currentElement phlow spawnObject: aSelectionIndex ].
+						currentElement phlow spawnObject: aSelection ].
 				GtPhlowAction noAction button
 					label: 'Inspect parameters';
 					action: [ :currentElement |
-						currentElement phlow spawnObject: {currentElement . anObject . aSelectionIndex} ].
+						currentElement phlow spawnObject: {currentElement . anObject . aSelection} ].
 				GtPhlowAction noAction button
 					label: 'Inspect outer parameters';
 					action: [ :currentElement |
-						currentElement phlow spawnObject: {anElement . anObject . aSelectionIndex} ] 
+						currentElement phlow spawnObject: {anElement . anObject . aSelection} ] 
 			}, ((anObject > 12)
 				ifTrue: [
 					{GtPhlowAction noAction button
@@ -53,7 +53,7 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithDynamicActionsMu
 		itemText: [ :anObject :aSelectionIndex | 
 			'value: ', anObject printString, '; index: ', aSelectionIndex printString ];
 		withMultipleSelection;
-		dynamicContextItems: [ :anElement :anObject :aSelectionIndex |
+		dynamicContextItems: [ :anElement :anObject :aSelection |
 			{
 				GtPhlowAction noAction button
 					label: 'Inspect element';
@@ -64,17 +64,17 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithDynamicActionsMu
 					action: [ :currentElement |
 						currentElement phlow spawnObject: anObject ].
 				GtPhlowAction noAction button
-					label: 'Inspect selection index';
+					label: 'Inspect selection';
 					action: [ :currentElement |
-						currentElement phlow spawnObject: aSelectionIndex ].
+						currentElement phlow spawnObject: aSelection ].
 				GtPhlowAction noAction button
 					label: 'Inspect parameters';
 					action: [ :currentElement |
-						currentElement phlow spawnObject: {currentElement . anObject . aSelectionIndex} ].
+						currentElement phlow spawnObject: {currentElement . anObject . aSelection} ].
 				GtPhlowAction noAction button
 					label: 'Inspect outer parameters';
 					action: [ :currentElement |
-						currentElement phlow spawnObject: {anElement . anObject . aSelectionIndex} ] 
+						currentElement phlow spawnObject: {anElement . anObject . aSelection} ] 
 			} ];
 		send: [ :anObject :aSelectionIndex |  {anObject . aSelectionIndex} ]
 ]

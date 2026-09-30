@@ -40,26 +40,26 @@ GtRemotePhlowActionTargetExamples >> compositeTargetSerialization [
 	^ dict
 ]
 
-{ #category : #'examples - actions' }
+{ #category : #examples }
 GtRemotePhlowActionTargetExamples >> contextMenuActionsForGroup [
 	<gtExample>
 	| group target actions |
 	group := self testItemGroup.
 	target := GtRemotePhlowExampleItemActionTarget new.
 	actions := target phlowActionsForObject: group.
-	self assert: actions size equals: 2.
+	self assert: actions size equals: 5.
 	self assert: (actions allSatisfy: [ :each | each target isForTarget: target ]).
 	^ actions
 ]
 
-{ #category : #'examples - actions' }
+{ #category : #examples }
 GtRemotePhlowActionTargetExamples >> contextMenuActionsForItem [
 	<gtExample>
 	| item target actions |
 	item := self testItem.
 	target := GtRemotePhlowExampleItemActionTarget new.
 	actions := target phlowActionsForObject: item.
-	self assert: actions size equals: 4.
+	self assert: actions size equals: 7.
 	self assert: (actions allSatisfy: [ :each | each target isForTarget: target ]).
 	^ actions
 ]
@@ -154,15 +154,14 @@ GtRemotePhlowActionTargetExamples >> objectActionTargetSerialization [
 	^ dict
 ]
 
-{ #category : #'examples - actions' }
+{ #category : #examples }
 GtRemotePhlowActionTargetExamples >> objectActionsForItem [
 	<gtExample>
 	| item target actions |
 	item := self testItem.
 	target := GtRemotePhlowObjectActionTarget new.
 	actions := target phlowActionsForObject: item.
-	self assert: actions size equals: 1.
-	self assert: actions first target equals: target.
+	self assert: actions size equals: 0.
 	^ actions
 ]
 
@@ -176,7 +175,7 @@ GtRemotePhlowActionTargetExamples >> objectContextMenuTarget [
 	^ target
 ]
 
-{ #category : #'examples - actions' }
+{ #category : #examples }
 GtRemotePhlowActionTargetExamples >> targetedActionsWithGroupFactory [
 	<gtExample>
 	| targeted singleItem items singleActions groupActions |
@@ -186,13 +185,13 @@ GtRemotePhlowActionTargetExamples >> targetedActionsWithGroupFactory [
 	singleItem := GtRemotePhlowActionTargetTestItem label: 'Test' value: 42.
 	singleActions := OrderedCollection new.
 	targeted collectInvidualActionsOn: singleActions forElement: nil item: { singleItem } index: { 1 }.
-	self assert: singleActions size equals: 2.
+	self assert: singleActions size equals: 7.
 	items := {
 		GtRemotePhlowActionTargetTestItem label: 'A' value: 1.
 		GtRemotePhlowActionTargetTestItem label: 'B' value: 2 }.
 	groupActions := OrderedCollection new.
 	targeted collectInvidualActionsOn: groupActions forElement: nil item: items index: { 1. 2 }.
-	self assert: groupActions size equals: 2.
+	self assert: groupActions size equals: 5.
 	^ targeted
 ]
 

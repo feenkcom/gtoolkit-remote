@@ -12,7 +12,8 @@ GtRemotePhlowDeclarativeBlockActionDataSource >> executeRemoteActionWithPhlowRes
 	| phlowApiWrapper |
 	
 	phlowApiWrapper := self phlowApiWrapper.
-	self targetBlock value: phlowApiWrapper.
+	self targetBlock ifNotNil: [ :aComputationBlock |
+		aComputationBlock value: phlowApiWrapper ].
 	
 	^ phlowApiWrapper currentAction 
 			ifNotNil: [ :aPhlowWrappedAction | 
