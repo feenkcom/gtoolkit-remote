@@ -51,6 +51,14 @@ GtRemotePhlowListingViewSelection class >> forSingleListIndex: anInteger [
 ]
 
 { #category : #'instance creation' }
+GtRemotePhlowListingViewSelection class >> forSingleListIndex: anInteger selectionIndex: aSelectionIndex [
+	^ GtRemotePhlowListingViewSingleSelection new
+		selectionItem: (GtRemotePhlowListingViewListSelectionItem new
+			nodeIdentifier: (GtRemotePhlowNodeIdentifier forListIndex: anInteger);
+			selectionIndex: aSelectionIndex)
+]
+
+{ #category : #'instance creation' }
 GtRemotePhlowListingViewSelection class >> forSingleTreeIdentifier: aTreeNodeIdentifier [
 	^ GtRemotePhlowListingViewSingleSelection new
 		selectionItem: (GtRemotePhlowListingViewTreeSelectionItem new
