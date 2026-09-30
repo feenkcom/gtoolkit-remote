@@ -51,9 +51,9 @@ Object >> gtActionCopyDisplayTextInspectFor: anAction [
             iconName: #clipboard);
         tooltip: 'Copy display text';
         menuItemGroup: GtRemotePhlowMenuItemGroupConfiguration editing;
-        menuItemPreview: [ self gtDisplayString ];
+        menuItemPreview: [ self gtDisplayText ];
         action: [ :aButton |
-            aButton phlow copyToClipboard: self gtDisplayString ]
+            aButton phlow copyToClipboard: self gtDisplayText ]
 ]
 
 { #category : '*GToolkit-RemotePhlow-InspectorExtensions-Remote' }
