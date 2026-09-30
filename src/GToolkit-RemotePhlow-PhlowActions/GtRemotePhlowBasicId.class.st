@@ -17,6 +17,11 @@ GtRemotePhlowBasicId class >> isAbstract [
 	^ self name = #GtRemotePhlowBasicId
 ]
 
+{ #category : #testing }
+GtRemotePhlowBasicId class >> isRemotePhlowId [
+	^ true
+]
+
 { #category : #comparing }
 GtRemotePhlowBasicId >> = anObject [
 	self == anObject ifTrue: [ ^ true ].
