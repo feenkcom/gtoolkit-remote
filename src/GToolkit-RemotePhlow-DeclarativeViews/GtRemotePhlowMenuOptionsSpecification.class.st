@@ -38,7 +38,9 @@ GtRemotePhlowMenuOptionsSpecification >> asDictionaryForExport [
 	| exportData |
 	exportData := super asDictionaryForExport.
 	menuPreview ifNotNil: [ :anObject |
-		exportData at: 'menuPreview' put: anObject ].
+		exportData at: 'menuPreview' put: ((anObject isNil or: [ anObject isString ])
+			ifTrue: [ anObject ]
+			ifFalse: [ anObject asDictionaryForExport ]) ].
 	menuGroup ifNotNil: [ :anObject |
 		exportData at: 'menuGroup' put: anObject asDictionaryForExport ].
 	menuPinSubmenu ifNotNil: [ :anObject |
@@ -66,7 +68,9 @@ GtRemotePhlowMenuOptionsSpecification >> hasAnyOptions [
 GtRemotePhlowMenuOptionsSpecification >> initializeFromJSONDictionary: aDictionary [
 	super initializeFromJSONDictionary: aDictionary.
 	aDictionary at: 'menuPreview' ifPresent: [ :anObject |
-		self menuPreview: anObject ].
+		self menuPreview: ((anObject isNil or: [ anObject isString ])
+			ifTrue: [ anObject ]
+			ifFalse: [ GtPhlowRunBasedText fromJSONDictionary: anObject ]) ].
 	aDictionary at: 'menuGroup' ifPresent: [ :anObject |
 		self menuGroup: (GtRemotePhlowMenuItemGroupConfiguration new
 			initializeFromJSONDictionary: anObject) ].
