@@ -30,8 +30,8 @@ GtRemotePhlowCopyToClipboardAction >> clipboardText [
 ]
 
 { #category : #accessing }
-GtRemotePhlowCopyToClipboardAction >> clipboardText: aString [
-	clipboardText := aString
+GtRemotePhlowCopyToClipboardAction >> clipboardText: newText [
+	clipboardText := newText ifNotNil: [ :anObject | anObject asString ]
 ]
 
 { #category : #serialization }
