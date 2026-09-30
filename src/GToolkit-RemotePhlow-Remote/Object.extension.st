@@ -66,3 +66,8 @@ Object >> gtViewsInCurrentContext [
 
 		phlowView ]
 ]
+
+{ #category : '*GToolkit-RemotePhlow-Remote' }
+Object >> isBlocElementId [
+	^ false
+]
