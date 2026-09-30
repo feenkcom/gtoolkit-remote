@@ -28,7 +28,7 @@ GtRemotePhlowObjectComparerSlotValue >> slotName: aString [
 
 { #category : #printing }
 GtRemotePhlowObjectComparerSlotValue >> textForValue [
-	^ self valueDisplayString, ' ', self value class name
+	^ self textForValueWithClassName
 ]
 
 { #category : #accessing }

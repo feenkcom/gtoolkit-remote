@@ -24,6 +24,11 @@ GtPhlowColor class >> fromJSONDictionary: aDictionary [
 		yourself
 ]
 
+{ #category : #'gt - extensions' }
+GtPhlowColor class >> lighterFailureBackgroundColor [
+	^ self r: 1.0 g: 0.9628543499511242 b: 0.8602150537634409 alpha: 1.0
+]
+
 { #category : #'instance creation' }
 GtPhlowColor class >> named: aColorName [
 	^ self new 

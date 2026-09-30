@@ -25,7 +25,8 @@ GtRemotePhlowObjectComparer class >> compareAll: aCollection [
 GtRemotePhlowObjectComparer >> childComparers [
 	| slotNames |
 	slotNames := ((values select: [ :o | o hasValue ])
-		flatCollectAsSet: [ :each | each value class allInstVarNames ])
+		flatCollect: [ :each | each value class allInstVarNames ]) 
+		asSet
 		asSortedCollection.
 	^ slotNames
 		collect: [ :eachSlotName | 
@@ -54,6 +55,33 @@ GtRemotePhlowObjectComparer >> gtComparersFor: aView [
 		items: [ self childComparers ];
 		column: 'Label' text: [ :each | each label ] width: 150;
 		column: 'Values' text: [ :each | (each values collect: [ :v | v textForValue ]) asArray printString ]
+]
+
+{ #category : #'gt - extensions' }
+GtRemotePhlowObjectComparer >> gtParallelListFor: aView [
+	<gtView>
+	| tree |
+	tree := aView columnedTree
+			title: 'List';
+			priority: 10;
+			items: [ {self} ];
+			children: [ :each | each childComparers ];
+			column: 'Slot'
+				text: [ :each | each label ]
+				width: 150.
+	values
+		do: [ :aValue | 
+			tree
+				column: aValue valueDisplayString
+				do: [ :aColumn | 
+					aColumn
+						text: [ :each | 
+							(self textForValueFrom: each ofObject: aValue) ];
+						background: [ :cellValue :eachRow | 
+							eachRow hasDifferences
+								ifTrue: [ GtPhlowColor lighterFailureBackgroundColor]
+								ifFalse: [ GtPhlowColor transparent ] ] ] ].
+	^ tree
 ]
 
 { #category : #'gt - extensions' }

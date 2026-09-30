@@ -26,8 +26,17 @@ GtRemotePhlowObjectComparerValue >> object: anObject [
 ]
 
 { #category : #printing }
-GtRemotePhlowObjectComparerValue >> textForValue [
-	^ self valueDisplayString
+GtRemotePhlowObjectComparerValue >> textForValueWithClassName [
+	| displayString className fullString text |
+	displayString := self valueDisplayString.
+	className := self value class name.
+	fullString := displayString, ' ', className.
+	text := fullString asRopedText.
+	text glamorousRegularFont.
+	(text from: displayString size + 2 to: fullString size)
+		fontSize: 12;
+		foreground: (GtPhlowColor named: #veryLightGray).
+	^ text
 ]
 
 { #category : #printing }
