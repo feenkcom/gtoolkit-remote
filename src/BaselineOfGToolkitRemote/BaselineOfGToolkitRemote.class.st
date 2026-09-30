@@ -30,6 +30,7 @@ BaselineOfGToolkitRemote >> baseline: spec [
 				spec requires: #(#'GToolkit-RemotePhlow-DeclarativeViews') ];
 			package: 'GToolkit-RemotePhlow-PhlowActions'  with: [
 				spec requires: #(#'GToolkitPhlow' ) ];
+			package: 'GToolkit-RemotePhlow-ObjectComparer';
 			package: 'GToolkit-RemotePhlow-PhlowViews'  with: [
 				spec requires: #(#'GToolkitPhlow' 'GToolkit-RemotePhlow-Text') ];
 			package: 'GToolkit-RemotePhlow-InspectorCore' with: [
