@@ -12,7 +12,25 @@ GtRemotePhlowListViewBasicContextActionsExamples class >> isAbstract [
 	^ self name = #GtRemotePhlowListViewBasicContextActionsExamples
 ]
 
-{ #category : #'examples - context menu' }
+{ #category : #assertions }
+GtRemotePhlowListViewBasicContextActionsExamples >> assertInspectedObjectWithValue: aValue inSecondPaneOf: aScripter [
+	(aScripter inspectorStep)
+		onPagerPaneWithIndex: 2;
+		assertInspectedObjectOfType: SmallInteger;
+		assertInspectedObjectValueFor: [ :obj | obj ] equals: aValue;
+		play.
+]
+
+{ #category : #assertions }
+GtRemotePhlowListViewBasicContextActionsExamples >> assertInspectedSelectionAtIndex: anIndex inSecondPaneOf: aScripter [
+	(aScripter inspectorStep)
+		onPagerPaneWithIndex: 2;
+		assertInspectedObjectValueFor: [ :obj | obj ]
+			equals: (self expectedSingleSelectionForIndex: anIndex);
+		play.
+]
+
+{ #category : #examples }
 GtRemotePhlowListViewBasicContextActionsExamples >> contextMenuOnItem11 [
 	<gtExample>
 	| scripter |
@@ -24,20 +42,14 @@ GtRemotePhlowListViewBasicContextActionsExamples >> contextMenuOnItem11 [
 		@ [ :aLabel | aLabel text asString = 'value: 11; index: 2' ];
 		play.
 
-	scripter assert
-		label: 'Assert context menu items for item 11';
-		value: [ :aMenuContainer | 
-			((aMenuContainer query // #'menu--label') result 
-				collect: [ :each | each text asString ]) asArray ]
-		equals: {'Inspect element'. 'Inspect object'. 'Inspect selection'. 'Inspect parameters'};
-		onSpaceRoot;
-		// BrMenuSteppedElement;
+	scripter menuStep
+		assertMenuItemLabels: {'Inspect element'. 'Inspect object'. 'Inspect selection'. 'Inspect parameters'};
 		play.
 
 	^ scripter
 ]
 
-{ #category : #'examples - context menu' }
+{ #category : #examples }
 GtRemotePhlowListViewBasicContextActionsExamples >> contextMenuOnItem13 [
 	<gtExample>
 	| scripter |
@@ -49,14 +61,8 @@ GtRemotePhlowListViewBasicContextActionsExamples >> contextMenuOnItem13 [
 		@ [ :aLabel | aLabel text asString = 'value: 13; index: 4' ];
 		play.
 
-	scripter assert
-		label: 'Assert context menu items for item 13';
-		value: [ :aMenuContainer | 
-			((aMenuContainer query // #'menu--label') result 
-				collect: [ :each | each text asString ]) asArray ]
-		equals: {'Inspect element'. 'Inspect object'. 'Inspect selection'. 'Inspect parameters'. 'Show if greater than 12'};
-		onSpaceRoot;
-		// BrMenuSteppedElement;
+	scripter menuStep
+		assertMenuItemLabels: {'Inspect element'. 'Inspect object'. 'Inspect selection'. 'Inspect parameters'. 'Show if greater than 12'};
 		play.
 
 	^ scripter
@@ -73,7 +79,7 @@ GtRemotePhlowListViewBasicContextActionsExamples >> expectedSingleSelectionForIn
 	^ self subclassResponsibility
 ]
 
-{ #category : #'examples - actions' }
+{ #category : #examples }
 GtRemotePhlowListViewBasicContextActionsExamples >> inspectObjectOnItem13OpensNewPane [
 	<gtExample>
 	| scripter |
@@ -94,16 +100,12 @@ GtRemotePhlowListViewBasicContextActionsExamples >> inspectObjectOnItem13OpensNe
 		assertNumberOfPaneElements: 2;
 		play.
 
-	(scripter inspectorStep)
-		onPagerPaneWithIndex: 2;
-		assertInspectedObjectOfType: SmallInteger;
-		assertInspectedObjectValueFor: [ :obj | obj ] equals: 13;
-		play.
+	self assertInspectedObjectWithValue: 13 inSecondPaneOf: scripter.
 
 	^ scripter
 ]
 
-{ #category : #'examples - actions' }
+{ #category : #examples }
 GtRemotePhlowListViewBasicContextActionsExamples >> inspectSelectionOnItem13OpensNewPane [
 	<gtExample>
 	| scripter |
@@ -124,11 +126,7 @@ GtRemotePhlowListViewBasicContextActionsExamples >> inspectSelectionOnItem13Open
 		assertNumberOfPaneElements: 2;
 		play.
 
-	(scripter inspectorStep)
-		onPagerPaneWithIndex: 2;
-		assertInspectedObjectValueFor: [ :obj | obj ]
-			equals: (self expectedSingleSelectionForIndex: 4);
-		play.
+	self assertInspectedSelectionAtIndex: 4 inSecondPaneOf: scripter.
 
 	^ scripter
 ]
