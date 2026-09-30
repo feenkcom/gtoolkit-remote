@@ -6,9 +6,11 @@ SequenceableCollection >> gtItemsFor: aView [
 		title: 'Items';
 		priority: 50;
 		items: [ self ];
+		withMultipleSelection;
 		column: 'Index' 
 			text: [ :eachItem :eachIndex | eachIndex  ]
 			width: 45;
 		column: 'Item' 
-			text: [ :eachItem | eachItem gtDisplayString ].
+			text: [ :eachItem | eachItem gtDisplayString ];
+		contextActionsForTarget: GtRemotePhlowObjectContextMenuTarget
 ]
