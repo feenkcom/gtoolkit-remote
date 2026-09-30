@@ -25,5 +25,8 @@ GtRemotePhlowBasicId class >> isRemotePhlowId [
 { #category : #comparing }
 GtRemotePhlowBasicId >> = anObject [
 	self == anObject ifTrue: [ ^ true ].
-	^ self class = anObject class
+	
+	^ self class = anObject class or: [ 
+		(anObject isBlocElementId) and: [ 
+			self asSymbol = anObject asSymbol  ]]
 ]

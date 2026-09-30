@@ -14,9 +14,11 @@ GtRemotePhlowId class >> isAbstract [
 
 { #category : #comparing }
 GtRemotePhlowId >> = anObject [
-	self == anObject ifTrue: [ ^ true ].
-	self class = anObject class ifFalse: [ ^ false ].
-	^ self asSymbol = anObject asSymbol
+	"Comparing `self = anObject` must provide 
+	same results as `self asSymbol = anObject asSymbol`. 
+	See the #hash method comment."
+
+	^ self subclassResponsibility
 ]
 
 { #category : #converting }
@@ -32,6 +34,11 @@ GtRemotePhlowId >> asSymbol [
 { #category : #comparing }
 GtRemotePhlowId >> hash [
 	^ self asSymbol hash
+]
+
+{ #category : #testing }
+GtRemotePhlowId >> isBlocElementId [
+	^ true
 ]
 
 { #category : #testing }

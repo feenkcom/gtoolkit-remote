@@ -22,8 +22,11 @@ GtRemotePhlowNamedId class >> typeLabel [
 
 { #category : #comparing }
 GtRemotePhlowNamedId >> = anObject [
+
 	self == anObject ifTrue: [ ^ true ].
-	self class = anObject class ifFalse: [ ^ false ].
+	(anObject isBlocElementId) ifFalse: [ ^ false ].	
+	
+	self class = anObject class ifTrue: [ ^ identifier = anObject identifier ].
 	^ self asSymbol = anObject asSymbol
 ]
 
