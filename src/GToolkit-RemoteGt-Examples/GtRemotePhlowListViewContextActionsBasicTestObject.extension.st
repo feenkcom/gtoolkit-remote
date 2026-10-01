@@ -53,7 +53,7 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithDynamicActionsMu
 		itemText: [ :anObject :aSelectionIndex | 
 			'value: ', anObject printString, '; index: ', aSelectionIndex printString ];
 		withMultipleSelection;
-		dynamicContextItems: [ :anElement :anObject :aSelection |
+		dynamicContextItems: [ :anElement :aCollectionOfObjects :aSelection |
 			{
 				GtPhlowAction noAction button
 					label: 'Inspect element';
@@ -62,7 +62,7 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithDynamicActionsMu
 				GtPhlowAction noAction button
 					label: 'Inspect object';
 					action: [ :currentElement |
-						currentElement phlow spawnObject: anObject ].
+						currentElement phlow spawnObject: aCollectionOfObjects ].
 				GtPhlowAction noAction button
 					label: 'Inspect selection';
 					action: [ :currentElement |
@@ -70,11 +70,24 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithDynamicActionsMu
 				GtPhlowAction noAction button
 					label: 'Inspect parameters';
 					action: [ :currentElement |
-						currentElement phlow spawnObject: {currentElement . anObject . aSelection} ].
+						currentElement phlow spawnObject: {currentElement . aCollectionOfObjects . aSelection} ].
 				GtPhlowAction noAction button
 					label: 'Inspect outer parameters';
 					action: [ :currentElement |
-						currentElement phlow spawnObject: {anElement . anObject . aSelection} ] 
-			} ];
+						currentElement phlow spawnObject: {anElement . aCollectionOfObjects . aSelection} ] 
+			}, (aSelection size = 3  
+						ifTrue: [
+							{GtPhlowAction noAction button
+								label: 'Show if 3 elements in selection';
+								action: [ :currentElement |
+									currentElement phlow spawnObject: currentElement ]}] 
+							ifFalse: [{}]),
+						((aCollectionOfObjects includes: 14)
+						ifTrue: [
+							{GtPhlowAction noAction button
+								label: 'Show if 14 in selection';
+								action: [ :currentElement |
+									currentElement phlow spawnObject: aCollectionOfObjects ]}] 
+						ifFalse: [{}])];
 		send: [ :anObject :aSelectionIndex |  {anObject . aSelectionIndex} ]
 ]

@@ -11,6 +11,15 @@ GtRemotePhlowListViewBasicContextActionsLocalSimulationExamples >> createTestObj
 ]
 
 { #category : #expected }
+GtRemotePhlowListViewBasicContextActionsLocalSimulationExamples >> expectedMultipleSelectionForIndices: anArray [
+	^ GtRemotePhlowListingViewMultipleSelection new
+		selectionItems: (anArray collect: [ :idx |
+			GtRemotePhlowListingViewListSelectionItem new
+				nodeIdentifier: (GtRemotePhlowNodeIdentifier forListIndex: idx);
+				selectionIndex: idx ])
+]
+
+{ #category : #expected }
 GtRemotePhlowListViewBasicContextActionsLocalSimulationExamples >> expectedSingleSelectionForIndex: anIndex [
 	^ GtRemotePhlowListingViewSelection forSingleListIndex: anIndex selectionIndex: anIndex
 ]

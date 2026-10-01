@@ -36,6 +36,9 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtColumnedListWithBasicCon
 				anElement phlow spawnObject: aSelection ];
 		contextItemLabel: 'Inspect parameters' action: [ :anElement :anObject :aSelection |
 				anElement phlow spawnObject: {anElement . anObject . aSelection} ];
+		contextItemLabel: 'Show if greater than 12' 
+			action: [ :anElement :anObject | anElement phlow spawnObject: anObject ]
+			showIf: [ :anObject :aSelection | anObject > 12 ];
 		send: [ :anObject :aSelection |
 			{anObject . aSelection} ]
 ]
@@ -154,7 +157,7 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithDynamicContextPh
 		itemText: [ :anObject :aSelection | 
 			'value: ', anObject printString, '; index: ', aSelection printString ];
 		withMultipleSelection;
-		dynamicPhlowContextItems: [ :anAction :anElement :anObject :aSelection |
+		dynamicPhlowContextItems: [ :anAction :anElement :aCollectionOfObjects :aSelection |
 			{
 				anAction contextMenuAction
 					label: 'Inspect element';
@@ -176,8 +179,22 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithDynamicContextPh
 				anAction contextMenuAction
 					label: 'Inspect outer parameters';
 					action: [ :currentElement |
-						currentElement phlow spawnObject: {anAction. anElement . anObject . aSelection} ] 
-			} ];
+						currentElement phlow 
+							spawnObject: {anAction. anElement . aCollectionOfObjects . aSelection} ] 
+			}, (aSelection size = 3  
+						ifTrue: [
+							{anAction contextMenuAction
+								label: 'Show if 3 elements in selection';
+								action: [ :currentElement |
+									currentElement phlow spawnObject: currentElement ]}] 
+							ifFalse: [{}]),
+						((aCollectionOfObjects includes: 14)
+						ifTrue: [
+							{anAction contextMenuAction
+								label: 'Show if 14 in selection';
+								action: [ :currentElement :currentCollectionOfObjects |
+									currentElement phlow spawnObject: currentCollectionOfObjects ]}] 
+						ifFalse: [{}]) ];
 		send: [ :anObject :aSelectionIndex | {anObject . aSelectionIndex} ]
 ]
 
@@ -235,7 +252,7 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithDynamicPhlowActi
 		itemText: [ :anObject :aSelectionIndex | 
 			'value: ', anObject printString, '; index: ', aSelectionIndex printString ];
 		withMultipleSelection;
-		dynamicPhlowContextItems: [ :anAction :anElement :anObject :aSelection |
+		dynamicPhlowContextItems: [ :anAction :anElement :aCollectionOfObjects :aSelection |
 			{
 				anAction button
 					label: 'Inspect element';
@@ -244,7 +261,7 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithDynamicPhlowActi
 				anAction button
 					label: 'Inspect object';
 					action: [ :currentElement |
-						currentElement phlow spawnObject: anObject ].
+						currentElement phlow spawnObject: aCollectionOfObjects ].
 				anAction button
 					label: 'Inspect selection';
 					action: [ :currentElement |
@@ -253,12 +270,25 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithDynamicPhlowActi
 					label: 'Inspect parameters';
 					action: [ :currentElement |
 						currentElement phlow spawnObject: {
-							currentElement . anObject . aSelection} ].
+							currentElement . aCollectionOfObjects . aSelection} ].
 				anAction button
 					label: 'Inspect outer parameters';
 					action: [ :currentElement |
-						currentElement phlow spawnObject: {anElement . anObject . aSelection} ] 
-			} ];
+						currentElement phlow spawnObject: {anElement . aCollectionOfObjects . aSelection} ] 
+			}, (aSelection size = 3  
+						ifTrue: [
+							{anAction button
+								label: 'Show if 3 elements in selection';
+								action: [ :currentElement |
+									currentElement phlow spawnObject: currentElement ]}] 
+							ifFalse: [{}]),
+						((aCollectionOfObjects includes: 14)
+						ifTrue: [
+							{anAction button
+								label: 'Show if 14 in selection';
+								action: [ :currentElement |
+									currentElement phlow spawnObject: aCollectionOfObjects ]}] 
+						ifFalse: [{}]) ];
 		send: [ :anObject :aSelectionIndex | {anObject . aSelectionIndex} ]
 ]
 
@@ -276,9 +306,10 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtTreeWithBasicContextActi
 			(targetNumber // 2 = targetNumber)
 				ifTrue: [ #() ] 
 				ifFalse: [
-					targetNumber // 2 to: (targetNumber - 1) ] ];
+					(targetNumber // 2 to: (targetNumber - 1)) collect: [ :each | each + 10 ]  ] ];
 		itemText: [ :x :aSelectionIndex | 
-			'value: ', x asString, '; index: ', aSelectionIndex class name, ' - ', aSelectionIndex   asString];
+			'value: ', x asString,
+				 '; index: ', aSelectionIndex class name, ' - ', aSelectionIndex   asString];
 		contextItemLabel: 'Inspect element' action: [ :anElement |
 				anElement phlow spawnObject: anElement ];
 		contextItemLabel: 'Inspect object' action: [ :anElement :anObject |
@@ -287,6 +318,9 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtTreeWithBasicContextActi
 				anElement phlow spawnObject: aSelection ];
 		contextItemLabel: 'Inspect parameters' action: [ :anElement :anObject :aSelection |
 				anElement phlow spawnObject: {anElement . anObject . aSelection} ];
+		contextItemLabel: 'Show if greater than 12' 
+			action: [ :anElement :anObject | anElement phlow spawnObject: anObject ]
+			showIf: [ :anObject :aSelection | anObject > 12 ];
 		send: [ :anObject :aSelectionIndex |
 			{anObject . aSelectionIndex} ]
 ]
@@ -317,6 +351,15 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtTreeWithBasicContextActi
 				anElement phlow spawnObject: aSelection ];
 		contextItemLabel: 'Inspect parameters' action: [ :anElement :anObject :aSelection |
 				anElement phlow spawnObject: {anElement . anObject . aSelection} ];
+		contextItemLabel: 'Show if 3 elements in selection' 
+			action: [ :anElement | anElement phlow spawnObject: anElement ]
+			showIf: [ :anObject :aSelection | 
+				aSelection size = 3 ];
+		contextItemLabel: 'Show if 14 in selection' 
+			action: [ :anElement :aCollectionOfObjects | 
+				anElement phlow spawnObject: aCollectionOfObjects  ]
+			showIf: [ :aCollectionOfObjects :aSelection | 
+				aCollectionOfObjects includes: 14   ];
 		send: [ :anObject :aSelectionIndex |
 			{anObject . aSelectionIndex} ]
 ]
