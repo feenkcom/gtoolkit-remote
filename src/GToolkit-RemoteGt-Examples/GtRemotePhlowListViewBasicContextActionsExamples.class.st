@@ -4,7 +4,7 @@ Scripter-based examples testing context menu actions on the Basic actions view o
 Class {
 	#name : #GtRemotePhlowListViewBasicContextActionsExamples,
 	#superclass : #Object,
-	#category : #'GToolkit-RemoteGt-Examples-Inspection'
+	#category : #'GToolkit-RemoteGt-Examples-Inspection - Actions'
 }
 
 { #category : #testing }

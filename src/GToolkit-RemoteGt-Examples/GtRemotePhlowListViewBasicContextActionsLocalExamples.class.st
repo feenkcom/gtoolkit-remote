@@ -4,7 +4,7 @@ Abstract local subclass for context menu action inspection examples. Subclasses 
 Class {
 	#name : #GtRemotePhlowListViewBasicContextActionsLocalExamples,
 	#superclass : #GtRemotePhlowListViewBasicContextActionsExamples,
-	#category : #'GToolkit-RemoteGt-Examples-Inspection'
+	#category : #'GToolkit-RemoteGt-Examples-Inspection - Actions'
 }
 
 { #category : #testing }

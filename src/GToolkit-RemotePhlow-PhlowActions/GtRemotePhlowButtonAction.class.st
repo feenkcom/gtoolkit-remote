@@ -76,7 +76,7 @@ GtRemotePhlowButtonAction >> gtLiveFor: aView [
 				stencilData: (self asGtDeclarativeAction 
 					asDictionaryForExportWithPhlowDataSource);
 				dataSerializationStrategy: GtPhlowStencilDataSerializationStrategy 
-					forWireEncoding  ];
+					forMixedProxyDataEncoding  ];
 		actionButtonIcon: GtPhlowGlamorousVectorIconNameStencil play
 			action: [ :aButton | 
 				self actionComputation cull:  aButton ]

@@ -1,17 +1,17 @@
 Class {
-	#name : #GtRemotePhlowListViewBasicContextActionsLocalSimulationExamples,
-	#superclass : #GtRemotePhlowListViewBasicContextActionsLocalExamples,
+	#name : #GtRemotePhlowColumnedListViewBasicContextActionsLocalSimulationExamples,
+	#superclass : #GtRemotePhlowColumnedListViewBasicContextActionsLocalExamples,
 	#category : #'GToolkit-RemoteGt-Examples-Inspection - Actions'
 }
 
-{ #category : #'examples - setup' }
-GtRemotePhlowListViewBasicContextActionsLocalSimulationExamples >> createTestObject [
+{ #category : #examples }
+GtRemotePhlowColumnedListViewBasicContextActionsLocalSimulationExamples >> createTestObject [
 	<gtExample>
 	^ GtRemoteInspectionSimulation openOn: super createTestObject
 ]
 
 { #category : #expected }
-GtRemotePhlowListViewBasicContextActionsLocalSimulationExamples >> expectedMultipleSelectionForIndices: anArray [
+GtRemotePhlowColumnedListViewBasicContextActionsLocalSimulationExamples >> expectedMultipleSelectionForIndices: anArray [
 	^ GtRemotePhlowListingViewMultipleSelection new
 		selectionItems: (anArray collect: [ :idx |
 			GtRemotePhlowListingViewListSelectionItem new
@@ -20,6 +20,6 @@ GtRemotePhlowListViewBasicContextActionsLocalSimulationExamples >> expectedMulti
 ]
 
 { #category : #expected }
-GtRemotePhlowListViewBasicContextActionsLocalSimulationExamples >> expectedSingleSelectionForIndex: anIndex [
+GtRemotePhlowColumnedListViewBasicContextActionsLocalSimulationExamples >> expectedSingleSelectionForIndex: anIndex [
 	^ GtRemotePhlowListingViewSelection forSingleListIndex: anIndex selectionIndex: anIndex
 ]
