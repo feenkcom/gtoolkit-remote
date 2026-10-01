@@ -4,18 +4,6 @@ Class {
 	#category : #'GToolkit-RemoteGt-Examples-Inspection - Actions'
 }
 
-{ #category : #assertions }
-GtRemotePhlowColumnedTreeViewBasicContextActionsRemoteSimulationExamples >> assertInspectedSelectionAtTreePath: aPath atIndex: anIndex inSecondPaneOf: aScripter [
-	(aScripter inspectorStep)
-		onPagerPaneWithIndex: 2;
-		assertInspectedObjectValueFor: [ :obj | obj ]
-			equals: (GtRemotePhlowListingViewSingleSelection new
-				selectionItem: (GtRemotePhlowListingViewTreeSelectionItem new
-					nodeIdentifier: (GtRemotePhlowNodeIdentifier forTreePath: aPath);
-					selectionIndex: anIndex));
-		play.
-]
-
 { #category : #examples }
 GtRemotePhlowColumnedTreeViewBasicContextActionsRemoteSimulationExamples >> createTestObject [
 	<gtExample>
@@ -28,15 +16,6 @@ GtRemotePhlowColumnedTreeViewBasicContextActionsRemoteSimulationExamples >> expa
 ]
 
 { #category : #assertions }
-GtRemotePhlowColumnedTreeViewBasicContextActionsRemoteSimulationExamples >> expectedMultipleSelectionForIndices: anArray [
-	^ GtRemotePhlowListingViewMultipleSelection new
-		selectionItems: (anArray collect: [ :idx |
-			GtRemotePhlowListingViewTreeSelectionItem new
-				nodeIdentifier: (GtRemotePhlowNodeIdentifier forTreePath: {idx});
-				selectionIndex: idx ])
-]
-
-{ #category : #assertions }
 GtRemotePhlowColumnedTreeViewBasicContextActionsRemoteSimulationExamples >> expectedMultipleSelectionForItems: anArray [
 	^ GtRemotePhlowListingViewMultipleSelection new
 		selectionItems: (anArray collect: [ :each |
@@ -45,10 +24,10 @@ GtRemotePhlowColumnedTreeViewBasicContextActionsRemoteSimulationExamples >> expe
 				selectionIndex: each second ])
 ]
 
-{ #category : #assertions }
-GtRemotePhlowColumnedTreeViewBasicContextActionsRemoteSimulationExamples >> expectedSingleSelectionForIndex: anIndex [
+{ #category : #accessing }
+GtRemotePhlowColumnedTreeViewBasicContextActionsRemoteSimulationExamples >> expectedSingleSelectionForTreePath: aPath atIndex: anIndex [
 	^ GtRemotePhlowListingViewSingleSelection new
 		selectionItem: (GtRemotePhlowListingViewTreeSelectionItem new
-			nodeIdentifier: (GtRemotePhlowNodeIdentifier forTreePath: {anIndex});
+			nodeIdentifier: (GtRemotePhlowNodeIdentifier forTreePath: aPath);
 			selectionIndex: anIndex)
 ]

@@ -10,15 +10,6 @@ GtRemotePhlowColumnedTreeViewBasicContextActionsLocalExamples class >> isAbstrac
 ]
 
 { #category : #assertions }
-GtRemotePhlowColumnedTreeViewBasicContextActionsLocalExamples >> assertInspectedMultipleSelectionAtIndices: anArray inSecondPaneOf: aScripter [
-	(aScripter inspectorStep)
-		onPagerPaneWithIndex: 2;
-		assertInspectedObjectValueFor: [ :obj | obj ]
-			equals: (self expectedMultipleSelectionForIndices: anArray);
-		play.
-]
-
-{ #category : #assertions }
 GtRemotePhlowColumnedTreeViewBasicContextActionsLocalExamples >> assertInspectedMultipleSelectionAtItems: anArray inSecondPaneOf: aScripter [
 	(aScripter inspectorStep)
 		onPagerPaneWithIndex: 2;
@@ -46,35 +37,17 @@ GtRemotePhlowColumnedTreeViewBasicContextActionsLocalExamples >> assertInspected
 ]
 
 { #category : #assertions }
-GtRemotePhlowColumnedTreeViewBasicContextActionsLocalExamples >> assertInspectedSelectionAtIndex: anIndex inSecondPaneOf: aScripter [
-	(aScripter inspectorStep)
-		onPagerPaneWithIndex: 2;
-		assertInspectedObjectValueFor: [ :obj | obj ]
-			equals: (self expectedSingleSelectionForIndex: anIndex);
-		play.
-]
-
-{ #category : #assertions }
 GtRemotePhlowColumnedTreeViewBasicContextActionsLocalExamples >> assertInspectedSelectionAtTreePath: aPath atIndex: anIndex inSecondPaneOf: aScripter [
 	(aScripter inspectorStep)
 		onPagerPaneWithIndex: 2;
 		assertInspectedObjectValueFor: [ :obj | obj ]
-			equals: (GtPhlowListingViewSelection forSingleTreePath: aPath selectionIndex: anIndex);
+			equals: (self expectedSingleSelectionForTreePath: aPath atIndex: anIndex);
 		play.
 ]
 
 { #category : #'examples - expanded tree' }
 GtRemotePhlowColumnedTreeViewBasicContextActionsLocalExamples >> expandedChildCellText [
 	^ 'value: 11; index: SmallInteger - 5'
-]
-
-{ #category : #accessing }
-GtRemotePhlowColumnedTreeViewBasicContextActionsLocalExamples >> expectedMultipleSelectionForIndices: anArray [
-	^ GtPhlowListingViewMultipleSelection new
-		selectionItems: (anArray collect: [ :idx |
-			GtPhlowListingViewTreeSelectionItem new
-				nodeIdentifier: (GtPhlowNodeIdentifier forTreePath: {idx});
-				selectionIndex: idx ])
 ]
 
 { #category : #assertions }
@@ -87,6 +60,6 @@ GtRemotePhlowColumnedTreeViewBasicContextActionsLocalExamples >> expectedMultipl
 ]
 
 { #category : #accessing }
-GtRemotePhlowColumnedTreeViewBasicContextActionsLocalExamples >> expectedSingleSelectionForIndex: anIndex [
-	^ GtPhlowListingViewSelection forSingleTreePath: {anIndex} selectionIndex: anIndex
+GtRemotePhlowColumnedTreeViewBasicContextActionsLocalExamples >> expectedSingleSelectionForTreePath: aPath atIndex: anIndex [
+	^ GtPhlowListingViewSelection forSingleTreePath: aPath selectionIndex: anIndex
 ]

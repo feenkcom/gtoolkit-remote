@@ -10,11 +10,6 @@ GtRemotePhlowColumnedTreeViewBasicContextActionsExamples class >> isAbstract [
 ]
 
 { #category : #assertions }
-GtRemotePhlowColumnedTreeViewBasicContextActionsExamples >> assertInspectedMultipleSelectionAtIndices: anArray inSecondPaneOf: aScripter [
-	^ self subclassResponsibility
-]
-
-{ #category : #assertions }
 GtRemotePhlowColumnedTreeViewBasicContextActionsExamples >> assertInspectedMultipleSelectionAtItems: anArray inSecondPaneOf: aScripter [
 	^ self subclassResponsibility
 ]
@@ -26,11 +21,6 @@ GtRemotePhlowColumnedTreeViewBasicContextActionsExamples >> assertInspectedMulti
 
 { #category : #assertions }
 GtRemotePhlowColumnedTreeViewBasicContextActionsExamples >> assertInspectedObjectWithValue: aValue inSecondPaneOf: aScripter [
-	^ self subclassResponsibility
-]
-
-{ #category : #assertions }
-GtRemotePhlowColumnedTreeViewBasicContextActionsExamples >> assertInspectedSelectionAtIndex: anIndex inSecondPaneOf: aScripter [
 	^ self subclassResponsibility
 ]
 
@@ -142,7 +132,7 @@ GtRemotePhlowColumnedTreeViewBasicContextActionsExamples >> dynamicContextPhlowA
 	^ scripter
 ]
 
-{ #category : #'examples - dynamic context phlow' }
+{ #category : #'examples - dynamic actions' }
 GtRemotePhlowColumnedTreeViewBasicContextActionsExamples >> dynamicContextPhlowActionsInspectSelectionOnItem13OpensNewPane [
 	<gtExample>
 	| scripter |
@@ -154,7 +144,7 @@ GtRemotePhlowColumnedTreeViewBasicContextActionsExamples >> dynamicContextPhlowA
 		play.
 
 	scripter menuStep
-		clickMenuItemWithLabel: 'Inspect selection index';
+		clickMenuItemWithLabel: 'Inspect selection';
 		onMenuContainer;
 		play.
 
@@ -162,7 +152,10 @@ GtRemotePhlowColumnedTreeViewBasicContextActionsExamples >> dynamicContextPhlowA
 		assertNumberOfPaneElements: 2;
 		play.
 
-	self assertInspectedSelectionAtIndex: 4 inSecondPaneOf: scripter.
+	self
+		assertInspectedSelectionAtTreePath: #(4)
+		atIndex: 4
+		inSecondPaneOf: scripter.
 
 	^ scripter
 ]
@@ -277,7 +270,7 @@ GtRemotePhlowColumnedTreeViewBasicContextActionsExamples >> dynamicContextPhlowA
 	^ scripter
 ]
 
-{ #category : #'examples - dynamic context phlow multiple' }
+{ #category : #examples }
 GtRemotePhlowColumnedTreeViewBasicContextActionsExamples >> dynamicContextPhlowActionsMultipleSelectionInspectSelectionOnTwoItems [
 	<gtExample>
 	| scripter |
@@ -306,7 +299,11 @@ GtRemotePhlowColumnedTreeViewBasicContextActionsExamples >> dynamicContextPhlowA
 		assertNumberOfPaneElements: 2;
 		play.
 
-	self assertInspectedMultipleSelectionAtIndices: #(4 5) inSecondPaneOf: scripter.
+	self
+		assertInspectedMultipleSelectionAtItems: {
+			{#(4). 4}.
+			{#(5). 5}}
+		inSecondPaneOf: scripter.
 
 	^ scripter
 ]
@@ -494,7 +491,7 @@ GtRemotePhlowColumnedTreeViewBasicContextActionsExamples >> inspectObjectOnItem1
 	^ scripter
 ]
 
-{ #category : #'examples - actions' }
+{ #category : #'examples - inspect selection' }
 GtRemotePhlowColumnedTreeViewBasicContextActionsExamples >> inspectSelectionOnItem13OpensNewPane [
 	<gtExample>
 	| scripter |
@@ -514,7 +511,10 @@ GtRemotePhlowColumnedTreeViewBasicContextActionsExamples >> inspectSelectionOnIt
 		assertNumberOfPaneElements: 2;
 		play.
 
-	self assertInspectedSelectionAtIndex: 4 inSecondPaneOf: scripter.
+	self
+		assertInspectedSelectionAtTreePath: #(4)
+		atIndex: 4
+		inSecondPaneOf: scripter.
 
 	^ scripter
 ]
@@ -629,7 +629,7 @@ GtRemotePhlowColumnedTreeViewBasicContextActionsExamples >> multipleSelectionIns
 	^ scripter
 ]
 
-{ #category : #'examples - actions' }
+{ #category : #examples }
 GtRemotePhlowColumnedTreeViewBasicContextActionsExamples >> multipleSelectionInspectSelectionOnTwoItems [
 	<gtExample>
 	| scripter |
@@ -658,7 +658,11 @@ GtRemotePhlowColumnedTreeViewBasicContextActionsExamples >> multipleSelectionIns
 		assertNumberOfPaneElements: 2;
 		play.
 
-	self assertInspectedMultipleSelectionAtIndices: #(4 5) inSecondPaneOf: scripter.
+	self
+		assertInspectedMultipleSelectionAtItems: {
+			{#(4). 4}.
+			{#(5). 5}}
+		inSecondPaneOf: scripter.
 
 	^ scripter
 ]
