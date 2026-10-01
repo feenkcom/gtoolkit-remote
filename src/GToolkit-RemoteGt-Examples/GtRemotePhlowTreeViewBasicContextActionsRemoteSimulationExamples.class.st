@@ -10,11 +10,6 @@ GtRemotePhlowTreeViewBasicContextActionsRemoteSimulationExamples >> createTestOb
 	^ GtRemotePlainInspectionSimulation openOn: super createTestObject
 ]
 
-{ #category : #'examples - expanded tree' }
-GtRemotePhlowTreeViewBasicContextActionsRemoteSimulationExamples >> expandedChildCellText [
-	^ 'value: 11; index: SmallInteger - 1'
-]
-
 { #category : #assertions }
 GtRemotePhlowTreeViewBasicContextActionsRemoteSimulationExamples >> expectedMultipleSelectionForItems: anArray [
 	^ GtRemotePhlowListingViewMultipleSelection new

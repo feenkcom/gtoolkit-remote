@@ -31,7 +31,7 @@ GtPhlowListingViewSpecification >> configureViewContextMenuActionsFor: aView [
 			retrievedActions := (currentSpecifications collect: [ :anActionSpecification | 
 				anActionSpecification 
 					actionFor: GtPhlowAction noAction]) asOrderedCollection.
-			GtPhlowUtility sortByPriority: retrievedActions.
+			GtPhlowUtility sortPreservingEqualOrderByPriority: retrievedActions.
 			
 			retrievedActions  ]
 ]

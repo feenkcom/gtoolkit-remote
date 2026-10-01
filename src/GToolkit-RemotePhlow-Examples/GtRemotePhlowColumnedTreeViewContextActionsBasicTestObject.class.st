@@ -4,7 +4,7 @@ Class {
 	#category : #'GToolkit-RemotePhlow-Examples'
 }
 
-{ #category : #'gt - extensions' }
+{ #category : #views }
 GtRemotePhlowColumnedTreeViewContextActionsBasicTestObject >> gtColumnedTreeWithBasicContextActionsFor: aView [
 	<gtView>
 
@@ -19,7 +19,7 @@ GtRemotePhlowColumnedTreeViewContextActionsBasicTestObject >> gtColumnedTreeWith
 				ifTrue: [ #() ] 
 				ifFalse: [
 					(targetNumber // 2 to: (targetNumber - 1)) collect: [ :each | each + 10 ] ] ];
-		column: 'Value' text: [ :x :anIndex | 'value: ', x asString, '; index: ', anIndex class name, ' - ', anIndex asString];
+		column: 'Value' text: [ :x | 'value: ', x asString ];
 		contextItemLabel: 'Inspect element' action: [ :anElement |
 				anElement phlow spawnObject: anElement ];
 		contextItemLabel: 'Inspect object' action: [ :anElement :anObject |
@@ -35,7 +35,7 @@ GtRemotePhlowColumnedTreeViewContextActionsBasicTestObject >> gtColumnedTreeWith
 			{anObject . aSelection} ]
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : #views }
 GtRemotePhlowColumnedTreeViewContextActionsBasicTestObject >> gtColumnedTreeWithBasicContextActionsMultipleSelectionFor: aView [
 	<gtView>
 
@@ -50,7 +50,7 @@ GtRemotePhlowColumnedTreeViewContextActionsBasicTestObject >> gtColumnedTreeWith
 				ifTrue: [ #() ] 
 				ifFalse: [
 					(targetNumber // 2 to: (targetNumber - 1)) collect: [ :each | each + 10 ] ] ];
-		column: 'Value' text: [ :x :anIndex | 'value: ', x asString, '; index: ', anIndex class name, ' - ', anIndex asString];
+		column: 'Value' text: [ :x | 'value: ', x asString ];
 		withMultipleSelection;
 		contextItemLabel: 'Inspect element' action: [ :anElement |
 				anElement phlow spawnObject: anElement ];
@@ -73,7 +73,7 @@ GtRemotePhlowColumnedTreeViewContextActionsBasicTestObject >> gtColumnedTreeWith
 			{anObject . aSelection} ]
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : #views }
 GtRemotePhlowColumnedTreeViewContextActionsBasicTestObject >> gtColumnedTreeWithDynamicContextPhlowActionsFor: aView [
 	<gtView>
 
@@ -88,7 +88,7 @@ GtRemotePhlowColumnedTreeViewContextActionsBasicTestObject >> gtColumnedTreeWith
 				ifTrue: [ #() ] 
 				ifFalse: [
 					(targetNumber // 2 to: (targetNumber - 1)) collect: [ :each | each + 10 ] ] ];
-		column: 'Value' text: [ :x :anIndex | 'value: ', x asString, '; index: ', anIndex class name, ' - ', anIndex asString];
+		column: 'Value' text: [ :x | 'value: ', x asString ];
 		dynamicPhlowContextItems: [ :anAction :anElement :anObject :aSelection |
 			{
 				anAction contextMenuAction
@@ -121,7 +121,7 @@ GtRemotePhlowColumnedTreeViewContextActionsBasicTestObject >> gtColumnedTreeWith
 		send: [ :anObject :aSelectionIndex | {anObject . aSelectionIndex} ]
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : #views }
 GtRemotePhlowColumnedTreeViewContextActionsBasicTestObject >> gtColumnedTreeWithDynamicContextPhlowActionsMultipleSelectionFor: aView [
 	<gtView>
 
@@ -136,7 +136,7 @@ GtRemotePhlowColumnedTreeViewContextActionsBasicTestObject >> gtColumnedTreeWith
 				ifTrue: [ #() ] 
 				ifFalse: [
 					targetNumber // 2 to: (targetNumber - 1) ] ];
-		column: 'Value' text: [ :x :anIndex | 'value: ', x asString, '; index: ', anIndex class name, ' - ', anIndex asString];
+		column: 'Value' text: [ :x | 'value: ', x asString ];
 		withMultipleSelection;
 		dynamicPhlowContextItems: [ :anAction :anElement :aCollectionOfObjects :aSelection |
 			{

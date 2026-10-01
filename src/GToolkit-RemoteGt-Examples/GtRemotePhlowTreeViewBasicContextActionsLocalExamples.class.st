@@ -45,11 +45,6 @@ GtRemotePhlowTreeViewBasicContextActionsLocalExamples >> assertInspectedSelectio
 		play.
 ]
 
-{ #category : #'examples - expanded tree' }
-GtRemotePhlowTreeViewBasicContextActionsLocalExamples >> expandedChildCellText [
-	^ 'value: 11; index: SmallInteger - 5'
-]
-
 { #category : #assertions }
 GtRemotePhlowTreeViewBasicContextActionsLocalExamples >> expectedMultipleSelectionForItems: anArray [
 	^ GtPhlowListingViewMultipleSelection new

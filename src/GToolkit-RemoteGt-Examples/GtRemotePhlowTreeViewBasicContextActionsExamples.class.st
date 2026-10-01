@@ -29,7 +29,7 @@ GtRemotePhlowTreeViewBasicContextActionsExamples >> assertInspectedSelectionAtTr
 	^ self subclassResponsibility
 ]
 
-{ #category : #'examples - basic' }
+{ #category : #examples }
 GtRemotePhlowTreeViewBasicContextActionsExamples >> contextMenuOnItem11 [
 	<gtExample>
 	| scripter |
@@ -37,7 +37,7 @@ GtRemotePhlowTreeViewBasicContextActionsExamples >> contextMenuOnItem11 [
 
 	scripter menuStep
 		openContextMenu;
-		onPhlowCellWithString: 'value: 11; index: SmallInteger - 2';
+		onPhlowCellWithString: 'value: 11';
 		play.
 
 	scripter menuStep
@@ -47,7 +47,7 @@ GtRemotePhlowTreeViewBasicContextActionsExamples >> contextMenuOnItem11 [
 	^ scripter
 ]
 
-{ #category : #'examples - basic' }
+{ #category : #examples }
 GtRemotePhlowTreeViewBasicContextActionsExamples >> contextMenuOnItem13 [
 	<gtExample>
 	| scripter |
@@ -55,7 +55,7 @@ GtRemotePhlowTreeViewBasicContextActionsExamples >> contextMenuOnItem13 [
 
 	scripter menuStep
 		openContextMenu;
-		onPhlowCellWithString: 'value: 13; index: SmallInteger - 4';
+		onPhlowCellWithString: 'value: 13';
 		play.
 
 	scripter menuStep
@@ -71,7 +71,7 @@ GtRemotePhlowTreeViewBasicContextActionsExamples >> createTestObject [
 	^ GtRemotePhlowTreeViewContextActionsBasicTestObject new
 ]
 
-{ #category : #'examples - dynamic context phlow' }
+{ #category : #examples }
 GtRemotePhlowTreeViewBasicContextActionsExamples >> dynamicContextPhlowActionsContextMenuOnItem11 [
 	<gtExample>
 	| scripter |
@@ -79,7 +79,7 @@ GtRemotePhlowTreeViewBasicContextActionsExamples >> dynamicContextPhlowActionsCo
 
 	scripter menuStep
 		openContextMenu;
-		onPhlowCellWithString: 'value: 11; index: SmallInteger - 2';
+		onPhlowCellWithString: 'value: 11';
 		play.
 
 	scripter menuStep
@@ -89,7 +89,7 @@ GtRemotePhlowTreeViewBasicContextActionsExamples >> dynamicContextPhlowActionsCo
 	^ scripter
 ]
 
-{ #category : #'examples - dynamic context phlow' }
+{ #category : #examples }
 GtRemotePhlowTreeViewBasicContextActionsExamples >> dynamicContextPhlowActionsContextMenuOnItem13 [
 	<gtExample>
 	| scripter |
@@ -97,7 +97,7 @@ GtRemotePhlowTreeViewBasicContextActionsExamples >> dynamicContextPhlowActionsCo
 
 	scripter menuStep
 		openContextMenu;
-		onPhlowCellWithString: 'value: 13; index: SmallInteger - 4';
+		onPhlowCellWithString: 'value: 13';
 		play.
 
 	scripter menuStep
@@ -107,7 +107,7 @@ GtRemotePhlowTreeViewBasicContextActionsExamples >> dynamicContextPhlowActionsCo
 	^ scripter
 ]
 
-{ #category : #'examples - dynamic context phlow' }
+{ #category : #examples }
 GtRemotePhlowTreeViewBasicContextActionsExamples >> dynamicContextPhlowActionsInspectObjectOnItem13OpensNewPane [
 	<gtExample>
 	| scripter |
@@ -115,7 +115,7 @@ GtRemotePhlowTreeViewBasicContextActionsExamples >> dynamicContextPhlowActionsIn
 
 	scripter menuStep
 		openContextMenu;
-		onPhlowCellWithString: 'value: 13; index: SmallInteger - 4';
+		onPhlowCellWithString: 'value: 13';
 		play.
 
 	scripter menuStep
@@ -132,7 +132,7 @@ GtRemotePhlowTreeViewBasicContextActionsExamples >> dynamicContextPhlowActionsIn
 	^ scripter
 ]
 
-{ #category : #'examples - dynamic actions' }
+{ #category : #examples }
 GtRemotePhlowTreeViewBasicContextActionsExamples >> dynamicContextPhlowActionsInspectSelectionOnItem13OpensNewPane [
 	<gtExample>
 	| scripter |
@@ -140,7 +140,7 @@ GtRemotePhlowTreeViewBasicContextActionsExamples >> dynamicContextPhlowActionsIn
 
 	scripter menuStep
 		openContextMenu;
-		onPhlowCellWithString: 'value: 13; index: SmallInteger - 4';
+		onPhlowCellWithString: 'value: 13';
 		play.
 
 	scripter menuStep
@@ -160,19 +160,19 @@ GtRemotePhlowTreeViewBasicContextActionsExamples >> dynamicContextPhlowActionsIn
 	^ scripter
 ]
 
-{ #category : #'examples - dynamic context phlow multiple' }
+{ #category : #examples }
 GtRemotePhlowTreeViewBasicContextActionsExamples >> dynamicContextPhlowActionsMultipleSelectionContextMenuOnSingleItem [
 	<gtExample>
 	| scripter |
 	scripter := self scripterOnDynamicContextPhlowActionsMultipleSelectionViewInPager.
 
 	scripter click
-		onPhlowCellWithString: 'value: 11; index: SmallInteger - 2';
+		onPhlowCellWithString: 'value: 11';
 		play.
 
 	scripter menuStep
 		openContextMenu;
-		onPhlowCellWithString: 'value: 11; index: SmallInteger - 2';
+		onPhlowCellWithString: 'value: 11';
 		play.
 
 	scripter menuStep
@@ -182,29 +182,29 @@ GtRemotePhlowTreeViewBasicContextActionsExamples >> dynamicContextPhlowActionsMu
 	^ scripter
 ]
 
-{ #category : #'examples - dynamic context phlow multiple' }
+{ #category : #examples }
 GtRemotePhlowTreeViewBasicContextActionsExamples >> dynamicContextPhlowActionsMultipleSelectionContextMenuOnThreeItemsIncluding14 [
 	<gtExample>
 	| scripter |
 	scripter := self scripterOnDynamicContextPhlowActionsMultipleSelectionViewInPager.
 
 	scripter click
-		onPhlowCellWithString: 'value: 12; index: SmallInteger - 3';
+		onPhlowCellWithString: 'value: 12';
 		play.
 
 	scripter click
 		modifiers: BlKeyModifiers primary;
-		onPhlowCellWithString: 'value: 13; index: SmallInteger - 4';
+		onPhlowCellWithString: 'value: 13';
 		play.
 
 	scripter click
 		modifiers: BlKeyModifiers primary;
-		onPhlowCellWithString: 'value: 14; index: SmallInteger - 5';
+		onPhlowCellWithString: 'value: 14';
 		play.
 
 	scripter menuStep
 		openContextMenu;
-		onPhlowCellWithString: 'value: 14; index: SmallInteger - 5';
+		onPhlowCellWithString: 'value: 14';
 		play.
 
 	scripter menuStep
@@ -214,24 +214,24 @@ GtRemotePhlowTreeViewBasicContextActionsExamples >> dynamicContextPhlowActionsMu
 	^ scripter
 ]
 
-{ #category : #'examples - dynamic context phlow multiple' }
+{ #category : #examples }
 GtRemotePhlowTreeViewBasicContextActionsExamples >> dynamicContextPhlowActionsMultipleSelectionContextMenuOnTwoItemsIncluding14 [
 	<gtExample>
 	| scripter |
 	scripter := self scripterOnDynamicContextPhlowActionsMultipleSelectionViewInPager.
 
 	scripter click
-		onPhlowCellWithString: 'value: 13; index: SmallInteger - 4';
+		onPhlowCellWithString: 'value: 13';
 		play.
 
 	scripter click
 		modifiers: BlKeyModifiers primary;
-		onPhlowCellWithString: 'value: 14; index: SmallInteger - 5';
+		onPhlowCellWithString: 'value: 14';
 		play.
 
 	scripter menuStep
 		openContextMenu;
-		onPhlowCellWithString: 'value: 14; index: SmallInteger - 5';
+		onPhlowCellWithString: 'value: 14';
 		play.
 
 	scripter menuStep
@@ -241,19 +241,19 @@ GtRemotePhlowTreeViewBasicContextActionsExamples >> dynamicContextPhlowActionsMu
 	^ scripter
 ]
 
-{ #category : #'examples - dynamic context phlow multiple' }
+{ #category : #examples }
 GtRemotePhlowTreeViewBasicContextActionsExamples >> dynamicContextPhlowActionsMultipleSelectionInspectObjectOnSingleItem13 [
 	<gtExample>
 	| scripter |
 	scripter := self scripterOnDynamicContextPhlowActionsMultipleSelectionViewInPager.
 
 	scripter click
-		onPhlowCellWithString: 'value: 13; index: SmallInteger - 4';
+		onPhlowCellWithString: 'value: 13';
 		play.
 
 	scripter menuStep
 		openContextMenu;
-		onPhlowCellWithString: 'value: 13; index: SmallInteger - 4';
+		onPhlowCellWithString: 'value: 13';
 		play.
 
 	scripter menuStep
@@ -277,17 +277,17 @@ GtRemotePhlowTreeViewBasicContextActionsExamples >> dynamicContextPhlowActionsMu
 	scripter := self scripterOnDynamicContextPhlowActionsMultipleSelectionViewInPager.
 
 	scripter click
-		onPhlowCellWithString: 'value: 13; index: SmallInteger - 4';
+		onPhlowCellWithString: 'value: 13';
 		play.
 
 	scripter click
 		modifiers: BlKeyModifiers primary;
-		onPhlowCellWithString: 'value: 14; index: SmallInteger - 5';
+		onPhlowCellWithString: 'value: 14';
 		play.
 
 	scripter menuStep
 		openContextMenu;
-		onPhlowCellWithString: 'value: 14; index: SmallInteger - 5';
+		onPhlowCellWithString: 'value: 14';
 		play.
 
 	scripter menuStep
@@ -308,12 +308,12 @@ GtRemotePhlowTreeViewBasicContextActionsExamples >> dynamicContextPhlowActionsMu
 	^ scripter
 ]
 
-{ #category : #'examples - expanded tree' }
+{ #category : #accessing }
 GtRemotePhlowTreeViewBasicContextActionsExamples >> expandedChildCellText [
-	^ self subclassResponsibility
+	^ 'value: 11'
 ]
 
-{ #category : #'examples - expanded tree' }
+{ #category : #'examples - tree' }
 GtRemotePhlowTreeViewBasicContextActionsExamples >> expandedTreeContextMenuOnExpandedChild [
 	<gtExample>
 	| scripter |
@@ -321,7 +321,7 @@ GtRemotePhlowTreeViewBasicContextActionsExamples >> expandedTreeContextMenuOnExp
 
 	scripter menuStep
 		openContextMenu;
-		onPhlowCellWithString: self expandedChildCellText;
+		onPhlowCellWithString: self expandedChildCellText index: 2;
 		play.
 
 	scripter menuStep
@@ -332,7 +332,7 @@ GtRemotePhlowTreeViewBasicContextActionsExamples >> expandedTreeContextMenuOnExp
 	^ scripter
 ]
 
-{ #category : #'examples - actions' }
+{ #category : #'examples - tree' }
 GtRemotePhlowTreeViewBasicContextActionsExamples >> expandedTreeInspectSelectionOnExpandedChild [
 	<gtExample>
 	| scripter |
@@ -340,7 +340,7 @@ GtRemotePhlowTreeViewBasicContextActionsExamples >> expandedTreeInspectSelection
 
 	scripter menuStep
 		openContextMenu;
-		onPhlowCellWithString: self expandedChildCellText;
+		onPhlowCellWithString: self expandedChildCellText index: 2;
 		play.
 
 	scripter menuStep
@@ -360,24 +360,24 @@ GtRemotePhlowTreeViewBasicContextActionsExamples >> expandedTreeInspectSelection
 	^ scripter
 ]
 
-{ #category : #'examples - actions' }
+{ #category : #'examples - tree' }
 GtRemotePhlowTreeViewBasicContextActionsExamples >> expandedTreeMultipleSelectionContextMenuOnRootAndExpandedChild [
 	<gtExample>
 	| scripter |
 	scripter := self scripterWithExpandedTreeOnMultipleSelectionViewInPager.
 
 	scripter click
-		onPhlowCellWithString: 'value: 13; index: SmallInteger - 4';
+		onPhlowCellWithString: 'value: 13';
 		play.
 
 	scripter click
 		modifiers: BlKeyModifiers primary;
-		onPhlowCellWithString: self expandedChildCellText;
+		onPhlowCellWithString: self expandedChildCellText index: 2;
 		play.
 
 	scripter menuStep
 		openContextMenu;
-		onPhlowCellWithString: self expandedChildCellText;
+		onPhlowCellWithString: self expandedChildCellText index: 2;
 		play.
 
 	scripter menuStep
@@ -388,24 +388,24 @@ GtRemotePhlowTreeViewBasicContextActionsExamples >> expandedTreeMultipleSelectio
 	^ scripter
 ]
 
-{ #category : #'examples - actions' }
+{ #category : #'examples - tree' }
 GtRemotePhlowTreeViewBasicContextActionsExamples >> expandedTreeMultipleSelectionInspectOnRootAndExpandedChild [
 	<gtExample>
 	| scripter |
 	scripter := self scripterWithExpandedTreeOnMultipleSelectionViewInPager.
 
 	scripter click
-		onPhlowCellWithString: 'value: 13; index: SmallInteger - 4';
+		onPhlowCellWithString: 'value: 13';
 		play.
 
 	scripter click
 		modifiers: BlKeyModifiers primary;
-		onPhlowCellWithString: self expandedChildCellText;
+		onPhlowCellWithString: self expandedChildCellText index: 2;
 		play.
 
 	scripter menuStep
 		openContextMenu;
-		onPhlowCellWithString: self expandedChildCellText;
+		onPhlowCellWithString: self expandedChildCellText index: 2;
 		play.
 
 	scripter menuStep
@@ -466,7 +466,7 @@ GtRemotePhlowTreeViewBasicContextActionsExamples >> expectedDynamicMenuLabelsWit
 	^ self expectedDynamicMenuLabels , {'Show if 3 elements in selection'. 'Show if 14 in selection'}
 ]
 
-{ #category : #'examples - basic' }
+{ #category : #examples }
 GtRemotePhlowTreeViewBasicContextActionsExamples >> inspectObjectOnItem13OpensNewPane [
 	<gtExample>
 	| scripter |
@@ -474,7 +474,7 @@ GtRemotePhlowTreeViewBasicContextActionsExamples >> inspectObjectOnItem13OpensNe
 
 	scripter menuStep
 		openContextMenu;
-		onPhlowCellWithString: 'value: 13; index: SmallInteger - 4';
+		onPhlowCellWithString: 'value: 13';
 		play.
 
 	scripter menuStep
@@ -491,7 +491,7 @@ GtRemotePhlowTreeViewBasicContextActionsExamples >> inspectObjectOnItem13OpensNe
 	^ scripter
 ]
 
-{ #category : #'examples - inspect selection' }
+{ #category : #examples }
 GtRemotePhlowTreeViewBasicContextActionsExamples >> inspectSelectionOnItem13OpensNewPane [
 	<gtExample>
 	| scripter |
@@ -499,7 +499,7 @@ GtRemotePhlowTreeViewBasicContextActionsExamples >> inspectSelectionOnItem13Open
 
 	scripter menuStep
 		openContextMenu;
-		onPhlowCellWithString: 'value: 13; index: SmallInteger - 4';
+		onPhlowCellWithString: 'value: 13';
 		play.
 
 	scripter menuStep
@@ -519,19 +519,19 @@ GtRemotePhlowTreeViewBasicContextActionsExamples >> inspectSelectionOnItem13Open
 	^ scripter
 ]
 
-{ #category : #'examples - multiple' }
+{ #category : #examples }
 GtRemotePhlowTreeViewBasicContextActionsExamples >> multipleSelectionContextMenuOnSingleItem [
 	<gtExample>
 	| scripter |
 	scripter := self scripterOnMultipleSelectionViewInPager.
 
 	scripter click
-		onPhlowCellWithString: 'value: 11; index: SmallInteger - 2';
+		onPhlowCellWithString: 'value: 11';
 		play.
 
 	scripter menuStep
 		openContextMenu;
-		onPhlowCellWithString: 'value: 11; index: SmallInteger - 2';
+		onPhlowCellWithString: 'value: 11';
 		play.
 
 	scripter menuStep
@@ -541,29 +541,29 @@ GtRemotePhlowTreeViewBasicContextActionsExamples >> multipleSelectionContextMenu
 	^ scripter
 ]
 
-{ #category : #'examples - multiple' }
+{ #category : #examples }
 GtRemotePhlowTreeViewBasicContextActionsExamples >> multipleSelectionContextMenuOnThreeItemsIncluding14 [
 	<gtExample>
 	| scripter |
 	scripter := self scripterOnMultipleSelectionViewInPager.
 
 	scripter click
-		onPhlowCellWithString: 'value: 12; index: SmallInteger - 3';
+		onPhlowCellWithString: 'value: 12';
 		play.
 
 	scripter click
 		modifiers: BlKeyModifiers primary;
-		onPhlowCellWithString: 'value: 13; index: SmallInteger - 4';
+		onPhlowCellWithString: 'value: 13';
 		play.
 
 	scripter click
 		modifiers: BlKeyModifiers primary;
-		onPhlowCellWithString: 'value: 14; index: SmallInteger - 5';
+		onPhlowCellWithString: 'value: 14';
 		play.
 
 	scripter menuStep
 		openContextMenu;
-		onPhlowCellWithString: 'value: 14; index: SmallInteger - 5';
+		onPhlowCellWithString: 'value: 14';
 		play.
 
 	scripter menuStep
@@ -573,24 +573,24 @@ GtRemotePhlowTreeViewBasicContextActionsExamples >> multipleSelectionContextMenu
 	^ scripter
 ]
 
-{ #category : #'examples - multiple' }
+{ #category : #examples }
 GtRemotePhlowTreeViewBasicContextActionsExamples >> multipleSelectionContextMenuOnTwoItemsIncluding14 [
 	<gtExample>
 	| scripter |
 	scripter := self scripterOnMultipleSelectionViewInPager.
 
 	scripter click
-		onPhlowCellWithString: 'value: 13; index: SmallInteger - 4';
+		onPhlowCellWithString: 'value: 13';
 		play.
 
 	scripter click
 		modifiers: BlKeyModifiers primary;
-		onPhlowCellWithString: 'value: 14; index: SmallInteger - 5';
+		onPhlowCellWithString: 'value: 14';
 		play.
 
 	scripter menuStep
 		openContextMenu;
-		onPhlowCellWithString: 'value: 14; index: SmallInteger - 5';
+		onPhlowCellWithString: 'value: 14';
 		play.
 
 	scripter menuStep
@@ -600,19 +600,19 @@ GtRemotePhlowTreeViewBasicContextActionsExamples >> multipleSelectionContextMenu
 	^ scripter
 ]
 
-{ #category : #'examples - multiple' }
+{ #category : #examples }
 GtRemotePhlowTreeViewBasicContextActionsExamples >> multipleSelectionInspectObjectOnSingleItem13 [
 	<gtExample>
 	| scripter |
 	scripter := self scripterOnMultipleSelectionViewInPager.
 
 	scripter click
-		onPhlowCellWithString: 'value: 13; index: SmallInteger - 4';
+		onPhlowCellWithString: 'value: 13';
 		play.
 
 	scripter menuStep
 		openContextMenu;
-		onPhlowCellWithString: 'value: 13; index: SmallInteger - 4';
+		onPhlowCellWithString: 'value: 13';
 		play.
 
 	scripter menuStep
@@ -636,17 +636,17 @@ GtRemotePhlowTreeViewBasicContextActionsExamples >> multipleSelectionInspectSele
 	scripter := self scripterOnMultipleSelectionViewInPager.
 
 	scripter click
-		onPhlowCellWithString: 'value: 13; index: SmallInteger - 4';
+		onPhlowCellWithString: 'value: 13';
 		play.
 
 	scripter click
 		modifiers: BlKeyModifiers primary;
-		onPhlowCellWithString: 'value: 14; index: SmallInteger - 5';
+		onPhlowCellWithString: 'value: 14';
 		play.
 
 	scripter menuStep
 		openContextMenu;
-		onPhlowCellWithString: 'value: 14; index: SmallInteger - 5';
+		onPhlowCellWithString: 'value: 14';
 		play.
 
 	scripter menuStep

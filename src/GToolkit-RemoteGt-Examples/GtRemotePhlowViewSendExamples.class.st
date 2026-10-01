@@ -112,12 +112,12 @@ GtRemotePhlowViewSendExamples >> columnedTreeMultipleSelectionSendOnExpandedChil
 	| scripter |
 	scripter := self scripterWithExpandedColumnedTreeOnMultipleSelectionView.
 	scripter doubleClick
-		onPhlowCellWithString: self treeExpandedChildCellText;
+		onPhlowCellWithString: self treeExpandedChildCellText index: 2;
 		play.
 	(scripter treePager)
 		assertNumberOfPaneElements: 2;
 		play.
-	self assertSendResultForValue: 11 index: #(5) inSecondPaneOf: scripter.
+	self assertSendResultForValue: 11 index: self expandedChildSendSelectionIndex inSecondPaneOf: scripter.
 	^ scripter
 ]
 
@@ -134,7 +134,7 @@ GtRemotePhlowViewSendExamples >> columnedTreeMultipleSelectionSendOnRootAndExpan
 		play.
 	scripter click
 		modifiers: BlKeyModifiers shift;
-		onPhlowCellWithString: self treeExpandedChildCellText;
+		onPhlowCellWithString: self treeExpandedChildCellText index: 2;
 		play.
 	self assertTreeMultiSelectionSendResultForValues: #(13 11) indices: #(4 5) inSecondPaneOf: scripter.
 	^ scripter
@@ -180,12 +180,12 @@ GtRemotePhlowViewSendExamples >> columnedTreeSendOnExpandedChild [
 	| scripter |
 	scripter := self scripterWithExpandedColumnedTreeOnBasicActionsView.
 	scripter doubleClick
-		onPhlowCellWithString: self treeExpandedChildCellText;
+		onPhlowCellWithString: self treeExpandedChildCellText index: 2;
 		play.
 	(scripter treePager)
 		assertNumberOfPaneElements: 2;
 		play.
-	self assertSendResultForValue: 11 index: #(5) inSecondPaneOf: scripter.
+	self assertSendResultForValue: 11 index: self expandedChildSendSelectionIndex inSecondPaneOf: scripter.
 	^ scripter
 ]
 
@@ -261,6 +261,11 @@ GtRemotePhlowViewSendExamples >> expandItem13InScripter: scripter treeClass: aTr
 			onChildAt: 1;
 			onChildAt: 5;
 			id: #toggle ]
+]
+
+{ #category : #accessing }
+GtRemotePhlowViewSendExamples >> expandedChildSendSelectionIndex [
+	^ #(5)
 ]
 
 { #category : #'private - cell text' }
@@ -408,12 +413,12 @@ GtRemotePhlowViewSendExamples >> scripterWithExpandedTreeOnMultipleSelectionView
 
 { #category : #'private - cell text' }
 GtRemotePhlowViewSendExamples >> treeCellTextForItem13 [
-	^ 'value: 13; index: SmallInteger - 4'
+	^ 'value: 13'
 ]
 
 { #category : #'private - cell text' }
 GtRemotePhlowViewSendExamples >> treeCellTextForItem14 [
-	^ 'value: 14; index: SmallInteger - 5'
+	^ 'value: 14'
 ]
 
 { #category : #'private - tree' }
@@ -423,7 +428,7 @@ GtRemotePhlowViewSendExamples >> treeElementClass [
 
 { #category : #'private - cell text' }
 GtRemotePhlowViewSendExamples >> treeExpandedChildCellText [
-	^ 'value: 11; index: SmallInteger - 5'
+	^ 'value: 11'
 ]
 
 { #category : #'examples - tree send' }
@@ -432,12 +437,12 @@ GtRemotePhlowViewSendExamples >> treeMultipleSelectionSendOnExpandedChild [
 	| scripter |
 	scripter := self scripterWithExpandedTreeOnMultipleSelectionView.
 	scripter doubleClick
-		onPhlowCellWithString: self treeExpandedChildCellText;
+		onPhlowCellWithString: self treeExpandedChildCellText index: 2;
 		play.
 	(scripter treePager)
 		assertNumberOfPaneElements: 2;
 		play.
-	self assertSendResultForValue: 11 index: #(5) inSecondPaneOf: scripter.
+	self assertSendResultForValue: 11 index: self expandedChildSendSelectionIndex inSecondPaneOf: scripter.
 	^ scripter
 ]
 
@@ -454,7 +459,7 @@ GtRemotePhlowViewSendExamples >> treeMultipleSelectionSendOnRootAndExpandedChild
 		play.
 	scripter click
 		modifiers: BlKeyModifiers shift;
-		onPhlowCellWithString: self treeExpandedChildCellText;
+		onPhlowCellWithString: self treeExpandedChildCellText index: 2;
 		play.
 	self assertTreeMultiSelectionSendResultForValues: #(13 11) indices: #(4 5) inSecondPaneOf: scripter.
 	^ scripter
@@ -500,12 +505,12 @@ GtRemotePhlowViewSendExamples >> treeSendOnExpandedChild [
 	| scripter |
 	scripter := self scripterWithExpandedTreeOnBasicActionsView.
 	scripter doubleClick
-		onPhlowCellWithString: self treeExpandedChildCellText;
+		onPhlowCellWithString: self treeExpandedChildCellText index: 2;
 		play.
 	(scripter treePager)
 		assertNumberOfPaneElements: 2;
 		play.
-	self assertSendResultForValue: 11 index: #(5) inSecondPaneOf: scripter.
+	self assertSendResultForValue: 11 index: self expandedChildSendSelectionIndex inSecondPaneOf: scripter.
 	^ scripter
 ]
 
