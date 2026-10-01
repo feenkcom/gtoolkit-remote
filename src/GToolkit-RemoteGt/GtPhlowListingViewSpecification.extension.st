@@ -21,16 +21,19 @@ GtPhlowListingViewSpecification >> configureViewContextMenuActionsFor: aView [
 	self hasContextActionSpecifications ifFalse: [ ^ self ].
 
 	aView dynamicContextItems: [ :anElement :aNodeOrNodesCollection :aPhlowSelection |
-			| currentSelection currentSpecifications |
+			| currentSelection currentSpecifications retrievedActions |
 				
 			currentSelection := aPhlowSelection asRemoteSelection.
 			
 			currentSpecifications := self 
 				retriveContextActionSpecificationsForPhlowSelection: currentSelection.
 			
-			currentSpecifications collect: [ :anActionSpecification | 
+			retrievedActions := (currentSpecifications collect: [ :anActionSpecification | 
 				anActionSpecification 
-					actionFor: GtPhlowAction noAction] ]
+					actionFor: GtPhlowAction noAction]) asOrderedCollection.
+			GtPhlowUtility sortByPriority: retrievedActions.
+			
+			retrievedActions  ]
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
