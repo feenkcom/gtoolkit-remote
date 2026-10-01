@@ -24,7 +24,7 @@ GtRemotePhlowActionTargetTestContainer >> gtColumnedListFor: aView [
 		contextActionsForTarget: GtRemotePhlowExampleItemActionTarget
 ]
 
-{ #category : #'gt - extensions - views' }
+{ #category : #views }
 GtRemotePhlowActionTargetTestContainer >> gtColumnedListMultipleSelectionFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -39,6 +39,7 @@ GtRemotePhlowActionTargetTestContainer >> gtColumnedListMultipleSelectionFor: aV
 				ifTrue: [ anObject ]
 				ifFalse: [ GtRemotePhlowActionTargetTestItemGroup withAll: anObject ] ];
 		contextActionsForTarget: GtRemotePhlowExampleItemActionTarget
+			groupTarget: GtRemotePhlowExampleItemActionTarget
 			groupWith: [ :aCollection | 
 				GtRemotePhlowActionTargetTestItemGroup withAll: aCollection ]
 ]
@@ -56,7 +57,7 @@ GtRemotePhlowActionTargetTestContainer >> gtColumnedTreeFor: aView [
 		contextActionsForTarget: GtRemotePhlowExampleItemActionTarget
 ]
 
-{ #category : #'gt - extensions - views' }
+{ #category : #views }
 GtRemotePhlowActionTargetTestContainer >> gtColumnedTreeMultipleSelectionFor: aView [
 	<gtView>
 	^ aView columnedTree
@@ -72,6 +73,7 @@ GtRemotePhlowActionTargetTestContainer >> gtColumnedTreeMultipleSelectionFor: aV
 				ifTrue: [ anObject ]
 				ifFalse: [ GtRemotePhlowActionTargetTestItemGroup withAll: anObject ] ];
 		contextActionsForTarget: GtRemotePhlowExampleItemActionTarget
+			groupTarget: GtRemotePhlowExampleItemActionTarget
 			groupWith: [ :aCollection | 
 				GtRemotePhlowActionTargetTestItemGroup withAll: aCollection ]
 ]
@@ -87,7 +89,7 @@ GtRemotePhlowActionTargetTestContainer >> gtListFor: aView [
 		contextActionsForTarget: GtRemotePhlowExampleItemActionTarget
 ]
 
-{ #category : #'gt - extensions - views' }
+{ #category : #views }
 GtRemotePhlowActionTargetTestContainer >> gtListMultipleSelectionFor: aView [
 	<gtView>
 	^ aView list
@@ -101,6 +103,7 @@ GtRemotePhlowActionTargetTestContainer >> gtListMultipleSelectionFor: aView [
 				ifTrue: [ anObject ]
 				ifFalse: [ GtRemotePhlowActionTargetTestItemGroup withAll: anObject ] ];
 		contextActionsForTarget: GtRemotePhlowExampleItemActionTarget
+			groupTarget: GtRemotePhlowExampleItemActionTarget
 			groupWith: [ :aCollection | GtRemotePhlowActionTargetTestItemGroup withAll: aCollection ]
 ]
 
@@ -116,7 +119,7 @@ GtRemotePhlowActionTargetTestContainer >> gtTreeFor: aView [
 		contextActionsForTarget: GtRemotePhlowExampleItemActionTarget
 ]
 
-{ #category : #'gt - extensions - views' }
+{ #category : #views }
 GtRemotePhlowActionTargetTestContainer >> gtTreeMultipleSelectionFor: aView [
 	<gtView>
 	^ aView tree
@@ -131,6 +134,7 @@ GtRemotePhlowActionTargetTestContainer >> gtTreeMultipleSelectionFor: aView [
 				ifTrue: [ anObject ]
 				ifFalse: [ GtRemotePhlowActionTargetTestItemGroup withAll: anObject ] ];
 		contextActionsForTarget: GtRemotePhlowExampleItemActionTarget
+			groupTarget: GtRemotePhlowExampleItemActionTarget
 			groupWith: [ :aCollection | GtRemotePhlowActionTargetTestItemGroup withAll: aCollection ]
 ]
 
