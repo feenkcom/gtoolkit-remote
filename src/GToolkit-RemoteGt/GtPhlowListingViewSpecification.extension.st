@@ -29,8 +29,12 @@ GtPhlowListingViewSpecification >> configureViewContextMenuActionsFor: aView [
 				retriveContextActionSpecificationsForPhlowSelection: currentSelection.
 			
 			retrievedActions := (currentSpecifications collect: [ :anActionSpecification | 
-				anActionSpecification 
-					actionFor: GtPhlowAction noAction]) asOrderedCollection.
+				| phlowAction |
+				phlowAction := anActionSpecification actionFor: GtPhlowAction noAction.
+				phlowAction definingMethodProvider: (GtRemotePhlowDefiningMethodProvider new
+					declarativeAction: anActionSpecification).
+				phlowAction ]) asOrderedCollection.
+					
 			GtPhlowUtility sortPreservingEqualOrderByPriority: retrievedActions.
 			
 			retrievedActions  ]

@@ -14,6 +14,16 @@ GtRemotePhlowDeclarativeActionDataSource class >> forPhlowAction: aPhlowAction [
 ]
 
 { #category : #accessing }
+GtRemotePhlowDeclarativeActionDataSource >> definingMethod [
+	^ self phlowAction definingMethod
+]
+
+{ #category : #accessing }
+GtRemotePhlowDeclarativeActionDataSource >> phlowAction [
+	^ phlowAction
+]
+
+{ #category : #accessing }
 GtRemotePhlowDeclarativeActionDataSource >> phlowAction: aPhlowAction [ 
 	phlowAction := aPhlowAction 
 ]

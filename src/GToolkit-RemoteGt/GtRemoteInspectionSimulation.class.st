@@ -45,6 +45,8 @@ GtRemoteInspectionSimulation class >> openOn: anObject [
 
 { #category : #'gt inspector' }
 GtRemoteInspectionSimulation >> configurePhlowAction: aPhlowAction withSpecification: anActionSpecification [
+	aPhlowAction definingMethodProvider: (GtRemotePhlowDefiningMethodProvider new
+		declarativeAction: anActionSpecification).
 ]
 
 { #category : #'gt inspector' }

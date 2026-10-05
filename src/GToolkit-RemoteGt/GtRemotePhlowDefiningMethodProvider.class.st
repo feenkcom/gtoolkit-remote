@@ -2,7 +2,7 @@ Class {
 	#name : #GtRemotePhlowDefiningMethodProvider,
 	#superclass : #GtPhlowDefiningMethodProvider,
 	#instVars : [
-		'declarativeView'
+		'declarativeSpecification'
 	],
 	#category : #'GToolkit-RemoteGt-Phlow'
 }
@@ -19,13 +19,23 @@ GtRemotePhlowDefiningMethodProvider >> asBrMenuWithSelfObjectHolder: aSelfObject
 ]
 
 { #category : #accessing }
+GtRemotePhlowDefiningMethodProvider >> declarativeAction: aDeclarativeView [
+	self declarativeSpecification: aDeclarativeView
+]
+
+{ #category : #accessing }
+GtRemotePhlowDefiningMethodProvider >> declarativeSpecification: aDeclarativeView [
+	declarativeSpecification := aDeclarativeView
+]
+
+{ #category : #accessing }
 GtRemotePhlowDefiningMethodProvider >> declarativeView: aDeclarativeView [
-	declarativeView := aDeclarativeView
+	self declarativeSpecification: aDeclarativeView
 ]
 
 { #category : #accessing }
 GtRemotePhlowDefiningMethodProvider >> definingMethod [ 
-	^ declarativeView definingMethod
+	^ declarativeSpecification definingMethod
 ]
 
 { #category : #accessing }

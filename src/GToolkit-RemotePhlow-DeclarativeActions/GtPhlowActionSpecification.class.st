@@ -43,6 +43,12 @@ GtPhlowActionSpecification >> asDictionaryForExportWithPhlowDataSource [
 	^ specificationData
 ]
 
+{ #category : #accessing }
+GtPhlowActionSpecification >> definingMethod [
+	^ phlowDataSource ifNotNil: [ :aDataSource | 
+			aDataSource definingMethod ]
+]
+
 { #category : #printing }
 GtPhlowActionSpecification >> descriptOn: aStream [
 	tooltipText ifNotNil: [ :aText |
