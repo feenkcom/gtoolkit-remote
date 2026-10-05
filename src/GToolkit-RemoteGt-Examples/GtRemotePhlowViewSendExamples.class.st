@@ -217,6 +217,12 @@ GtRemotePhlowViewSendExamples >> createColumnedTreeTestObject [
 ]
 
 { #category : #'examples - test objects' }
+GtRemotePhlowViewSendExamples >> createForwardSendTestObject [
+	<gtExample>
+	^ self wrapTestObject: GtRemotePhlowViewForwardSendTestObject new
+]
+
+{ #category : #'examples - test objects' }
 GtRemotePhlowViewSendExamples >> createListTestObject [
 	<gtExample>
 	^ self wrapTestObject: GtRemotePhlowListViewContextActionsBasicTestObject new
@@ -266,6 +272,55 @@ GtRemotePhlowViewSendExamples >> expandItem13InScripter: scripter treeClass: aTr
 { #category : #accessing }
 GtRemotePhlowViewSendExamples >> expandedChildSendSelectionIndex [
 	^ #(5)
+]
+
+{ #category : #'examples - forward list send' }
+GtRemotePhlowViewSendExamples >> forwardListMultipleSelectionSendOnSingleItem [
+	<gtExample>
+	| scripter |
+	scripter := self scripterOnForwardListMultipleSelectionView.
+	scripter doubleClick
+		onPhlowCellWithString: self listCellTextForItem13;
+		play.
+	(scripter treePager)
+		assertNumberOfPaneElements: 2;
+		play.
+	self assertSendResultForValue: 13 index: #(4) inSecondPaneOf: scripter.
+	^ scripter
+]
+
+{ #category : #'examples - forward list send' }
+GtRemotePhlowViewSendExamples >> forwardListMultipleSelectionSendOnTwoItems [
+	<gtExample>
+	| scripter |
+	scripter := self scripterOnForwardListMultipleSelectionView.
+	scripter doubleClick
+		onPhlowCellWithString: self listCellTextForItem13;
+		play.
+	(scripter treePager)
+		assertNumberOfPaneElements: 2;
+		play.
+	scripter click
+		modifiers: BlKeyModifiers shift;
+		onPhlowCellWithString: self listCellTextForItem14;
+		play.
+	self assertMultiSelectionSendResultForValues: #(13 14) indices: #(4 5) inSecondPaneOf: scripter.
+	^ scripter
+]
+
+{ #category : #'examples - forward list send' }
+GtRemotePhlowViewSendExamples >> forwardListSendOnItem13 [
+	<gtExample>
+	| scripter |
+	scripter := self scripterOnForwardListBasicActionsView.
+	scripter doubleClick
+		onPhlowCellWithString: self listCellTextForItem13;
+		play.
+	(scripter treePager)
+		assertNumberOfPaneElements: 2;
+		play.
+	self assertSendResultForValue: 13 index: #(4) inSecondPaneOf: scripter.
+	^ scripter
 ]
 
 { #category : #'private - cell text' }
@@ -349,6 +404,18 @@ GtRemotePhlowViewSendExamples >> scripterOnColumnedTreeBasicActionsView [
 GtRemotePhlowViewSendExamples >> scripterOnColumnedTreeMultipleSelectionView [
 	<gtExample>
 	^ self createScripterOnObject: self createColumnedTreeTestObject tabNamed: 'Columned Tree - Multiple Selection'
+]
+
+{ #category : #'examples - forward list scripter' }
+GtRemotePhlowViewSendExamples >> scripterOnForwardListBasicActionsView [
+	<gtExample>
+	^ self createScripterOnObject: self createForwardSendTestObject tabNamed: 'List - Basic actions'
+]
+
+{ #category : #'examples - forward list scripter' }
+GtRemotePhlowViewSendExamples >> scripterOnForwardListMultipleSelectionView [
+	<gtExample>
+	^ self createScripterOnObject: self createForwardSendTestObject tabNamed: 'List - Basic - multiple selection'
 ]
 
 { #category : #'examples - scripter - list' }
