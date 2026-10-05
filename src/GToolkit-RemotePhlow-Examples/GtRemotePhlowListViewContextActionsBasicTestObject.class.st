@@ -89,21 +89,6 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithBasicContextActi
 			id:  GtRemotePhlowExampleCustomInspectActionId new
 			action: [ :anElement :anObject |
 				anElement phlow spawnObject: anObject ];
-		contextItemLabel: 'Inspect selection' action: [ :anElement :anObject :aSelection |
-				anElement phlow spawnObject: aSelection ];
-				
-		contextItemDo: [ :anAction |
-				anAction 
-					label: 'Allways disabled' ;
-					icon: (GtPhlowGlamorousVectorIconNameStencil close);
-					disableIf: [ :anObject :aSelection | true ]; 
-					action: [ :anElement :anObject | anElement phlow spawnObject: anObject ]];
-		
-		contextItemDo: [ :anAction |
-				anAction 
-					label: 'Enable if greater than 12' ;
-					disableIf: [ :anObject :aSelection | anObject <= 12 ]; 
-					action: [ :anElement :anObject | anElement phlow spawnObject: anObject ]];
 				
 		send: [ :anObject :aSelectionIndex | {anObject . aSelectionIndex} ]
 ]

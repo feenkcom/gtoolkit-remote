@@ -4,8 +4,7 @@ Class {
 	#instVars : [
 		'label',
 		'iconStencil',
-		'menuOptions',
-		'disabled'
+		'menuOptions'
 	],
 	#category : #'GToolkit-RemotePhlow-DeclarativeActions'
 }
@@ -22,7 +21,6 @@ GtRemotePhlowContextMenuItemBoundActionSpecification >> asDictionaryForExport [
 	
 	label ifNotNil: [ :aText |
 		specificationData at: 'label' put: aText ].
-	specificationData at: 'disabled' put: self disabled.
 	iconStencil ifNotNil: [ :anIconStencil |
 		specificationData 
 			at: 'iconStencil' 
@@ -31,16 +29,6 @@ GtRemotePhlowContextMenuItemBoundActionSpecification >> asDictionaryForExport [
 		specificationData at: 'tooltipText' put: aText ].
 
 	^ specificationData
-]
-
-{ #category : #accessing }
-GtRemotePhlowContextMenuItemBoundActionSpecification >> disabled [
-	^ disabled ifNil: [ false ]
-]
-
-{ #category : #accessing }
-GtRemotePhlowContextMenuItemBoundActionSpecification >> disabled: aBoolean [
-	disabled := aBoolean
 ]
 
 { #category : #accessing }
@@ -61,10 +49,6 @@ GtRemotePhlowContextMenuItemBoundActionSpecification >> initializeFromJSONDictio
 		at: 'label' 
 		ifPresent: [ :aText |
 			self label: aText ].
-	aDictionary 
-		at: 'disabled' 
-		ifPresent: [ :aBoolean |
-			self disabled: aBoolean ].
 	aDictionary 
 		at: 'tooltipText' 
 		ifPresent: [ :aText |

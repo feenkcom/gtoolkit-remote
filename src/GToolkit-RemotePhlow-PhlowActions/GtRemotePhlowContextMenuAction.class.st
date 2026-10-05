@@ -6,8 +6,7 @@ Class {
 		'iconStencil',
 		'label',
 		'id',
-		'tooltipText',
-		'disableCondition'
+		'tooltipText'
 	],
 	#category : #'GToolkit-RemotePhlow-PhlowActions'
 }
@@ -68,11 +67,6 @@ GtRemotePhlowContextMenuAction >> asItemBoundActionToItem: anItem viewSelection:
 ]
 
 { #category : #'api - scripting' }
-GtRemotePhlowContextMenuAction >> disableIf: aBlock [ 
-	disableCondition := aBlock
-]
-
-{ #category : #'api - scripting' }
 GtRemotePhlowContextMenuAction >> icon: anIconStencil [
 	iconStencil := anIconStencil
 ]
@@ -107,14 +101,6 @@ GtRemotePhlowContextMenuAction >> printOn: aStream [
 	super printOn: aStream.
 	aStream parenthesize: [
 		aStream nextPutAll: (self label ifNil: [ '' ]) ]
-]
-
-{ #category : #testing }
-GtRemotePhlowContextMenuAction >> shouldDisableContextActionOn: anItem viewSelection: aViewSelection [ 
-	^ disableCondition 
-		ifNil: [ false ] 
-		ifNotNil: [ :aConditon |
-			aConditon cull: anItem cull: aViewSelection ]
 ]
 
 { #category : #'api - scripting' }

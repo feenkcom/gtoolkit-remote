@@ -25,9 +25,6 @@ GtRemotePhlowContextMenuItemBoundActionSpecification >> actionFor: anAction [
 			remoteWrappedAction := GtRemotePhlowNavigationAction 
 				navigationActionFromDictionary: remoteWrappedActionData.
 			remoteWrappedAction applyOn: anElement ] ].
-			
-	self disabled ifTrue: [
-		localAction  menuDisable: [ true ]].
 	
 	^ localAction
 ]

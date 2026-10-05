@@ -14,9 +14,6 @@ GtRemotePhlowContextMenuItemBoundAction >> phlowActionFor: anAction [
 
 	self targetAction id ifNotNil: [ :anId |
 		localAction id: anId ].
-	
-	self shouldDisableContextAction ifTrue: [
-		localAction menuDisable: [ true ]].
 		
 	localAction action: [ :anElement | 
 		self targetAction cull: anElement ].

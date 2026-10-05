@@ -19,7 +19,7 @@ GtRemotePhlowContextMenuItemBoundAction >> asGtDeclarativeAction [
 	^ GtRemotePhlowContextMenuItemBoundActionSpecification new
 		id: self targetAction id;
 		label: self targetAction label;
-		disabled: self shouldDisableContextAction;
+		tooltipText: self targetAction tooltipText;
 		iconStencil: self targetAction iconStencil;
 		phlowDataSource: (GtRemotePhlowContextMenuItemBoundActionDataSource new
 			phlowAction: self)
@@ -39,12 +39,6 @@ GtRemotePhlowContextMenuItemBoundAction >> item [
 { #category : #accessing }
 GtRemotePhlowContextMenuItemBoundAction >> item: anObject [
 	item := anObject
-]
-
-{ #category : #testing }
-GtRemotePhlowContextMenuItemBoundAction >> shouldDisableContextAction [
-	^ self targetAction 
-			shouldDisableContextActionOn: item viewSelection: item
 ]
 
 { #category : #accessing }
