@@ -1,12 +1,31 @@
 Extension { #name : #GtRemotePhlowContextMenuItemBoundAction }
 
 { #category : #'*GToolkit-RemoteGt' }
-GtRemotePhlowContextMenuItemBoundAction >> asMenuItem [
-	"Return a menu item which will be displayed in a context menu.
-	Context menu action can return also collection of menu items."
+GtRemotePhlowContextMenuItemBoundAction >> phlowActionFor: anAction [
+	| localAction |
+	localAction := anAction button.
 
-	<return: #BrMenuItem>
-	^ BrMenuActionItem new
-		label: self label;
-		action: [ :anElement | self executeActionFrom: anElement ]
+	self targetAction tooltipText ifNotNil: [ :aText |
+		localAction tooltip: aText ].
+	self targetAction label ifNotNil: [ :aText |
+		localAction label: aText ].
+	self targetAction iconStencil ifNotNil: [ :anIconStencil |
+		localAction icon: anIconStencil ].
+
+	self targetAction id ifNotNil: [ :anId |
+		localAction id: anId ].
+	
+	self shouldDisableContextAction ifTrue: [
+		localAction menuDisable: [ true ]].
+		
+	localAction action: [ :anElement | 
+		self targetAction cull: anElement ].
+	
+	^ localAction
+]
+
+{ #category : #'*GToolkit-RemoteGt' }
+GtRemotePhlowContextMenuItemBoundAction >> toMenuItemOn: anObject index: anObjectIndex  element: aTargetElement [
+	^ (self phlowActionFor: GtPhlowAction noAction)
+		toMenuItemOn: anObject index: anObjectIndex  element: aTargetElement
 ]

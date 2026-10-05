@@ -5,6 +5,11 @@ Class {
 }
 
 { #category : #'instance creation' }
+GtPhlowBasicGlamorousIconNameStencil class >> close [
+	^ self  forIconName: #close
+]
+
+{ #category : #'instance creation' }
 GtPhlowBasicGlamorousIconNameStencil class >> play [
 	^ self  forIconName: #play
 ]

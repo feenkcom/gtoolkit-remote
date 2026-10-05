@@ -58,6 +58,33 @@ GtRemotePhlowListingView >> contextActionsForTarget: aTarget groupWith: aGroupFa
 ]
 
 { #category : #'api - actions' }
+GtRemotePhlowListingView >> contextItemDo: aBlock [
+	| newAction |
+	newAction := GtRemotePhlowContextMenuAction new.
+	aBlock value: newAction.
+	self contextMenuActions add: newAction
+]
+
+{ #category : #'api - actions' }
+GtRemotePhlowListingView >> contextItemIcon: anIconOrStencil label: aString action: aBlock [
+	self contextMenuActions
+		add: (GtRemotePhlowContextMenuAction new
+			label: aString;
+			icon: anIconOrStencil;
+			action: aBlock)
+]
+
+{ #category : #'api - actions' }
+GtRemotePhlowListingView >> contextItemIcon: anIconOrStencil label: aString id: anId action: aBlock [
+	self contextMenuActions
+		add: (GtRemotePhlowContextMenuAction new
+			label: aString;
+			icon: anIconOrStencil;
+			id: anId;
+			action: aBlock)
+]
+
+{ #category : #'api - actions' }
 GtRemotePhlowListingView >> contextItemLabel: aString action: aBlock [
 	self contextMenuActions
 		add: (GtRemotePhlowContextMenuAction label: aString action: aBlock)
@@ -66,10 +93,19 @@ GtRemotePhlowListingView >> contextItemLabel: aString action: aBlock [
 { #category : #'api - actions' }
 GtRemotePhlowListingView >> contextItemLabel: aString action: aBlock showIf: aShowBlock [
 	self contextMenuActions
-		add: (GtRemotePhlowContextMenuAction 
-			label: aString 
-			action: aBlock 
-			show: aShowBlock)
+		add: (GtRemotePhlowContextMenuAction new
+			label: aString;
+			action: aBlock;
+			showIf: aShowBlock)
+]
+
+{ #category : #'api - actions' }
+GtRemotePhlowListingView >> contextItemLabel: aString id: anId action: aBlock [
+	self contextMenuActions
+		add: (GtRemotePhlowContextMenuAction new
+			label: aString;
+			id: anId;
+			action: aBlock)
 ]
 
 { #category : #accessing }

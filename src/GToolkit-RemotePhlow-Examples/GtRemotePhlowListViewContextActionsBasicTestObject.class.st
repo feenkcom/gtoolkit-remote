@@ -72,6 +72,43 @@ GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithBasicContextActi
 ]
 
 { #category : #views }
+GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithBasicContextActionsWithVariousOptionsFor: aView [
+	<gtView>
+
+	^aView list
+		title: 'Basic actions - multiple options';
+		priority: 30;
+		items: [ 10 to: 15 ];
+		itemText: [ :anObject :aSelectionIndex | 
+			'value: ', anObject printString, '; index: ', aSelectionIndex printString ];
+		contextItemIcon: (GtPhlowGlamorousVectorIconNameStencil new iconName: #inspect) 
+			label: 'Inspect element' 
+			action: [ :anElement |
+				anElement phlow spawnObject: anElement ];
+		contextItemLabel: 'Inspect object' 
+			id:  GtRemotePhlowExampleCustomInspectActionId new
+			action: [ :anElement :anObject |
+				anElement phlow spawnObject: anObject ];
+		contextItemLabel: 'Inspect selection' action: [ :anElement :anObject :aSelection |
+				anElement phlow spawnObject: aSelection ];
+				
+		contextItemDo: [ :anAction |
+				anAction 
+					label: 'Allways disabled' ;
+					icon: (GtPhlowGlamorousVectorIconNameStencil close);
+					disableIf: [ :anObject :aSelection | true ]; 
+					action: [ :anElement :anObject | anElement phlow spawnObject: anObject ]];
+		
+		contextItemDo: [ :anAction |
+				anAction 
+					label: 'Enable if greater than 12' ;
+					disableIf: [ :anObject :aSelection | anObject <= 12 ]; 
+					action: [ :anElement :anObject | anElement phlow spawnObject: anObject ]];
+				
+		send: [ :anObject :aSelectionIndex | {anObject . aSelectionIndex} ]
+]
+
+{ #category : #views }
 GtRemotePhlowListViewContextActionsBasicTestObject >> gtListWithDynamicContextPhlowActionsFor: aView [
 	<gtView>
 

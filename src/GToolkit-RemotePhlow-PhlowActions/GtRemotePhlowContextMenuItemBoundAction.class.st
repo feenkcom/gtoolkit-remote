@@ -17,9 +17,10 @@ GtRemotePhlowContextMenuItemBoundAction >> actionComputation [
 { #category : #converting }
 GtRemotePhlowContextMenuItemBoundAction >> asGtDeclarativeAction [
 	^ GtRemotePhlowContextMenuItemBoundActionSpecification new
-		tooltipText: targetAction tooltipText;
-		label: self label;
-		iconStencil: targetAction iconStencil;
+		id: self targetAction id;
+		label: self targetAction label;
+		disabled: self shouldDisableContextAction;
+		iconStencil: self targetAction iconStencil;
 		phlowDataSource: (GtRemotePhlowContextMenuItemBoundActionDataSource new
 			phlowAction: self)
 ]
@@ -40,9 +41,10 @@ GtRemotePhlowContextMenuItemBoundAction >> item: anObject [
 	item := anObject
 ]
 
-{ #category : #accessing }
-GtRemotePhlowContextMenuItemBoundAction >> label [
-	^ targetAction label
+{ #category : #testing }
+GtRemotePhlowContextMenuItemBoundAction >> shouldDisableContextAction [
+	^ self targetAction 
+			shouldDisableContextActionOn: item viewSelection: item
 ]
 
 { #category : #accessing }

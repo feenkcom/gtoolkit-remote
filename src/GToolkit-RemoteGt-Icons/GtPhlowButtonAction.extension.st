@@ -25,13 +25,6 @@ GtPhlowButtonAction >> asGtDeclarativeAction [
 ]
 
 { #category : #'*GToolkit-RemoteGt-Icons' }
-GtPhlowButtonAction >> asItemBoundActionToItem: anItem viewSelection: anIndex [
-	"Normal phlow actions do no get the item or the selection as parameters.
-	They are bound already to them when they are created."
-	^ self
-]
-
-{ #category : #'*GToolkit-RemoteGt-Icons' }
 GtPhlowButtonAction >> canBeGtDeclarativeAction [
 	"
 	Allow icons as they get serialized.

@@ -7,6 +7,8 @@ GtRemotePhlowContextMenuItemBoundActionSpecification >> actionFor: anAction [
 
 	self priority ifNotNil: [ :aPriority |
 		localAction priority: aPriority ].
+	self id ifNotNil: [ :anId |
+		localAction id: anId ].
 	self tooltipText ifNotNil: [ :aText |
 		localAction tooltip: aText ].
 	self label ifNotNil: [ :aText |
@@ -23,6 +25,9 @@ GtRemotePhlowContextMenuItemBoundActionSpecification >> actionFor: anAction [
 			remoteWrappedAction := GtRemotePhlowNavigationAction 
 				navigationActionFromDictionary: remoteWrappedActionData.
 			remoteWrappedAction applyOn: anElement ] ].
+			
+	self disabled ifTrue: [
+		localAction  menuDisable: [ true ]].
 	
 	^ localAction
 ]

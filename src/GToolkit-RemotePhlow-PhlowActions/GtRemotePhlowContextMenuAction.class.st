@@ -3,11 +3,11 @@ Class {
 	#superclass : #GtRemotePhlowContextMenuSingleAction,
 	#instVars : [
 		'actionComputation',
-		'enableCondition',
 		'iconStencil',
 		'label',
 		'id',
-		'tooltipText'
+		'tooltipText',
+		'disableCondition'
 	],
 	#category : #'GToolkit-RemotePhlow-PhlowActions'
 }
@@ -20,11 +20,11 @@ GtRemotePhlowContextMenuAction class >> label: aString action: aBlock [
 ]
 
 { #category : #'instance creation' }
-GtRemotePhlowContextMenuAction class >> label: aString action: aBlock enable: anEnablelock [
+GtRemotePhlowContextMenuAction class >> label: aString action: aBlock disable: aDisableBlock [
 	^ self new 
 		label: aString;
 		action: aBlock;
-		enableIf: anEnablelock
+		disableIf: aDisableBlock
 ]
 
 { #category : #'instance creation' }
@@ -36,12 +36,12 @@ GtRemotePhlowContextMenuAction class >> label: aString action: aBlock show: aSho
 ]
 
 { #category : #'instance creation' }
-GtRemotePhlowContextMenuAction class >> label: aString action: aBlock show: aShowBlock enable: anEnablelock [
+GtRemotePhlowContextMenuAction class >> label: aString action: aBlock show: aShowBlock disable: aDisableBlock [
 	^ self new 
 		label: aString;
 		action: aBlock;
 		showIf: aShowBlock;
-		enableIf: anEnablelock
+		disableIf: aDisableBlock
 ]
 
 { #category : #'api - scripting' }
@@ -68,8 +68,8 @@ GtRemotePhlowContextMenuAction >> asItemBoundActionToItem: anItem viewSelection:
 ]
 
 { #category : #'api - scripting' }
-GtRemotePhlowContextMenuAction >> enableIf: aBlock [ 
-	enableCondition := aBlock
+GtRemotePhlowContextMenuAction >> disableIf: aBlock [ 
+	disableCondition := aBlock
 ]
 
 { #category : #'api - scripting' }
@@ -107,6 +107,14 @@ GtRemotePhlowContextMenuAction >> printOn: aStream [
 	super printOn: aStream.
 	aStream parenthesize: [
 		aStream nextPutAll: (self label ifNil: [ '' ]) ]
+]
+
+{ #category : #testing }
+GtRemotePhlowContextMenuAction >> shouldDisableContextActionOn: anItem viewSelection: aViewSelection [ 
+	^ disableCondition 
+		ifNil: [ false ] 
+		ifNotNil: [ :aConditon |
+			aConditon cull: anItem cull: aViewSelection ]
 ]
 
 { #category : #'api - scripting' }
