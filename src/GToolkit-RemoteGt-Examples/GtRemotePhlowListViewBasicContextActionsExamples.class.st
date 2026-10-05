@@ -855,3 +855,61 @@ GtRemotePhlowListViewBasicContextActionsExamples >> scripterOnMultipleSelectionV
 		play.
 	^ scripter
 ]
+
+{ #category : #'examples - various options' }
+GtRemotePhlowListViewBasicContextActionsExamples >> scripterOnVariousOptionsViewInPager [
+	<gtExample>
+	| scripter |
+	scripter := BlScripter new.
+	scripter element: (GtPagerSettings usedPager
+		createWrappedOn: self createTestObject gtDefaultInspectorTool).
+	(scripter inspectorStep)
+		scrollToTabWithName: 'Basic actions - multiple options';
+		clickOnTabWithName: 'Basic actions - multiple options';
+		assertSelectedTabWithName: 'Basic actions - multiple options';
+		play.
+	^ scripter
+]
+
+{ #category : #'examples - various options' }
+GtRemotePhlowListViewBasicContextActionsExamples >> variousOptionsContextMenuOnItem13 [
+	<gtExample>
+	| scripter |
+	scripter := self scripterOnVariousOptionsViewInPager.
+
+	scripter menuStep
+		openContextMenu;
+		onPhlowCellWithString: 'value: 13; index: 4';
+		play.
+
+	scripter menuStep
+		assertMenuItemLabels: #('Inspect element' 'Inspect object');
+		play.
+
+	scripter assert
+		label: 'Assert menu item with custom inspect ID exists';
+		exists;
+		onSpaceRoot;
+		// BrMenuSteppedElement;
+		// GtRemotePhlowExampleCustomInspectActionId;
+		play.
+
+	scripter assert
+		label: 'Assert first action has an icon';
+		exists;
+		onSpaceRoot;
+		// BrMenuSteppedElement;
+		// #'menu-icon';
+		play.
+
+	scripter assert
+		label: 'Assert icon action label is Inspect element';
+		value: [ :anElement | anElement text asString ] equals: 'Inspect element';
+		onSpaceRoot;
+		// BrMenuSteppedElement;
+		// BrMenuIconTextLabelElement;
+		// #'menu--label';
+		play.
+
+	^ scripter
+]
