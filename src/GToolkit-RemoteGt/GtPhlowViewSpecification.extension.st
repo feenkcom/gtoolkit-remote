@@ -39,7 +39,12 @@ GtPhlowViewSpecification >> configureViewActionsFor: aView [
 	self actionSpecifications ifNil: [ ^ self ].
 
 	self actionSpecifications do: [ :anActionSpecification |
-		aView addPhlowAction: (anActionSpecification actionFor: GtPhlowAction noAction) ]
+		| phlowAction |
+		phlowAction := anActionSpecification actionFor: GtPhlowAction noAction.
+		phlowAction definingMethodProvider: (GtRemotePhlowDefiningMethodProvider new
+				declarativeAction: anActionSpecification).
+					
+		aView addPhlowAction: (phlowAction) ]
 ]
 
 { #category : #'*GToolkit-RemoteGt' }

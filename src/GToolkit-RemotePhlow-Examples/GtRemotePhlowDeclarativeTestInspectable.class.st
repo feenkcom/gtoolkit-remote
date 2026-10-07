@@ -21,6 +21,11 @@ Class {
 	#category : #'GToolkit-RemotePhlow-Examples'
 }
 
+{ #category : #'instance creation' }
+GtRemotePhlowDeclarativeTestInspectable class >> new [
+	^ self basicNew initialize
+]
+
 { #category : #accessing }
 GtRemotePhlowDeclarativeTestInspectable >> collectionAt: anIndex put: anObject [
 

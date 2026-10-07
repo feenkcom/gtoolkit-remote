@@ -1,6 +1,6 @@
 Extension { #name : #GtRemotePhlowNavigationUpdateViewAction }
 
-{ #category : #'*GToolkit-RemoteGt-Icons' }
+{ #category : #'*GToolkit-RemoteGt' }
 GtRemotePhlowNavigationUpdateViewAction >> applyOn: aLocalElement [ 
 	"The current implementation issues the update request and relies on the view
 	clearning all the needed caches before updating (GtPhlowElementContext>>#syncUpdate). 

@@ -1,11 +1,11 @@
 Extension { #name : #GtRemotePhlowSpawnObjectAction }
 
-{ #category : #'*GToolkit-RemoteGt-Icons' }
+{ #category : #'*GToolkit-RemoteGt' }
 GtRemotePhlowSpawnObjectAction >> applyOn: aLocalElement [ 
 	aLocalElement phlow spawnObject: targetObject
 ]
 
-{ #category : #'*GToolkit-RemoteGt-Icons' }
+{ #category : #'*GToolkit-RemoteGt' }
 GtRemotePhlowSpawnObjectAction >> applyPrimaryModifierOn: aLocalElement [ 
 	aLocalElement phlow showObject: targetObject
 ]

@@ -7,6 +7,11 @@ Class {
 	#category : #'GToolkit-RemotePhlow-Examples'
 }
 
+{ #category : #'instance creation' }
+GtRemotePhlowDeclarativeTestForCustomProxyInspectable class >> new [
+	^ self basicNew initialize
+]
+
 { #category : #inspection }
 GtRemotePhlowDeclarativeTestForCustomProxyInspectable >> gtButtonActionWithBothIconAndLabelFor: anAction [
 	<gtAction>

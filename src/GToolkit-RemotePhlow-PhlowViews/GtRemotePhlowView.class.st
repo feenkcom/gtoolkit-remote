@@ -155,8 +155,8 @@ GtRemotePhlowView >> actions [
 
 { #category : #actions }
 GtRemotePhlowView >> addPhlowAction: aPhlowAction [
-	phlowActions add: aPhlowAction.
-	phlowActions sort: [ :a :b |
+	self actions add: aPhlowAction.
+	self actions sort: [ :a :b |
 		[ a priority < b priority ]
 			on: Error
 			do: [ :error | true ] ]
@@ -183,9 +183,17 @@ GtRemotePhlowView >> canBeGtDeclarativeView [
 
 { #category : #'private - converting' }
 GtRemotePhlowView >> configureGenericViewSpecificationOn: aViewSpecification [
+
 	aViewSpecification
 		title: self title;
-		priority: self priority;
+		priority: self priority.
+	
+	self configureMainActionsSpecificationsOn: aViewSpecification
+]
+
+{ #category : #'private - converting' }
+GtRemotePhlowView >> configureMainActionsSpecificationsOn: aViewSpecification [
+	aViewSpecification
 		actionSpecifications: (self actions collect: [ :each | 
 			each asGtDeclarativeAction ]) asArray
 ]

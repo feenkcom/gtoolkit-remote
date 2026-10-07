@@ -47,6 +47,18 @@ GtRemotePhlowDataNode >> asDictionaryForExport [
 	^ data
 ]
 
+{ #category : #accessing }
+GtRemotePhlowDataNode >> createNodeIdentifier [
+	^ GtRemotePhlowIndexNodeIdentifier new
+			nodeIndex: self nodeId
+]
+
+{ #category : #accessing }
+GtRemotePhlowDataNode >> createSelectionItem [
+	^ GtRemotePhlowListingViewListSelectionItem new
+			nodeIdentifier: self createNodeIdentifier
+]
+
 { #category : #comparing }
 GtRemotePhlowDataNode >> matchesNodeContentWith: aNode [
 	self class = aNode class ifFalse: [ ^ false].
@@ -64,6 +76,11 @@ GtRemotePhlowDataNode >> nodeId [
 { #category : #accessing }
 GtRemotePhlowDataNode >> nodeId: anObject [
 	nodeId := anObject
+]
+
+{ #category : #accessing }
+GtRemotePhlowDataNode >> nodePath [
+	^ Array with: self nodeId
 ]
 
 { #category : #accessing }

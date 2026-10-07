@@ -6,7 +6,9 @@ Class {
 		'priority',
 		'tooltipText',
 		'definingSelector',
-		'definingClass'
+		'definingClass',
+		'target',
+		'menuOptions'
 	],
 	#category : #'GToolkit-RemotePhlow-PhlowActions'
 }
@@ -39,6 +41,14 @@ GtRemotePhlowAction class >> noAction [
 ]
 
 { #category : #accessing }
+GtRemotePhlowAction >> addTarget: aGtPhlowActionTarget [
+	self 
+		assert: [ aGtPhlowActionTarget notNil ]
+		description: [ 'Phlow action target must be non-nil' ].
+	target := self target, aGtPhlowActionTarget asPhlowTarget
+]
+
+{ #category : #accessing }
 GtRemotePhlowAction >> asGtDeclarativeAction [
 	^ nil
 ]
@@ -57,7 +67,27 @@ GtRemotePhlowAction >> button [
 
 { #category : #testing }
 GtRemotePhlowAction >> canBeGtDeclarativeAction [
+	self target asRemotePhlowActionTarget ifNil: [ ^ false ].
+	self id ifNotNil: [ :anId | 
+		anId isRemotePhlowId ifFalse: [ ^ false ] ].
 	^ true
+]
+
+{ #category : #decorating }
+GtRemotePhlowAction >> contextMenuAction [
+	^ GtRemotePhlowContextMenuAction new
+		"definingMethod: (GtPhlowDefiningMethodsCollector forContext: thisContext) collect"
+]
+
+{ #category : #decorating }
+GtRemotePhlowAction >> contextMenuBoundAction [
+	^ GtRemotePhlowContextMenuItemBoundAction new
+		"definingMethod: (GtPhlowDefiningMethodsCollector forContext: thisContext) collect"
+]
+
+{ #category : #accessing }
+GtRemotePhlowAction >> defaultTarget [
+	^ GtRemotePhlowObjectActionTarget new
 ]
 
 { #category : #accessing }
@@ -72,9 +102,17 @@ GtRemotePhlowAction >> definingClass: aClass [
 
 { #category : #accessing }
 GtRemotePhlowAction >> definingMethod [
+	self definingClass ifNil: [ ^ nil ].
+	self definingSelector ifNil: [ ^ nil ].
+	
 	^ (self definingClass whichClassIncludesSelector: self definingSelector) 
 		ifNil: [ nil ]
-		ifNotNil: [ :aClass | aClass compiledMethodAt: self definingSelector ]
+		ifNotNil: [ :aClass | 
+			self 
+				gtDo: [
+					(aClass compiledMethodAt: self definingSelector) methodReference ] 
+				gemstoneDo: [
+					aClass compiledMethodAt: self definingSelector ] ]
 ]
 
 { #category : #accessing }
@@ -97,6 +135,16 @@ GtRemotePhlowAction >> empty [
 ]
 
 { #category : #accessing }
+GtRemotePhlowAction >> forViewDefinedIn: aSymbol [
+	self target: (GtRemotePhlowViewActionTarget forSelector: aSymbol)
+]
+
+{ #category : #testing }
+GtRemotePhlowAction >> hasMenuOptions [
+	^ menuOptions notNil and: [ menuOptions hasAnyOptions ]
+]
+
+{ #category : #accessing }
 GtRemotePhlowAction >> id [
 	^ id
 ]
@@ -104,6 +152,50 @@ GtRemotePhlowAction >> id [
 { #category : #accessing }
 GtRemotePhlowAction >> id: anId [
 	id := anId
+]
+
+{ #category : #testing }
+GtRemotePhlowAction >> isDefaultTarget [
+	| defaultTarget |
+	defaultTarget := self defaultTarget.
+	self target targetsDo: [ :eachTarget | 
+		eachTarget = defaultTarget ifTrue: [ ^ true ] ].
+	^ false
+]
+
+{ #category : #'accessing - menu' }
+GtRemotePhlowAction >> menuDisable: anObject [
+	self menuOptions menuDisable: anObject
+]
+
+{ #category : #'accessing - menu' }
+GtRemotePhlowAction >> menuItemGroup: aGroupConfiguration [
+	self menuOptions menuGroup: aGroupConfiguration
+]
+
+{ #category : #'accessing - menu' }
+GtRemotePhlowAction >> menuItemHideOnClick: aBoolean [
+	self menuOptions menuHideOnClick: aBoolean
+]
+
+{ #category : #'accessing - menu' }
+GtRemotePhlowAction >> menuItemPinSubmenu [
+	self menuOptions menuPinSubmenu
+]
+
+{ #category : #'accessing - menu' }
+GtRemotePhlowAction >> menuItemPreview: anObject [
+	self menuOptions menuPreview: anObject
+]
+
+{ #category : #'accessing - menu' }
+GtRemotePhlowAction >> menuOptions [
+	^ menuOptions ifNil: [ menuOptions := GtRemotePhlowMenuOptions new ]
+]
+
+{ #category : #'accessing - menu' }
+GtRemotePhlowAction >> menuShortcut: aShortcut [
+	self menuOptions menuShortcut: aShortcut
 ]
 
 { #category : #decorating }
@@ -160,6 +252,11 @@ GtRemotePhlowAction >> phlowErrorActionWithException: anException forBuildContex
 ]
 
 { #category : #accessing }
+GtRemotePhlowAction >> primaryModifierAction: aBlock mouseCursor: aCursor [
+	"Ignored in remote phlow"
+]
+
+{ #category : #accessing }
 GtRemotePhlowAction >> priority [
 	^ priority
 ]
@@ -167,6 +264,16 @@ GtRemotePhlowAction >> priority [
 { #category : #accessing }
 GtRemotePhlowAction >> priority: aNumber [
 	priority := aNumber
+]
+
+{ #category : #accessing }
+GtRemotePhlowAction >> target [
+	^ target ifNil: [ GtRemotePhlowObjectActionTarget new ]
+]
+
+{ #category : #accessing }
+GtRemotePhlowAction >> target: aGtRemotePhlowActionTarget [
+	target := aGtRemotePhlowActionTarget default
 ]
 
 { #category : #accessing }

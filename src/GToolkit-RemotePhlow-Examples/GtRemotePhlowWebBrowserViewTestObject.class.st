@@ -99,6 +99,7 @@ GtRemotePhlowWebBrowserViewTestObject >> gtWebBrowserUrlFor: aView [
 { #category : #initialization }
 GtRemotePhlowWebBrowserViewTestObject >> initialize [
 	super initialize.
+	
 	currentUrl := 'https://example.com'
 ]
 

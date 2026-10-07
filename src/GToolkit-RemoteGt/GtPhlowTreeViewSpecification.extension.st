@@ -20,13 +20,6 @@ GtPhlowTreeViewSpecification >> configureItemsFor: aView [
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
-GtPhlowTreeViewSpecification >> configureViewActionsFor: aView [
-	super configureViewActionsFor: aView.
-	
-	self configureDefaultRefreshActionFor: aView.
-]
-
-{ #category : #'*GToolkit-RemoteGt' }
 GtPhlowTreeViewSpecification >> ensureChildrenLoadedForNode: aTreeNode [ 
 	aTreeNode childNodes ifNotNil: [ :currentChildren |
 		^ self ].
@@ -39,8 +32,8 @@ GtPhlowTreeViewSpecification >> ensureChildrenLoadedForNode: aTreeNode [
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
-GtPhlowTreeViewSpecification >> extractRemoteSendObjectFromNode: aTreeNode atSelection: aSelection [ 
-	^ self retriveSentItemAtPath: aTreeNode nodePath
+GtPhlowTreeViewSpecification >> extractRemoteSendObjectFromNode: aNode atSelectionIndex: aSelectionIndex [ 
+	^ self retrieveSentItemAtPath: aNode nodePath
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
@@ -51,6 +44,7 @@ GtPhlowTreeViewSpecification >> viewFor: aView [
 	treeView := aView tree.
 	
 	self configureBasicLocalView: treeView for: aView. 
+	self configureListingView: treeView. 
 	self configureItemsFor: treeView.
 	self configureViewActionsFor: treeView.
 	self configureViewSendFor: treeView.

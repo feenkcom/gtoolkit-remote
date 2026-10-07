@@ -22,6 +22,11 @@ GtPhlowStencil >> asGtStencilSpecificationFrom: aDataProvider [
 	^ stencilSpecification
 ]
 
+{ #category : #converting }
+GtPhlowStencil >> asStencil [
+	^ self
+]
+
 { #category : #views }
 GtPhlowStencil >> gtLiveFor: aView [
 	<gtView>

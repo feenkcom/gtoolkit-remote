@@ -61,6 +61,12 @@ GtRemotePlainInspectionViewedObject >> gtViewsInCurrentContextForObject: anObjec
 		
 			phlowView definingSelector: methodSelector.
 			phlowView definingClass: anObject class.
+			
+			(self gtActionsInCurrentContextForObject: anObject ) do: [ :anAction |
+    		anAction target ifNotNil: [ :aTarget |
+      		(aTarget isForViewDefinedIn: methodSelector)
+        		ifTrue: [ phlowView addPhlowAction: anAction ] ] ].
+			
 			phlowView ]
 ]
 
@@ -68,7 +74,8 @@ GtRemotePlainInspectionViewedObject >> gtViewsInCurrentContextForObject: anObjec
 GtRemotePlainInspectionViewedObject >> phlowDeclarativeActions [
 	"Retrieve the object's declarative action using the remote phlow API."
 	
-	^ self  gtActionsInCurrentContextForObject: object.
+	^ (self  gtActionsInCurrentContextForObject: object)
+			select: [ :aPhlowAction | aPhlowAction canBeGtDeclarativeAction ]
 ]
 
 { #category : #accessing }

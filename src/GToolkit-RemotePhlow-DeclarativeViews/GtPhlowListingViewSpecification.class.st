@@ -9,10 +9,69 @@ Class {
 	#name : #GtPhlowListingViewSpecification,
 	#superclass : #GtPhlowViewSpecification,
 	#instVars : [
-		'totalItemsCount'
+		'totalItemsCount',
+		'hasMultipleSelection',
+		'hasContextActionSpecifications'
 	],
 	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
+
+{ #category : #'instance creation' }
+GtPhlowListingViewSpecification class >> fromJSONDictionary: aDictionary [
+	| specification |
+	specification := super fromJSONDictionary: aDictionary.
+	
+	(aDictionary at: 'hasMultipleSelection' ifAbsent: [ nil ])
+		ifNotNil: [ :aBoolean |
+			specification hasMultipleSelection: aBoolean ].
+	(aDictionary at: 'hasContextActionSpecifications' ifAbsent: [ nil ])
+		ifNotNil: [ :aBoolean |
+			specification hasContextActionSpecifications: aBoolean ].
+			
+	^ specification
+]
+
+{ #category : #testing }
+GtPhlowListingViewSpecification class >> isAbstract [
+	^ self name= #GtPhlowListingViewSpecification
+]
+
+{ #category : #converting }
+GtPhlowListingViewSpecification >> asBasicViewDataForExport [
+	| dictionary |
+	
+	dictionary := super asBasicViewDataForExport.
+	dictionary at: 'hasMultipleSelection' put: self hasMultipleSelection.
+	dictionary at: 'hasContextActionSpecifications' put: self hasContextActionSpecifications.
+	
+	^dictionary
+]
+
+{ #category : #'api - accessing' }
+GtPhlowListingViewSpecification >> bareRetrieveSentItemAtPhlowSelectionData: aPhlowSelectionData [
+	^ self phlowDataSource 
+		bareRetrieveSentItemAtPhlowSelectionData: aPhlowSelectionData
+]
+
+{ #category : #'api - accessing' }
+GtPhlowListingViewSpecification >> bareRetriveContextActionSpecificationsForPhlowSelectionData: aPhlowSelectionData [
+	^ self phlowDataSource 
+		bareRetriveContextActionSpecificationsForPhlowSelectionData: aPhlowSelectionData
+]
+
+{ #category : #accessing }
+GtPhlowListingViewSpecification >> createViewMultipleSelectionFromNodes: aCollectionOfNodes selectionIndices: aSelectionIndexes [
+	| viewSelection selectionItems|
+	
+	selectionItems := aCollectionOfNodes collectWithIndex: [ :aNode :anIndex |
+ 		aNode value createSelectionItem
+ 			selectionIndex: (aSelectionIndexes at: anIndex)  ].
+ 		
+	viewSelection:= GtRemotePhlowListingViewMultipleSelection new
+ 		selectionItems: selectionItems.
+
+	^ viewSelection
+]
 
 { #category : #'api - accessing' }
 GtPhlowListingViewSpecification >> flushCachedData [
@@ -23,6 +82,26 @@ GtPhlowListingViewSpecification >> flushCachedData [
 GtPhlowListingViewSpecification >> flushItemsIterator [ 
 
 	phlowDataSource flushItemsIterator
+]
+
+{ #category : #accessing }
+GtPhlowListingViewSpecification >> hasContextActionSpecifications [
+	^ hasContextActionSpecifications ifNil: [ false ]
+]
+
+{ #category : #accessing }
+GtPhlowListingViewSpecification >> hasContextActionSpecifications: aBoolean [
+	hasContextActionSpecifications := aBoolean
+]
+
+{ #category : #'api - accessing' }
+GtPhlowListingViewSpecification >> hasMultipleSelection [
+	^ hasMultipleSelection ifNil: [ false ]
+]
+
+{ #category : #'api - accessing' }
+GtPhlowListingViewSpecification >> hasMultipleSelection: aBoolean [
+	hasMultipleSelection := aBoolean
 ]
 
 { #category : #initialization }
@@ -55,8 +134,20 @@ GtPhlowListingViewSpecification >> retrieveSentItemAt: aSelectionIndex [
 ]
 
 { #category : #'api - accessing' }
+GtPhlowListingViewSpecification >> retrieveSentItemAtPhlowSelection: aPhlowSelection [
+	^ self phlowDataSource 
+			retrieveSentItemAtPhlowSelection: aPhlowSelection
+]
+
+{ #category : #'api - accessing' }
 GtPhlowListingViewSpecification >> retrieveTotalItemsCount [
 	^ self phlowDataSource retrieveTotalItemsCount
+]
+
+{ #category : #'api - accessing' }
+GtPhlowListingViewSpecification >> retriveContextActionSpecificationsForPhlowSelection: aPhlowSelection [
+	^ self phlowDataSource 
+		retriveContextActionSpecificationsForPhlowSelection: aPhlowSelection
 ]
 
 { #category : #accessing }

@@ -24,8 +24,11 @@ GtRemotePhlowColumnedTreeView >> asGtDeclarativeView [
 			expander: expander);
 		expander: expander;
 		dataTransport: GtPhlowViewSpecification dataLazy.
+		
 	self configureGenericViewSpecificationOn: viewSpecification.
 	self configureColumnsSpecificationOn: viewSpecification.
+	self configureListingViewSpecificationOn: viewSpecification.
+	
 	^ viewSpecification
 ]
 

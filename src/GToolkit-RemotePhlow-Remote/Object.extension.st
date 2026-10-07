@@ -58,5 +58,16 @@ Object >> gtViewsInCurrentContext [
 		
 		phlowView definingSelector: methodSelector.
 		phlowView definingClass: self class.
+
+		self gtActionsInCurrentContext do: [ :anAction |
+    		anAction target ifNotNil: [ :aTarget |
+      		(aTarget isForViewDefinedIn: methodSelector)
+        		ifTrue: [ phlowView addPhlowAction: anAction ] ] ].
+
 		phlowView ]
+]
+
+{ #category : #'*GToolkit-RemotePhlow-Remote' }
+Object >> isBlocElementId [
+	^ false
 ]

@@ -28,7 +28,14 @@ GtPhlowButtonActionSpecification >> actionFor: anAction [
 	localAction primaryModifierAction: [ :aButtonElement | 
 		(GtRemotePhlowNavigationAction navigationActionFromDictionary: self 
 				phlowDataSource executeRemoteActionWithPhlowResult)
-			applyPrimaryModifierOn: aButtonElement ].
+		applyPrimaryModifierOn: aButtonElement ].
+	
+	self menuOptions ifNotNil: [ :options |
+		options applyToLocalAction: localAction ].
+	self target ifNotNil: [ :aPhlowTarget | 
+		localAction target: aPhlowTarget ].
+	self id ifNotNil: [ :anId |
+		localAction id: anId ].
 	
 	^ localAction
 ]

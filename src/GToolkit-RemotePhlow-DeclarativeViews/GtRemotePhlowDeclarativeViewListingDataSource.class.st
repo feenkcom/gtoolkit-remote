@@ -9,6 +9,23 @@ Class {
 	#category : #'GToolkit-RemotePhlow-DeclarativeViews'
 }
 
+{ #category : #'api - data retrival' }
+GtRemotePhlowDeclarativeViewListingDataSource >> bareRetrieveSentItemAtPhlowSelectionData: aPhlowSelectionData [
+	| phlowSelection |
+	phlowSelection := GtRemotePhlowListingViewSelection fromDictionary: aPhlowSelectionData.
+	^ self retrieveSentItemAtPhlowSelection: phlowSelection
+]
+
+{ #category : #'api - data retrival' }
+GtRemotePhlowDeclarativeViewListingDataSource >> bareRetriveContextActionSpecificationsForPhlowSelectionData: aPhlowSelectionData [
+	| phlowSelection |
+	phlowSelection := GtRemotePhlowListingViewSelection fromDictionary: aPhlowSelectionData.
+	^ (self retriveContextActionSpecificationsForPhlowSelection: phlowSelection)
+			ifNotNil: [ :actions |
+				actions collect: [ :anAction |
+					anAction asDictionaryForExportWithPhlowDataSource ] ]
+]
+
 { #category : #accessing }
 GtRemotePhlowDeclarativeViewListingDataSource >> buildMainNodeForObject: anObject atIndex: anIndex [ 
 	^ self buildNodeForObject: anObject atIndex: anIndex 
@@ -139,8 +156,46 @@ GtRemotePhlowDeclarativeViewListingDataSource >> retrieveSentItemAt: aSelectionI
 ]
 
 { #category : #'api - data retrival' }
+GtRemotePhlowDeclarativeViewListingDataSource >> retrieveSentItemAtPhlowSelection: aPhlowSelection [ 
+	| targetNodes targetObjects |
+	
+	targetNodes := OrderedCollection new.
+	self withNodesInPhlowSelection: aPhlowSelection do: [ :aNode |
+		targetNodes add: aNode ].
+	targetNodes ifEmpty: [ ^ nil ].
+	
+	targetObjects := targetNodes collect: [ :aNode | aNode targetObject ].
+	
+	^ self phlowView transformation 
+			transformedValueFrom: ((targetObjects size > 1)
+				ifTrue: [ Array withAll: targetObjects ]
+				ifFalse: [ targetObjects first ])
+			selection: (aPhlowSelection selectionIndex) 
+]
+
+{ #category : #'api - data retrival' }
 GtRemotePhlowDeclarativeViewListingDataSource >> retrieveTotalItemsCount [
 	^ self itemsIterator totalItemsCount
+]
+
+{ #category : #'api - data retrival' }
+GtRemotePhlowDeclarativeViewListingDataSource >> retriveContextActionSpecificationsForPhlowSelection: aPhlowSelection [
+	| targetNodes targetObjects |
+	
+	targetNodes := OrderedCollection new.
+	self withNodesInPhlowSelection: aPhlowSelection do: [ :aNode |
+		targetNodes add: aNode ].
+	targetNodes ifEmpty: [ ^ nil ].
+	
+	targetObjects := targetNodes collect: [ :aNode | aNode targetObject ].
+	
+	^ (self phlowView 	
+			collectIndividualContextMenuActionsForElement: nil 
+			item: (aPhlowSelection isMultipleSelection
+				ifTrue: [ Array withAll: targetObjects ]
+				ifFalse: [ targetObjects first  ])
+			viewSelection: aPhlowSelection) collect: [ :anAction |
+				anAction asGtDeclarativeAction ].
 ]
 
 { #category : #'api - data retrival' }
@@ -153,7 +208,7 @@ GtRemotePhlowDeclarativeViewListingDataSource >> retriveSentItemAt: aSelectionIn
 		withIndexDo: [ :aNode :anItemIndex |
 			^ self phlowView transformation 
 				transformedValueFrom: aNode targetObject
-				selection: aSelectionIndex ].
+				selection: (Array with: aSelectionIndex) ].
 	^ nil
 ]
 
@@ -162,4 +217,24 @@ GtRemotePhlowDeclarativeViewListingDataSource >> valueBuilder [
 	^ cachedValueBuilder ifNil: [
 		cachedValueBuilder := self instantiateValueBuilder
 			phlowView:  self phlowView]
+]
+
+{ #category : #'api - data retrival' }
+GtRemotePhlowDeclarativeViewListingDataSource >> withNodeAtAtPath: aNodePath ifPresent: aPresentBlock ifAbsent: anAbsentBlock [
+	self 
+		forNodesFrom: aNodePath first 
+		to: aNodePath first 
+		withIndexDo: [ :aNode :aSelectionIndex |
+			^ aPresentBlock cull: aNode cull: aSelectionIndex ].
+	^ anAbsentBlock value
+]
+
+{ #category : #'api - data retrival' }
+GtRemotePhlowDeclarativeViewListingDataSource >> withNodesInPhlowSelection: aPhlowSelection do: aBlock [
+	aPhlowSelection selectionItemsDo: [ :aSelectionItem |
+		self 
+			withNodeAtAtPath: aSelectionItem nodeIdentifier nodeIndexPath 
+			ifPresent: [ :targetNode :aSelectionIndex |
+				aBlock cull: targetNode cull: aSelectionItem selectionIndex ]  
+			ifAbsent: [  ]. ].
 ]

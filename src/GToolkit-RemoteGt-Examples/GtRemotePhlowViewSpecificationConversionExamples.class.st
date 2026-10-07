@@ -240,77 +240,120 @@ GtRemotePhlowViewSpecificationConversionExamples >> expectedListForStyledText [
 { #category : #examples }
 GtRemotePhlowViewSpecificationConversionExamples >> expectedListViewWithButtonActionsSpecification [
 	^ Dictionary new
-		add: '__typeName' -> #GtPhlowListViewSpecification;
-		add: 'viewName' -> #GtPhlowListViewSpecification;
-		add: 'title' -> 'Buttons';
-		add: 'priority' -> 10;
-		add: 'dataTransport' -> GtPhlowViewSpecification dataLazy;
 		add: 'methodSelector' -> nil;
-		add: 'actionSpecifications' -> {
-			(Dictionary new
-				add: '__typeName' -> #GtPhlowButtonActionSpecification;
-				add: '__typeLabel' -> 'phlowButtonActionSpecification';
-				add: 'priority' -> 51;
-				add: 'methodSelector' -> nil;
-				add: 'label' -> 'Inspect';
-				yourself).
-			(Dictionary new
-				add: '__typeName' -> #GtPhlowButtonActionSpecification;
-				add: '__typeLabel' -> 'phlowButtonActionSpecification';
-				add: 'priority' -> 52;
-				add: 'methodSelector' -> nil;
-				add: 'label' -> 'Inspect with tooltip';
-				add: 'tooltipText' -> 'Inspect objects';
-				yourself).
-			(Dictionary new
-				add: '__typeName' -> #GtPhlowButtonActionSpecification;
-				add: '__typeLabel' -> 'phlowButtonActionSpecification';
-				add: 'priority' -> 53;
-				add: 'methodSelector' -> nil;
-				add: 'iconStencil' -> (Dictionary new
-					add: '__typeName' -> #GtPhlowGlamorousVectorIconNameStencil;
-					add: '__typeLabel' -> 'phlowGlamorousVectorIconNameStencil';
-					add: 'iconName' -> #playinspect;
-					yourself);
-				yourself).
-			(Dictionary new
-				add: '__typeName' -> #GtPhlowButtonActionSpecification;
-				add: '__typeLabel' -> 'phlowButtonActionSpecification';
-				add: 'priority' -> 54;
-				add: 'methodSelector' -> nil;
-				add: 'tooltipText' -> 'Inspect with icon';
-				add: 'iconStencil' -> (Dictionary new
-					add: '__typeName' -> #GtPhlowGlamorousVectorIconNameStencil;
-					add: '__typeLabel' -> 'phlowGlamorousVectorIconNameStencil';
-					add: 'iconName' -> #playinspect;
-					yourself);
-				yourself).
-			(Dictionary new
-				add: '__typeName' -> #GtPhlowButtonActionSpecification;
-				add: '__typeLabel' -> 'phlowButtonActionSpecification';
-				add: 'priority' -> 55;
-				add: 'methodSelector' -> nil;
-				add: 'label' -> 'Refresh';
-				add: 'iconStencil' -> (Dictionary new
-					add: '__typeName' -> #GtPhlowGlamorousVectorIconNameStencil;
-					add: '__typeLabel' -> 'phlowGlamorousVectorIconNameStencil';
-					add: 'iconName' -> #refresh;
-					yourself);
-				yourself).
-			(Dictionary new
-				add: '__typeName' -> #GtPhlowButtonActionSpecification;
-				add: '__typeLabel' -> 'phlowButtonActionSpecification';
-				add: 'priority' -> 56;
-				add: 'methodSelector' -> nil;
-				add: 'label' -> 'Refresh tooltip';
-				add: 'tooltipText' -> 'Refresh objects';
-				add: 'iconStencil' -> (Dictionary new
-					add: '__typeName' -> #GtPhlowGlamorousVectorIconNameStencil;
-					add: '__typeLabel' -> 'phlowGlamorousVectorIconNameStencil';
-					add: 'iconName' -> #refresh;
-					yourself);
-				yourself)
-		} asArray;
+		add: 'viewName' -> #GtPhlowListViewSpecification;
+		add: 'hasMultipleSelection' -> false;
+		add: 'hasContextActionSpecifications' -> false;
+		add: 'actionSpecifications'
+				-> ((Array new: 6)
+						at: 1
+							put: (Dictionary new
+									add: 'label' -> 'Inspect';
+									add: 'target'
+											-> (Dictionary new
+													add: '__typeName' -> #GtRemotePhlowObjectActionTarget;
+													add: '__typeLabel' -> 'objectAction';
+													yourself);
+									add: '__typeLabel' -> 'phlowButtonActionSpecification';
+									add: 'priority' -> 51;
+									add: 'methodSelector' -> nil;
+									add: '__typeName' -> #GtPhlowButtonActionSpecification;
+									yourself);
+						at: 2
+							put: (Dictionary new
+									add: 'label' -> 'Inspect with tooltip';
+									add: 'target'
+											-> (Dictionary new
+													add: '__typeName' -> #GtRemotePhlowObjectActionTarget;
+													add: '__typeLabel' -> 'objectAction';
+													yourself);
+									add: '__typeLabel' -> 'phlowButtonActionSpecification';
+									add: 'priority' -> 52;
+									add: 'tooltipText' -> 'Inspect objects';
+									add: 'methodSelector' -> nil;
+									add: '__typeName' -> #GtPhlowButtonActionSpecification;
+									yourself);
+						at: 3
+							put: (Dictionary new
+									add: 'iconStencil'
+											-> (Dictionary new
+													add: 'iconName' -> #playinspect;
+													add: '__typeName' -> #GtPhlowGlamorousVectorIconNameStencil;
+													add: '__typeLabel' -> 'phlowGlamorousVectorIconNameStencil';
+													yourself);
+									add: 'target'
+											-> (Dictionary new
+													add: '__typeName' -> #GtRemotePhlowObjectActionTarget;
+													add: '__typeLabel' -> 'objectAction';
+													yourself);
+									add: '__typeLabel' -> 'phlowButtonActionSpecification';
+									add: 'priority' -> 53;
+									add: 'methodSelector' -> nil;
+									add: '__typeName' -> #GtPhlowButtonActionSpecification;
+									yourself);
+						at: 4
+							put: (Dictionary new
+									add: 'iconStencil'
+											-> (Dictionary new
+													add: 'iconName' -> #playinspect;
+													add: '__typeName' -> #GtPhlowGlamorousVectorIconNameStencil;
+													add: '__typeLabel' -> 'phlowGlamorousVectorIconNameStencil';
+													yourself);
+									add: 'target'
+											-> (Dictionary new
+													add: '__typeName' -> #GtRemotePhlowObjectActionTarget;
+													add: '__typeLabel' -> 'objectAction';
+													yourself);
+									add: '__typeLabel' -> 'phlowButtonActionSpecification';
+									add: 'priority' -> 54;
+									add: 'tooltipText' -> 'Inspect with icon';
+									add: 'methodSelector' -> nil;
+									add: '__typeName' -> #GtPhlowButtonActionSpecification;
+									yourself);
+						at: 5
+							put: (Dictionary new
+									add: 'label' -> 'Refresh';
+									add: 'iconStencil'
+											-> (Dictionary new
+													add: 'iconName' -> #refresh;
+													add: '__typeName' -> #GtPhlowGlamorousVectorIconNameStencil;
+													add: '__typeLabel' -> 'phlowGlamorousVectorIconNameStencil';
+													yourself);
+									add: 'target'
+											-> (Dictionary new
+													add: '__typeName' -> #GtRemotePhlowObjectActionTarget;
+													add: '__typeLabel' -> 'objectAction';
+													yourself);
+									add: '__typeLabel' -> 'phlowButtonActionSpecification';
+									add: 'priority' -> 55;
+									add: 'methodSelector' -> nil;
+									add: '__typeName' -> #GtPhlowButtonActionSpecification;
+									yourself);
+						at: 6
+							put: (Dictionary new
+									add: 'label' -> 'Refresh tooltip';
+									add: 'iconStencil'
+											-> (Dictionary new
+													add: 'iconName' -> #refresh;
+													add: '__typeName' -> #GtPhlowGlamorousVectorIconNameStencil;
+													add: '__typeLabel' -> 'phlowGlamorousVectorIconNameStencil';
+													yourself);
+									add: 'target'
+											-> (Dictionary new
+													add: '__typeName' -> #GtRemotePhlowObjectActionTarget;
+													add: '__typeLabel' -> 'objectAction';
+													yourself);
+									add: '__typeLabel' -> 'phlowButtonActionSpecification';
+									add: 'priority' -> 56;
+									add: 'tooltipText' -> 'Refresh objects';
+									add: 'methodSelector' -> nil;
+									add: '__typeName' -> #GtPhlowButtonActionSpecification;
+									yourself);
+						yourself);
+		add: 'priority' -> 10;
+		add: 'title' -> 'Buttons';
+		add: 'dataTransport' -> 2;
+		add: '__typeName' -> #GtPhlowListViewSpecification;
 		yourself
 ]
 

@@ -16,15 +16,8 @@ GtPhlowListViewSpecification >> configureItemsFor: aView [
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
-GtPhlowListViewSpecification >> configureViewActionsFor: aView [
-	super configureViewActionsFor: aView.
-	
-	self configureDefaultRefreshActionFor: aView.
-]
-
-{ #category : #'*GToolkit-RemoteGt' }
-GtPhlowListViewSpecification >> extractRemoteSendObjectFromNode: aTreeNode atSelection: aSelection [ 
-	^ self retriveSentItemAt: aSelection first
+GtPhlowListViewSpecification >> extractRemoteSendObjectFromNode: aNode atSelectionIndex: aSelectionIndex [ 
+	^ self retriveSentItemAt: aSelectionIndex first
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
@@ -35,6 +28,7 @@ GtPhlowListViewSpecification >> viewFor: aView [
 	listView := aView list.
 	
 	self configureBasicLocalView: listView for: aView. 
+	self configureListingView: listView. 
 	self configureItemsFor: listView.
 	self configureViewActionsFor: listView.
 	self configureViewSendFor: listView.

@@ -184,7 +184,7 @@ removeallclassmethods GtPhlowDeclarativeSpecification
 doit
 (GtPhlowDeclarativeSpecification
 	subclass: 'GtPhlowActionSpecification'
-	instVarNames: #(id priority tooltipText methodSelector phlowDataSource)
+	instVarNames: #(id priority tooltipText methodSelector phlowDataSource target)
 	classVars: #()
 	classInstVars: #()
 	poolDictionaries: #()
@@ -202,7 +202,7 @@ removeallclassmethods GtPhlowActionSpecification
 doit
 (GtPhlowActionSpecification
 	subclass: 'GtPhlowButtonActionSpecification'
-	instVarNames: #(label iconStencil)
+	instVarNames: #(label iconStencil menuOptions)
 	classVars: #()
 	classInstVars: #()
 	poolDictionaries: #()
@@ -234,6 +234,24 @@ true.
 
 removeallmethods GtPhlowErrorActionSpecification
 removeallclassmethods GtPhlowErrorActionSpecification
+
+doit
+(GtPhlowActionSpecification
+	subclass: 'GtRemotePhlowContextMenuItemBoundActionSpecification'
+	instVarNames: #(label iconStencil menuOptions)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeActions';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowContextMenuItemBoundActionSpecification
+removeallclassmethods GtRemotePhlowContextMenuItemBoundActionSpecification
 
 doit
 (GtPhlowDeclarativeSpecification
@@ -545,6 +563,150 @@ removeallclassmethods GtRemotePhlowForwardStencilSpecification
 
 doit
 (GtPhlowDeclarativeSpecification
+	subclass: 'GtRemotePhlowActionTarget'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowActionTarget
+removeallclassmethods GtRemotePhlowActionTarget
+
+doit
+(GtRemotePhlowActionTarget
+	subclass: 'GtRemotePhlowBasicActionTarget'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowBasicActionTarget
+removeallclassmethods GtRemotePhlowBasicActionTarget
+
+doit
+(GtRemotePhlowBasicActionTarget
+	subclass: 'GtRemotePhlowExampleItemActionTarget'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Examples';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowExampleItemActionTarget
+removeallclassmethods GtRemotePhlowExampleItemActionTarget
+
+doit
+(GtRemotePhlowBasicActionTarget
+	subclass: 'GtRemotePhlowObjectActionTarget'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowObjectActionTarget
+removeallclassmethods GtRemotePhlowObjectActionTarget
+
+doit
+(GtRemotePhlowBasicActionTarget
+	subclass: 'GtRemotePhlowObjectContextMenuTarget'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowObjectContextMenuTarget
+removeallclassmethods GtRemotePhlowObjectContextMenuTarget
+
+doit
+(GtRemotePhlowActionTarget
+	subclass: 'GtRemotePhlowCompositeActionTarget'
+	instVarNames: #(targets)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowCompositeActionTarget
+removeallclassmethods GtRemotePhlowCompositeActionTarget
+
+doit
+(GtRemotePhlowActionTarget
+	subclass: 'GtRemotePhlowForwardActionTarget'
+	instVarNames: #(targetClassName)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowForwardActionTarget
+removeallclassmethods GtRemotePhlowForwardActionTarget
+
+doit
+(GtRemotePhlowActionTarget
+	subclass: 'GtRemotePhlowViewActionTarget'
+	instVarNames: #(definingMethodSelector)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowViewActionTarget
+removeallclassmethods GtRemotePhlowViewActionTarget
+
+doit
+(GtPhlowDeclarativeSpecification
 	subclass: 'GtRemotePhlowBasicViewData'
 	instVarNames: #()
 	classVars: #()
@@ -750,6 +912,299 @@ removeallclassmethods GtRemotePhlowWebViewHeader
 
 doit
 (GtPhlowDeclarativeSpecification
+	subclass: 'GtRemotePhlowId'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowActions';
+		comment: 'Abstract base class for remote phlow action ids. Subclasses represent specific action identities, serializable for remote phlow.';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowId
+removeallclassmethods GtRemotePhlowId
+
+doit
+(GtRemotePhlowId
+	subclass: 'GtRemotePhlowBasicId'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowActions';
+		comment: 'Concrete subclass pattern for remote phlow action ids. Each subclass represents a specific id. No instance state - the class itself is the identity.';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowBasicId
+removeallclassmethods GtRemotePhlowBasicId
+
+doit
+(GtRemotePhlowBasicId
+	subclass: 'GtRemotePhlowCompareObjectsActionId'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-ObjectComparer';
+		comment: 'Remote phlow version of GtInspectorCompareObjectsId.';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowCompareObjectsActionId
+removeallclassmethods GtRemotePhlowCompareObjectsActionId
+
+doit
+(GtRemotePhlowBasicId
+	subclass: 'GtRemotePhlowExampleCopyLabelActionId'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowActions';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowExampleCopyLabelActionId
+removeallclassmethods GtRemotePhlowExampleCopyLabelActionId
+
+doit
+(GtRemotePhlowBasicId
+	subclass: 'GtRemotePhlowExampleCustomInspectActionId'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowActions';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowExampleCustomInspectActionId
+removeallclassmethods GtRemotePhlowExampleCustomInspectActionId
+
+doit
+(GtRemotePhlowBasicId
+	subclass: 'GtRemotePhlowExampleInspectItemActionId'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowActions';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowExampleInspectItemActionId
+removeallclassmethods GtRemotePhlowExampleInspectItemActionId
+
+doit
+(GtRemotePhlowBasicId
+	subclass: 'GtRemotePhlowViewRefreshContentButtonId'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowActions';
+		comment: 'Remote phlow version of GtPhlowViewRefreshContentButtonId.';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowViewRefreshContentButtonId
+removeallclassmethods GtRemotePhlowViewRefreshContentButtonId
+
+doit
+(GtRemotePhlowId
+	subclass: 'GtRemotePhlowNamedId'
+	instVarNames: #(identifier)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowActions';
+		comment: 'Named remote phlow action id, analogous to BlElementNamedId. Stores a symbol identifier.';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowNamedId
+removeallclassmethods GtRemotePhlowNamedId
+
+doit
+(GtPhlowDeclarativeSpecification
+	subclass: 'GtRemotePhlowListingViewSelection'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowListingViewSelection
+removeallclassmethods GtRemotePhlowListingViewSelection
+
+doit
+(GtRemotePhlowListingViewSelection
+	subclass: 'GtRemotePhlowListingViewMultipleSelection'
+	instVarNames: #(selectionItems)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowListingViewMultipleSelection
+removeallclassmethods GtRemotePhlowListingViewMultipleSelection
+
+doit
+(GtRemotePhlowListingViewSelection
+	subclass: 'GtRemotePhlowListingViewSingleSelection'
+	instVarNames: #(selectionItem)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowListingViewSingleSelection
+removeallclassmethods GtRemotePhlowListingViewSingleSelection
+
+doit
+(GtPhlowDeclarativeSpecification
+	subclass: 'GtRemotePhlowListingViewSelectionItem'
+	instVarNames: #(nodeIdentifier selectionIndex)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowListingViewSelectionItem
+removeallclassmethods GtRemotePhlowListingViewSelectionItem
+
+doit
+(GtRemotePhlowListingViewSelectionItem
+	subclass: 'GtRemotePhlowListingViewListSelectionItem'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowListingViewListSelectionItem
+removeallclassmethods GtRemotePhlowListingViewListSelectionItem
+
+doit
+(GtRemotePhlowListingViewSelectionItem
+	subclass: 'GtRemotePhlowListingViewTreeSelectionItem'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowListingViewTreeSelectionItem
+removeallclassmethods GtRemotePhlowListingViewTreeSelectionItem
+
+doit
+(GtPhlowDeclarativeSpecification
+	subclass: 'GtRemotePhlowMenuItemGroupConfiguration'
+	instVarNames: #(name priority)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowMenuItemGroupConfiguration
+removeallclassmethods GtRemotePhlowMenuItemGroupConfiguration
+
+doit
+(GtPhlowDeclarativeSpecification
+	subclass: 'GtRemotePhlowMenuOptionsSpecification'
+	instVarNames: #(menuPreview menuGroup menuPinSubmenu menuHideOnClick menuShortcut menuDisable)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowMenuOptionsSpecification
+removeallclassmethods GtRemotePhlowMenuOptionsSpecification
+
+doit
+(GtPhlowDeclarativeSpecification
 	subclass: 'GtRemotePhlowNavigationAction'
 	instVarNames: #()
 	classVars: #()
@@ -765,6 +1220,24 @@ true.
 
 removeallmethods GtRemotePhlowNavigationAction
 removeallclassmethods GtRemotePhlowNavigationAction
+
+doit
+(GtRemotePhlowNavigationAction
+	subclass: 'GtRemotePhlowCopyToClipboardAction'
+	instVarNames: #(clipboardText)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeActions';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowCopyToClipboardAction
+removeallclassmethods GtRemotePhlowCopyToClipboardAction
 
 doit
 (GtRemotePhlowNavigationAction
@@ -855,6 +1328,132 @@ true.
 
 removeallmethods GtRemotePhlowSpawnObjectAction
 removeallclassmethods GtRemotePhlowSpawnObjectAction
+
+doit
+(GtPhlowDeclarativeSpecification
+	subclass: 'GtRemotePhlowNodeIdentifier'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowNodeIdentifier
+removeallclassmethods GtRemotePhlowNodeIdentifier
+
+doit
+(GtRemotePhlowNodeIdentifier
+	subclass: 'GtRemotePhlowIndexNodeIdentifier'
+	instVarNames: #(nodeIndex)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowIndexNodeIdentifier
+removeallclassmethods GtRemotePhlowIndexNodeIdentifier
+
+doit
+(GtRemotePhlowNodeIdentifier
+	subclass: 'GtRemotePhlowPathNodeIdentifier'
+	instVarNames: #(nodeIndexPath)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowPathNodeIdentifier
+removeallclassmethods GtRemotePhlowPathNodeIdentifier
+
+doit
+(GtPhlowDeclarativeSpecification
+	subclass: 'GtRemotePhlowTreeNodeExpander'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowTreeNodeExpander
+removeallclassmethods GtRemotePhlowTreeNodeExpander
+
+doit
+(GtRemotePhlowTreeNodeExpander
+	subclass: 'GtRemotePhlowTreeNodeConditionalExpander'
+	instVarNames: #(condition)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowTreeNodeConditionalExpander
+removeallclassmethods GtRemotePhlowTreeNodeConditionalExpander
+
+doit
+(GtRemotePhlowTreeNodeExpander
+	subclass: 'GtRemotePhlowTreeNodeNoExpander'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowTreeNodeNoExpander
+removeallclassmethods GtRemotePhlowTreeNodeNoExpander
+
+doit
+(GtRemotePhlowTreeNodeExpander
+	subclass: 'GtRemotePhlowTreeNodeUpToExpander'
+	instVarNames: #(level)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowTreeNodeUpToExpander
+removeallclassmethods GtRemotePhlowTreeNodeUpToExpander
 
 doit
 (GtPhlowDeclarativeSpecification
@@ -1281,7 +1880,7 @@ removeallclassmethods GtPhlowForwardViewSpecification
 doit
 (GtPhlowViewSpecification
 	subclass: 'GtPhlowListingViewSpecification'
-	instVarNames: #(totalItemsCount)
+	instVarNames: #(totalItemsCount hasMultipleSelection hasContextActionSpecifications)
 	classVars: #()
 	classInstVars: #()
 	poolDictionaries: #()
@@ -1356,7 +1955,7 @@ removeallclassmethods GtPhlowColumnedListViewSpecification
 doit
 (GtPhlowBasicColumnedViewSpecification
 	subclass: 'GtPhlowColumnedTreeViewSpecification'
-	instVarNames: #()
+	instVarNames: #(expander)
 	classVars: #()
 	classInstVars: #()
 	poolDictionaries: #()
@@ -1399,7 +1998,7 @@ removeallclassmethods GtPhlowListViewSpecification
 doit
 (GtPhlowListingViewSpecification
 	subclass: 'GtPhlowTreeViewSpecification'
-	instVarNames: #()
+	instVarNames: #(expander)
 	classVars: #()
 	classInstVars: #()
 	poolDictionaries: #()
@@ -1675,7 +2274,7 @@ removeallclassmethods GtRemotePhlowExplicitViewWithEditableUIPersonWithNotificat
 doit
 (Object
 	subclass: 'GtRemotePhlowAction'
-	instVarNames: #(id priority tooltipText definingSelector definingClass)
+	instVarNames: #(id priority tooltipText definingSelector definingClass target menuOptions)
 	classVars: #()
 	classInstVars: #()
 	poolDictionaries: #()
@@ -1693,7 +2292,7 @@ removeallclassmethods GtRemotePhlowAction
 doit
 (GtRemotePhlowAction
 	subclass: 'GtRemotePhlowButtonAction'
-	instVarNames: #(actionBlock label iconStencil)
+	instVarNames: #(label iconStencil actionComputation)
 	classVars: #()
 	classInstVars: #()
 	poolDictionaries: #()
@@ -1743,6 +2342,96 @@ true.
 
 removeallmethods GtRemotePhlowNoAction
 removeallclassmethods GtRemotePhlowNoAction
+
+doit
+(Object
+	subclass: 'GtRemotePhlowActionTargetDynamicTestContainer'
+	instVarNames: #(items)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Examples';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowActionTargetDynamicTestContainer
+removeallclassmethods GtRemotePhlowActionTargetDynamicTestContainer
+
+doit
+(Object
+	subclass: 'GtRemotePhlowActionTargetExamples'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Examples';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowActionTargetExamples
+removeallclassmethods GtRemotePhlowActionTargetExamples
+
+doit
+(Object
+	subclass: 'GtRemotePhlowActionTargetTestContainer'
+	instVarNames: #(items)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Examples';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowActionTargetTestContainer
+removeallclassmethods GtRemotePhlowActionTargetTestContainer
+
+doit
+(Object
+	subclass: 'GtRemotePhlowActionTargetTestItem'
+	instVarNames: #(label value children)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Examples';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowActionTargetTestItem
+removeallclassmethods GtRemotePhlowActionTargetTestItem
+
+doit
+(Object
+	subclass: 'GtRemotePhlowActionTargetTestItemGroup'
+	instVarNames: #(items)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Examples';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowActionTargetTestItemGroup
+removeallclassmethods GtRemotePhlowActionTargetTestItemGroup
 
 doit
 (Object
@@ -2016,6 +2705,61 @@ removeallclassmethods GtRemotePhlowTextColumn
 
 doit
 (Object
+	subclass: 'GtRemotePhlowColumnedListViewContextActionsBasicTestObject'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Examples';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowColumnedListViewContextActionsBasicTestObject
+removeallclassmethods GtRemotePhlowColumnedListViewContextActionsBasicTestObject
+
+doit
+(Object
+	subclass: 'GtRemotePhlowColumnedTreeViewContextActionsBasicTestObject'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Examples';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowColumnedTreeViewContextActionsBasicTestObject
+removeallclassmethods GtRemotePhlowColumnedTreeViewContextActionsBasicTestObject
+
+doit
+(Object
+	subclass: 'GtRemotePhlowColumnedTreeViewTestObject'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Examples';
+		comment: 'Test object containing columned tree views for testing remote Phlow columned tree-based views.';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowColumnedTreeViewTestObject
+removeallclassmethods GtRemotePhlowColumnedTreeViewTestObject
+
+doit
+(Object
 	subclass: 'GtRemotePhlowColumnSpecification'
 	instVarNames: #(title cellWidth type spawnsObjects properties)
 	classVars: #()
@@ -2031,6 +2775,150 @@ true.
 
 removeallmethods GtRemotePhlowColumnSpecification
 removeallclassmethods GtRemotePhlowColumnSpecification
+
+doit
+(Object
+	subclass: 'GtRemotePhlowContextMenuBasicAction'
+	instVarNames: #(showCondition)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowActions';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowContextMenuBasicAction
+removeallclassmethods GtRemotePhlowContextMenuBasicAction
+
+doit
+(GtRemotePhlowContextMenuBasicAction
+	subclass: 'GtRemotePhlowContextMenuCompositeAction'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowActions';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowContextMenuCompositeAction
+removeallclassmethods GtRemotePhlowContextMenuCompositeAction
+
+doit
+(GtRemotePhlowContextMenuCompositeAction
+	subclass: 'GtRemotePhlowContextMenuDynamicActions'
+	instVarNames: #(label actionsComputation)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowActions';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowContextMenuDynamicActions
+removeallclassmethods GtRemotePhlowContextMenuDynamicActions
+
+doit
+(GtRemotePhlowContextMenuCompositeAction
+	subclass: 'GtRemotePhlowContextMenuDynamicPhlowActions'
+	instVarNames: #(actionsComputation label)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowActions';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowContextMenuDynamicPhlowActions
+removeallclassmethods GtRemotePhlowContextMenuDynamicPhlowActions
+
+doit
+(GtRemotePhlowContextMenuCompositeAction
+	subclass: 'GtRemotePhlowContextMenuTargetedObjectActions'
+	instVarNames: #(target groupTarget groupFactory)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowActions';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowContextMenuTargetedObjectActions
+removeallclassmethods GtRemotePhlowContextMenuTargetedObjectActions
+
+doit
+(GtRemotePhlowContextMenuBasicAction
+	subclass: 'GtRemotePhlowContextMenuSingleAction'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowActions';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowContextMenuSingleAction
+removeallclassmethods GtRemotePhlowContextMenuSingleAction
+
+doit
+(GtRemotePhlowContextMenuSingleAction
+	subclass: 'GtRemotePhlowContextMenuAction'
+	instVarNames: #(actionComputation iconStencil label id tooltipText)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowActions';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowContextMenuAction
+removeallclassmethods GtRemotePhlowContextMenuAction
+
+doit
+(Object
+	subclass: 'GtRemotePhlowContextMenuItemBoundAction'
+	instVarNames: #(targetAction item viewSelection)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-PhlowActions';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowContextMenuItemBoundAction
+removeallclassmethods GtRemotePhlowContextMenuItemBoundAction
 
 doit
 (Object
@@ -2124,6 +3012,24 @@ removeallclassmethods GtRemotePhlowDeclarativeActionDataSource
 
 doit
 (GtRemotePhlowDeclarativeActionDataSource
+	subclass: 'GtRemotePhlowContextMenuItemBoundActionDataSource'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeActions';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowContextMenuItemBoundActionDataSource
+removeallclassmethods GtRemotePhlowContextMenuItemBoundActionDataSource
+
+doit
+(GtRemotePhlowDeclarativeActionDataSource
 	subclass: 'GtRemotePhlowDeclarativeBlockActionDataSource'
 	instVarNames: #(targetBlock)
 	classVars: #()
@@ -2194,207 +3100,6 @@ true.
 
 removeallmethods GtRemotePhlowDeclarativeErrorTestInspectable
 removeallclassmethods GtRemotePhlowDeclarativeErrorTestInspectable
-
-doit
-(Object
-	subclass: 'GtRemotePhlowDeclarativeExamples'
-	instVarNames: #(server)
-	classVars: #()
-	classInstVars: #()
-	poolDictionaries: #()
-	inDictionary: Globals
-	options: #( #logCreation )
-)
-		category: 'GToolkit-RemotePhlow-Examples';
-		immediateInvariant.
-true.
-%
-
-removeallmethods GtRemotePhlowDeclarativeExamples
-removeallclassmethods GtRemotePhlowDeclarativeExamples
-
-doit
-(GtRemotePhlowDeclarativeExamples
-	subclass: 'GtRemotePhlowDeclarativeActionsExamples'
-	instVarNames: #()
-	classVars: #()
-	classInstVars: #()
-	poolDictionaries: #()
-	inDictionary: Globals
-	options: #( #logCreation )
-)
-		category: 'GToolkit-RemotePhlow-Examples';
-		immediateInvariant.
-true.
-%
-
-removeallmethods GtRemotePhlowDeclarativeActionsExamples
-removeallclassmethods GtRemotePhlowDeclarativeActionsExamples
-
-doit
-(GtRemotePhlowDeclarativeActionsExamples
-	subclass: 'GtRemotePhlowDeclarativeActionsDirectViewedObjectExamples'
-	instVarNames: #()
-	classVars: #()
-	classInstVars: #()
-	poolDictionaries: #()
-	inDictionary: Globals
-	options: #( #logCreation )
-)
-		category: 'GToolkit-RemotePhlow-Examples';
-		immediateInvariant.
-true.
-%
-
-removeallmethods GtRemotePhlowDeclarativeActionsDirectViewedObjectExamples
-removeallclassmethods GtRemotePhlowDeclarativeActionsDirectViewedObjectExamples
-
-doit
-(GtRemotePhlowDeclarativeActionsDirectViewedObjectExamples
-	subclass: 'GtRemotePhlowDeclarativeActionsLocalViewedObjectExamples'
-	instVarNames: #()
-	classVars: #()
-	classInstVars: #()
-	poolDictionaries: #()
-	inDictionary: Globals
-	options: #( #logCreation )
-)
-		category: 'GToolkit-RemotePhlow-Examples';
-		immediateInvariant.
-true.
-%
-
-removeallmethods GtRemotePhlowDeclarativeActionsLocalViewedObjectExamples
-removeallclassmethods GtRemotePhlowDeclarativeActionsLocalViewedObjectExamples
-
-doit
-(GtRemotePhlowDeclarativeActionsDirectViewedObjectExamples
-	subclass: 'GtRemotePhlowDeclarativeActionsRemoteViewedObjectExamples'
-	instVarNames: #()
-	classVars: #()
-	classInstVars: #()
-	poolDictionaries: #()
-	inDictionary: Globals
-	options: #( #logCreation )
-)
-		category: 'GToolkit-RemotePhlow-Examples';
-		immediateInvariant.
-true.
-%
-
-removeallmethods GtRemotePhlowDeclarativeActionsRemoteViewedObjectExamples
-removeallclassmethods GtRemotePhlowDeclarativeActionsRemoteViewedObjectExamples
-
-doit
-(GtRemotePhlowDeclarativeActionsExamples
-	subclass: 'GtRemotePhlowDeclarativeActionsProxySimulationExamples'
-	instVarNames: #()
-	classVars: #()
-	classInstVars: #()
-	poolDictionaries: #()
-	inDictionary: Globals
-	options: #( #logCreation )
-)
-		category: 'GToolkit-RemotePhlow-Examples';
-		immediateInvariant.
-true.
-%
-
-removeallmethods GtRemotePhlowDeclarativeActionsProxySimulationExamples
-removeallclassmethods GtRemotePhlowDeclarativeActionsProxySimulationExamples
-
-doit
-(GtRemotePhlowDeclarativeExamples
-	subclass: 'GtRemotePhlowDeclarativeViewsExamples'
-	instVarNames: #()
-	classVars: #()
-	classInstVars: #()
-	poolDictionaries: #()
-	inDictionary: Globals
-	options: #( #logCreation )
-)
-		category: 'GToolkit-RemotePhlow-Examples';
-		comment: 'GtRemoteDeclarativeGtExamples demonstrates the use of declarative views in Gtoolkit.
-
-This class runs the examples within the one image, and thus can be run without any external server setup.  Subclasses overwrite various methods to run the examples connecting to the remote server.';
-		immediateInvariant.
-true.
-%
-
-removeallmethods GtRemotePhlowDeclarativeViewsExamples
-removeallclassmethods GtRemotePhlowDeclarativeViewsExamples
-
-doit
-(GtRemotePhlowDeclarativeViewsExamples
-	subclass: 'GtRemotePhlowDeclarativeViewsDirectViewedObjectExamples'
-	instVarNames: #()
-	classVars: #()
-	classInstVars: #()
-	poolDictionaries: #()
-	inDictionary: Globals
-	options: #( #logCreation )
-)
-		category: 'GToolkit-RemotePhlow-Examples';
-		immediateInvariant.
-true.
-%
-
-removeallmethods GtRemotePhlowDeclarativeViewsDirectViewedObjectExamples
-removeallclassmethods GtRemotePhlowDeclarativeViewsDirectViewedObjectExamples
-
-doit
-(GtRemotePhlowDeclarativeViewsDirectViewedObjectExamples
-	subclass: 'GtRemotePhlowDeclarativeViewsLocalViewedObjectExamples'
-	instVarNames: #()
-	classVars: #()
-	classInstVars: #()
-	poolDictionaries: #()
-	inDictionary: Globals
-	options: #( #logCreation )
-)
-		category: 'GToolkit-RemotePhlow-Examples';
-		immediateInvariant.
-true.
-%
-
-removeallmethods GtRemotePhlowDeclarativeViewsLocalViewedObjectExamples
-removeallclassmethods GtRemotePhlowDeclarativeViewsLocalViewedObjectExamples
-
-doit
-(GtRemotePhlowDeclarativeViewsDirectViewedObjectExamples
-	subclass: 'GtRemotePhlowDeclarativeViewsRemoteViewedObjectExamples'
-	instVarNames: #()
-	classVars: #()
-	classInstVars: #()
-	poolDictionaries: #()
-	inDictionary: Globals
-	options: #( #logCreation )
-)
-		category: 'GToolkit-RemotePhlow-Examples';
-		immediateInvariant.
-true.
-%
-
-removeallmethods GtRemotePhlowDeclarativeViewsRemoteViewedObjectExamples
-removeallclassmethods GtRemotePhlowDeclarativeViewsRemoteViewedObjectExamples
-
-doit
-(GtRemotePhlowDeclarativeViewsExamples
-	subclass: 'GtRemotePhlowDeclarativeViewsProxySimulationExamples'
-	instVarNames: #()
-	classVars: #()
-	classInstVars: #()
-	poolDictionaries: #()
-	inDictionary: Globals
-	options: #( #logCreation )
-)
-		category: 'GToolkit-RemotePhlow-Examples';
-		immediateInvariant.
-true.
-%
-
-removeallmethods GtRemotePhlowDeclarativeViewsProxySimulationExamples
-removeallclassmethods GtRemotePhlowDeclarativeViewsProxySimulationExamples
 
 doit
 (Object
@@ -2662,7 +3367,7 @@ removeallclassmethods GtRemotePhlowDeclarativeViewListDataSource
 doit
 (GtRemotePhlowDeclarativeViewListingDataSource
 	subclass: 'GtRemotePhlowDeclarativeViewTreeDataSource'
-	instVarNames: #()
+	instVarNames: #(expander)
 	classVars: #()
 	classInstVars: #()
 	poolDictionaries: #()
@@ -2842,6 +3547,78 @@ removeallclassmethods GtRemotePhlowExplicitViewWithSerializationTestObject
 
 doit
 (Object
+	subclass: 'GtRemotePhlowListingViewSelectionExamples'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Examples';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowListingViewSelectionExamples
+removeallclassmethods GtRemotePhlowListingViewSelectionExamples
+
+doit
+(Object
+	subclass: 'GtRemotePhlowListViewContextActionsBasicTestObject'
+	instVarNames: #(collectionOfObjects)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Examples';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowListViewContextActionsBasicTestObject
+removeallclassmethods GtRemotePhlowListViewContextActionsBasicTestObject
+
+doit
+(Object
+	subclass: 'GtRemotePhlowMenuOptions'
+	instVarNames: #(menuPreview menuGroup menuPinSubmenu menuHideOnClick menuShortcut menuDisable)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowMenuOptions
+removeallclassmethods GtRemotePhlowMenuOptions
+
+doit
+(Object
+	subclass: 'GtRemotePhlowNodeIdentifierExamples'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Examples';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowNodeIdentifierExamples
+removeallclassmethods GtRemotePhlowNodeIdentifierExamples
+
+doit
+(Object
 	subclass: 'GtRemotePhlowNodeValue'
 	instVarNames: #()
 	classVars: #()
@@ -3002,6 +3779,155 @@ true.
 
 removeallmethods GtRemotePhlowRowBuilder
 removeallclassmethods GtRemotePhlowRowBuilder
+
+doit
+(Object
+	subclass: 'GtRemotePhlowObjectComparer'
+	instVarNames: #(parent values label)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-ObjectComparer';
+		comment: 'Remote phlow version of GtObjectComparer. Compares objects by inspecting their instance slots.';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowObjectComparer
+removeallclassmethods GtRemotePhlowObjectComparer
+
+doit
+(Object
+	subclass: 'GtRemotePhlowObjectComparerValue'
+	instVarNames: #(object)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-ObjectComparer';
+		comment: 'Remote phlow version of GtObjectComparerValue. Represents a value participating in an object comparison.';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowObjectComparerValue
+removeallclassmethods GtRemotePhlowObjectComparerValue
+
+doit
+(GtRemotePhlowObjectComparerValue
+	subclass: 'GtRemotePhlowObjectComparerNoValue'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-ObjectComparer';
+		comment: 'Remote phlow version of GtObjectComparerNoValue.';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowObjectComparerNoValue
+removeallclassmethods GtRemotePhlowObjectComparerNoValue
+
+doit
+(GtRemotePhlowObjectComparerValue
+	subclass: 'GtRemotePhlowObjectComparerObjectValue'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-ObjectComparer';
+		comment: 'Remote phlow version of GtObjectComparerObjectValue.';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowObjectComparerObjectValue
+removeallclassmethods GtRemotePhlowObjectComparerObjectValue
+
+doit
+(GtRemotePhlowObjectComparerValue
+	subclass: 'GtRemotePhlowObjectComparerSlotValue'
+	instVarNames: #(slotName value)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-ObjectComparer';
+		comment: 'Remote phlow version of GtObjectComparerSlotValue.';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowObjectComparerSlotValue
+removeallclassmethods GtRemotePhlowObjectComparerSlotValue
+
+doit
+(Object
+	subclass: 'GtRemotePhlowOptionalValue'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowOptionalValue
+removeallclassmethods GtRemotePhlowOptionalValue
+
+doit
+(GtRemotePhlowOptionalValue
+	subclass: 'GtRemotePhlowAbsentValue'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowAbsentValue
+removeallclassmethods GtRemotePhlowAbsentValue
+
+doit
+(GtRemotePhlowOptionalValue
+	subclass: 'GtRemotePhlowPresentValue'
+	instVarNames: #(targetValue)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-DeclarativeViews';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowPresentValue
+removeallclassmethods GtRemotePhlowPresentValue
 
 doit
 (Object
@@ -3174,7 +4100,7 @@ removeallclassmethods GtRemotePhlowForwarderView
 doit
 (GtRemotePhlowView
 	subclass: 'GtRemotePhlowListingView'
-	instVarNames: #(itemsProviderComputation transformation)
+	instVarNames: #(itemsProviderComputation transformation contextMenuActions multipleSelectionEnabled)
 	classVars: #()
 	classInstVars: #()
 	poolDictionaries: #()
@@ -3234,7 +4160,7 @@ removeallclassmethods GtRemotePhlowColumnedListView
 doit
 (GtRemotePhlowBasicColumnedView
 	subclass: 'GtRemotePhlowColumnedTreeView'
-	instVarNames: #(itemTextBlock childrenBuilder)
+	instVarNames: #(itemTextBlock childrenBuilder expander)
 	classVars: #()
 	classInstVars: #()
 	poolDictionaries: #()
@@ -3286,7 +4212,7 @@ removeallclassmethods GtRemotePhlowListView
 doit
 (GtRemotePhlowListingView
 	subclass: 'GtRemotePhlowTreeView'
-	instVarNames: #(itemTextBlock childrenBuilder)
+	instVarNames: #(itemTextBlock childrenBuilder expander)
 	classVars: #()
 	classInstVars: #()
 	poolDictionaries: #()
@@ -3470,60 +4396,6 @@ true.
 
 removeallmethods GtRemotePhlowSpawnObjectWrapper
 removeallclassmethods GtRemotePhlowSpawnObjectWrapper
-
-doit
-(Object
-	subclass: 'GtRemotePhlowSpecificationConversionExamples'
-	instVarNames: #()
-	classVars: #()
-	classInstVars: #()
-	poolDictionaries: #()
-	inDictionary: Globals
-	options: #( #logCreation )
-)
-		category: 'GToolkit-RemotePhlow-Examples';
-		immediateInvariant.
-true.
-%
-
-removeallmethods GtRemotePhlowSpecificationConversionExamples
-removeallclassmethods GtRemotePhlowSpecificationConversionExamples
-
-doit
-(GtRemotePhlowSpecificationConversionExamples
-	subclass: 'GtRemotePhlowActionSpecificationConversionExamples'
-	instVarNames: #()
-	classVars: #()
-	classInstVars: #()
-	poolDictionaries: #()
-	inDictionary: Globals
-	options: #( #logCreation )
-)
-		category: 'GToolkit-RemotePhlow-Examples';
-		immediateInvariant.
-true.
-%
-
-removeallmethods GtRemotePhlowActionSpecificationConversionExamples
-removeallclassmethods GtRemotePhlowActionSpecificationConversionExamples
-
-doit
-(GtRemotePhlowSpecificationConversionExamples
-	subclass: 'GtRemotePhlowViewSpecificationConversionExamples'
-	instVarNames: #()
-	classVars: #()
-	classInstVars: #()
-	poolDictionaries: #()
-	inDictionary: Globals
-	options: #( #logCreation )
-)
-		category: 'GToolkit-RemotePhlow-Examples';
-		immediateInvariant.
-true.
-%
-
-removeallmethods GtRemotePhlowViewSpecificationConversionExamples
-removeallclassmethods GtRemotePhlowViewSpecificationConversionExamples
 
 doit
 (Object
@@ -3743,6 +4615,43 @@ removeallclassmethods GtRemoteTextStylerComputableSpecification
 
 doit
 (Object
+	subclass: 'GtRemotePhlowTreeViewContextActionsBasicTestObject'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Examples';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowTreeViewContextActionsBasicTestObject
+removeallclassmethods GtRemotePhlowTreeViewContextActionsBasicTestObject
+
+doit
+(Object
+	subclass: 'GtRemotePhlowTreeViewTestObject'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Examples';
+		comment: 'Test object containing tree views for testing remote Phlow tree-based views.';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowTreeViewTestObject
+removeallclassmethods GtRemotePhlowTreeViewTestObject
+
+doit
+(Object
 	subclass: 'GtRemotePhlowViewedObject'
 	instVarNames: #(object actionSpecificationsBySelector viewSpecificationsBySelector)
 	classVars: #()
@@ -3759,6 +4668,24 @@ true.
 
 removeallmethods GtRemotePhlowViewedObject
 removeallclassmethods GtRemotePhlowViewedObject
+
+doit
+(Object
+	subclass: 'GtRemotePhlowViewForwardSendTestObject'
+	instVarNames: #()
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Examples';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowViewForwardSendTestObject
+removeallclassmethods GtRemotePhlowViewForwardSendTestObject
 
 doit
 (Object
@@ -4354,6 +5281,12 @@ fromJSONDictionary: aDictionary
 		yourself
 %
 
+category: 'gt - extensions'
+classmethod: GtPhlowColor
+lighterFailureBackgroundColor
+	^ self r: 1.0 g: 0.9628543499511242 b: 0.8602150537634409 alpha: 1.0
+%
+
 category: 'instance creation'
 classmethod: GtPhlowColor
 named: aColorName
@@ -4670,6 +5603,19 @@ isUnknown
 
 category: 'instance creation'
 classmethod: GtPhlowDeclarativeSpecification
+fromDictionary: aSpecificationDictionary
+	"Answer the specification based on its exported data"
+	| typeName typeClass |
+
+	typeName := (aSpecificationDictionary at: '__typeName') asSymbol.
+	typeClass := self 
+		gtDo: [ self class environment classOrTraitNamed: typeName ] 
+		gemstoneDo: [ (System myUserProfile resolveSymbol: typeName asSymbol) value ].
+	^ typeClass fromJSONDictionary: aSpecificationDictionary.
+%
+
+category: 'instance creation'
+classmethod: GtPhlowDeclarativeSpecification
 fromJSONDictionary: aDictionary
 	"Answer an instance of the receiver from the supplied dictionary."
 
@@ -4709,18 +5655,29 @@ initializeFromJSONDictionary: aDictionary
 
 ! Class implementation for 'GtPhlowActionSpecification'
 
+!		Class methods for 'GtPhlowActionSpecification'
+
+category: 'instance creation'
+classmethod: GtPhlowActionSpecification
+phlowActionFromDictionary: aSpecificationDictionary
+	^ self fromDictionary: aSpecificationDictionary
+%
+
 !		Instance methods for 'GtPhlowActionSpecification'
 
-category: 'converting'
+category: 'serialization'
 method: GtPhlowActionSpecification
 asDictionaryForExport
-	"Answer the receiver as a dictionary ready for JSON serialisation.
-	Subclasses will override and add to the dictionary"
-
-	^ super asDictionaryForExport
+	| dict |
+	dict := super asDictionaryForExport
 		at: 'priority' put: priority;
 		at: 'methodSelector' put: methodSelector;
-		yourself
+		yourself.
+	id ifNotNil: [ :anId |
+		dict at: 'id' put: anId asDictionaryForExport ].
+	target ifNotNil: [ :aTarget |
+		dict at: 'target' put: aTarget asDictionaryForExport ].
+	^ dict
 %
 
 category: 'converting'
@@ -4736,12 +5693,43 @@ asDictionaryForExportWithPhlowDataSource
 	^ specificationData
 %
 
+category: 'accessing'
+method: GtPhlowActionSpecification
+definingMethod
+	^ phlowDataSource ifNotNil: [ :aDataSource | 
+			aDataSource definingMethod ]
+%
+
+category: 'printing'
+method: GtPhlowActionSpecification
+descriptOn: aStream
+	tooltipText ifNotNil: [ :aText |
+		aStream nextPutAll: aText ].
+	priority ifNotNil: [ :aPriority |
+		tooltipText ifNotNil: [ aStream nextPutAll: ', ' ].
+		aStream
+			nextPutAll: 'priority: ';
+			print: aPriority ]
+%
+
+category: 'accessing'
+method: GtPhlowActionSpecification
+id
+	^ id
+%
+
+category: 'accessing'
+method: GtPhlowActionSpecification
+id: aPhlowId
+	id := aPhlowId
+%
+
 category: 'initialization'
 method: GtPhlowActionSpecification
 initializeFromInspector: anInspector
 %
 
-category: 'initialization'
+category: 'serialization'
 method: GtPhlowActionSpecification
 initializeFromJSONDictionary: aDictionary
 	super initializeFromJSONDictionary: aDictionary.
@@ -4749,9 +5737,19 @@ initializeFromJSONDictionary: aDictionary
 	self
 		priority: (aDictionary at: 'priority' ifAbsent: [ nil ]);
 		methodSelector: (aDictionary at: 'methodSelector' ifAbsent: [ nil ]);
-		tooltipText: (aDictionary  at: 'tooltipText' ifAbsent: [ nil ]);
-		phlowDataSource: (aDictionary 
-			at: 'phlowDataSource' ifAbsent: [ nil ])
+		tooltipText: (aDictionary at: 'tooltipText' ifAbsent: [ nil ]);
+		phlowDataSource: (aDictionary
+			at: 'phlowDataSource' ifAbsent: [ nil ]).
+	aDictionary
+		at: 'id'
+		ifPresent: [ :anIdDict |
+			anIdDict ifNotNil: [
+				self id: (GtPhlowDeclarativeSpecification fromDictionary: anIdDict) ] ].
+	aDictionary
+		at: 'target'
+		ifPresent: [ :aTargetDict |
+			aTargetDict ifNotNil: [
+				self target: (GtPhlowDeclarativeSpecification fromDictionary: aTargetDict) ] ]
 %
 
 category: 'accessing'
@@ -4778,6 +5776,14 @@ phlowDataSource: aDataSource
 	phlowDataSource := aDataSource
 %
 
+category: 'printing'
+method: GtPhlowActionSpecification
+printOn: aStream
+	super printOn: aStream.
+	aStream parenthesize: [
+		self descriptOn: aStream ]
+%
+
 category: 'accessing'
 method: GtPhlowActionSpecification
 priority
@@ -4788,6 +5794,18 @@ category: 'accessing'
 method: GtPhlowActionSpecification
 priority: aNumber
 	priority := aNumber
+%
+
+category: 'accessing'
+method: GtPhlowActionSpecification
+target
+	^ target
+%
+
+category: 'accessing'
+method: GtPhlowActionSpecification
+target: aGtRemotePhlowActionTarget
+	target := aGtRemotePhlowActionTarget
 %
 
 category: 'accessing'
@@ -4814,10 +5832,10 @@ typeLabel
 
 !		Instance methods for 'GtPhlowButtonActionSpecification'
 
-category: 'converting'
+category: 'serialization'
 method: GtPhlowButtonActionSpecification
 asDictionaryForExport
-	| specificationData|
+	| specificationData |
 	specificationData := super asDictionaryForExport.
 	
 	label ifNotNil: [ :aText |
@@ -4828,8 +5846,23 @@ asDictionaryForExport
 			put: anIconStencil asDictionaryForExport ].
 	tooltipText ifNotNil: [ :aText |
 		specificationData at: 'tooltipText' put: aText ].
+	menuOptions ifNotNil: [ :options |
+		options hasAnyOptions ifTrue: [
+			specificationData at: 'menuOptions' put: options asDictionaryForExport ] ].
 
 	^ specificationData
+%
+
+category: 'printing'
+method: GtPhlowButtonActionSpecification
+descriptOn: aStream
+	label ifNotNil: [ :aLabel |
+		aStream nextPutAll: aLabel ].
+	self priority ifNotNil: [ :aPriority |
+		label ifNotNil: [ aStream nextPutAll: ', ' ].
+		aStream
+			nextPutAll: 'priority: ';
+			print: aPriority ]
 %
 
 category: 'accessing'
@@ -4852,7 +5885,7 @@ initializeFromInspector: anInspector
 			getDeclarativeActionDataSourceFor: self methodSelector) ]
 %
 
-category: 'initialization'
+category: 'serialization'
 method: GtPhlowButtonActionSpecification
 initializeFromJSONDictionary: aDictionary
 	super initializeFromJSONDictionary: aDictionary.
@@ -4871,6 +5904,12 @@ initializeFromJSONDictionary: aDictionary
 			anIconStencilData ifNotNil: [
 				self iconStencil: (GtPhlowIconStencil 
 					phlowIconStencilFromDictionary: anIconStencilData) ] ].
+	aDictionary
+		at: 'menuOptions'
+		ifPresent: [ :optionsData |
+			self menuOptions: (GtRemotePhlowMenuOptionsSpecification new
+				initializeFromJSONDictionary: optionsData;
+				yourself) ].
 %
 
 category: 'accessing'
@@ -4883,6 +5922,18 @@ category: 'accessing'
 method: GtPhlowButtonActionSpecification
 label: aLabel
 	label := aLabel
+%
+
+category: 'accessing'
+method: GtPhlowButtonActionSpecification
+menuOptions
+	^ menuOptions
+%
+
+category: 'accessing'
+method: GtPhlowButtonActionSpecification
+menuOptions: aGtRemotePhlowMenuOptions
+	menuOptions := aGtRemotePhlowMenuOptions
 %
 
 ! Class implementation for 'GtPhlowErrorActionSpecification'
@@ -4950,6 +6001,81 @@ label
 	^ 'Error'
 %
 
+! Class implementation for 'GtRemotePhlowContextMenuItemBoundActionSpecification'
+
+!		Class methods for 'GtRemotePhlowContextMenuItemBoundActionSpecification'
+
+category: 'accessing'
+classmethod: GtRemotePhlowContextMenuItemBoundActionSpecification
+typeLabel
+	^ 'phlowContextMenuActionSpecification'
+%
+
+!		Instance methods for 'GtRemotePhlowContextMenuItemBoundActionSpecification'
+
+category: 'serialization'
+method: GtRemotePhlowContextMenuItemBoundActionSpecification
+asDictionaryForExport
+	| specificationData |
+	specificationData := super asDictionaryForExport.
+	
+	label ifNotNil: [ :aText |
+		specificationData at: 'label' put: aText ].
+	iconStencil ifNotNil: [ :anIconStencil |
+		specificationData 
+			at: 'iconStencil' 
+			put: anIconStencil asDictionaryForExport ].
+	tooltipText ifNotNil: [ :aText |
+		specificationData at: 'tooltipText' put: aText ].
+
+	^ specificationData
+%
+
+category: 'accessing'
+method: GtRemotePhlowContextMenuItemBoundActionSpecification
+iconStencil
+	^ iconStencil
+%
+
+category: 'accessing'
+method: GtRemotePhlowContextMenuItemBoundActionSpecification
+iconStencil: anIconStencil
+	iconStencil := anIconStencil
+%
+
+category: 'serialization'
+method: GtRemotePhlowContextMenuItemBoundActionSpecification
+initializeFromJSONDictionary: aDictionary
+	super initializeFromJSONDictionary: aDictionary.
+	
+	aDictionary 
+		at: 'label' 
+		ifPresent: [ :aText |
+			self label: aText ].
+	aDictionary 
+		at: 'tooltipText' 
+		ifPresent: [ :aText |
+			self tooltipText: aText ].
+	aDictionary 
+		at: 'iconStencil' 
+		ifPresent: [ :anIconStencilData |
+			anIconStencilData ifNotNil: [
+				self iconStencil: (GtPhlowIconStencil 
+					phlowIconStencilFromDictionary: anIconStencilData) ] ].
+%
+
+category: 'accessing'
+method: GtRemotePhlowContextMenuItemBoundActionSpecification
+label
+	^ label
+%
+
+category: 'accessing'
+method: GtRemotePhlowContextMenuItemBoundActionSpecification
+label: aString
+	label := aString
+%
+
 ! Class implementation for 'GtPhlowStencil'
 
 !		Instance methods for 'GtPhlowStencil'
@@ -4969,6 +6095,12 @@ asGtStencilSpecificationFrom: aDataProvider
 	stencilSpecification := self asGtStencilSpecification.
 	stencilSpecification handleStencilSpecificationBeforeSerializationFrom: aDataProvider.
 	^ stencilSpecification
+%
+
+category: 'converting'
+method: GtPhlowStencil
+asStencil
+	^ self
 %
 
 category: 'views'
@@ -5058,6 +6190,34 @@ initializeFromJSONDictionary: aDictionary
 		ifPresent: [ :anIconName | 
 			anIconName ifNotNil: [ 
 				self iconName: anIconName ] ]
+%
+
+! Class implementation for 'GtPhlowBasicGlamorousIconNameStencil'
+
+!		Class methods for 'GtPhlowBasicGlamorousIconNameStencil'
+
+category: 'instance creation'
+classmethod: GtPhlowBasicGlamorousIconNameStencil
+close
+	^ self  forIconName: #close
+%
+
+category: 'instance creation'
+classmethod: GtPhlowBasicGlamorousIconNameStencil
+play
+	^ self  forIconName: #play
+%
+
+category: 'instance creation'
+classmethod: GtPhlowBasicGlamorousIconNameStencil
+playinspect
+	^ self  forIconName: #playinspect
+%
+
+category: 'instance creation'
+classmethod: GtPhlowBasicGlamorousIconNameStencil
+remove
+	^ self  forIconName: #remove
 %
 
 ! Class implementation for 'GtPhlowGlamorousIconNameStencil'
@@ -5628,6 +6788,441 @@ stencilData: anObject
 	stencilData := anObject
 %
 
+! Class implementation for 'GtRemotePhlowActionTarget'
+
+!		Class methods for 'GtRemotePhlowActionTarget'
+
+category: 'converting'
+classmethod: GtRemotePhlowActionTarget
+asPhlowTarget
+	^ self new
+%
+
+category: 'accessing'
+classmethod: GtRemotePhlowActionTarget
+default
+	^ self new
+%
+
+category: 'testing'
+classmethod: GtRemotePhlowActionTarget
+isAbstract
+	^ self name = #GtRemotePhlowActionTarget
+%
+
+!		Instance methods for 'GtRemotePhlowActionTarget'
+
+category: 'composing'
+method: GtRemotePhlowActionTarget
++ aTarget
+	^ self , aTarget
+%
+
+category: 'composing'
+method: GtRemotePhlowActionTarget
+, aTarget
+	^ GtRemotePhlowCompositeActionTarget new
+		targets: { self . aTarget }
+%
+
+category: 'comparing'
+method: GtRemotePhlowActionTarget
+= anObject
+	self == anObject ifTrue: [ ^ true ].
+	self class = anObject class ifFalse: [ ^ false ].
+	^ true
+%
+
+category: 'actions'
+method: GtRemotePhlowActionTarget
+actionsForObject: anObject do: aBlock
+	anObject gtDeclarativePhlowActions do: [ :anAction |
+		(anAction target notNil and: [
+			anAction target isForTarget: self ])
+				ifTrue: [ aBlock value: anAction ] ]
+%
+
+category: 'serialization'
+method: GtRemotePhlowActionTarget
+asDictionaryForExport
+	^ super asDictionaryForExport
+%
+
+category: 'converting'
+method: GtRemotePhlowActionTarget
+asLocalPhlowTarget
+	^ self
+%
+
+category: 'converting'
+method: GtRemotePhlowActionTarget
+asPhlowTarget
+	^ self
+%
+
+category: 'converting'
+method: GtRemotePhlowActionTarget
+asRemotePhlowActionTarget
+	^ self
+%
+
+category: 'actions'
+method: GtRemotePhlowActionTarget
+contextPhlowActionsForObject: anObject
+	^ (self phlowActionsForObject: anObject)
+		collect: [ :each | each asItemBoundActionToItem: anObject viewSelection: nil ]
+%
+
+category: 'converting'
+method: GtRemotePhlowActionTarget
+default
+	^ self
+%
+
+category: 'printing'
+method: GtRemotePhlowActionTarget
+descriptionOn: aStream
+	aStream nextPutAll: self class typeLabel
+%
+
+category: 'comparing'
+method: GtRemotePhlowActionTarget
+hash
+	^ self class hash
+%
+
+category: 'serialization'
+method: GtRemotePhlowActionTarget
+initializeFromJSONDictionary: aDictionary
+%
+
+category: 'testing'
+method: GtRemotePhlowActionTarget
+isForTarget: aTarget
+	^ self = aTarget asPhlowTarget
+%
+
+category: 'testing'
+method: GtRemotePhlowActionTarget
+isForViewDefinedIn: aSymbol
+	^ false
+%
+
+category: 'actions'
+method: GtRemotePhlowActionTarget
+phlowActionsForObject: anObject
+	^ Array streamContents: [ :aStream |
+		self actionsForObject: anObject do: [ :anAction |
+			aStream nextPut: anAction ] ]
+%
+
+category: 'printing'
+method: GtRemotePhlowActionTarget
+printOn: aStream
+	super printOn: aStream.
+	aStream parenthesize: [
+		self descriptionOn: aStream ]
+%
+
+category: 'enumerating'
+method: GtRemotePhlowActionTarget
+targetsDo: aBlock
+	aBlock value: self
+%
+
+! Class implementation for 'GtRemotePhlowBasicActionTarget'
+
+!		Class methods for 'GtRemotePhlowBasicActionTarget'
+
+category: 'testing'
+classmethod: GtRemotePhlowBasicActionTarget
+isAbstract
+	^ self name = #GtRemotePhlowBasicActionTarget
+%
+
+! Class implementation for 'GtRemotePhlowExampleItemActionTarget'
+
+!		Class methods for 'GtRemotePhlowExampleItemActionTarget'
+
+category: 'accessing'
+classmethod: GtRemotePhlowExampleItemActionTarget
+typeLabel
+	^ 'exampleItemAction'
+%
+
+! Class implementation for 'GtRemotePhlowObjectActionTarget'
+
+!		Class methods for 'GtRemotePhlowObjectActionTarget'
+
+category: 'accessing'
+classmethod: GtRemotePhlowObjectActionTarget
+typeLabel
+	^ 'objectAction'
+%
+
+! Class implementation for 'GtRemotePhlowObjectContextMenuTarget'
+
+!		Class methods for 'GtRemotePhlowObjectContextMenuTarget'
+
+category: 'accessing'
+classmethod: GtRemotePhlowObjectContextMenuTarget
+typeLabel
+	^ 'objectContextMenu'
+%
+
+! Class implementation for 'GtRemotePhlowCompositeActionTarget'
+
+!		Class methods for 'GtRemotePhlowCompositeActionTarget'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowCompositeActionTarget
+new
+	^ super new initialize
+%
+
+category: 'accessing'
+classmethod: GtRemotePhlowCompositeActionTarget
+typeLabel
+	^ 'composite'
+%
+
+!		Instance methods for 'GtRemotePhlowCompositeActionTarget'
+
+category: 'composing'
+method: GtRemotePhlowCompositeActionTarget
+, aTarget
+	^ GtRemotePhlowCompositeActionTarget new
+		targets: (targets copyWith: aTarget)
+%
+
+category: 'comparing'
+method: GtRemotePhlowCompositeActionTarget
+= anObject
+	self == anObject ifTrue: [ ^ true ].
+	self class = anObject class ifFalse: [ ^ false ].
+	^ targets = anObject targets
+%
+
+category: 'actions'
+method: GtRemotePhlowCompositeActionTarget
+actionsForObject: anObject do: aBlock
+	targets do: [ :eachTarget |
+		eachTarget actionsForObject: anObject do: aBlock ]
+%
+
+category: 'serialization'
+method: GtRemotePhlowCompositeActionTarget
+asDictionaryForExport
+	^ super asDictionaryForExport
+		at: 'targets' put: (targets collect: [ :each | each asDictionaryForExport ]);
+		yourself
+%
+
+category: 'printing'
+method: GtRemotePhlowCompositeActionTarget
+descriptionOn: aStream
+	super descriptionOn: aStream.
+	aStream nextPutAll: ': '.
+	targets
+		do: [ :each | aStream print: each ]
+		separatedBy: [ aStream nextPutAll: ', ' ]
+%
+
+category: 'comparing'
+method: GtRemotePhlowCompositeActionTarget
+hash
+	^ self class hash bitXor: targets hash
+%
+
+category: 'initialization'
+method: GtRemotePhlowCompositeActionTarget
+initialize
+	super initialize.
+	targets := #()
+%
+
+category: 'serialization'
+method: GtRemotePhlowCompositeActionTarget
+initializeFromJSONDictionary: aDictionary
+	super initializeFromJSONDictionary: aDictionary.
+	targets := (aDictionary at: 'targets') collect: [ :each |
+		GtPhlowDeclarativeSpecification fromDictionary: each ]
+%
+
+category: 'testing'
+method: GtRemotePhlowCompositeActionTarget
+isForTarget: aTarget
+	^ targets anySatisfy: [ :each | each isForTarget: aTarget ]
+%
+
+category: 'testing'
+method: GtRemotePhlowCompositeActionTarget
+isForViewDefinedIn: aSymbol
+	^ self targets anySatisfy: [ :eachTarget | 
+		eachTarget isForViewDefinedIn: aSymbol ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowCompositeActionTarget
+targets
+	^ targets
+%
+
+category: 'accessing'
+method: GtRemotePhlowCompositeActionTarget
+targets: anArray
+	targets := anArray
+%
+
+category: 'enumerating'
+method: GtRemotePhlowCompositeActionTarget
+targetsDo: aBlock
+	targets do: [ :each | each targetsDo: aBlock ]
+%
+
+! Class implementation for 'GtRemotePhlowForwardActionTarget'
+
+!		Class methods for 'GtRemotePhlowForwardActionTarget'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowForwardActionTarget
+forClassName: aClassName
+	^ self new targetClassName: aClassName
+%
+
+category: 'accessing'
+classmethod: GtRemotePhlowForwardActionTarget
+typeLabel
+	^ 'forwardAction'
+%
+
+!		Instance methods for 'GtRemotePhlowForwardActionTarget'
+
+category: 'comparing'
+method: GtRemotePhlowForwardActionTarget
+= anObject
+	self == anObject ifTrue: [ ^ true ].
+	self class = anObject class ifFalse: [ ^ false ].
+	^ targetClassName = anObject targetClassName
+%
+
+category: 'serialization'
+method: GtRemotePhlowForwardActionTarget
+asDictionaryForExport
+	^ super asDictionaryForExport
+		at: 'targetClassName' put: targetClassName;
+		yourself
+%
+
+category: 'comparing'
+method: GtRemotePhlowForwardActionTarget
+hash
+	^ self class hash bitXor: targetClassName hash
+%
+
+category: 'serialization'
+method: GtRemotePhlowForwardActionTarget
+initializeFromJSONDictionary: aDictionary
+	super initializeFromJSONDictionary: aDictionary.
+	targetClassName := aDictionary at: 'targetClassName'
+%
+
+category: 'printing'
+method: GtRemotePhlowForwardActionTarget
+printOn: aStream
+	aStream parenthesize: [
+		aStream
+			nextPutAll: self class typeLabel;
+			nextPutAll: ': ';
+			nextPutAll: targetClassName ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowForwardActionTarget
+targetClassName
+	^ targetClassName
+%
+
+category: 'accessing'
+method: GtRemotePhlowForwardActionTarget
+targetClassName: aClassName
+	targetClassName := aClassName
+%
+
+! Class implementation for 'GtRemotePhlowViewActionTarget'
+
+!		Class methods for 'GtRemotePhlowViewActionTarget'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowViewActionTarget
+forSelector: aSelector
+	^ self new definingMethodSelector: aSelector
+%
+
+category: 'accessing'
+classmethod: GtRemotePhlowViewActionTarget
+typeLabel
+	^ 'viewAction'
+%
+
+!		Instance methods for 'GtRemotePhlowViewActionTarget'
+
+category: 'comparing'
+method: GtRemotePhlowViewActionTarget
+= anObject
+	self == anObject ifTrue: [ ^ true ].
+	self class = anObject class ifFalse: [ ^ false ].
+	^ definingMethodSelector = anObject definingMethodSelector
+%
+
+category: 'serialization'
+method: GtRemotePhlowViewActionTarget
+asDictionaryForExport
+	^ super asDictionaryForExport
+		at: 'definingMethodSelector' put: definingMethodSelector;
+		yourself
+%
+
+category: 'accessing'
+method: GtRemotePhlowViewActionTarget
+definingMethodSelector
+	^ definingMethodSelector
+%
+
+category: 'accessing'
+method: GtRemotePhlowViewActionTarget
+definingMethodSelector: aSelector
+	definingMethodSelector := aSelector
+%
+
+category: 'printing'
+method: GtRemotePhlowViewActionTarget
+descriptionOn: aStream
+	super descriptionOn: aStream.
+	aStream
+		nextPutAll: ': ';
+		print: definingMethodSelector
+%
+
+category: 'comparing'
+method: GtRemotePhlowViewActionTarget
+hash
+	^ self class hash bitXor: definingMethodSelector hash
+%
+
+category: 'serialization'
+method: GtRemotePhlowViewActionTarget
+initializeFromJSONDictionary: aDictionary
+	super initializeFromJSONDictionary: aDictionary.
+	definingMethodSelector := aDictionary at: 'definingMethodSelector'
+%
+
+category: 'testing'
+method: GtRemotePhlowViewActionTarget
+isForViewDefinedIn: aSymbol
+	^ self definingMethodSelector = aSymbol
+%
+
 ! Class implementation for 'GtRemotePhlowBasicViewData'
 
 !		Instance methods for 'GtRemotePhlowBasicViewData'
@@ -6158,6 +7753,988 @@ postCopy
 	headers := headers copy
 %
 
+! Class implementation for 'GtRemotePhlowId'
+
+!		Class methods for 'GtRemotePhlowId'
+
+category: 'testing'
+classmethod: GtRemotePhlowId
+isAbstract
+	^ self name = #GtRemotePhlowId
+%
+
+!		Instance methods for 'GtRemotePhlowId'
+
+category: 'comparing'
+method: GtRemotePhlowId
+= anObject
+	"Comparing `self = anObject` must provide 
+	same results as `self asSymbol = anObject asSymbol`. 
+	See the #hash method comment."
+
+	^ self subclassResponsibility
+%
+
+category: 'converting'
+method: GtRemotePhlowId
+asBlocElementId
+	^ self
+%
+
+category: 'converting'
+method: GtRemotePhlowId
+asSymbol
+	^ self subclassResponsibility
+%
+
+category: 'comparing'
+method: GtRemotePhlowId
+hash
+	^ self asSymbol hash
+%
+
+category: 'testing'
+method: GtRemotePhlowId
+isBlocElementId
+	^ true
+%
+
+category: 'testing'
+method: GtRemotePhlowId
+isIndexed
+	^ false
+%
+
+category: 'testing'
+method: GtRemotePhlowId
+isRemotePhlowId
+	^ true
+%
+
+category: 'printing'
+method: GtRemotePhlowId
+printOn: aStream
+	super printOn: aStream.
+	aStream parenthesize: [ aStream nextPutAll: self asSymbol ]
+%
+
+! Class implementation for 'GtRemotePhlowBasicId'
+
+!		Class methods for 'GtRemotePhlowBasicId'
+
+category: 'converting'
+classmethod: GtRemotePhlowBasicId
+asBlocElementId
+	^ self new
+%
+
+category: 'testing'
+classmethod: GtRemotePhlowBasicId
+isAbstract
+	^ self name = #GtRemotePhlowBasicId
+%
+
+category: 'testing'
+classmethod: GtRemotePhlowBasicId
+isRemotePhlowId
+	^ true
+%
+
+!		Instance methods for 'GtRemotePhlowBasicId'
+
+category: 'comparing'
+method: GtRemotePhlowBasicId
+= anObject
+	self == anObject ifTrue: [ ^ true ].
+	
+	^ self class = anObject class or: [ 
+		(anObject isBlocElementId) and: [ 
+			self asSymbol = anObject asSymbol  ]]
+%
+
+! Class implementation for 'GtRemotePhlowCompareObjectsActionId'
+
+!		Class methods for 'GtRemotePhlowCompareObjectsActionId'
+
+category: 'accessing'
+classmethod: GtRemotePhlowCompareObjectsActionId
+typeLabel
+	^ 'remotePhlowCompareObjectsActionId'
+%
+
+!		Instance methods for 'GtRemotePhlowCompareObjectsActionId'
+
+category: 'accessing'
+method: GtRemotePhlowCompareObjectsActionId
+asSymbol
+	^ #'inspector--compare-objects'
+%
+
+! Class implementation for 'GtRemotePhlowExampleCopyLabelActionId'
+
+!		Class methods for 'GtRemotePhlowExampleCopyLabelActionId'
+
+category: 'accessing'
+classmethod: GtRemotePhlowExampleCopyLabelActionId
+typeLabel
+	^ 'remotePhlowExampleCopyLabelActionId'
+%
+
+!		Instance methods for 'GtRemotePhlowExampleCopyLabelActionId'
+
+category: 'converting'
+method: GtRemotePhlowExampleCopyLabelActionId
+asSymbol
+	^ #'remote-example--copy-label'
+%
+
+! Class implementation for 'GtRemotePhlowExampleCustomInspectActionId'
+
+!		Class methods for 'GtRemotePhlowExampleCustomInspectActionId'
+
+category: 'accessing'
+classmethod: GtRemotePhlowExampleCustomInspectActionId
+typeLabel
+	^ 'remotePhlowExampleCustomInspectActionId'
+%
+
+!		Instance methods for 'GtRemotePhlowExampleCustomInspectActionId'
+
+category: 'converting'
+method: GtRemotePhlowExampleCustomInspectActionId
+asSymbol
+	^ #'remote-example--custom-inspect'
+%
+
+! Class implementation for 'GtRemotePhlowExampleInspectItemActionId'
+
+!		Class methods for 'GtRemotePhlowExampleInspectItemActionId'
+
+category: 'accessing'
+classmethod: GtRemotePhlowExampleInspectItemActionId
+typeLabel
+	^ 'remotePhlowExampleInspectItemActionId'
+%
+
+!		Instance methods for 'GtRemotePhlowExampleInspectItemActionId'
+
+category: 'converting'
+method: GtRemotePhlowExampleInspectItemActionId
+asSymbol
+	^ #'remote-example--inspect-item'
+%
+
+! Class implementation for 'GtRemotePhlowViewRefreshContentButtonId'
+
+!		Class methods for 'GtRemotePhlowViewRefreshContentButtonId'
+
+category: 'accessing'
+classmethod: GtRemotePhlowViewRefreshContentButtonId
+typeLabel
+	^ 'remotePhlowViewRefreshContentButtonId'
+%
+
+!		Instance methods for 'GtRemotePhlowViewRefreshContentButtonId'
+
+category: 'accessing'
+method: GtRemotePhlowViewRefreshContentButtonId
+asSymbol
+	^ #'phlow-view--refresh-content'
+%
+
+! Class implementation for 'GtRemotePhlowNamedId'
+
+!		Class methods for 'GtRemotePhlowNamedId'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowNamedId
+named: aSymbol
+	^ self new identifier: aSymbol asSymbol
+%
+
+category: 'accessing'
+classmethod: GtRemotePhlowNamedId
+typeLabel
+	^ 'remotePhlowNamedActionId'
+%
+
+!		Instance methods for 'GtRemotePhlowNamedId'
+
+category: 'comparing'
+method: GtRemotePhlowNamedId
+= anObject
+
+	self == anObject ifTrue: [ ^ true ].
+	(anObject isBlocElementId) ifFalse: [ ^ false ].	
+	
+	self class = anObject class ifTrue: [ ^ identifier = anObject identifier ].
+	^ self asSymbol = anObject asSymbol
+%
+
+category: 'serialization'
+method: GtRemotePhlowNamedId
+asDictionaryForExport
+	^ super asDictionaryForExport
+		at: 'identifier' put: identifier;
+		yourself
+%
+
+category: 'converting'
+method: GtRemotePhlowNamedId
+asSymbol
+	^ identifier
+%
+
+category: 'accessing'
+method: GtRemotePhlowNamedId
+identifier
+	^ identifier
+%
+
+category: 'accessing'
+method: GtRemotePhlowNamedId
+identifier: aSymbol
+	identifier := aSymbol
+%
+
+category: 'serialization'
+method: GtRemotePhlowNamedId
+initializeFromJSONDictionary: aDictionary
+	super initializeFromJSONDictionary: aDictionary.
+	identifier := (aDictionary at: 'identifier') asSymbol
+%
+
+! Class implementation for 'GtRemotePhlowListingViewSelection'
+
+!		Class methods for 'GtRemotePhlowListingViewSelection'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowListingViewSelection
+forMultipleListIdentifiers: aCollectionOfListNodeIdentifiers
+	^ GtRemotePhlowListingViewMultipleSelection new
+		selectionItems: (aCollectionOfListNodeIdentifiers collect: [ :each |
+			GtRemotePhlowListingViewListSelectionItem new
+				nodeIdentifier: each ])
+%
+
+category: 'instance creation'
+classmethod: GtRemotePhlowListingViewSelection
+forMultipleListIndexes: aCollectionOfIntegers
+	^ GtRemotePhlowListingViewMultipleSelection new
+		selectionItems: (aCollectionOfIntegers collect: [ :each |
+			GtRemotePhlowListingViewListSelectionItem new
+				nodeIdentifier: (GtRemotePhlowNodeIdentifier forListIndex: each) ])
+%
+
+category: 'instance creation'
+classmethod: GtRemotePhlowListingViewSelection
+forMultipleTreeIdentifiers: aCollectionOfTreeNodeIdentifiers
+	^ GtRemotePhlowListingViewMultipleSelection new
+		selectionItems: (aCollectionOfTreeNodeIdentifiers collect: [ :each |
+			GtRemotePhlowListingViewTreeSelectionItem new
+				nodeIdentifier: each ])
+%
+
+category: 'instance creation'
+classmethod: GtRemotePhlowListingViewSelection
+forMultipleTreePaths: aCollectionOfArrays
+	^ GtRemotePhlowListingViewMultipleSelection new
+		selectionItems: (aCollectionOfArrays collect: [ :each |
+			GtRemotePhlowListingViewTreeSelectionItem new
+				nodeIdentifier: (GtRemotePhlowNodeIdentifier forTreePath: each) ])
+%
+
+category: 'instance creation'
+classmethod: GtRemotePhlowListingViewSelection
+forSingleListIdentifier: aListNodeIdentifier
+	^ GtRemotePhlowListingViewSingleSelection new
+		selectionItem: (GtRemotePhlowListingViewListSelectionItem new
+			nodeIdentifier: aListNodeIdentifier)
+%
+
+category: 'instance creation'
+classmethod: GtRemotePhlowListingViewSelection
+forSingleListIndex: anInteger
+	^ GtRemotePhlowListingViewSingleSelection new
+		selectionItem: (GtRemotePhlowListingViewListSelectionItem new
+			nodeIdentifier: (GtRemotePhlowNodeIdentifier forListIndex: anInteger))
+%
+
+category: 'instance creation'
+classmethod: GtRemotePhlowListingViewSelection
+forSingleListIndex: anInteger selectionIndex: aSelectionIndex
+	^ GtRemotePhlowListingViewSingleSelection new
+		selectionItem: (GtRemotePhlowListingViewListSelectionItem new
+			nodeIdentifier: (GtRemotePhlowNodeIdentifier forListIndex: anInteger);
+			selectionIndex: aSelectionIndex)
+%
+
+category: 'instance creation'
+classmethod: GtRemotePhlowListingViewSelection
+forSingleTreeIdentifier: aTreeNodeIdentifier
+	^ GtRemotePhlowListingViewSingleSelection new
+		selectionItem: (GtRemotePhlowListingViewTreeSelectionItem new
+			nodeIdentifier: aTreeNodeIdentifier)
+%
+
+category: 'instance creation'
+classmethod: GtRemotePhlowListingViewSelection
+forSingleTreePath: anArray
+	^ GtRemotePhlowListingViewSingleSelection new
+		selectionItem: (GtRemotePhlowListingViewTreeSelectionItem new
+			nodeIdentifier: (GtRemotePhlowNodeIdentifier forTreePath: anArray))
+%
+
+category: 'testing'
+classmethod: GtRemotePhlowListingViewSelection
+isAbstract
+	^ self name = #GtRemotePhlowListingViewSelection
+%
+
+!		Instance methods for 'GtRemotePhlowListingViewSelection'
+
+category: 'comparing'
+method: GtRemotePhlowListingViewSelection
+= anObject
+	self == anObject ifTrue: [ ^ true ].
+	self class = anObject class ifFalse: [ ^ false ].
+	^ self selectionItems = anObject selectionItems
+%
+
+category: 'converting'
+method: GtRemotePhlowListingViewSelection
+asDictionaryForExport
+	^ super asDictionaryForExport
+%
+
+category: 'printing'
+method: GtRemotePhlowListingViewSelection
+descriptionOn: aStream
+	self selectionItems 
+		do: [ :each | each descriptionOn: aStream ]
+		separatedBy: [ aStream nextPutAll: ', ' ]
+%
+
+category: 'gt - extensions'
+method: GtRemotePhlowListingViewSelection
+gtViewSelectionItemsFor: aView
+	<gtView>
+	^ aView columnedList
+		title: 'Selection items';
+		items: [ self selectionItems ];
+		column: 'Index' text: [ :each | each selectionIndex ] width: 80;
+		column: 'Node identifier' text: [ :each | each nodeIdentifier ]
+%
+
+category: 'comparing'
+method: GtRemotePhlowListingViewSelection
+hash
+	^ self selectionItems hash
+%
+
+category: 'initialization'
+method: GtRemotePhlowListingViewSelection
+initializeFromJSONDictionary: aDictionary
+	super initializeFromJSONDictionary: aDictionary
+%
+
+category: 'testing'
+method: GtRemotePhlowListingViewSelection
+isMultipleSelection
+	^ false
+%
+
+category: 'enumerating'
+method: GtRemotePhlowListingViewSelection
+nodeIdentifiersDo: aBlock
+	self selectionItemsDo: [ :each | aBlock value: each nodeIdentifier ]
+%
+
+category: 'printing'
+method: GtRemotePhlowListingViewSelection
+printOn: aStream
+	super printOn: aStream.
+	aStream parenthesize: [
+		self descriptionOn: aStream ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowListingViewSelection
+selectionIndex
+	^ self selectionIndices
+%
+
+category: 'accessing'
+method: GtRemotePhlowListingViewSelection
+selectionIndices
+	^ Array withAll: (self selectionItems 
+			collect: [ :each | each selectionIndex ])
+%
+
+category: 'accessing'
+method: GtRemotePhlowListingViewSelection
+selectionItems
+	^ self subclassResponsibility
+%
+
+category: 'enumerating'
+method: GtRemotePhlowListingViewSelection
+selectionItemsDo: aBlock
+	self selectionItems do: aBlock
+%
+
+category: 'accessing'
+method: GtRemotePhlowListingViewSelection
+size
+	^ self subclassResponsibility
+%
+
+! Class implementation for 'GtRemotePhlowListingViewMultipleSelection'
+
+!		Instance methods for 'GtRemotePhlowListingViewMultipleSelection'
+
+category: 'converting'
+method: GtRemotePhlowListingViewMultipleSelection
+asDictionaryForExport
+	| specificationData |
+	specificationData := super asDictionaryForExport.
+	specificationData at: 'selectionItems' put: (self selectionItems collect: [ :each | each asDictionaryForExport ]).
+	^ specificationData
+%
+
+category: 'initialization'
+method: GtRemotePhlowListingViewMultipleSelection
+initializeFromJSONDictionary: aDictionary
+	super initializeFromJSONDictionary: aDictionary.
+	aDictionary
+		at: 'selectionItems' ifPresent: [ :anArray |
+			self selectionItems: (anArray collect: [ :each |
+				GtRemotePhlowListingViewSelectionItem fromDictionary: each ]) ]
+%
+
+category: 'testing'
+method: GtRemotePhlowListingViewMultipleSelection
+isMultipleSelection
+	^ true
+%
+
+category: 'accessing'
+method: GtRemotePhlowListingViewMultipleSelection
+selectionItems
+	^ selectionItems ifNil: [ selectionItems := #() ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowListingViewMultipleSelection
+selectionItems: aCollectionOfSelectionItems
+	selectionItems := aCollectionOfSelectionItems
+%
+
+category: 'accessing'
+method: GtRemotePhlowListingViewMultipleSelection
+size
+	^ selectionItems 
+		ifNil: [0] 
+		ifNotNil: [:aCollection | aCollection size ]
+%
+
+! Class implementation for 'GtRemotePhlowListingViewSingleSelection'
+
+!		Instance methods for 'GtRemotePhlowListingViewSingleSelection'
+
+category: 'converting'
+method: GtRemotePhlowListingViewSingleSelection
+asDictionaryForExport
+	| specificationData |
+	specificationData := super asDictionaryForExport.
+	specificationData at: 'selectionItem' put: self selectionItem asDictionaryForExport.
+	^ specificationData
+%
+
+category: 'initialization'
+method: GtRemotePhlowListingViewSingleSelection
+initializeFromJSONDictionary: aDictionary
+	super initializeFromJSONDictionary: aDictionary.
+	aDictionary
+		at: 'selectionItem' ifPresent: [ :aDict |
+			self selectionItem: (GtRemotePhlowListingViewSelectionItem fromDictionary: aDict) ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowListingViewSingleSelection
+selectionItem
+	^ selectionItem
+%
+
+category: 'accessing'
+method: GtRemotePhlowListingViewSingleSelection
+selectionItem: aSelectionItem
+	selectionItem := aSelectionItem
+%
+
+category: 'accessing'
+method: GtRemotePhlowListingViewSingleSelection
+selectionItems
+	^ { self selectionItem }
+%
+
+category: 'accessing'
+method: GtRemotePhlowListingViewSingleSelection
+size
+	^ 1
+%
+
+! Class implementation for 'GtRemotePhlowListingViewSelectionItem'
+
+!		Class methods for 'GtRemotePhlowListingViewSelectionItem'
+
+category: 'testing'
+classmethod: GtRemotePhlowListingViewSelectionItem
+isAbstract
+	^ self name = #GtRemotePhlowListingViewSelectionItem
+%
+
+!		Instance methods for 'GtRemotePhlowListingViewSelectionItem'
+
+category: 'comparing'
+method: GtRemotePhlowListingViewSelectionItem
+= anObject
+	self == anObject ifTrue: [ ^ true ].
+	self class = anObject class ifFalse: [ ^ false ].
+	^ self nodeIdentifier = anObject nodeIdentifier
+		and: [ self selectionIndex = anObject selectionIndex ]
+%
+
+category: 'converting'
+method: GtRemotePhlowListingViewSelectionItem
+asDictionaryForExport
+	| specificationData |
+	specificationData := super asDictionaryForExport.
+	specificationData at: 'nodeIdentifier' put: self nodeIdentifier asDictionaryForExport.
+	self selectionIndex ifNotNil: [ :anIndex |
+		specificationData at: 'selectionIndex' put: anIndex ].
+	^ specificationData
+%
+
+category: 'printing'
+method: GtRemotePhlowListingViewSelectionItem
+description
+	^ String streamContents: [ :aStream |
+		self descriptionOn: aStream ]
+%
+
+category: 'printing'
+method: GtRemotePhlowListingViewSelectionItem
+descriptionOn: aStream
+	self nodeIdentifier descriptionOn: aStream.
+	self selectionIndex ifNotNil: [ :anIndex |
+		aStream nextPutAll: ' @ '.
+		aStream print: anIndex ]
+%
+
+category: 'comparing'
+method: GtRemotePhlowListingViewSelectionItem
+hash
+	^ self nodeIdentifier hash bitXor: self selectionIndex hash
+%
+
+category: 'initialization'
+method: GtRemotePhlowListingViewSelectionItem
+initializeFromJSONDictionary: aDictionary
+	super initializeFromJSONDictionary: aDictionary.
+	
+	aDictionary
+		at: 'nodeIdentifier' ifPresent: [ :aDict |
+			self nodeIdentifier: (GtRemotePhlowNodeIdentifier fromDictionary: aDict) ].
+	aDictionary
+		at: 'selectionIndex' ifPresent: [ :aValue |
+			self selectionIndex: aValue ].
+%
+
+category: 'accessing'
+method: GtRemotePhlowListingViewSelectionItem
+nodeIdentifier
+	^ nodeIdentifier
+%
+
+category: 'accessing'
+method: GtRemotePhlowListingViewSelectionItem
+nodeIdentifier: aNodeIdentifier
+	nodeIdentifier := aNodeIdentifier
+%
+
+category: 'printing'
+method: GtRemotePhlowListingViewSelectionItem
+printOn: aStream
+	super printOn: aStream.
+	aStream parenthesize: [
+		self descriptionOn: aStream ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowListingViewSelectionItem
+selectionIndex
+	^ selectionIndex
+%
+
+category: 'accessing'
+method: GtRemotePhlowListingViewSelectionItem
+selectionIndex: anInteger
+	selectionIndex := anInteger
+%
+
+! Class implementation for 'GtRemotePhlowMenuItemGroupConfiguration'
+
+!		Class methods for 'GtRemotePhlowMenuItemGroupConfiguration'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowMenuItemGroupConfiguration
+default
+	^ self new
+%
+
+category: 'instance creation'
+classmethod: GtRemotePhlowMenuItemGroupConfiguration
+editing
+	^ self new
+		name: #Editing;
+		priority: 48
+%
+
+category: 'instance creation'
+classmethod: GtRemotePhlowMenuItemGroupConfiguration
+evaluation
+	^ self new
+		name: #Evaluation;
+		priority: 47
+%
+
+category: 'instance creation'
+classmethod: GtRemotePhlowMenuItemGroupConfiguration
+inspection
+	^ self new
+		name: #Inspection;
+		priority: 40
+%
+
+category: 'instance creation'
+classmethod: GtRemotePhlowMenuItemGroupConfiguration
+modification
+	^ self new
+		name: #Modification;
+		priority: 35
+%
+
+category: 'instance creation'
+classmethod: GtRemotePhlowMenuItemGroupConfiguration
+navigation
+	^ self new
+		name: #Navigation;
+		priority: 20
+%
+
+category: 'instance creation'
+classmethod: GtRemotePhlowMenuItemGroupConfiguration
+new
+	^ super new initialize
+%
+
+category: 'instance creation'
+classmethod: GtRemotePhlowMenuItemGroupConfiguration
+printing
+	^ self new
+		name: #Printing;
+		priority: 60
+%
+
+category: 'instance creation'
+classmethod: GtRemotePhlowMenuItemGroupConfiguration
+removal
+	^ self new
+		name: #Removal;
+		priority: 100
+%
+
+category: 'accessing'
+classmethod: GtRemotePhlowMenuItemGroupConfiguration
+typeLabel
+	^ 'remotePhlowMenuItemGroupConfiguration'
+%
+
+!		Instance methods for 'GtRemotePhlowMenuItemGroupConfiguration'
+
+category: 'serialization'
+method: GtRemotePhlowMenuItemGroupConfiguration
+asDictionaryForExport
+	| dict |
+	dict := super asDictionaryForExport.
+	dict at: 'name' put: self name.
+	dict at: 'priority' put: self priority.
+	^ dict
+%
+
+category: 'converting'
+method: GtRemotePhlowMenuItemGroupConfiguration
+asRemotePhlowMenuItemGroupConfiguration
+	^ self
+%
+
+category: 'accessing'
+method: GtRemotePhlowMenuItemGroupConfiguration
+id
+	^ self name
+%
+
+category: 'initialization'
+method: GtRemotePhlowMenuItemGroupConfiguration
+initialize
+	super initialize.
+	priority := 50.
+	name := #Default
+%
+
+category: 'serialization'
+method: GtRemotePhlowMenuItemGroupConfiguration
+initializeFromJSONDictionary: aDictionary
+	super initializeFromJSONDictionary: aDictionary.
+	self name: (aDictionary at: 'name').
+	self priority: (aDictionary at: 'priority').
+%
+
+category: 'accessing'
+method: GtRemotePhlowMenuItemGroupConfiguration
+name
+	^ name
+%
+
+category: 'accessing'
+method: GtRemotePhlowMenuItemGroupConfiguration
+name: aSymbol
+	name := aSymbol
+%
+
+category: 'printing'
+method: GtRemotePhlowMenuItemGroupConfiguration
+printOn: aStream
+	super printOn: aStream.
+	aStream
+		nextPut: $(;
+		nextPutAll: self name asString;
+		nextPut: $)
+%
+
+category: 'accessing'
+method: GtRemotePhlowMenuItemGroupConfiguration
+priority
+	^ priority
+%
+
+category: 'accessing'
+method: GtRemotePhlowMenuItemGroupConfiguration
+priority: aNumber
+	priority := aNumber
+%
+
+! Class implementation for 'GtRemotePhlowMenuOptionsSpecification'
+
+!		Class methods for 'GtRemotePhlowMenuOptionsSpecification'
+
+category: 'accessing'
+classmethod: GtRemotePhlowMenuOptionsSpecification
+typeLabel
+	^ 'remotePhlowMenuOptions'
+%
+
+!		Instance methods for 'GtRemotePhlowMenuOptionsSpecification'
+
+category: 'actions'
+method: GtRemotePhlowMenuOptionsSpecification
+applyToLocalAction: aLocalAction
+	menuPreview ifNotNil: [ :anObject |
+		aLocalAction menuItemPreview: anObject ].
+	menuGroup ifNotNil: [ :anObject |
+		aLocalAction menuItemGroup: anObject asMenuItemGroupConfiguration ].
+	menuPinSubmenu ifNotNil: [ :anObject |
+		aLocalAction menuItemPinSubmenu ].
+	menuHideOnClick ifNotNil: [ :anObject |
+		aLocalAction menuItemHideOnClick: anObject ].
+	menuShortcut ifNotNil: [ :anObject |
+		aLocalAction menuShortcut: anObject ].
+	menuDisable ifNotNil: [ :anObject |
+		aLocalAction menuDisable: [ anObject ] ].
+%
+
+category: 'serialization'
+method: GtRemotePhlowMenuOptionsSpecification
+asDictionaryForExport
+	| exportData |
+	exportData := super asDictionaryForExport.
+	menuPreview ifNotNil: [ :anObject |
+		exportData at: 'menuPreview' put: ((anObject isNil or: [ anObject isString ])
+			ifTrue: [ anObject ]
+			ifFalse: [ anObject asDictionaryForExport ]) ].
+	menuGroup ifNotNil: [ :anObject |
+		exportData at: 'menuGroup' put: anObject asDictionaryForExport ].
+	menuPinSubmenu ifNotNil: [ :anObject |
+		exportData at: 'menuPinSubmenu' put: anObject ].
+	menuHideOnClick ifNotNil: [ :anObject |
+		exportData at: 'menuHideOnClick' put: anObject ].
+	menuShortcut ifNotNil: [ :anObject |
+		exportData at: 'menuShortcut' put: anObject ].
+	menuDisable ifNotNil: [ :anObject |
+		exportData at: 'menuDisable' put: anObject ].
+	^ exportData
+%
+
+category: 'testing'
+method: GtRemotePhlowMenuOptionsSpecification
+hasAnyOptions
+	^ menuPreview notNil
+		or: [ menuGroup notNil
+		or: [ menuPinSubmenu notNil
+		or: [ menuHideOnClick notNil
+		or: [ menuShortcut notNil
+		or: [ menuDisable notNil ] ] ] ] ]
+%
+
+category: 'serialization'
+method: GtRemotePhlowMenuOptionsSpecification
+initializeFromJSONDictionary: aDictionary
+	super initializeFromJSONDictionary: aDictionary.
+	aDictionary at: 'menuPreview' ifPresent: [ :anObject |
+		self menuPreview: ((anObject isNil or: [ anObject isString ])
+			ifTrue: [ anObject ]
+			ifFalse: [ GtPhlowRunBasedText fromJSONDictionary: anObject ]) ].
+	aDictionary at: 'menuGroup' ifPresent: [ :anObject |
+		self menuGroup: (GtRemotePhlowMenuItemGroupConfiguration new
+			initializeFromJSONDictionary: anObject) ].
+	aDictionary at: 'menuPinSubmenu' ifPresent: [ :anObject |
+		self menuPinSubmenu: anObject ].
+	aDictionary at: 'menuHideOnClick' ifPresent: [ :anObject |
+		self menuHideOnClick: anObject ].
+	aDictionary at: 'menuShortcut' ifPresent: [ :anObject |
+		self menuShortcut: anObject ].
+	aDictionary at: 'menuDisable' ifPresent: [ :anObject |
+		self menuDisable: anObject ].
+%
+
+category: 'accessing'
+method: GtRemotePhlowMenuOptionsSpecification
+menuDisable
+	^ menuDisable
+%
+
+category: 'accessing'
+method: GtRemotePhlowMenuOptionsSpecification
+menuDisable: anObject
+	menuDisable := anObject
+%
+
+category: 'accessing'
+method: GtRemotePhlowMenuOptionsSpecification
+menuGroup
+	^ menuGroup
+%
+
+category: 'accessing'
+method: GtRemotePhlowMenuOptionsSpecification
+menuGroup: anObject
+	menuGroup := anObject
+%
+
+category: 'accessing'
+method: GtRemotePhlowMenuOptionsSpecification
+menuHideOnClick
+	^ menuHideOnClick
+%
+
+category: 'accessing'
+method: GtRemotePhlowMenuOptionsSpecification
+menuHideOnClick: anObject
+	menuHideOnClick := anObject
+%
+
+category: 'accessing'
+method: GtRemotePhlowMenuOptionsSpecification
+menuPinSubmenu
+	^ menuPinSubmenu
+%
+
+category: 'accessing'
+method: GtRemotePhlowMenuOptionsSpecification
+menuPinSubmenu: anObject
+	menuPinSubmenu := anObject
+%
+
+category: 'accessing'
+method: GtRemotePhlowMenuOptionsSpecification
+menuPreview
+	^ menuPreview
+%
+
+category: 'accessing'
+method: GtRemotePhlowMenuOptionsSpecification
+menuPreview: anObject
+	menuPreview := anObject
+%
+
+category: 'accessing'
+method: GtRemotePhlowMenuOptionsSpecification
+menuShortcut
+	^ menuShortcut
+%
+
+category: 'accessing'
+method: GtRemotePhlowMenuOptionsSpecification
+menuShortcut: anObject
+	menuShortcut := anObject
+%
+
+! Class implementation for 'GtRemotePhlowCopyToClipboardAction'
+
+!		Class methods for 'GtRemotePhlowCopyToClipboardAction'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowCopyToClipboardAction
+forString: aString
+	^ self new clipboardText: aString
+%
+
+category: 'accessing'
+classmethod: GtRemotePhlowCopyToClipboardAction
+typeLabel
+	^ 'remotePhlowCopyToClipboard'
+%
+
+!		Instance methods for 'GtRemotePhlowCopyToClipboardAction'
+
+category: 'serialization'
+method: GtRemotePhlowCopyToClipboardAction
+asDictionaryForExport
+	^ super asDictionaryForExport
+		at: 'clipboardText' put: clipboardText;
+		yourself
+%
+
+category: 'accessing'
+method: GtRemotePhlowCopyToClipboardAction
+clipboardText
+	^ clipboardText
+%
+
+category: 'accessing'
+method: GtRemotePhlowCopyToClipboardAction
+clipboardText: newText
+	clipboardText := newText ifNotNil: [ :anObject | anObject asString ]
+%
+
+category: 'serialization'
+method: GtRemotePhlowCopyToClipboardAction
+initializeFromJSONDictionary: aDictionary
+	super initializeFromJSONDictionary: aDictionary.
+	clipboardText := aDictionary at: 'clipboardText'
+%
+
 ! Class implementation for 'GtRemotePhlowSpawnObjectAction'
 
 !		Class methods for 'GtRemotePhlowSpawnObjectAction'
@@ -6203,6 +8780,362 @@ category: 'accessing'
 method: GtRemotePhlowSpawnObjectAction
 targetObject: anObject 
 	targetObject := anObject 
+%
+
+! Class implementation for 'GtRemotePhlowNodeIdentifier'
+
+!		Class methods for 'GtRemotePhlowNodeIdentifier'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowNodeIdentifier
+forListIndex: anInteger
+	^ GtRemotePhlowIndexNodeIdentifier new
+		nodeIndex: anInteger
+%
+
+category: 'instance creation'
+classmethod: GtRemotePhlowNodeIdentifier
+forTreePath: anArray
+	^ GtRemotePhlowPathNodeIdentifier new
+		nodeIndexPath: anArray
+%
+
+!		Instance methods for 'GtRemotePhlowNodeIdentifier'
+
+category: 'printing'
+method: GtRemotePhlowNodeIdentifier
+description
+	^ String streamContents: [ :aStream |
+		self descriptionOn: aStream ]
+%
+
+category: 'printing'
+method: GtRemotePhlowNodeIdentifier
+descriptionOn: aStream
+	self subclassResponsibility
+%
+
+category: 'enumerating'
+method: GtRemotePhlowNodeIdentifier
+nodeIdentifiersDo: aBlock
+	aBlock cull: self
+%
+
+! Class implementation for 'GtRemotePhlowIndexNodeIdentifier'
+
+!		Instance methods for 'GtRemotePhlowIndexNodeIdentifier'
+
+category: 'comparing'
+method: GtRemotePhlowIndexNodeIdentifier
+= anObject
+	self == anObject ifTrue: [ ^ true ].
+	self class = anObject class ifFalse: [ ^ false ].
+	^ self nodeIndex = anObject nodeIndex
+%
+
+category: 'converting'
+method: GtRemotePhlowIndexNodeIdentifier
+asDictionaryForExport
+	| specificationData |
+	specificationData := super asDictionaryForExport.
+	specificationData at: 'nodeIndex' put: self nodeIndex.
+	^ specificationData
+%
+
+category: 'printing'
+method: GtRemotePhlowIndexNodeIdentifier
+descriptionOn: aStream
+	aStream print: self nodeIndex
+%
+
+category: 'comparing'
+method: GtRemotePhlowIndexNodeIdentifier
+hash
+	^ self nodeIndex hash
+%
+
+category: 'initialization'
+method: GtRemotePhlowIndexNodeIdentifier
+initializeFromJSONDictionary: aDictionary
+	super initializeFromJSONDictionary: aDictionary.
+	
+	aDictionary
+		at: 'nodeIndex' ifPresent: [ :aValue |
+			self nodeIndex: aValue ].
+%
+
+category: 'accessing'
+method: GtRemotePhlowIndexNodeIdentifier
+nodeIndex
+	^ nodeIndex
+%
+
+category: 'accessing'
+method: GtRemotePhlowIndexNodeIdentifier
+nodeIndex: anObject
+	nodeIndex := anObject
+%
+
+category: 'accessing'
+method: GtRemotePhlowIndexNodeIdentifier
+nodeIndexPath
+	^ Array with: self nodeIndex
+%
+
+category: 'printing'
+method: GtRemotePhlowIndexNodeIdentifier
+printOn: aStream
+	super printOn: aStream.
+	aStream parenthesize: [
+		self descriptionOn: aStream ]
+%
+
+! Class implementation for 'GtRemotePhlowPathNodeIdentifier'
+
+!		Instance methods for 'GtRemotePhlowPathNodeIdentifier'
+
+category: 'comparing'
+method: GtRemotePhlowPathNodeIdentifier
+= anObject
+	self == anObject ifTrue: [ ^ true ].
+	self class = anObject class ifFalse: [ ^ false ].
+	^ self nodeIndexPath = anObject nodeIndexPath
+%
+
+category: 'converting'
+method: GtRemotePhlowPathNodeIdentifier
+asDictionaryForExport
+	| specificationData |
+	specificationData := super asDictionaryForExport.
+	specificationData at: 'nodeIndexPath' put: self nodeIndexPath.
+	^ specificationData
+%
+
+category: 'printing'
+method: GtRemotePhlowPathNodeIdentifier
+descriptionOn: aStream
+	aStream print: self nodeIndexPath
+%
+
+category: 'comparing'
+method: GtRemotePhlowPathNodeIdentifier
+hash
+	^ self nodeIndexPath hash
+%
+
+category: 'initialization'
+method: GtRemotePhlowPathNodeIdentifier
+initializeFromJSONDictionary: aDictionary
+	super initializeFromJSONDictionary: aDictionary.
+	
+	aDictionary
+		at: 'nodeIndexPath' ifPresent: [ :aValue |
+			self nodeIndexPath: aValue ].
+%
+
+category: 'accessing'
+method: GtRemotePhlowPathNodeIdentifier
+nodeIndexPath
+	^ nodeIndexPath
+%
+
+category: 'accessing'
+method: GtRemotePhlowPathNodeIdentifier
+nodeIndexPath: anObject
+	nodeIndexPath := anObject
+%
+
+category: 'printing'
+method: GtRemotePhlowPathNodeIdentifier
+printOn: aStream
+	super printOn: aStream.
+	aStream parenthesize: [
+		self descriptionOn: aStream ]
+%
+
+! Class implementation for 'GtRemotePhlowTreeNodeExpander'
+
+!		Class methods for 'GtRemotePhlowTreeNodeExpander'
+
+category: 'testing'
+classmethod: GtRemotePhlowTreeNodeExpander
+isAbstract
+	^ self name = #GtRemotePhlowTreeNodeExpander
+%
+
+category: 'api - instance creation'
+classmethod: GtRemotePhlowTreeNodeExpander
+null
+	^ GtRemotePhlowTreeNodeNoExpander new
+%
+
+category: 'api - instance creation'
+classmethod: GtRemotePhlowTreeNodeExpander
+suchThat: aBlock
+	^ GtRemotePhlowTreeNodeConditionalExpander new condition: aBlock
+%
+
+category: 'api - instance creation'
+classmethod: GtRemotePhlowTreeNodeExpander
+upTo: aLevelIndex
+	^ GtRemotePhlowTreeNodeUpToExpander new level: aLevelIndex
+%
+
+!		Instance methods for 'GtRemotePhlowTreeNodeExpander'
+
+category: 'converting'
+method: GtRemotePhlowTreeNodeExpander
+asDeclarativeExpander
+	^ self
+%
+
+category: 'api - configuration'
+method: GtRemotePhlowTreeNodeExpander
+configurePhlowView: aPhlowView
+	
+%
+
+category: 'api - configuration'
+method: GtRemotePhlowTreeNodeExpander
+expandNode: aNode fromDataSource: aTreeDataSource
+%
+
+category: 'testing'
+method: GtRemotePhlowTreeNodeExpander
+isNullExpander
+	^ false
+%
+
+! Class implementation for 'GtRemotePhlowTreeNodeConditionalExpander'
+
+!		Instance methods for 'GtRemotePhlowTreeNodeConditionalExpander'
+
+category: 'converting'
+method: GtRemotePhlowTreeNodeConditionalExpander
+asDictionaryForExport
+	| specificationData |
+	
+	specificationData := super asDictionaryForExport.
+	specificationData at: 'condition' put: self conditionString.
+			
+	^ specificationData
+%
+
+category: 'accessing'
+method: GtRemotePhlowTreeNodeConditionalExpander
+condition
+	^ condition
+%
+
+category: 'accessing'
+method: GtRemotePhlowTreeNodeConditionalExpander
+condition: aBlock
+	"The block receives [ :aTreeNode :aNodeValue | ... ]"
+	condition := aBlock
+%
+
+category: 'accessing'
+method: GtRemotePhlowTreeNodeConditionalExpander
+conditionString
+	^ self
+			gtDo: [ condition printString ]
+			gemstoneDo: [ condition method _sourceStringForBlock  ]
+%
+
+category: 'api - configuration'
+method: GtRemotePhlowTreeNodeConditionalExpander
+configurePhlowView: aPhlowView
+	
+	aPhlowView expandSuchThat: [ :aTreeNode :aPhlowNode | 
+		 aPhlowNode hasChildNodesData ] 
+%
+
+category: 'api - configuration'
+method: GtRemotePhlowTreeNodeConditionalExpander
+expandNode: aNode fromDataSource: aTreeDataSource
+	aNode 
+		expandSuchThat: self condition
+		withDataSource: aTreeDataSource
+%
+
+category: 'initialization'
+method: GtRemotePhlowTreeNodeConditionalExpander
+initializeFromJSONDictionary: aDictionary
+	super initializeFromJSONDictionary: aDictionary.
+
+	aDictionary
+		at: 'condition'
+		ifPresent: [ :aClosureString | 
+			self
+				condition: (self
+						gtDo: [ BlockClosure compiler evaluate: aClosureString ]
+						gemstoneDo: [ | bindings receiver |
+							bindings := GsCurrentSession currentSession symbolList.
+							receiver := self.
+							aClosureString _compileInContext: receiver symbolList: bindings ]) ]
+%
+
+! Class implementation for 'GtRemotePhlowTreeNodeNoExpander'
+
+!		Instance methods for 'GtRemotePhlowTreeNodeNoExpander'
+
+category: 'testing'
+method: GtRemotePhlowTreeNodeNoExpander
+isNullExpander
+	^ true
+%
+
+! Class implementation for 'GtRemotePhlowTreeNodeUpToExpander'
+
+!		Instance methods for 'GtRemotePhlowTreeNodeUpToExpander'
+
+category: 'converting'
+method: GtRemotePhlowTreeNodeUpToExpander
+asDictionaryForExport
+	| specificationData |
+	specificationData := super asDictionaryForExport.
+	specificationData at: 'level' put: level.
+	^ specificationData
+%
+
+category: 'api - configuration'
+method: GtRemotePhlowTreeNodeUpToExpander
+configurePhlowView: aPhlowView
+	self level ifNotNil: [ :aLevel | 
+		aPhlowView expandUpTo: self level ]
+%
+
+category: 'api - configuration'
+method: GtRemotePhlowTreeNodeUpToExpander
+expandNode: aNode fromDataSource: aTreeDataSource
+	aNode 
+		expandUpTo: self level 
+		withDataSource: aTreeDataSource
+%
+
+category: 'initialization'
+method: GtRemotePhlowTreeNodeUpToExpander
+initializeFromJSONDictionary: aDictionary
+	super initializeFromJSONDictionary: aDictionary.
+	
+	aDictionary  
+		at: 'level' ifPresent: [ :aLevel |
+			self level: aLevel ].
+%
+
+category: 'api - accessing'
+method: GtRemotePhlowTreeNodeUpToExpander
+level
+	^ level
+%
+
+category: 'api - accessing'
+method: GtRemotePhlowTreeNodeUpToExpander
+level: aLevelIndex
+	(aLevelIndex isInteger and: [ aLevelIndex > 0 ])
+		ifFalse:  [ Error signal: 'Level index must be a natural number' ].
+		
+	level := aLevelIndex
 %
 
 ! Class implementation for 'GtRemotePhlowViewedObjectClassSpecification'
@@ -8479,7 +11412,72 @@ retrieveViewSpecificationForForwarding
 
 ! Class implementation for 'GtPhlowListingViewSpecification'
 
+!		Class methods for 'GtPhlowListingViewSpecification'
+
+category: 'instance creation'
+classmethod: GtPhlowListingViewSpecification
+fromJSONDictionary: aDictionary
+	| specification |
+	specification := super fromJSONDictionary: aDictionary.
+	
+	(aDictionary at: 'hasMultipleSelection' ifAbsent: [ nil ])
+		ifNotNil: [ :aBoolean |
+			specification hasMultipleSelection: aBoolean ].
+	(aDictionary at: 'hasContextActionSpecifications' ifAbsent: [ nil ])
+		ifNotNil: [ :aBoolean |
+			specification hasContextActionSpecifications: aBoolean ].
+			
+	^ specification
+%
+
+category: 'testing'
+classmethod: GtPhlowListingViewSpecification
+isAbstract
+	^ self name= #GtPhlowListingViewSpecification
+%
+
 !		Instance methods for 'GtPhlowListingViewSpecification'
+
+category: 'converting'
+method: GtPhlowListingViewSpecification
+asBasicViewDataForExport
+	| dictionary |
+	
+	dictionary := super asBasicViewDataForExport.
+	dictionary at: 'hasMultipleSelection' put: self hasMultipleSelection.
+	dictionary at: 'hasContextActionSpecifications' put: self hasContextActionSpecifications.
+	
+	^dictionary
+%
+
+category: 'api - accessing'
+method: GtPhlowListingViewSpecification
+bareRetrieveSentItemAtPhlowSelectionData: aPhlowSelectionData
+	^ self phlowDataSource 
+		bareRetrieveSentItemAtPhlowSelectionData: aPhlowSelectionData
+%
+
+category: 'api - accessing'
+method: GtPhlowListingViewSpecification
+bareRetriveContextActionSpecificationsForPhlowSelectionData: aPhlowSelectionData
+	^ self phlowDataSource 
+		bareRetriveContextActionSpecificationsForPhlowSelectionData: aPhlowSelectionData
+%
+
+category: 'accessing'
+method: GtPhlowListingViewSpecification
+createViewMultipleSelectionFromNodes: aCollectionOfNodes selectionIndices: aSelectionIndexes
+	| viewSelection selectionItems|
+	
+	selectionItems := aCollectionOfNodes collectWithIndex: [ :aNode :anIndex |
+ 		aNode value createSelectionItem
+ 			selectionIndex: (aSelectionIndexes at: anIndex)  ].
+ 		
+	viewSelection:= GtRemotePhlowListingViewMultipleSelection new
+ 		selectionItems: selectionItems.
+
+	^ viewSelection
+%
 
 category: 'api - accessing'
 method: GtPhlowListingViewSpecification
@@ -8492,6 +11490,30 @@ method: GtPhlowListingViewSpecification
 flushItemsIterator 
 
 	phlowDataSource flushItemsIterator
+%
+
+category: 'accessing'
+method: GtPhlowListingViewSpecification
+hasContextActionSpecifications
+	^ hasContextActionSpecifications ifNil: [ false ]
+%
+
+category: 'accessing'
+method: GtPhlowListingViewSpecification
+hasContextActionSpecifications: aBoolean
+	hasContextActionSpecifications := aBoolean
+%
+
+category: 'api - accessing'
+method: GtPhlowListingViewSpecification
+hasMultipleSelection
+	^ hasMultipleSelection ifNil: [ false ]
+%
+
+category: 'api - accessing'
+method: GtPhlowListingViewSpecification
+hasMultipleSelection: aBoolean
+	hasMultipleSelection := aBoolean
 %
 
 category: 'initialization'
@@ -8530,8 +11552,22 @@ retrieveSentItemAt: aSelectionIndex
 
 category: 'api - accessing'
 method: GtPhlowListingViewSpecification
+retrieveSentItemAtPhlowSelection: aPhlowSelection
+	^ self phlowDataSource 
+			retrieveSentItemAtPhlowSelection: aPhlowSelection
+%
+
+category: 'api - accessing'
+method: GtPhlowListingViewSpecification
 retrieveTotalItemsCount
 	^ self phlowDataSource retrieveTotalItemsCount
+%
+
+category: 'api - accessing'
+method: GtPhlowListingViewSpecification
+retriveContextActionSpecificationsForPhlowSelection: aPhlowSelection
+	^ self phlowDataSource 
+		retriveContextActionSpecificationsForPhlowSelection: aPhlowSelection
 %
 
 category: 'accessing'
@@ -8687,7 +11723,47 @@ isHorizontalScrollingEnabled
 
 ! Class implementation for 'GtPhlowColumnedTreeViewSpecification'
 
+!		Class methods for 'GtPhlowColumnedTreeViewSpecification'
+
+category: 'instance creation'
+classmethod: GtPhlowColumnedTreeViewSpecification
+fromJSONDictionary: aDictionary
+	| specification |
+	specification := super fromJSONDictionary: aDictionary.
+	
+	(aDictionary at: 'expander' ifAbsent: [ nil ])
+		ifNotNil: [ :expanderData |
+			specification expander: (GtRemotePhlowTreeNodeExpander 
+				fromDictionary: expanderData) ].
+			
+	^ specification
+%
+
 !		Instance methods for 'GtPhlowColumnedTreeViewSpecification'
+
+category: 'converting'
+method: GtPhlowColumnedTreeViewSpecification
+asBasicViewDataForExport
+	| dictionary |
+	
+	dictionary := super asBasicViewDataForExport.
+	self expander ifNotNil: [ :anExpander |
+		dictionary at: 'expander' put: anExpander asDictionaryForExport ].
+			
+	^dictionary
+%
+
+category: 'accessing'
+method: GtPhlowColumnedTreeViewSpecification
+expander
+	^ expander
+%
+
+category: 'accessing'
+method: GtPhlowColumnedTreeViewSpecification
+expander: anExpander
+	expander := anExpander
+%
 
 category: 'api - accessing'
 method: GtPhlowColumnedTreeViewSpecification
@@ -8707,7 +11783,7 @@ category: 'api - accessing'
 method: GtPhlowColumnedTreeViewSpecification
 retriveSentItemAtPath: aNodePath
 	^ self phlowDataSource 
-		retriveSentItemAtPath:aNodePath
+		retriveSentItemAtPath: aNodePath
 %
 
 ! Class implementation for 'GtPhlowListViewSpecification'
@@ -8725,7 +11801,47 @@ fromJSONDictionary: aDictionary
 
 ! Class implementation for 'GtPhlowTreeViewSpecification'
 
+!		Class methods for 'GtPhlowTreeViewSpecification'
+
+category: 'instance creation'
+classmethod: GtPhlowTreeViewSpecification
+fromJSONDictionary: aDictionary
+	| specification |
+	specification := super fromJSONDictionary: aDictionary.
+	
+	(aDictionary at: 'expander' ifAbsent: [ nil ])
+		ifNotNil: [ :expanderData |
+			specification expander: (GtRemotePhlowTreeNodeExpander 
+				fromDictionary: expanderData) ].
+			
+	^ specification
+%
+
 !		Instance methods for 'GtPhlowTreeViewSpecification'
+
+category: 'converting'
+method: GtPhlowTreeViewSpecification
+asBasicViewDataForExport
+	| dictionary |
+	
+	dictionary := super asBasicViewDataForExport.
+	self expander ifNotNil: [ :anExpander |
+		dictionary at: 'expander' put: anExpander asDictionaryForExport ].
+			
+	^dictionary
+%
+
+category: 'accessing'
+method: GtPhlowTreeViewSpecification
+expander
+	^ expander
+%
+
+category: 'accessing'
+method: GtPhlowTreeViewSpecification
+expander: anExpander
+	expander := anExpander
+%
 
 category: 'api - accessing'
 method: GtPhlowTreeViewSpecification
@@ -9526,6 +12642,15 @@ noAction
 
 category: 'accessing'
 method: GtRemotePhlowAction
+addTarget: aGtPhlowActionTarget
+	self 
+		assert: [ aGtPhlowActionTarget notNil ]
+		description: [ 'Phlow action target must be non-nil' ].
+	target := self target, aGtPhlowActionTarget asPhlowTarget
+%
+
+category: 'accessing'
+method: GtRemotePhlowAction
 asGtDeclarativeAction
 	^ nil
 %
@@ -9547,7 +12672,30 @@ button
 category: 'testing'
 method: GtRemotePhlowAction
 canBeGtDeclarativeAction
+	self target asRemotePhlowActionTarget ifNil: [ ^ false ].
+	self id ifNotNil: [ :anId | 
+		anId isRemotePhlowId ifFalse: [ ^ false ] ].
 	^ true
+%
+
+category: 'decorating'
+method: GtRemotePhlowAction
+contextMenuAction
+	^ GtRemotePhlowContextMenuAction new
+		"definingMethod: (GtPhlowDefiningMethodsCollector forContext: thisContext) collect"
+%
+
+category: 'decorating'
+method: GtRemotePhlowAction
+contextMenuBoundAction
+	^ GtRemotePhlowContextMenuItemBoundAction new
+		"definingMethod: (GtPhlowDefiningMethodsCollector forContext: thisContext) collect"
+%
+
+category: 'accessing'
+method: GtRemotePhlowAction
+defaultTarget
+	^ GtRemotePhlowObjectActionTarget new
 %
 
 category: 'accessing'
@@ -9565,9 +12713,17 @@ definingClass: aClass
 category: 'accessing'
 method: GtRemotePhlowAction
 definingMethod
+	self definingClass ifNil: [ ^ nil ].
+	self definingSelector ifNil: [ ^ nil ].
+	
 	^ (self definingClass whichClassIncludesSelector: self definingSelector) 
 		ifNil: [ nil ]
-		ifNotNil: [ :aClass | aClass compiledMethodAt: self definingSelector ]
+		ifNotNil: [ :aClass | 
+			self 
+				gtDo: [
+					(aClass compiledMethodAt: self definingSelector) methodReference ] 
+				gemstoneDo: [
+					aClass compiledMethodAt: self definingSelector ] ]
 %
 
 category: 'accessing'
@@ -9594,6 +12750,18 @@ empty
 
 category: 'accessing'
 method: GtRemotePhlowAction
+forViewDefinedIn: aSymbol
+	self target: (GtRemotePhlowViewActionTarget forSelector: aSymbol)
+%
+
+category: 'testing'
+method: GtRemotePhlowAction
+hasMenuOptions
+	^ menuOptions notNil and: [ menuOptions hasAnyOptions ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowAction
 id
 	^ id
 %
@@ -9602,6 +12770,58 @@ category: 'accessing'
 method: GtRemotePhlowAction
 id: anId
 	id := anId
+%
+
+category: 'testing'
+method: GtRemotePhlowAction
+isDefaultTarget
+	| defaultTarget |
+	defaultTarget := self defaultTarget.
+	self target targetsDo: [ :eachTarget | 
+		eachTarget = defaultTarget ifTrue: [ ^ true ] ].
+	^ false
+%
+
+category: 'accessing - menu'
+method: GtRemotePhlowAction
+menuDisable: anObject
+	self menuOptions menuDisable: anObject
+%
+
+category: 'accessing - menu'
+method: GtRemotePhlowAction
+menuItemGroup: aGroupConfiguration
+	self menuOptions menuGroup: aGroupConfiguration
+%
+
+category: 'accessing - menu'
+method: GtRemotePhlowAction
+menuItemHideOnClick: aBoolean
+	self menuOptions menuHideOnClick: aBoolean
+%
+
+category: 'accessing - menu'
+method: GtRemotePhlowAction
+menuItemPinSubmenu
+	self menuOptions menuPinSubmenu
+%
+
+category: 'accessing - menu'
+method: GtRemotePhlowAction
+menuItemPreview: anObject
+	self menuOptions menuPreview: anObject
+%
+
+category: 'accessing - menu'
+method: GtRemotePhlowAction
+menuOptions
+	^ menuOptions ifNil: [ menuOptions := GtRemotePhlowMenuOptions new ]
+%
+
+category: 'accessing - menu'
+method: GtRemotePhlowAction
+menuShortcut: aShortcut
+	self menuOptions menuShortcut: aShortcut
 %
 
 category: 'decorating'
@@ -9664,6 +12884,12 @@ phlowErrorActionWithException: anException forBuildContext: aContext andSelector
 
 category: 'accessing'
 method: GtRemotePhlowAction
+primaryModifierAction: aBlock mouseCursor: aCursor
+	"Ignored in remote phlow"
+%
+
+category: 'accessing'
+method: GtRemotePhlowAction
 priority
 	^ priority
 %
@@ -9672,6 +12898,18 @@ category: 'accessing'
 method: GtRemotePhlowAction
 priority: aNumber
 	priority := aNumber
+%
+
+category: 'accessing'
+method: GtRemotePhlowAction
+target
+	^ target ifNil: [ GtRemotePhlowObjectActionTarget new ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowAction
+target: aGtRemotePhlowActionTarget
+	target := aGtRemotePhlowActionTarget default
 %
 
 category: 'accessing'
@@ -9699,26 +12937,81 @@ tooltipText: aTextOrString
 category: 'accessing'
 method: GtRemotePhlowButtonAction
 action: aValuable
-	actionBlock := aValuable
+	actionComputation := aValuable
 %
 
 category: 'accessing'
 method: GtRemotePhlowButtonAction
 actionBlock
-	^ actionBlock
+	^ self actionComputation
+%
+
+category: 'accessing'
+method: GtRemotePhlowButtonAction
+actionComputation
+	^ actionComputation
 %
 
 category: 'converting'
 method: GtRemotePhlowButtonAction
 asGtDeclarativeAction
-	^ GtPhlowButtonActionSpecification new
+	| specification |
+	
+	specification := GtPhlowButtonActionSpecification new
 		priority: self priority;
 		tooltipText: self tooltipText;
+		target: self target asRemotePhlowActionTarget;
 		label: self label;
 		iconStencil: self iconStencil;
 		phlowDataSource: (GtRemotePhlowDeclarativeBlockActionDataSource new
 			phlowAction: self;
-			targetBlock: self actionBlock)
+			targetBlock: self actionComputation).
+	self hasMenuOptions ifTrue: [
+		specification menuOptions: self menuOptions asMenuOptionsSpecification ].
+		
+	self id ifNotNil: [ :anId |
+		specification id: anId asBlocElementId ].
+		
+	^ specification
+%
+
+category: 'converting'
+method: GtRemotePhlowButtonAction
+asItemBoundActionToItem: anItem viewSelection: anIndex
+	"Normal phlow actions do no get the item or the selection as parameters.
+	They are bound already to them when they are created."
+	^ self
+%
+
+category: 'testing'
+method: GtRemotePhlowButtonAction
+canBeGtDeclarativeAction
+	^ self 
+			gtDo: [
+				super canBeGtDeclarativeAction and: [
+					self canBeGtDeclarativeActionOnTheGtSide ] ] 
+			gemstoneDo: [ 
+				super canBeGtDeclarativeAction]
+%
+
+category: 'converting'
+method: GtRemotePhlowButtonAction
+gtLiveFor: aView
+	<gtView>
+	
+	^ aView explicit
+		title: 'Live';
+		priority: 1;
+		declarativeStencil: [
+			GtPhlowNamedStencil new
+				stencilClassName: #GtLocalPhlowActionStencil;
+				stencilData: (self asGtDeclarativeAction 
+					asDictionaryForExportWithPhlowDataSource);
+				dataSerializationStrategy: GtPhlowStencilDataSerializationStrategy 
+					forMixedProxyDataEncoding  ];
+		actionButtonIcon: GtPhlowGlamorousVectorIconNameStencil play
+			action: [ :aButton | 
+				self actionComputation cull:  aButton ]
 %
 
 category: 'accessing'
@@ -9738,7 +13031,7 @@ method: GtRemotePhlowButtonAction
 initialize
 	super initialize.
 
-	actionBlock := [ :aButton | 
+	actionComputation := [ :aButton | 
 		"do nothing" ].
 %
 
@@ -9754,6 +13047,12 @@ label: aStringOrText
 	label := aStringOrText
 %
 
+category: 'testing'
+method: GtRemotePhlowButtonAction
+shouldShowContextActionOn: anItem viewSelection: aSelectionIndex 
+	^ true
+%
+
 ! Class implementation for 'GtRemotePhlowErrorAction'
 
 !		Instance methods for 'GtRemotePhlowErrorAction'
@@ -9764,7 +13063,9 @@ asGtDeclarativeAction
 	^ GtPhlowErrorActionSpecification new
 		priority: self priority;
 		errorMessage: self errorMessage;
-		tooltipText: self tooltipText
+		target: self target;
+		tooltipText: self tooltipText;
+		id: (self id ifNotNil: [ :anId | anId asBlocElementId ])
 %
 
 category: 'accessing'
@@ -9779,9 +13080,1051 @@ errorMessage: aStringMessage
 	errorMessage := aStringMessage
 %
 
+! Class implementation for 'GtRemotePhlowActionTargetDynamicTestContainer'
+
+!		Class methods for 'GtRemotePhlowActionTargetDynamicTestContainer'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowActionTargetDynamicTestContainer
+new
+	^ super new initialize
+%
+
+!		Instance methods for 'GtRemotePhlowActionTargetDynamicTestContainer'
+
+category: 'views'
+method: GtRemotePhlowActionTargetDynamicTestContainer
+gtColumnedListFor: aView
+	<gtView>
+	^ aView columnedList
+		title: 'Columned list';
+		priority: 20;
+		items: [ self items ];
+		column: 'Label' text: [ :anItem | anItem label ];
+		column: 'Value' text: [ :anItem | anItem value ];
+		dynamicPhlowContextItems: [ :anAction :anElement :anObject |
+			GtRemotePhlowExampleItemActionTarget default
+				contextPhlowActionsForObject: anObject ]
+%
+
+category: 'views'
+method: GtRemotePhlowActionTargetDynamicTestContainer
+gtColumnedListMultipleSelectionFor: aView
+	<gtView>
+	^ aView columnedList
+		title: 'Columned list - multiple selection';
+		priority: 21;
+		items: [ self items ];
+		column: 'Label' text: [ :anItem | anItem label ];
+		column: 'Value' text: [ :anItem | anItem value ];
+		withMultipleSelection;
+		send: [ :anObject :theIndices |
+			theIndices size = 1
+				ifTrue: [ anObject ]
+				ifFalse: [ GtRemotePhlowActionTargetTestItemGroup withAll: anObject ] ];
+		dynamicPhlowContextItems: [ :anAction :anElement :aCollection |
+			| effectiveObject |
+			effectiveObject := aCollection size = 1
+				ifTrue: [ aCollection first ]
+				ifFalse: [ GtRemotePhlowActionTargetTestItemGroup withAll: aCollection ].
+			GtRemotePhlowExampleItemActionTarget default
+				contextPhlowActionsForObject: effectiveObject ]
+%
+
+category: 'views'
+method: GtRemotePhlowActionTargetDynamicTestContainer
+gtColumnedTreeFor: aView
+	<gtView>
+	^ aView columnedTree
+		title: 'Columned tree';
+		priority: 40;
+		items: [ self items ];
+		children: [ :anItem | anItem children ];
+		column: 'Label' text: [ :anItem | anItem label ];
+		column: 'Value' text: [ :anItem | anItem value ];
+		dynamicPhlowContextItems: [ :anAction :anElement :anObject |
+			GtRemotePhlowExampleItemActionTarget default
+				contextPhlowActionsForObject: anObject ]
+%
+
+category: 'views'
+method: GtRemotePhlowActionTargetDynamicTestContainer
+gtColumnedTreeMultipleSelectionFor: aView
+	<gtView>
+	^ aView columnedTree
+		title: 'Columned tree - multiple selection';
+		priority: 41;
+		items: [ self items ];
+		children: [ :anItem | anItem children ];
+		column: 'Label' text: [ :anItem | anItem label ];
+		column: 'Value' text: [ :anItem | anItem value ];
+		withMultipleSelection;
+		send: [ :anObject :theIndices |
+			theIndices size = 1
+				ifTrue: [ anObject ]
+				ifFalse: [ GtRemotePhlowActionTargetTestItemGroup withAll: anObject ] ];
+		dynamicPhlowContextItems: [ :anAction :anElement :aCollection |
+			| effectiveObject |
+			effectiveObject := aCollection size = 1
+				ifTrue: [ aCollection first ]
+				ifFalse: [ GtRemotePhlowActionTargetTestItemGroup withAll: aCollection ].
+			GtRemotePhlowExampleItemActionTarget default
+				contextPhlowActionsForObject: effectiveObject ]
+%
+
+category: 'views'
+method: GtRemotePhlowActionTargetDynamicTestContainer
+gtListFor: aView
+	<gtView>
+	^ aView list
+		title: 'List';
+		priority: 10;
+		items: [ self items ];
+		itemText: [ :anItem | anItem label ];
+		dynamicPhlowContextItems: [ :anAction :anElement :anObject |
+			GtRemotePhlowExampleItemActionTarget default
+				contextPhlowActionsForObject: anObject ]
+%
+
+category: 'views'
+method: GtRemotePhlowActionTargetDynamicTestContainer
+gtListMultipleSelectionFor: aView
+	<gtView>
+	^ aView list
+		title: 'List - multiple selection';
+		priority: 11;
+		items: [ self items ];
+		itemText: [ :anItem | anItem label ];
+		withMultipleSelection;
+		send: [ :anObject :theIndices |
+			theIndices size = 1
+				ifTrue: [ anObject ]
+				ifFalse: [ GtRemotePhlowActionTargetTestItemGroup withAll: anObject ] ];
+		dynamicPhlowContextItems: [ :anAction :anElement :aCollection |
+			| effectiveObject |
+			effectiveObject := aCollection size = 1
+				ifTrue: [ aCollection first ]
+				ifFalse: [ GtRemotePhlowActionTargetTestItemGroup withAll: aCollection ].
+			GtRemotePhlowExampleItemActionTarget default
+				contextPhlowActionsForObject: effectiveObject ]
+%
+
+category: 'views'
+method: GtRemotePhlowActionTargetDynamicTestContainer
+gtTreeFor: aView
+	<gtView>
+	^ aView tree
+		title: 'Tree';
+		priority: 30;
+		items: [ self items ];
+		children: [ :anItem | anItem children ];
+		itemText: [ :anItem | anItem label ];
+		dynamicPhlowContextItems: [ :anAction :anElement :anObject |
+			GtRemotePhlowExampleItemActionTarget default
+				contextPhlowActionsForObject: anObject ]
+%
+
+category: 'views'
+method: GtRemotePhlowActionTargetDynamicTestContainer
+gtTreeMultipleSelectionFor: aView
+	<gtView>
+	^ aView tree
+		title: 'Tree - multiple selection';
+		priority: 31;
+		items: [ self items ];
+		children: [ :anItem | anItem children ];
+		itemText: [ :anItem | anItem label ];
+		withMultipleSelection;
+		send: [ :anObject :theIndices |
+			theIndices size = 1
+				ifTrue: [ anObject ]
+				ifFalse: [ GtRemotePhlowActionTargetTestItemGroup withAll: anObject ] ];
+		dynamicPhlowContextItems: [ :anAction :anElement :aCollection |
+			| effectiveObject |
+			effectiveObject := aCollection size = 1
+				ifTrue: [ aCollection first ]
+				ifFalse: [ GtRemotePhlowActionTargetTestItemGroup withAll: aCollection ].
+			GtRemotePhlowExampleItemActionTarget default
+				contextPhlowActionsForObject: effectiveObject ]
+%
+
+category: 'initialization'
+method: GtRemotePhlowActionTargetDynamicTestContainer
+initialize
+	super initialize.
+	items := {
+		GtRemotePhlowActionTargetTestItem
+			label: 'Alpha' value: 1
+			children: {
+				GtRemotePhlowActionTargetTestItem label: 'Alpha-1' value: 11.
+				GtRemotePhlowActionTargetTestItem label: 'Alpha-2' value: 12 }.
+		GtRemotePhlowActionTargetTestItem
+			label: 'Beta' value: 2
+			children: {
+				GtRemotePhlowActionTargetTestItem label: 'Beta-1' value: 21 }.
+		GtRemotePhlowActionTargetTestItem label: 'Gamma' value: 3.
+		GtRemotePhlowActionTargetTestItem label: 'Delta' value: 4.
+		GtRemotePhlowActionTargetTestItem label: 'Epsilon' value: 5 }
+%
+
+category: 'accessing'
+method: GtRemotePhlowActionTargetDynamicTestContainer
+items
+	^ items
+%
+
+category: 'accessing'
+method: GtRemotePhlowActionTargetDynamicTestContainer
+items: aCollection
+	items := aCollection
+%
+
+! Class implementation for 'GtRemotePhlowActionTargetExamples'
+
+!		Instance methods for 'GtRemotePhlowActionTargetExamples'
+
+category: 'examples - targets'
+method: GtRemotePhlowActionTargetExamples
+compositeTarget
+	<gtExample>
+	| target objectTarget exampleTarget |
+	objectTarget := self objectActionTarget.
+	exampleTarget := self exampleItemActionTarget.
+	target := objectTarget , exampleTarget.
+	self assert: target class equals: GtRemotePhlowCompositeActionTarget.
+	self assert: target targets size equals: 2.
+	^ target
+%
+
+category: 'examples - targets'
+method: GtRemotePhlowActionTargetExamples
+compositeTargetIsForTarget
+	<gtExample>
+	| target |
+	target := self compositeTarget.
+	self assert: (target isForTarget: GtRemotePhlowObjectActionTarget new).
+	self assert: (target isForTarget: GtRemotePhlowExampleItemActionTarget new).
+	self assert: (target isForTarget: (GtRemotePhlowViewActionTarget forSelector: #foo)) not.
+	^ target
+%
+
+category: 'examples - serialization'
+method: GtRemotePhlowActionTargetExamples
+compositeTargetSerialization
+	<gtExample>
+	| target dict restored |
+	target := self compositeTarget.
+	dict := target asDictionaryForExport.
+	self assert: (dict at: '__typeName') equals: 'GtRemotePhlowCompositeActionTarget'.
+	self assert: (dict at: 'targets') size equals: 2.
+	restored := GtPhlowDeclarativeSpecification fromDictionary: dict.
+	self assert: restored equals: target.
+	^ dict
+%
+
+category: 'examples'
+method: GtRemotePhlowActionTargetExamples
+contextMenuActionsForGroup
+	<gtExample>
+	| group target actions |
+	group := self testItemGroup.
+	target := GtRemotePhlowExampleItemActionTarget new.
+	actions := target phlowActionsForObject: group.
+	self assert: actions size equals: 5.
+	self assert: (actions allSatisfy: [ :each | each target isForTarget: target ]).
+	^ actions
+%
+
+category: 'examples'
+method: GtRemotePhlowActionTargetExamples
+contextMenuActionsForItem
+	<gtExample>
+	| item target actions |
+	item := self testItem.
+	target := GtRemotePhlowExampleItemActionTarget new.
+	actions := target phlowActionsForObject: item.
+	self assert: actions size equals: 7.
+	self assert: (actions allSatisfy: [ :each | each target isForTarget: target ]).
+	^ actions
+%
+
+category: 'examples - targets'
+method: GtRemotePhlowActionTargetExamples
+exampleItemActionTarget
+	<gtExample>
+	| target |
+	target := GtRemotePhlowExampleItemActionTarget new.
+	self assert: target asPhlowTarget == target.
+	self assert: target class typeLabel equals: 'exampleItemAction'.
+	^ target
+%
+
+category: 'examples - targets'
+method: GtRemotePhlowActionTargetExamples
+forwardActionTarget
+	<gtExample>
+	| target |
+	target := GtRemotePhlowForwardActionTarget forClassName: 'GtRemotePhlowActionTargetTestItem'.
+	self assert: target targetClassName equals: 'GtRemotePhlowActionTargetTestItem'.
+	self assert: target class typeLabel equals: 'forwardAction'.
+	^ target
+%
+
+category: 'examples - equality'
+method: GtRemotePhlowActionTargetExamples
+forwardActionTargetEquality
+	<gtExample>
+	| target1 target2 target3 |
+	target1 := GtRemotePhlowForwardActionTarget forClassName: 'ClassA'.
+	target2 := GtRemotePhlowForwardActionTarget forClassName: 'ClassA'.
+	target3 := GtRemotePhlowForwardActionTarget forClassName: 'ClassB'.
+	self assert: target1 equals: target2.
+	self assert: target1 hash equals: target2 hash.
+	self assert: (target1 = target3) not.
+	^ target1
+%
+
+category: 'examples - serialization'
+method: GtRemotePhlowActionTargetExamples
+forwardActionTargetSerialization
+	<gtExample>
+	| target dict restored |
+	target := self forwardActionTarget.
+	dict := target asDictionaryForExport.
+	self assert: (dict at: '__typeName') equals: 'GtRemotePhlowForwardActionTarget'.
+	self assert: (dict at: 'targetClassName') equals: 'GtRemotePhlowActionTargetTestItem'.
+	restored := GtPhlowDeclarativeSpecification fromDictionary: dict.
+	self assert: restored equals: target.
+	^ dict
+%
+
+category: 'examples'
+method: GtRemotePhlowActionTargetExamples
+objectActionsForItem
+	<gtExample>
+	| item target actions |
+	item := self testItem.
+	target := GtRemotePhlowObjectActionTarget new.
+	actions := target phlowActionsForObject: item.
+	self assert: actions size equals: 0.
+	^ actions
+%
+
+category: 'examples - targets'
+method: GtRemotePhlowActionTargetExamples
+objectActionTarget
+	<gtExample>
+	| target |
+	target := GtRemotePhlowObjectActionTarget new.
+	self assert: target asPhlowTarget == target.
+	self assert: target class typeLabel equals: 'objectAction'.
+	^ target
+%
+
+category: 'examples - targets'
+method: GtRemotePhlowActionTargetExamples
+objectActionTargetEquality
+	<gtExample>
+	| target1 target2 |
+	target1 := GtRemotePhlowObjectActionTarget new.
+	target2 := GtRemotePhlowObjectActionTarget new.
+	self assert: target1 equals: target2.
+	self assert: target1 hash equals: target2 hash.
+	self assert: (target1 = GtRemotePhlowExampleItemActionTarget new) not.
+	^ target1
+%
+
+category: 'examples - targets'
+method: GtRemotePhlowActionTargetExamples
+objectActionTargetIsForTarget
+	<gtExample>
+	| target |
+	target := self objectActionTarget.
+	self assert: (target isForTarget: GtRemotePhlowObjectActionTarget new).
+	self assert: (target isForTarget: GtRemotePhlowExampleItemActionTarget new) not.
+	^ target
+%
+
+category: 'examples - serialization'
+method: GtRemotePhlowActionTargetExamples
+objectActionTargetSerialization
+	<gtExample>
+	| target dict restored |
+	target := self objectActionTarget.
+	dict := target asDictionaryForExport.
+	self assert: (dict at: '__typeName') equals: 'GtRemotePhlowObjectActionTarget'.
+	restored := GtPhlowDeclarativeSpecification fromDictionary: dict.
+	self assert: restored equals: target.
+	^ dict
+%
+
+category: 'examples - targets'
+method: GtRemotePhlowActionTargetExamples
+objectContextMenuTarget
+	<gtExample>
+	| target |
+	target := GtRemotePhlowObjectContextMenuTarget new.
+	self assert: target asPhlowTarget == target.
+	self assert: target class typeLabel equals: 'objectContextMenu'.
+	^ target
+%
+
+category: 'examples'
+method: GtRemotePhlowActionTargetExamples
+targetedActionsWithGroupFactory
+	<gtExample>
+	| targeted singleItem items singleActions groupActions |
+	targeted := GtRemotePhlowContextMenuTargetedObjectActions
+		forTarget: GtRemotePhlowExampleItemActionTarget
+		groupWith: [ :aCollection | GtRemotePhlowActionTargetTestItemGroup withAll: aCollection ].
+	singleItem := GtRemotePhlowActionTargetTestItem label: 'Test' value: 42.
+	singleActions := OrderedCollection new.
+	targeted collectInvidualActionsOn: singleActions forElement: nil item: { singleItem } index: { 1 }.
+	self assert: singleActions size equals: 7.
+	items := {
+		GtRemotePhlowActionTargetTestItem label: 'A' value: 1.
+		GtRemotePhlowActionTargetTestItem label: 'B' value: 2 }.
+	groupActions := OrderedCollection new.
+	targeted collectInvidualActionsOn: groupActions forElement: nil item: items index: { 1. 2 }.
+	self assert: groupActions size equals: 5.
+	^ targeted
+%
+
+category: 'examples - actions'
+method: GtRemotePhlowActionTargetExamples
+testContainer
+	<gtExample>
+	| container |
+	container := GtRemotePhlowActionTargetTestContainer new.
+	self assert: container items size equals: 5.
+	^ container
+%
+
+category: 'examples - actions'
+method: GtRemotePhlowActionTargetExamples
+testDynamicContainer
+	<gtExample>
+	| container |
+	container := GtRemotePhlowActionTargetDynamicTestContainer new.
+	self assert: container items size equals: 5.
+	^ container
+%
+
+category: 'examples - actions'
+method: GtRemotePhlowActionTargetExamples
+testItem
+	<gtExample>
+	| item |
+	item := GtRemotePhlowActionTargetTestItem label: 'Test' value: 42.
+	self assert: item label equals: 'Test'.
+	self assert: item value equals: 42.
+	^ item
+%
+
+category: 'examples - actions'
+method: GtRemotePhlowActionTargetExamples
+testItemGroup
+	<gtExample>
+	| group |
+	group := GtRemotePhlowActionTargetTestItemGroup withAll: {
+		GtRemotePhlowActionTargetTestItem label: 'A' value: 1.
+		GtRemotePhlowActionTargetTestItem label: 'B' value: 2 }.
+	self assert: group items size equals: 2.
+	^ group
+%
+
+category: 'examples - targets'
+method: GtRemotePhlowActionTargetExamples
+viewActionTarget
+	<gtExample>
+	| target |
+	target := GtRemotePhlowViewActionTarget forSelector: #gtListFor:.
+	self assert: target definingMethodSelector equals: #gtListFor:.
+	self assert: target class typeLabel equals: 'viewAction'.
+	^ target
+%
+
+category: 'examples - equality'
+method: GtRemotePhlowActionTargetExamples
+viewActionTargetEquality
+	<gtExample>
+	| target1 target2 target3 |
+	target1 := GtRemotePhlowViewActionTarget forSelector: #gtListFor:.
+	target2 := GtRemotePhlowViewActionTarget forSelector: #gtListFor:.
+	target3 := GtRemotePhlowViewActionTarget forSelector: #gtTreeFor:.
+	self assert: target1 equals: target2.
+	self assert: target1 hash equals: target2 hash.
+	self assert: (target1 = target3) not.
+	^ target1
+%
+
+category: 'examples - serialization'
+method: GtRemotePhlowActionTargetExamples
+viewActionTargetSerialization
+	<gtExample>
+	| target dict restored |
+	target := self viewActionTarget.
+	dict := target asDictionaryForExport.
+	self assert: (dict at: '__typeName') equals: 'GtRemotePhlowViewActionTarget'.
+	self assert: (dict at: 'definingMethodSelector') equals: #gtListFor:.
+	restored := GtPhlowDeclarativeSpecification fromDictionary: dict.
+	self assert: restored equals: target.
+	^ dict
+%
+
+! Class implementation for 'GtRemotePhlowActionTargetTestContainer'
+
+!		Class methods for 'GtRemotePhlowActionTargetTestContainer'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowActionTargetTestContainer
+new
+	^ super new initialize
+%
+
+!		Instance methods for 'GtRemotePhlowActionTargetTestContainer'
+
+category: 'gt - extensions'
+method: GtRemotePhlowActionTargetTestContainer
+gtColumnedListFor: aView
+	<gtView>
+	^ aView columnedList
+		title: 'Columned list';
+		priority: 20;
+		items: [ self items ];
+		column: 'Label' text: [ :anItem | anItem label ];
+		column: 'Value' text: [ :anItem | anItem value ];
+		contextActionsForTarget: GtRemotePhlowExampleItemActionTarget
+%
+
+category: 'views'
+method: GtRemotePhlowActionTargetTestContainer
+gtColumnedListMultipleSelectionFor: aView
+	<gtView>
+	^ aView columnedList
+		title: 'Columned list - multiple selection';
+		priority: 21;
+		items: [ self items ];
+		column: 'Label' text: [ :anItem | anItem label ];
+		column: 'Value' text: [ :anItem | anItem value ];
+		withMultipleSelection;
+		send: [ :anObject :theIndices |
+			theIndices size = 1
+				ifTrue: [ anObject ]
+				ifFalse: [ GtRemotePhlowActionTargetTestItemGroup withAll: anObject ] ];
+		contextActionsForTarget: GtRemotePhlowExampleItemActionTarget
+			groupTarget: GtRemotePhlowExampleItemActionTarget
+			groupWith: [ :aCollection | 
+				GtRemotePhlowActionTargetTestItemGroup withAll: aCollection ]
+%
+
+category: 'gt - extensions'
+method: GtRemotePhlowActionTargetTestContainer
+gtColumnedTreeFor: aView
+	<gtView>
+	^ aView columnedTree
+		title: 'Columned tree';
+		priority: 40;
+		items: [ self items ];
+		children: [ :anItem | anItem children ];
+		column: 'Label' text: [ :anItem | anItem label ];
+		column: 'Value' text: [ :anItem | anItem value ];
+		contextActionsForTarget: GtRemotePhlowExampleItemActionTarget
+%
+
+category: 'views'
+method: GtRemotePhlowActionTargetTestContainer
+gtColumnedTreeMultipleSelectionFor: aView
+	<gtView>
+	^ aView columnedTree
+		title: 'Columned tree - multiple selection';
+		priority: 41;
+		items: [ self items ];
+		children: [ :anItem | anItem children ];
+		column: 'Label' text: [ :anItem | anItem label ];
+		column: 'Value' text: [ :anItem | anItem value ];
+		withMultipleSelection;
+		send: [ :anObject :theIndices |
+			theIndices size = 1
+				ifTrue: [ anObject ]
+				ifFalse: [ GtRemotePhlowActionTargetTestItemGroup withAll: anObject ] ];
+		contextActionsForTarget: GtRemotePhlowExampleItemActionTarget
+			groupTarget: GtRemotePhlowExampleItemActionTarget
+			groupWith: [ :aCollection | 
+				GtRemotePhlowActionTargetTestItemGroup withAll: aCollection ]
+%
+
+category: 'gt - extensions'
+method: GtRemotePhlowActionTargetTestContainer
+gtListFor: aView
+	<gtView>
+	^ aView list
+		title: 'List';
+		priority: 10;
+		items: [ self items ];
+		itemText: [ :anItem | anItem label ];
+		contextActionsForTarget: GtRemotePhlowExampleItemActionTarget
+%
+
+category: 'views'
+method: GtRemotePhlowActionTargetTestContainer
+gtListMultipleSelectionFor: aView
+	<gtView>
+	^ aView list
+		title: 'List - multiple selection';
+		priority: 11;
+		items: [ self items ];
+		itemText: [ :anItem | anItem label ];
+		withMultipleSelection;
+		send: [ :anObject :theIndices |
+			theIndices size = 1
+				ifTrue: [ anObject ]
+				ifFalse: [ GtRemotePhlowActionTargetTestItemGroup withAll: anObject ] ];
+		contextActionsForTarget: GtRemotePhlowExampleItemActionTarget
+			groupTarget: GtRemotePhlowExampleItemActionTarget
+			groupWith: [ :aCollection | GtRemotePhlowActionTargetTestItemGroup withAll: aCollection ]
+%
+
+category: 'gt - extensions'
+method: GtRemotePhlowActionTargetTestContainer
+gtTreeFor: aView
+	<gtView>
+	^ aView tree
+		title: 'Tree';
+		priority: 30;
+		items: [ self items ];
+		children: [ :anItem | anItem children ];
+		itemText: [ :anItem | anItem label ];
+		contextActionsForTarget: GtRemotePhlowExampleItemActionTarget
+%
+
+category: 'views'
+method: GtRemotePhlowActionTargetTestContainer
+gtTreeMultipleSelectionFor: aView
+	<gtView>
+	^ aView tree
+		title: 'Tree - multiple selection';
+		priority: 31;
+		items: [ self items ];
+		children: [ :anItem | anItem children ];
+		itemText: [ :anItem | anItem label ];
+		withMultipleSelection;
+		send: [ :anObject :theIndices |
+			theIndices size = 1
+				ifTrue: [ anObject ]
+				ifFalse: [ GtRemotePhlowActionTargetTestItemGroup withAll: anObject ] ];
+		contextActionsForTarget: GtRemotePhlowExampleItemActionTarget
+			groupTarget: GtRemotePhlowExampleItemActionTarget
+			groupWith: [ :aCollection | GtRemotePhlowActionTargetTestItemGroup withAll: aCollection ]
+%
+
+category: 'initialization'
+method: GtRemotePhlowActionTargetTestContainer
+initialize
+	super initialize.
+	items := {
+		GtRemotePhlowActionTargetTestItem
+			label: 'Alpha' value: 1
+			children: {
+				GtRemotePhlowActionTargetTestItem label: 'Alpha-1' value: 11.
+				GtRemotePhlowActionTargetTestItem label: 'Alpha-2' value: 12 }.
+		GtRemotePhlowActionTargetTestItem
+			label: 'Beta' value: 2
+			children: {
+				GtRemotePhlowActionTargetTestItem label: 'Beta-1' value: 21 }.
+		GtRemotePhlowActionTargetTestItem label: 'Gamma' value: 3.
+		GtRemotePhlowActionTargetTestItem label: 'Delta' value: 4.
+		GtRemotePhlowActionTargetTestItem label: 'Epsilon' value: 5 }
+%
+
+category: 'accessing'
+method: GtRemotePhlowActionTargetTestContainer
+items
+	^ items
+%
+
+category: 'accessing'
+method: GtRemotePhlowActionTargetTestContainer
+items: aCollection
+	items := aCollection
+%
+
+! Class implementation for 'GtRemotePhlowActionTargetTestItem'
+
+!		Class methods for 'GtRemotePhlowActionTargetTestItem'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowActionTargetTestItem
+label: aLabel value: aValue
+	^ self new
+		label: aLabel;
+		value: aValue
+%
+
+category: 'instance creation'
+classmethod: GtRemotePhlowActionTargetTestItem
+label: aLabel value: aValue children: aCollection
+	^ self new
+		label: aLabel;
+		value: aValue;
+		children: aCollection
+%
+
+!		Instance methods for 'GtRemotePhlowActionTargetTestItem'
+
+category: 'accessing'
+method: GtRemotePhlowActionTargetTestItem
+children
+	^ children ifNil: [ #() ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowActionTargetTestItem
+children: aCollection
+	children := aCollection
+%
+
+category: 'gt - extensions - context menu actions'
+method: GtRemotePhlowActionTargetTestItem
+gtBasicContextMenuActionFor: anAction
+	<gtAction>
+	
+	^ anAction button
+		target: GtRemotePhlowExampleItemActionTarget;
+		label: 'Basic action';
+		priority: 6;
+		action: [ :anElement | 
+			anElement phlow spawnObject: self ]
+%
+
+category: 'gt - extensions - object actions'
+method: GtRemotePhlowActionTargetTestItem
+gtBrowseActionFor: anAction
+	<gtAction>
+
+	^ anAction button
+		target: GtRemotePhlowObjectActionTarget;
+		icon: (GtPhlowGlamorousVectorIconNameStencil new 
+			iconName: #browse);
+		label: 'Browse';
+		priority: 3;
+		action: [ :anElement | 
+			anElement phlow spawnObject: self class ]
+%
+
+category: 'gt - extensions - view actions'
+method: GtRemotePhlowActionTargetTestItem
+gtCopyDetailsActionFor: anAction
+	<gtAction>
+	
+	^ anAction button
+		forViewDefinedIn: #gtDetailsFor:;
+		label: 'Copy details';
+		priority: 10;
+		action: [ :anElement | 
+			anElement phlow 
+				copyToClipboard: self label , ': ' , self value printString ]
+%
+
+category: 'gt - extensions'
+method: GtRemotePhlowActionTargetTestItem
+gtCopyLabelContextMenuActionFor: anAction
+	<gtAction>
+	
+	^ anAction button
+		id: GtRemotePhlowExampleCopyLabelActionId new;
+		target: GtRemotePhlowExampleItemActionTarget;
+		icon: (GtPhlowGlamorousVectorIconNameStencil new 
+			iconName: #clipboard);
+		label: 'Copy label';
+		menuItemPreview: self label;
+		menuItemGroup: GtRemotePhlowMenuItemGroupConfiguration editing;
+		priority: 7;
+		action: [ :anElement | 
+			anElement phlow copyToClipboard: self label ]
+%
+
+category: 'gt - extensions - views'
+method: GtRemotePhlowActionTargetTestItem
+gtDetailsFor: aView
+	<gtView>
+	
+	^ aView columnedList
+		title: 'Details';
+		priority: 10;
+		items: [ { 'Label' -> self label. 'Value' -> self value } ];
+		column: 'Property' text: [ :anAssoc | anAssoc key ];
+		column: 'Value' text: [ :anAssoc | anAssoc value ]
+%
+
+category: 'gt - extensions - context menu actions'
+method: GtRemotePhlowActionTargetTestItem
+gtDisabledContextMenuActionFor: anAction
+	<gtAction>
+	
+	^ anAction button
+		target: GtRemotePhlowExampleItemActionTarget;
+		icon: (GtPhlowGlamorousVectorIconNameStencil new 
+			iconName: #cancel);
+		label: 'Disabled action';
+		menuItemGroup: GtRemotePhlowMenuItemGroupConfiguration inspection;
+		menuDisable: [ true ];
+		priority: 5;
+		action: [ :anElement | ]
+%
+
+category: 'gt - extensions'
+method: GtRemotePhlowActionTargetTestItem
+gtInspectItemContextMenuActionFor: anAction
+	<gtAction>
+	
+	^ anAction button
+		id: GtRemotePhlowExampleInspectItemActionId new;
+		target: GtRemotePhlowExampleItemActionTarget;
+		icon: (GtPhlowGlamorousVectorIconNameStencil new 
+			iconName: #inspect);
+		label: 'Inspect item';
+		menuItemGroup: GtRemotePhlowMenuItemGroupConfiguration inspection;
+		menuShortcut: 'i';
+		priority: 1;
+		action: [ :anElement | 
+			anElement phlow spawnObject: self ]
+%
+
+category: 'gt - extensions'
+method: GtRemotePhlowActionTargetTestItem
+gtInspectObjectContextMenuActionFor: anAction
+	<gtAction>
+	
+	^ anAction button
+		id: GtRemotePhlowExampleCustomInspectActionId new;
+		target: GtRemotePhlowObjectContextMenuTarget;
+		icon: (GtPhlowGlamorousVectorIconNameStencil new 
+			iconName: #inspect);
+		label: 'Custom inspect item';
+		menuItemGroup: GtRemotePhlowMenuItemGroupConfiguration inspection;
+		priority: 8;
+		action: [ :anElement | 
+			anElement phlow spawnObject: self ]
+%
+
+category: 'gt - extensions - context menu actions'
+method: GtRemotePhlowActionTargetTestItem
+gtInspectValueContextMenuActionFor: anAction
+	<gtAction>
+	
+	^ anAction button
+		target: GtRemotePhlowExampleItemActionTarget;
+		icon: (GtPhlowGlamorousVectorIconNameStencil new 
+			iconName: #inspect);
+		label: 'Inspect value';
+		menuItemPreview: self value printString;
+		menuItemGroup: GtRemotePhlowMenuItemGroupConfiguration inspection;
+		menuDisable: [ self value isNil ];
+		priority: 2;
+		action: [ :anElement | 
+			anElement phlow spawnObject: self value ]
+%
+
+category: 'gt - extensions - object actions'
+method: GtRemotePhlowActionTargetTestItem
+gtPrintActionFor: anAction
+	<gtAction>
+	
+	^ anAction button
+		label: 'Print';
+		priority: 5;
+		action: [ :anElement | 
+			anElement phlow spawnObject: self printString ]
+%
+
+category: 'gt - extensions - context menu actions'
+method: GtRemotePhlowActionTargetTestItem
+gtPrintItemContextMenuActionFor: anAction
+	<gtAction>
+	
+	^ anAction button
+		target: GtRemotePhlowExampleItemActionTarget;
+		label: 'Print item';
+		menuItemPreview: self printString;
+		menuItemGroup: GtRemotePhlowMenuItemGroupConfiguration printing;
+		menuItemHideOnClick: false;
+		priority: 3;
+		action: [ :anElement | 
+			anElement phlow spawnObject: self printString ]
+%
+
+category: 'gt - extensions - context menu actions'
+method: GtRemotePhlowActionTargetTestItem
+gtPrintLabelContextMenuActionFor: anAction
+	<gtAction>
+	
+	^ anAction button
+		target: GtRemotePhlowExampleItemActionTarget;
+		label: 'Print label';
+		menuItemPreview: self label;
+		menuItemGroup: GtRemotePhlowMenuItemGroupConfiguration printing;
+		menuItemPinSubmenu;
+		priority: 4;
+		action: [ :anElement | 
+			anElement phlow spawnObject: self label ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowActionTargetTestItem
+label
+	^ label
+%
+
+category: 'accessing'
+method: GtRemotePhlowActionTargetTestItem
+label: aString
+	label := aString
+%
+
+category: 'printing'
+method: GtRemotePhlowActionTargetTestItem
+printOn: aStream
+	aStream parenthesize: [
+		aStream
+			nextPutAll: (label ifNil: [ '' ]);
+			nextPutAll: ': ';
+			print: value ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowActionTargetTestItem
+value
+	^ value
+%
+
+category: 'accessing'
+method: GtRemotePhlowActionTargetTestItem
+value: anObject
+	value := anObject
+%
+
+! Class implementation for 'GtRemotePhlowActionTargetTestItemGroup'
+
+!		Class methods for 'GtRemotePhlowActionTargetTestItemGroup'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowActionTargetTestItemGroup
+withAll: aCollection
+	^ self new items: aCollection
+%
+
+!		Instance methods for 'GtRemotePhlowActionTargetTestItemGroup'
+
+category: 'gt - extensions - context menu actions'
+method: GtRemotePhlowActionTargetTestItemGroup
+gtBasicGroupContextMenuActionFor: anAction
+	<gtAction>
+	
+	^ anAction button
+		target: GtRemotePhlowExampleItemActionTarget;
+		label: 'Basic group action';
+		priority: 5;
+		action: [ :anElement | 
+			anElement phlow spawnObject: self ]
+%
+
+category: 'gt - extensions - context menu actions'
+method: GtRemotePhlowActionTargetTestItemGroup
+gtDisabledGroupContextMenuActionFor: anAction
+	<gtAction>
+	
+	^ anAction button
+		target: GtRemotePhlowExampleItemActionTarget;
+		icon: (GtPhlowGlamorousVectorIconNameStencil new 
+			iconName: #cancel);
+		label: 'Disabled group action';
+		menuItemGroup: GtRemotePhlowMenuItemGroupConfiguration inspection;
+		menuDisable: [ true ];
+		priority: 4;
+		action: [ :anElement | ]
+%
+
+category: 'gt - extensions - context menu actions'
+method: GtRemotePhlowActionTargetTestItemGroup
+gtInspectGroupContextMenuActionFor: anAction
+	<gtAction>
+	
+	^ anAction button
+		target: GtRemotePhlowExampleItemActionTarget;
+		icon: (GtPhlowGlamorousVectorIconNameStencil new 
+			iconName: #inspect);
+		label: 'Inspect group';
+		menuItemGroup: GtRemotePhlowMenuItemGroupConfiguration inspection;
+		menuShortcut: 'g';
+		priority: 1;
+		action: [ :anElement | 
+			anElement phlow spawnObject: self ]
+%
+
+category: 'gt - extensions - context menu actions'
+method: GtRemotePhlowActionTargetTestItemGroup
+gtInspectGroupItemsContextMenuActionFor: anAction
+	<gtAction>
+	
+	^ anAction button
+		target: GtRemotePhlowExampleItemActionTarget;
+		icon: (GtPhlowGlamorousVectorIconNameStencil new 
+			iconName: #inspect);
+		label: 'Inspect group items';
+		menuItemPreview: self items size printString, ' items';
+		menuItemGroup: GtRemotePhlowMenuItemGroupConfiguration inspection;
+		priority: 2;
+		action: [ :anElement | 
+			anElement phlow spawnObject: self items ]
+%
+
+category: 'gt - extensions - context menu actions'
+method: GtRemotePhlowActionTargetTestItemGroup
+gtPrintGroupContextMenuActionFor: anAction
+	<gtAction>
+	
+	^ anAction button
+		target: GtRemotePhlowExampleItemActionTarget;
+		label: 'Print group';
+		menuItemPreview: self printString;
+		menuItemGroup: GtRemotePhlowMenuItemGroupConfiguration printing;
+		menuItemHideOnClick: false;
+		priority: 3;
+		action: [ :anElement | 
+			anElement phlow spawnObject: self printString ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowActionTargetTestItemGroup
+items
+	^ items
+%
+
+category: 'accessing'
+method: GtRemotePhlowActionTargetTestItemGroup
+items: aCollection
+	items := aCollection
+%
+
+category: 'printing'
+method: GtRemotePhlowActionTargetTestItemGroup
+printOn: aStream
+	aStream
+		nextPutAll: 'Group(';
+		print: items size;
+		nextPutAll: ' items)'
+%
+
 ! Class implementation for 'GtRemotePhlowApiWrapper'
 
 !		Instance methods for 'GtRemotePhlowApiWrapper'
+
+category: 'actions'
+method: GtRemotePhlowApiWrapper
+copyToClipboard: aString
+	currentAction := GtRemotePhlowCopyToClipboardAction forString: aString
+%
 
 category: 'accessing'
 method: GtRemotePhlowApiWrapper
@@ -10305,6 +14648,425 @@ updateValue: aCellValue forComputedItem: aComputedItem rowIndex: rowIndex column
 		itemText: (self phlowTextOrStringFrom: itemText).
 %
 
+! Class implementation for 'GtRemotePhlowColumnedListViewContextActionsBasicTestObject'
+
+!		Instance methods for 'GtRemotePhlowColumnedListViewContextActionsBasicTestObject'
+
+category: 'gt - views'
+method: GtRemotePhlowColumnedListViewContextActionsBasicTestObject
+gtColumnedListWithBasicContextActionsFor: aView
+	<gtView>
+
+	^aView columnedList
+		title: 'Basic actions';
+		priority: 15;
+		items: [ 10 to: 15 ];
+		column: 'Value' text: [ :x :anIndex | 
+			'value: ', x printString, '; index: ', anIndex printString ];
+		contextItemLabel: 'Inspect element' action: [ :anElement |
+				anElement phlow spawnObject: anElement ];
+		contextItemLabel: 'Inspect object' action: [ :anElement :anObject |
+				anElement phlow spawnObject: anObject ];
+		contextItemLabel: 'Inspect selection' action: [ :anElement :anObject :aSelection |
+				anElement phlow spawnObject: aSelection ];
+		contextItemLabel: 'Inspect parameters' action: [ :anElement :anObject :aSelection |
+				anElement phlow spawnObject: {anElement . anObject . aSelection} ];
+		contextItemLabel: 'Show if greater than 12' 
+			action: [ :anElement :anObject | anElement phlow spawnObject: anObject ]
+			showIf: [ :anObject :aSelection | anObject > 12 ];
+		send: [ :anObject :aSelectionIndex | {anObject . aSelectionIndex} ]
+%
+
+category: 'gt - views'
+method: GtRemotePhlowColumnedListViewContextActionsBasicTestObject
+gtColumnedListWithBasicContextActionsMultipleSelectionFor: aView
+	<gtView>
+
+	^aView columnedList
+		title: 'Basic - multiple selection';
+		priority: 15.1;
+		items: [ 10 to: 15 ];
+		column: 'Value' text: [ :x :anIndex | 
+			'value: ', x printString, '; index: ', anIndex printString ];
+		withMultipleSelection;
+		contextItemLabel: 'Inspect element' action: [ :anElement |
+				anElement phlow spawnObject: anElement ];
+		contextItemLabel: 'Inspect object' action: [ :anElement :anObject |
+				anElement phlow spawnObject: anObject ];
+		contextItemLabel: 'Inspect selection' action: [ :anElement :anObject :aSelection |
+				anElement phlow spawnObject: aSelection ];
+		contextItemLabel: 'Inspect parameters' action: [ :anElement :anObject :aSelection |
+				anElement phlow spawnObject: {anElement . anObject . aSelection} ];
+		contextItemLabel: 'Show if 3 elements in selection' 
+			action: [ :anElement | anElement phlow spawnObject: anElement ]
+			showIf: [ :anObject :aSelection | aSelection size = 3 ];
+		contextItemLabel: 'Show if 14 in selection' 
+			action: [ :anElement :aCollectionOfObjects | 
+				anElement phlow spawnObject: aCollectionOfObjects ]
+			showIf: [ :aCollectionOfObjects :aSelection | 
+				aCollectionOfObjects includes: 14 ];
+		send: [ :anObject :aSelectionIndex | {anObject . aSelectionIndex} ]
+%
+
+category: 'gt - views'
+method: GtRemotePhlowColumnedListViewContextActionsBasicTestObject
+gtColumnedListWithDynamicContextPhlowActionsFor: aView
+	<gtView>
+
+	^aView columnedList
+		title: 'Dynamic context phlow';
+		priority: 19.2;
+		items: [ 10 to: 15 ];
+		column: 'Value' text: [ :x :anIndex | 
+			'value: ', x printString, '; index: ', anIndex printString ];
+		dynamicPhlowContextItems: [ :anAction :anElement :anObject :aSelection |
+			{
+				anAction contextMenuAction
+					label: 'Inspect element';
+					action: [ :currentElement |
+						currentElement phlow spawnObject: currentElement ].
+				anAction contextMenuAction
+					label: 'Inspect object';
+					action: [ :currentElement :currentObject |
+						currentElement phlow spawnObject: currentObject ].
+				anAction contextMenuAction
+					label: 'Inspect selection';
+					action: [ :currentElement :currentObject :currentIndex |
+						currentElement phlow spawnObject: currentIndex ].
+				anAction contextMenuAction
+					label: 'Inspect parameters';
+					action: [ :currentElement :currentObject :currentIndex |
+						currentElement phlow spawnObject: {
+							currentElement . currentObject . currentIndex } ].
+				anAction contextMenuAction
+					label: 'Inspect outer parameters';
+					action: [ :currentElement |
+						currentElement phlow 
+							spawnObject: {anAction. anElement . anObject . aSelection} ].
+				anAction contextMenuAction
+					label: 'Show if greater than 12';
+					action: [ :currentElement | currentElement phlow spawnObject: anElement ];
+					showIf: [ :currentObject :currentSelection | currentObject > 12]
+			} ];
+		send: [ :anObject :aSelectionIndex | {anObject . aSelectionIndex} ]
+%
+
+category: 'gt - views'
+method: GtRemotePhlowColumnedListViewContextActionsBasicTestObject
+gtColumnedListWithDynamicContextPhlowActionsMultipleSelectionFor: aView
+	<gtView>
+
+	^aView columnedList
+		title: 'Dynamic context phlow - multiple selection';
+		priority: 19.4;
+		items: [ 10 to: 15 ];
+		column: 'Value' text: [ :x :anIndex | 
+			'value: ', x printString, '; index: ', anIndex printString ];
+		withMultipleSelection;
+		dynamicPhlowContextItems: [ :anAction :anElement :aCollectionOfObjects :aSelection |
+			{
+				anAction contextMenuAction
+					label: 'Inspect element';
+					action: [ :currentElement |
+						currentElement phlow spawnObject: currentElement ].
+				anAction contextMenuAction
+					label: 'Inspect object';
+					action: [ :currentElement :currentObject |
+						currentElement phlow spawnObject: currentObject ].
+				anAction contextMenuAction
+					label: 'Inspect selection';
+					action: [ :currentElement :currentObject :currentIndex |
+						currentElement phlow spawnObject: currentIndex ].
+				anAction contextMenuAction
+					label: 'Inspect parameters';
+					action: [ :currentElement :currentObject :currentIndex |
+						currentElement phlow spawnObject: {
+							currentElement . currentObject . currentIndex } ].
+				anAction contextMenuAction
+					label: 'Inspect outer parameters';
+					action: [ :currentElement |
+						currentElement phlow 
+							spawnObject: {anAction. anElement . aCollectionOfObjects . aSelection} ] 
+			}, (aSelection size = 3  
+						ifTrue: [
+							{anAction contextMenuAction
+								label: 'Show if 3 elements in selection';
+								action: [ :currentElement |
+									currentElement phlow spawnObject: currentElement ]}] 
+							ifFalse: [{}]),
+						((aCollectionOfObjects includes: 14)
+						ifTrue: [
+							{anAction contextMenuAction
+								label: 'Show if 14 in selection';
+								action: [ :currentElement :currentCollectionOfObjects |
+									currentElement phlow spawnObject: currentCollectionOfObjects ]}] 
+						ifFalse: [{}]) ];
+		send: [ :anObject :aSelectionIndex | {anObject . aSelectionIndex} ]
+%
+
+! Class implementation for 'GtRemotePhlowColumnedTreeViewContextActionsBasicTestObject'
+
+!		Instance methods for 'GtRemotePhlowColumnedTreeViewContextActionsBasicTestObject'
+
+category: 'views'
+method: GtRemotePhlowColumnedTreeViewContextActionsBasicTestObject
+gtColumnedTreeWithBasicContextActionsFor: aView
+	<gtView>
+
+	^aView columnedTree
+		title: 'Columned Tree - Basic actions';
+		priority: 15;
+		items: [ 10 to: 15 ];
+		children: [ :aNumber | 
+			| targetNumber|
+			targetNumber := aNumber \\ 10.
+			(targetNumber // 2 = targetNumber)
+				ifTrue: [ #() ] 
+				ifFalse: [
+					(targetNumber // 2 to: (targetNumber - 1)) collect: [ :each | each + 10 ] ] ];
+		column: 'Value' text: [ :x | 'value: ', x asString ];
+		contextItemLabel: 'Inspect element' action: [ :anElement |
+				anElement phlow spawnObject: anElement ];
+		contextItemLabel: 'Inspect object' action: [ :anElement :anObject |
+				anElement phlow spawnObject: anObject ];
+		contextItemLabel: 'Inspect selection' action: [ :anElement :anObject :aSelection |
+				anElement phlow spawnObject: aSelection ];
+		contextItemLabel: 'Inspect parameters' action: [ :anElement :anObject :aSelection |
+				anElement phlow spawnObject: {anElement . anObject . aSelection} ];
+		contextItemLabel: 'Show if greater than 12' 
+			action: [ :anElement :anObject | anElement phlow spawnObject: anObject ]
+			showIf: [ :anObject :aSelection | anObject > 12 ];
+		send: [ :anObject :aSelection |
+			{anObject . aSelection} ]
+%
+
+category: 'views'
+method: GtRemotePhlowColumnedTreeViewContextActionsBasicTestObject
+gtColumnedTreeWithBasicContextActionsMultipleSelectionFor: aView
+	<gtView>
+
+	^aView columnedTree
+		title: 'Columned Tree - Multiple Selection';
+		priority: 15.1;
+		items: [ 10 to: 15 ];
+		children: [ :aNumber | 
+			| targetNumber|
+			targetNumber := aNumber \\ 10.
+			(targetNumber // 2 = targetNumber)
+				ifTrue: [ #() ] 
+				ifFalse: [
+					(targetNumber // 2 to: (targetNumber - 1)) collect: [ :each | each + 10 ] ] ];
+		column: 'Value' text: [ :x | 'value: ', x asString ];
+		withMultipleSelection;
+		contextItemLabel: 'Inspect element' action: [ :anElement |
+				anElement phlow spawnObject: anElement ];
+		contextItemLabel: 'Inspect object' action: [ :anElement :anObject |
+				anElement phlow spawnObject: anObject ];
+		contextItemLabel: 'Inspect selection' action: [ :anElement :anObject :aSelection |
+				anElement phlow spawnObject: aSelection ];
+		contextItemLabel: 'Inspect parameters' action: [ :anElement :anObject :aSelection |
+				anElement phlow spawnObject: {anElement . anObject . aSelection} ];
+		contextItemLabel: 'Show if 3 elements in selection' 
+			action: [ :anElement | anElement phlow spawnObject: anElement ]
+			showIf: [ :anObject :aSelection | 
+				aSelection size = 3 ];
+		contextItemLabel: 'Show if 14 in selection' 
+			action: [ :anElement :aCollectionOfObjects | 
+				anElement phlow spawnObject: aCollectionOfObjects  ]
+			showIf: [ :aCollectionOfObjects :aSelection | 
+				aCollectionOfObjects includes: 14   ];
+		send: [ :anObject :aSelection |
+			{anObject . aSelection} ]
+%
+
+category: 'views'
+method: GtRemotePhlowColumnedTreeViewContextActionsBasicTestObject
+gtColumnedTreeWithDynamicContextPhlowActionsFor: aView
+	<gtView>
+
+	^aView columnedTree
+		title: 'Dynamic context phlow';
+		priority: 19.2;
+		items: [ 10 to: 15 ];
+		children: [ :aNumber | 
+			| targetNumber|
+			targetNumber := aNumber \\ 10.
+			(targetNumber // 2 = targetNumber)
+				ifTrue: [ #() ] 
+				ifFalse: [
+					(targetNumber // 2 to: (targetNumber - 1)) collect: [ :each | each + 10 ] ] ];
+		column: 'Value' text: [ :x | 'value: ', x asString ];
+		dynamicPhlowContextItems: [ :anAction :anElement :anObject :aSelection |
+			{
+				anAction contextMenuAction
+					label: 'Inspect element';
+					action: [ :currentElement |
+						currentElement phlow spawnObject: currentElement ].
+				anAction contextMenuAction
+					label: 'Inspect object';
+					action: [ :currentElement :currentObject |
+						currentElement phlow spawnObject: currentObject ].
+				anAction contextMenuAction
+					label: 'Inspect selection';
+					action: [ :currentElement :currentObject :currentIndex |
+						currentElement phlow spawnObject: currentIndex ].
+				anAction contextMenuAction
+					label: 'Inspect parameters';
+					action: [ :currentElement :currentObject :currentIndex |
+						currentElement phlow spawnObject: {
+							currentElement . currentObject . currentIndex } ].
+				anAction contextMenuAction
+					label: 'Inspect outer parameters';
+					action: [ :currentElement |
+						currentElement phlow 
+							spawnObject: {anAction. anElement . anObject . aSelection} ].
+				anAction contextMenuAction
+					label: 'Show if greater than 12';
+					action: [ :currentElement | currentElement phlow spawnObject: anElement ];
+					showIf: [ :currentObject :currentSelection | currentObject > 12]
+			} ];
+		send: [ :anObject :aSelectionIndex | {anObject . aSelectionIndex} ]
+%
+
+category: 'views'
+method: GtRemotePhlowColumnedTreeViewContextActionsBasicTestObject
+gtColumnedTreeWithDynamicContextPhlowActionsMultipleSelectionFor: aView
+	<gtView>
+
+	^aView columnedTree
+		title: 'Dynamic context phlow - multiple selection';
+		priority: 19.4;
+		items: [ 10 to: 15 ];
+		children: [ :aNumber | 
+			| targetNumber|
+			targetNumber := aNumber \\ 10.
+			(targetNumber // 2 = targetNumber)
+				ifTrue: [ #() ] 
+				ifFalse: [
+					targetNumber // 2 to: (targetNumber - 1) ] ];
+		column: 'Value' text: [ :x | 'value: ', x asString ];
+		withMultipleSelection;
+		dynamicPhlowContextItems: [ :anAction :anElement :aCollectionOfObjects :aSelection |
+			{
+				anAction contextMenuAction
+					label: 'Inspect element';
+					action: [ :currentElement |
+						currentElement phlow spawnObject: currentElement ].
+				anAction contextMenuAction
+					label: 'Inspect object';
+					action: [ :currentElement :currentObject |
+						currentElement phlow spawnObject: currentObject ].
+				anAction contextMenuAction
+					label: 'Inspect selection';
+					action: [ :currentElement :currentObject :currentIndex |
+						currentElement phlow spawnObject: currentIndex ].
+				anAction contextMenuAction
+					label: 'Inspect parameters';
+					action: [ :currentElement :currentObject :currentIndex |
+						currentElement phlow spawnObject: {
+							currentElement . currentObject . currentIndex } ].
+				anAction contextMenuAction
+					label: 'Inspect outer parameters';
+					action: [ :currentElement |
+						currentElement phlow 
+							spawnObject: {anAction. anElement . aCollectionOfObjects . aSelection} ] 
+			}, (aSelection size = 3  
+						ifTrue: [
+							{anAction contextMenuAction
+								label: 'Show if 3 elements in selection';
+								action: [ :currentElement |
+									currentElement phlow spawnObject: currentElement ]}] 
+							ifFalse: [{}]),
+						((aCollectionOfObjects includes: 14)
+						ifTrue: [
+							{anAction contextMenuAction
+								label: 'Show if 14 in selection';
+								action: [ :currentElement :currentCollectionOfObjects |
+									currentElement phlow spawnObject: currentCollectionOfObjects ]}] 
+						ifFalse: [{}]) ];
+		send: [ :anObject :aSelectionIndex | {anObject . aSelectionIndex} ]
+%
+
+! Class implementation for 'GtRemotePhlowColumnedTreeViewTestObject'
+
+!		Instance methods for 'GtRemotePhlowColumnedTreeViewTestObject'
+
+category: 'gt - extensions'
+method: GtRemotePhlowColumnedTreeViewTestObject
+gtColumnedTreeFor: aView
+	<gtView>
+
+	^aView columnedTree
+		title: 'Columned Tree';
+		priority: 35;
+		items: [ 1 to: 5 ];
+		children: [ :aNumber | 
+			(aNumber // 2 = aNumber)
+				ifTrue: [ #() ] 
+				ifFalse: [
+					aNumber // 2 to: (aNumber - 1) ] ];
+		column: 'x' text: [ :aNumber | aNumber ];
+		column: 'x * x' text: [ :aNumber | aNumber * aNumber ];
+		send: [ :x | x + 1000 ]
+%
+
+category: 'gt - extensions'
+method: GtRemotePhlowColumnedTreeViewTestObject
+gtColumnedTreeWithAllLevelsExpansionFor: aView
+	<gtView>
+
+	^aView columnedTree
+		title: 'Expansion - all levels';
+		priority: 44;
+		items: [ 1 to: 5 ];
+		children: [ :aNumber | 
+			(aNumber // 2 = aNumber)
+				ifTrue: [ #() ] 
+				ifFalse: [
+					aNumber // 2 to: (aNumber - 1) ] ];
+		column: 'x' text: [ :aNumber | aNumber ];
+		column: 'x * x' text: [ :aNumber | aNumber * aNumber ];
+		expandAll
+%
+
+category: 'gt - extensions'
+method: GtRemotePhlowColumnedTreeViewTestObject
+gtColumnedTreeWithBelowFourFor: aView
+	<gtView>
+
+	^aView columnedTree
+		title: 'Expansion - below four';
+		priority: 50;
+		items: [ 1 to: 5 ];
+		children: [ :aNumber | 
+			(aNumber // 2 = aNumber)
+				ifTrue: [ #() ] 
+				ifFalse: [
+					aNumber // 2 to: (aNumber - 1) ] ];
+		column: 'x' text: [ :aNumber | aNumber ];
+		column: 'x * x' text: [ :aNumber | aNumber * aNumber ];
+		expandSuchThat: [ :aNode :aNumber | aNumber < 4 ]
+%
+
+category: 'gt - extensions'
+method: GtRemotePhlowColumnedTreeViewTestObject
+gtColumnedTreeWithOneLevelExpansionFor: aView
+	<gtView>
+
+	^aView columnedTree
+		title: 'Expansion - one level';
+		priority: 40;
+		items: [ 1 to: 5 ];
+		children: [ :aNumber | 
+			(aNumber // 2 = aNumber)
+				ifTrue: [ #() ] 
+				ifFalse: [
+					aNumber // 2 to: (aNumber - 1) ] ];
+		column: 'x' text: [ :aNumber | aNumber ];
+		column: 'x * x' text: [ :aNumber | aNumber * aNumber ];
+		expandUpTo: 1
+%
+
 ! Class implementation for 'GtRemotePhlowColumnSpecification'
 
 !		Class methods for 'GtRemotePhlowColumnSpecification'
@@ -10462,6 +15224,459 @@ typeLabel
 	^ self type typeLabel
 %
 
+! Class implementation for 'GtRemotePhlowContextMenuBasicAction'
+
+!		Class methods for 'GtRemotePhlowContextMenuBasicAction'
+
+category: 'testing'
+classmethod: GtRemotePhlowContextMenuBasicAction
+isAbstract
+	^ self name = #GtRemotePhlowContextMenuBasicAction
+%
+
+!		Instance methods for 'GtRemotePhlowContextMenuBasicAction'
+
+category: 'collecting'
+method: GtRemotePhlowContextMenuBasicAction
+collectInvidualActionsOn: aCollection forElement: anElement item: anObject index: anIndex
+%
+
+category: 'testing'
+method: GtRemotePhlowContextMenuBasicAction
+shouldShowContextActionOn: anItem viewSelection: aViewSelection 
+	^ self showCondition 
+		ifNil: [ true ] 
+		ifNotNil: [ :aShowConditon |
+			aShowConditon cull: anItem cull: aViewSelection ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowContextMenuBasicAction
+showCondition
+	^ showCondition
+%
+
+category: 'api - scripting'
+method: GtRemotePhlowContextMenuBasicAction
+showIf: aBlock 
+	showCondition := aBlock
+%
+
+! Class implementation for 'GtRemotePhlowContextMenuCompositeAction'
+
+!		Class methods for 'GtRemotePhlowContextMenuCompositeAction'
+
+category: 'testing'
+classmethod: GtRemotePhlowContextMenuCompositeAction
+isAbstract
+	^ self name = #GtRemotePhlowContextMenuCompositeAction
+%
+
+!		Instance methods for 'GtRemotePhlowContextMenuCompositeAction'
+
+category: 'collecting'
+method: GtRemotePhlowContextMenuCompositeAction
+collectInvidualActionsOn: aCollection forElement: anElement item: anObject index: aSelectionIndex
+	| collectedActions |
+	collectedActions := self toActionOn: anObject index: aSelectionIndex element: anElement.
+	aCollection addAll: (collectedActions select: [ :anAction | 
+			anAction shouldShowContextActionOn: anObject viewSelection: aSelectionIndex ])
+%
+
+! Class implementation for 'GtRemotePhlowContextMenuDynamicActions'
+
+!		Class methods for 'GtRemotePhlowContextMenuDynamicActions'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowContextMenuDynamicActions
+label: aLabel actions: aBlockClosure
+	^ self new 
+		label: 'Dynamic phlow menu items';
+		actions: aBlockClosure 
+%
+
+!		Instance methods for 'GtRemotePhlowContextMenuDynamicActions'
+
+category: 'api - scripting'
+method: GtRemotePhlowContextMenuDynamicActions
+actions: aBlockClosure
+	actionsComputation := aBlockClosure
+%
+
+category: 'accessing'
+method: GtRemotePhlowContextMenuDynamicActions
+actionsComputation
+	^ actionsComputation
+%
+
+category: 'accessing'
+method: GtRemotePhlowContextMenuDynamicActions
+label
+	^ label
+%
+
+category: 'api - scripting'
+method: GtRemotePhlowContextMenuDynamicActions
+label: aString 
+	label := aString
+%
+
+category: 'collecting'
+method: GtRemotePhlowContextMenuDynamicActions
+toActionOn: anItem index: anIndexSelection element: anElement
+	^ self actionsComputation cull: anElement cull: anItem cull: anIndexSelection
+%
+
+! Class implementation for 'GtRemotePhlowContextMenuDynamicPhlowActions'
+
+!		Class methods for 'GtRemotePhlowContextMenuDynamicPhlowActions'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowContextMenuDynamicPhlowActions
+label: aLabel actions: aBlockClosure
+	^ self new 
+		label: 'Dynamic phlow menu items';
+		actions: aBlockClosure 
+%
+
+!		Instance methods for 'GtRemotePhlowContextMenuDynamicPhlowActions'
+
+category: 'accessing'
+method: GtRemotePhlowContextMenuDynamicPhlowActions
+actions: aBlockClosure
+	actionsComputation := aBlockClosure
+%
+
+category: 'accessing'
+method: GtRemotePhlowContextMenuDynamicPhlowActions
+actionsComputation
+	^ actionsComputation
+%
+
+category: 'accessing'
+method: GtRemotePhlowContextMenuDynamicPhlowActions
+label
+	^ label
+%
+
+category: 'accessing'
+method: GtRemotePhlowContextMenuDynamicPhlowActions
+label: aString 
+	label := aString
+%
+
+category: 'accessing'
+method: GtRemotePhlowContextMenuDynamicPhlowActions
+toActionOn: anItem index: anItemIndex element: anElement
+	^ self actionsComputation 
+			cull: GtRemotePhlowAction noAction
+			cull: anElement 
+			cull: anItem 
+			cull: anItemIndex
+%
+
+! Class implementation for 'GtRemotePhlowContextMenuTargetedObjectActions'
+
+!		Class methods for 'GtRemotePhlowContextMenuTargetedObjectActions'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowContextMenuTargetedObjectActions
+forTarget: aGtRemotePhlowActionTarget
+	^ self new target: aGtRemotePhlowActionTarget
+%
+
+category: 'instance creation'
+classmethod: GtRemotePhlowContextMenuTargetedObjectActions
+forTarget: aSingleTarget groupTarget: aGroupTarget groupWith: aGroupFactory
+	^ self new
+		target: aSingleTarget;
+		groupTarget: aGroupTarget;
+		groupFactory: aGroupFactory
+%
+
+category: 'instance creation'
+classmethod: GtRemotePhlowContextMenuTargetedObjectActions
+forTarget: aTarget groupWith: aGroupFactory
+	^ self new
+		target: aTarget;
+		groupFactory: aGroupFactory
+%
+
+!		Instance methods for 'GtRemotePhlowContextMenuTargetedObjectActions'
+
+category: 'accessing'
+method: GtRemotePhlowContextMenuTargetedObjectActions
+groupFactory
+	^ groupFactory
+%
+
+category: 'accessing'
+method: GtRemotePhlowContextMenuTargetedObjectActions
+groupFactory: aBlock
+	groupFactory := aBlock
+%
+
+category: 'accessing'
+method: GtRemotePhlowContextMenuTargetedObjectActions
+groupTarget
+	^ groupTarget ifNil: [ target ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowContextMenuTargetedObjectActions
+groupTarget: aGtRemotePhlowActionTarget
+	groupTarget := aGtRemotePhlowActionTarget default
+%
+
+category: 'accessing'
+method: GtRemotePhlowContextMenuTargetedObjectActions
+target
+	^ target
+%
+
+category: 'accessing'
+method: GtRemotePhlowContextMenuTargetedObjectActions
+target: aGtRemotePhlowActionTarget
+	target := aGtRemotePhlowActionTarget default
+%
+
+category: 'actions'
+method: GtRemotePhlowContextMenuTargetedObjectActions
+toActionOn: anObject index: anIndexSelection element: anElement
+	| actions effectiveTarget effectiveObject |
+	actions := OrderedCollection new.
+	groupFactory
+		ifNil: [
+			effectiveTarget := target.
+			effectiveObject := anObject ]
+		ifNotNil: [
+			anObject size = 1
+				ifTrue: [
+					effectiveTarget := target.
+					effectiveObject := anObject first ]
+				ifFalse: [
+					effectiveTarget := self groupTarget.
+					effectiveObject := groupFactory value: anObject ] ].
+	effectiveTarget default actionsForObject: effectiveObject do: [ :anAction |
+		actions add: anAction ].
+	^ actions
+%
+
+! Class implementation for 'GtRemotePhlowContextMenuSingleAction'
+
+!		Class methods for 'GtRemotePhlowContextMenuSingleAction'
+
+category: 'testing'
+classmethod: GtRemotePhlowContextMenuSingleAction
+isAbstract
+	^ self name = #GtRemotePhlowContextMenuSingleAction
+%
+
+!		Instance methods for 'GtRemotePhlowContextMenuSingleAction'
+
+category: 'collecting'
+method: GtRemotePhlowContextMenuSingleAction
+collectInvidualActionsOn: aCollection forElement: anElement item: anObject index: anIndex
+	"At this point we collect the actions; for single actions it does not need anything else"
+	aCollection add: self
+%
+
+! Class implementation for 'GtRemotePhlowContextMenuAction'
+
+!		Class methods for 'GtRemotePhlowContextMenuAction'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowContextMenuAction
+label: aString action: aBlock
+	^ self new
+		label: aString;
+		action: aBlock
+%
+
+category: 'instance creation'
+classmethod: GtRemotePhlowContextMenuAction
+label: aString action: aBlock disable: aDisableBlock
+	^ self new 
+		label: aString;
+		action: aBlock;
+		disableIf: aDisableBlock
+%
+
+category: 'instance creation'
+classmethod: GtRemotePhlowContextMenuAction
+label: aString action: aBlock show: aShowBlock
+	^ self new 
+		label: aString;
+		action: aBlock;
+		showIf: aShowBlock
+%
+
+category: 'instance creation'
+classmethod: GtRemotePhlowContextMenuAction
+label: aString action: aBlock show: aShowBlock disable: aDisableBlock
+	^ self new 
+		label: aString;
+		action: aBlock;
+		showIf: aShowBlock;
+		disableIf: aDisableBlock
+%
+
+!		Instance methods for 'GtRemotePhlowContextMenuAction'
+
+category: 'api - scripting'
+method: GtRemotePhlowContextMenuAction
+action: aBlock 
+	actionComputation := aBlock
+%
+
+category: 'accessing'
+method: GtRemotePhlowContextMenuAction
+actionBlock
+	^ self actionComputation
+%
+
+category: 'accessing'
+method: GtRemotePhlowContextMenuAction
+actionComputation
+	^ actionComputation
+%
+
+category: 'converting'
+method: GtRemotePhlowContextMenuAction
+asItemBoundActionToItem: anItem viewSelection: aSelection
+	^ GtRemotePhlowContextMenuItemBoundAction new
+		targetAction: self;
+		item: anItem; 
+		viewSelection: aSelection
+%
+
+category: 'api - scripting'
+method: GtRemotePhlowContextMenuAction
+icon: anIconStencil
+	iconStencil := anIconStencil
+%
+
+category: 'accessing'
+method: GtRemotePhlowContextMenuAction
+iconStencil
+	^ iconStencil
+%
+
+category: 'accessing'
+method: GtRemotePhlowContextMenuAction
+id
+	^ id
+%
+
+category: 'api - scripting'
+method: GtRemotePhlowContextMenuAction
+id: anId
+	id := anId
+%
+
+category: 'accessing'
+method: GtRemotePhlowContextMenuAction
+label
+	^ label
+%
+
+category: 'api - scripting'
+method: GtRemotePhlowContextMenuAction
+label: aString 
+	label := aString
+%
+
+category: 'printing'
+method: GtRemotePhlowContextMenuAction
+printOn: aStream
+	super printOn: aStream.
+	aStream parenthesize: [
+		aStream nextPutAll: (self label ifNil: [ '' ]) ]
+%
+
+category: 'api - scripting'
+method: GtRemotePhlowContextMenuAction
+tooltip: aTextOrString
+	self tooltipText: aTextOrString
+%
+
+category: 'accessing'
+method: GtRemotePhlowContextMenuAction
+tooltipText
+	^ tooltipText
+%
+
+category: 'api - scripting'
+method: GtRemotePhlowContextMenuAction
+tooltipText: aTextOrString
+	tooltipText := aTextOrString
+%
+
+! Class implementation for 'GtRemotePhlowContextMenuItemBoundAction'
+
+!		Instance methods for 'GtRemotePhlowContextMenuItemBoundAction'
+
+category: 'accessing'
+method: GtRemotePhlowContextMenuItemBoundAction
+actionComputation
+	^ targetAction actionComputation
+%
+
+category: 'converting'
+method: GtRemotePhlowContextMenuItemBoundAction
+asGtDeclarativeAction
+	^ GtRemotePhlowContextMenuItemBoundActionSpecification new
+		id: self targetAction id;
+		label: self targetAction label;
+		tooltipText: self targetAction tooltipText;
+		iconStencil: self targetAction iconStencil;
+		phlowDataSource: (GtRemotePhlowContextMenuItemBoundActionDataSource new
+			phlowAction: self)
+%
+
+category: 'actions'
+method: GtRemotePhlowContextMenuItemBoundAction
+executeActionFrom: anElement
+	^ self actionComputation
+			cull: anElement cull: item cull: viewSelection
+%
+
+category: 'accessing'
+method: GtRemotePhlowContextMenuItemBoundAction
+item
+	^ item
+%
+
+category: 'accessing'
+method: GtRemotePhlowContextMenuItemBoundAction
+item: anObject
+	item := anObject
+%
+
+category: 'accessing'
+method: GtRemotePhlowContextMenuItemBoundAction
+targetAction
+	^ targetAction
+%
+
+category: 'accessing'
+method: GtRemotePhlowContextMenuItemBoundAction
+targetAction: anObject
+	targetAction := anObject
+%
+
+category: 'accessing'
+method: GtRemotePhlowContextMenuItemBoundAction
+viewSelection
+	^ viewSelection
+%
+
+category: 'accessing'
+method: GtRemotePhlowContextMenuItemBoundAction
+viewSelection: anObject
+	viewSelection := anObject
+%
+
 ! Class implementation for 'GtRemotePhlowDataNode'
 
 !		Class methods for 'GtRemotePhlowDataNode'
@@ -10510,6 +15725,20 @@ asDictionaryForExport
 	^ data
 %
 
+category: 'accessing'
+method: GtRemotePhlowDataNode
+createNodeIdentifier
+	^ GtRemotePhlowIndexNodeIdentifier new
+			nodeIndex: self nodeId
+%
+
+category: 'accessing'
+method: GtRemotePhlowDataNode
+createSelectionItem
+	^ GtRemotePhlowListingViewListSelectionItem new
+			nodeIdentifier: self createNodeIdentifier
+%
+
 category: 'comparing'
 method: GtRemotePhlowDataNode
 matchesNodeContentWith: aNode
@@ -10530,6 +15759,12 @@ category: 'accessing'
 method: GtRemotePhlowDataNode
 nodeId: anObject
 	nodeId := anObject
+%
+
+category: 'accessing'
+method: GtRemotePhlowDataNode
+nodePath
+	^ Array with: self nodeId
 %
 
 category: 'accessing'
@@ -10568,7 +15803,35 @@ valueType
 
 ! Class implementation for 'GtRemotePhlowTreeNode'
 
+!		Class methods for 'GtRemotePhlowTreeNode'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowTreeNode
+fromJSONDictionary: aDictionary
+	| node |
+
+	node := super fromJSONDictionary: aDictionary.
+	
+	(aDictionary at: 'childNodes' ifAbsent: [ nil ])
+			ifNotNil: [ :childDataArray |
+				node childNodes: (childDataArray collect: [ :aChildData |
+					self fromJSONDictionary: aChildData ])].
+	^ node
+%
+
 !		Instance methods for 'GtRemotePhlowTreeNode'
+
+category: 'enumerating'
+method: GtRemotePhlowTreeNode
+allChildrenNodesBreadthFirstDo: aBlock
+	| queue next |
+	queue := OrderedCollection new.
+	queue addAll: (self childNodes ifNil: [ #() ]).
+	[ queue notEmpty ]
+		whileTrue: [ next := queue removeFirst.
+			aBlock value: next.
+			queue addAll: (next childNodes ifNil: [ #() ]) ]
+%
 
 category: 'converting'
 method: GtRemotePhlowTreeNode
@@ -10602,6 +15865,56 @@ childNodes: aCollectionOfNodes
 	childNodes := aCollectionOfNodes.
 %
 
+category: 'enumerating'
+method: GtRemotePhlowTreeNode
+childrenNodesDo: aBlock
+	(self childNodes ifNil: [#()]) do: aBlock
+%
+
+category: 'accessing'
+method: GtRemotePhlowTreeNode
+createNodeIdentifier
+	^ GtRemotePhlowPathNodeIdentifier new 
+		nodeIndexPath: self nodePath
+%
+
+category: 'accessing'
+method: GtRemotePhlowTreeNode
+createSelectionItem
+	^ GtRemotePhlowListingViewTreeSelectionItem new
+			nodeIdentifier: self createNodeIdentifier
+%
+
+category: 'accessing'
+method: GtRemotePhlowTreeNode
+depth
+	| depthValue |
+	depthValue := 0.
+	self parentNodesDo: [ depthValue := depthValue + 1].
+	^ depthValue
+%
+
+category: 'expanding'
+method: GtRemotePhlowTreeNode
+expandSuchThat: aBlock withDataSource: aTreeDataSource
+	"It stops expanding children if a parent node does not satisfy the condition."
+	(aBlock cull: self cull: self targetObject) ifTrue: [ 
+		aTreeDataSource ensureChildrenForNode: self.
+		self childrenNodesDo: [ :eachNode | 
+			eachNode expandSuchThat: aBlock withDataSource: aTreeDataSource ] ].
+%
+
+category: 'expanding'
+method: GtRemotePhlowTreeNode
+expandUpTo: aLevelIndex withDataSource: aDataSource
+	self depth < aLevelIndex ifFalse: [ ^ self ].
+	
+	self 
+		upToDepth: aLevelIndex
+		do: [ :eachNode | 
+			aDataSource ensureChildrenForNode: eachNode ]
+%
+
 category: 'gt - extensions'
 method: GtRemotePhlowTreeNode
 gtViewChildrenFor: aView 
@@ -10617,6 +15930,12 @@ gtViewChildrenFor: aView
 			aNode nodePathDescription  ] width: 100;
 		column: 'Id' text: [ :aNode | aNode nodeId ] width: 100;
 		column: 'Value' text: [ :aNode | aNode nodeValue ]
+%
+
+category: 'testing'
+method: GtRemotePhlowTreeNode
+hasChildNodesData
+	^ childNodes notNil
 %
 
 category: 'comparing'
@@ -10666,6 +15985,13 @@ parentNode: anObject
 	parentNode := anObject
 %
 
+category: 'enumerating'
+method: GtRemotePhlowTreeNode
+parentNodesDo: aBlock
+	self parentNode ifNotNil: [ :aParentNode | 
+		aParentNode withParentNodesDo: aBlock ].
+%
+
 category: 'printing'
 method: GtRemotePhlowTreeNode
 printNodePathOn: aStream
@@ -10685,13 +16011,27 @@ printOn: aStream
 			separatedBy: [aStream nextPutAll: '/'] ]
 %
 
-category: 'traversing'
+category: 'enumerating'
+method: GtRemotePhlowTreeNode
+upToDepth: aMaxDepthLevel do: anOneArgBlock
+
+	self withAllChildrenNodesBreadthFirstDo: [ :eachNode | 
+		eachNode depth >= aMaxDepthLevel
+			ifTrue: [ ^ self ].
+		anOneArgBlock value: eachNode ]
+%
+
+category: 'enumerating'
+method: GtRemotePhlowTreeNode
+withAllChildrenNodesBreadthFirstDo: aBlock 
+	aBlock value: self.
+	self allChildrenNodesBreadthFirstDo: aBlock
+%
+
+category: 'enumerating'
 method: GtRemotePhlowTreeNode
 withParentNodesDo: aBlock
-
-	self parentNode ifNotNil: [ :aParentNode | 
-		aParentNode withParentNodesDo: aBlock ].
-
+	self parentNodesDo: aBlock.
 	aBlock cull: self
 %
 
@@ -10740,8 +16080,43 @@ forPhlowAction: aPhlowAction
 
 category: 'accessing'
 method: GtRemotePhlowDeclarativeActionDataSource
+definingMethod
+	^ self phlowAction definingMethod
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeActionDataSource
+phlowAction
+	^ phlowAction
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeActionDataSource
 phlowAction: aPhlowAction 
 	phlowAction := aPhlowAction 
+%
+
+! Class implementation for 'GtRemotePhlowContextMenuItemBoundActionDataSource'
+
+!		Instance methods for 'GtRemotePhlowContextMenuItemBoundActionDataSource'
+
+category: 'accessing'
+method: GtRemotePhlowContextMenuItemBoundActionDataSource
+executeRemoteActionWithPhlowResult
+	| phlowApiWrapper |
+	
+	phlowApiWrapper := self phlowApiWrapper.
+	phlowAction executeActionFrom: phlowApiWrapper.
+	
+	^ phlowApiWrapper currentAction 
+			ifNotNil: [ :aPhlowWrappedAction | 
+				aPhlowWrappedAction asDictionaryForExport ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowContextMenuItemBoundActionDataSource
+phlowApiWrapper
+	^ GtRemotePhlowApiWrapper new
 %
 
 ! Class implementation for 'GtRemotePhlowDeclarativeBlockActionDataSource'
@@ -10754,7 +16129,8 @@ executeRemoteActionWithPhlowResult
 	| phlowApiWrapper |
 	
 	phlowApiWrapper := self phlowApiWrapper.
-	self targetBlock value: phlowApiWrapper.
+	self targetBlock ifNotNil: [ :aComputationBlock |
+		aComputationBlock value: phlowApiWrapper ].
 	
 	^ phlowApiWrapper currentAction 
 			ifNotNil: [ :aPhlowWrappedAction | 
@@ -11205,1338 +16581,15 @@ gtTreeWithItemsErrorsFor: aView
 			x asString, ' number']
 %
 
-! Class implementation for 'GtRemotePhlowDeclarativeExamples'
-
-!		Class methods for 'GtRemotePhlowDeclarativeExamples'
-
-category: 'testing'
-classmethod: GtRemotePhlowDeclarativeExamples
-isAbstract
-	^ self name = #GtRemotePhlowDeclarativeExamples
-%
-
-!		Instance methods for 'GtRemotePhlowDeclarativeExamples'
-
-category: 'private'
-method: GtRemotePhlowDeclarativeExamples
-basicServer
-	^ server
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeExamples
-basicServer: aServer
-	server := aServer
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeExamples
-getRemoteObject
-	^ self subclassResponsibility
-%
-
-category: 'examples'
-method: GtRemotePhlowDeclarativeExamples
-remoteObject
-	"Answer the remote GtRemotePhlowDeclarativeTestInspectable instance.
-	This will be a proxy with a remote server."
-
-	<gtExample>
-	<after: #stopServer>
-	<return: #SubclassResponsibility>
-	| remoteObject collection |
-	remoteObject := self getRemoteObject.
-
-	self assert: remoteObject string equals: 'hello world'.
-
-	collection := remoteObject collectionOfObjects.	"Check the size and immediate value objects, but assume that proxies are working correctly"
-	self assert: collection size equals: 3.
-	self assert: collection first equals: 42.
-	self assert: collection second equals: 'Hello World'.
-
-	^ remoteObject
-%
-
-category: 'examples'
-method: GtRemotePhlowDeclarativeExamples
-remotePhlowSpecificationsProvider
-	"Answer the object for returning phlow specifications for the object"
-
-	<gtExample>
-	<after: #stopServer>
-	<return: #SubclassResponsibility>
-	| phlowSpecificationsProvider declarativeViews |
-	phlowSpecificationsProvider := self retrieveRemotePhlowSpecificationsProvider.	"The set of views can vary depending on configuration,
-	just check that a common view is present."
-	declarativeViews := phlowSpecificationsProvider getDeclarativeViewMethodNames.
-	self assert: (declarativeViews includes: #gtListFor:).
-
-	^ phlowSpecificationsProvider
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeExamples
-retrieveRemotePhlowSpecificationsProvider
-	"Answer the object that will be used to get phlow specifications"
-
-	^ GtRemotePhlowViewedObject object: self remoteObject.
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeExamples
-runningServer
-	"Answer a running server.
-	No server is required running the examples in a single image.
-	Subclasses should overwrite this to start the server"
-
-	<gtExample>
-	<after: #stopServer>
-	<return: #GtRemotePhlowDeclarativeExamples>
-	
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeExamples
-stopServer 
-
-	server ifNotNil: 
-		[ server stop.
-		server := nil ]
-%
-
-! Class implementation for 'GtRemotePhlowDeclarativeActionsExamples'
-
-!		Class methods for 'GtRemotePhlowDeclarativeActionsExamples'
-
-category: 'testing'
-classmethod: GtRemotePhlowDeclarativeActionsExamples
-isAbstract
-	^ self name = #GtRemotePhlowDeclarativeActionsExamples
-%
-
-!		Instance methods for 'GtRemotePhlowDeclarativeActionsExamples'
-
-category: 'assertions'
-method: GtRemotePhlowDeclarativeActionsExamples
-assertActionResultForDatasource: actionDatasource
-	| actionResult |
-	actionResult := GtRemotePhlowNavigationAction
-			navigationActionFromDictionary: actionDatasource executeRemoteActionWithPhlowResult.
-	self assert: actionResult targetObject notNil
-%
-
-category: 'examples - actions'
-method: GtRemotePhlowDeclarativeActionsExamples
-buttonActionWithIcon
-	<gtExample>
-	<return: #SubclassResponsibility>
-	| phlowSpecificationsProvider actionSpeficificationData actionSpecification actionDatasource |
-	phlowSpecificationsProvider := self remotePhlowSpecificationsProvider.
-	actionSpeficificationData := phlowSpecificationsProvider
-			getActionSpecificationDataFor: #gtButtonActionWithIconFor:.
-	actionSpecification := GtPhlowActionSpecification
-			phlowActionFromDictionary: actionSpeficificationData.
-
-	self assert: actionSpecification label equals: nil.
-	self assert: actionSpecification priority equals: 11.
-	self
-		assert: actionSpecification iconStencil
-		equals: (GtPhlowGlamorousVectorIconNameStencil forIconName: #playinspect).
-	self assert: actionSpecification tooltipText equals: 'Inspect objects'.
-	self assert: actionSpecification phlowDataSource equals: nil.
-	self
-		assert: actionSpecification methodSelector
-		equals: #gtButtonActionWithIconFor:.
-
-	actionDatasource := phlowSpecificationsProvider
-			getDeclarativeActionDataSourceFor: #gtButtonActionWithIconFor:.
-
-	self assertActionResultForDatasource: actionDatasource.
-
-	^ actionSpecification
-%
-
-category: 'examples - actions'
-method: GtRemotePhlowDeclarativeActionsExamples
-buttonActionWithIconAndLabel
-	<gtExample>
-	<return: #SubclassResponsibility>
-	| phlowSpecificationsProvider actionSpeficificationData actionSpecification actionDatasource |
-	phlowSpecificationsProvider := self remotePhlowSpecificationsProvider.
-	actionSpeficificationData := phlowSpecificationsProvider
-			getActionSpecificationDataFor: #gtButtonActionWithBothIconAndLabelFor:.
-	actionSpecification := GtPhlowActionSpecification
-			phlowActionFromDictionary: actionSpeficificationData.
-
-	self assert: actionSpecification label equals: 'Inspect'.
-	self assert: actionSpecification priority equals: 12.
-	self
-		assert: actionSpecification iconStencil
-		equals: (GtPhlowGlamorousVectorIconNameStencil forIconName: #playinspect).
-	self assert: actionSpecification tooltipText equals: 'Inspect objects'.
-	self assert: actionSpecification phlowDataSource equals: nil.
-	self
-		assert: actionSpecification methodSelector
-		equals: #gtButtonActionWithBothIconAndLabelFor:.
-
-	actionDatasource := phlowSpecificationsProvider
-			getDeclarativeActionDataSourceFor: #gtButtonActionWithBothIconAndLabelFor:.
-
-	self assertActionResultForDatasource: actionDatasource.
-
-	^ actionSpecification
-%
-
-category: 'examples - actions'
-method: GtRemotePhlowDeclarativeActionsExamples
-buttonActionWithLabel
-	<gtExample>
-	<return: #SubclassResponsibility>
-	| phlowSpecificationsProvider actionSpeficificationData actionSpecification actionDatasource |
-	phlowSpecificationsProvider := self remotePhlowSpecificationsProvider.
-	actionSpeficificationData := phlowSpecificationsProvider
-			getActionSpecificationDataFor: #gtButtonActionWithLabelFor:.
-	actionSpecification := GtPhlowActionSpecification
-			phlowActionFromDictionary: actionSpeficificationData.
-
-	self assert: actionSpecification label equals: 'Inspect 1'.
-	self assert: actionSpecification priority equals: 10.
-	self assert: actionSpecification iconStencil equals: nil.
-	self assert: actionSpecification tooltipText equals: 'Inspect objects'.
-	self assert: actionSpecification phlowDataSource equals: nil.
-	self
-		assert: actionSpecification methodSelector
-		equals: #gtButtonActionWithLabelFor:.
-
-	actionDatasource := phlowSpecificationsProvider
-			getDeclarativeActionDataSourceFor: #gtButtonActionWithLabelFor:.
-
-	self assertActionResultForDatasource: actionDatasource.
-
-	^ actionSpecification
-%
-
-! Class implementation for 'GtRemotePhlowDeclarativeActionsDirectViewedObjectExamples'
-
-!		Class methods for 'GtRemotePhlowDeclarativeActionsDirectViewedObjectExamples'
-
-category: 'testing'
-classmethod: GtRemotePhlowDeclarativeActionsDirectViewedObjectExamples
-isAbstract
-	^ self name = #GtRemotePhlowDeclarativeActionsDirectViewedObjectExamples
-%
-
-!		Instance methods for 'GtRemotePhlowDeclarativeActionsDirectViewedObjectExamples'
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeActionsDirectViewedObjectExamples
-getRemoteObject
-
-	^ GtRemotePhlowDeclarativeTestInspectable new
-%
-
-! Class implementation for 'GtRemotePhlowDeclarativeActionsLocalViewedObjectExamples'
-
-!		Instance methods for 'GtRemotePhlowDeclarativeActionsLocalViewedObjectExamples'
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeActionsLocalViewedObjectExamples
-remoteViewedObject
-	^ GtRemotePhlowViewedObject object: self remoteObject.
-%
-
-! Class implementation for 'GtRemotePhlowDeclarativeActionsRemoteViewedObjectExamples'
-
-!		Instance methods for 'GtRemotePhlowDeclarativeActionsRemoteViewedObjectExamples'
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeActionsRemoteViewedObjectExamples
-retrieveRemotePhlowSpecificationsProvider
-	"Answer the GtRemotePhlowViewedObject proxy for the remote object"
-
-	^ GtRemotePhlowViewedObject object: self remoteObject.
-%
-
-! Class implementation for 'GtRemotePhlowDeclarativeActionsProxySimulationExamples'
-
-!		Instance methods for 'GtRemotePhlowDeclarativeActionsProxySimulationExamples'
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeActionsProxySimulationExamples
-remoteObject
-	<gtExample>
-	<after: #stopServer>
-	<return: #GtRemoteInspectionSimulation>
-	| remoteObject |
-	remoteObject := self getRemoteObject.
-
-	^ remoteObject
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeActionsProxySimulationExamples
-retrieveRemotePhlowSpecificationsProvider
-
-	self remoteObject 
-		remoteInspectorProxyDo: [ :aProxy | ^ aProxy ].
-	^ nil
-%
-
-! Class implementation for 'GtRemotePhlowDeclarativeViewsExamples'
-
-!		Class methods for 'GtRemotePhlowDeclarativeViewsExamples'
-
-category: 'testing'
-classmethod: GtRemotePhlowDeclarativeViewsExamples
-isAbstract
-	^ self name = #GtRemotePhlowDeclarativeViewsExamples
-%
-
-!		Instance methods for 'GtRemotePhlowDeclarativeViewsExamples'
-
-category: 'assertions'
-method: GtRemotePhlowDeclarativeViewsExamples
-assertBasicStyledTextInViewSpecification: aViewSpecification expectedText: anExpectedText
-	| obtainedStylableText |
-	
-	obtainedStylableText := (GtRemotePhlowStylableText 
-			fromJSONDictionary: aViewSpecification getText).
-			
-
-	self assert: obtainedStylableText string equals: anExpectedText asString.
-	self assert: obtainedStylableText stylerSpecification canAffectText.
-	
-	self 
-		assertTextAttributedRunStyleSpecification: obtainedStylableText stylerSpecification
-		equalsRuns: ((self shouldConvertUsingDisplayTextObject: anExpectedText)
-			ifTrue: [ anExpectedText asRopedText extractRemotePhlowRuns ]
-			ifFalse: [ anExpectedText attributeRuns ]).
-%
-
-category: 'assertions'
-method: GtRemotePhlowDeclarativeViewsExamples
-assertChildColumnedTreeNodesInViewDatasource: viewDatasource forParentNode: aParentNode  forObjects: anExpectedCollectionOfObjects andColumnsComputation: aCollectionOfBlockClosures
-	^ self 
-		assertChildNodesInViewDatasource: viewDatasource 
-		forParentNode:  aParentNode
-		ofType: GtRemotePhlowColumnedTreeNode
-		equalNodes: (self 
-			createColumnedNodesWithObjectValues: anExpectedCollectionOfObjects
-			andColumnsComputation: aCollectionOfBlockClosures)
-%
-
-category: 'assertions'
-method: GtRemotePhlowDeclarativeViewsExamples
-assertChildNodesInViewDatasource: viewDatasource forParentNode: aParentNode ofType: aPhlowDataNodeClass equalNodes: anExpectedCollectionOfNodes 
-	| obtainedChildNodes |
-	obtainedChildNodes := (viewDatasource 
-		retrieveChildrenForNodeAtPath:  aParentNode  nodePath)
-			collect: [ :aNodeValueDictionary |
-				aPhlowDataNodeClass 
-					fromJSONDictionary: aNodeValueDictionary ].
-	self 
-		assertListingNodes: obtainedChildNodes 
-		equals: anExpectedCollectionOfNodes.
-%
-
-category: 'assertions'
-method: GtRemotePhlowDeclarativeViewsExamples
-assertChildTreeNodesInViewDatasource: viewDatasource forParentNode: aParentNode  forObjects: anExpectedCollectionOfObjects
-	^ self 
-		assertChildNodesInViewDatasource: viewDatasource 
-		forParentNode:  aParentNode
-		ofType: GtRemotePhlowTreeNode
-		equalNodes: (self 
-			createTreeNodesWithObjectValues: anExpectedCollectionOfObjects)
-%
-
-category: 'assertions'
-method: GtRemotePhlowDeclarativeViewsExamples
-assertListingNode: anObtainedObject equals: anExpectedNode 
-	self assert: anObtainedObject nodeId = anExpectedNode nodeId.
-	self assert: (anObtainedObject matchesNodeContentWith: anExpectedNode)
-%
-
-category: 'assertions'
-method: GtRemotePhlowDeclarativeViewsExamples
-assertListingNodes: obtainedNodes equals: expectedNodes
-	self assert:  obtainedNodes size equals: expectedNodes size.
-	
-	expectedNodes withIndexDo: [ :anExpectedNode :anIndex |
-		self 
-			assertListingNode: (obtainedNodes at: anIndex) 
-			equals: anExpectedNode ]
-%
-
-category: 'assertions'
-method: GtRemotePhlowDeclarativeViewsExamples
-assertNodesInColumnedViewDatasource: viewDatasource forObjects: aCollectionOfObjects andColumnsComputation: aCollectionOfBlockClosures
-	^ self 
-		assertNodesInViewDatasource: viewDatasource 
-		ofType: GtRemotePhlowColumnedTreeNode
-		equalNodes: (self 
-			createColumnedNodesWithObjectValues: aCollectionOfObjects
-			andColumnsComputation: aCollectionOfBlockClosures).
-%
-
-category: 'assertions'
-method: GtRemotePhlowDeclarativeViewsExamples
-assertNodesInListViewDatasource: viewDatasource forObjects: anCollectionOfObjects
-	^ self 
-		assertNodesInViewDatasource: viewDatasource 
-		ofType: GtRemotePhlowDataNode
-		equalNodes: (self 
-			createListNodesWithObjectValues: anCollectionOfObjects).
-%
-
-category: 'assertions'
-method: GtRemotePhlowDeclarativeViewsExamples
-assertNodesInTreeViewDatasource: viewDatasource forObjects: anCollectionOfObjects
-	^ self 
-		assertNodesInViewDatasource: viewDatasource 
-		ofType: GtRemotePhlowTreeNode
-		equalNodes: (self 
-			createTreeNodesWithObjectValues: anCollectionOfObjects).
-%
-
-category: 'assertions'
-method: GtRemotePhlowDeclarativeViewsExamples
-assertNodesInViewDatasource: viewSpecification ofType: aPhlowDataNodeClass equalNodes: anExpectedCollectionOfNodes 
-	| obtainedNodes |
-	
-	self 
-		assert: viewSpecification retrieveTotalItemsCount 
-		equals: anExpectedCollectionOfNodes size.
-	
-	obtainedNodes := viewSpecification retrieveFormattedItems 
-		collect: [ :aNodeValueDictionary |
-			aPhlowDataNodeClass 
-				fromJSONDictionary: aNodeValueDictionary ].
-	
-	self 
-		assertListingNodes: obtainedNodes 
-		equals: anExpectedCollectionOfNodes.
-	
-	^ obtainedNodes
-%
-
-category: 'assertions'
-method: GtRemotePhlowDeclarativeViewsExamples
-assertStyledJsonTextInViewSpecification: aViewSpecification
-	| stylableText |
-	
-	stylableText := (GtRemotePhlowStylableText 
-			fromJSONDictionary: aViewSpecification getText).
-	self 
-		assert: stylableText string withUnixLineEndings 
-		equals: self expectedJsonString withUnixLineEndings.
-	self assert: stylableText stylerSpecification canAffectText.
-	self 
-		assert: stylableText stylerSpecification parserClassName equals: #JSONParser.
-%
-
-category: 'assertions'
-method: GtRemotePhlowDeclarativeViewsExamples
-assertTextAttributedRunStyleSpecification: aStyleSpecification equalsRuns: aRunsCollection
-	self 
-		assert: aStyleSpecification numberOfRuns 
-		equals: aRunsCollection size.
-	
-	self 
-		assert: aStyleSpecification attributeRuns
-		equals: aRunsCollection
-%
-
-category: 'assertions'
-method: GtRemotePhlowDeclarativeViewsExamples
-assertTextualViewWithBasicStyledTextWithSelector: aViewSelector title: aTitle priority: aPriority expectedText: anExpectedText
-	| phlowSpecificationsProvider viewDictionary viewSpecification dataSource |
-
-	phlowSpecificationsProvider := self remotePhlowSpecificationsProvider.
-	viewDictionary :=  phlowSpecificationsProvider getViewDeclaration: aViewSelector.
-	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
-	
-	self assert: viewSpecification title equals: aTitle.
-	self assert: viewSpecification priority equals: aPriority.
-	
-	dataSource := phlowSpecificationsProvider getDeclarativeViewFor: aViewSelector.
-	self 
-		assertBasicStyledTextInViewSpecification: dataSource
-		expectedText: anExpectedText.
-	
-	^ viewSpecification
-%
-
-category: 'assertions'
-method: GtRemotePhlowDeclarativeViewsExamples
-assertUnstyledStringInViewSpecification: aViewSpecification equals: aString
-	| stylableText |
-	
-	stylableText := (GtRemotePhlowStylableText 
-		fromJSONDictionary: aViewSpecification getText).
-	self assert: stylableText string equals: aString.
-	self assert: stylableText stylerSpecification canAffectText not.
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-columnedListView
-	<gtExample>
-	<return: #SubclassResponsibility>
-	| phlowSpecificationsProvider viewDictionary viewSpecification viewDatasource |
-	phlowSpecificationsProvider := self remotePhlowSpecificationsProvider.
-	viewDictionary := phlowSpecificationsProvider
-			getViewDeclaration: #gtColumnedListFor:.
-	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
-
-	self assert: viewSpecification title equals: 'Columned list'.
-	self assert: viewSpecification columnTitles equals: #(Value Lowercase).
-	self assert: viewSpecification columnWidths equals: #(nil 100).
-	self
-		assert: (viewSpecification columnTypes collect: #typeLabel)
-		equals: #(text text).
-
-	self
-		assert: viewSpecification dataTransport
-		equals: GtPhlowViewSpecification dataLazy.
-
-	viewDatasource := phlowSpecificationsProvider
-			getDeclarativeViewFor: #gtColumnedListFor:.
-	self
-		assertNodesInColumnedViewDatasource: viewDatasource
-		forObjects: GtRemotePhlowDeclarativeTestInspectable new collectionOfObjects
-		andColumnsComputation: {[ :anObject | anObject ].
-				[ :anObject | anObject gtDisplayString asLowercase ]}.
-
-	^ viewSpecification
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-columnedListWithStyledText
-	<gtExample>
-	<return: #SubclassResponsibility>
-	| phlowSpecificationsProvider viewDictionary viewDataSource viewDatasource |
-	phlowSpecificationsProvider := self remotePhlowSpecificationsProvider.
-	viewDictionary := phlowSpecificationsProvider
-			getViewDeclaration: #gtColumnedListWithStyledTextFor:.
-	viewDataSource := GtPhlowViewSpecification fromDictionary: viewDictionary.
-
-	self assert: viewDataSource title equals: 'Columned list - styled text'.
-	self
-		assert: viewDataSource columnTitles
-		equals: {'Plain'.
-				'Styled'.
-				'Number'}.
-	self assert: viewDataSource columnWidths equals: #(nil nil nil).
-	self
-		assert: (viewDataSource columnTypes collect: #typeLabel)
-		equals: #(text text number).
-	self
-		assert: viewDataSource dataTransport
-		equals: GtPhlowViewSpecification dataLazy.
-
-	viewDatasource := phlowSpecificationsProvider
-			getDeclarativeViewFor: #gtColumnedListWithStyledTextFor:.
-
-	self
-		assertNodesInColumnedViewDatasource: viewDatasource
-		forObjects: self objectsForListWithStyledTextComparison
-		andColumnsComputation: {[ :anObject | anObject asString ].
-				[ :anObject | anObject ].
-				[  "(GtPhlowText forString: (index*100) asString) bold":anObject :index | (index * 100) asRopedText bold ]}.
-
-	^ viewDataSource
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-columnedListWithTypedColumns
-	<gtExample>
-	<after: #stopServer>
-	| phlowSpecificationsProvider viewDictionary viewSpecification viewDatasource |
-
-	phlowSpecificationsProvider := self remotePhlowSpecificationsProvider.
-	viewDictionary := phlowSpecificationsProvider
-			getViewDeclaration: #gtColumnedListWithTypedColumnsFor:.
-	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
-
-	viewSpecification initializeFromInspector: phlowSpecificationsProvider.
-
-	self assert: viewSpecification title equals: 'Columned list with typed columns'.
-	self assert: viewSpecification priority equals: 24.
-
-	self
-		assert: viewSpecification methodSelector
-		equals: #gtColumnedListWithTypedColumnsFor:.
-	self
-		assert: (viewSpecification columnSpecifications
-				collect: [ :aColumnSpecification | aColumnSpecification typeLabel ])
-		equals: #('text' 'number' 'icon').
-	self
-		assert: viewSpecification columnTitles
-		equals: #('Text' 'Number' 'Icon Name').
-	self assert: viewSpecification columnWidths equals: #(nil 100 75).
-
-	self assert: viewSpecification totalItemsCount equals: 500.
-
-	self
-		assert: (viewSpecification retrieveItems: 2 fromIndex: 1)
-		equals: (self expectedColumnedListTypedColumnsTwoItems).
-
-	viewDatasource := phlowSpecificationsProvider
-			getDeclarativeViewFor: #gtColumnedListWithTypedColumnsFor:.
-	self
-		assertNodesInColumnedViewDatasource: viewDatasource
-		forObjects: (1 to: 500)
-		andColumnsComputation: {[ :aNumber | '+' , (aNumber asFloat printShowingDecimalPlaces: 1) ].
-				[ :aNumber | '+' , (aNumber + 1) asString ].
-				[ :aNumber | self formatExpectedIconName: aNumber asFloat gtSystemIconName ]}.
-
-	^ viewSpecification
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-columnedTreeView
-	<gtExample>
-	<return: #SubclassResponsibility>
-	| phlowSpecificationsProvider viewDictionary viewSpecification viewDatasource obtainedNodes |
-	phlowSpecificationsProvider := self remotePhlowSpecificationsProvider.
-	viewDictionary := phlowSpecificationsProvider
-			getViewDeclaration: #gtColumnedTreeFor:.
-	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
-
-	self assert: viewSpecification title equals: 'Columned Tree'.
-	self
-		assert: viewSpecification columnTitles
-		equals: {'x'.
-				'x * x'}.
-	self assert: viewSpecification columnWidths equals: #(nil nil).
-	self
-		assert: (viewSpecification columnTypes collect: #typeLabel)
-		equals: #(text text).
-	self
-		assert: viewSpecification dataTransport
-		equals: GtPhlowViewSpecification dataLazy.
-
-	viewDatasource := phlowSpecificationsProvider
-			getDeclarativeViewFor: #gtColumnedTreeFor:.
-
-	obtainedNodes := self
-			assertNodesInColumnedViewDatasource: viewDatasource
-			forObjects: (1 to: 5)
-			andColumnsComputation: {[ :aNumber | aNumber ].
-					[ :aNumber | aNumber * aNumber ]}.
-
-	self
-		assertChildColumnedTreeNodesInViewDatasource: viewDatasource
-		forParentNode: obtainedNodes third
-		forObjects: (1 to: 2)
-		andColumnsComputation: {[ :aNumber | aNumber ].
-				[ :aNumber | aNumber * aNumber ]}.
-
-	^ viewSpecification
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeViewsExamples
-computeStyledTextForTreeNumber: anInteger
-	| computedString|
-	computedString := anInteger asString, ' number'.
-	(anInteger \\ 2) = 0 
-		ifTrue: [
-			computedString :=  computedString asRopedText
-				bold;
-				highlight: (GtPhlowColor named: #yellow) asColor ].
-	^ computedString
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeViewsExamples
-convertIfNeededUsingDisplayTextObject: anObject 
-	"When doing local inspection Phlow text objects are not special.
-	They are just like any other normal objects and we convert them 
-	as any other object"
-	^ (self shouldConvertUsingDisplayTextObject: anObject)
-			ifTrue: [ anObject gtDisplayText ]
-			ifFalse: [ anObject ]
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeViewsExamples
-createColumnedNodesWithObjectValues: aCollectionOfObjects andColumnsComputation: aCollectionOfBlockClosures
-	^ self createColumnedNodesWithRowValues:  (aCollectionOfObjects 
-		withIndexCollect: [ :anObject :aRowIndex | 
-			GtRemotePhlowRowValue new
-				columnValues: (aCollectionOfBlockClosures 
-					collect: [ :aColumnComputation |
-						| columnedText |
-						columnedText := self convertIfNeededUsingDisplayTextObject: (aColumnComputation 
-							cull: anObject cull: aRowIndex).
-						self createPhlowTextValueFromText: columnedText ]) ])
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeViewsExamples
-createColumnedNodesWithRowValues: aCollectionOfRowValues
-	^ aCollectionOfRowValues withIndexCollect: [ :aRowValue :anIndex | 
-	 	GtRemotePhlowColumnedTreeNode new
-	 		nodeId: anIndex;
-	 		nodeValue: aRowValue ]
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeViewsExamples
-createDetailNodesWithObjectValues: aCollectionOfObjects
-	^ self createDetailsNodesWithTextValues: (aCollectionOfObjects 
-		collect: [ :anObject | 
-			self convertIfNeededUsingDisplayTextObject: anObject ])
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeViewsExamples
-createDetailsNodesWithTextValues: aCollectionOfValues
-	^ aCollectionOfValues withIndexCollect: [ :aText :anIndex | 
-	 	GtRemotePhlowDetailsNode new
-	 		nodeId: anIndex;
-	 		nodeValue: (self createPhlowDetailsValueFromText: aText withIndex:  anIndex) ]
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeViewsExamples
-createListNodesWithObjectValues: aCollectionOfObjects
-	^ self createListNodesWithTextValues: (aCollectionOfObjects 
-		collect: [ :anObject | 
-			self convertIfNeededUsingDisplayTextObject: anObject ])
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeViewsExamples
-createListNodesWithTextValues: aCollectionOfValues
-	^ aCollectionOfValues withIndexCollect: [ :aText :anIndex | 
-	 	GtRemotePhlowDataNode new
-	 		nodeId: anIndex;
-	 		nodeValue: (self createPhlowTextValueFromText: aText) ]
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeViewsExamples
-createPhlowDetailsValueFromText: aText withIndex:  anIndex
-	| convertedText |
-	convertedText := aText.
-	convertedText class name = #BlRunRopedText ifTrue: [
-		convertedText := convertedText asGtPlowText ]. 
-	
-	^ (GtRemotePhlowDetailsRowValue new
-			 rowIndex:anIndex;
-	 		itemText: convertedText)
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeViewsExamples
-createPhlowTextValueFromText: aText
-	| convertedText |
-	convertedText := aText.
-	convertedText class name = #BlRunRopedText ifTrue: [
-		convertedText := convertedText asGtPlowText ]. 
-	
-	^ (GtRemotePhlowItemTextualValue new
-	 	itemText: convertedText)
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeViewsExamples
-createTreeNodesWithObjectValues: aCollectionOfObjects
-	^ self createTreeNodesWithTextValues: (aCollectionOfObjects 
-		collect: [ :anObject | 
-			self convertIfNeededUsingDisplayTextObject: anObject ])
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeViewsExamples
-createTreeNodesWithTextValues: aCollectionOfValues
-	^ aCollectionOfValues withIndexCollect: [ :aText :anIndex | 
-		| convertedText |
-		convertedText := aText.
-		convertedText class name = #BlRunRopedText ifTrue: [
-			convertedText := convertedText asGtPlowText ]. 
-		 GtRemotePhlowTreeNode new
-	 		nodeId: anIndex;
-	 		nodeValue: (GtRemotePhlowItemTextualValue new
-	 			itemText: convertedText)]
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-detailsView
-	<gtExample>
-	<after: #stopServer>
-	<return: #SubclassResponsibility>
-	| phlowSpecificationsProvider viewDictionary viewSpecification viewDatasource obtainedNodes targetObject |
-	
-	phlowSpecificationsProvider := self remotePhlowSpecificationsProvider.
-	viewDictionary := phlowSpecificationsProvider getViewDeclaration: #gtDetailsViewFor:.
-	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
-
-	self assert: viewSpecification title equals: 'Details (default print)'.
-	self assert: viewSpecification priority equals: 37.
-	self assert: viewSpecification rowSpecifications equals: { 
-		GtRemotePhlowDetailsRowSpecification new index: 1; name: 'Class'.
-		GtRemotePhlowDetailsRowSpecification new index: 2; name: 'String value'.
-		GtRemotePhlowDetailsRowSpecification new index: 3; name: 'Date'.
-	}.
-
-	viewDatasource := phlowSpecificationsProvider
-			getDeclarativeViewFor: #gtDetailsViewFor:.
-	obtainedNodes := viewDatasource retrieveRowNodeData collect: [ :each |
-			GtRemotePhlowDetailsNode fromJSONDictionary: each  ].
-	
-	targetObject := GtRemotePhlowDeclarativeTestInspectable new.
-	self 
-		assertListingNodes: obtainedNodes 
-		equals: (self 
-			createDetailNodesWithObjectValues: ({
-			 targetObject class name.
-			 targetObject string.
-			 targetObject exampleDate gtDisplayString } collect: [ :each |
-			 	each asRopedText asGtPlowText ])).
-
-	^ viewSpecification
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-detailsViewWithCustomPrinting
-	<gtExample>
-	<after: #stopServer>
-	<return: #SubclassResponsibility>
-	| phlowSpecificationsProvider viewDictionary viewSpecification viewDatasource obtainedNodes targetObject |
-	
-	phlowSpecificationsProvider := self remotePhlowSpecificationsProvider.
-	viewDictionary := phlowSpecificationsProvider getViewDeclaration: #gtDetailsCustomPrintViewFor:.
-	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
-
-	self assert: viewSpecification title equals: 'Details (custom print)'.
-	self assert: viewSpecification priority equals: 37.1.
-	self assert: viewSpecification rowSpecifications equals: { 
-		GtRemotePhlowDetailsRowSpecification new index: 1; name: 'Class'.
-		GtRemotePhlowDetailsRowSpecification new index: 2; name: 'String value'.
-		GtRemotePhlowDetailsRowSpecification new index: 3; name: 'Text value'.
-		GtRemotePhlowDetailsRowSpecification new index: 4; name: 'Date'.
-	}.
-
-	viewDatasource := phlowSpecificationsProvider
-			getDeclarativeViewFor: #gtDetailsCustomPrintViewFor:.
-	obtainedNodes := viewDatasource retrieveRowNodeData collect: [ :each |
-			GtRemotePhlowDetailsNode fromJSONDictionary: each  ].
-	
-	targetObject := GtRemotePhlowDeclarativeTestInspectable new.
-	self 
-		assertListingNodes: obtainedNodes 
-		equals: (self 
-			createDetailNodesWithObjectValues: ({
-			 (( GtPhlowText forString: targetObject class name)
-					bold;
-					highlight: (GtPhlowColor named: #yellow) ).
-			 targetObject string.
-			 targetObject styledPhlowTextForRemoteComparison .
-			 targetObject exampleDate gtDisplayString })).
-
-	^ viewSpecification
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeViewsExamples
-expectedBasicString
-	^ 'Now is the time'
-%
-
-category: 'accessing - expected'
-method: GtRemotePhlowDeclarativeViewsExamples
-expectedColumnedListTypedColumnsTwoItems
-	^ ((Array new: 2) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'+1.0'); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'+2'); yourself); at: 3 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->#class); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'+2.0'); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'+3'); yourself); at: 3 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->#class); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); yourself)
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeViewsExamples
-expectedJsonString
-	^ '{
-	"name":"Me", 
-	"age":30, 
-	"data":null
-}'
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeViewsExamples
-expectedNumberOfRunsForBasicStyledText
-	^ 9
-%
-
-category: 'accessing - expected'
-method: GtRemotePhlowDeclarativeViewsExamples
-expectedStyledPhlowTextWithDecorations
-	^ GtRemotePhlowDeclarativeTextTestInspectable new  
-		styledPhlowTextWithDecorations
-%
-
-category: 'accessing - expected'
-method: GtRemotePhlowDeclarativeViewsExamples
-expectedStyledText
-	^ GtRemotePhlowDeclarativeTestInspectable new  
-			styledText
-%
-
-category: 'utils'
-method: GtRemotePhlowDeclarativeViewsExamples
-formatExpectedIconName: anIconName
-	^ anIconName
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-listView
-	<gtExample>
-	<after: #stopServer>
-	<return: #SubclassResponsibility>
-	| phlowSpecificationsProvider viewDictionary viewSpecification viewDatasource |
-	phlowSpecificationsProvider := self remotePhlowSpecificationsProvider.
-	viewDictionary := phlowSpecificationsProvider getViewDeclaration: #gtListFor:.
-	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
-
-	self assert: viewSpecification title equals: #List.
-	self assert: viewSpecification priority equals: 15.
-
-	viewDatasource := phlowSpecificationsProvider
-			getDeclarativeViewFor: #gtListFor:.
-	self
-		assertNodesInListViewDatasource: viewDatasource
-		forObjects: GtRemotePhlowDeclarativeTestInspectable new collectionOfObjects.
-
-	^ viewSpecification
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-listViewWithStyledText
-	<gtExample>
-	<after: #stopServer>
-	<return: #SubclassResponsibility>
-	| phlowSpecificationsProvider viewDictionary viewSpecification viewDatasource |
-	phlowSpecificationsProvider := self remotePhlowSpecificationsProvider.
-	viewDictionary := phlowSpecificationsProvider
-			getViewDeclaration: #gtListWithStyledTextFor:.
-	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
-
-	self assert: viewSpecification title equals: 'List - styled text'.
-	self assert: viewSpecification priority equals: 15.1.
-
-	viewDatasource := phlowSpecificationsProvider
-			getDeclarativeViewFor: #gtListWithStyledTextFor:.
-	self
-		assertNodesInListViewDatasource: viewDatasource
-		forObjects: self objectsForListWithStyledTextComparison.
-
-	^ viewSpecification
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeViewsExamples
-objectsForListWithStyledTextComparison
-	^ GtRemotePhlowDeclarativeTestInspectable new 
-			objectsForListWithStyledText
-%
-
-category: 'examples'
-method: GtRemotePhlowDeclarativeViewsExamples
-pictureView
-	<gtExample>
-	<after: #stopServer>
-	| phlowSpecificationsProvider viewDictionary viewSpecification viewDatasource data |
-	phlowSpecificationsProvider := self remotePhlowSpecificationsProvider.
-	viewDictionary := phlowSpecificationsProvider
-				getViewDeclaration: #gtPictureFor:.
-	viewSpecification := GtPhlowViewSpecification
-				fromDictionary: viewDictionary.
-	self assert: viewSpecification title equals: 'Picture'.
-	self assert: viewSpecification priority equals: 50. 
-	viewDatasource := phlowSpecificationsProvider
-				getDeclarativeViewFor: #gtPictureFor:.
-	data := viewDatasource retrieveStencilData.
-	self assert: data isPhlowErrorData not.
-	self assert: data content notNil.
-	self assert: data content notEmpty.
-	self assert: data width isNil.
-	self assert: data height isNil.
-	^viewSpecification
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeViewsExamples
-printForString
-	"Answer the string returned in the #gtPrintFor: view.
-	Subclasses may overwrite this as appropriate."
-
-	^ 'a GtRemotePhlowDeclarativeTestInspectable'
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-printView
-	<gtExample>
-	<after: #stopServer>
-	<return: #SubclassResponsibility>
-	| phlowSpecificationsProvider viewDictionary viewSpecification viewDataSource |
-	phlowSpecificationsProvider := self remotePhlowSpecificationsProvider.
-	viewDictionary := phlowSpecificationsProvider getViewDeclaration: #gtPrintFor:.
-	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
-
-	self assert: viewSpecification title equals: #Print.
-	self assert: viewSpecification string equals: nil.	"self printForString"
-
-	viewDataSource := phlowSpecificationsProvider
-			getDeclarativeViewFor: #gtPrintFor:.
-	self
-		assertUnstyledStringInViewSpecification: viewDataSource
-		equals: self printForString.
-
-	^ viewSpecification
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeViewsExamples
-shouldConvertUsingDisplayTextObject: anObject 
-	"When doing local inspection Phlow text objects are not special.
-	They are just like any other normal objects and we convert them 
-	as any other object"
-	^ anObject isString not
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-textEditorViewWithExplicitStyler
-	<gtExample>
-	<after: #stopServer>
-	<return: #SubclassResponsibility>
-	| phlowSpecificationsProvider viewDictionary viewSpecification viewDataSource |
-	phlowSpecificationsProvider := self remotePhlowSpecificationsProvider.
-	viewDictionary := phlowSpecificationsProvider
-			getViewDeclaration: #gtStyledStringUsingStylerFor:.
-	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
-
-	self assert: viewSpecification title equals: 'Styled text (styler)'.
-	self assert: viewSpecification priority equals: 11.2.
-	self assert: viewSpecification string equals: nil.
-
-	viewDataSource := phlowSpecificationsProvider
-			getDeclarativeViewFor: #gtStyledStringUsingStylerFor:.
-	self
-		assertBasicStyledTextInViewSpecification: viewDataSource
-		expectedText: self expectedStyledText.
-
-	^ viewSpecification
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-textEditorViewWithParserStylerClass
-	<gtExample>
-	<after: #stopServer>
-	<return: #SubclassResponsibility>
-	| phlowSpecificationsProvider viewDictionary viewSpecification viewDataSource |
-	phlowSpecificationsProvider := self remotePhlowSpecificationsProvider.
-	viewDictionary := phlowSpecificationsProvider
-			getViewDeclaration: #gtStyledStringJsonInEditorFor:.
-	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
-
-	self assert: viewSpecification title equals: 'Styled JSON'.
-	self assert: viewSpecification priority equals: 11.5.
-	self assert: viewSpecification string equals: nil.
-
-	viewDataSource := phlowSpecificationsProvider
-			getDeclarativeViewFor: #gtStyledStringJsonInEditorFor:.
-	self assertStyledJsonTextInViewSpecification: viewDataSource.
-
-	^ viewSpecification
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-textEditorViewWithSimpleString
-	<gtExample>
-	<after: #stopServer>
-	<return: #SubclassResponsibility>
-	| phlowSpecificationsProvider viewDictionary viewSpecification viewDataSource |
-	phlowSpecificationsProvider := self remotePhlowSpecificationsProvider.
-	viewDictionary := phlowSpecificationsProvider
-			getViewDeclaration: #gtStringInTextEditorViewFor:.
-	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
-
-	self assert: viewSpecification title equals: 'String (editor)'.
-	self assert: viewSpecification priority equals: 11.
-	self assert: viewSpecification string equals: nil.
-
-	viewDataSource := phlowSpecificationsProvider
-			getDeclarativeViewFor: #gtStringInTextEditorViewFor:.
-	self
-		assertUnstyledStringInViewSpecification: viewDataSource
-		equals: 'hello world'.
-
-	^ viewSpecification
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-textEditorViewWithStyledPhlowText
-	<gtExample>
-	<after: #stopServer>
-	<return: #SubclassResponsibility>
-	| view |
-	view := self
-			assertTextualViewWithBasicStyledTextWithSelector: #gtStyledPhlowTextInEditorFor:
-			title: 'Styled phlow text (editor)'
-			priority: 11.3
-			expectedText: GtRemotePhlowDeclarativeTestInspectable new styledPhlowText.
-
-	self assert: view string equals: nil.
-
-	^ view
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-textEditorViewWithStyledText
-	<gtExample>
-	<after: #stopServer>
-	<return: #SubclassResponsibility>
-	| view |
-	view := self
-			assertTextualViewWithBasicStyledTextWithSelector: #gtStyledTextInEditorFor:
-			title: 'Styled text (editor)'
-			priority: 11.1
-			expectedText: self expectedStyledText.
-
-	self assert: view string equals: nil.
-
-	^ view
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-textViewWithSimpleString
-	<gtExample>
-	<after: #stopServer>
-	<return: #SubclassResponsibility>
-	| phlowSpecificationsProvider viewDictionary viewSpecification viewDataSource |
-	phlowSpecificationsProvider := self remotePhlowSpecificationsProvider.
-	viewDictionary := phlowSpecificationsProvider
-			getViewDeclaration: #gtStringInTextViewFor:.
-	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
-
-	self assert: viewSpecification title equals: 'String (text)'.
-	self assert: viewSpecification priority equals: 10.
-
-	viewDataSource := phlowSpecificationsProvider
-			getDeclarativeViewFor: #gtStringInTextViewFor:.
-	self
-		assertUnstyledStringInViewSpecification: viewDataSource
-		equals: 'hello world'.
-
-	^ viewSpecification
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-textViewWithStyledPhlowText
-	<gtExample>
-	<after: #stopServer>
-	<return: #SubclassResponsibility>
-	| view |
-	view := self
-			assertTextualViewWithBasicStyledTextWithSelector: #gtStyledPhlowTextFor:
-			title: 'Styled phlow text'
-			priority: 10.3
-			expectedText: GtRemotePhlowDeclarativeTestInspectable new styledPhlowText.
-
-	^ view
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-textViewWithStyledPhlowTextWithDecorations
-	<gtExample>
-	<after: #stopServer>
-	<return: #SubclassResponsibility>
-	| view |
-	view := self
-			assertTextualViewWithBasicStyledTextWithSelector: #gtStyledPhlowTextWithDecorationsFor:
-			title: 'Styled phlow text with decorations'
-			priority: 10.6
-			expectedText: self expectedStyledPhlowTextWithDecorations.
-
-	^ view
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-textViewWithStyledText
-	<gtExample>
-	<after: #stopServer>
-	<return: #SubclassResponsibility>
-	^ self
-		assertTextualViewWithBasicStyledTextWithSelector: #gtStyledTextFor:
-		title: 'Styled text'
-		priority: 10.1
-		expectedText: self expectedStyledText
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-treeView
-	<gtExample>
-	<after: #stopServer>
-	<return: #SubclassResponsibility>
-	| phlowSpecificationsProvider viewDictionary viewSpecification |
-	phlowSpecificationsProvider := self remotePhlowSpecificationsProvider.
-	viewDictionary := phlowSpecificationsProvider getViewDeclaration: #gtTreeFor:.
-	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
-
-	self assert: viewSpecification title equals: 'Tree'.
-	self assert: viewSpecification priority equals: 30.
-
-	self treeViewLazyCheck: phlowSpecificationsProvider.
-
-	^ viewSpecification
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeViewsExamples
-treeViewLazyCheck: viewProxy
-	| viewDatasource obtainedNodes|
-
-	viewDatasource := viewProxy getDeclarativeViewFor: #gtTreeFor:.
-	self assert: viewDatasource retrieveTotalItemsCount equals: 5.
-	
-	obtainedNodes := self 
-		assertNodesInTreeViewDatasource: viewDatasource 
-		forObjects: ((1 to: 5) 
-			collect: [ :x | x asString, ' number' ]).
-			
-	self 
-		assertChildTreeNodesInViewDatasource: viewDatasource 
-		forParentNode:  obtainedNodes third
-		forObjects:  ((1 to: 2) 
-			collect: [ :x | x asString, ' number' ]).
-%
-
-category: 'examples - views'
-method: GtRemotePhlowDeclarativeViewsExamples
-treeViewWithStyledText
-	<gtExample>
-	<after: #stopServer>
-	<return: #SubclassResponsibility>
-	| phlowSpecificationsProvider viewDictionary viewSpecification |
-	phlowSpecificationsProvider := self remotePhlowSpecificationsProvider.
-	viewDictionary := phlowSpecificationsProvider
-			getViewDeclaration: #gtTreeWithStyledTextFor:.
-	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
-
-	self assert: viewSpecification title equals: 'Tree - with styled text'.
-	self assert: viewSpecification priority equals: 30.1.
-
-	self treeViewWithStyledTextLazyCheck: phlowSpecificationsProvider.
-
-	^ viewSpecification
-%
-
-category: 'private'
-method: GtRemotePhlowDeclarativeViewsExamples
-treeViewWithStyledTextLazyCheck: viewProxy
-	| viewDatasource obtainedNodes|
-
-	viewDatasource := viewProxy getDeclarativeViewFor: #gtTreeWithStyledTextFor:.
-	self assert: viewDatasource retrieveTotalItemsCount equals: 5.
-	
-	obtainedNodes := self 
-		assertNodesInTreeViewDatasource: viewDatasource 
-		forObjects: ((1 to: 5) 
-			collect: [ :aNumber | self computeStyledTextForTreeNumber: aNumber ]).
-			
-	self 
-		assertChildTreeNodesInViewDatasource: viewDatasource 
-		forParentNode:  obtainedNodes third
-		forObjects: ((1 to: 2) 
-			collect: [ :aNumber | self computeStyledTextForTreeNumber: aNumber  ]).
-%
-
-! Class implementation for 'GtRemotePhlowDeclarativeViewsDirectViewedObjectExamples'
-
-!		Class methods for 'GtRemotePhlowDeclarativeViewsDirectViewedObjectExamples'
-
-category: 'testing'
-classmethod: GtRemotePhlowDeclarativeViewsDirectViewedObjectExamples
-isAbstract
-	^ self name = #GtRemotePhlowDeclarativeViewsDirectViewedObjectExamples
-%
-
-!		Instance methods for 'GtRemotePhlowDeclarativeViewsDirectViewedObjectExamples'
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeViewsDirectViewedObjectExamples
-getRemoteObject
-
-	^ GtRemotePhlowDeclarativeTestInspectable new
-%
-
-! Class implementation for 'GtRemotePhlowDeclarativeViewsLocalViewedObjectExamples'
-
-!		Instance methods for 'GtRemotePhlowDeclarativeViewsLocalViewedObjectExamples'
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeViewsLocalViewedObjectExamples
-remoteViewedObject
-	^ GtRemotePhlowViewedObject object: self remoteObject.
-%
-
-! Class implementation for 'GtRemotePhlowDeclarativeViewsRemoteViewedObjectExamples'
-
-!		Instance methods for 'GtRemotePhlowDeclarativeViewsRemoteViewedObjectExamples'
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeViewsRemoteViewedObjectExamples
-retrieveRemotePhlowSpecificationsProvider
-	"Answer the GtRemotePhlowViewedObject proxy for the remote object"
-
-	^ GtRemotePhlowViewedObject object: self remoteObject.
-%
-
-! Class implementation for 'GtRemotePhlowDeclarativeViewsProxySimulationExamples'
-
-!		Instance methods for 'GtRemotePhlowDeclarativeViewsProxySimulationExamples'
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeViewsProxySimulationExamples
-remoteObject
-	<gtExample>
-	<after: #stopServer>
-	<return: #GtRemoteInspectionSimulation>
-	| remoteObject |
-	remoteObject := self getRemoteObject.
-
-	^ remoteObject
-%
-
-category: 'accessing'
-method: GtRemotePhlowDeclarativeViewsProxySimulationExamples
-retrieveRemotePhlowSpecificationsProvider
-
-	self remoteObject 
-		remoteInspectorProxyDo: [ :aProxy | ^ aProxy ].
-	^ nil
-%
-
 ! Class implementation for 'GtRemotePhlowDeclarativeTestForCustomProxyInspectable'
+
+!		Class methods for 'GtRemotePhlowDeclarativeTestForCustomProxyInspectable'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowDeclarativeTestForCustomProxyInspectable
+new
+	^ self basicNew initialize
+%
 
 !		Instance methods for 'GtRemotePhlowDeclarativeTestForCustomProxyInspectable'
 
@@ -12595,6 +16648,14 @@ initialize
 %
 
 ! Class implementation for 'GtRemotePhlowDeclarativeTestInspectable'
+
+!		Class methods for 'GtRemotePhlowDeclarativeTestInspectable'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowDeclarativeTestInspectable
+new
+	^ self basicNew initialize
+%
 
 !		Instance methods for 'GtRemotePhlowDeclarativeTestInspectable'
 
@@ -14016,6 +18077,25 @@ retrieveRowNodes
 
 !		Instance methods for 'GtRemotePhlowDeclarativeViewListingDataSource'
 
+category: 'api - data retrival'
+method: GtRemotePhlowDeclarativeViewListingDataSource
+bareRetrieveSentItemAtPhlowSelectionData: aPhlowSelectionData
+	| phlowSelection |
+	phlowSelection := GtRemotePhlowListingViewSelection fromDictionary: aPhlowSelectionData.
+	^ self retrieveSentItemAtPhlowSelection: phlowSelection
+%
+
+category: 'api - data retrival'
+method: GtRemotePhlowDeclarativeViewListingDataSource
+bareRetriveContextActionSpecificationsForPhlowSelectionData: aPhlowSelectionData
+	| phlowSelection |
+	phlowSelection := GtRemotePhlowListingViewSelection fromDictionary: aPhlowSelectionData.
+	^ (self retriveContextActionSpecificationsForPhlowSelection: phlowSelection)
+			ifNotNil: [ :actions |
+				actions collect: [ :anAction |
+					anAction asDictionaryForExportWithPhlowDataSource ] ]
+%
+
 category: 'accessing'
 method: GtRemotePhlowDeclarativeViewListingDataSource
 buildMainNodeForObject: anObject atIndex: anIndex 
@@ -14160,8 +18240,48 @@ retrieveSentItemAt: aSelectionIndex
 
 category: 'api - data retrival'
 method: GtRemotePhlowDeclarativeViewListingDataSource
+retrieveSentItemAtPhlowSelection: aPhlowSelection 
+	| targetNodes targetObjects |
+	
+	targetNodes := OrderedCollection new.
+	self withNodesInPhlowSelection: aPhlowSelection do: [ :aNode |
+		targetNodes add: aNode ].
+	targetNodes ifEmpty: [ ^ nil ].
+	
+	targetObjects := targetNodes collect: [ :aNode | aNode targetObject ].
+	
+	^ self phlowView transformation 
+			transformedValueFrom: ((targetObjects size > 1)
+				ifTrue: [ Array withAll: targetObjects ]
+				ifFalse: [ targetObjects first ])
+			selection: (aPhlowSelection selectionIndex) 
+%
+
+category: 'api - data retrival'
+method: GtRemotePhlowDeclarativeViewListingDataSource
 retrieveTotalItemsCount
 	^ self itemsIterator totalItemsCount
+%
+
+category: 'api - data retrival'
+method: GtRemotePhlowDeclarativeViewListingDataSource
+retriveContextActionSpecificationsForPhlowSelection: aPhlowSelection
+	| targetNodes targetObjects |
+	
+	targetNodes := OrderedCollection new.
+	self withNodesInPhlowSelection: aPhlowSelection do: [ :aNode |
+		targetNodes add: aNode ].
+	targetNodes ifEmpty: [ ^ nil ].
+	
+	targetObjects := targetNodes collect: [ :aNode | aNode targetObject ].
+	
+	^ (self phlowView 	
+			collectIndividualContextMenuActionsForElement: nil 
+			item: (aPhlowSelection isMultipleSelection
+				ifTrue: [ Array withAll: targetObjects ]
+				ifFalse: [ targetObjects first  ])
+			viewSelection: aPhlowSelection) collect: [ :anAction |
+				anAction asGtDeclarativeAction ].
 %
 
 category: 'api - data retrival'
@@ -14175,7 +18295,7 @@ retriveSentItemAt: aSelectionIndex
 		withIndexDo: [ :aNode :anItemIndex |
 			^ self phlowView transformation 
 				transformedValueFrom: aNode targetObject
-				selection: aSelectionIndex ].
+				selection: (Array with: aSelectionIndex) ].
 	^ nil
 %
 
@@ -14185,6 +18305,28 @@ valueBuilder
 	^ cachedValueBuilder ifNil: [
 		cachedValueBuilder := self instantiateValueBuilder
 			phlowView:  self phlowView]
+%
+
+category: 'api - data retrival'
+method: GtRemotePhlowDeclarativeViewListingDataSource
+withNodeAtAtPath: aNodePath ifPresent: aPresentBlock ifAbsent: anAbsentBlock
+	self 
+		forNodesFrom: aNodePath first 
+		to: aNodePath first 
+		withIndexDo: [ :aNode :aSelectionIndex |
+			^ aPresentBlock cull: aNode cull: aSelectionIndex ].
+	^ anAbsentBlock value
+%
+
+category: 'api - data retrival'
+method: GtRemotePhlowDeclarativeViewListingDataSource
+withNodesInPhlowSelection: aPhlowSelection do: aBlock
+	aPhlowSelection selectionItemsDo: [ :aSelectionItem |
+		self 
+			withNodeAtAtPath: aSelectionItem nodeIdentifier nodeIndexPath 
+			ifPresent: [ :targetNode :aSelectionIndex |
+				aBlock cull: targetNode cull: aSelectionItem selectionIndex ]  
+			ifAbsent: [  ]. ].
 %
 
 ! Class implementation for 'GtRemotePhlowDeclarativeViewColumnedListDataSource'
@@ -14265,10 +18407,36 @@ buildChildrenForNode: aNode atPath: aNodePath
 
 category: 'accessing'
 method: GtRemotePhlowDeclarativeViewTreeDataSource
+buildMainNodeForObject: anObject atIndex: anIndex 
+	| rootNode |
+	rootNode := self buildNodeForObject: anObject atIndex: anIndex.
+	
+	self expander ifNotNil: [ :aPhlowExpander |
+		aPhlowExpander 
+			expandNode: rootNode 
+			fromDataSource: self ].
+	
+	^ rootNode
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeViewTreeDataSource
 ensureChildrenForNode: aNode 
 	aNode childNodes ifNotNil: [ ^ self ].
 	
 	aNode childNodes: (self buildChildNodesFor: aNode)
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeViewTreeDataSource
+expander
+	^ expander
+%
+
+category: 'accessing'
+method: GtRemotePhlowDeclarativeViewTreeDataSource
+expander: anExpander
+	expander := anExpander
 %
 
 category: 'accessing'
@@ -14306,7 +18474,17 @@ retrieveChildrenForNodeAtPath: aNodePath
 category: 'api - data retrival'
 method: GtRemotePhlowDeclarativeViewTreeDataSource
 retrieveSentItemAtPath: aNodePath
-	self 
+	^ self 
+		withNodeAtAtPath: aNodePath 
+		ifPresent: [ :targetNode :aSelectionIndex |
+			| targetObject |
+			targetObject := targetNode targetObject.
+			self phlowView transformation 
+				transformedValueFrom: targetObject
+				selection: (Array with: aSelectionIndex) ]  
+		ifAbsent: [ nil ].
+	
+	"self 
 		forNodesFrom: aNodePath first 
 		to: aNodePath first 
 		withIndexDo: [ :aNode :aSelectionIndex |
@@ -14318,25 +18496,36 @@ retrieveSentItemAtPath: aNodePath
 			^ self phlowView transformation 
 				transformedValueFrom: targetObject
 				selection: aSelectionIndex ].
-	^ nil
+	^ nil"
 %
 
 category: 'api - data retrival'
 method: GtRemotePhlowDeclarativeViewTreeDataSource
 retriveSentItemAtPath: aNodePath
+	^ self 
+		withNodeAtAtPath: aNodePath 
+		ifPresent: [ :targetNode :aSelectionIndex |
+			| targetObject |
+			targetObject := targetNode targetObject.
+			self phlowView transformation 
+				transformedValueFrom: targetObject
+				selection: (Array with: aSelectionIndex) ]  
+		ifAbsent: [ nil ].
+%
+
+category: 'api - data retrival'
+method: GtRemotePhlowDeclarativeViewTreeDataSource
+withNodeAtAtPath: aNodePath ifPresent: aPresentBlock ifAbsent: anAbsentBlock
 	self 
 		forNodesFrom: aNodePath first 
 		to: aNodePath first 
 		withIndexDo: [ :aNode :aSelectionIndex |
-			| targetNode targetObject |
+			| targetNode |
 			targetNode := self 
 				locateNode: aNode 
 				atPath: aNodePath allButFirst.
-			targetObject := targetNode targetObject.
-			^ self phlowView transformation 
-				transformedValueFrom: targetObject
-				selection: aSelectionIndex ].
-	^ nil
+			^ aPresentBlock cull: targetNode cull: aSelectionIndex ].
+	^ anAbsentBlock value
 %
 
 ! Class implementation for 'GtRemotePhlowDeclarativeViewColumnedTreeDataSource'
@@ -14863,6 +19052,953 @@ gtExplicitPictureViewWireEncodingSerializationFor: aView
 						content: self class pictureBytes);
 				dataSerializationStrategy: GtPhlowStencilDataSerializationStrategy 
 					forWireEncoding  ]
+%
+
+! Class implementation for 'GtRemotePhlowListingViewSelectionExamples'
+
+!		Instance methods for 'GtRemotePhlowListingViewSelectionExamples'
+
+category: 'examples - items'
+method: GtRemotePhlowListingViewSelectionExamples
+listAndTreeItemInequality
+	<gtExample>
+	<return: #GtRemotePhlowListingViewListSelectionItem>
+	| listItem treeItem |
+	listItem := self listSelectionItem.
+	treeItem := self treeSelectionItem.
+	self assert: (listItem = treeItem) not.
+	^ listItem
+%
+
+category: 'examples - items'
+method: GtRemotePhlowListingViewSelectionExamples
+listSelectionItem
+	<gtExample>
+	<return: #GtRemotePhlowListingViewListSelectionItem>
+	| item |
+	item := GtRemotePhlowListingViewListSelectionItem new
+		nodeIdentifier: (GtRemotePhlowNodeIdentifier forListIndex: 3).
+	self assert: item class equals: GtRemotePhlowListingViewListSelectionItem.
+	self assert: item nodeIdentifier nodeIndex equals: 3.
+	self assert: item selectionIndex isNil.
+	self assert: item printString equals: 'a GtRemotePhlowListingViewListSelectionItem(3)'.
+	^ item
+%
+
+category: 'examples - items'
+method: GtRemotePhlowListingViewSelectionExamples
+listSelectionItemWithIndex
+	<gtExample>
+	<return: #GtRemotePhlowListingViewListSelectionItem>
+	| item |
+	item := GtRemotePhlowListingViewListSelectionItem new
+		nodeIdentifier: (GtRemotePhlowNodeIdentifier forListIndex: 3);
+		selectionIndex: 3.
+	self assert: item selectionIndex equals: 3.
+	self assert: item printString equals: 'a GtRemotePhlowListingViewListSelectionItem(3 @ 3)'.
+	^ item
+%
+
+category: 'examples - multiple selection'
+method: GtRemotePhlowListingViewSelectionExamples
+multipleListSelection
+	<gtExample>
+	<return: #GtRemotePhlowListingViewMultipleSelection>
+	| selection |
+	selection := GtRemotePhlowListingViewSelection forMultipleListIndexes: #(1 3 5).
+	self assert: selection class equals: GtRemotePhlowListingViewMultipleSelection.
+	self assert: selection selectionItems size equals: 3.
+	self assert: (selection selectionItems allSatisfy: [ :each | each class = GtRemotePhlowListingViewListSelectionItem ]).
+	self assert: selection selectionItems first nodeIdentifier nodeIndex equals: 1.
+	self assert: selection selectionItems last nodeIdentifier nodeIndex equals: 5.
+	^ selection
+%
+
+category: 'examples - multiple selection'
+method: GtRemotePhlowListingViewSelectionExamples
+multipleSelectionEquality
+	<gtExample>
+	<return: #GtRemotePhlowListingViewMultipleSelection>
+	| selection1 selection2 |
+	selection1 := self multipleListSelection.
+	selection2 := GtRemotePhlowListingViewSelection forMultipleListIndexes: #(1 3 5).
+	self assert: selection1 equals: selection2.
+	self assert: selection1 hash equals: selection2 hash.
+	^ selection1
+%
+
+category: 'examples - multiple selection'
+method: GtRemotePhlowListingViewSelectionExamples
+multipleSelectionJsonRoundtrip
+	<gtExample>
+	<return: #GtRemotePhlowListingViewMultipleSelection>
+	| selection json dictionary deserialized |
+	selection := self multipleListSelection.
+	json := selection asJSONForExport.
+	dictionary := STONJSON fromString: json.
+	deserialized := GtPhlowDeclarativeSpecification fromDictionary: dictionary.
+	self assert: deserialized equals: selection.
+	^ deserialized
+%
+
+category: 'examples - multiple selection'
+method: GtRemotePhlowListingViewSelectionExamples
+multipleSelectionNodeIdentifiersDo
+	<gtExample>
+	<return: #OrderedCollection>
+	| selection collected |
+	selection := self multipleListSelection.
+	collected := OrderedCollection new.
+	selection nodeIdentifiersDo: [ :each | collected add: each ].
+	self assert: collected size equals: 3.
+	self assert: collected first nodeIndex equals: 1.
+	self assert: collected second nodeIndex equals: 3.
+	self assert: collected third nodeIndex equals: 5.
+	^ collected
+%
+
+category: 'examples - multiple selection'
+method: GtRemotePhlowListingViewSelectionExamples
+multipleSelectionSerialization
+	<gtExample>
+	<return: #GtRemotePhlowListingViewMultipleSelection>
+	| selection dictionary deserialized expectedDictionary |
+	selection := self multipleListSelection.
+	dictionary := selection asDictionaryForExport.
+	expectedDictionary := Dictionary new
+		at: '__typeName' put: 'GtRemotePhlowListingViewMultipleSelection';
+		at: 'selectionItems' put: {
+			Dictionary new
+				at: '__typeName' put: 'GtRemotePhlowListingViewListSelectionItem';
+				at: 'nodeIdentifier' put: (Dictionary new at: '__typeName' put: 'GtRemotePhlowIndexNodeIdentifier'; at: 'nodeIndex' put: 1; yourself);
+				yourself.
+			Dictionary new
+				at: '__typeName' put: 'GtRemotePhlowListingViewListSelectionItem';
+				at: 'nodeIdentifier' put: (Dictionary new at: '__typeName' put: 'GtRemotePhlowIndexNodeIdentifier'; at: 'nodeIndex' put: 3; yourself);
+				yourself.
+			Dictionary new
+				at: '__typeName' put: 'GtRemotePhlowListingViewListSelectionItem';
+				at: 'nodeIdentifier' put: (Dictionary new at: '__typeName' put: 'GtRemotePhlowIndexNodeIdentifier'; at: 'nodeIndex' put: 5; yourself);
+				yourself };
+		yourself.
+	self assert: dictionary equals: expectedDictionary.
+	deserialized := GtPhlowDeclarativeSpecification fromDictionary: dictionary.
+	self assert: deserialized equals: selection.
+	^ deserialized
+%
+
+category: 'examples - multiple selection'
+method: GtRemotePhlowListingViewSelectionExamples
+multipleTreeSelection
+	<gtExample>
+	<return: #GtRemotePhlowListingViewMultipleSelection>
+	| selection |
+	selection := GtRemotePhlowListingViewSelection forMultipleTreePaths: { #(1 2). #(3 4) }.
+	self assert: selection class equals: GtRemotePhlowListingViewMultipleSelection.
+	self assert: selection selectionItems size equals: 2.
+	self assert: (selection selectionItems allSatisfy: [ :each | each class = GtRemotePhlowListingViewTreeSelectionItem ]).
+	^ selection
+%
+
+category: 'examples - items'
+method: GtRemotePhlowListingViewSelectionExamples
+selectionItemEquality
+	<gtExample>
+	<return: #GtRemotePhlowListingViewListSelectionItem>
+	| item1 item2 |
+	item1 := self listSelectionItem.
+	item2 := GtRemotePhlowListingViewListSelectionItem new
+		nodeIdentifier: (GtRemotePhlowNodeIdentifier forListIndex: 3).
+	self assert: item1 equals: item2.
+	self assert: item1 hash equals: item2 hash.
+	^ item1
+%
+
+category: 'examples - items'
+method: GtRemotePhlowListingViewSelectionExamples
+selectionItemInequality
+	<gtExample>
+	<return: #GtRemotePhlowListingViewListSelectionItem>
+	| item1 item2 |
+	item1 := self listSelectionItem.
+	item2 := GtRemotePhlowListingViewListSelectionItem new
+		nodeIdentifier: (GtRemotePhlowNodeIdentifier forListIndex: 7).
+	self assert: (item1 = item2) not.
+	^ item1
+%
+
+category: 'examples - items'
+method: GtRemotePhlowListingViewSelectionExamples
+selectionItemJsonRoundtrip
+	<gtExample>
+	<return: #GtRemotePhlowListingViewListSelectionItem>
+	| item json dictionary deserialized |
+	item := self listSelectionItemWithIndex.
+	json := item asJSONForExport.
+	dictionary := STONJSON fromString: json.
+	deserialized := GtPhlowDeclarativeSpecification fromDictionary: dictionary.
+	self assert: deserialized equals: item.
+	^ deserialized
+%
+
+category: 'examples - items'
+method: GtRemotePhlowListingViewSelectionExamples
+selectionItemSerialization
+	<gtExample>
+	<return: #GtRemotePhlowListingViewListSelectionItem>
+	| item dictionary deserialized expectedDictionary |
+	item := self listSelectionItemWithIndex.
+	dictionary := item asDictionaryForExport.
+	expectedDictionary := Dictionary new
+		at: '__typeName' put: 'GtRemotePhlowListingViewListSelectionItem';
+		at: 'nodeIdentifier' put: (Dictionary new
+			at: '__typeName' put: 'GtRemotePhlowIndexNodeIdentifier';
+			at: 'nodeIndex' put: 3;
+			yourself);
+		at: 'selectionIndex' put: 3;
+		yourself.
+	self assert: dictionary equals: expectedDictionary.
+	deserialized := GtPhlowDeclarativeSpecification fromDictionary: dictionary.
+	self assert: deserialized equals: item.
+	^ deserialized
+%
+
+category: 'examples - equality'
+method: GtRemotePhlowListingViewSelectionExamples
+singleAndMultipleSelectionInequality
+	<gtExample>
+	<return: #GtRemotePhlowListingViewSingleSelection>
+	| single multiple |
+	single := self singleListSelection.
+	multiple := self multipleListSelection.
+	self assert: (single = multiple) not.
+	^ single
+%
+
+category: 'examples - single selection'
+method: GtRemotePhlowListingViewSelectionExamples
+singleListSelection
+	<gtExample>
+	<return: #GtRemotePhlowListingViewSingleSelection>
+	| selection |
+	selection := GtRemotePhlowListingViewSelection forSingleListIndex: 3.
+	self assert: selection class equals: GtRemotePhlowListingViewSingleSelection.
+	self assert: selection selectionItem class equals: GtRemotePhlowListingViewListSelectionItem.
+	self assert: selection selectionItem nodeIdentifier nodeIndex equals: 3.
+	self assert: selection selectionItems size equals: 1.
+	^ selection
+%
+
+category: 'examples - single selection'
+method: GtRemotePhlowListingViewSelectionExamples
+singleSelectionEquality
+	<gtExample>
+	<return: #GtRemotePhlowListingViewSingleSelection>
+	| selection1 selection2 |
+	selection1 := self singleListSelection.
+	selection2 := GtRemotePhlowListingViewSelection forSingleListIndex: 3.
+	self assert: selection1 equals: selection2.
+	self assert: selection1 hash equals: selection2 hash.
+	^ selection1
+%
+
+category: 'examples - single selection'
+method: GtRemotePhlowListingViewSelectionExamples
+singleSelectionInequality
+	<gtExample>
+	<return: #GtRemotePhlowListingViewSingleSelection>
+	| selection1 selection2 |
+	selection1 := self singleListSelection.
+	selection2 := GtRemotePhlowListingViewSelection forSingleListIndex: 7.
+	self assert: (selection1 = selection2) not.
+	^ selection1
+%
+
+category: 'examples - single selection'
+method: GtRemotePhlowListingViewSelectionExamples
+singleSelectionJsonRoundtrip
+	<gtExample>
+	<return: #GtRemotePhlowListingViewSingleSelection>
+	| selection json dictionary deserialized |
+	selection := self singleListSelection.
+	json := selection asJSONForExport.
+	dictionary := STONJSON fromString: json.
+	deserialized := GtPhlowDeclarativeSpecification fromDictionary: dictionary.
+	self assert: deserialized equals: selection.
+	^ deserialized
+%
+
+category: 'examples - single selection'
+method: GtRemotePhlowListingViewSelectionExamples
+singleSelectionNodeIdentifiersDo
+	<gtExample>
+	<return: #OrderedCollection>
+	| selection collected |
+	selection := self singleListSelection.
+	collected := OrderedCollection new.
+	selection nodeIdentifiersDo: [ :each | collected add: each ].
+	self assert: collected size equals: 1.
+	self assert: collected first nodeIndex equals: 3.
+	^ collected
+%
+
+category: 'examples - single selection'
+method: GtRemotePhlowListingViewSelectionExamples
+singleSelectionSerialization
+	<gtExample>
+	<return: #GtRemotePhlowListingViewSingleSelection>
+	| selection dictionary deserialized expectedDictionary |
+	selection := self singleListSelection.
+	dictionary := selection asDictionaryForExport.
+	expectedDictionary := Dictionary new
+		at: '__typeName' put: 'GtRemotePhlowListingViewSingleSelection';
+		at: 'selectionItem' put: (Dictionary new
+			at: '__typeName' put: 'GtRemotePhlowListingViewListSelectionItem';
+			at: 'nodeIdentifier' put: (Dictionary new
+				at: '__typeName' put: 'GtRemotePhlowIndexNodeIdentifier';
+				at: 'nodeIndex' put: 3;
+				yourself);
+			yourself);
+		yourself.
+	self assert: dictionary equals: expectedDictionary.
+	deserialized := GtPhlowDeclarativeSpecification fromDictionary: dictionary.
+	self assert: deserialized equals: selection.
+	^ deserialized
+%
+
+category: 'examples - single selection'
+method: GtRemotePhlowListingViewSelectionExamples
+singleTreeSelection
+	<gtExample>
+	<return: #GtRemotePhlowListingViewSingleSelection>
+	| selection |
+	selection := GtRemotePhlowListingViewSelection forSingleTreePath: #(1 2).
+	self assert: selection class equals: GtRemotePhlowListingViewSingleSelection.
+	self assert: selection selectionItem class equals: GtRemotePhlowListingViewTreeSelectionItem.
+	self assert: selection selectionItem nodeIdentifier nodeIndexPath equals: #(1 2).
+	self assert: selection selectionItems size equals: 1.
+	^ selection
+%
+
+category: 'examples - items'
+method: GtRemotePhlowListingViewSelectionExamples
+treeSelectionItem
+	<gtExample>
+	<return: #GtRemotePhlowListingViewTreeSelectionItem>
+	| item |
+	item := GtRemotePhlowListingViewTreeSelectionItem new
+		nodeIdentifier: (GtRemotePhlowNodeIdentifier forTreePath: #(1 2)).
+	self assert: item class equals: GtRemotePhlowListingViewTreeSelectionItem.
+	self assert: item nodeIdentifier nodeIndexPath equals: #(1 2).
+	self assert: item printString equals: 'a GtRemotePhlowListingViewTreeSelectionItem(#(1 2))'.
+	^ item
+%
+
+category: 'examples - items'
+method: GtRemotePhlowListingViewSelectionExamples
+treeSelectionItemWithIndex
+	<gtExample>
+	<return: #GtRemotePhlowListingViewTreeSelectionItem>
+	| item |
+	item := GtRemotePhlowListingViewTreeSelectionItem new
+		nodeIdentifier: (GtRemotePhlowNodeIdentifier forTreePath: #(1 2));
+		selectionIndex: 5.
+	self assert: item selectionIndex equals: 5.
+	self assert: item printString equals: 'a GtRemotePhlowListingViewTreeSelectionItem(#(1 2) @ 5)'.
+	^ item
+%
+
+! Class implementation for 'GtRemotePhlowListViewContextActionsBasicTestObject'
+
+!		Class methods for 'GtRemotePhlowListViewContextActionsBasicTestObject'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowListViewContextActionsBasicTestObject
+new 	
+	^ self basicNew initialize
+%
+
+!		Instance methods for 'GtRemotePhlowListViewContextActionsBasicTestObject'
+
+category: 'views'
+method: GtRemotePhlowListViewContextActionsBasicTestObject
+gtListWithBasicContextActionsFor: aView
+	<gtView>
+
+	^aView list
+		title: 'Basic actions';
+		priority: 15;
+		items: [ 10 to: 15 ];
+		itemText: [ :anObject :aSelectionIndex | 
+			'value: ', anObject printString, '; index: ', aSelectionIndex printString ];
+		contextItemLabel: 'Inspect element' action: [ :anElement |
+				anElement phlow spawnObject: anElement ];
+		contextItemLabel: 'Inspect object' action: [ :anElement :anObject |
+				anElement phlow spawnObject: anObject ];
+		contextItemLabel: 'Inspect selection' action: [ :anElement :anObject :aSelection |
+				anElement phlow spawnObject: aSelection ];
+		contextItemLabel: 'Inspect parameters' action: [ :anElement :anObject :aSelection |
+				anElement phlow spawnObject: {anElement . anObject . aSelection} ];
+		
+		contextItemLabel: 'Show if greater than 12' 
+			action: [ :anElement :anObject | anElement phlow spawnObject: anObject ]
+			showIf: [ :anObject :aSelection | anObject > 12 ];
+				
+		send: [ :anObject :aSelectionIndex | {anObject . aSelectionIndex} ]
+%
+
+category: 'views'
+method: GtRemotePhlowListViewContextActionsBasicTestObject
+gtListWithBasicContextActionsMultipleSelectionFor: aView
+	<gtView>
+
+	^aView list
+		title: 'Basic - multiple selection';
+		priority:15.1;
+		items: [ 10 to: 15 ];
+		itemText: [ :anObject :aSelectionIndex | 
+			'value: ', anObject printString, '; index: ', aSelectionIndex printString ];
+		withMultipleSelection;
+		contextItemLabel: 'Inspect element' action: [ :anElement |
+				anElement phlow spawnObject: anElement ];
+		contextItemLabel: 'Inspect object' action: [ :anElement :anObject |
+				anElement phlow spawnObject: anObject ];
+		contextItemLabel: 'Inspect selection' action: [ :anElement :anObject :aSelection |
+				anElement phlow spawnObject: aSelection ];
+		contextItemLabel: 'Inspect parameters' action: [ :anElement :anObject :aSelection |
+				anElement phlow spawnObject: {anElement . anObject . aSelection} ];
+				
+		contextItemLabel: 'Show if 3 elements in selection' 
+			action: [ :anElement | anElement phlow spawnObject: anElement ]
+			showIf: [ :anObject :aSelection | 
+				aSelection size = 3 ];
+		contextItemLabel: 'Show if 14 in selection' 
+			action: [ :anElement :aCollectionOfObjects | 
+				anElement phlow spawnObject: aCollectionOfObjects  ]
+			showIf: [ :aCollectionOfObjects :aSelection | 
+				aCollectionOfObjects includes: 14   ];
+			
+		send: [ :anObject :aSelectionIndex |  {anObject . aSelectionIndex} ]
+%
+
+category: 'views'
+method: GtRemotePhlowListViewContextActionsBasicTestObject
+gtListWithBasicContextActionsWithVariousOptionsFor: aView
+	<gtView>
+
+	^aView list
+		title: 'Basic actions - multiple options';
+		priority: 30;
+		items: [ 10 to: 15 ];
+		itemText: [ :anObject :aSelectionIndex | 
+			'value: ', anObject printString, '; index: ', aSelectionIndex printString ];
+		contextItemIcon: (GtPhlowGlamorousVectorIconNameStencil new iconName: #inspect) 
+			label: 'Inspect element' 
+			action: [ :anElement |
+				anElement phlow spawnObject: anElement ];
+		contextItemLabel: 'Inspect object' 
+			id:  GtRemotePhlowExampleCustomInspectActionId new
+			action: [ :anElement :anObject |
+				anElement phlow spawnObject: anObject ];
+				
+		send: [ :anObject :aSelectionIndex | {anObject . aSelectionIndex} ]
+%
+
+category: 'views'
+method: GtRemotePhlowListViewContextActionsBasicTestObject
+gtListWithDynamicContextPhlowActionsFor: aView
+	<gtView>
+
+	^aView list
+		title: 'Dynamic context phlow';
+		priority: 19.2;
+		items: [ 10 to: 15 ];
+		itemText: [ :anObject :aSelection | 
+			'value: ', anObject printString, '; index: ', aSelection printString ];
+		dynamicPhlowContextItems: [ :anAction :anElement :anObject :aSelection |
+			{
+				anAction contextMenuAction
+					label: 'Inspect element';
+					action: [ :currentElement |
+						currentElement phlow spawnObject: currentElement ].
+				anAction contextMenuAction
+					label: 'Inspect object';
+					action: [ :currentElement :currentObject |
+						currentElement phlow spawnObject: currentObject ].
+				anAction contextMenuAction
+					label: 'Inspect selection';
+					action: [ :currentElement :currentObject :currentIndex |
+						currentElement phlow spawnObject: currentIndex ].
+				anAction contextMenuAction
+					label: 'Inspect parameters';
+					action: [ :currentElement :currentObject :currentIndex |
+						currentElement phlow spawnObject: {
+							currentElement . currentObject . currentIndex } ].
+				anAction contextMenuAction
+					label: 'Inspect outer parameters';
+					action: [ :currentElement |
+						currentElement phlow 
+							spawnObject: {anAction. anElement . anObject . aSelection} ].
+							
+				anAction contextMenuAction
+					label: 'Show if greater than 12';
+					action: [ :currentElement | currentElement phlow spawnObject: anElement ];
+					showIf: [ :currentObject :currentSelection | currentObject > 12]
+					
+			} ];
+		send: [ :anObject :aSelectionIndex | {anObject . aSelectionIndex} ]
+%
+
+category: 'views'
+method: GtRemotePhlowListViewContextActionsBasicTestObject
+gtListWithDynamicContextPhlowActionsMultipleSelectionFor: aView
+	<gtView>
+
+	^aView list
+		title: 'Dynamic context phlow - multiple selection';
+		priority: 19.4;
+		items: [ 10 to: 15 ];
+		itemText: [ :anObject :aSelection | 
+			'value: ', anObject printString, '; index: ', aSelection printString ];
+		withMultipleSelection;
+		dynamicPhlowContextItems: [ :anAction :anElement :aCollectionOfObjects :aSelection |
+			{
+				anAction contextMenuAction
+					label: 'Inspect element';
+					action: [ :currentElement |
+						currentElement phlow spawnObject: currentElement ].
+				anAction contextMenuAction
+					label: 'Inspect object';
+					action: [ :currentElement :currentObject |
+						currentElement phlow spawnObject: currentObject ].
+				anAction contextMenuAction
+					label: 'Inspect selection';
+					action: [ :currentElement :currentObject :currentIndex |
+						currentElement phlow spawnObject: currentIndex ].
+				anAction contextMenuAction
+					label: 'Inspect parameters';
+					action: [ :currentElement :currentObject :currentIndex |
+						currentElement phlow spawnObject: {
+							currentElement . currentObject . currentIndex } ].
+				anAction contextMenuAction
+					label: 'Inspect outer parameters';
+					action: [ :currentElement |
+						currentElement phlow 
+							spawnObject: {anAction. anElement . aCollectionOfObjects . aSelection} ] 
+			}, (aSelection size = 3  
+						ifTrue: [
+							{anAction contextMenuAction
+								label: 'Show if 3 elements in selection';
+								action: [ :currentElement |
+									currentElement phlow spawnObject: currentElement ]}] 
+							ifFalse: [{}]),
+						((aCollectionOfObjects includes: 14)
+						ifTrue: [
+							{anAction contextMenuAction
+								label: 'Show if 14 in selection';
+								action: [ :currentElement :currentCollectionOfObjects |
+									currentElement phlow spawnObject: currentCollectionOfObjects ]}] 
+						ifFalse: [{}]) ];
+		send: [ :anObject :aSelectionIndex | {anObject . aSelectionIndex} ]
+%
+
+category: 'views'
+method: GtRemotePhlowListViewContextActionsBasicTestObject
+gtListWithDynamicPhlowActionsFor: aView
+	<gtView>
+
+	^aView list
+		title: 'Dynamic action phlow';
+		priority: 18.2;
+		items: [ 10 to: 15 ];
+		itemText: [ :anObject :aSelectionIndex | 
+			'value: ', anObject printString, '; index: ', aSelectionIndex printString ];
+		dynamicPhlowContextItems: [ :anAction :anElement :anObject :aSelection |
+			{
+				anAction button
+					label: 'Inspect element';
+					action: [ :currentElement |
+						currentElement phlow spawnObject: currentElement ].
+				anAction button
+					label: 'Inspect object';
+					action: [ :currentElement |
+						currentElement phlow spawnObject: anObject ].
+				anAction button
+					label: 'Inspect selection';
+					action: [ :currentElement |
+						currentElement phlow spawnObject: aSelection ].
+				anAction button
+					label: 'Inspect parameters';
+					action: [ :currentElement |
+						currentElement phlow spawnObject: {
+							currentElement . anObject . aSelection} ].
+				anAction button
+					label: 'Inspect outer parameters';
+					action: [ :currentElement |
+						currentElement phlow spawnObject: {anElement . anObject . aSelection} ] 
+			}, ((anObject > 12)
+				ifTrue: [
+					{anAction button
+						label: 'Show if greater than 12';
+						action: [ :currentElement |
+							currentElement phlow spawnObject: anObject ]}
+				] ifFalse: [#()]) ];
+		send: [ :anObject :aSelectionIndex | {anObject . aSelectionIndex} ]
+%
+
+category: 'views'
+method: GtRemotePhlowListViewContextActionsBasicTestObject
+gtListWithDynamicPhlowActionsMultipleSelectionFor: aView
+	<gtView>
+
+	^aView list
+		title: 'Dynamic action phlow - multiple selection';
+		priority: 18.4;
+		items: [ 10 to: 15 ];
+		itemText: [ :anObject :aSelectionIndex | 
+			'value: ', anObject printString, '; index: ', aSelectionIndex printString ];
+		withMultipleSelection;
+		dynamicPhlowContextItems: [ :anAction :anElement :aCollectionOfObjects :aSelection |
+			{
+				anAction button
+					label: 'Inspect element';
+					action: [ :currentElement |
+						currentElement phlow spawnObject: currentElement ].
+				anAction button
+					label: 'Inspect object';
+					action: [ :currentElement |
+						currentElement phlow spawnObject: aCollectionOfObjects ].
+				anAction button
+					label: 'Inspect selection';
+					action: [ :currentElement |
+						currentElement phlow spawnObject: aSelection ].
+				anAction button
+					label: 'Inspect parameters';
+					action: [ :currentElement |
+						currentElement phlow spawnObject: {
+							currentElement . aCollectionOfObjects . aSelection} ].
+				anAction button
+					label: 'Inspect outer parameters';
+					action: [ :currentElement |
+						currentElement phlow spawnObject: {anElement . aCollectionOfObjects . aSelection} ] 
+			}, (aSelection size = 3  
+						ifTrue: [
+							{anAction button
+								label: 'Show if 3 elements in selection';
+								action: [ :currentElement |
+									currentElement phlow spawnObject: currentElement ]}] 
+							ifFalse: [{}]),
+						((aCollectionOfObjects includes: 14)
+						ifTrue: [
+							{anAction button
+								label: 'Show if 14 in selection';
+								action: [ :currentElement |
+									currentElement phlow spawnObject: aCollectionOfObjects ]}] 
+						ifFalse: [{}]) ];
+		send: [ :anObject :aSelectionIndex | {anObject . aSelectionIndex} ]
+%
+
+category: 'initialization'
+method: GtRemotePhlowListViewContextActionsBasicTestObject
+initialize
+	super initialize.
+	
+	collectionOfObjects := { 
+		42. 
+		'Hello'. 
+		44. 
+		'Hello World'. 
+		DateAndTime readFrom: '2021-04-06T14:43:50.123456+02:00' readStream }.
+%
+
+! Class implementation for 'GtRemotePhlowMenuOptions'
+
+!		Class methods for 'GtRemotePhlowMenuOptions'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowMenuOptions
+new
+	^ super new initialize
+%
+
+!		Instance methods for 'GtRemotePhlowMenuOptions'
+
+category: 'converting'
+method: GtRemotePhlowMenuOptions
+asMenuOptionsSpecification
+	| specification |
+	specification := GtRemotePhlowMenuOptionsSpecification new.
+	menuPreview ifPresent: [ :anObject | 
+			specification menuPreview: (anObject value 
+				ifNotNil: [ :aValue | aValue gtDisplayText]) ].
+	menuGroup ifPresent: [ :anObject |
+		specification menuGroup: anObject ].
+	menuPinSubmenu ifPresent: [ :anObject |
+		specification menuPinSubmenu: anObject ].
+	menuHideOnClick ifPresent: [ :anObject |
+		specification menuHideOnClick: anObject ].
+	menuShortcut ifPresent: [ :anObject |
+		specification menuShortcut: anObject ].
+	menuDisable ifPresent: [ :anObject |
+		specification menuDisable: anObject value ].
+	^ specification
+%
+
+category: 'testing'
+method: GtRemotePhlowMenuOptions
+hasAnyOptions
+	^ menuPreview isPresent
+		or: [ menuGroup isPresent
+		or: [ menuPinSubmenu isPresent
+		or: [ menuHideOnClick isPresent
+		or: [ menuShortcut isPresent
+		or: [ menuDisable isPresent ] ] ] ] ]
+%
+
+category: 'initialization'
+method: GtRemotePhlowMenuOptions
+initialize
+	| absent |
+	
+	super initialize.
+	
+	absent := GtRemotePhlowAbsentValue new.
+	menuPreview := absent.
+	menuGroup := absent.
+	menuPinSubmenu := absent.
+	menuHideOnClick := absent.
+	menuShortcut := absent.
+	menuDisable := absent.
+%
+
+category: 'accessing'
+method: GtRemotePhlowMenuOptions
+menuDisable: anObject
+	menuDisable := GtRemotePhlowPresentValue new targetValue: anObject
+%
+
+category: 'accessing'
+method: GtRemotePhlowMenuOptions
+menuGroup: aGroupConfiguration
+	menuGroup := GtRemotePhlowPresentValue new targetValue: aGroupConfiguration
+%
+
+category: 'accessing'
+method: GtRemotePhlowMenuOptions
+menuHideOnClick: aBoolean
+	menuHideOnClick := GtRemotePhlowPresentValue new targetValue: aBoolean
+%
+
+category: 'accessing'
+method: GtRemotePhlowMenuOptions
+menuPinSubmenu
+	menuPinSubmenu := GtRemotePhlowPresentValue new targetValue: true
+%
+
+category: 'accessing'
+method: GtRemotePhlowMenuOptions
+menuPreview: anObject
+	menuPreview := GtRemotePhlowPresentValue new targetValue: anObject
+%
+
+category: 'accessing'
+method: GtRemotePhlowMenuOptions
+menuShortcut: aShortcut
+	menuShortcut := GtRemotePhlowPresentValue new targetValue: aShortcut
+%
+
+! Class implementation for 'GtRemotePhlowNodeIdentifierExamples'
+
+!		Instance methods for 'GtRemotePhlowNodeIdentifierExamples'
+
+category: 'examples'
+method: GtRemotePhlowNodeIdentifierExamples
+listAndTreeNodeIdentifierInequality
+	<gtExample>
+	<return: #GtRemotePhlowIndexNodeIdentifier>
+	| a b |
+	a := self listNodeIdentifier.
+	b := self treeNodeIdentifier.
+	self assert: (a = b) not.
+	^ a
+%
+
+category: 'examples'
+method: GtRemotePhlowNodeIdentifierExamples
+listNodeIdentifier
+	<gtExample>
+	<return: #GtRemotePhlowIndexNodeIdentifier>
+	| identifier |
+	identifier := GtRemotePhlowIndexNodeIdentifier new
+		nodeIndex: 5.
+	self assert: identifier nodeIndex equals: 5.
+	self assert: identifier printString equals: 'a GtRemotePhlowIndexNodeIdentifier(5)'.
+	self assert: identifier description equals: '5'.
+	^ identifier
+%
+
+category: 'examples'
+method: GtRemotePhlowNodeIdentifierExamples
+listNodeIdentifierEquality
+	<gtExample>
+	<return: #GtRemotePhlowIndexNodeIdentifier>
+	| a b |
+	a := self listNodeIdentifier.
+	b := GtRemotePhlowIndexNodeIdentifier new nodeIndex: 5.
+	self assert: a equals: b.
+	self assert: a hash equals: b hash.
+	^ a
+%
+
+category: 'examples'
+method: GtRemotePhlowNodeIdentifierExamples
+listNodeIdentifierFromFactory
+	<gtExample>
+	<return: #GtRemotePhlowIndexNodeIdentifier>
+	| identifier |
+	identifier := GtRemotePhlowNodeIdentifier forListIndex: 5.
+	self assert: identifier class equals: GtRemotePhlowIndexNodeIdentifier.
+	self assert: identifier nodeIndex equals: 5.
+	self assert: identifier equals: self listNodeIdentifier.
+	^ identifier
+%
+
+category: 'examples'
+method: GtRemotePhlowNodeIdentifierExamples
+listNodeIdentifierInequality
+	<gtExample>
+	<return: #GtRemotePhlowIndexNodeIdentifier>
+	| a b |
+	a := self listNodeIdentifier.
+	b := GtRemotePhlowIndexNodeIdentifier new nodeIndex: 7.
+	self assert: (a = b) not.
+	^ a
+%
+
+category: 'examples - serialization'
+method: GtRemotePhlowNodeIdentifierExamples
+listNodeIdentifierJsonRoundtrip
+	<gtExample>
+	<return: #GtRemotePhlowIndexNodeIdentifier>
+	| identifier json dictionary deserialized expectedDictionary |
+	identifier := self listNodeIdentifier.
+	json := identifier asJSONForExport.
+	dictionary := STONJSON fromString: json.
+	expectedDictionary := Dictionary new
+		at: '__typeName' put: 'GtRemotePhlowIndexNodeIdentifier';
+		at: 'nodeIndex' put: 5;
+		yourself.
+	self assert: dictionary equals: expectedDictionary.
+	deserialized := GtPhlowDeclarativeSpecification fromDictionary: dictionary.
+	self assert: deserialized equals: identifier.
+	^ deserialized
+%
+
+category: 'examples - serialization'
+method: GtRemotePhlowNodeIdentifierExamples
+listNodeIdentifierSerialization
+	<gtExample>
+	<return: #GtRemotePhlowIndexNodeIdentifier>
+	| identifier dictionary deserialized expectedDictionary |
+	identifier := self listNodeIdentifier.
+	dictionary := identifier asDictionaryForExport.
+	expectedDictionary := Dictionary new
+		at: '__typeName' put: 'GtRemotePhlowIndexNodeIdentifier';
+		at: 'nodeIndex' put: 5;
+		yourself.
+	self assert: dictionary equals: expectedDictionary.
+	deserialized := GtPhlowDeclarativeSpecification fromDictionary: dictionary.
+	self assert: deserialized equals: identifier.
+	^ deserialized
+%
+
+category: 'examples'
+method: GtRemotePhlowNodeIdentifierExamples
+treeNodeIdentifier
+	<gtExample>
+	<return: #GtRemotePhlowPathNodeIdentifier>
+	| identifier |
+	identifier := GtRemotePhlowPathNodeIdentifier new
+		nodeIndexPath: #(1 2 3).
+	self assert: identifier nodeIndexPath equals: #(1 2 3).
+	self assert: identifier printString equals: 'a GtRemotePhlowPathNodeIdentifier(#(1 2 3))'.
+	self assert: identifier description equals: '#(1 2 3)'.
+	^ identifier
+%
+
+category: 'examples'
+method: GtRemotePhlowNodeIdentifierExamples
+treeNodeIdentifierEquality
+	<gtExample>
+	<return: #GtRemotePhlowPathNodeIdentifier>
+	| a b |
+	a := self treeNodeIdentifier.
+	b := GtRemotePhlowPathNodeIdentifier new nodeIndexPath: #(1 2 3).
+	self assert: a equals: b.
+	self assert: a hash equals: b hash.
+	^ a
+%
+
+category: 'examples'
+method: GtRemotePhlowNodeIdentifierExamples
+treeNodeIdentifierFromFactory
+	<gtExample>
+	<return: #GtRemotePhlowPathNodeIdentifier>
+	| identifier |
+	identifier := GtRemotePhlowNodeIdentifier forTreePath: #(1 2 3).
+	self assert: identifier class equals: GtRemotePhlowPathNodeIdentifier.
+	self assert: identifier nodeIndexPath equals: #(1 2 3).
+	self assert: identifier equals: self treeNodeIdentifier.
+	^ identifier
+%
+
+category: 'examples'
+method: GtRemotePhlowNodeIdentifierExamples
+treeNodeIdentifierInequality
+	<gtExample>
+	<return: #GtRemotePhlowPathNodeIdentifier>
+	| a b |
+	a := self treeNodeIdentifier.
+	b := GtRemotePhlowPathNodeIdentifier new nodeIndexPath: #(1 2).
+	self assert: (a = b) not.
+	^ a
+%
+
+category: 'examples - serialization'
+method: GtRemotePhlowNodeIdentifierExamples
+treeNodeIdentifierJsonRoundtrip
+	<gtExample>
+	<return: #GtRemotePhlowPathNodeIdentifier>
+	| identifier json dictionary deserialized expectedDictionary |
+	identifier := self treeNodeIdentifier.
+	json := identifier asJSONForExport.
+	dictionary := STONJSON fromString: json.
+	expectedDictionary := Dictionary new
+		at: '__typeName' put: 'GtRemotePhlowPathNodeIdentifier';
+		at: 'nodeIndexPath' put: #(1 2 3);
+		yourself.
+	self assert: dictionary equals: expectedDictionary.
+	deserialized := GtPhlowDeclarativeSpecification fromDictionary: dictionary.
+	self assert: deserialized equals: identifier.
+	^ deserialized
+%
+
+category: 'examples - serialization'
+method: GtRemotePhlowNodeIdentifierExamples
+treeNodeIdentifierSerialization
+	<gtExample>
+	<return: #GtRemotePhlowPathNodeIdentifier>
+	| identifier dictionary deserialized expectedDictionary |
+	identifier := self treeNodeIdentifier.
+	dictionary := identifier asDictionaryForExport.
+	expectedDictionary := Dictionary new
+		at: '__typeName' put: 'GtRemotePhlowPathNodeIdentifier';
+		at: 'nodeIndexPath' put: #(1 2 3);
+		yourself.
+	self assert: dictionary equals: expectedDictionary.
+	deserialized := GtPhlowDeclarativeSpecification fromDictionary: dictionary.
+	self assert: deserialized equals: identifier.
+	^ deserialized
 %
 
 ! Class implementation for 'GtRemotePhlowNodeValue'
@@ -15398,6 +20534,399 @@ computeNodeValueForObject: anObject atIndex: aRowIndex
 		columnValues: columnValues
 %
 
+! Class implementation for 'GtRemotePhlowObjectComparer'
+
+!		Class methods for 'GtRemotePhlowObjectComparer'
+
+category: 'instance creation'
+classmethod: GtRemotePhlowObjectComparer
+compareAll: aCollection
+	| comparerValues |
+	comparerValues := aCollection
+		collect: [ :each | GtRemotePhlowObjectComparerObjectValue new object: each ].
+	^ self new
+		values: comparerValues
+%
+
+!		Instance methods for 'GtRemotePhlowObjectComparer'
+
+category: 'accessing'
+method: GtRemotePhlowObjectComparer
+childComparers
+	| slotNames |
+	slotNames := ((values select: [ :o | o hasValue ])
+		flatCollect: [ :each | each value class allInstVarNames ]) 
+		asSet
+		asSortedCollection.
+	^ slotNames
+		collect: [ :eachSlotName | 
+			| slotValues |
+			slotValues := values
+				collect: [ :eachValue | 
+					(eachValue class ~= GtRemotePhlowObjectComparerNoValue
+						and: [ eachValue value class allInstVarNames includes: eachSlotName ])
+						ifTrue: [ GtRemotePhlowObjectComparerSlotValue new
+								object: eachValue object;
+								slotName: eachSlotName;
+								value: (eachValue value instVarNamed: eachSlotName) ]
+						ifFalse: [ GtRemotePhlowObjectComparerNoValue new object: eachValue object ] ].
+			GtRemotePhlowObjectComparer new
+				parent: self;
+				values: slotValues;
+				label: eachSlotName;
+				yourself ]
+%
+
+category: 'gt - extensions'
+method: GtRemotePhlowObjectComparer
+gtComparersFor: aView
+	<gtView>
+	^ aView columnedList
+		title: 'Comparers';
+		items: [ self childComparers ];
+		column: 'Label' text: [ :each | each label ] width: 150;
+		column: 'Values' text: [ :each | (each values collect: [ :v | v textForValue ]) asArray printString ]
+%
+
+category: 'gt - extensions'
+method: GtRemotePhlowObjectComparer
+gtParallelListFor: aView
+	<gtView>
+	| tree |
+	tree := aView columnedTree
+			title: 'List';
+			priority: 10;
+			items: [ {self} ];
+			children: [ :each | each childComparers ];
+			column: 'Slot'
+				text: [ :each | each label ]
+				width: 150.
+	values
+		do: [ :aValue | 
+			tree
+				column: aValue valueDisplayString
+				do: [ :aColumn | 
+					aColumn
+						text: [ :each | 
+							(self textForValueFrom: each ofObject: aValue) ];
+						background: [ :cellValue :eachRow | 
+							eachRow hasDifferences
+								ifTrue: [ GtPhlowColor lighterFailureBackgroundColor]
+								ifFalse: [ GtPhlowColor transparent ] ] ] ].
+	^ tree
+%
+
+category: 'gt - extensions'
+method: GtRemotePhlowObjectComparer
+gtValuesFor: aView
+	<gtView>
+	values ifNil: [ ^ aView empty ].
+	^ aView columnedList
+		title: 'Values';
+		items: [ values ];
+		column: 'Value' text: [ :each | each textForValue ];
+		column: 'Object' text: [ :each | each object printString ]
+%
+
+category: 'testing'
+method: GtRemotePhlowObjectComparer
+hasDifferences
+	^ values notEmpty and: [ values anySatisfy: [ :each | each value ~= values first value ] ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowObjectComparer
+label
+	^ label ifNil: [ 'object' ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowObjectComparer
+label: aString
+	label := aString
+%
+
+category: 'accessing'
+method: GtRemotePhlowObjectComparer
+parent
+	^ parent
+%
+
+category: 'accessing'
+method: GtRemotePhlowObjectComparer
+parent: anObject
+	parent := anObject
+%
+
+category: 'printing'
+method: GtRemotePhlowObjectComparer
+printOn: aStream
+	aStream
+		nextPutAll: self label;
+		nextPutAll: ' (';
+		print: self values size;
+		nextPutAll: ' values)'
+%
+
+category: 'accessing'
+method: GtRemotePhlowObjectComparer
+textForValueFrom: aComparer ofObject: anObject
+	| aValue index |
+	index := self values indexOf: anObject.
+	aValue := aComparer values at: index.
+	^ aValue textForValue
+%
+
+category: 'accessing'
+method: GtRemotePhlowObjectComparer
+values
+	^ values ifNil: [ #() ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowObjectComparer
+values: aCollection
+	values := aCollection asArray
+%
+
+! Class implementation for 'GtRemotePhlowObjectComparerValue'
+
+!		Instance methods for 'GtRemotePhlowObjectComparerValue'
+
+category: 'testing'
+method: GtRemotePhlowObjectComparerValue
+hasValue
+	^ self subclassResponsibility
+%
+
+category: 'accessing'
+method: GtRemotePhlowObjectComparerValue
+object
+	^ object
+%
+
+category: 'accessing'
+method: GtRemotePhlowObjectComparerValue
+object: anObject
+	object := anObject
+%
+
+category: 'printing'
+method: GtRemotePhlowObjectComparerValue
+textForValueWithClassName
+	| displayString className fullString text |
+	displayString := self valueDisplayString.
+	className := self value class name.
+	fullString := displayString, ' ', className.
+	text := fullString asRopedText.
+	text glamorousRegularFont.
+	(text from: displayString size + 2 to: fullString size)
+		fontSize: 12;
+		foreground: (GtPhlowColor named: #veryLightGray).
+	^ text
+%
+
+category: 'printing'
+method: GtRemotePhlowObjectComparerValue
+valueDisplayOn: aStream
+	^ self subclassResponsibility
+%
+
+category: 'printing'
+method: GtRemotePhlowObjectComparerValue
+valueDisplayString
+	^ String streamContents: [ :s | self valueDisplayOn: s ]
+%
+
+! Class implementation for 'GtRemotePhlowObjectComparerNoValue'
+
+!		Instance methods for 'GtRemotePhlowObjectComparerNoValue'
+
+category: 'testing'
+method: GtRemotePhlowObjectComparerNoValue
+hasValue
+	^ false
+%
+
+category: 'printing'
+method: GtRemotePhlowObjectComparerNoValue
+textForValue
+	^ self valueDisplayString asRopedText glamorousRegularFont
+%
+
+category: 'accessing'
+method: GtRemotePhlowObjectComparerNoValue
+value
+	^ nil
+%
+
+category: 'printing'
+method: GtRemotePhlowObjectComparerNoValue
+valueDisplayOn: aStream
+	aStream nextPutAll: '—'
+%
+
+! Class implementation for 'GtRemotePhlowObjectComparerObjectValue'
+
+!		Instance methods for 'GtRemotePhlowObjectComparerObjectValue'
+
+category: 'testing'
+method: GtRemotePhlowObjectComparerObjectValue
+hasValue
+	^ true
+%
+
+category: 'printing'
+method: GtRemotePhlowObjectComparerObjectValue
+textForValue
+	^ self textForValueWithClassName
+%
+
+category: 'accessing'
+method: GtRemotePhlowObjectComparerObjectValue
+value
+	^ object
+%
+
+category: 'printing'
+method: GtRemotePhlowObjectComparerObjectValue
+valueDisplayOn: aStream
+	self value gtDisplayOn: aStream
+%
+
+! Class implementation for 'GtRemotePhlowObjectComparerSlotValue'
+
+!		Instance methods for 'GtRemotePhlowObjectComparerSlotValue'
+
+category: 'testing'
+method: GtRemotePhlowObjectComparerSlotValue
+hasValue
+	^ true
+%
+
+category: 'accessing'
+method: GtRemotePhlowObjectComparerSlotValue
+slotName
+	^ slotName
+%
+
+category: 'accessing'
+method: GtRemotePhlowObjectComparerSlotValue
+slotName: aString
+	slotName := aString
+%
+
+category: 'printing'
+method: GtRemotePhlowObjectComparerSlotValue
+textForValue
+	^ self textForValueWithClassName
+%
+
+category: 'accessing'
+method: GtRemotePhlowObjectComparerSlotValue
+value
+	^ value
+%
+
+category: 'accessing'
+method: GtRemotePhlowObjectComparerSlotValue
+value: anObject
+	value := anObject
+%
+
+category: 'printing'
+method: GtRemotePhlowObjectComparerSlotValue
+valueDisplayOn: aStream
+	self value gtDisplayOn: aStream
+%
+
+! Class implementation for 'GtRemotePhlowOptionalValue'
+
+!		Instance methods for 'GtRemotePhlowOptionalValue'
+
+category: 'accessing'
+method: GtRemotePhlowOptionalValue
+ifPresent: presentBlock ifAbsent: absentBlock
+	^ self subclassResponsibility
+%
+
+category: 'testing'
+method: GtRemotePhlowOptionalValue
+isPresent
+	^ self subclassResponsibility
+%
+
+! Class implementation for 'GtRemotePhlowAbsentValue'
+
+!		Instance methods for 'GtRemotePhlowAbsentValue'
+
+category: 'controlling'
+method: GtRemotePhlowAbsentValue
+ifPresent: presentBlock
+	"Do nothing"
+%
+
+category: 'accessing'
+method: GtRemotePhlowAbsentValue
+ifPresent: presentBlock ifAbsent: absentBlock
+	^ absentBlock value
+%
+
+category: 'testing'
+method: GtRemotePhlowAbsentValue
+isPresent
+	^ false
+%
+
+category: 'printing'
+method: GtRemotePhlowAbsentValue
+printOn: aStream
+	aStream nextPutAll: 'Absent'
+%
+
+! Class implementation for 'GtRemotePhlowPresentValue'
+
+!		Instance methods for 'GtRemotePhlowPresentValue'
+
+category: 'controlling'
+method: GtRemotePhlowPresentValue
+ifPresent: presentBlock
+	presentBlock value: self targetValue
+%
+
+category: 'accessing'
+method: GtRemotePhlowPresentValue
+ifPresent: presentBlock ifAbsent: absentBlock
+	^ presentBlock value: self targetValue
+%
+
+category: 'testing'
+method: GtRemotePhlowPresentValue
+isPresent
+	^ true
+%
+
+category: 'printing'
+method: GtRemotePhlowPresentValue
+printOn: aStream
+	aStream
+		nextPutAll: 'Present(';
+		print: self targetValue;
+		nextPut: $)
+%
+
+category: 'accessing'
+method: GtRemotePhlowPresentValue
+targetValue
+	^ targetValue
+%
+
+category: 'accessing'
+method: GtRemotePhlowPresentValue
+targetValue: anObject
+	targetValue := anObject
+%
+
 ! Class implementation for 'GtRemotePhlowPictureViewErrorTestObject'
 
 !		Class methods for 'GtRemotePhlowPictureViewErrorTestObject'
@@ -15728,8 +21257,8 @@ actionUpdateButtonTooltip: aTooltip
 category: 'actions'
 method: GtRemotePhlowView
 addPhlowAction: aPhlowAction
-	phlowActions add: aPhlowAction.
-	phlowActions sort: [ :a :b |
+	self actions add: aPhlowAction.
+	self actions sort: [ :a :b |
 		[ a priority < b priority ]
 			on: Error
 			do: [ :error | true ] ]
@@ -15760,9 +21289,18 @@ canBeGtDeclarativeView
 category: 'private - converting'
 method: GtRemotePhlowView
 configureGenericViewSpecificationOn: aViewSpecification
+
 	aViewSpecification
 		title: self title;
-		priority: self priority;
+		priority: self priority.
+	
+	self configureMainActionsSpecificationsOn: aViewSpecification
+%
+
+category: 'private - converting'
+method: GtRemotePhlowView
+configureMainActionsSpecificationsOn: aViewSpecification
+	aViewSpecification
 		actionSpecifications: (self actions collect: [ :each | 
 			each asGtDeclarativeAction ]) asArray
 %
@@ -16140,6 +21678,122 @@ view: aSelector
 
 !		Instance methods for 'GtRemotePhlowListingView'
 
+category: 'api - actions'
+method: GtRemotePhlowListingView
+collectIndividualContextMenuActionsForElement: anElement item: anObject viewSelection: aViewSelection
+	| allInitialPhlowActions |
+	
+	allInitialPhlowActions := OrderedCollection new.
+	(self contextMenuActions
+			select: [ :anAction | 
+				anAction shouldShowContextActionOn: anObject viewSelection: aViewSelection ])
+			do: [ :anAction | 
+				anAction 
+					collectInvidualActionsOn: allInitialPhlowActions
+					forElement: anElement 
+					item: anObject
+					index: aViewSelection ].
+				
+	^ allInitialPhlowActions collect: [ :anAction |
+			anAction 
+				asItemBoundActionToItem: anObject viewSelection: aViewSelection ]
+%
+
+category: 'converting'
+method: GtRemotePhlowListingView
+configureListingViewSpecificationOn: aViewSpecification
+	aViewSpecification hasMultipleSelection: self hasMultipleSelection.
+	aViewSpecification hasContextActionSpecifications: self contextMenuActions notEmpty.
+%
+
+category: 'context menu'
+method: GtRemotePhlowListingView
+contextActionsForTarget: aGtRemotePhlowActionTarget
+	self contextMenuActions
+		add: (GtRemotePhlowContextMenuTargetedObjectActions
+			forTarget: aGtRemotePhlowActionTarget)
+%
+
+category: 'context menu'
+method: GtRemotePhlowListingView
+contextActionsForTarget: aSingleTarget groupTarget: aGroupTarget groupWith: aGroupFactory
+	self contextMenuActions
+		add: (GtRemotePhlowContextMenuTargetedObjectActions
+			forTarget: aSingleTarget groupTarget: aGroupTarget groupWith: aGroupFactory)
+%
+
+category: 'context menu'
+method: GtRemotePhlowListingView
+contextActionsForTarget: aTarget groupWith: aGroupFactory
+	self contextMenuActions
+		add: (GtRemotePhlowContextMenuTargetedObjectActions
+			forTarget: aTarget groupWith: aGroupFactory)
+%
+
+category: 'api - actions'
+method: GtRemotePhlowListingView
+contextItemDo: aBlock
+	| newAction |
+	newAction := GtRemotePhlowContextMenuAction new.
+	aBlock value: newAction.
+	self contextMenuActions add: newAction
+%
+
+category: 'api - actions'
+method: GtRemotePhlowListingView
+contextItemIcon: anIconOrStencil label: aString action: aBlock
+	self contextMenuActions
+		add: (GtRemotePhlowContextMenuAction new
+			label: aString;
+			icon: anIconOrStencil;
+			action: aBlock)
+%
+
+category: 'api - actions'
+method: GtRemotePhlowListingView
+contextItemIcon: anIconOrStencil label: aString id: anId action: aBlock
+	self contextMenuActions
+		add: (GtRemotePhlowContextMenuAction new
+			label: aString;
+			icon: anIconOrStencil;
+			id: anId;
+			action: aBlock)
+%
+
+category: 'api - actions'
+method: GtRemotePhlowListingView
+contextItemLabel: aString action: aBlock
+	self contextMenuActions
+		add: (GtRemotePhlowContextMenuAction label: aString action: aBlock)
+%
+
+category: 'api - actions'
+method: GtRemotePhlowListingView
+contextItemLabel: aString action: aBlock showIf: aShowBlock
+	self contextMenuActions
+		add: (GtRemotePhlowContextMenuAction new
+			label: aString;
+			action: aBlock;
+			showIf: aShowBlock)
+%
+
+category: 'api - actions'
+method: GtRemotePhlowListingView
+contextItemLabel: aString id: anId action: aBlock
+	self contextMenuActions
+		add: (GtRemotePhlowContextMenuAction new
+			label: aString;
+			id: anId;
+			action: aBlock)
+%
+
+category: 'accessing'
+method: GtRemotePhlowListingView
+contextMenuActions
+	^ contextMenuActions ifNil: [ 
+			contextMenuActions := OrderedCollection new ]
+%
+
 category: 'copying'
 method: GtRemotePhlowListingView
 copyTransformationFrom: aTransformation
@@ -16157,6 +21811,39 @@ category: 'accessing'
 method: GtRemotePhlowListingView
 defaultTransformation
 	^ GtRemotePhlowSendObjectTransformation forValuable: [ :anObject | anObject ]
+%
+
+category: 'api - actions'
+method: GtRemotePhlowListingView
+dynamicContextItems: aBlock
+	self contextMenuActions
+		add: (GtRemotePhlowContextMenuDynamicActions
+			label: 'Dynamic menu items' actions: aBlock )
+%
+
+category: 'api - actions'
+method: GtRemotePhlowListingView
+dynamicPhlowContextItems: aBlock
+	self contextMenuActions
+		add: (GtRemotePhlowContextMenuDynamicPhlowActions
+			label: 'Dynamic phlow menu items' actions: aBlock )
+%
+
+category: 'gt - extensions'
+method: GtRemotePhlowListingView
+gtViewContextMenuActionsFor: aView
+	<gtView>
+	^ aView columnedList
+		title: 'Context menu actions';
+		items: [ self contextMenuActions ];
+		column: 'Label' text: [ :each | each label ];
+		column: 'Action' text: [ :each | each actionComputation ]
+%
+
+category: 'testing'
+method: GtRemotePhlowListingView
+hasMultipleSelection
+	^ multipleSelectionEnabled ifNil: [ false ]
 %
 
 category: 'api - scripting'
@@ -16190,6 +21877,18 @@ category: 'accessing'
 method: GtRemotePhlowListingView
 transformation: aGtPhlowSendTransformation
 	transformation := aGtPhlowSendTransformation.
+%
+
+category: 'api - scripting'
+method: GtRemotePhlowListingView
+withMultipleSelection
+	multipleSelectionEnabled := true
+%
+
+category: 'api - scripting'
+method: GtRemotePhlowListingView
+withoutMultipleSelection
+	multipleSelectionEnabled := false
 %
 
 ! Class implementation for 'GtRemotePhlowBasicColumnedView'
@@ -16483,8 +22182,11 @@ asGtDeclarativeView
 			forPhlowView: self);
 		horizontalScrollingEnabled: horizontalScrollingEnabled;
 		dataTransport: GtPhlowViewSpecification dataLazy.
+		
 	self configureGenericViewSpecificationOn: viewSpecification.
 	self configureColumnsSpecificationOn: viewSpecification.
+	self configureListingViewSpecificationOn: viewSpecification.
+	
 	^ viewSpecification
 %
 
@@ -16517,11 +22219,15 @@ asGtDeclarativeView
 	| viewSpecification |
 
 	viewSpecification := GtPhlowColumnedTreeViewSpecification new
-		phlowDataSource: (GtRemotePhlowDeclarativeViewColumnedTreeDataSource
-			forPhlowView: self);
+		phlowDataSource: ((GtRemotePhlowDeclarativeViewColumnedTreeDataSource forPhlowView: self)
+			expander: expander);
+		expander: expander;
 		dataTransport: GtPhlowViewSpecification dataLazy.
+		
 	self configureGenericViewSpecificationOn: viewSpecification.
 	self configureColumnsSpecificationOn: viewSpecification.
+	self configureListingViewSpecificationOn: viewSpecification.
+	
 	^ viewSpecification
 %
 
@@ -16548,7 +22254,27 @@ defaultItemsComputation
 category: 'accessing'
 method: GtRemotePhlowColumnedTreeView
 expandAll
-	"To implement"
+	self expandUpTo: 20
+%
+
+category: 'accessing'
+method: GtRemotePhlowColumnedTreeView
+expander
+	^ expander ifNil: [ expander := GtRemotePhlowTreeNodeExpander null ]
+%
+
+category: 'accessing'
+method: GtRemotePhlowColumnedTreeView
+expandSuchThat: aBlock
+	"It stops expanding children if a parent node does not satisfy the condition.
+	The block receives [ :aTreeNode :aNodeValue | ... ]"
+	expander := GtRemotePhlowTreeNodeExpander suchThat: aBlock.
+%
+
+category: 'accessing'
+method: GtRemotePhlowColumnedTreeView
+expandUpTo: aLevelIndex
+	expander := GtRemotePhlowTreeNodeExpander upTo: aLevelIndex.
 %
 
 category: 'accessing'
@@ -16593,7 +22319,10 @@ asGtDeclarativeView
 		phlowDataSource: (GtRemotePhlowDeclarativeViewListDataSource
 			forPhlowView: self);
 		dataTransport: GtPhlowViewSpecification dataLazy.
+		
 	self configureGenericViewSpecificationOn: viewSpecification.
+	self configureListingViewSpecificationOn: viewSpecification.
+	
 	^ viewSpecification
 %
 
@@ -16632,10 +22361,14 @@ asGtDeclarativeView
 	| viewSpecification |
 
 	viewSpecification := GtPhlowTreeViewSpecification new
-		phlowDataSource: (GtRemotePhlowDeclarativeViewTreeDataSource
-			forPhlowView: self);
+		phlowDataSource: ((GtRemotePhlowDeclarativeViewTreeDataSource forPhlowView: self)
+			expander: expander);
+		expander: expander;
 		dataTransport: GtPhlowViewSpecification dataLazy.
+		
 	self configureGenericViewSpecificationOn: viewSpecification.
+	self configureListingViewSpecificationOn: viewSpecification.
+	
 	^ viewSpecification
 %
 
@@ -16659,10 +22392,30 @@ defaultItemsComputation
 	^ [ #() ]
 %
 
-category: 'accessing'
+category: 'api - scripting'
 method: GtRemotePhlowTreeView
 expandAll
-	"To implement"
+	self expandUpTo: 20
+%
+
+category: 'accessing'
+method: GtRemotePhlowTreeView
+expander
+	^ expander ifNil: [ expander := GtRemotePhlowTreeNodeExpander null ]
+%
+
+category: 'api - scripting'
+method: GtRemotePhlowTreeView
+expandSuchThat: aBlock
+	"It stops expanding children if a parent node does not satisfy the condition.
+	The block receives [ :aTreeNode :aNodeValue | ... ]"
+	expander := GtRemotePhlowTreeNodeExpander suchThat: aBlock.
+%
+
+category: 'api - scripting'
+method: GtRemotePhlowTreeView
+expandUpTo: aLevelIndex
+	expander := GtRemotePhlowTreeNodeExpander upTo: aLevelIndex.
 %
 
 category: 'accessing'
@@ -17244,644 +22997,6 @@ targetObject: anObject
 	targetObject := anObject
 %
 
-! Class implementation for 'GtRemotePhlowActionSpecificationConversionExamples'
-
-!		Instance methods for 'GtRemotePhlowActionSpecificationConversionExamples'
-
-category: 'examples'
-method: GtRemotePhlowActionSpecificationConversionExamples
-convertButtonActionWithIcon
-	"Demonstrate converting a button action to a declarative specification"
-
-	<gtExample>
-	<return: #GtPhlowButtonActionSpecification>
-	| phlowAction declarativeSpecification |
-	phlowAction := self createProtoActions button
-			tooltip: 'Inspect objects';
-			priority: 12;
-			icon: (GtPhlowGlamorousVectorIconNameStencil new iconName: #playinspect).
-
-	declarativeSpecification := phlowAction asGtDeclarativeAction.
-
-	self assert: declarativeSpecification tooltipText equals: 'Inspect objects'.
-	self assert: declarativeSpecification label equals: nil.
-	self
-		assert: declarativeSpecification iconStencil
-		equals: (GtPhlowGlamorousVectorIconNameStencil forIconName: #playinspect).
-	self assert: declarativeSpecification priority equals: 12.
-
-	self
-		assert: declarativeSpecification asDictionaryForExport
-		equals: self expectedButtonActionWithIconSpecification.
-
-	^ declarativeSpecification
-%
-
-category: 'examples'
-method: GtRemotePhlowActionSpecificationConversionExamples
-convertButtonActionWithIconAndLabel
-	"Demonstrate converting a button action to a declarative specification"
-
-	<gtExample>
-	<return: #GtPhlowButtonActionSpecification>
-	| phlowAction declarativeSpecification |
-	phlowAction := self createProtoActions button
-			tooltip: 'Inspect objects';
-			priority: 12;
-			label: 'Inspect';
-			icon: (GtPhlowGlamorousVectorIconNameStencil new iconName: #playinspect).
-
-	declarativeSpecification := phlowAction asGtDeclarativeAction.
-
-	self assert: declarativeSpecification tooltipText equals: 'Inspect objects'.
-	self assert: declarativeSpecification label equals: 'Inspect'.
-	self
-		assert: declarativeSpecification iconStencil
-		equals: (GtPhlowGlamorousVectorIconNameStencil forIconName: #playinspect).
-	self assert: declarativeSpecification priority equals: 12.
-
-	self
-		assert: declarativeSpecification asDictionaryForExport
-		equals: self expectedButtonActionWithIconAndLabelSpecification.
-
-	^ declarativeSpecification
-%
-
-category: 'examples'
-method: GtRemotePhlowActionSpecificationConversionExamples
-convertButtonActionWithLabelAndNoTooltip
-	"Demonstrate converting a button action to a declarative specification"
-
-	<gtExample>
-	<return: #GtPhlowButtonActionSpecification>
-	| phlowAction declarativeSpecification |
-	phlowAction := self createProtoActions button
-			label: 'Inspect';
-			priority: 12.
-
-	declarativeSpecification := phlowAction asGtDeclarativeAction.
-
-	self assert: declarativeSpecification tooltipText equals: nil.
-	self assert: declarativeSpecification label equals: 'Inspect'.
-	self assert: declarativeSpecification iconStencil equals: nil.
-	self assert: declarativeSpecification priority equals: 12.
-
-	self
-		assert: declarativeSpecification asDictionaryForExport
-		equals: self expectedButtonActionWithLabelAndNoTooltipSpecification.
-
-	^ declarativeSpecification
-%
-
-category: 'accessing'
-method: GtRemotePhlowActionSpecificationConversionExamples
-createProtoActions
-	^ GtRemotePhlowAction new
-%
-
-category: 'data'
-method: GtRemotePhlowActionSpecificationConversionExamples
-expectedButtonActionWithIconAndLabelSpecification
-	^ Dictionary new
-		add: '__typeName' -> #GtPhlowButtonActionSpecification;
-		add: '__typeLabel' -> 'phlowButtonActionSpecification';
-		add: 'iconStencil'
-				-> (Dictionary new
-						add: '__typeName' -> #GtPhlowGlamorousVectorIconNameStencil;
-						add: '__typeLabel' -> 'phlowGlamorousVectorIconNameStencil';
-						add: 'iconName' -> #playinspect;
-						yourself);
-		add: 'priority' -> 12;
-		add: 'tooltipText' -> 'Inspect objects';
-		add: 'methodSelector' -> nil;
-		add: 'label' -> 'Inspect';
-		yourself
-%
-
-category: 'data'
-method: GtRemotePhlowActionSpecificationConversionExamples
-expectedButtonActionWithIconSpecification
-	^ Dictionary new
-		add: '__typeName' -> #GtPhlowButtonActionSpecification;
-		add: '__typeLabel' -> 'phlowButtonActionSpecification';
-		add: 'iconStencil'
-				-> (Dictionary new
-						add: 'iconName' -> #playinspect;
-						add: '__typeName' -> #GtPhlowGlamorousVectorIconNameStencil;
-						add: '__typeLabel' -> 'phlowGlamorousVectorIconNameStencil';
-						yourself);
-		add: 'priority' -> 12;
-		add: 'tooltipText' -> 'Inspect objects';
-		add: 'methodSelector' -> nil;
-		yourself
-%
-
-category: 'data'
-method: GtRemotePhlowActionSpecificationConversionExamples
-expectedButtonActionWithLabelAndNoTooltipSpecification
-	^ Dictionary new
-		add: '__typeName' -> #GtPhlowButtonActionSpecification;
-		add: '__typeLabel' -> 'phlowButtonActionSpecification';
-		add: 'priority' -> 12;
-		add: 'methodSelector' -> nil;
-		add: 'label' -> 'Inspect';
-		yourself
-%
-
-! Class implementation for 'GtRemotePhlowViewSpecificationConversionExamples'
-
-!		Instance methods for 'GtRemotePhlowViewSpecificationConversionExamples'
-
-category: 'examples'
-method: GtRemotePhlowViewSpecificationConversionExamples
-convertColumnedList
-	"Demonstrate converting a columned list phlow view to a declarative specification"
-
-	<gtExample>
-	<return: #GtPhlowColumnedListViewSpecification>
-	| phlowView declarativeSpecification |
-	phlowView := self createProtoViews columnedList
-			title: #Test;
-			priority: 10;
-			items: [ #(1 2 3) ];
-			column: 'One' text: [ :item | item ];
-			column: 'Two'
-				text: [ :item | item asString ]
-				width: 100.
-	declarativeSpecification := phlowView asGtDeclarativeView.
-
-	self assert: declarativeSpecification title equals: #Test.
-	self assert: declarativeSpecification priority equals: 10.
-	self assert: declarativeSpecification columnTitles equals: #('One' 'Two').
-	self assert: declarativeSpecification columnWidths equals: #(nil 100).
-
-	self
-		assert: declarativeSpecification retriveFormattedItems
-		equals: self expectedColumnedListWithNumbersItems.
-
-	^ declarativeSpecification
-%
-
-category: 'examples'
-method: GtRemotePhlowViewSpecificationConversionExamples
-convertColumnedListWithTextColumns
-	"Check the conversion to declarative specification with data"
-
-	<gtExample>
-	<return: #GtPhlowColumnedListViewSpecification>
-	| declarativeSpecification |
-	declarativeSpecification := (GtRemotePhlowDeclarativeTestInspectable new
-			gtColumnedListFor: self createProtoViews) asGtDeclarativeView.
-
-	self assert: declarativeSpecification title equals: 'Columned list'.
-	self assert: declarativeSpecification priority equals: 20.
-	self
-		assert: declarativeSpecification columnTitles
-		equals: #('Value' 'Lowercase').
-	self assert: declarativeSpecification columnWidths equals: #(nil 100).
-
-	self
-		assert: declarativeSpecification retriveFormattedItems
-		equals: self expectedColumnedListForExampleObjectItems.
-
-	^ declarativeSpecification
-%
-
-category: 'examples'
-method: GtRemotePhlowViewSpecificationConversionExamples
-convertColumnedListWithTypedColumns
-	"Check the conversion to declarative specification with data"
-
-	<gtExample>
-	<return: #GtPhlowColumnedListViewSpecification>
-	| declarativeSpecification |
-	declarativeSpecification := (GtRemotePhlowDeclarativeTestInspectable new
-			gtColumnedListWithTypedColumnsFor: self createProtoViews) asGtDeclarativeView.
-
-	self
-		assert: declarativeSpecification title
-		equals: 'Columned list with typed columns'.
-	self assert: declarativeSpecification priority equals: 24.
-	self
-		assert: (declarativeSpecification columnSpecifications
-				collect: [ :aColumnSpecification | aColumnSpecification typeLabel ])
-		equals: #('text' 'number' 'icon').
-	self
-		assert: declarativeSpecification columnTitles
-		equals: #('Text' 'Number' 'Icon Name').
-	self assert: declarativeSpecification columnWidths equals: #(nil 100 75).
-
-	^ declarativeSpecification
-%
-
-category: 'examples'
-method: GtRemotePhlowViewSpecificationConversionExamples
-convertColumnedTree
-	"Demonstrate converting a columned tree phlow view to a declarative specification"
-
-	<gtExample>
-	<return: #GtPhlowColumnedTreeViewSpecification>
-	| phlowView declarativeSpecification |
-	phlowView := self createProtoViews columnedTree
-			title: #Test;
-			priority: 10;
-			items: [ 1 to: 4 ];
-			children: [ :aNumber | aNumber = 0 ifTrue: [ #() ] ifFalse: [ 1 to: aNumber // 2 ] ];
-			column: 'One' text: [ :item | item ];
-			column: 'Two'
-				text: [ :item | (item + 1) asString ]
-				width: 100.
-	declarativeSpecification := phlowView asGtDeclarativeView.
-
-	self assert: declarativeSpecification title equals: #Test.
-	self assert: declarativeSpecification priority equals: 10.
-	self assert: declarativeSpecification columnTitles equals: #('One' 'Two').
-	self assert: declarativeSpecification columnWidths equals: #(nil 100).
-
-	self
-		assert: declarativeSpecification retriveFormattedItems
-		equals: self expectedColumnedTreeWithNumberItems.
-
-	^ declarativeSpecification
-%
-
-category: 'examples'
-method: GtRemotePhlowViewSpecificationConversionExamples
-convertListViewWithButtonActions
-	<gtExample>
-	<return: #GtPhlowListViewSpecification>
-	| view specification |
-	view := self listViewWithButtonActions.
-	specification := view asGtDeclarativeView.
-
-	self assert: specification title equals: 'Buttons'.
-	self assert: specification priority equals: 10.
-	self assert: specification actionSpecifications size equals: 6.
-	self assert: specification actionSpecifications first class equals: GtPhlowButtonActionSpecification.
-	self assert: specification actionSpecifications first label equals: 'Inspect'.
-	self assert: specification actionSpecifications second tooltipText equals: 'Inspect objects'.
-	self
-		assert: specification actionSpecifications third iconStencil
-		equals: (GtPhlowGlamorousVectorIconNameStencil forIconName: #playinspect).
-
-	^ specification
-%
-
-category: 'examples'
-method: GtRemotePhlowViewSpecificationConversionExamples
-convertListWithNumbers
-	"Demonstrate converting a columned list phlow view to a declarative specification"
-
-	<gtExample>
-	<return: #GtPhlowListViewSpecification>
-	| phlowView declarativeSpecification |
-	phlowView := self createProtoViews list
-			title: #Test;
-			priority: 10;
-			items: [ #(1 2 3) ];
-			itemText: [ :item | 'Number: ' , item asString ].
-	declarativeSpecification := phlowView asGtDeclarativeView.
-
-	self assert: declarativeSpecification title equals: #Test.
-	self assert: declarativeSpecification priority equals: 10.
-	self
-		assert: declarativeSpecification retriveFormattedItems
-		equals: self expectedListWithNumberItems.
-
-	^ declarativeSpecification
-%
-
-category: 'examples'
-method: GtRemotePhlowViewSpecificationConversionExamples
-convertListWithObjects
-	"Check the conversion to declarative specification with data"
-
-	<gtExample>
-	<return: #GtPhlowListViewSpecification>
-	| phlowView declarativeSpecification |
-	phlowView := GtRemotePhlowDeclarativeTestInspectable new
-			gtListFor: self createProtoViews.
-	declarativeSpecification := phlowView asGtDeclarativeView.
-
-	self assert: declarativeSpecification title equals: 'List'.
-	self assert: declarativeSpecification priority equals: 15.
-	self
-		assert: declarativeSpecification retriveFormattedItems
-		equals: self expectedListForExampleObjectItems.
-
-	^ declarativeSpecification
-%
-
-category: 'examples'
-method: GtRemotePhlowViewSpecificationConversionExamples
-convertListWithStyledText
-	<gtExample>
-	<return: #GtPhlowListViewSpecification>
-	| phlowView declarativeSpecification |
-	phlowView := GtRemotePhlowDeclarativeTestInspectable new
-			gtListWithStyledTextFor: self createProtoViews.
-	declarativeSpecification := phlowView asGtDeclarativeView.
-
-	self assert: declarativeSpecification title equals: 'List - styled text'.
-	self assert: declarativeSpecification priority equals: 15.1.
-	self
-		assert: declarativeSpecification retriveFormattedItems
-		equals: self expectedListForStyledText.
-
-	^ declarativeSpecification
-%
-
-category: 'examples'
-method: GtRemotePhlowViewSpecificationConversionExamples
-convertText
-	"Demonstrate converting a columned list phlow view to a declarative specification"
-
-	<gtExample>
-	<return: #GtPhlowTextViewSpecification>
-	| phlowView declarativeSpecification |
-	phlowView := self createProtoViews text
-			title: #Test;
-			priority: 11;
-			text: [ 'hello world' ].
-	declarativeSpecification := phlowView asGtDeclarativeView.
-
-	self assert: declarativeSpecification title equals: #Test.
-	self assert: declarativeSpecification priority equals: 11.
-
-	self
-		assert: declarativeSpecification retrieveStylableText
-		equals: self expectedTextEditorBasicStringStylableTextData.
-
-	^ declarativeSpecification
-%
-
-category: 'examples'
-method: GtRemotePhlowViewSpecificationConversionExamples
-convertTextEditor
-	"Demonstrate converting a columned list phlow view to a declarative specification"
-
-	<gtExample>
-	<return: #GtPhlowTextEditorViewSpecification>
-	| phlowView declarativeSpecification |
-	phlowView := self createProtoViews textEditor
-			title: 'String (editor)';
-			priority: 11;
-			text: [ 'hello world' ].
-	declarativeSpecification := phlowView asGtDeclarativeView.
-
-	self assert: declarativeSpecification title equals: 'String (editor)'.
-	self assert: declarativeSpecification priority equals: 11.
-	self assert: declarativeSpecification string equals: nil.
-
-	self
-		assert: declarativeSpecification retrieveStylableText
-		equals: self expectedTextEditorBasicStringStylableTextData.
-
-	^ declarativeSpecification
-%
-
-category: 'examples'
-method: GtRemotePhlowViewSpecificationConversionExamples
-convertTree
-	"Demonstrate converting a tree phlow view to a declarative specification"
-
-	<gtExample>
-	<return: #GtPhlowTreeViewSpecification>
-	| phlowView declarativeSpecification |
-	phlowView := self createProtoViews tree
-			title: #Test;
-			priority: 10;
-			items: [ 1 to: 4 ];
-			children: [ :aNumber | aNumber = 0 ifTrue: [ #() ] ifFalse: [ 1 to: aNumber // 2 ] ].
-	declarativeSpecification := phlowView asGtDeclarativeView.
-
-	self assert: declarativeSpecification title equals: #Test.
-	self assert: declarativeSpecification priority equals: 10.
-	self
-		assert: declarativeSpecification retriveFormattedItems
-		equals: self expectedTreeWithNumberItems.
-
-	^ declarativeSpecification
-%
-
-category: 'accessing'
-method: GtRemotePhlowViewSpecificationConversionExamples
-createProtoViews
-	^ GtRemotePhlowProtoView new
-%
-
-category: 'accessing - data'
-method: GtRemotePhlowViewSpecificationConversionExamples
-expectedColumnedListForExampleObjectItems
-	^ ((Array new: 3) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'42'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'42'); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'Hello World'); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'hello world'); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2021-04-06T14:43:50.123456+02:00'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'2021-04-06t14:43:50.123456+02:00'); yourself); yourself)); yourself)); add: (#nodeId->3); yourself); yourself)
-%
-
-category: 'accessing - data'
-method: GtRemotePhlowViewSpecificationConversionExamples
-expectedColumnedListWithNumbersItems
-	^ ((Array new: 3) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'1'); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'2'); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'3'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'3'); yourself); yourself)); yourself)); add: (#nodeId->3); yourself); yourself)
-%
-
-category: 'accessing - data'
-method: GtRemotePhlowViewSpecificationConversionExamples
-expectedColumnedTreeWithNumberItems
-	^ ((Array new: 4) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'2'); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'3'); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'3'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'4'); yourself); yourself)); yourself)); add: (#nodeId->3); yourself); at: 4 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'4'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'5'); yourself); yourself)); yourself)); add: (#nodeId->4); yourself); yourself)
-%
-
-category: 'accessing - data'
-method: GtRemotePhlowViewSpecificationConversionExamples
-expectedListForExampleObjectItems
-	^ ((Array new: 3) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'42'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'Hello World'); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2021-04-06T14:43:50.123456+02:00'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->3); yourself); yourself)
-%
-
-category: 'accessing - data'
-method: GtRemotePhlowViewSpecificationConversionExamples
-expectedListForStyledText
-	^ ((Array new: 4) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'42'); add: ('attributeRuns'->((Dictionary new) add: ('items'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->2); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontWeightAttribute'); add: ('weight'->#bold); yourself); yourself)); yourself); yourself)); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'Hello World'); add: ('attributeRuns'->((Dictionary new) add: ('items'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->5); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('color'->((Dictionary new) add: (#a->1.0); add: (#r->1.0); add: (#g->1.0); add: (#b->0.0); yourself)); add: ('__typeLabel'->'phlowTextHighlightAttribute'); yourself); at: 2 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontSizeAttribute'); add: ('size'->20); yourself); yourself)); yourself); yourself)); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'Now is the time'); add: ('attributeRuns'->((Dictionary new) add: ('items'->((Array new: 9) at: 1 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->11); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('name'->'Source Code Pro'); add: ('__typeLabel'->'phlowFontNameAttribute'); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('startIndex'->13); add: ('endIndex'->15); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('name'->'Source Code Pro'); add: ('__typeLabel'->'phlowFontNameAttribute'); yourself); yourself)); yourself); at: 3 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->4); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontWeightAttribute'); add: ('weight'->#bold); yourself); yourself)); yourself); at: 4 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->6); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontEmphasisAttribute'); add: ('emphasis'->'italic'); yourself); yourself)); yourself); at: 5 put: ((Dictionary new) add: ('startIndex'->5); add: ('endIndex'->6); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('color'->((Dictionary new) add: (#a->1.0); add: (#r->1.0); add: (#g->1.0); add: (#b->0.0); yourself)); add: ('__typeLabel'->'phlowTextHighlightAttribute'); yourself); yourself)); yourself); at: 6 put: ((Dictionary new) add: ('startIndex'->8); add: ('endIndex'->10); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('color'->((Dictionary new) add: (#a->1.0); add: (#r->1.0); add: (#g->0.0); add: (#b->0.0); yourself)); add: ('__typeLabel'->'phlowTextForegroundAttribute'); yourself); yourself)); yourself); at: 7 put: ((Dictionary new) add: ('startIndex'->8); add: ('endIndex'->15); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontWeightAttribute'); add: ('weight'->#thin); yourself); yourself)); yourself); at: 8 put: ((Dictionary new) add: ('startIndex'->12); add: ('endIndex'->12); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('name'->'Source Sans Pro'); add: ('__typeLabel'->'phlowFontNameAttribute'); yourself); yourself)); yourself); at: 9 put: ((Dictionary new) add: ('startIndex'->12); add: ('endIndex'->15); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontSizeAttribute'); add: ('size'->20); yourself); yourself)); yourself); yourself)); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->3); yourself); at: 4 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'Now is the time'); add: ('attributeRuns'->((Dictionary new) add: ('items'->((Array new: 9) at: 1 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->11); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('name'->'Source Code Pro'); add: ('__typeLabel'->'phlowFontNameAttribute'); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('startIndex'->13); add: ('endIndex'->15); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('name'->'Source Code Pro'); add: ('__typeLabel'->'phlowFontNameAttribute'); yourself); yourself)); yourself); at: 3 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->4); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontWeightAttribute'); add: ('weight'->#bold); yourself); yourself)); yourself); at: 4 put: ((Dictionary new) add: ('startIndex'->1); add: ('endIndex'->6); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontEmphasisAttribute'); add: ('emphasis'->'italic'); yourself); yourself)); yourself); at: 5 put: ((Dictionary new) add: ('startIndex'->5); add: ('endIndex'->6); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('color'->((Dictionary new) add: (#a->1.0); add: (#r->1.0); add: (#g->1.0); add: (#b->0.0); yourself)); add: ('__typeLabel'->'phlowTextHighlightAttribute'); yourself); yourself)); yourself); at: 6 put: ((Dictionary new) add: ('startIndex'->8); add: ('endIndex'->10); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('color'->((Dictionary new) add: (#a->1.0); add: (#r->1.0); add: (#g->0.0); add: (#b->0.0); yourself)); add: ('__typeLabel'->'phlowTextForegroundAttribute'); yourself); yourself)); yourself); at: 7 put: ((Dictionary new) add: ('startIndex'->8); add: ('endIndex'->15); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontWeightAttribute'); add: ('weight'->#thin); yourself); yourself)); yourself); at: 8 put: ((Dictionary new) add: ('startIndex'->12); add: ('endIndex'->12); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('name'->'Source Sans Pro'); add: ('__typeLabel'->'phlowFontNameAttribute'); yourself); yourself)); yourself); at: 9 put: ((Dictionary new) add: ('startIndex'->12); add: ('endIndex'->15); add: ('__typeLabel'->'phlowRun'); add: ('attributes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('__typeLabel'->'phlowFontSizeAttribute'); add: ('size'->20); yourself); yourself)); yourself); yourself)); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->4); yourself); yourself)
-%
-
-category: 'examples'
-method: GtRemotePhlowViewSpecificationConversionExamples
-expectedListViewWithButtonActionsSpecification
-	^ Dictionary new
-		add: '__typeName' -> #GtPhlowListViewSpecification;
-		add: 'viewName' -> #GtPhlowListViewSpecification;
-		add: 'title' -> 'Buttons';
-		add: 'priority' -> 10;
-		add: 'dataTransport' -> GtPhlowViewSpecification dataLazy;
-		add: 'methodSelector' -> nil;
-		add: 'actionSpecifications' -> {
-			(Dictionary new
-				add: '__typeName' -> #GtPhlowButtonActionSpecification;
-				add: '__typeLabel' -> 'phlowButtonActionSpecification';
-				add: 'priority' -> 51;
-				add: 'methodSelector' -> nil;
-				add: 'label' -> 'Inspect';
-				yourself).
-			(Dictionary new
-				add: '__typeName' -> #GtPhlowButtonActionSpecification;
-				add: '__typeLabel' -> 'phlowButtonActionSpecification';
-				add: 'priority' -> 52;
-				add: 'methodSelector' -> nil;
-				add: 'label' -> 'Inspect with tooltip';
-				add: 'tooltipText' -> 'Inspect objects';
-				yourself).
-			(Dictionary new
-				add: '__typeName' -> #GtPhlowButtonActionSpecification;
-				add: '__typeLabel' -> 'phlowButtonActionSpecification';
-				add: 'priority' -> 53;
-				add: 'methodSelector' -> nil;
-				add: 'iconStencil' -> (Dictionary new
-					add: '__typeName' -> #GtPhlowGlamorousVectorIconNameStencil;
-					add: '__typeLabel' -> 'phlowGlamorousVectorIconNameStencil';
-					add: 'iconName' -> #playinspect;
-					yourself);
-				yourself).
-			(Dictionary new
-				add: '__typeName' -> #GtPhlowButtonActionSpecification;
-				add: '__typeLabel' -> 'phlowButtonActionSpecification';
-				add: 'priority' -> 54;
-				add: 'methodSelector' -> nil;
-				add: 'tooltipText' -> 'Inspect with icon';
-				add: 'iconStencil' -> (Dictionary new
-					add: '__typeName' -> #GtPhlowGlamorousVectorIconNameStencil;
-					add: '__typeLabel' -> 'phlowGlamorousVectorIconNameStencil';
-					add: 'iconName' -> #playinspect;
-					yourself);
-				yourself).
-			(Dictionary new
-				add: '__typeName' -> #GtPhlowButtonActionSpecification;
-				add: '__typeLabel' -> 'phlowButtonActionSpecification';
-				add: 'priority' -> 55;
-				add: 'methodSelector' -> nil;
-				add: 'label' -> 'Refresh';
-				add: 'iconStencil' -> (Dictionary new
-					add: '__typeName' -> #GtPhlowGlamorousVectorIconNameStencil;
-					add: '__typeLabel' -> 'phlowGlamorousVectorIconNameStencil';
-					add: 'iconName' -> #refresh;
-					yourself);
-				yourself).
-			(Dictionary new
-				add: '__typeName' -> #GtPhlowButtonActionSpecification;
-				add: '__typeLabel' -> 'phlowButtonActionSpecification';
-				add: 'priority' -> 56;
-				add: 'methodSelector' -> nil;
-				add: 'label' -> 'Refresh tooltip';
-				add: 'tooltipText' -> 'Refresh objects';
-				add: 'iconStencil' -> (Dictionary new
-					add: '__typeName' -> #GtPhlowGlamorousVectorIconNameStencil;
-					add: '__typeLabel' -> 'phlowGlamorousVectorIconNameStencil';
-					add: 'iconName' -> #refresh;
-					yourself);
-				yourself)
-		} asArray;
-		yourself
-%
-
-category: 'accessing - data'
-method: GtRemotePhlowViewSpecificationConversionExamples
-expectedListWithNumberItems
-	^ ((Array new: 3) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'Number: 1'); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'Number: 2'); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'Number: 3'); yourself)); add: (#nodeId->3); yourself); yourself)
-%
-
-category: 'accessing - data'
-method: GtRemotePhlowViewSpecificationConversionExamples
-expectedTextEditorBasicStringStylableTextData
-	^ ((Dictionary new) add: ('string'->'hello world'); add: ('__typeLabel'->'remotePhlowText'); add: ('stylerSpecification'->((Dictionary new) add: ('__typeLabel'->'remotePhlowTextAttributeRunsStylerSpecification'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)
-%
-
-category: 'accessing - data'
-method: GtRemotePhlowViewSpecificationConversionExamples
-expectedTreeWithNumberItems
-	^ ((Array new: 4) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'3'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->3); yourself); at: 4 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'4'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself)); add: (#nodeId->4); yourself); yourself)
-%
-
-category: 'examples'
-method: GtRemotePhlowViewSpecificationConversionExamples
-listViewActionSpecificationsDeserialization
-	<gtExample>
-	<return: #GtPhlowListViewSpecification>
-	| specification |
-	specification := GtPhlowViewSpecification fromDictionary: self listViewActionSpecificationsSerialization.
-
-	self assert: specification actionSpecifications size equals: 6.
-	self assert: specification actionSpecifications first class equals: GtPhlowButtonActionSpecification.
-	self assert: specification actionSpecifications first label equals: 'Inspect'.
-
-	^ specification
-%
-
-category: 'examples'
-method: GtRemotePhlowViewSpecificationConversionExamples
-listViewActionSpecificationsSerialization
-	<gtExample>
-	<return: #Dictionary>
-	| dictionary |
-	dictionary := self convertListViewWithButtonActions asDictionaryForExport.
-
-	self
-		assert: dictionary
-		equals: self expectedListViewWithButtonActionsSpecification.
-
-	^ dictionary
-%
-
-category: 'examples'
-method: GtRemotePhlowViewSpecificationConversionExamples
-listViewWithButtonActions
-	<gtExample>
-	<return: #GtRemotePhlowListView>
-	| view |
-	view := self createProtoViews list.
-	
-	view
-		title: 'Buttons';
-		priority: 10;
-		items: [ 1 to: 10 ];
-		itemText: [ :each | each asString ].
-	view actionButtonLabel: 'Inspect' action: [ :button | button ].
-	view
-		actionButtonLabel: 'Inspect with tooltip'
-		tooltip: 'Inspect objects'
-		action: [ :button | button ].
-	view
-		actionButtonIcon: (GtPhlowGlamorousVectorIconNameStencil new
-			iconName: #playinspect)
-		action: [ :button | button ].
-	view
-		actionButtonIcon: (GtPhlowGlamorousVectorIconNameStencil new
-			iconName: #playinspect)
-		tooltip: 'Inspect with icon'
-		action: [ :button | button ].
-	view
-		actionButtonIcon: (GtPhlowGlamorousVectorIconNameStencil new
-			iconName: #refresh)
-		label: 'Refresh'
-		action: [ :button | button ].
-	view
-		actionButtonIcon: (GtPhlowGlamorousVectorIconNameStencil new
-			iconName: #refresh)
-		label: 'Refresh tooltip'
-		tooltip: 'Refresh objects'
-		action: [ :button | button ].
-
-	self assert: view actions size equals: 6.
-	self assert: view actions first label equals: 'Inspect'.
-	self assert: view actions second label equals: 'Inspect with tooltip'.
-	self assert: view actions second tooltipText equals: 'Inspect objects'.
-	self assert: view actions third label equals: nil.
-	self
-		assert: view actions third iconStencil
-		equals: (GtPhlowGlamorousVectorIconNameStencil forIconName: #playinspect).
-	self assert: view actions fourth tooltipText equals: 'Inspect with icon'.
-	self assert: view actions fifth label equals: 'Refresh'.
-	self assert: view actions sixth label equals: 'Refresh tooltip'.
-	self assert: view actions sixth tooltipText equals: 'Refresh objects'.
-	self assert: (view actions collect: [ :each | each priority ]) asArray equals: #(51 52 53 54 55 56).
-
-	^ view
-%
-
 ! Class implementation for 'GtRemotePhlowStencilDataWrapper'
 
 !		Instance methods for 'GtRemotePhlowStencilDataWrapper'
@@ -18046,6 +23161,13 @@ stylerSpecification: anObject
 ! Class implementation for 'GtRemotePhlowTestDataForExamples'
 
 !		Class methods for 'GtRemotePhlowTestDataForExamples'
+
+category: 'accessing'
+classmethod: GtRemotePhlowTestDataForExamples
+computationForGemStoneSide
+	(Delay forSeconds: 3) wait.
+	2 -1 + 1
+%
 
 category: 'accessing'
 classmethod: GtRemotePhlowTestDataForExamples
@@ -18321,6 +23443,307 @@ category: 'accessing'
 method: GtRemoteTextStylerComputableSpecification
 stylerComputation: aComputation
 	stylerComputation := aComputation
+%
+
+! Class implementation for 'GtRemotePhlowTreeViewContextActionsBasicTestObject'
+
+!		Instance methods for 'GtRemotePhlowTreeViewContextActionsBasicTestObject'
+
+category: 'views'
+method: GtRemotePhlowTreeViewContextActionsBasicTestObject
+gtTreeWithBasicContextActionsFor: aView
+	<gtView>
+
+	^aView tree
+		title: 'Tree - Basic actions';
+		priority: 15;
+		items: [ 10 to: 15 ];
+		children: [ :aNumber | 
+			| targetNumber|
+			targetNumber := aNumber \\ 10.
+			(targetNumber // 2 = targetNumber)
+				ifTrue: [ #() ] 
+				ifFalse: [
+					(targetNumber // 2 to: (targetNumber - 1)) collect: [ :each | each + 10 ]  ] ];
+		itemText: [ :x | 'value: ', x asString ];
+		contextItemLabel: 'Inspect element' action: [ :anElement |
+				anElement phlow spawnObject: anElement ];
+		contextItemLabel: 'Inspect object' action: [ :anElement :anObject |
+				anElement phlow spawnObject: anObject ];
+		contextItemLabel: 'Inspect selection' action: [ :anElement :anObject :aSelection |
+				anElement phlow spawnObject: aSelection ];
+		contextItemLabel: 'Inspect parameters' action: [ :anElement :anObject :aSelection |
+				anElement phlow spawnObject: {anElement . anObject . aSelection} ];
+		contextItemLabel: 'Show if greater than 12' 
+			action: [ :anElement :anObject | anElement phlow spawnObject: anObject ]
+			showIf: [ :anObject :aSelection | anObject > 12 ];
+		send: [ :anObject :aSelectionIndex |
+			{anObject . aSelectionIndex} ]
+%
+
+category: 'views'
+method: GtRemotePhlowTreeViewContextActionsBasicTestObject
+gtTreeWithBasicContextActionsMultipleSelectionFor: aView
+	<gtView>
+
+	^aView tree
+		title: 'Tree - Multiple Selection';
+		priority: 15.1;
+		items: [ 10 to: 15 ];
+		children: [ :aNumber | 
+			| targetNumber|
+			targetNumber := aNumber \\ 10.
+			(targetNumber // 2 = targetNumber)
+				ifTrue: [ #() ] 
+				ifFalse: [
+					(targetNumber // 2 to: (targetNumber - 1)) collect: [ :each | each + 10 ] ] ];
+		itemText: [ :x | 'value: ', x asString ];
+		withMultipleSelection;
+		contextItemLabel: 'Inspect element' action: [ :anElement |
+				anElement phlow spawnObject: anElement ];
+		contextItemLabel: 'Inspect object' action: [ :anElement :anObject |
+				anElement phlow spawnObject: anObject ];
+		contextItemLabel: 'Inspect selection' action: [ :anElement :anObject :aSelection |
+				anElement phlow spawnObject: aSelection ];
+		contextItemLabel: 'Inspect parameters' action: [ :anElement :anObject :aSelection |
+				anElement phlow spawnObject: {anElement . anObject . aSelection} ];
+		contextItemLabel: 'Show if 3 elements in selection' 
+			action: [ :anElement | anElement phlow spawnObject: anElement ]
+			showIf: [ :anObject :aSelection | 
+				aSelection size = 3 ];
+		contextItemLabel: 'Show if 14 in selection' 
+			action: [ :anElement :aCollectionOfObjects | 
+				anElement phlow spawnObject: aCollectionOfObjects  ]
+			showIf: [ :aCollectionOfObjects :aSelection | 
+				aCollectionOfObjects includes: 14   ];
+		send: [ :anObject :aSelectionIndex |
+			{anObject . aSelectionIndex} ]
+%
+
+category: 'views'
+method: GtRemotePhlowTreeViewContextActionsBasicTestObject
+gtTreeWithDynamicContextPhlowActionsFor: aView
+	<gtView>
+
+	^aView tree
+		title: 'Dynamic context phlow';
+		priority: 19.2;
+		items: [ 10 to: 15 ];
+		children: [ :aNumber | 
+			| targetNumber|
+			targetNumber := aNumber \\ 10.
+			(targetNumber // 2 = targetNumber)
+				ifTrue: [ #() ] 
+				ifFalse: [
+					(targetNumber // 2 to: (targetNumber - 1)) collect: [ :each | each + 10 ]  ] ];
+		itemText: [ :x | 'value: ', x asString ];
+		dynamicPhlowContextItems: [ :anAction :anElement :anObject :aSelection |
+			{
+				anAction contextMenuAction
+					label: 'Inspect element';
+					action: [ :currentElement |
+						currentElement phlow spawnObject: currentElement ].
+				anAction contextMenuAction
+					label: 'Inspect object';
+					action: [ :currentElement :currentObject |
+						currentElement phlow spawnObject: currentObject ].
+				anAction contextMenuAction
+					label: 'Inspect selection';
+					action: [ :currentElement :currentObject :currentIndex |
+						currentElement phlow spawnObject: currentIndex ].
+				anAction contextMenuAction
+					label: 'Inspect parameters';
+					action: [ :currentElement :currentObject :currentIndex |
+						currentElement phlow spawnObject: {
+							currentElement . currentObject . currentIndex } ].
+				anAction contextMenuAction
+					label: 'Inspect outer parameters';
+					action: [ :currentElement |
+						currentElement phlow 
+							spawnObject: {anAction. anElement . anObject . aSelection} ].
+				anAction contextMenuAction
+					label: 'Show if greater than 12';
+					action: [ :currentElement | currentElement phlow spawnObject: anElement ];
+					showIf: [ :currentObject :currentSelection | currentObject > 12]
+			} ];
+		send: [ :anObject :aSelectionIndex | {anObject . aSelectionIndex} ]
+%
+
+category: 'views'
+method: GtRemotePhlowTreeViewContextActionsBasicTestObject
+gtTreeWithDynamicContextPhlowActionsMultipleSelectionFor: aView
+	<gtView>
+
+	^aView tree
+		title: 'Dynamic context phlow - multiple selection';
+		priority: 19.4;
+		items: [ 10 to: 15 ];
+		children: [ :aNumber | 
+			| targetNumber|
+			targetNumber := aNumber \\ 10.
+			(targetNumber // 2 = targetNumber)
+				ifTrue: [ #() ] 
+				ifFalse: [
+					targetNumber // 2 to: (targetNumber - 1) ] ];
+		itemText: [ :x | 'value: ', x asString ];
+		withMultipleSelection;
+		dynamicPhlowContextItems: [ :anAction :anElement :aCollectionOfObjects :aSelection |
+			{
+				anAction contextMenuAction
+					label: 'Inspect element';
+					action: [ :currentElement |
+						currentElement phlow spawnObject: currentElement ].
+				anAction contextMenuAction
+					label: 'Inspect object';
+					action: [ :currentElement :currentObject |
+						currentElement phlow spawnObject: currentObject ].
+				anAction contextMenuAction
+					label: 'Inspect selection';
+					action: [ :currentElement :currentObject :currentIndex |
+						currentElement phlow spawnObject: currentIndex ].
+				anAction contextMenuAction
+					label: 'Inspect parameters';
+					action: [ :currentElement :currentObject :currentIndex |
+						currentElement phlow spawnObject: {
+							currentElement . currentObject . currentIndex } ].
+				anAction contextMenuAction
+					label: 'Inspect outer parameters';
+					action: [ :currentElement |
+						currentElement phlow 
+							spawnObject: {anAction. anElement . aCollectionOfObjects . aSelection} ] 
+			}, (aSelection size = 3  
+						ifTrue: [
+							{anAction contextMenuAction
+								label: 'Show if 3 elements in selection';
+								action: [ :currentElement |
+									currentElement phlow spawnObject: currentElement ]}] 
+							ifFalse: [{}]),
+						((aCollectionOfObjects includes: 14)
+						ifTrue: [
+							{anAction contextMenuAction
+								label: 'Show if 14 in selection';
+								action: [ :currentElement :currentCollectionOfObjects |
+									currentElement phlow spawnObject: currentCollectionOfObjects ]}] 
+						ifFalse: [{}]) ];
+		send: [ :anObject :aSelectionIndex | {anObject . aSelectionIndex} ]
+%
+
+! Class implementation for 'GtRemotePhlowTreeViewTestObject'
+
+!		Instance methods for 'GtRemotePhlowTreeViewTestObject'
+
+category: 'gt - extensions'
+method: GtRemotePhlowTreeViewTestObject
+gtTreeFor: aView
+	<gtView>
+
+	^aView tree
+		title: 'Tree';
+		priority: 30;
+		items: [ 1 to: 5 ];
+		children: [ :aNumber | 
+			(aNumber // 2 = aNumber)
+				ifTrue: [ #() ] 
+				ifFalse: [
+					aNumber // 2 to: (aNumber - 1) ] ];
+		itemText: [ :x | x asString, ' number']
+%
+
+category: 'gt - extensions'
+method: GtRemotePhlowTreeViewTestObject
+gtTreeWithAllLevelsExpansionFor: aView
+	<gtView>
+
+	^aView tree
+		title: 'Expansion - all levels';
+		priority: 44;
+		items: [ 1 to: 5 ];
+		children: [ :aNumber | 
+			(aNumber // 2 = aNumber)
+				ifTrue: [ #() ] 
+				ifFalse: [
+					aNumber // 2 to: (aNumber - 1) ] ];
+		itemText: [ :x | x asString, ' number'];
+		expandAll
+%
+
+category: 'gt - extensions'
+method: GtRemotePhlowTreeViewTestObject
+gtTreeWithBelowFourFor: aView
+	<gtView>
+
+	^aView tree
+		title: 'Expansion - below four';
+		priority: 50;
+		items: [ 1 to: 5 ];
+		children: [ :aNumber | 
+			(aNumber // 2 = aNumber)
+				ifTrue: [ #() ] 
+				ifFalse: [
+					aNumber // 2 to: (aNumber - 1) ] ];
+		itemText: [ :x | x asString, ' number'];
+		expandSuchThat: [ :aNode :aNumber | aNumber < 4 ]
+%
+
+category: 'gt - extensions'
+method: GtRemotePhlowTreeViewTestObject
+gtTreeWithBelowThreeOrFiveFor: aView
+	<gtView>
+
+	^aView tree
+		title: 'Expansion - below three or five';
+		priority: 50;
+		items: [ 1 to: 5 ];
+		children: [ :aNumber | 
+			(aNumber // 2 = aNumber)
+				ifTrue: [ #() ] 
+				ifFalse: [
+					aNumber // 2 to: (aNumber - 1) ] ];
+		itemText: [ :x | x asString, ' number'];
+		expandSuchThat: [ :aNode :aNumber | (aNumber < 3) or: [ aNumber = 5 ] ]
+%
+
+category: 'gt - extensions'
+method: GtRemotePhlowTreeViewTestObject
+gtTreeWithOneLevelExpansionFor: aView
+	<gtView>
+
+	^aView tree
+		title: 'Expansion - one level';
+		priority: 40;
+		items: [ 1 to: 5 ];
+		children: [ :aNumber | 
+			(aNumber // 2 = aNumber)
+				ifTrue: [ #() ] 
+				ifFalse: [
+					aNumber // 2 to: (aNumber - 1) ] ];
+		itemText: [ :x | x asString, ' number'];
+		expandUpTo: 1
+%
+
+category: 'gt - extensions'
+method: GtRemotePhlowTreeViewTestObject
+gtTreeWithStyledTextFor: aView
+	<gtView>
+
+	^aView tree
+		title: 'Tree - with styled text';
+		priority: 30.1;
+		items: [ 1 to: 5 ];
+		children: [ :aNumber | 
+			(aNumber // 2 = aNumber)
+				ifTrue: [ #() ] 
+				ifFalse: [
+					aNumber // 2 to: (aNumber - 1) ] ];
+		itemText: [ :x | 
+			| computedString|
+			computedString := x asString, ' number'.
+			(x \\ 2) = 0 
+				ifTrue: [
+					computedString := computedString asRopedText
+						bold;
+						highlight: (GtPhlowColor named: #yellow) asColor ].
+			computedString ]
 %
 
 ! Class implementation for 'GtRemotePhlowViewedObject'
@@ -18733,6 +24156,34 @@ viewSpecificationsBySelector
 	^ viewSpecificationsBySelector
 %
 
+! Class implementation for 'GtRemotePhlowViewForwardSendTestObject'
+
+!		Instance methods for 'GtRemotePhlowViewForwardSendTestObject'
+
+category: 'as yet unclassified'
+method: GtRemotePhlowViewForwardSendTestObject
+gtForwardListWithBasicContextActionsFor: aView
+	<gtView>
+	
+	^ aView forward
+		title: 'List - Basic actions';
+		priority: 15.5;
+		object: [ GtRemotePhlowListViewContextActionsBasicTestObject new ];
+		view: #gtListWithBasicContextActionsFor:
+%
+
+category: 'as yet unclassified'
+method: GtRemotePhlowViewForwardSendTestObject
+gtForwardListWithBasicContextActionsMultipleSelectionFor: aView
+	<gtView>
+	
+	^ aView forward
+		title: 'List - Basic - multiple selection';
+		priority: 15.6;
+		object: [ GtRemotePhlowListViewContextActionsBasicTestObject new ];
+		view: #gtListWithBasicContextActionsMultipleSelectionFor:
+%
+
 ! Class implementation for 'GtRemotePhlowWebBrowserStencilTestObject'
 
 !		Instance methods for 'GtRemotePhlowWebBrowserStencilTestObject'
@@ -18932,6 +24383,7 @@ category: 'initialization'
 method: GtRemotePhlowWebBrowserViewTestObject
 initialize
 	super initialize.
+	
 	currentUrl := 'https://example.com'
 %
 
@@ -20784,6 +26236,50 @@ gtActionBrowseFor: anAction
 
 category: '*GToolkit-RemotePhlow-InspectorExtensions-Remote'
 method: Object
+gtActionCopyClassNameInspectFor: anAction
+    <gtAction>
+
+    ^ anAction button
+        priority: 80;
+        target: GtRemotePhlowObjectContextMenuTarget;
+        icon: (GtPhlowGlamorousVectorIconNameStencil new
+            iconName: #clipboard);
+        tooltip: 'Copy class name';
+        menuItemGroup: GtRemotePhlowMenuItemGroupConfiguration editing;
+        menuItemPreview: [
+            self gtDo: [ self class instanceSide name ]
+                gemstoneDo: [
+                    self class isMeta
+                        ifTrue: [ self class theNonMetaClass name ]
+                        ifFalse: [ self class name ] ] ];
+        action: [ :aButton | | className |
+            className := self gtDo: [ self class instanceSide name ]
+                gemstoneDo: [
+                    self class isMeta
+                        ifTrue: [ self class theNonMetaClass name ]
+                        ifFalse: [ self class name ] ].
+            aButton phlow copyToClipboard: className ]
+%
+
+category: '*GToolkit-RemotePhlow-InspectorExtensions-Remote'
+method: Object
+gtActionCopyDisplayTextInspectFor: anAction
+    <gtAction>
+
+    ^ anAction button
+        priority: 85;
+        target: GtRemotePhlowObjectContextMenuTarget;
+        icon: (GtPhlowGlamorousVectorIconNameStencil new
+            iconName: #clipboard);
+        tooltip: 'Copy display text';
+        menuItemGroup: GtRemotePhlowMenuItemGroupConfiguration editing;
+        menuItemPreview: [ self gtDisplayText ];
+        action: [ :aButton |
+            aButton phlow copyToClipboard: self gtDisplayText ]
+%
+
+category: '*GToolkit-RemotePhlow-InspectorExtensions-Remote'
+method: Object
 gtActionInspectFor: anAction
 	<gtAction>
 	
@@ -20982,7 +26478,19 @@ gtViewsInCurrentContext
 		
 		phlowView definingSelector: methodSelector.
 		phlowView definingClass: self class.
+
+		self gtActionsInCurrentContext do: [ :anAction |
+    		anAction target ifNotNil: [ :aTarget |
+      		(aTarget isForViewDefinedIn: methodSelector)
+        		ifTrue: [ phlowView addPhlowAction: anAction ] ] ].
+
 		phlowView ]
+%
+
+category: '*GToolkit-RemotePhlow-Remote'
+method: Object
+isBlocElementId
+	^ false
 %
 
 ! Class extensions for 'OrderedCollection'
@@ -20996,6 +26504,37 @@ gtDisplayOn: aStream
 	GtGemStoneRemotePhlowCollectionPrinter
 		displayStringFor: self 
 		on: aStream
+%
+
+category: '*GToolkit-RemotePhlow-InspectorExtensions-Remote'
+method: OrderedCollection
+gtItemsFor: aView
+	^(super gtItemsFor: aView)
+	dynamicPhlowContextItems: [ :anAction :anElement :anObject :aSelection |
+			| nodeLabels |
+			
+			nodeLabels := OrderedCollection new .
+			aSelection nodeIdentifiersDo: [ :aNodeIdentifier |
+				nodeLabels add: aNodeIdentifier description ].
+				
+			{anAction button
+				icon: GtPhlowGlamorousVectorIconNameStencil remove ;
+				label: 'Remove';
+				menuItemPreview: (nodeLabels size = 1 
+					ifTrue: [ 'item with index ', nodeLabels first  ] 
+					ifFalse: [ 'items with indexes ', (String streamContents: [ :aStream | 
+						nodeLabels 
+							do: [ :each | aStream nextPutAll: each ] 
+							separatedBy: [ aStream nextPutAll: ', ']  ]) ]);
+				action: [ :currentAction | 
+					| identifiersToRemove |
+					identifiersToRemove := OrderedCollection new.
+					aSelection nodeIdentifiersDo: [ :aNodeIdentifier | 
+						identifiersToRemove add: aNodeIdentifier nodeIndex ].
+					identifiersToRemove sort.
+					identifiersToRemove reverseDo: [ :anIndentifier |
+						self removeAtIndex: anIndentifier ].
+					currentAction phlow fireViewUpdateWish ]} ]
 %
 
 ! Class extensions for 'PrintStream'
@@ -21032,16 +26571,37 @@ asGPhlowItemsIterator
 
 category: '*GToolkit-RemotePhlow-InspectorExtensions-Remote'
 method: SequenceableCollection
+gtActionCompareObjectsFor: anAction
+      <gtAction>
+
+      (self size < 2 or: [ self size > 5 ]) ifTrue: [ ^ anAction empty ].
+      ^ anAction button
+              priority: 100;
+              target: GtRemotePhlowObjectContextMenuTarget;
+              id: (GtRemotePhlowNamedId named: #'remote-compare-objects');
+              tooltip: 'Compare the objects';
+              icon: (GtPhlowGlamorousVectorIconNameStencil forIconName: #empty);
+			  menuItemGroup: GtRemotePhlowMenuItemGroupConfiguration navigation;
+			  menuItemPreview: [self gtDisplayText ];
+              action: [ :aButton |
+                      aButton phlow spawnObject:
+                              (GtRemotePhlowObjectComparer compareAll: self) ]
+%
+
+category: '*GToolkit-RemotePhlow-InspectorExtensions-Remote'
+method: SequenceableCollection
 gtItemsFor: aView
 	^ aView columnedList
 		title: 'Items';
 		priority: 50;
 		items: [ self ];
+		withMultipleSelection;
 		column: 'Index' 
 			text: [ :eachItem :eachIndex | eachIndex  ]
 			width: 45;
 		column: 'Item' 
-			text: [ :eachItem | eachItem gtDisplayString ].
+			text: [ :eachItem | eachItem gtDisplayString ];
+		contextActionsForTarget: GtRemotePhlowObjectContextMenuTarget
 %
 
 ! Class extensions for 'String'
@@ -21085,6 +26645,17 @@ gtStringFor: aView
 
 category: '*GToolkit-RemotePhlow-Remote'
 method: WriteStream
+parenthesize: aBlock
+	self nextPut: $(.
+	aBlock ensure: [ self nextPut: $) ]
+%
+
+! Class extensions for 'WriteStreamPortable'
+
+!		Instance methods for 'WriteStreamPortable'
+
+category: '*GToolkit-RemotePhlow-Remote'
+method: WriteStreamPortable
 parenthesize: aBlock
 	self nextPut: $(.
 	aBlock ensure: [ self nextPut: $) ]

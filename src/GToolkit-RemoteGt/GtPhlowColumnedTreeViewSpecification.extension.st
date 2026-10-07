@@ -6,12 +6,7 @@ GtPhlowColumnedTreeViewSpecification >> configureItemsFor: aView [
 		items: [
 			((GtRemoteInspectorListingBufferedStream declarativeView: self)
 				collect: [ :aColumnedTreeNodeDictionary |
-					self instantiateNodeFrom: aColumnedTreeNodeDictionary ]) toArray wait ]
-]
-
-{ #category : #'*GToolkit-RemoteGt' }
-GtPhlowColumnedTreeViewSpecification >> configureTreeViewFor: aTreeView [ 
-	aTreeView 
+					self instantiateNodeFrom: aColumnedTreeNodeDictionary ]) toArray wait ];
 		children: [ :aTreeNode |
 			self ensureChildrenLoadedForNode: aTreeNode.
 			aTreeNode childNodes ]
@@ -29,8 +24,8 @@ GtPhlowColumnedTreeViewSpecification >> ensureChildrenLoadedForNode: aTreeNode [
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
-GtPhlowColumnedTreeViewSpecification >> extractRemoteSendObjectFromNode: aTreeNode atSelection: aSelection [ 
-	^ self retriveSentItemAtPath: aTreeNode nodePath
+GtPhlowColumnedTreeViewSpecification >> extractRemoteSendObjectFromNode: aNode atSelectionIndex: aSelection [ 
+	^ self retrieveSentItemAtPath: aNode nodePath
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
@@ -41,9 +36,9 @@ GtPhlowColumnedTreeViewSpecification >> viewFor: aView [
 	currentView := aView columnedTree.
 	
 	self configureBasicLocalView: currentView for: aView.
+	self configureListingView: currentView. 
 	self configureItemsFor: currentView.
 	self configureColumnedViewFor: currentView.
-	self configureTreeViewFor: currentView.
 	self configureViewActionsFor: currentView.
 	self configureViewSendFor: currentView.
 	
