@@ -1,7 +1,7 @@
 Class {
 	#name : #GtRemotePhlowExampleInspectItemActionId,
 	#superclass : #GtRemotePhlowBasicId,
-	#category : #'GToolkit-RemotePhlow-PhlowActions'
+	#category : #'GToolkit-RemotePhlow-Examples'
 }
 
 { #category : #accessing }

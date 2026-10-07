@@ -4,7 +4,7 @@ Concrete subclass pattern for remote phlow action ids. Each subclass represents 
 Class {
 	#name : #GtRemotePhlowBasicId,
 	#superclass : #GtRemotePhlowId,
-	#category : #'GToolkit-RemotePhlow-PhlowActions'
+	#category : #'GToolkit-RemotePhlow-DeclarativeSpecification'
 }
 
 { #category : #converting }

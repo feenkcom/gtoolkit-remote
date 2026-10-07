@@ -4,7 +4,7 @@ Abstract base class for remote phlow action ids. Subclasses represent specific a
 Class {
 	#name : #GtRemotePhlowId,
 	#superclass : #GtPhlowDeclarativeSpecification,
-	#category : #'GToolkit-RemotePhlow-PhlowActions'
+	#category : #'GToolkit-RemotePhlow-DeclarativeSpecification'
 }
 
 { #category : #testing }

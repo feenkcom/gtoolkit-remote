@@ -1,7 +1,7 @@
 Class {
 	#name : #GtRemotePhlowExampleCopyLabelActionId,
 	#superclass : #GtRemotePhlowBasicId,
-	#category : #'GToolkit-RemotePhlow-PhlowActions'
+	#category : #'GToolkit-RemotePhlow-Examples'
 }
 
 { #category : #accessing }

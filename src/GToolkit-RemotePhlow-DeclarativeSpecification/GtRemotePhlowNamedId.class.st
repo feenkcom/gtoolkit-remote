@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'identifier'
 	],
-	#category : #'GToolkit-RemotePhlow-PhlowActions'
+	#category : #'GToolkit-RemotePhlow-DeclarativeSpecification'
 }
 
 { #category : #'instance creation' }
