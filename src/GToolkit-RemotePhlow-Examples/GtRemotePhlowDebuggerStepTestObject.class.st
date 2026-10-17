@@ -7,6 +7,16 @@ Class {
 	#category : #'GToolkit-RemotePhlow-Examples'
 }
 
+{ #category : #'stepping - blocks' }
+GtRemotePhlowDebuggerStepTestObject >> doBlockEvaluation [
+	| result |
+	result := 0.
+	self halt.
+	self doSomething: [ result := result + 1 ].
+	self doSomething: [ result := result + 2 ].
+	^ result
+]
+
 { #category : #'stepping - loops' }
 GtRemotePhlowDebuggerStepTestObject >> doCollect [
 	^ (1 to: 5) collect: [ :each | each * each ]
@@ -16,10 +26,23 @@ GtRemotePhlowDebuggerStepTestObject >> doCollect [
 GtRemotePhlowDebuggerStepTestObject >> doConditionalLoop [
 	| result |
 	result := OrderedCollection new.
-	1 to: 10 do: [ :i |
+	(1 to: 10) do: [ :i |
 		i even
 			ifTrue: [ result add: i ]
 			ifFalse: [ result add: i negated ] ].
+	^ result
+]
+
+{ #category : #'stepping - blocks' }
+GtRemotePhlowDebuggerStepTestObject >> doFourLevelNesting [
+	| result |
+	result := 0.
+	self halt.
+	(1 to: 2) do: [ :i |
+		self doSomething: [
+			(1 to: 2) do: [ :j |
+				self doSomething: [
+					result := result + (i * j) ] ] ] ].
 	^ result
 ]
 
@@ -33,7 +56,7 @@ GtRemotePhlowDebuggerStepTestObject >> doLoop [
 GtRemotePhlowDebuggerStepTestObject >> doLoopCallingMethod [
 	| result |
 	result := 0.
-	1 to: 5 do: [ :i |
+	(1 to: 5) do: [ :i |
 		result := result + (self helperMethod: i) ].
 	^ result
 ]
@@ -43,7 +66,7 @@ GtRemotePhlowDebuggerStepTestObject >> doLoopWithHalt [
 	| result |
 	result := 0.
 	self halt.
-	1 to: 5 do: [ :i |
+	(1 to: 5) do: [ :i |
 		result := result + i ].
 	^ result
 ]
@@ -67,14 +90,42 @@ GtRemotePhlowDebuggerStepTestObject >> doMultipleMethodCalls [
 	^ a + b + c
 ]
 
+{ #category : #'stepping - blocks' }
+GtRemotePhlowDebuggerStepTestObject >> doNestedBlocks [
+	| result |
+	result := 0.
+	self halt.
+	self doSomething: [
+		result := result + 1.
+		self doSomething: [
+			result := result + 2 ] ].
+	^ result
+]
+
+{ #category : #'stepping - blocks' }
+GtRemotePhlowDebuggerStepTestObject >> doNestedBlocksWithLoop [
+	| result |
+	result := 0.
+	self halt.
+	(1 to: 3) do: [ :i |
+		self doSomething: [
+			result := result + i ] ].
+	^ result
+]
+
 { #category : #'stepping - loops' }
 GtRemotePhlowDebuggerStepTestObject >> doNestedLoop [
 	| result |
 	result := 0.
-	1 to: 3 do: [ :i |
-		1 to: 3 do: [ :j |
+	(1 to: 3) do: [ :i |
+		(1 to: 3) do: [ :j |
 			result := result + (i * j) ] ].
 	^ result
+]
+
+{ #category : #'stepping - blocks' }
+GtRemotePhlowDebuggerStepTestObject >> doSomething: aBlock [
+	^ aBlock value
 ]
 
 { #category : #'stepping - recursion' }
