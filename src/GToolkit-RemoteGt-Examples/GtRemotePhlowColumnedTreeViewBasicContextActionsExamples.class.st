@@ -737,7 +737,7 @@ GtRemotePhlowColumnedTreeViewBasicContextActionsExamples >> scripterWithExpanded
 			onPagerToolInPaneWithIndex: 1;
 			// GtInspectorContentElement;
 			// self treeElementClass;
-			onChildAt: 1;
+			// #scrollable;
 			onChildAt: 4;
 			id: #toggle ].
 
@@ -747,7 +747,7 @@ GtRemotePhlowColumnedTreeViewBasicContextActionsExamples >> scripterWithExpanded
 			onPagerToolInPaneWithIndex: 1;
 			// GtInspectorContentElement;
 			// self treeElementClass;
-			onChildAt: 1;
+			// #scrollable;
 			onChildAt: 5;
 			id: #toggle ].
 
@@ -766,7 +766,7 @@ GtRemotePhlowColumnedTreeViewBasicContextActionsExamples >> scripterWithExpanded
 			onPagerToolInPaneWithIndex: 1;
 			// GtInspectorContentElement;
 			// self treeElementClass;
-			onChildAt: 1;
+			// #scrollable;
 			onChildAt: 4;
 			id: #toggle ].
 
@@ -776,7 +776,7 @@ GtRemotePhlowColumnedTreeViewBasicContextActionsExamples >> scripterWithExpanded
 			onPagerToolInPaneWithIndex: 1;
 			// GtInspectorContentElement;
 			// self treeElementClass;
-			onChildAt: 1;
+			// #scrollable;
 			onChildAt: 5;
 			id: #toggle ].
 

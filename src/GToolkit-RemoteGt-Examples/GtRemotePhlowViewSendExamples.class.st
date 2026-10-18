@@ -255,7 +255,7 @@ GtRemotePhlowViewSendExamples >> expandItem13InScripter: scripter treeClass: aTr
 			onPagerToolInPaneWithIndex: 1;
 			// GtInspectorContentElement;
 			// aTreeClass;
-			onChildAt: 1;
+			// #scrollable;
 			onChildAt: 4;
 			id: #toggle ].
 	scripter clickStep: [ :s |
@@ -264,7 +264,7 @@ GtRemotePhlowViewSendExamples >> expandItem13InScripter: scripter treeClass: aTr
 			onPagerToolInPaneWithIndex: 1;
 			// GtInspectorContentElement;
 			// aTreeClass;
-			onChildAt: 1;
+			// #scrollable;
 			onChildAt: 5;
 			id: #toggle ]
 ]
