@@ -309,7 +309,7 @@ GtRemotePhlowActionTargetViewExamples >> expandAlphaInTreeScripter: scripter tre
 			onPagerToolInPaneWithIndex: 1;
 			// GtInspectorContentElement;
 			// aTreeClass;
-			onChildAt: 1;
+			// #scrollable;
 			onChildAt: 1;
 			id: #toggle ]
 ]
