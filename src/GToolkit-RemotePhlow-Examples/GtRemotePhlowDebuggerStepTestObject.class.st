@@ -11,7 +11,6 @@ Class {
 GtRemotePhlowDebuggerStepTestObject >> doBlockEvaluation [
 	| result |
 	result := 0.
-	self halt.
 	self doSomething: [ result := result + 1 ].
 	self doSomething: [ result := result + 2 ].
 	^ result
@@ -37,7 +36,6 @@ GtRemotePhlowDebuggerStepTestObject >> doConditionalLoop [
 GtRemotePhlowDebuggerStepTestObject >> doFourLevelNesting [
 	| result |
 	result := 0.
-	self halt.
 	(1 to: 2) do: [ :i |
 		self doSomething: [
 			(1 to: 2) do: [ :j |
@@ -90,15 +88,15 @@ GtRemotePhlowDebuggerStepTestObject >> doMultipleMethodCalls [
 	^ a + b + c
 ]
 
-{ #category : #'stepping - blocks' }
+{ #category : #examples }
 GtRemotePhlowDebuggerStepTestObject >> doNestedBlocks [
 	| result |
 	result := 0.
-	self halt.
 	self doSomething: [
 		result := result + 1.
 		self doSomething: [
-			result := result + 2 ] ].
+			result := result + 2 ].
+		result := result + 10 ].
 	^ result
 ]
 
@@ -106,7 +104,6 @@ GtRemotePhlowDebuggerStepTestObject >> doNestedBlocks [
 GtRemotePhlowDebuggerStepTestObject >> doNestedBlocksWithLoop [
 	| result |
 	result := 0.
-	self halt.
 	(1 to: 3) do: [ :i |
 		self doSomething: [
 			result := result + i ] ].
