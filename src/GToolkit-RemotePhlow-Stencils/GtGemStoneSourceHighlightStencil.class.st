@@ -6,7 +6,7 @@ Class {
 		'highlightStart',
 		'highlightEnd'
 	],
-	#category : #'GToolkit-RemotePhlow-Stencils-Debugger'
+	#category : #'GToolkit-RemotePhlow-Stencils'
 }
 
 { #category : #serialization }
