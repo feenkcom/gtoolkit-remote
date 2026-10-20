@@ -238,7 +238,6 @@ GtRemotePhlowDebuggerStepTestObject >> helperMethod: aValue [
 
 { #category : #actions }
 GtRemotePhlowDebuggerStepTestObject >> methodThatHalts [
-	<gtIgnoreConstraint: #GtSendersOfHaltSelectorsInGtPackagesConstraint>
 	nil halt.
 	^ 42
 ]
