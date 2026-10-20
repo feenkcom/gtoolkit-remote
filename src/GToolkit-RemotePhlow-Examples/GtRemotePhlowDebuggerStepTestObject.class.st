@@ -125,6 +125,16 @@ GtRemotePhlowDebuggerStepTestObject >> doSomething: aBlock [
 	^ aBlock value
 ]
 
+{ #category : #'test methods' }
+GtRemotePhlowDebuggerStepTestObject >> doThreeLevelCall [
+	^ self doThreeLevelMiddle
+]
+
+{ #category : #'test methods' }
+GtRemotePhlowDebuggerStepTestObject >> doThreeLevelMiddle [
+	^ self helperMethod: 42
+]
+
 { #category : #'stepping - recursion' }
 GtRemotePhlowDebuggerStepTestObject >> factorial: n [
 	n <= 1 ifTrue: [ ^ 1 ].
