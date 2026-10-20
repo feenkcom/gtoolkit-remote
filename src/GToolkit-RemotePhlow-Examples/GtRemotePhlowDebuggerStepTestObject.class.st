@@ -16,6 +16,15 @@ GtRemotePhlowDebuggerStepTestObject >> doBlockEvaluation [
 	^ result
 ]
 
+{ #category : #actions }
+GtRemotePhlowDebuggerStepTestObject >> doCallMethodWithHalt [
+	| a b |
+
+	a := self helperMethod: 3.
+	b := self methodThatHalts.
+	^ a + b
+]
+
 { #category : #'stepping - loops' }
 GtRemotePhlowDebuggerStepTestObject >> doCollect [
 	^ (1 to: 5) collect: [ :each | each * each ]
@@ -41,6 +50,38 @@ GtRemotePhlowDebuggerStepTestObject >> doFourLevelNesting [
 			(1 to: 2) do: [ :j |
 				self doSomething: [
 					result := result + (i * j) ] ] ] ].
+	^ result
+]
+
+{ #category : #actions }
+GtRemotePhlowDebuggerStepTestObject >> doLongComputation [
+	| a b c d e f result |
+
+	a := 1.
+	b := 2.
+	c := a + b.
+	d := c * 3.
+	e := d factorial.
+	f := e printString size.
+	result := OrderedCollection new.
+	result add: a.
+	result add: b.
+	result add: c.
+	result add: d.
+	result add: e.
+	result add: f.
+	a := self helperMethod: c.
+	b := self helperMethod: d.
+	c := a + b.
+	d := c * 2.
+	e := self factorial: d.
+	f := e printString.
+	result add: a.
+	result add: b.
+	result add: c.
+	result add: d.
+	result add: e.
+	result add: f.
 	^ result
 ]
 
@@ -144,4 +185,11 @@ GtRemotePhlowDebuggerStepTestObject >> factorial: n [
 { #category : #'stepping - helpers' }
 GtRemotePhlowDebuggerStepTestObject >> helperMethod: aValue [
 	^ aValue * 2 + 1
+]
+
+{ #category : #actions }
+GtRemotePhlowDebuggerStepTestObject >> methodThatHalts [
+	<gtIgnoreConstraint: #GtSendersOfHaltSelectorsInGtPackagesConstraint>
+	nil halt.
+	^ 42
 ]
