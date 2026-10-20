@@ -4,6 +4,10 @@ Test object with methods designed to exercise debugger stepping operations (step
 Class {
 	#name : #GtRemotePhlowDebuggerStepTestObject,
 	#superclass : #Object,
+	#instVars : [
+		'slotA',
+		'slotB'
+	],
 	#category : #'GToolkit-RemotePhlow-Examples'
 }
 
@@ -14,6 +18,19 @@ GtRemotePhlowDebuggerStepTestObject >> doBlockEvaluation [
 	self doSomething: [ result := result + 1 ].
 	self doSomething: [ result := result + 2 ].
 	^ result
+]
+
+{ #category : #'fixtures - variables' }
+GtRemotePhlowDebuggerStepTestObject >> doBlockWithSharedTemp [
+	| outerVar |
+
+	outerVar := 42.
+	^ [ :arg |
+		| localA |
+		localA := arg + outerVar.
+		[ :x | x + localA ] value: 1.
+		nil halt.
+		localA ] value: 10
 ]
 
 { #category : #actions }
@@ -110,6 +127,23 @@ GtRemotePhlowDebuggerStepTestObject >> doLoopWithHalt [
 	^ result
 ]
 
+{ #category : #'fixtures - variables' }
+GtRemotePhlowDebuggerStepTestObject >> doMethodWithArgs: aValue extra: anotherValue [
+	| temp |
+
+	temp := aValue + anotherValue.
+	nil halt.
+	^ temp
+]
+
+{ #category : #fixtures }
+GtRemotePhlowDebuggerStepTestObject >> doMethodWithSlots [
+	slotA := 'hello'.
+	slotB := 42.
+	nil halt.
+	^ slotA , ' ' , slotB printString
+]
+
 { #category : #'stepping - loops' }
 GtRemotePhlowDebuggerStepTestObject >> doMultipleMessageSendsInLoop [
 	| result |
@@ -129,16 +163,19 @@ GtRemotePhlowDebuggerStepTestObject >> doMultipleMethodCalls [
 	^ a + b + c
 ]
 
-{ #category : #examples }
+{ #category : #'fixtures - variables' }
 GtRemotePhlowDebuggerStepTestObject >> doNestedBlocks [
-	| result |
-	result := 0.
-	self doSomething: [
-		result := result + 1.
-		self doSomething: [
-			result := result + 2 ].
-		result := result + 10 ].
-	^ result
+	| outerVar |
+
+	outerVar := 10.
+	^ [ :a |
+		| midVar |
+		midVar := a + outerVar.
+		[ :b |
+			| innerVar |
+			innerVar := b + midVar.
+			nil halt.
+			innerVar ] value: 3 ] value: 5
 ]
 
 { #category : #'stepping - blocks' }
