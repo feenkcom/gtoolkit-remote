@@ -163,8 +163,30 @@ GtRemotePhlowDebuggerStepTestObject >> doMultipleMethodCalls [
 	^ a + b + c
 ]
 
-{ #category : #'fixtures - variables' }
+{ #category : #'stepping - blocks' }
 GtRemotePhlowDebuggerStepTestObject >> doNestedBlocks [
+	| result |
+	result := 0.
+	self doSomething: [
+		result := result + 1.
+		self doSomething: [
+			result := result + 2 ].
+		result := result + 10 ].
+	^ result
+]
+
+{ #category : #'stepping - blocks' }
+GtRemotePhlowDebuggerStepTestObject >> doNestedBlocksWithLoop [
+	| result |
+	result := 0.
+	(1 to: 3) do: [ :i |
+		self doSomething: [
+			result := result + i ] ].
+	^ result
+]
+
+{ #category : #examples }
+GtRemotePhlowDebuggerStepTestObject >> doNestedBlocksWithVariables [
 	| outerVar |
 
 	outerVar := 10.
@@ -176,16 +198,6 @@ GtRemotePhlowDebuggerStepTestObject >> doNestedBlocks [
 			innerVar := b + midVar.
 			nil halt.
 			innerVar ] value: 3 ] value: 5
-]
-
-{ #category : #'stepping - blocks' }
-GtRemotePhlowDebuggerStepTestObject >> doNestedBlocksWithLoop [
-	| result |
-	result := 0.
-	(1 to: 3) do: [ :i |
-		self doSomething: [
-			result := result + i ] ].
-	^ result
 ]
 
 { #category : #'stepping - loops' }
