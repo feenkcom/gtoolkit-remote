@@ -33,6 +33,16 @@ GtRemotePhlowDebuggerStepTestObject >> doBlockWithSharedTemp [
 		localA ] value: 10
 ]
 
+{ #category : #'examples - exception handler stepping' }
+GtRemotePhlowDebuggerStepTestObject >> doCallMethodInHandler [
+	| result |
+
+	result := [Dictionary new at: 'data'] on: Error do: [:ex |
+		nil halt.
+		self helperMethod: 3].
+	^ result + 1
+]
+
 { #category : #actions }
 GtRemotePhlowDebuggerStepTestObject >> doCallMethodWithHalt [
 	| a b |
@@ -58,6 +68,14 @@ GtRemotePhlowDebuggerStepTestObject >> doConditionalLoop [
 	^ result
 ]
 
+{ #category : #'actions - exception handlers' }
+GtRemotePhlowDebuggerStepTestObject >> doEnsureWithMethodCalls [
+	| result |
+
+	result := [self helperMethod: 3] ensure: [nil halt. self helperMethod: 5].
+	^ result
+]
+
 { #category : #'stepping - blocks' }
 GtRemotePhlowDebuggerStepTestObject >> doFourLevelNesting [
 	| result |
@@ -67,6 +85,48 @@ GtRemotePhlowDebuggerStepTestObject >> doFourLevelNesting [
 			(1 to: 2) do: [ :j |
 				self doSomething: [
 					result := result + (i * j) ] ] ] ].
+	^ result
+]
+
+{ #category : #'actions - exception handlers' }
+GtRemotePhlowDebuggerStepTestObject >> doHaltInDoubleNestedHandler [
+	| result |
+
+	result := [1/0] on: Error do: [:e1 |
+		[Dictionary new at: 'data'] on: Error do: [:e2 |
+			nil halt.
+			e2 messageText size]].
+	^ result
+]
+
+{ #category : #'actions - exception handlers' }
+GtRemotePhlowDebuggerStepTestObject >> doHaltInEnsureBlock [
+	| result |
+
+	result := 0.
+	[result := 42] ensure: [nil halt. result := result + 1].
+	^ result
+]
+
+{ #category : #'actions - exception handlers' }
+GtRemotePhlowDebuggerStepTestObject >> doHaltInExceptionHandler [
+	| result |
+
+	result := [Dictionary new at: 'data'] on: Error do: [:ex |
+		nil halt.
+		ex messageText size].
+	^ result
+]
+
+{ #category : #'actions - exception handlers' }
+GtRemotePhlowDebuggerStepTestObject >> doHaltInTripleNestedHandler [
+	| result |
+
+	result := [1/0] on: Error do: [:e1 |
+		[Array new at: 100] on: Error do: [:e2 |
+			[Dictionary new at: 'data'] on: Error do: [:e3 |
+				nil halt.
+				e3 messageText size]]].
 	^ result
 ]
 
@@ -142,6 +202,17 @@ GtRemotePhlowDebuggerStepTestObject >> doMethodWithSlots [
 	slotB := 42.
 	nil halt.
 	^ slotA , ' ' , slotB printString
+]
+
+{ #category : #'actions - exception handlers' }
+GtRemotePhlowDebuggerStepTestObject >> doMultipleCallsInHandler [
+	| a b |
+
+	a := [Dictionary new at: 'data'] on: Error do: [:ex |
+		nil halt.
+		self helperMethod: 3].
+	b := self helperMethod: a.
+	^ b
 ]
 
 { #category : #'stepping - loops' }
