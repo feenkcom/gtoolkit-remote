@@ -274,6 +274,24 @@ removeallclassmethods GtPhlowStencil
 
 doit
 (GtPhlowStencil
+	subclass: 'GtGemStoneSourceHighlightStencil'
+	instVarNames: #(sourceString highlightStart highlightEnd)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Stencils';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtGemStoneSourceHighlightStencil
+removeallclassmethods GtGemStoneSourceHighlightStencil
+
+doit
+(GtPhlowStencil
 	subclass: 'GtPhlowIconStencil'
 	instVarNames: #()
 	classVars: #()
@@ -920,7 +938,7 @@ doit
 	inDictionary: Globals
 	options: #( #logCreation )
 )
-		category: 'GToolkit-RemotePhlow-PhlowActions';
+		category: 'GToolkit-RemotePhlow-DeclarativeSpecification';
 		comment: 'Abstract base class for remote phlow action ids. Subclasses represent specific action identities, serializable for remote phlow.';
 		immediateInvariant.
 true.
@@ -939,7 +957,7 @@ doit
 	inDictionary: Globals
 	options: #( #logCreation )
 )
-		category: 'GToolkit-RemotePhlow-PhlowActions';
+		category: 'GToolkit-RemotePhlow-DeclarativeSpecification';
 		comment: 'Concrete subclass pattern for remote phlow action ids. Each subclass represents a specific id. No instance state - the class itself is the identity.';
 		immediateInvariant.
 true.
@@ -977,7 +995,7 @@ doit
 	inDictionary: Globals
 	options: #( #logCreation )
 )
-		category: 'GToolkit-RemotePhlow-PhlowActions';
+		category: 'GToolkit-RemotePhlow-Examples';
 		immediateInvariant.
 true.
 %
@@ -995,7 +1013,7 @@ doit
 	inDictionary: Globals
 	options: #( #logCreation )
 )
-		category: 'GToolkit-RemotePhlow-PhlowActions';
+		category: 'GToolkit-RemotePhlow-Examples';
 		immediateInvariant.
 true.
 %
@@ -1013,7 +1031,7 @@ doit
 	inDictionary: Globals
 	options: #( #logCreation )
 )
-		category: 'GToolkit-RemotePhlow-PhlowActions';
+		category: 'GToolkit-RemotePhlow-Examples';
 		immediateInvariant.
 true.
 %
@@ -1050,7 +1068,7 @@ doit
 	inDictionary: Globals
 	options: #( #logCreation )
 )
-		category: 'GToolkit-RemotePhlow-PhlowActions';
+		category: 'GToolkit-RemotePhlow-DeclarativeSpecification';
 		comment: 'Named remote phlow action id, analogous to BlElementNamedId. Stores a symbol identifier.';
 		immediateInvariant.
 true.
@@ -2991,6 +3009,25 @@ true.
 
 removeallmethods GtRemotePhlowColumnedTreeNode
 removeallclassmethods GtRemotePhlowColumnedTreeNode
+
+doit
+(Object
+	subclass: 'GtRemotePhlowDebuggerStepTestObject'
+	instVarNames: #(slotA slotB)
+	classVars: #()
+	classInstVars: #()
+	poolDictionaries: #()
+	inDictionary: Globals
+	options: #( #logCreation )
+)
+		category: 'GToolkit-RemotePhlow-Examples';
+		comment: 'Test object with methods designed to exercise debugger stepping operations (step-over, step-into, step-through) across various control flow patterns: loops, nested blocks, conditionals, recursion, and method calls.';
+		immediateInvariant.
+true.
+%
+
+removeallmethods GtRemotePhlowDebuggerStepTestObject
+removeallclassmethods GtRemotePhlowDebuggerStepTestObject
 
 doit
 (Object
@@ -6124,6 +6161,48 @@ category: 'testing'
 method: GtPhlowStencil
 isPhlowErrorStencil
 	^ false
+%
+
+! Class implementation for 'GtGemStoneSourceHighlightStencil'
+
+!		Instance methods for 'GtGemStoneSourceHighlightStencil'
+
+category: 'serialization'
+method: GtGemStoneSourceHighlightStencil
+asDictionaryForExport
+	^ super asDictionaryForExport
+		at: 'sourceString' put: sourceString;
+		at: 'highlightStart' put: highlightStart;
+		at: 'highlightEnd' put: highlightEnd;
+		yourself
+%
+
+category: 'accessing'
+method: GtGemStoneSourceHighlightStencil
+highlightEnd: anInteger
+	highlightEnd := anInteger
+%
+
+category: 'accessing'
+method: GtGemStoneSourceHighlightStencil
+highlightStart: anInteger
+	highlightStart := anInteger
+%
+
+category: 'serialization'
+method: GtGemStoneSourceHighlightStencil
+initializeFromJSONDictionary: aDictionary
+	super initializeFromJSONDictionary: aDictionary.
+
+	sourceString := aDictionary at: 'sourceString'.
+	highlightStart := aDictionary at: 'highlightStart'.
+	highlightEnd := aDictionary at: 'highlightEnd'
+%
+
+category: 'accessing'
+method: GtGemStoneSourceHighlightStencil
+sourceString: aString
+	sourceString := aString
 %
 
 ! Class implementation for 'GtPhlowNamedIconStencil'
@@ -16063,6 +16142,343 @@ gtViewColumnValuesFor: aView
 		priority: 10;
 		object: [ self nodeValue ];
 		view: #gtViewColumnValuesFor:
+%
+
+! Class implementation for 'GtRemotePhlowDebuggerStepTestObject'
+
+!		Instance methods for 'GtRemotePhlowDebuggerStepTestObject'
+
+category: 'stepping - blocks'
+method: GtRemotePhlowDebuggerStepTestObject
+doBlockEvaluation
+	| result |
+	result := 0.
+	self doSomething: [ result := result + 1 ].
+	self doSomething: [ result := result + 2 ].
+	^ result
+%
+
+category: 'fixtures - variables'
+method: GtRemotePhlowDebuggerStepTestObject
+doBlockWithSharedTemp
+	| outerVar |
+
+	outerVar := 42.
+	^ [ :arg |
+		| localA |
+		localA := arg + outerVar.
+		[ :x | x + localA ] value: 1.
+		nil halt.
+		localA ] value: 10
+%
+
+category: 'examples - exception handler stepping'
+method: GtRemotePhlowDebuggerStepTestObject
+doCallMethodInHandler
+	| result |
+
+	result := [Dictionary new at: 'data'] on: Error do: [:ex |
+		nil halt.
+		self helperMethod: 3].
+	^ result + 1
+%
+
+category: 'actions'
+method: GtRemotePhlowDebuggerStepTestObject
+doCallMethodWithHalt
+	| a b |
+
+	a := self helperMethod: 3.
+	b := self methodThatHalts.
+	^ a + b
+%
+
+category: 'stepping - loops'
+method: GtRemotePhlowDebuggerStepTestObject
+doCollect
+	^ (1 to: 5) collect: [ :each | each * each ]
+%
+
+category: 'stepping - loops'
+method: GtRemotePhlowDebuggerStepTestObject
+doConditionalLoop
+	| result |
+	result := OrderedCollection new.
+	(1 to: 10) do: [ :i |
+		i even
+			ifTrue: [ result add: i ]
+			ifFalse: [ result add: i negated ] ].
+	^ result
+%
+
+category: 'actions - exception handlers'
+method: GtRemotePhlowDebuggerStepTestObject
+doEnsureWithMethodCalls
+	| result |
+
+	result := [self helperMethod: 3] ensure: [nil halt. self helperMethod: 5].
+	^ result
+%
+
+category: 'stepping - blocks'
+method: GtRemotePhlowDebuggerStepTestObject
+doFourLevelNesting
+	| result |
+	result := 0.
+	(1 to: 2) do: [ :i |
+		self doSomething: [
+			(1 to: 2) do: [ :j |
+				self doSomething: [
+					result := result + (i * j) ] ] ] ].
+	^ result
+%
+
+category: 'actions - exception handlers'
+method: GtRemotePhlowDebuggerStepTestObject
+doHaltInDoubleNestedHandler
+	| result |
+
+	result := [1/0] on: Error do: [:e1 |
+		[Dictionary new at: 'data'] on: Error do: [:e2 |
+			nil halt.
+			e2 messageText size]].
+	^ result
+%
+
+category: 'actions - exception handlers'
+method: GtRemotePhlowDebuggerStepTestObject
+doHaltInEnsureBlock
+	| result |
+
+	result := 0.
+	[result := 42] ensure: [nil halt. result := result + 1].
+	^ result
+%
+
+category: 'actions - exception handlers'
+method: GtRemotePhlowDebuggerStepTestObject
+doHaltInExceptionHandler
+	| result |
+
+	result := [Dictionary new at: 'data'] on: Error do: [:ex |
+		nil halt.
+		ex messageText size].
+	^ result
+%
+
+category: 'actions - exception handlers'
+method: GtRemotePhlowDebuggerStepTestObject
+doHaltInTripleNestedHandler
+	| result |
+
+	result := [1/0] on: Error do: [:e1 |
+		[Array new at: 100] on: Error do: [:e2 |
+			[Dictionary new at: 'data'] on: Error do: [:e3 |
+				nil halt.
+				e3 messageText size]]].
+	^ result
+%
+
+category: 'actions'
+method: GtRemotePhlowDebuggerStepTestObject
+doLongComputation
+	| a b c d e f result |
+
+	a := 1.
+	b := 2.
+	c := a + b.
+	d := c * 3.
+	e := d factorial.
+	f := e printString size.
+	result := OrderedCollection new.
+	result add: a.
+	result add: b.
+	result add: c.
+	result add: d.
+	result add: e.
+	result add: f.
+	a := self helperMethod: c.
+	b := self helperMethod: d.
+	c := a + b.
+	d := c * 2.
+	e := self factorial: d.
+	f := e printString.
+	result add: a.
+	result add: b.
+	result add: c.
+	result add: d.
+	result add: e.
+	result add: f.
+	^ result
+%
+
+category: 'stepping - loops'
+method: GtRemotePhlowDebuggerStepTestObject
+doLoop
+	(1 to: 10) do: [ :each |
+		(each + 1 + 1) printString ]
+%
+
+category: 'stepping - loops'
+method: GtRemotePhlowDebuggerStepTestObject
+doLoopCallingMethod
+	| result |
+	result := 0.
+	(1 to: 5) do: [ :i |
+		result := result + (self helperMethod: i) ].
+	^ result
+%
+
+category: 'stepping - loops'
+method: GtRemotePhlowDebuggerStepTestObject
+doLoopWithHalt
+	| result |
+	result := 0.
+	self halt.
+	(1 to: 5) do: [ :i |
+		result := result + i ].
+	^ result
+%
+
+category: 'fixtures - variables'
+method: GtRemotePhlowDebuggerStepTestObject
+doMethodWithArgs: aValue extra: anotherValue
+	| temp |
+
+	temp := aValue + anotherValue.
+	nil halt.
+	^ temp
+%
+
+category: 'fixtures'
+method: GtRemotePhlowDebuggerStepTestObject
+doMethodWithSlots
+	slotA := 'hello'.
+	slotB := 42.
+	nil halt.
+	^ slotA , ' ' , slotB printString
+%
+
+category: 'actions - exception handlers'
+method: GtRemotePhlowDebuggerStepTestObject
+doMultipleCallsInHandler
+	| a b |
+
+	a := [Dictionary new at: 'data'] on: Error do: [:ex |
+		nil halt.
+		self helperMethod: 3].
+	b := self helperMethod: a.
+	^ b
+%
+
+category: 'stepping - loops'
+method: GtRemotePhlowDebuggerStepTestObject
+doMultipleMessageSendsInLoop
+	| result |
+	result := 0.
+	#(3 7 2 9 1) do: [ :each |
+		result := result + each abs.
+		result := result + 1 ].
+	^ result
+%
+
+category: 'stepping - method calls'
+method: GtRemotePhlowDebuggerStepTestObject
+doMultipleMethodCalls
+	| a b c |
+	a := self helperMethod: 3.
+	b := self helperMethod: a.
+	c := self factorial: 4.
+	^ a + b + c
+%
+
+category: 'stepping - blocks'
+method: GtRemotePhlowDebuggerStepTestObject
+doNestedBlocks
+	| result |
+	result := 0.
+	self doSomething: [
+		result := result + 1.
+		self doSomething: [
+			result := result + 2 ].
+		result := result + 10 ].
+	^ result
+%
+
+category: 'stepping - blocks'
+method: GtRemotePhlowDebuggerStepTestObject
+doNestedBlocksWithLoop
+	| result |
+	result := 0.
+	(1 to: 3) do: [ :i |
+		self doSomething: [
+			result := result + i ] ].
+	^ result
+%
+
+category: 'examples'
+method: GtRemotePhlowDebuggerStepTestObject
+doNestedBlocksWithVariables
+	| outerVar |
+
+	outerVar := 10.
+	^ [ :a |
+		| midVar |
+		midVar := a + outerVar.
+		[ :b |
+			| innerVar |
+			innerVar := b + midVar.
+			nil halt.
+			innerVar ] value: 3 ] value: 5
+%
+
+category: 'stepping - loops'
+method: GtRemotePhlowDebuggerStepTestObject
+doNestedLoop
+	| result |
+	result := 0.
+	(1 to: 3) do: [ :i |
+		(1 to: 3) do: [ :j |
+			result := result + (i * j) ] ].
+	^ result
+%
+
+category: 'stepping - blocks'
+method: GtRemotePhlowDebuggerStepTestObject
+doSomething: aBlock
+	^ aBlock value
+%
+
+category: 'test methods'
+method: GtRemotePhlowDebuggerStepTestObject
+doThreeLevelCall
+	^ self doThreeLevelMiddle
+%
+
+category: 'test methods'
+method: GtRemotePhlowDebuggerStepTestObject
+doThreeLevelMiddle
+	^ self helperMethod: 42
+%
+
+category: 'stepping - recursion'
+method: GtRemotePhlowDebuggerStepTestObject
+factorial: n
+	n <= 1 ifTrue: [ ^ 1 ].
+	^ n * (self factorial: n - 1)
+%
+
+category: 'stepping - helpers'
+method: GtRemotePhlowDebuggerStepTestObject
+helperMethod: aValue
+	^ aValue * 2 + 1
+%
+
+category: 'actions'
+method: GtRemotePhlowDebuggerStepTestObject
+methodThatHalts
+	nil halt.
+	^ 42
 %
 
 ! Class implementation for 'GtRemotePhlowDeclarativeActionDataSource'
