@@ -7,7 +7,7 @@ GtPhlowColumn >> asGtDeclarativeColumnDataType [
 
 { #category : #'*GToolkit-RemoteGt' }
 GtPhlowColumn >> canBeForGtDeclarativeView [
-	^ self asGtDeclarativeColumnDataType isUnknown not
+	^ self decorations isEmpty and: [ self asGtDeclarativeColumnDataType isUnknown not ]
 ]
 
 { #category : #'*GToolkit-RemoteGt' }
