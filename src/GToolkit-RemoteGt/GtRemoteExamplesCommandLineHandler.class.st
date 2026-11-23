@@ -26,15 +26,19 @@ GtRemoteExamplesCommandLineHandler class >> description [
 
 { #category : #private }
 GtRemoteExamplesCommandLineHandler >> ensureRemoteExamplesLoaded [
-	| repository remoteExamples |
+	| repository remoteExamplesPackageName |
 
-	remoteExamples := 'GToolkit-RemoteExamples-GemStone'.
-	repository := IceRepository registeredRepositoryIncludingPackage: 'GToolkit-RemotePhlow-Examples' asPackage.
-	self assert: (repository workingCopy packageNames includes: remoteExamples).
+	remoteExamplesPackageName := 'GToolkit-RemoteExamples-GemStone'.
+	repository := IceRepository 
+		registeredRepositoryIncludingPackage: 'GToolkit-RemotePhlow-Examples' asPackage.
+	self assert: (repository workingCopy packageNames 
+		includesSameContentAs: remoteExamplesPackageName).
 	repository loadedPackages 
-		detect: [ :package | package name = remoteExamples ]
+		detect: [ :package | 
+			package name sameContentAs: remoteExamplesPackageName ]
 		ifFound: [ :package | ^ self ].
-	repository workingCopy loadPackageNamed: remoteExamples.
+	repository workingCopy 
+		loadPackageNamed: remoteExamplesPackageName.
 ]
 
 { #category : #accessing }
