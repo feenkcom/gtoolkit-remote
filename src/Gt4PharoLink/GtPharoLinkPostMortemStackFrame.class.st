@@ -123,7 +123,7 @@ GtPharoLinkPostMortemStackFrame >> sourceText [
 	blockSource ifNotNil: [ ^ blockSource ].
 
 	selector := self methodSelectorName.
-	selector = #DoIt ifTrue: [ ^ '<DoIt source unavailable>' ].
+	(selector sameContentAs: #DoIt) ifTrue: [ ^ '<DoIt source unavailable>' ].
 	text := [ (self application newCommandFactory
 		<< (self methodClassName, ' >> #', selector);
 		sendAndWait) sourceCode ]

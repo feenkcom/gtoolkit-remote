@@ -299,7 +299,7 @@ LanguageLinkProxyObject >> remoteInspectorProxyDo: aBlock [
 
 	| viewProxy |
 
-	viewProxy := (#(GtRemotePhlowViewedObject) includes: remoteClass)
+	viewProxy := (#GtRemotePhlowViewedObject sameContentAs: remoteClass)
 		ifTrue: [ self ]
 		ifFalse: [ self getRemoteInspectorProxy ].
 	^ aBlock value: viewProxy.
