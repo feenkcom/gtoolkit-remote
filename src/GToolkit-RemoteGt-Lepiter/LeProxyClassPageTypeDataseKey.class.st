@@ -19,7 +19,8 @@ LeProxyClassPageTypeDataseKey class >> forPageClassName: aTargetClassName proxyT
 
 { #category : #comparing }
 LeProxyClassPageTypeDataseKey >> = anObject [
-	"Answer whether the receiver and anObject represent the same database key."
+	"Answer whether the receiver and anObject represent the same database key.
+	The class names can be Symbols or Strings: the remote class of a PharoLink or Python proxy arrives as a String."
 
 	self == anObject
 		ifTrue: [ ^ true ].
@@ -28,7 +29,7 @@ LeProxyClassPageTypeDataseKey >> = anObject [
 		
 	^ (pageClassName sameContentAs: anObject pageClassName) and: [
 		pageProxySide = anObject pageProxySide and: [
-			proxyTypeName = anObject proxyTypeName ] ]
+			proxyTypeName sameContentAs: anObject proxyTypeName ] ]
 ]
 
 { #category : #comparing }
