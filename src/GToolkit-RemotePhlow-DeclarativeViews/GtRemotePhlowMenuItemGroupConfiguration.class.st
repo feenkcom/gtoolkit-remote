@@ -101,7 +101,8 @@ GtRemotePhlowMenuItemGroupConfiguration >> initialize [
 { #category : #serialization }
 GtRemotePhlowMenuItemGroupConfiguration >> initializeFromJSONDictionary: aDictionary [
 	super initializeFromJSONDictionary: aDictionary.
-	self name: (aDictionary at: 'name').
+	"The group name is an identifier, also when the other side sent it as a String"
+	self name: ((aDictionary at: 'name') ifNotNil: [ :aName | aName asSymbol ]).
 	self priority: (aDictionary at: 'priority').
 ]
 

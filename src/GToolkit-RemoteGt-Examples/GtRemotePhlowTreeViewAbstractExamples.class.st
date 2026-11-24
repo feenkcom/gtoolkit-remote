@@ -22,11 +22,11 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItems [
 	^ (Array new: 4)
 		at: 1
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
+									add: 'valueTypeName' -> 'textualValue';
 									add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-									add: #itemText
+									add: 'itemText'
 											-> (Dictionary new
 													add: '__typeLabel' -> 'gtPhlowRunBasedText';
 													add: 'sourceString' -> '1';
@@ -37,15 +37,15 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItems [
 																	yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 1;
+					add: 'nodeId' -> 1;
 					yourself);
 		at: 2
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
+									add: 'valueTypeName' -> 'textualValue';
 									add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-									add: #itemText
+									add: 'itemText'
 											-> (Dictionary new
 													add: '__typeLabel' -> 'gtPhlowRunBasedText';
 													add: 'sourceString' -> '2';
@@ -56,15 +56,15 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItems [
 																	yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 2;
+					add: 'nodeId' -> 2;
 					yourself);
 		at: 3
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
+									add: 'valueTypeName' -> 'textualValue';
 									add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-									add: #itemText
+									add: 'itemText'
 											-> (Dictionary new
 													add: '__typeLabel' -> 'gtPhlowRunBasedText';
 													add: 'sourceString' -> '3';
@@ -75,15 +75,15 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItems [
 																	yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 3;
+					add: 'nodeId' -> 3;
 					yourself);
 		at: 4
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
+									add: 'valueTypeName' -> 'textualValue';
 									add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-									add: #itemText
+									add: 'itemText'
 											-> (Dictionary new
 													add: '__typeLabel' -> 'gtPhlowRunBasedText';
 													add: 'sourceString' -> '4';
@@ -94,7 +94,7 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItems [
 																	yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 4;
+					add: 'nodeId' -> 4;
 					yourself);
 		yourself
 ]
@@ -104,11 +104,11 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsForNoExpansi
 	^ (Array new: 5)
 		at: 1
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
+									add: 'valueTypeName' -> 'textualValue';
 									add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-									add: #itemText
+									add: 'itemText'
 											-> (Dictionary new
 													add: '__typeLabel' -> 'gtPhlowRunBasedText';
 													add: 'sourceString' -> '0';
@@ -119,15 +119,15 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsForNoExpansi
 																	yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 1;
+					add: 'nodeId' -> 1;
 					yourself);
 		at: 2
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
+									add: 'valueTypeName' -> 'textualValue';
 									add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-									add: #itemText
+									add: 'itemText'
 											-> (Dictionary new
 													add: '__typeLabel' -> 'gtPhlowRunBasedText';
 													add: 'sourceString' -> '1';
@@ -138,15 +138,15 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsForNoExpansi
 																	yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 2;
+					add: 'nodeId' -> 2;
 					yourself);
 		at: 3
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
+									add: 'valueTypeName' -> 'textualValue';
 									add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-									add: #itemText
+									add: 'itemText'
 											-> (Dictionary new
 													add: '__typeLabel' -> 'gtPhlowRunBasedText';
 													add: 'sourceString' -> '2';
@@ -157,15 +157,15 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsForNoExpansi
 																	yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 3;
+					add: 'nodeId' -> 3;
 					yourself);
 		at: 4
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
+									add: 'valueTypeName' -> 'textualValue';
 									add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-									add: #itemText
+									add: 'itemText'
 											-> (Dictionary new
 													add: '__typeLabel' -> 'gtPhlowRunBasedText';
 													add: 'sourceString' -> '3';
@@ -176,15 +176,15 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsForNoExpansi
 																	yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 4;
+					add: 'nodeId' -> 4;
 					yourself);
 		at: 5
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
+									add: 'valueTypeName' -> 'textualValue';
 									add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-									add: #itemText
+									add: 'itemText'
 											-> (Dictionary new
 													add: '__typeLabel' -> 'gtPhlowRunBasedText';
 													add: 'sourceString' -> '4';
@@ -195,7 +195,7 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsForNoExpansi
 																	yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 5;
+					add: 'nodeId' -> 5;
 					yourself);
 		yourself
 ]
@@ -205,11 +205,11 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithAllLevel
 	^ (Array new: 5)
 		at: 1
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
+									add: 'valueTypeName' -> 'textualValue';
 									add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-									add: #itemText
+									add: 'itemText'
 											-> (Dictionary new
 													add: '__typeLabel' -> 'gtPhlowRunBasedText';
 													add: 'sourceString' -> '0';
@@ -220,16 +220,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithAllLevel
 																	yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 1;
-					add: #childNodes -> #();
+					add: 'nodeId' -> 1;
+					add: 'childNodes' -> #();
 					yourself);
 		at: 2
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
+									add: 'valueTypeName' -> 'textualValue';
 									add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-									add: #itemText
+									add: 'itemText'
 											-> (Dictionary new
 													add: '__typeLabel' -> 'gtPhlowRunBasedText';
 													add: 'sourceString' -> '1';
@@ -240,16 +240,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithAllLevel
 																	yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 2;
-					add: #childNodes
+					add: 'nodeId' -> 2;
+					add: 'childNodes'
 							-> ((Array new: 1)
 									at: 1
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '0';
@@ -260,18 +260,18 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithAllLevel
 																								yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 1;
-												add: #childNodes -> #();
+												add: 'nodeId' -> 1;
+												add: 'childNodes' -> #();
 												yourself);
 									yourself);
 					yourself);
 		at: 3
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
+									add: 'valueTypeName' -> 'textualValue';
 									add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-									add: #itemText
+									add: 'itemText'
 											-> (Dictionary new
 													add: '__typeLabel' -> 'gtPhlowRunBasedText';
 													add: 'sourceString' -> '2';
@@ -282,16 +282,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithAllLevel
 																	yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 3;
-					add: #childNodes
+					add: 'nodeId' -> 3;
+					add: 'childNodes'
 							-> ((Array new: 1)
 									at: 1
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '1';
@@ -302,16 +302,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithAllLevel
 																								yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 1;
-												add: #childNodes
+												add: 'nodeId' -> 1;
+												add: 'childNodes'
 														-> ((Array new: 1)
 																at: 1
 																	put: (Dictionary new
-																			add: #nodeValue
+																			add: 'nodeValue'
 																					-> (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '0';
@@ -322,8 +322,8 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithAllLevel
 																															yourself);
 																											yourself);
 																							yourself);
-																			add: #nodeId -> 1;
-																			add: #childNodes -> #();
+																			add: 'nodeId' -> 1;
+																			add: 'childNodes' -> #();
 																			yourself);
 																yourself);
 												yourself);
@@ -331,11 +331,11 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithAllLevel
 					yourself);
 		at: 4
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
+									add: 'valueTypeName' -> 'textualValue';
 									add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-									add: #itemText
+									add: 'itemText'
 											-> (Dictionary new
 													add: '__typeLabel' -> 'gtPhlowRunBasedText';
 													add: 'sourceString' -> '3';
@@ -346,16 +346,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithAllLevel
 																	yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 4;
-					add: #childNodes
+					add: 'nodeId' -> 4;
+					add: 'childNodes'
 							-> ((Array new: 2)
 									at: 1
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '1';
@@ -366,16 +366,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithAllLevel
 																								yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 1;
-												add: #childNodes
+												add: 'nodeId' -> 1;
+												add: 'childNodes'
 														-> ((Array new: 1)
 																at: 1
 																	put: (Dictionary new
-																			add: #nodeValue
+																			add: 'nodeValue'
 																					-> (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '0';
@@ -386,18 +386,18 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithAllLevel
 																															yourself);
 																											yourself);
 																							yourself);
-																			add: #nodeId -> 1;
-																			add: #childNodes -> #();
+																			add: 'nodeId' -> 1;
+																			add: 'childNodes' -> #();
 																			yourself);
 																yourself);
 												yourself);
 									at: 2
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '2';
@@ -408,16 +408,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithAllLevel
 																								yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 2;
-												add: #childNodes
+												add: 'nodeId' -> 2;
+												add: 'childNodes'
 														-> ((Array new: 1)
 																at: 1
 																	put: (Dictionary new
-																			add: #nodeValue
+																			add: 'nodeValue'
 																					-> (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '1';
@@ -428,16 +428,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithAllLevel
 																															yourself);
 																											yourself);
 																							yourself);
-																			add: #nodeId -> 1;
-																			add: #childNodes
+																			add: 'nodeId' -> 1;
+																			add: 'childNodes'
 																					-> ((Array new: 1)
 																							at: 1
 																								put: (Dictionary new
-																										add: #nodeValue
+																										add: 'nodeValue'
 																												-> (Dictionary new
-																														add: #valueTypeName -> 'textualValue';
+																														add: 'valueTypeName' -> 'textualValue';
 																														add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																														add: #itemText
+																														add: 'itemText'
 																																-> (Dictionary new
 																																		add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																																		add: 'sourceString' -> '0';
@@ -448,8 +448,8 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithAllLevel
 																																						yourself);
 																																		yourself);
 																														yourself);
-																										add: #nodeId -> 1;
-																										add: #childNodes -> #();
+																										add: 'nodeId' -> 1;
+																										add: 'childNodes' -> #();
 																										yourself);
 																							yourself);
 																			yourself);
@@ -459,11 +459,11 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithAllLevel
 					yourself);
 		at: 5
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
+									add: 'valueTypeName' -> 'textualValue';
 									add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-									add: #itemText
+									add: 'itemText'
 											-> (Dictionary new
 													add: '__typeLabel' -> 'gtPhlowRunBasedText';
 													add: 'sourceString' -> '4';
@@ -474,16 +474,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithAllLevel
 																	yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 5;
-					add: #childNodes
+					add: 'nodeId' -> 5;
+					add: 'childNodes'
 							-> ((Array new: 2)
 									at: 1
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '2';
@@ -494,16 +494,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithAllLevel
 																								yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 1;
-												add: #childNodes
+												add: 'nodeId' -> 1;
+												add: 'childNodes'
 														-> ((Array new: 1)
 																at: 1
 																	put: (Dictionary new
-																			add: #nodeValue
+																			add: 'nodeValue'
 																					-> (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '1';
@@ -514,16 +514,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithAllLevel
 																															yourself);
 																											yourself);
 																							yourself);
-																			add: #nodeId -> 1;
-																			add: #childNodes
+																			add: 'nodeId' -> 1;
+																			add: 'childNodes'
 																					-> ((Array new: 1)
 																							at: 1
 																								put: (Dictionary new
-																										add: #nodeValue
+																										add: 'nodeValue'
 																												-> (Dictionary new
-																														add: #valueTypeName -> 'textualValue';
+																														add: 'valueTypeName' -> 'textualValue';
 																														add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																														add: #itemText
+																														add: 'itemText'
 																																-> (Dictionary new
 																																		add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																																		add: 'sourceString' -> '0';
@@ -534,8 +534,8 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithAllLevel
 																																						yourself);
 																																		yourself);
 																														yourself);
-																										add: #nodeId -> 1;
-																										add: #childNodes -> #();
+																										add: 'nodeId' -> 1;
+																										add: 'childNodes' -> #();
 																										yourself);
 																							yourself);
 																			yourself);
@@ -543,11 +543,11 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithAllLevel
 												yourself);
 									at: 2
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '3';
@@ -558,16 +558,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithAllLevel
 																								yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 2;
-												add: #childNodes
+												add: 'nodeId' -> 2;
+												add: 'childNodes'
 														-> ((Array new: 2)
 																at: 1
 																	put: (Dictionary new
-																			add: #nodeValue
+																			add: 'nodeValue'
 																					-> (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '1';
@@ -578,16 +578,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithAllLevel
 																															yourself);
 																											yourself);
 																							yourself);
-																			add: #nodeId -> 1;
-																			add: #childNodes
+																			add: 'nodeId' -> 1;
+																			add: 'childNodes'
 																					-> ((Array new: 1)
 																							at: 1
 																								put: (Dictionary new
-																										add: #nodeValue
+																										add: 'nodeValue'
 																												-> (Dictionary new
-																														add: #valueTypeName -> 'textualValue';
+																														add: 'valueTypeName' -> 'textualValue';
 																														add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																														add: #itemText
+																														add: 'itemText'
 																																-> (Dictionary new
 																																		add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																																		add: 'sourceString' -> '0';
@@ -598,18 +598,18 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithAllLevel
 																																						yourself);
 																																		yourself);
 																														yourself);
-																										add: #nodeId -> 1;
-																										add: #childNodes -> #();
+																										add: 'nodeId' -> 1;
+																										add: 'childNodes' -> #();
 																										yourself);
 																							yourself);
 																			yourself);
 																at: 2
 																	put: (Dictionary new
-																			add: #nodeValue
+																			add: 'nodeValue'
 																					-> (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '2';
@@ -620,16 +620,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithAllLevel
 																															yourself);
 																											yourself);
 																							yourself);
-																			add: #nodeId -> 2;
-																			add: #childNodes
+																			add: 'nodeId' -> 2;
+																			add: 'childNodes'
 																					-> ((Array new: 1)
 																							at: 1
 																								put: (Dictionary new
-																										add: #nodeValue
+																										add: 'nodeValue'
 																												-> (Dictionary new
-																														add: #valueTypeName -> 'textualValue';
+																														add: 'valueTypeName' -> 'textualValue';
 																														add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																														add: #itemText
+																														add: 'itemText'
 																																-> (Dictionary new
 																																		add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																																		add: 'sourceString' -> '1';
@@ -640,16 +640,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithAllLevel
 																																						yourself);
 																																		yourself);
 																														yourself);
-																										add: #nodeId -> 1;
-																										add: #childNodes
+																										add: 'nodeId' -> 1;
+																										add: 'childNodes'
 																												-> ((Array new: 1)
 																														at: 1
 																															put: (Dictionary new
-																																	add: #nodeValue
+																																	add: 'nodeValue'
 																																			-> (Dictionary new
-																																					add: #valueTypeName -> 'textualValue';
+																																					add: 'valueTypeName' -> 'textualValue';
 																																					add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																																					add: #itemText
+																																					add: 'itemText'
 																																							-> (Dictionary new
 																																									add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																																									add: 'sourceString' -> '0';
@@ -660,8 +660,8 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithAllLevel
 																																													yourself);
 																																									yourself);
 																																					yourself);
-																																	add: #nodeId -> 1;
-																																	add: #childNodes -> #();
+																																	add: 'nodeId' -> 1;
+																																	add: 'childNodes' -> #();
 																																	yourself);
 																														yourself);
 																										yourself);
@@ -679,11 +679,11 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithExpansio
 	^ (Array new: 5)
 		at: 1
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
+									add: 'valueTypeName' -> 'textualValue';
 									add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-									add: #itemText
+									add: 'itemText'
 											-> (Dictionary new
 													add: '__typeLabel' -> 'gtPhlowRunBasedText';
 													add: 'sourceString' -> '1';
@@ -694,16 +694,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithExpansio
 																	yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 1;
-					add: #childNodes
+					add: 'nodeId' -> 1;
+					add: 'childNodes'
 							-> ((Array new: 1)
 									at: 1
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '0';
@@ -714,18 +714,18 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithExpansio
 																								yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 1;
-												add: #childNodes -> #();
+												add: 'nodeId' -> 1;
+												add: 'childNodes' -> #();
 												yourself);
 									yourself);
 					yourself);
 		at: 2
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
+									add: 'valueTypeName' -> 'textualValue';
 									add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-									add: #itemText
+									add: 'itemText'
 											-> (Dictionary new
 													add: '__typeLabel' -> 'gtPhlowRunBasedText';
 													add: 'sourceString' -> '2';
@@ -736,16 +736,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithExpansio
 																	yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 2;
-					add: #childNodes
+					add: 'nodeId' -> 2;
+					add: 'childNodes'
 							-> ((Array new: 1)
 									at: 1
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '1';
@@ -756,16 +756,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithExpansio
 																								yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 1;
-												add: #childNodes
+												add: 'nodeId' -> 1;
+												add: 'childNodes'
 														-> ((Array new: 1)
 																at: 1
 																	put: (Dictionary new
-																			add: #nodeValue
+																			add: 'nodeValue'
 																					-> (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '0';
@@ -776,8 +776,8 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithExpansio
 																															yourself);
 																											yourself);
 																							yourself);
-																			add: #nodeId -> 1;
-																			add: #childNodes -> #();
+																			add: 'nodeId' -> 1;
+																			add: 'childNodes' -> #();
 																			yourself);
 																yourself);
 												yourself);
@@ -785,11 +785,11 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithExpansio
 					yourself);
 		at: 3
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
+									add: 'valueTypeName' -> 'textualValue';
 									add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-									add: #itemText
+									add: 'itemText'
 											-> (Dictionary new
 													add: '__typeLabel' -> 'gtPhlowRunBasedText';
 													add: 'sourceString' -> '3';
@@ -800,16 +800,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithExpansio
 																	yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 3;
-					add: #childNodes
+					add: 'nodeId' -> 3;
+					add: 'childNodes'
 							-> ((Array new: 2)
 									at: 1
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '1';
@@ -820,16 +820,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithExpansio
 																								yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 1;
-												add: #childNodes
+												add: 'nodeId' -> 1;
+												add: 'childNodes'
 														-> ((Array new: 1)
 																at: 1
 																	put: (Dictionary new
-																			add: #nodeValue
+																			add: 'nodeValue'
 																					-> (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '0';
@@ -840,18 +840,18 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithExpansio
 																															yourself);
 																											yourself);
 																							yourself);
-																			add: #nodeId -> 1;
-																			add: #childNodes -> #();
+																			add: 'nodeId' -> 1;
+																			add: 'childNodes' -> #();
 																			yourself);
 																yourself);
 												yourself);
 									at: 2
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '2';
@@ -862,16 +862,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithExpansio
 																								yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 2;
-												add: #childNodes
+												add: 'nodeId' -> 2;
+												add: 'childNodes'
 														-> ((Array new: 1)
 																at: 1
 																	put: (Dictionary new
-																			add: #nodeValue
+																			add: 'nodeValue'
 																					-> (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '1';
@@ -882,16 +882,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithExpansio
 																															yourself);
 																											yourself);
 																							yourself);
-																			add: #nodeId -> 1;
-																			add: #childNodes
+																			add: 'nodeId' -> 1;
+																			add: 'childNodes'
 																					-> ((Array new: 1)
 																							at: 1
 																								put: (Dictionary new
-																										add: #nodeValue
+																										add: 'nodeValue'
 																												-> (Dictionary new
-																														add: #valueTypeName -> 'textualValue';
+																														add: 'valueTypeName' -> 'textualValue';
 																														add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																														add: #itemText
+																														add: 'itemText'
 																																-> (Dictionary new
 																																		add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																																		add: 'sourceString' -> '0';
@@ -902,8 +902,8 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithExpansio
 																																						yourself);
 																																		yourself);
 																														yourself);
-																										add: #nodeId -> 1;
-																										add: #childNodes -> #();
+																										add: 'nodeId' -> 1;
+																										add: 'childNodes' -> #();
 																										yourself);
 																							yourself);
 																			yourself);
@@ -913,11 +913,11 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithExpansio
 					yourself);
 		at: 4
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
+									add: 'valueTypeName' -> 'textualValue';
 									add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-									add: #itemText
+									add: 'itemText'
 											-> (Dictionary new
 													add: '__typeLabel' -> 'gtPhlowRunBasedText';
 													add: 'sourceString' -> '4';
@@ -928,15 +928,15 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithExpansio
 																	yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 4;
+					add: 'nodeId' -> 4;
 					yourself);
 		at: 5
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
+									add: 'valueTypeName' -> 'textualValue';
 									add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-									add: #itemText
+									add: 'itemText'
 											-> (Dictionary new
 													add: '__typeLabel' -> 'gtPhlowRunBasedText';
 													add: 'sourceString' -> '5';
@@ -947,7 +947,7 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithExpansio
 																	yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 5;
+					add: 'nodeId' -> 5;
 					yourself);
 		yourself
 ]
@@ -957,11 +957,11 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithOneLevel
 	^ (Array new: 5)
 		at: 1
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
+									add: 'valueTypeName' -> 'textualValue';
 									add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-									add: #itemText
+									add: 'itemText'
 											-> (Dictionary new
 													add: '__typeLabel' -> 'gtPhlowRunBasedText';
 													add: 'sourceString' -> '0';
@@ -972,16 +972,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithOneLevel
 																	yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 1;
-					add: #childNodes -> #();
+					add: 'nodeId' -> 1;
+					add: 'childNodes' -> #();
 					yourself);
 		at: 2
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
+									add: 'valueTypeName' -> 'textualValue';
 									add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-									add: #itemText
+									add: 'itemText'
 											-> (Dictionary new
 													add: '__typeLabel' -> 'gtPhlowRunBasedText';
 													add: 'sourceString' -> '1';
@@ -992,16 +992,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithOneLevel
 																	yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 2;
-					add: #childNodes
+					add: 'nodeId' -> 2;
+					add: 'childNodes'
 							-> ((Array new: 1)
 									at: 1
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '0';
@@ -1012,17 +1012,17 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithOneLevel
 																								yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 1;
+												add: 'nodeId' -> 1;
 												yourself);
 									yourself);
 					yourself);
 		at: 3
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
+									add: 'valueTypeName' -> 'textualValue';
 									add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-									add: #itemText
+									add: 'itemText'
 											-> (Dictionary new
 													add: '__typeLabel' -> 'gtPhlowRunBasedText';
 													add: 'sourceString' -> '2';
@@ -1033,16 +1033,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithOneLevel
 																	yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 3;
-					add: #childNodes
+					add: 'nodeId' -> 3;
+					add: 'childNodes'
 							-> ((Array new: 1)
 									at: 1
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '1';
@@ -1053,17 +1053,17 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithOneLevel
 																								yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 1;
+												add: 'nodeId' -> 1;
 												yourself);
 									yourself);
 					yourself);
 		at: 4
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
+									add: 'valueTypeName' -> 'textualValue';
 									add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-									add: #itemText
+									add: 'itemText'
 											-> (Dictionary new
 													add: '__typeLabel' -> 'gtPhlowRunBasedText';
 													add: 'sourceString' -> '3';
@@ -1074,16 +1074,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithOneLevel
 																	yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 4;
-					add: #childNodes
+					add: 'nodeId' -> 4;
+					add: 'childNodes'
 							-> ((Array new: 2)
 									at: 1
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '1';
@@ -1094,15 +1094,15 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithOneLevel
 																								yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 1;
+												add: 'nodeId' -> 1;
 												yourself);
 									at: 2
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '2';
@@ -1113,17 +1113,17 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithOneLevel
 																								yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 2;
+												add: 'nodeId' -> 2;
 												yourself);
 									yourself);
 					yourself);
 		at: 5
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
+									add: 'valueTypeName' -> 'textualValue';
 									add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-									add: #itemText
+									add: 'itemText'
 											-> (Dictionary new
 													add: '__typeLabel' -> 'gtPhlowRunBasedText';
 													add: 'sourceString' -> '4';
@@ -1134,16 +1134,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithOneLevel
 																	yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 5;
-					add: #childNodes
+					add: 'nodeId' -> 5;
+					add: 'childNodes'
 							-> ((Array new: 2)
 									at: 1
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '2';
@@ -1154,15 +1154,15 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithOneLevel
 																								yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 1;
+												add: 'nodeId' -> 1;
 												yourself);
 									at: 2
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '3';
@@ -1173,7 +1173,7 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithOneLevel
 																								yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 2;
+												add: 'nodeId' -> 2;
 												yourself);
 									yourself);
 					yourself);
@@ -1185,11 +1185,11 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithTwoLevel
 	^ (Array new: 5)
 		at: 1
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
+									add: 'valueTypeName' -> 'textualValue';
 									add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-									add: #itemText
+									add: 'itemText'
 											-> (Dictionary new
 													add: '__typeLabel' -> 'gtPhlowRunBasedText';
 													add: 'sourceString' -> '0';
@@ -1200,16 +1200,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithTwoLevel
 																	yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 1;
-					add: #childNodes -> #();
+					add: 'nodeId' -> 1;
+					add: 'childNodes' -> #();
 					yourself);
 		at: 2
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
+									add: 'valueTypeName' -> 'textualValue';
 									add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-									add: #itemText
+									add: 'itemText'
 											-> (Dictionary new
 													add: '__typeLabel' -> 'gtPhlowRunBasedText';
 													add: 'sourceString' -> '1';
@@ -1220,16 +1220,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithTwoLevel
 																	yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 2;
-					add: #childNodes
+					add: 'nodeId' -> 2;
+					add: 'childNodes'
 							-> ((Array new: 1)
 									at: 1
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '0';
@@ -1240,18 +1240,18 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithTwoLevel
 																								yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 1;
-												add: #childNodes -> #();
+												add: 'nodeId' -> 1;
+												add: 'childNodes' -> #();
 												yourself);
 									yourself);
 					yourself);
 		at: 3
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
+									add: 'valueTypeName' -> 'textualValue';
 									add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-									add: #itemText
+									add: 'itemText'
 											-> (Dictionary new
 													add: '__typeLabel' -> 'gtPhlowRunBasedText';
 													add: 'sourceString' -> '2';
@@ -1262,16 +1262,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithTwoLevel
 																	yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 3;
-					add: #childNodes
+					add: 'nodeId' -> 3;
+					add: 'childNodes'
 							-> ((Array new: 1)
 									at: 1
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '1';
@@ -1282,16 +1282,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithTwoLevel
 																								yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 1;
-												add: #childNodes
+												add: 'nodeId' -> 1;
+												add: 'childNodes'
 														-> ((Array new: 1)
 																at: 1
 																	put: (Dictionary new
-																			add: #nodeValue
+																			add: 'nodeValue'
 																					-> (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '0';
@@ -1302,7 +1302,7 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithTwoLevel
 																															yourself);
 																											yourself);
 																							yourself);
-																			add: #nodeId -> 1;
+																			add: 'nodeId' -> 1;
 																			yourself);
 																yourself);
 												yourself);
@@ -1310,11 +1310,11 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithTwoLevel
 					yourself);
 		at: 4
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
+									add: 'valueTypeName' -> 'textualValue';
 									add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-									add: #itemText
+									add: 'itemText'
 											-> (Dictionary new
 													add: '__typeLabel' -> 'gtPhlowRunBasedText';
 													add: 'sourceString' -> '3';
@@ -1325,16 +1325,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithTwoLevel
 																	yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 4;
-					add: #childNodes
+					add: 'nodeId' -> 4;
+					add: 'childNodes'
 							-> ((Array new: 2)
 									at: 1
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '1';
@@ -1345,16 +1345,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithTwoLevel
 																								yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 1;
-												add: #childNodes
+												add: 'nodeId' -> 1;
+												add: 'childNodes'
 														-> ((Array new: 1)
 																at: 1
 																	put: (Dictionary new
-																			add: #nodeValue
+																			add: 'nodeValue'
 																					-> (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '0';
@@ -1365,17 +1365,17 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithTwoLevel
 																															yourself);
 																											yourself);
 																							yourself);
-																			add: #nodeId -> 1;
+																			add: 'nodeId' -> 1;
 																			yourself);
 																yourself);
 												yourself);
 									at: 2
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '2';
@@ -1386,16 +1386,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithTwoLevel
 																								yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 2;
-												add: #childNodes
+												add: 'nodeId' -> 2;
+												add: 'childNodes'
 														-> ((Array new: 1)
 																at: 1
 																	put: (Dictionary new
-																			add: #nodeValue
+																			add: 'nodeValue'
 																					-> (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '1';
@@ -1406,7 +1406,7 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithTwoLevel
 																															yourself);
 																											yourself);
 																							yourself);
-																			add: #nodeId -> 1;
+																			add: 'nodeId' -> 1;
 																			yourself);
 																yourself);
 												yourself);
@@ -1414,11 +1414,11 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithTwoLevel
 					yourself);
 		at: 5
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #valueTypeName -> 'textualValue';
+									add: 'valueTypeName' -> 'textualValue';
 									add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-									add: #itemText
+									add: 'itemText'
 											-> (Dictionary new
 													add: '__typeLabel' -> 'gtPhlowRunBasedText';
 													add: 'sourceString' -> '4';
@@ -1429,16 +1429,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithTwoLevel
 																	yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 5;
-					add: #childNodes
+					add: 'nodeId' -> 5;
+					add: 'childNodes'
 							-> ((Array new: 2)
 									at: 1
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '2';
@@ -1449,16 +1449,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithTwoLevel
 																								yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 1;
-												add: #childNodes
+												add: 'nodeId' -> 1;
+												add: 'childNodes'
 														-> ((Array new: 1)
 																at: 1
 																	put: (Dictionary new
-																			add: #nodeValue
+																			add: 'nodeValue'
 																					-> (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '1';
@@ -1469,17 +1469,17 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithTwoLevel
 																															yourself);
 																											yourself);
 																							yourself);
-																			add: #nodeId -> 1;
+																			add: 'nodeId' -> 1;
 																			yourself);
 																yourself);
 												yourself);
 									at: 2
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '3';
@@ -1490,16 +1490,16 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithTwoLevel
 																								yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 2;
-												add: #childNodes
+												add: 'nodeId' -> 2;
+												add: 'childNodes'
 														-> ((Array new: 2)
 																at: 1
 																	put: (Dictionary new
-																			add: #nodeValue
+																			add: 'nodeValue'
 																					-> (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '1';
@@ -1510,15 +1510,15 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithTwoLevel
 																															yourself);
 																											yourself);
 																							yourself);
-																			add: #nodeId -> 1;
+																			add: 'nodeId' -> 1;
 																			yourself);
 																at: 2
 																	put: (Dictionary new
-																			add: #nodeValue
+																			add: 'nodeValue'
 																					-> (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '2';
@@ -1529,7 +1529,7 @@ GtRemotePhlowTreeViewAbstractExamples >> expectedTreeWithNumberItemsWithTwoLevel
 																															yourself);
 																											yourself);
 																							yourself);
-																			add: #nodeId -> 2;
+																			add: 'nodeId' -> 2;
 																			yourself);
 																yourself);
 												yourself);

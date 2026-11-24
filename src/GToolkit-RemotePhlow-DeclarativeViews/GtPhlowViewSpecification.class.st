@@ -64,7 +64,7 @@ GtPhlowViewSpecification class >> fromJSONDictionary: aDictionary [
 		title: (aDictionary at: 'title');
 		priority: (aDictionary at: 'priority');
 		dataTransport: (aDictionary at: 'dataTransport');
-		methodSelector: (aDictionary at: 'methodSelector');
+		methodSelector: ((aDictionary at: 'methodSelector') ifNotNil: [ :aSelector | aSelector asSymbol ]);
 		phlowDataSource: (aDictionary
 			at: 'phlowDataSource' ifAbsent: [ nil ]);
 		yourself.

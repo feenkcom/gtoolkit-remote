@@ -21,7 +21,8 @@ GtRemotePhlowForwardActionTarget class >> typeLabel [
 GtRemotePhlowForwardActionTarget >> = anObject [
 	self == anObject ifTrue: [ ^ true ].
 	self class = anObject class ifFalse: [ ^ false ].
-	^ targetClassName = anObject targetClassName
+	"The class name is a String or a Symbol, depending on the side that wrote it"
+	^ targetClassName sameContentAs: anObject targetClassName
 ]
 
 { #category : #serialization }
@@ -33,13 +34,14 @@ GtRemotePhlowForwardActionTarget >> asDictionaryForExport [
 
 { #category : #comparing }
 GtRemotePhlowForwardActionTarget >> hash [
-	^ self class hash bitXor: targetClassName hash
+	^ self class hash bitXor: targetClassName asString hash
 ]
 
 { #category : #serialization }
 GtRemotePhlowForwardActionTarget >> initializeFromJSONDictionary: aDictionary [
 	super initializeFromJSONDictionary: aDictionary.
-	targetClassName := aDictionary at: 'targetClassName'
+	"A class name, also when the other side sent it as a String"
+	targetClassName := (aDictionary at: 'targetClassName') ifNotNil: [ :aName | aName asSymbol ]
 ]
 
 { #category : #printing }

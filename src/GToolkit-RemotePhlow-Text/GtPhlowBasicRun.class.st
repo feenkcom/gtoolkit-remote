@@ -15,7 +15,8 @@ GtPhlowBasicRun class >> fromJSONDictionary: aTextStylerData [
 	| typeLabel attributesClass |
  	typeLabel := aTextStylerData at: '__typeLabel'.
 			
-	typeLabel = GtPhlowRun typeLabel ifTrue: [
+	"The label comes from the other side: a String or a Symbol"
+	(GtPhlowRun typeLabel sameContentAs: typeLabel) ifTrue: [
  		attributesClass :=  GtPhlowRun ].
 		
 	^ attributesClass 

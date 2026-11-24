@@ -33,7 +33,8 @@ GtRemotePhlowActionTargetExamples >> compositeTargetSerialization [
 	| target dict restored |
 	target := self compositeTarget.
 	dict := target asDictionaryForExport.
-	self assert: (dict at: '__typeName') equals: 'GtRemotePhlowCompositeActionTarget'.
+	"The type name is a Symbol or a String, depending on the side that wrote it"
+	self assert: (dict at: '__typeName') asString equals: 'GtRemotePhlowCompositeActionTarget'.
 	self assert: (dict at: 'targets') size equals: 2.
 	restored := GtPhlowDeclarativeSpecification fromDictionary: dict.
 	self assert: restored equals: target.
@@ -103,7 +104,8 @@ GtRemotePhlowActionTargetExamples >> forwardActionTargetSerialization [
 	| target dict restored |
 	target := self forwardActionTarget.
 	dict := target asDictionaryForExport.
-	self assert: (dict at: '__typeName') equals: 'GtRemotePhlowForwardActionTarget'.
+	"The type name is a Symbol or a String, depending on the side that wrote it"
+	self assert: (dict at: '__typeName') asString equals: 'GtRemotePhlowForwardActionTarget'.
 	self assert: (dict at: 'targetClassName') equals: 'GtRemotePhlowActionTargetTestItem'.
 	restored := GtPhlowDeclarativeSpecification fromDictionary: dict.
 	self assert: restored equals: target.
@@ -148,7 +150,8 @@ GtRemotePhlowActionTargetExamples >> objectActionTargetSerialization [
 	| target dict restored |
 	target := self objectActionTarget.
 	dict := target asDictionaryForExport.
-	self assert: (dict at: '__typeName') equals: 'GtRemotePhlowObjectActionTarget'.
+	"The type name is a Symbol or a String, depending on the side that wrote it"
+	self assert: (dict at: '__typeName') asString equals: 'GtRemotePhlowObjectActionTarget'.
 	restored := GtPhlowDeclarativeSpecification fromDictionary: dict.
 	self assert: restored equals: target.
 	^ dict
@@ -263,7 +266,8 @@ GtRemotePhlowActionTargetExamples >> viewActionTargetSerialization [
 	| target dict restored |
 	target := self viewActionTarget.
 	dict := target asDictionaryForExport.
-	self assert: (dict at: '__typeName') equals: 'GtRemotePhlowViewActionTarget'.
+	"The type name is a Symbol or a String, depending on the side that wrote it"
+	self assert: (dict at: '__typeName') asString equals: 'GtRemotePhlowViewActionTarget'.
 	self assert: (dict at: 'definingMethodSelector') equals: #gtListFor:.
 	restored := GtPhlowDeclarativeSpecification fromDictionary: dict.
 	self assert: restored equals: target.

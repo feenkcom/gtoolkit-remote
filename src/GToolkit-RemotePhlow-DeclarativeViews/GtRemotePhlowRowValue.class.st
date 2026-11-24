@@ -9,15 +9,14 @@ Class {
 
 { #category : #'instance creation' }
 GtRemotePhlowRowValue class >> fromJSONDictionary: aDictionary [
-	"Answer an instance of the receiver from the supplied dictionary."
+	"Answer an instance of the receiver from the supplied dictionary.
+	The keys are Strings when the data was read from JSON, Symbols when it comes from #asDictionaryForExport in memory"
 
 	^self new 
-		columnValues: (aDictionary 
-			at: #columnValues 
-			ifPresent: [ :aCollection |
+		columnValues: ((aDictionary at: 'columnValues' ifAbsent: [ aDictionary at: #columnValues ifAbsent: [ nil ] ])
+			ifNotNil: [ :aCollection |
 				aCollection collect: [ :anItemValueDictionary |
-					GtRemotePhlowItemValue fromJSONDictionary: anItemValueDictionary ] ]
-			ifAbsent: [ nil ]);
+					GtRemotePhlowItemValue fromJSONDictionary: anItemValueDictionary ] ]);
 		yourself
 ]
 
@@ -35,7 +34,7 @@ GtRemotePhlowRowValue >> asDictionaryForExport [
 
 	| data| 
 	data := Dictionary new 
-		at: #columnValues put: (self columnValues 
+		at: 'columnValues' put: (self columnValues 
 			collect: [ :aColumnValue | aColumnValue asDictionaryForExport ]);
 		yourself.
 	

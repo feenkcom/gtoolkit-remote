@@ -16,7 +16,8 @@ GtRemotePhlowItemTextualValue class >> valueTypeName [
 GtRemotePhlowItemTextualValue >> = anObject [
 	super = anObject  ifFalse: [ ^ false ].
 	
-	^ self itemText = anObject itemText
+	"The text is a String or a Symbol, depending on the side that wrote it"
+	^ self itemText sameContentAs: anObject itemText
 ]
 
 { #category : #converting }
@@ -31,7 +32,7 @@ GtRemotePhlowItemTextualValue >> asDictionaryForExport [
 		ifTrue: [ currentText ] 
 		ifFalse: [ currentText asDictionaryForExport ].
 	
-	data at: #itemText put: currentTextData.
+	data at: 'itemText' put: currentTextData.
 	
 	^ data
 ]
@@ -45,7 +46,9 @@ GtRemotePhlowItemTextualValue >> descriptionOn: aStream [
 
 { #category : #comparing }
 GtRemotePhlowItemTextualValue >> hash [ 
-	^ super hash bitXor: self itemText hash
+	^ super hash bitXor: (self itemText isString
+		ifTrue: [ self itemText asString ]
+		ifFalse: [ self itemText ]) hash
 ]
 
 { #category : #initialization }
@@ -53,7 +56,8 @@ GtRemotePhlowItemTextualValue >> initializeFromJSONDictionary: aDictionary [
 	| textData |
 	super initializeFromJSONDictionary: aDictionary.
 	
-	textData := aDictionary at: #itemText.
+	"The keys are Strings when the data was read from JSON, Symbols when it comes from #asDictionaryForExport in memory"
+	textData := aDictionary at: 'itemText' ifAbsent: [ aDictionary at: #itemText ].
 	self itemText: ((textData isNil or: [ textData isString ]) 
 		ifTrue: [ textData ]
 		ifFalse: [ GtPhlowRunBasedText fromJSONDictionary: textData ])

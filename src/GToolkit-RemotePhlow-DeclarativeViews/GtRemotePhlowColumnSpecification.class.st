@@ -13,17 +13,17 @@ Class {
 
 { #category : #'instance creation' }
 GtRemotePhlowColumnSpecification class >> fromJSONDictionary: aDictionary [
-	| column |
-
+	"The keys are Strings when the declaration was read from JSON, Symbols when it comes from #asDictionaryForExport in memory"
+	| column valueAt |
+	valueAt := [ :aString | aDictionary at: aString ifAbsent: [ aDictionary at: aString asSymbol ] ].
 	column := self new.
 	column
-		title: (aDictionary at: #title);
-		cellWidth: (aDictionary at: #cellWidth);
-		type: (self instantiateTypeFrom: (aDictionary at: #type));
-		spawnsObjects: (aDictionary at: #spawnsObjects);
-		properties: (aDictionary at: #properties) asOrderedCollection.
-		
-	^column
+		title: (valueAt value: 'title');
+		cellWidth: (valueAt value: 'cellWidth');
+		type: (self instantiateTypeFrom: (valueAt value: 'type'));
+		spawnsObjects: (valueAt value: 'spawnsObjects');
+		properties: (valueAt value: 'properties') asOrderedCollection.
+	^ column
 ]
 
 { #category : #'instance creation' }
@@ -36,11 +36,11 @@ GtRemotePhlowColumnSpecification >> asDictionaryForExport [
 	| dictionary |
 
 	dictionary := Dictionary new 
-		at: #title put: title;
-		at: #cellWidth put: cellWidth;
-		at: #type put: type typeLabel;
-		at: #spawnsObjects put: spawnsObjects;
-		at: #properties put: self properties asArray;
+		at: 'title' put: title;
+		at: 'cellWidth' put: cellWidth;
+		at: 'type' put: type typeLabel;
+		at: 'spawnsObjects' put: spawnsObjects;
+		at: 'properties' put: self properties asArray;
 		yourself.
 
 	^ dictionary
@@ -63,7 +63,8 @@ GtRemotePhlowColumnSpecification >> hasBackground [
 
 { #category : #testing }
 GtRemotePhlowColumnSpecification >> hasPropertyNamed: aString [ 
-	^ self properties includes: #background
+	"The properties are Symbols in memory, Strings after JSON or MessagePack"
+	^ self properties anySatisfy: [ :each | each sameContentAs: aString ]
 ]
 
 { #category : #testing }

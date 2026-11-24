@@ -11,15 +11,14 @@ Class {
 
 { #category : #'instance creation' }
 GtRemotePhlowDataNode class >> fromJSONDictionary: aDictionary [
-	"Answer an instance of the receiver from the supplied dictionary."
+	"Answer an instance of the receiver from the supplied dictionary.
+	The keys are Strings when the data was read from JSON, Symbols when it comes from #asDictionaryForExport in memory"
 
 	^self new 
-		nodeId: (aDictionary at: #nodeId ifAbsent: [ nil ]);
-		nodeValue: (aDictionary 
-			at: #nodeValue 
-			ifPresent: [ :aNodeValueDictionary |
-				self valueType fromJSONDictionary: aNodeValueDictionary ]
-			ifAbsent: [ nil ]);
+		nodeId: (aDictionary at: 'nodeId' ifAbsent: [ aDictionary at: #nodeId ifAbsent: [ nil ] ]);
+		nodeValue: ((aDictionary at: 'nodeValue' ifAbsent: [ aDictionary at: #nodeValue ifAbsent: [ nil ] ])
+			ifNotNil: [ :aNodeValueDictionary |
+				self valueType fromJSONDictionary: aNodeValueDictionary ]);
 		yourself
 ]
 
@@ -40,8 +39,8 @@ GtRemotePhlowDataNode >> asDictionaryForExport [
 	| data| 
 	
 	data := Dictionary new 
-		at: #nodeId put: self nodeId;
-		at: #nodeValue put: self nodeValue asDictionaryForExport;
+		at: 'nodeId' put: self nodeId;
+		at: 'nodeValue' put: self nodeValue asDictionaryForExport;
 		yourself.
 	
 	^ data

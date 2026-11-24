@@ -57,7 +57,8 @@ GtRemotePhlowViewActionTarget >> hash [
 { #category : #serialization }
 GtRemotePhlowViewActionTarget >> initializeFromJSONDictionary: aDictionary [
 	super initializeFromJSONDictionary: aDictionary.
-	definingMethodSelector := aDictionary at: 'definingMethodSelector'
+	"A selector, also when the other side sent it as a String"
+	definingMethodSelector := (aDictionary at: 'definingMethodSelector') ifNotNil: [ :aSelector | aSelector asSymbol ]
 ]
 
 { #category : #testing }

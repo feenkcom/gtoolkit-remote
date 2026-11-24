@@ -20,13 +20,15 @@ GtRemotePhlowTextStylerSpecification class >> fromJSONDictionary: aTextStylerSpe
 
 { #category : #'instance creation' }
 GtRemotePhlowTextStylerSpecification class >> stylerSpecificationClassForType: aTypeLabel [ 
-	aTypeLabel = GtRemotePhlowTextAttributeRunsStylerSpecification typeLabel ifTrue: [
+	"aTypeLabel comes from the other side: a String or a Symbol"
+
+	(GtRemotePhlowTextAttributeRunsStylerSpecification typeLabel sameContentAs: aTypeLabel) ifTrue: [
  		^ GtRemotePhlowTextAttributeRunsStylerSpecification  ].
 			
-	aTypeLabel = GtRemotePhlowTextClassStylerSpecification typeLabel ifTrue: [
+	(GtRemotePhlowTextClassStylerSpecification typeLabel sameContentAs: aTypeLabel) ifTrue: [
  		^ GtRemotePhlowTextClassStylerSpecification  ].
 			
-	aTypeLabel = GtRemotePhlowTextParserStylerSpecification typeLabel ifTrue: [
+	(GtRemotePhlowTextParserStylerSpecification typeLabel sameContentAs: aTypeLabel) ifTrue: [
  		^  GtRemotePhlowTextParserStylerSpecification ].
  		
  	^ nil
