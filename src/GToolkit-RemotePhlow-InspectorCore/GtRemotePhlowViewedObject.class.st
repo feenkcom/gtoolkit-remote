@@ -96,8 +96,10 @@ GtRemotePhlowViewedObject >> getActionSpecificationDataFor: anActionSelector [
 
 { #category : #'api - actions' }
 GtRemotePhlowViewedObject >> getActionSpecificationFor: anActionSelector [
+	"The selector can arrive as a String (MessagePack, through PharoLink): the specifications are keyed by Symbols"
+
 	^ self actionSpecificationsBySelector 
-		at: anActionSelector
+		at: anActionSelector asSymbol
 ]
 
 { #category : #'api - actions' }
@@ -215,7 +217,9 @@ GtRemotePhlowViewedObject >> getViewSpecificationDataFor: aViewSelector [
 
 { #category : #'api - views' }
 GtRemotePhlowViewedObject >> getViewSpecificationFor: viewSelector [
-	^ self viewSpecificationsBySelector at: viewSelector
+	"The selector can arrive as a String (MessagePack, through PharoLink): the specifications are keyed by Symbols"
+
+	^ self viewSpecificationsBySelector at: viewSelector asSymbol
 ]
 
 { #category : #'api  - inspector' }
