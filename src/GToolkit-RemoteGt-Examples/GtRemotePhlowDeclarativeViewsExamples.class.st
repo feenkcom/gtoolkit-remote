@@ -67,6 +67,11 @@ GtRemotePhlowDeclarativeViewsExamples >> assertChildTreeNodesInViewDatasource: v
 ]
 
 { #category : #assertions }
+GtRemotePhlowDeclarativeViewsExamples >> assertColumnedListTypedColumnsTwoItems: anItemsCollection [
+	self assert: anItemsCollection equals: self expectedColumnedListTypedColumnsTwoItems
+]
+
+{ #category : #assertions }
 GtRemotePhlowDeclarativeViewsExamples >> assertListingNode: anObtainedObject equals: anExpectedNode [ 
 	self assert: anObtainedObject nodeId = anExpectedNode nodeId.
 	self assert: (anObtainedObject matchesNodeContentWith: anExpectedNode)
@@ -195,7 +200,7 @@ GtRemotePhlowDeclarativeViewsExamples >> columnedListView [
 	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
 
 	self assert: viewSpecification title equals: 'Columned list'.
-	self assert: viewSpecification columnTitles equals: #(Value Lowercase).
+	self assert: viewSpecification columnTitles equals: #('Value' 'Lowercase').
 	self assert: viewSpecification columnWidths equals: #(nil 100).
 	self
 		assert: (viewSpecification columnTypes collect: #typeLabel)
@@ -274,7 +279,7 @@ GtRemotePhlowDeclarativeViewsExamples >> columnedListWithTypedColumns [
 		equals: #gtColumnedListWithTypedColumnsFor:.
 	self
 		assert: (viewSpecification columnSpecifications
-				collect: [ :aColumnSpecification | aColumnSpecification typeLabel ])
+				collect: [ :aColumnSpecification | aColumnSpecification typeLabel asString ])
 		equals: #('text' 'number' 'icon').
 	self
 		assert: viewSpecification columnTitles
@@ -283,9 +288,7 @@ GtRemotePhlowDeclarativeViewsExamples >> columnedListWithTypedColumns [
 
 	self assert: viewSpecification totalItemsCount equals: 500.
 
-	self
-		assert: (viewSpecification retrieveItems: 2 fromIndex: 1)
-		equals: (self expectedColumnedListTypedColumnsTwoItems).
+	self assertColumnedListTypedColumnsTwoItems: (viewSpecification retrieveItems: 2 fromIndex: 1).
 
 	viewDatasource := phlowSpecificationsProvider
 			getDeclarativeViewFor: #gtColumnedListWithTypedColumnsFor:.
@@ -524,7 +527,7 @@ GtRemotePhlowDeclarativeViewsExamples >> detailsViewWithCustomPrinting [
 		assertListingNodes: obtainedNodes 
 		equals: (self 
 			createDetailNodesWithObjectValues: ({
-			 (( GtPhlowText forString: targetObject class name)
+			 (( GtPhlowText forString: targetObject class name asString)
 					bold;
 					highlight: (GtPhlowColor named: #yellow) ).
 			 targetObject string.
@@ -541,7 +544,7 @@ GtRemotePhlowDeclarativeViewsExamples >> expectedBasicString [
 
 { #category : #'accessing - expected' }
 GtRemotePhlowDeclarativeViewsExamples >> expectedColumnedListTypedColumnsTwoItems [
-	^ ((Array new: 2) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'+1.0'); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'+2'); yourself); at: 3 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->#class); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 3) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'+2.0'); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'+3'); yourself); at: 3 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->#class); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); yourself)
+	^ ((Array new: 2) at: 1 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 3) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->'+1.0'); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->'+2'); yourself); at: 3 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->#class); yourself); yourself)); yourself)); add: ('nodeId'->1); yourself); at: 2 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 3) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->'+2.0'); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->'+3'); yourself); at: 3 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->#class); yourself); yourself)); yourself)); add: ('nodeId'->2); yourself); yourself)
 ]
 
 { #category : #accessing }
@@ -585,7 +588,7 @@ GtRemotePhlowDeclarativeViewsExamples >> listView [
 	viewDictionary := phlowSpecificationsProvider getViewDeclaration: #gtListFor:.
 	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
 
-	self assert: viewSpecification title equals: #List.
+	self assert: viewSpecification title equals: 'List'.
 	self assert: viewSpecification priority equals: 15.
 
 	viewDatasource := phlowSpecificationsProvider
@@ -667,7 +670,7 @@ GtRemotePhlowDeclarativeViewsExamples >> printView [
 	viewDictionary := phlowSpecificationsProvider getViewDeclaration: #gtPrintFor:.
 	viewSpecification := GtPhlowViewSpecification fromDictionary: viewDictionary.
 
-	self assert: viewSpecification title equals: #Print.
+	self assert: viewSpecification title equals: 'Print'.
 	self assert: viewSpecification string equals: nil.	"self printForString"
 
 	viewDataSource := phlowSpecificationsProvider

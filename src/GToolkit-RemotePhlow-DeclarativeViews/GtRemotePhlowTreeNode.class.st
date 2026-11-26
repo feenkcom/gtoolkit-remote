@@ -14,7 +14,7 @@ GtRemotePhlowTreeNode class >> fromJSONDictionary: aDictionary [
 
 	node := super fromJSONDictionary: aDictionary.
 	
-	(aDictionary at: 'childNodes' ifAbsent: [ nil ])
+	(aDictionary at: 'childNodes' ifAbsent: [ aDictionary at: #childNodes ifAbsent: [ nil ] ])
 			ifNotNil: [ :childDataArray |
 				node childNodes: (childDataArray collect: [ :aChildData |
 					self fromJSONDictionary: aChildData ])].
@@ -39,7 +39,7 @@ GtRemotePhlowTreeNode >> asDictionaryForExport [
 
 	self childNodes ifNotNil: [ :aCollection |
 		exportDictionary 
-			at: #childNodes 
+			at: 'childNodes' 
 			put: (aCollection
 				collect: [ :aChildNode | aChildNode asDictionaryForExport ])].
 	

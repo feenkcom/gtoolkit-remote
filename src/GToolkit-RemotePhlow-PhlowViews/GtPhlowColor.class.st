@@ -16,11 +16,11 @@ GtPhlowColor class >> fromJSONDictionary: aDictionary [
 	"Answer an instance of the receiver from the supplied dictionary."
 
 	^self new 
-		named: (aDictionary at: #name ifAbsent: [ nil ]);
-		r: (aDictionary at: #r ifAbsent: [ nil ])
-			g: (aDictionary at: #g ifAbsent: [ nil ])
-			b: (aDictionary at: #b ifAbsent: [ nil ])
-			alpha: (aDictionary at: #a ifAbsent: [ nil ]);
+		named: (aDictionary at: 'name' ifAbsent: [ aDictionary at: #name ifAbsent: [ nil ] ]);
+		r: (aDictionary at: 'r' ifAbsent: [ aDictionary at: #r ifAbsent: [ nil ] ])
+			g: (aDictionary at: 'g' ifAbsent: [ aDictionary at: #g ifAbsent: [ nil ] ])
+			b: (aDictionary at: 'b' ifAbsent: [ aDictionary at: #b ifAbsent: [ nil ] ])
+			alpha: (aDictionary at: 'a' ifAbsent: [ aDictionary at: #a ifAbsent: [ nil ] ]);
 		yourself
 ]
 
@@ -89,15 +89,15 @@ GtPhlowColor >> asDictionaryForExport [
 		yourself.
 		
 	name ifNotNil: [ :aValue |
-		data at: #name put: aValue ].
+		data at: 'name' put: aValue ].
 	red ifNotNil: [ :aValue |
-		data at: #r put: aValue ].
+		data at: 'r' put: aValue ].
 	green ifNotNil: [ :aValue |
-		data at: #g put: aValue ].
+		data at: 'g' put: aValue ].
 	blue ifNotNil: [ :aValue |
-		data at: #b put: aValue ].
+		data at: 'b' put: aValue ].
 	alpha ifNotNil: [ :aValue |
-		data at: #a put: aValue ].
+		data at: 'a' put: aValue ].
 	
 	^ data
 ]
@@ -129,7 +129,7 @@ GtPhlowColor >> isColor [
 
 { #category : #testing }
 GtPhlowColor >> isTransparent [
-	^ alpha = 0 or: [ name= #transparent ]
+	^ alpha = 0 or: [ name sameContentAs: #transparent ]
 ]
 
 { #category : #accessing }

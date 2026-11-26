@@ -5087,7 +5087,8 @@ fromJSONDictionary: aTextStylerData
 	| typeLabel attributesClass |
  	typeLabel := aTextStylerData at: '__typeLabel'.
 			
-	typeLabel = GtPhlowRun typeLabel ifTrue: [
+	"The label comes from the other side: a String or a Symbol"
+	(GtPhlowRun typeLabel sameContentAs: typeLabel) ifTrue: [
  		attributesClass :=  GtPhlowRun ].
 		
 	^ attributesClass 
@@ -5310,11 +5311,11 @@ fromJSONDictionary: aDictionary
 	"Answer an instance of the receiver from the supplied dictionary."
 
 	^self new 
-		named: (aDictionary at: #name ifAbsent: [ nil ]);
-		r: (aDictionary at: #r ifAbsent: [ nil ])
-			g: (aDictionary at: #g ifAbsent: [ nil ])
-			b: (aDictionary at: #b ifAbsent: [ nil ])
-			alpha: (aDictionary at: #a ifAbsent: [ nil ]);
+		named: (aDictionary at: 'name' ifAbsent: [ aDictionary at: #name ifAbsent: [ nil ] ]);
+		r: (aDictionary at: 'r' ifAbsent: [ aDictionary at: #r ifAbsent: [ nil ] ])
+			g: (aDictionary at: 'g' ifAbsent: [ aDictionary at: #g ifAbsent: [ nil ] ])
+			b: (aDictionary at: 'b' ifAbsent: [ aDictionary at: #b ifAbsent: [ nil ] ])
+			alpha: (aDictionary at: 'a' ifAbsent: [ aDictionary at: #a ifAbsent: [ nil ] ]);
 		yourself
 %
 
@@ -5394,15 +5395,15 @@ asDictionaryForExport
 		yourself.
 		
 	name ifNotNil: [ :aValue |
-		data at: #name put: aValue ].
+		data at: 'name' put: aValue ].
 	red ifNotNil: [ :aValue |
-		data at: #r put: aValue ].
+		data at: 'r' put: aValue ].
 	green ifNotNil: [ :aValue |
-		data at: #g put: aValue ].
+		data at: 'g' put: aValue ].
 	blue ifNotNil: [ :aValue |
-		data at: #b put: aValue ].
+		data at: 'b' put: aValue ].
 	alpha ifNotNil: [ :aValue |
-		data at: #a put: aValue ].
+		data at: 'a' put: aValue ].
 	
 	^ data
 %
@@ -5439,7 +5440,7 @@ isColor
 category: 'testing'
 method: GtPhlowColor
 isTransparent
-	^ alpha = 0 or: [ name= #transparent ]
+	^ alpha = 0 or: [ name sameContentAs: #transparent ]
 %
 
 category: 'accessing'
@@ -5505,9 +5506,11 @@ red
 category: 'instance creation'
 classmethod: GtPhlowDeclarativeListingType
 forTypeLabel: aValue 
+	"aValue comes from the other side: a String or a Symbol"
+
 	^ self allSubclasses
 		detect: [ :aSubclass |
-			aSubclass typeLabel = aValue ]
+			aSubclass typeLabel sameContentAs: aValue ]
 		ifFound: [ :aSubclass | aSubclass new ]
 		ifNone: [ self unknown ]
 %
@@ -5773,7 +5776,7 @@ initializeFromJSONDictionary: aDictionary
 
 	self
 		priority: (aDictionary at: 'priority' ifAbsent: [ nil ]);
-		methodSelector: (aDictionary at: 'methodSelector' ifAbsent: [ nil ]);
+		methodSelector: ((aDictionary at: 'methodSelector' ifAbsent: [ nil ]) ifNotNil: [ :aSelector | aSelector asSymbol ]);
 		tooltipText: (aDictionary at: 'tooltipText' ifAbsent: [ nil ]);
 		phlowDataSource: (aDictionary
 			at: 'phlowDataSource' ifAbsent: [ nil ]).
@@ -7182,7 +7185,8 @@ method: GtRemotePhlowForwardActionTarget
 = anObject
 	self == anObject ifTrue: [ ^ true ].
 	self class = anObject class ifFalse: [ ^ false ].
-	^ targetClassName = anObject targetClassName
+	"The class name is a String or a Symbol, depending on the side that wrote it"
+	^ targetClassName sameContentAs: anObject targetClassName
 %
 
 category: 'serialization'
@@ -7196,14 +7200,15 @@ asDictionaryForExport
 category: 'comparing'
 method: GtRemotePhlowForwardActionTarget
 hash
-	^ self class hash bitXor: targetClassName hash
+	^ self class hash bitXor: targetClassName asString hash
 %
 
 category: 'serialization'
 method: GtRemotePhlowForwardActionTarget
 initializeFromJSONDictionary: aDictionary
 	super initializeFromJSONDictionary: aDictionary.
-	targetClassName := aDictionary at: 'targetClassName'
+	"A class name, also when the other side sent it as a String"
+	targetClassName := (aDictionary at: 'targetClassName') ifNotNil: [ :aName | aName asSymbol ]
 %
 
 category: 'printing'
@@ -7293,7 +7298,8 @@ category: 'serialization'
 method: GtRemotePhlowViewActionTarget
 initializeFromJSONDictionary: aDictionary
 	super initializeFromJSONDictionary: aDictionary.
-	definingMethodSelector := aDictionary at: 'definingMethodSelector'
+	"A selector, also when the other side sent it as a String"
+	definingMethodSelector := (aDictionary at: 'definingMethodSelector') ifNotNil: [ :aSelector | aSelector asSymbol ]
 %
 
 category: 'testing'
@@ -8576,7 +8582,8 @@ category: 'serialization'
 method: GtRemotePhlowMenuItemGroupConfiguration
 initializeFromJSONDictionary: aDictionary
 	super initializeFromJSONDictionary: aDictionary.
-	self name: (aDictionary at: 'name').
+	"The group name is an identifier, also when the other side sent it as a String"
+	self name: ((aDictionary at: 'name') ifNotNil: [ :aName | aName asSymbol ]).
 	self priority: (aDictionary at: 'priority').
 %
 
@@ -9305,7 +9312,8 @@ fromJSONDictionary: aRunsData
 	| typeLabel runsClass |
  	typeLabel := aRunsData at: '__typeLabel'.
 			
-	typeLabel = GtPhlowRunsGroup typeLabel ifTrue: [
+	"The label comes from the other side: a String or a Symbol"
+	(GtPhlowRunsGroup typeLabel sameContentAs: typeLabel) ifTrue: [
  		runsClass := GtPhlowRunsGroup ].
 		
 	^ runsClass 
@@ -10118,8 +10126,10 @@ text: aPhlowText from: aStartIndex to: anEndIndex
 category: 'instance creation'
 classmethod: GtPhlowTextAttribute
 attibuteClassForType: aTypeLabel
+	"aTypeLabel comes from the other side: a String or a Symbol"
+
 	self
-		allSubclassesDo: [ :each | each typeLabel = aTypeLabel ifTrue: [ ^ each ] ].
+		allSubclassesDo: [ :each | (each typeLabel sameContentAs: aTypeLabel) ifTrue: [ ^ each ] ].
 	^ GtPhlowTextUnknownAttribute
 %
 
@@ -11127,7 +11137,7 @@ fromJSONDictionary: aDictionary
 		title: (aDictionary at: 'title');
 		priority: (aDictionary at: 'priority');
 		dataTransport: (aDictionary at: 'dataTransport');
-		methodSelector: (aDictionary at: 'methodSelector');
+		methodSelector: ((aDictionary at: 'methodSelector') ifNotNil: [ :aSelector | aSelector asSymbol ]);
 		phlowDataSource: (aDictionary
 			at: 'phlowDataSource' ifAbsent: [ nil ]);
 		yourself.
@@ -13394,7 +13404,8 @@ compositeTargetSerialization
 	| target dict restored |
 	target := self compositeTarget.
 	dict := target asDictionaryForExport.
-	self assert: (dict at: '__typeName') equals: 'GtRemotePhlowCompositeActionTarget'.
+	"The type name is a Symbol or a String, depending on the side that wrote it"
+	self assert: (dict at: '__typeName') asString equals: 'GtRemotePhlowCompositeActionTarget'.
 	self assert: (dict at: 'targets') size equals: 2.
 	restored := GtPhlowDeclarativeSpecification fromDictionary: dict.
 	self assert: restored equals: target.
@@ -13470,7 +13481,8 @@ forwardActionTargetSerialization
 	| target dict restored |
 	target := self forwardActionTarget.
 	dict := target asDictionaryForExport.
-	self assert: (dict at: '__typeName') equals: 'GtRemotePhlowForwardActionTarget'.
+	"The type name is a Symbol or a String, depending on the side that wrote it"
+	self assert: (dict at: '__typeName') asString equals: 'GtRemotePhlowForwardActionTarget'.
 	self assert: (dict at: 'targetClassName') equals: 'GtRemotePhlowActionTargetTestItem'.
 	restored := GtPhlowDeclarativeSpecification fromDictionary: dict.
 	self assert: restored equals: target.
@@ -13531,7 +13543,8 @@ objectActionTargetSerialization
 	| target dict restored |
 	target := self objectActionTarget.
 	dict := target asDictionaryForExport.
-	self assert: (dict at: '__typeName') equals: 'GtRemotePhlowObjectActionTarget'.
+	"The type name is a Symbol or a String, depending on the side that wrote it"
+	self assert: (dict at: '__typeName') asString equals: 'GtRemotePhlowObjectActionTarget'.
 	restored := GtPhlowDeclarativeSpecification fromDictionary: dict.
 	self assert: restored equals: target.
 	^ dict
@@ -13644,7 +13657,8 @@ viewActionTargetSerialization
 	| target dict restored |
 	target := self viewActionTarget.
 	dict := target asDictionaryForExport.
-	self assert: (dict at: '__typeName') equals: 'GtRemotePhlowViewActionTarget'.
+	"The type name is a Symbol or a String, depending on the side that wrote it"
+	self assert: (dict at: '__typeName') asString equals: 'GtRemotePhlowViewActionTarget'.
 	self assert: (dict at: 'definingMethodSelector') equals: #gtListFor:.
 	restored := GtPhlowDeclarativeSpecification fromDictionary: dict.
 	self assert: restored equals: target.
@@ -15153,17 +15167,17 @@ gtColumnedTreeWithOneLevelExpansionFor: aView
 category: 'instance creation'
 classmethod: GtRemotePhlowColumnSpecification
 fromJSONDictionary: aDictionary
-	| column |
-
+	"The keys are Strings when the declaration was read from JSON, Symbols when it comes from #asDictionaryForExport in memory"
+	| column valueAt |
+	valueAt := [ :aString | aDictionary at: aString ifAbsent: [ aDictionary at: aString asSymbol ] ].
 	column := self new.
 	column
-		title: (aDictionary at: #title);
-		cellWidth: (aDictionary at: #cellWidth);
-		type: (self instantiateTypeFrom: (aDictionary at: #type));
-		spawnsObjects: (aDictionary at: #spawnsObjects);
-		properties: (aDictionary at: #properties) asOrderedCollection.
-		
-	^column
+		title: (valueAt value: 'title');
+		cellWidth: (valueAt value: 'cellWidth');
+		type: (self instantiateTypeFrom: (valueAt value: 'type'));
+		spawnsObjects: (valueAt value: 'spawnsObjects');
+		properties: (valueAt value: 'properties') asOrderedCollection.
+	^ column
 %
 
 category: 'instance creation'
@@ -15180,11 +15194,11 @@ asDictionaryForExport
 	| dictionary |
 
 	dictionary := Dictionary new 
-		at: #title put: title;
-		at: #cellWidth put: cellWidth;
-		at: #type put: type typeLabel;
-		at: #spawnsObjects put: spawnsObjects;
-		at: #properties put: self properties asArray;
+		at: 'title' put: title;
+		at: 'cellWidth' put: cellWidth;
+		at: 'type' put: type typeLabel;
+		at: 'spawnsObjects' put: spawnsObjects;
+		at: 'properties' put: self properties asArray;
 		yourself.
 
 	^ dictionary
@@ -15211,7 +15225,8 @@ hasBackground
 category: 'testing'
 method: GtRemotePhlowColumnSpecification
 hasPropertyNamed: aString 
-	^ self properties includes: #background
+	"The properties are Symbols in memory, Strings after JSON or MessagePack"
+	^ self properties anySatisfy: [ :each | each sameContentAs: aString ]
 %
 
 category: 'testing'
@@ -15763,15 +15778,14 @@ viewSelection: anObject
 category: 'instance creation'
 classmethod: GtRemotePhlowDataNode
 fromJSONDictionary: aDictionary
-	"Answer an instance of the receiver from the supplied dictionary."
+	"Answer an instance of the receiver from the supplied dictionary.
+	The keys are Strings when the data was read from JSON, Symbols when it comes from #asDictionaryForExport in memory"
 
 	^self new 
-		nodeId: (aDictionary at: #nodeId ifAbsent: [ nil ]);
-		nodeValue: (aDictionary 
-			at: #nodeValue 
-			ifPresent: [ :aNodeValueDictionary |
-				self valueType fromJSONDictionary: aNodeValueDictionary ]
-			ifAbsent: [ nil ]);
+		nodeId: (aDictionary at: 'nodeId' ifAbsent: [ aDictionary at: #nodeId ifAbsent: [ nil ] ]);
+		nodeValue: ((aDictionary at: 'nodeValue' ifAbsent: [ aDictionary at: #nodeValue ifAbsent: [ nil ] ])
+			ifNotNil: [ :aNodeValueDictionary |
+				self valueType fromJSONDictionary: aNodeValueDictionary ]);
 		yourself
 %
 
@@ -15797,8 +15811,8 @@ asDictionaryForExport
 	| data| 
 	
 	data := Dictionary new 
-		at: #nodeId put: self nodeId;
-		at: #nodeValue put: self nodeValue asDictionaryForExport;
+		at: 'nodeId' put: self nodeId;
+		at: 'nodeValue' put: self nodeValue asDictionaryForExport;
 		yourself.
 	
 	^ data
@@ -15891,7 +15905,7 @@ fromJSONDictionary: aDictionary
 
 	node := super fromJSONDictionary: aDictionary.
 	
-	(aDictionary at: 'childNodes' ifAbsent: [ nil ])
+	(aDictionary at: 'childNodes' ifAbsent: [ aDictionary at: #childNodes ifAbsent: [ nil ] ])
 			ifNotNil: [ :childDataArray |
 				node childNodes: (childDataArray collect: [ :aChildData |
 					self fromJSONDictionary: aChildData ])].
@@ -15920,7 +15934,7 @@ asDictionaryForExport
 
 	self childNodes ifNotNil: [ :aCollection |
 		exportDictionary 
-			at: #childNodes 
+			at: 'childNodes' 
 			put: (aCollection
 				collect: [ :aChildNode | aChildNode asDictionaryForExport ])].
 	
@@ -18132,7 +18146,7 @@ emptyTree
 category: 'examples'
 method: GtRemotePhlowDeclarativeTreeExamples
 expectedFormattedItems
-	^ ((Array new: 4) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'1'); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'2'); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'3'); yourself)); add: (#nodeId->3); yourself); at: 4 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'4'); yourself)); add: (#nodeId->4); yourself); yourself)
+	^ ((Array new: 4) at: 1 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->'1'); yourself)); add: ('nodeId'->1); yourself); at: 2 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->'2'); yourself)); add: ('nodeId'->2); yourself); at: 3 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->'3'); yourself)); add: ('nodeId'->3); yourself); at: 4 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->'4'); yourself)); add: ('nodeId'->4); yourself); yourself)
 %
 
 category: 'examples'
@@ -19597,7 +19611,8 @@ multipleSelectionSerialization
 				at: 'nodeIdentifier' put: (Dictionary new at: '__typeName' put: 'GtRemotePhlowIndexNodeIdentifier'; at: 'nodeIndex' put: 5; yourself);
 				yourself };
 		yourself.
-	self assert: dictionary equals: expectedDictionary.
+	"The type names are Symbols or Strings, depending on the side that wrote them"
+	self assert: (dictionary sameContentAs: expectedDictionary).
 	deserialized := GtPhlowDeclarativeSpecification fromDictionary: dictionary.
 	self assert: deserialized equals: selection.
 	^ deserialized
@@ -19673,7 +19688,8 @@ selectionItemSerialization
 			yourself);
 		at: 'selectionIndex' put: 3;
 		yourself.
-	self assert: dictionary equals: expectedDictionary.
+	"The type names are Symbols or Strings, depending on the side that wrote them"
+	self assert: (dictionary sameContentAs: expectedDictionary).
 	deserialized := GtPhlowDeclarativeSpecification fromDictionary: dictionary.
 	self assert: deserialized equals: item.
 	^ deserialized
@@ -19776,7 +19792,8 @@ singleSelectionSerialization
 				yourself);
 			yourself);
 		yourself.
-	self assert: dictionary equals: expectedDictionary.
+	"The type names are Symbols or Strings, depending on the side that wrote them"
+	self assert: (dictionary sameContentAs: expectedDictionary).
 	deserialized := GtPhlowDeclarativeSpecification fromDictionary: dictionary.
 	self assert: deserialized equals: selection.
 	^ deserialized
@@ -20322,7 +20339,8 @@ listNodeIdentifierSerialization
 		at: '__typeName' put: 'GtRemotePhlowIndexNodeIdentifier';
 		at: 'nodeIndex' put: 5;
 		yourself.
-	self assert: dictionary equals: expectedDictionary.
+	"The type names are Symbols or Strings, depending on the side that wrote them"
+	self assert: (dictionary sameContentAs: expectedDictionary).
 	deserialized := GtPhlowDeclarativeSpecification fromDictionary: dictionary.
 	self assert: deserialized equals: identifier.
 	^ deserialized
@@ -20411,7 +20429,8 @@ treeNodeIdentifierSerialization
 		at: '__typeName' put: 'GtRemotePhlowPathNodeIdentifier';
 		at: 'nodeIndexPath' put: #(1 2 3);
 		yourself.
-	self assert: dictionary equals: expectedDictionary.
+	"The type names are Symbols or Strings, depending on the side that wrote them"
+	self assert: (dictionary sameContentAs: expectedDictionary).
 	deserialized := GtPhlowDeclarativeSpecification fromDictionary: dictionary.
 	self assert: deserialized equals: identifier.
 	^ deserialized
@@ -20462,24 +20481,25 @@ mySubclasses
 category: 'instance creation'
 classmethod: GtRemotePhlowItemValue
 valueTypeFrom: aDictionary
-	^aDictionary
-		at: #valueTypeName
-		ifPresent: 
+	"The keys are Strings when the data was read from JSON, Symbols when it comes from #asDictionaryForExport in memory.
+	The type name comes from the other side: compare it by content, it can be a String or a Symbol"
+	^(aDictionary at: 'valueTypeName' ifAbsent: [ aDictionary at: #valueTypeName ifAbsent: [ nil ] ])
+		ifNotNil: 
 			[:aTypeName |
 			"We do a manual check for the types that are by default in GT, 
 			as it will be faster; this is called for every value in a table.
 			If the type is not found we iterate subclasses ."
 			| detectedType |
 			detectedType := nil.
-			aTypeName = GtRemotePhlowItemTextualValue valueTypeName
+			(GtRemotePhlowItemTextualValue valueTypeName sameContentAs: aTypeName)
 				ifTrue: [detectedType := GtRemotePhlowItemTextualValue].
-			aTypeName = GtRemotePhlowItemErrorValue valueTypeName
+			(GtRemotePhlowItemErrorValue valueTypeName sameContentAs: aTypeName)
 				ifTrue: [detectedType := GtRemotePhlowItemErrorValue].
 			detectedType ifNotNil: [^detectedType].
 			GtRemotePhlowItemValue mySubclasses
-				do: [:aSubclass | aSubclass valueTypeName = aTypeName ifTrue: [^aSubclass]].
+				do: [:aSubclass | (aSubclass valueTypeName sameContentAs: aTypeName) ifTrue: [^aSubclass]].
 			GtRemotePhlowItemValue]
-		ifAbsent: [GtRemotePhlowItemValue]
+		ifNil: [GtRemotePhlowItemValue]
 %
 
 category: 'accessing'
@@ -20507,14 +20527,14 @@ asDictionaryForExport
 	| data | 
 	
 	data := Dictionary new 
-		at: #valueTypeName put: self class valueTypeName;
+		at: 'valueTypeName' put: self class valueTypeName;
 		at: '__typeName' put: self class name;
 		yourself.
 		
 	"We check the attribute here instead of using the accessor,
 	as subclasses can provide default value in case the background is nil"
 	background ifNotNil: [ :aBackground |
-		data at: #background put: aBackground asDictionaryForExport  ].
+		data at: 'background' put: aBackground asDictionaryForExport  ].
 	
 	^ data
 %
@@ -20546,9 +20566,9 @@ hash
 category: 'initialization'
 method: GtRemotePhlowItemValue
 initializeFromJSONDictionary: aDictionary
-	aDictionary 
-		at: #background 
-		ifPresent: [ :aBackgroundValue |
+	"The keys are Strings when the data was read from JSON, Symbols when it comes from #asDictionaryForExport in memory"
+	(aDictionary at: 'background' ifAbsent: [ aDictionary at: #background ifAbsent: [ nil ] ])
+		ifNotNil: [ :aBackgroundValue |
 			self background: (GtPhlowColor fromJSONDictionary: aBackgroundValue) ]
 %
 
@@ -20584,7 +20604,8 @@ method: GtRemotePhlowItemTextualValue
 = anObject
 	super = anObject  ifFalse: [ ^ false ].
 	
-	^ self itemText = anObject itemText
+	"The text is a String or a Symbol, depending on the side that wrote it"
+	^ self itemText sameContentAs: anObject itemText
 %
 
 category: 'converting'
@@ -20600,7 +20621,7 @@ asDictionaryForExport
 		ifTrue: [ currentText ] 
 		ifFalse: [ currentText asDictionaryForExport ].
 	
-	data at: #itemText put: currentTextData.
+	data at: 'itemText' put: currentTextData.
 	
 	^ data
 %
@@ -20616,7 +20637,9 @@ descriptionOn: aStream
 category: 'comparing'
 method: GtRemotePhlowItemTextualValue
 hash 
-	^ super hash bitXor: self itemText hash
+	^ super hash bitXor: (self itemText isString
+		ifTrue: [ self itemText asString ]
+		ifFalse: [ self itemText ]) hash
 %
 
 category: 'initialization'
@@ -20625,7 +20648,8 @@ initializeFromJSONDictionary: aDictionary
 	| textData |
 	super initializeFromJSONDictionary: aDictionary.
 	
-	textData := aDictionary at: #itemText.
+	"The keys are Strings when the data was read from JSON, Symbols when it comes from #asDictionaryForExport in memory"
+	textData := aDictionary at: 'itemText' ifAbsent: [ aDictionary at: #itemText ].
 	self itemText: ((textData isNil or: [ textData isString ]) 
 		ifTrue: [ textData ]
 		ifFalse: [ GtPhlowRunBasedText fromJSONDictionary: textData ])
@@ -20776,15 +20800,14 @@ isErrorItemValue
 category: 'instance creation'
 classmethod: GtRemotePhlowRowValue
 fromJSONDictionary: aDictionary
-	"Answer an instance of the receiver from the supplied dictionary."
+	"Answer an instance of the receiver from the supplied dictionary.
+	The keys are Strings when the data was read from JSON, Symbols when it comes from #asDictionaryForExport in memory"
 
 	^self new 
-		columnValues: (aDictionary 
-			at: #columnValues 
-			ifPresent: [ :aCollection |
+		columnValues: ((aDictionary at: 'columnValues' ifAbsent: [ aDictionary at: #columnValues ifAbsent: [ nil ] ])
+			ifNotNil: [ :aCollection |
 				aCollection collect: [ :anItemValueDictionary |
-					GtRemotePhlowItemValue fromJSONDictionary: anItemValueDictionary ] ]
-			ifAbsent: [ nil ]);
+					GtRemotePhlowItemValue fromJSONDictionary: anItemValueDictionary ] ]);
 		yourself
 %
 
@@ -20806,7 +20829,7 @@ asDictionaryForExport
 
 	| data| 
 	data := Dictionary new 
-		at: #columnValues put: (self columnValues 
+		at: 'columnValues' put: (self columnValues 
 			collect: [ :aColumnValue | aColumnValue asDictionaryForExport ]);
 		yourself.
 	
@@ -23613,13 +23636,15 @@ fromJSONDictionary: aTextStylerSpecificationData
 category: 'instance creation'
 classmethod: GtRemotePhlowTextStylerSpecification
 stylerSpecificationClassForType: aTypeLabel 
-	aTypeLabel = GtRemotePhlowTextAttributeRunsStylerSpecification typeLabel ifTrue: [
+	"aTypeLabel comes from the other side: a String or a Symbol"
+
+	(GtRemotePhlowTextAttributeRunsStylerSpecification typeLabel sameContentAs: aTypeLabel) ifTrue: [
  		^ GtRemotePhlowTextAttributeRunsStylerSpecification  ].
 			
-	aTypeLabel = GtRemotePhlowTextClassStylerSpecification typeLabel ifTrue: [
+	(GtRemotePhlowTextClassStylerSpecification typeLabel sameContentAs: aTypeLabel) ifTrue: [
  		^ GtRemotePhlowTextClassStylerSpecification  ].
 			
-	aTypeLabel = GtRemotePhlowTextParserStylerSpecification typeLabel ifTrue: [
+	(GtRemotePhlowTextParserStylerSpecification typeLabel sameContentAs: aTypeLabel) ifTrue: [
  		^  GtRemotePhlowTextParserStylerSpecification ].
  		
  	^ nil

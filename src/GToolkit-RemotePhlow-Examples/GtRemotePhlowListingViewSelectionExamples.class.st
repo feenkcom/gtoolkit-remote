@@ -119,7 +119,8 @@ GtRemotePhlowListingViewSelectionExamples >> multipleSelectionSerialization [
 				at: 'nodeIdentifier' put: (Dictionary new at: '__typeName' put: 'GtRemotePhlowIndexNodeIdentifier'; at: 'nodeIndex' put: 5; yourself);
 				yourself };
 		yourself.
-	self assert: dictionary equals: expectedDictionary.
+	"The type names are Symbols or Strings, depending on the side that wrote them"
+	self assert: (dictionary sameContentAs: expectedDictionary).
 	deserialized := GtPhlowDeclarativeSpecification fromDictionary: dictionary.
 	self assert: deserialized equals: selection.
 	^ deserialized
@@ -190,7 +191,8 @@ GtRemotePhlowListingViewSelectionExamples >> selectionItemSerialization [
 			yourself);
 		at: 'selectionIndex' put: 3;
 		yourself.
-	self assert: dictionary equals: expectedDictionary.
+	"The type names are Symbols or Strings, depending on the side that wrote them"
+	self assert: (dictionary sameContentAs: expectedDictionary).
 	deserialized := GtPhlowDeclarativeSpecification fromDictionary: dictionary.
 	self assert: deserialized equals: item.
 	^ deserialized
@@ -286,7 +288,8 @@ GtRemotePhlowListingViewSelectionExamples >> singleSelectionSerialization [
 				yourself);
 			yourself);
 		yourself.
-	self assert: dictionary equals: expectedDictionary.
+	"The type names are Symbols or Strings, depending on the side that wrote them"
+	self assert: (dictionary sameContentAs: expectedDictionary).
 	deserialized := GtPhlowDeclarativeSpecification fromDictionary: dictionary.
 	self assert: deserialized equals: selection.
 	^ deserialized

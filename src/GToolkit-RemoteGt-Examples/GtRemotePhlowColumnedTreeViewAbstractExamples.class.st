@@ -275,7 +275,7 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> createProtoView [
 
 { #category : #'examples - support' }
 GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberItems [
-	^ ((Array new: 4) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'2'); yourself); yourself)); yourself)); add: (#nodeId->1); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'3'); yourself); yourself)); yourself)); add: (#nodeId->2); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'3'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'4'); yourself); yourself)); yourself)); add: (#nodeId->3); yourself); at: 4 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'4'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->'5'); yourself); yourself)); yourself)); add: (#nodeId->4); yourself); yourself)
+	^ ((Array new: 4) at: 1 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->'2'); yourself); yourself)); yourself)); add: ('nodeId'->1); yourself); at: 2 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->'3'); yourself); yourself)); yourself)); add: ('nodeId'->2); yourself); at: 3 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'3'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->'4'); yourself); yourself)); yourself)); add: ('nodeId'->3); yourself); at: 4 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'4'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->'5'); yourself); yourself)); yourself)); add: ('nodeId'->4); yourself); yourself)
 ]
 
 { #category : #'examples - support' }
@@ -283,15 +283,15 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 	^ (Array new: 5)
 		at: 1
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #columnValues
+									add: 'columnValues'
 											-> ((Array new: 2)
 													at: 1
 														put: (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '0';
@@ -304,9 +304,9 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																yourself);
 													at: 2
 														put: (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '0';
@@ -319,19 +319,19 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 1;
+					add: 'nodeId' -> 1;
 					yourself);
 		at: 2
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #columnValues
+									add: 'columnValues'
 											-> ((Array new: 2)
 													at: 1
 														put: (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '1';
@@ -344,9 +344,9 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																yourself);
 													at: 2
 														put: (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '1';
@@ -359,19 +359,19 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 2;
+					add: 'nodeId' -> 2;
 					yourself);
 		at: 3
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #columnValues
+									add: 'columnValues'
 											-> ((Array new: 2)
 													at: 1
 														put: (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '2';
@@ -384,9 +384,9 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																yourself);
 													at: 2
 														put: (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '4';
@@ -399,19 +399,19 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 3;
+					add: 'nodeId' -> 3;
 					yourself);
 		at: 4
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #columnValues
+									add: 'columnValues'
 											-> ((Array new: 2)
 													at: 1
 														put: (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '3';
@@ -424,9 +424,9 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																yourself);
 													at: 2
 														put: (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '9';
@@ -439,19 +439,19 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 4;
+					add: 'nodeId' -> 4;
 					yourself);
 		at: 5
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #columnValues
+									add: 'columnValues'
 											-> ((Array new: 2)
 													at: 1
 														put: (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '4';
@@ -464,9 +464,9 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																yourself);
 													at: 2
 														put: (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '16';
@@ -479,19 +479,19 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 5;
+					add: 'nodeId' -> 5;
 					yourself);
 		yourself
 ]
 
 { #category : #'examples - support' }
 GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberItemsWithAllLevelsExpansion [
-	^ ((Array new: 5) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->1); add: (#childNodes->#()); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->2); add: (#childNodes->((Array new: 1) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->1); add: (#childNodes->#()); yourself); yourself)); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'4'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->3); add: (#childNodes->((Array new: 1) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->1); add: (#childNodes->((Array new: 1) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->1); add: (#childNodes->#()); yourself); yourself)); yourself); yourself)); yourself); at: 4 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'3'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'9'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->4); add: (#childNodes->((Array new: 2) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->1); add: (#childNodes->((Array new: 1) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->1); add: (#childNodes->#()); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'4'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->2); add: (#childNodes->((Array new: 1) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->1); add: (#childNodes->((Array new: 1) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->1); add: (#childNodes->#()); yourself); yourself)); yourself); yourself)); yourself); yourself)); yourself); at: 5 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'4'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'16'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->5); add: (#childNodes->((Array new: 2) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'4'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->1); add: (#childNodes->((Array new: 1) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->1); add: (#childNodes->((Array new: 1) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->1); add: (#childNodes->#()); yourself); yourself)); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'3'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'9'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->2); add: (#childNodes->((Array new: 2) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->1); add: (#childNodes->((Array new: 1) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->1); add: (#childNodes->#()); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'4'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->2); add: (#childNodes->((Array new: 1) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->1); add: (#childNodes->((Array new: 1) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->1); add: (#childNodes->#()); yourself); yourself)); yourself); yourself)); yourself); yourself)); yourself); yourself)); yourself); yourself)
+	^ ((Array new: 5) at: 1 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->1); add: ('childNodes'->#()); yourself); at: 2 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->2); add: ('childNodes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->1); add: ('childNodes'->#()); yourself); yourself)); yourself); at: 3 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'4'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->3); add: ('childNodes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->1); add: ('childNodes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->1); add: ('childNodes'->#()); yourself); yourself)); yourself); yourself)); yourself); at: 4 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'3'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'9'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->4); add: ('childNodes'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->1); add: ('childNodes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->1); add: ('childNodes'->#()); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'4'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->2); add: ('childNodes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->1); add: ('childNodes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->1); add: ('childNodes'->#()); yourself); yourself)); yourself); yourself)); yourself); yourself)); yourself); at: 5 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'4'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'16'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->5); add: ('childNodes'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'4'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->1); add: ('childNodes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->1); add: ('childNodes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->1); add: ('childNodes'->#()); yourself); yourself)); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'3'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'9'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->2); add: ('childNodes'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->1); add: ('childNodes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->1); add: ('childNodes'->#()); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'4'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->2); add: ('childNodes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->1); add: ('childNodes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->1); add: ('childNodes'->#()); yourself); yourself)); yourself); yourself)); yourself); yourself)); yourself); yourself)); yourself); yourself)
 ]
 
 { #category : #'examples - support' }
 GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberItemsWithExpansionBelowFour [
-	^((Array new: 5) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->1); add: (#childNodes->((Array new: 1) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->1); add: (#childNodes->#()); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'4'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->2); add: (#childNodes->((Array new: 1) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->1); add: (#childNodes->((Array new: 1) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->1); add: (#childNodes->#()); yourself); yourself)); yourself); yourself)); yourself); at: 3 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'3'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'9'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->3); add: (#childNodes->((Array new: 2) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->1); add: (#childNodes->((Array new: 1) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->1); add: (#childNodes->#()); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'4'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->2); add: (#childNodes->((Array new: 1) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->1); add: (#childNodes->((Array new: 1) at: 1 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->1); add: (#childNodes->#()); yourself); yourself)); yourself); yourself)); yourself); yourself)); yourself); at: 4 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'4'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'16'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->4); yourself); at: 5 put: ((Dictionary new) add: (#nodeValue->((Dictionary new) add: (#columnValues->((Array new: 2) at: 1 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'5'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: (#valueTypeName->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: (#itemText->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'25'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: (#nodeId->5); yourself); yourself)
+	^((Array new: 5) at: 1 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->1); add: ('childNodes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->1); add: ('childNodes'->#()); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'4'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->2); add: ('childNodes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->1); add: ('childNodes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->1); add: ('childNodes'->#()); yourself); yourself)); yourself); yourself)); yourself); at: 3 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'3'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'9'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->3); add: ('childNodes'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->1); add: ('childNodes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->1); add: ('childNodes'->#()); yourself); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'2'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'4'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->2); add: ('childNodes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'1'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->1); add: ('childNodes'->((Array new: 1) at: 1 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'0'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->1); add: ('childNodes'->#()); yourself); yourself)); yourself); yourself)); yourself); yourself)); yourself); at: 4 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'4'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'16'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->4); yourself); at: 5 put: ((Dictionary new) add: ('nodeValue'->((Dictionary new) add: ('columnValues'->((Array new: 2) at: 1 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'5'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); at: 2 put: ((Dictionary new) add: ('valueTypeName'->'textualValue'); add: ('__typeName'->#GtRemotePhlowItemTextualValue); add: ('itemText'->((Dictionary new) add: ('__typeLabel'->'gtPhlowRunBasedText'); add: ('sourceString'->'25'); add: ('attributeRuns'->((Dictionary new) add: ('items'->#()); add: ('__typeLabel'->'phlowRunsGroup'); yourself)); yourself)); yourself); yourself)); yourself)); add: ('nodeId'->5); yourself); yourself)
 ]
 
 { #category : #'examples - support' }
@@ -499,15 +499,15 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 	^ (Array new: 5)
 		at: 1
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #columnValues
+									add: 'columnValues'
 											-> ((Array new: 2)
 													at: 1
 														put: (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '0';
@@ -520,9 +520,9 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																yourself);
 													at: 2
 														put: (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '0';
@@ -535,20 +535,20 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 1;
-					add: #childNodes -> #();
+					add: 'nodeId' -> 1;
+					add: 'childNodes' -> #();
 					yourself);
 		at: 2
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #columnValues
+									add: 'columnValues'
 											-> ((Array new: 2)
 													at: 1
 														put: (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '1';
@@ -561,9 +561,9 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																yourself);
 													at: 2
 														put: (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '1';
@@ -576,20 +576,20 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 2;
-					add: #childNodes
+					add: 'nodeId' -> 2;
+					add: 'childNodes'
 							-> ((Array new: 1)
 									at: 1
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #columnValues
+																add: 'columnValues'
 																		-> ((Array new: 2)
 																				at: 1
 																					put: (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '0';
@@ -602,9 +602,9 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																							yourself);
 																				at: 2
 																					put: (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '0';
@@ -617,21 +617,21 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																							yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 1;
+												add: 'nodeId' -> 1;
 												yourself);
 									yourself);
 					yourself);
 		at: 3
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #columnValues
+									add: 'columnValues'
 											-> ((Array new: 2)
 													at: 1
 														put: (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '2';
@@ -644,9 +644,9 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																yourself);
 													at: 2
 														put: (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '4';
@@ -659,20 +659,20 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 3;
-					add: #childNodes
+					add: 'nodeId' -> 3;
+					add: 'childNodes'
 							-> ((Array new: 1)
 									at: 1
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #columnValues
+																add: 'columnValues'
 																		-> ((Array new: 2)
 																				at: 1
 																					put: (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '1';
@@ -685,9 +685,9 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																							yourself);
 																				at: 2
 																					put: (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '1';
@@ -700,21 +700,21 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																							yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 1;
+												add: 'nodeId' -> 1;
 												yourself);
 									yourself);
 					yourself);
 		at: 4
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #columnValues
+									add: 'columnValues'
 											-> ((Array new: 2)
 													at: 1
 														put: (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '3';
@@ -727,9 +727,9 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																yourself);
 													at: 2
 														put: (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '9';
@@ -742,20 +742,20 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 4;
-					add: #childNodes
+					add: 'nodeId' -> 4;
+					add: 'childNodes'
 							-> ((Array new: 2)
 									at: 1
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #columnValues
+																add: 'columnValues'
 																		-> ((Array new: 2)
 																				at: 1
 																					put: (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '1';
@@ -768,9 +768,9 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																							yourself);
 																				at: 2
 																					put: (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '1';
@@ -783,19 +783,19 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																							yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 1;
+												add: 'nodeId' -> 1;
 												yourself);
 									at: 2
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #columnValues
+																add: 'columnValues'
 																		-> ((Array new: 2)
 																				at: 1
 																					put: (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '2';
@@ -808,9 +808,9 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																							yourself);
 																				at: 2
 																					put: (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '4';
@@ -823,21 +823,21 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																							yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 2;
+												add: 'nodeId' -> 2;
 												yourself);
 									yourself);
 					yourself);
 		at: 5
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #columnValues
+									add: 'columnValues'
 											-> ((Array new: 2)
 													at: 1
 														put: (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '4';
@@ -850,9 +850,9 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																yourself);
 													at: 2
 														put: (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '16';
@@ -865,20 +865,20 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 5;
-					add: #childNodes
+					add: 'nodeId' -> 5;
+					add: 'childNodes'
 							-> ((Array new: 2)
 									at: 1
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #columnValues
+																add: 'columnValues'
 																		-> ((Array new: 2)
 																				at: 1
 																					put: (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '2';
@@ -891,9 +891,9 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																							yourself);
 																				at: 2
 																					put: (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '4';
@@ -906,19 +906,19 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																							yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 1;
+												add: 'nodeId' -> 1;
 												yourself);
 									at: 2
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #columnValues
+																add: 'columnValues'
 																		-> ((Array new: 2)
 																				at: 1
 																					put: (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '3';
@@ -931,9 +931,9 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																							yourself);
 																				at: 2
 																					put: (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '9';
@@ -946,7 +946,7 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																							yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 2;
+												add: 'nodeId' -> 2;
 												yourself);
 									yourself);
 					yourself);
@@ -958,15 +958,15 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 	^ (Array new: 5)
 		at: 1
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #columnValues
+									add: 'columnValues'
 											-> ((Array new: 2)
 													at: 1
 														put: (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '0';
@@ -979,9 +979,9 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																yourself);
 													at: 2
 														put: (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '0';
@@ -994,20 +994,20 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 1;
-					add: #childNodes -> #();
+					add: 'nodeId' -> 1;
+					add: 'childNodes' -> #();
 					yourself);
 		at: 2
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #columnValues
+									add: 'columnValues'
 											-> ((Array new: 2)
 													at: 1
 														put: (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '1';
@@ -1020,9 +1020,9 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																yourself);
 													at: 2
 														put: (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '1';
@@ -1035,20 +1035,20 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 2;
-					add: #childNodes
+					add: 'nodeId' -> 2;
+					add: 'childNodes'
 							-> ((Array new: 1)
 									at: 1
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #columnValues
+																add: 'columnValues'
 																		-> ((Array new: 2)
 																				at: 1
 																					put: (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '0';
@@ -1061,9 +1061,9 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																							yourself);
 																				at: 2
 																					put: (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '0';
@@ -1076,22 +1076,22 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																							yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 1;
-												add: #childNodes -> #();
+												add: 'nodeId' -> 1;
+												add: 'childNodes' -> #();
 												yourself);
 									yourself);
 					yourself);
 		at: 3
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #columnValues
+									add: 'columnValues'
 											-> ((Array new: 2)
 													at: 1
 														put: (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '2';
@@ -1104,9 +1104,9 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																yourself);
 													at: 2
 														put: (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '4';
@@ -1119,20 +1119,20 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 3;
-					add: #childNodes
+					add: 'nodeId' -> 3;
+					add: 'childNodes'
 							-> ((Array new: 1)
 									at: 1
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #columnValues
+																add: 'columnValues'
 																		-> ((Array new: 2)
 																				at: 1
 																					put: (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '1';
@@ -1145,9 +1145,9 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																							yourself);
 																				at: 2
 																					put: (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '1';
@@ -1160,20 +1160,20 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																							yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 1;
-												add: #childNodes
+												add: 'nodeId' -> 1;
+												add: 'childNodes'
 														-> ((Array new: 1)
 																at: 1
 																	put: (Dictionary new
-																			add: #nodeValue
+																			add: 'nodeValue'
 																					-> (Dictionary new
-																							add: #columnValues
+																							add: 'columnValues'
 																									-> ((Array new: 2)
 																											at: 1
 																												put: (Dictionary new
-																														add: #valueTypeName -> 'textualValue';
+																														add: 'valueTypeName' -> 'textualValue';
 																														add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																														add: #itemText
+																														add: 'itemText'
 																																-> (Dictionary new
 																																		add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																																		add: 'sourceString' -> '0';
@@ -1186,9 +1186,9 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																														yourself);
 																											at: 2
 																												put: (Dictionary new
-																														add: #valueTypeName -> 'textualValue';
+																														add: 'valueTypeName' -> 'textualValue';
 																														add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																														add: #itemText
+																														add: 'itemText'
 																																-> (Dictionary new
 																																		add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																																		add: 'sourceString' -> '0';
@@ -1201,7 +1201,7 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																														yourself);
 																											yourself);
 																							yourself);
-																			add: #nodeId -> 1;
+																			add: 'nodeId' -> 1;
 																			yourself);
 																yourself);
 												yourself);
@@ -1209,15 +1209,15 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 					yourself);
 		at: 4
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #columnValues
+									add: 'columnValues'
 											-> ((Array new: 2)
 													at: 1
 														put: (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '3';
@@ -1230,9 +1230,9 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																yourself);
 													at: 2
 														put: (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '9';
@@ -1245,20 +1245,20 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 4;
-					add: #childNodes
+					add: 'nodeId' -> 4;
+					add: 'childNodes'
 							-> ((Array new: 2)
 									at: 1
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #columnValues
+																add: 'columnValues'
 																		-> ((Array new: 2)
 																				at: 1
 																					put: (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '1';
@@ -1271,9 +1271,9 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																							yourself);
 																				at: 2
 																					put: (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '1';
@@ -1286,20 +1286,20 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																							yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 1;
-												add: #childNodes
+												add: 'nodeId' -> 1;
+												add: 'childNodes'
 														-> ((Array new: 1)
 																at: 1
 																	put: (Dictionary new
-																			add: #nodeValue
+																			add: 'nodeValue'
 																					-> (Dictionary new
-																							add: #columnValues
+																							add: 'columnValues'
 																									-> ((Array new: 2)
 																											at: 1
 																												put: (Dictionary new
-																														add: #valueTypeName -> 'textualValue';
+																														add: 'valueTypeName' -> 'textualValue';
 																														add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																														add: #itemText
+																														add: 'itemText'
 																																-> (Dictionary new
 																																		add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																																		add: 'sourceString' -> '0';
@@ -1312,9 +1312,9 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																														yourself);
 																											at: 2
 																												put: (Dictionary new
-																														add: #valueTypeName -> 'textualValue';
+																														add: 'valueTypeName' -> 'textualValue';
 																														add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																														add: #itemText
+																														add: 'itemText'
 																																-> (Dictionary new
 																																		add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																																		add: 'sourceString' -> '0';
@@ -1327,21 +1327,21 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																														yourself);
 																											yourself);
 																							yourself);
-																			add: #nodeId -> 1;
+																			add: 'nodeId' -> 1;
 																			yourself);
 																yourself);
 												yourself);
 									at: 2
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #columnValues
+																add: 'columnValues'
 																		-> ((Array new: 2)
 																				at: 1
 																					put: (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '2';
@@ -1354,9 +1354,9 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																							yourself);
 																				at: 2
 																					put: (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '4';
@@ -1369,20 +1369,20 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																							yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 2;
-												add: #childNodes
+												add: 'nodeId' -> 2;
+												add: 'childNodes'
 														-> ((Array new: 1)
 																at: 1
 																	put: (Dictionary new
-																			add: #nodeValue
+																			add: 'nodeValue'
 																					-> (Dictionary new
-																							add: #columnValues
+																							add: 'columnValues'
 																									-> ((Array new: 2)
 																											at: 1
 																												put: (Dictionary new
-																														add: #valueTypeName -> 'textualValue';
+																														add: 'valueTypeName' -> 'textualValue';
 																														add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																														add: #itemText
+																														add: 'itemText'
 																																-> (Dictionary new
 																																		add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																																		add: 'sourceString' -> '1';
@@ -1395,9 +1395,9 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																														yourself);
 																											at: 2
 																												put: (Dictionary new
-																														add: #valueTypeName -> 'textualValue';
+																														add: 'valueTypeName' -> 'textualValue';
 																														add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																														add: #itemText
+																														add: 'itemText'
 																																-> (Dictionary new
 																																		add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																																		add: 'sourceString' -> '1';
@@ -1410,7 +1410,7 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																														yourself);
 																											yourself);
 																							yourself);
-																			add: #nodeId -> 1;
+																			add: 'nodeId' -> 1;
 																			yourself);
 																yourself);
 												yourself);
@@ -1418,15 +1418,15 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 					yourself);
 		at: 5
 			put: (Dictionary new
-					add: #nodeValue
+					add: 'nodeValue'
 							-> (Dictionary new
-									add: #columnValues
+									add: 'columnValues'
 											-> ((Array new: 2)
 													at: 1
 														put: (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '4';
@@ -1439,9 +1439,9 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																yourself);
 													at: 2
 														put: (Dictionary new
-																add: #valueTypeName -> 'textualValue';
+																add: 'valueTypeName' -> 'textualValue';
 																add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																add: #itemText
+																add: 'itemText'
 																		-> (Dictionary new
 																				add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																				add: 'sourceString' -> '16';
@@ -1454,20 +1454,20 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																yourself);
 													yourself);
 									yourself);
-					add: #nodeId -> 5;
-					add: #childNodes
+					add: 'nodeId' -> 5;
+					add: 'childNodes'
 							-> ((Array new: 2)
 									at: 1
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #columnValues
+																add: 'columnValues'
 																		-> ((Array new: 2)
 																				at: 1
 																					put: (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '2';
@@ -1480,9 +1480,9 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																							yourself);
 																				at: 2
 																					put: (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '4';
@@ -1495,20 +1495,20 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																							yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 1;
-												add: #childNodes
+												add: 'nodeId' -> 1;
+												add: 'childNodes'
 														-> ((Array new: 1)
 																at: 1
 																	put: (Dictionary new
-																			add: #nodeValue
+																			add: 'nodeValue'
 																					-> (Dictionary new
-																							add: #columnValues
+																							add: 'columnValues'
 																									-> ((Array new: 2)
 																											at: 1
 																												put: (Dictionary new
-																														add: #valueTypeName -> 'textualValue';
+																														add: 'valueTypeName' -> 'textualValue';
 																														add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																														add: #itemText
+																														add: 'itemText'
 																																-> (Dictionary new
 																																		add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																																		add: 'sourceString' -> '1';
@@ -1521,9 +1521,9 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																														yourself);
 																											at: 2
 																												put: (Dictionary new
-																														add: #valueTypeName -> 'textualValue';
+																														add: 'valueTypeName' -> 'textualValue';
 																														add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																														add: #itemText
+																														add: 'itemText'
 																																-> (Dictionary new
 																																		add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																																		add: 'sourceString' -> '1';
@@ -1536,21 +1536,21 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																														yourself);
 																											yourself);
 																							yourself);
-																			add: #nodeId -> 1;
+																			add: 'nodeId' -> 1;
 																			yourself);
 																yourself);
 												yourself);
 									at: 2
 										put: (Dictionary new
-												add: #nodeValue
+												add: 'nodeValue'
 														-> (Dictionary new
-																add: #columnValues
+																add: 'columnValues'
 																		-> ((Array new: 2)
 																				at: 1
 																					put: (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '3';
@@ -1563,9 +1563,9 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																							yourself);
 																				at: 2
 																					put: (Dictionary new
-																							add: #valueTypeName -> 'textualValue';
+																							add: 'valueTypeName' -> 'textualValue';
 																							add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																							add: #itemText
+																							add: 'itemText'
 																									-> (Dictionary new
 																											add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																											add: 'sourceString' -> '9';
@@ -1578,20 +1578,20 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																							yourself);
 																				yourself);
 																yourself);
-												add: #nodeId -> 2;
-												add: #childNodes
+												add: 'nodeId' -> 2;
+												add: 'childNodes'
 														-> ((Array new: 2)
 																at: 1
 																	put: (Dictionary new
-																			add: #nodeValue
+																			add: 'nodeValue'
 																					-> (Dictionary new
-																							add: #columnValues
+																							add: 'columnValues'
 																									-> ((Array new: 2)
 																											at: 1
 																												put: (Dictionary new
-																														add: #valueTypeName -> 'textualValue';
+																														add: 'valueTypeName' -> 'textualValue';
 																														add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																														add: #itemText
+																														add: 'itemText'
 																																-> (Dictionary new
 																																		add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																																		add: 'sourceString' -> '1';
@@ -1604,9 +1604,9 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																														yourself);
 																											at: 2
 																												put: (Dictionary new
-																														add: #valueTypeName -> 'textualValue';
+																														add: 'valueTypeName' -> 'textualValue';
 																														add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																														add: #itemText
+																														add: 'itemText'
 																																-> (Dictionary new
 																																		add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																																		add: 'sourceString' -> '1';
@@ -1619,19 +1619,19 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																														yourself);
 																											yourself);
 																							yourself);
-																			add: #nodeId -> 1;
+																			add: 'nodeId' -> 1;
 																			yourself);
 																at: 2
 																	put: (Dictionary new
-																			add: #nodeValue
+																			add: 'nodeValue'
 																					-> (Dictionary new
-																							add: #columnValues
+																							add: 'columnValues'
 																									-> ((Array new: 2)
 																											at: 1
 																												put: (Dictionary new
-																														add: #valueTypeName -> 'textualValue';
+																														add: 'valueTypeName' -> 'textualValue';
 																														add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																														add: #itemText
+																														add: 'itemText'
 																																-> (Dictionary new
 																																		add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																																		add: 'sourceString' -> '2';
@@ -1644,9 +1644,9 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																														yourself);
 																											at: 2
 																												put: (Dictionary new
-																														add: #valueTypeName -> 'textualValue';
+																														add: 'valueTypeName' -> 'textualValue';
 																														add: '__typeName' -> #GtRemotePhlowItemTextualValue;
-																														add: #itemText
+																														add: 'itemText'
 																																-> (Dictionary new
 																																		add: '__typeLabel' -> 'gtPhlowRunBasedText';
 																																		add: 'sourceString' -> '4';
@@ -1659,7 +1659,7 @@ GtRemotePhlowColumnedTreeViewAbstractExamples >> expectedColumnedTreeWithNumberI
 																														yourself);
 																											yourself);
 																							yourself);
-																			add: #nodeId -> 2;
+																			add: 'nodeId' -> 2;
 																			yourself);
 																yourself);
 												yourself);

@@ -6,9 +6,11 @@ Class {
 
 { #category : #'instance creation' }
 GtPhlowDeclarativeListingType class >> forTypeLabel: aValue [ 
+	"aValue comes from the other side: a String or a Symbol"
+
 	^ self allSubclasses
 		detect: [ :aSubclass |
-			aSubclass typeLabel = aValue ]
+			aSubclass typeLabel sameContentAs: aValue ]
 		ifFound: [ :aSubclass | aSubclass new ]
 		ifNone: [ self unknown ]
 ]

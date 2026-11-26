@@ -73,7 +73,8 @@ GtRemotePhlowPictureViewAbstractExamples >> errorDataSerializationRoundTrip [
 	| data dictionary restored |
 	data := self dataSourceRetrievesErrorData.
 	dictionary := data asDictionaryForExport.
-	self assert: (dictionary at: '__typeName')
+	"The type name is a Symbol or a String, depending on the side that wrote it"
+	self assert: (dictionary at: '__typeName') asString
 		equals: 'GtRemotePhlowViewErrorData'.
 	self assert: (dictionary at: 'errorDescription') equals: 'test error'.
 	restored := GtRemotePhlowBasicViewData fromDictionary: dictionary.
@@ -118,7 +119,8 @@ GtRemotePhlowPictureViewAbstractExamples >> pictureDataSerializationRoundTrip [
 	| data dictionary restored |
 	data := self dataSourceRetrievesData.
 	dictionary := data asDictionaryForExport.
-	self assert: (dictionary at: '__typeName')
+	"The type name is a Symbol or a String, depending on the side that wrote it"
+	self assert: (dictionary at: '__typeName') asString
 		equals: 'GtRemotePhlowPictureViewData'.
 	self assert: (dictionary at: 'content') equals: data content.
 	restored := GtRemotePhlowBasicViewData fromDictionary: dictionary.
@@ -240,7 +242,8 @@ GtRemotePhlowPictureViewAbstractExamples >> retrievePrimitiveDataForError [
 				content: [Error signal: 'test error'].
 	spec := view asGtDeclarativeView.
 	dictionary := spec retrievePrimitiveData.
-	self assert: (dictionary at: '__typeName')
+	"The type name is a Symbol or a String, depending on the side that wrote it"
+	self assert: (dictionary at: '__typeName') asString
 		equals: 'GtRemotePhlowViewErrorData'.
 	restored := GtRemotePhlowBasicViewData fromDictionary: dictionary.
 	self assert: restored isPhlowErrorData.
@@ -253,7 +256,8 @@ GtRemotePhlowPictureViewAbstractExamples >> retrievePrimitiveDataForPicture [
 	| spec dictionary restored |
 	spec := self pictureViewSpecification.
 	dictionary := spec retrievePrimitiveData.
-	self assert: (dictionary at: '__typeName')
+	"The type name is a Symbol or a String, depending on the side that wrote it"
+	self assert: (dictionary at: '__typeName') asString
 		equals: 'GtRemotePhlowPictureViewData'.
 	self assert: (dictionary at: 'content') class equals: ByteArray.
 	restored := GtRemotePhlowBasicViewData fromDictionary: dictionary.

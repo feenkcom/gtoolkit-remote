@@ -14,11 +14,11 @@ Class {
 { #category : #accessing }
 GtRemotePhlowBitmapSpecification class >> fromJSONDictionary: aDictionary [
 	^ self new
-		width: (aDictionary at: #width);
-		height: (aDictionary at: #height);
-		stride: (aDictionary at: #stride);
-		pixels: (aDictionary at: #pixels) base64Decoded 
-			format: (aDictionary at: #format);
+		width: (aDictionary at: 'width' ifAbsent: [ aDictionary at: #width ]);
+		height: (aDictionary at: 'height' ifAbsent: [ aDictionary at: #height ]);
+		stride: (aDictionary at: 'stride' ifAbsent: [ aDictionary at: #stride ]);
+		pixels: (aDictionary at: 'pixels' ifAbsent: [ aDictionary at: #pixels ]) base64Decoded 
+			format: (aDictionary at: 'format' ifAbsent: [ aDictionary at: #format ]);
 		yourself
 ]
 

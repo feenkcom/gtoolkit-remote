@@ -53,9 +53,9 @@ LeProxyClassPageType >> = anObject [
 	self class = anObject class
 		ifFalse: [ ^ false ].
 		
-	^ pageClassName = anObject pageClassName and: [
+	^ (pageClassName sameContentAs: anObject pageClassName) and: [
 		pageProxySide = anObject pageProxySide and: [
-			proxyTypeName = anObject proxyTypeName ] ]
+			proxyTypeName sameContentAs: anObject proxyTypeName ] ]
 ]
 
 { #category : #accessing }
@@ -102,7 +102,9 @@ LeProxyClassPageType >> pageClassName [
 
 { #category : #accessing }
 LeProxyClassPageType >> pageClassName: aClassName [
-	pageClassName := aClassName
+	"Class names are Symbols; a page read from a database file has them as Strings"
+
+	pageClassName := aClassName ifNotNil: [ :aName | aName asSymbol ]
 ]
 
 { #category : #accessing }
@@ -140,7 +142,9 @@ LeProxyClassPageType >> proxyTypeName [
 
 { #category : #accessing }
 LeProxyClassPageType >> proxyTypeName: aProxyClassName [
-	proxyTypeName := aProxyClassName
+	"Class names are Symbols; a page read from a database file has them as Strings"
+
+	proxyTypeName := aProxyClassName ifNotNil: [ :aName | aName asSymbol ]
 ]
 
 { #category : #accessing }

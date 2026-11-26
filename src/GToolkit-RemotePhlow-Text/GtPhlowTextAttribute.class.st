@@ -6,8 +6,10 @@ Class {
 
 { #category : #'instance creation' }
 GtPhlowTextAttribute class >> attibuteClassForType: aTypeLabel [
+	"aTypeLabel comes from the other side: a String or a Symbol"
+
 	self
-		allSubclassesDo: [ :each | each typeLabel = aTypeLabel ifTrue: [ ^ each ] ].
+		allSubclassesDo: [ :each | (each typeLabel sameContentAs: aTypeLabel) ifTrue: [ ^ each ] ].
 	^ GtPhlowTextUnknownAttribute
 ]
 

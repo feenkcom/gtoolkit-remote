@@ -9,7 +9,8 @@ GtPhlowRuns class >> fromJSONDictionary: aRunsData [
 	| typeLabel runsClass |
  	typeLabel := aRunsData at: '__typeLabel'.
 			
-	typeLabel = GtPhlowRunsGroup typeLabel ifTrue: [
+	"The label comes from the other side: a String or a Symbol"
+	(GtPhlowRunsGroup typeLabel sameContentAs: typeLabel) ifTrue: [
  		runsClass := GtPhlowRunsGroup ].
 		
 	^ runsClass 
